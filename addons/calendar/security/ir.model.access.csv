@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_calendar_event_user,calendar.event.user,model_calendar_event,base.group_user,1,1,1,1
+access_calendar_event_manager,calendar.event.manager,model_calendar_event,base.group_system,1,1,1,1
+access_calendar_alarm_user,calendar.alarm.user,model_calendar_alarm,base.group_user,1,1,1,1
+access_calendar_alarm_manager,calendar.alarm.manager,model_calendar_alarm,base.group_system,1,1,1,1
+access_calendar_attendee_user,calendar.attendee.user,model_calendar_attendee,base.group_user,1,1,1,1
+access_calendar_attendee_manager,calendar.attendee.manager,model_calendar_attendee,base.group_system,1,1,1,1
+access_calendar_event_type_user,calendar.event.type.user,model_calendar_event_type,base.group_user,1,0,0,0
+access_calendar_event_type_manager,calendar.event.type.manager,model_calendar_event_type,base.group_system,1,1,1,1
+access_calendar_recurrence_user,calendar.recurrence.user,model_calendar_recurrence,base.group_user,1,1,1,1
+access_calendar_recurrence_manager,calendar.recurrence.manager,model_calendar_recurrence,base.group_system,1,1,1,1

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_advance_tree" model="ir.ui.view">
+        <field name="name">employee.advance.tree</field>
+        <field name="model">employee.advance</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state=='draft'" decoration-warning="state in ('confirm', 'validate1')" decoration-success="state=='validate'" decoration-muted="state=='done'" decoration-danger="state=='refuse'">
+<header>
+<button name="action_open_advance_request_print" type="object" string="Print Advance Request"/>
+</header>
+<field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="date" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;refuse&quot;, &quot;validate1&quot;, &quot;validate&quot;, &quot;done&quot;]]], &quot;required&quot;: true}"/>
+<field name="employee_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;refuse&quot;, &quot;validate1&quot;, &quot;validate&quot;, &quot;done&quot;]]], &quot;required&quot;: true}"/>
+<field name="company_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="job_id" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="department_id" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="job_ids" widget="many2many_tags" optional="show" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;refuse&quot;, &quot;validate1&quot;, &quot;validate&quot;, &quot;done&quot;]]]}"/>
+<field name="lines_description" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="amount" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="state" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+<field name="payment_state" widget="badge" decoration-success="payment_state == 'paid'" decoration-danger="payment_state == 'not_paid'" decoration-warning="payment_state == 'partial'" modifiers="{&quot;readonly&quot;: true}"/>
+</tree>
+        </field>
+    </record>
+
+    <record id="view_employee_advance_form" model="ir.ui.view">
+        <field name="name">employee.advance.form</field>
+        <field name="model">employee.advance</field>
+        <field name="arch" type="xml">
+            <form string="Employee Advance">
+<header>
+<button name="action_confirm" type="object" string="Confirm" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+<button name="action_approve" type="object" string="Approve" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;confirm&quot;]]]}"/>
+<button string="Validate" name="action_validate" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;validate1&quot;]]]}"/>
+<button name="702" type="action" string="Pay" class="oe_highlight" context="{'default_emp_advance_id': active_id}" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;!=&quot;, &quot;validate&quot;], [&quot;balance&quot;, &quot;=&quot;, 0]]}"/>
+<button string="Refuse" name="action_refuse" type="object" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;confirm&quot;, &quot;validate&quot;, &quot;validate1&quot;]]]}"/>
+<button name="action_draft" type="object" string="Set to Draft" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;refuse&quot;, &quot;confirm&quot;]]]}"/>
+<button name="action_open_advance_request_print" type="object" string="Print Advance Request" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;refuse&quot;]]}"/>
+<field name="state" statusbar_visible="draft,confirm,validate,done" widget="statusbar" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+</header>
+<div class="alert alert-info" role="alert" style="margin-bottom:0px;" modifiers="{&quot;invisible&quot;: [[&quot;has_outstanding_payment&quot;, &quot;=&quot;, false]]}">
+                    You have <b>draft or cancelled payment</b> for this employee advance. You should <b>delete</b> or <b>post</b> them.
+                </div>
+                <field name="has_outstanding_payment" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+<sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_view_reconciles" type="object" class="oe_stat_button" icon="fa-exchange">
+                        <field name="reconcile_count" widget="statinfo" string="Reconcile" modifiers="{&quot;readonly&quot;: true}"/>
+                    </button>
+                </div>
+<widget name="web_ribbon" title="Paid" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;paid&quot;]]}"/>
+                    <widget name="web_ribbon" title="Partial" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;partial&quot;]]}"/>
+                    <field name="balance" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="payment_state" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+<div class="oe_title">
+<h1>
+<field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+</h1>
+</div>
+<group>
+<group>
+<field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="employee_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;refuse&quot;, &quot;validate1&quot;, &quot;validate&quot;, &quot;done&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+<field name="company_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+<field name="job_id" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="department_id" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="job_ids" widget="many2many_tags" options="{'no_create': True}" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;refuse&quot;, &quot;validate1&quot;, &quot;validate&quot;, &quot;done&quot;]]]}" can_create="true" can_write="true"/>
+</group>
+<group>
+<field name="date" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;refuse&quot;, &quot;validate1&quot;, &quot;validate&quot;, &quot;done&quot;]]], &quot;required&quot;: true}"/>
+<field name="company_id" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="currency_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;refuse&quot;, &quot;validate1&quot;, &quot;validate&quot;, &quot;done&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+<field name="amount" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="journal_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;refuse&quot;, &quot;validate1&quot;, &quot;validate&quot;, &quot;done&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+</group>
+</group>
+<notebook>
+<page string="Advance Lines">
+<field name="lines" nolabel="1" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;refuse&quot;, &quot;validate1&quot;, &quot;validate&quot;, &quot;done&quot;]]]}">
+<tree string="Advance Lines" editable="bottom">
+<field name="name" modifiers="{&quot;required&quot;: true}"/>
+<field name="amount" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+<field name="currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+</tree>
+</field>
+</page>
+<page string="Payments">
+<field name="payment_ids" edit="0" create="0" nolabel="1" on_change="1" modifiers="{&quot;readonly&quot;: true}">
+<tree>
+<field name="date" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;posted&quot;, &quot;cancel&quot;]]], &quot;required&quot;: true}"/>
+<field name="name" on_change="1"/>
+<field name="partner_id" on_change="1"/>
+<field name="journal_id" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+<field name="amount" on_change="1"/>
+<field name="state" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+</tree>
+</field>
+</page>
+</notebook>
+</sheet>
+<div class="oe_chatter">
+<field name="message_follower_ids"/>
+<field name="activity_ids"/>
+<field name="message_ids"/>
+</div>
+</form>
+        </field>
+    </record>
+
+    <record id="view_employee_advance_search" model="ir.ui.view">
+        <field name="name">employee.advance.search</field>
+        <field name="model">employee.advance</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Advance">
+<field name="name" string="Reference"/>
+<field name="employee_id"/>
+<separator/>
+<filter name="my_request" string="My Request" domain="[('employee_id', '=', uid)]"/>
+<filter name="draft_request" string="Draft" domain="[('state','in', ('draft', 'refuse'))]"/>
+<filter name="confirm_request" string="Waiting Approved" domain="[('state','in', ('confirm', 'validate1'))]"/>
+<filter name="validate_request" string="Approved" domain="[('state','=', 'validate')]"/>
+<filter name="paid_request" string="Paid" domain="[('payment_state','=', 'paid')]"/>
+<separator/>
+<filter name="done_request" string="Reconciled" domain="[('state','=', 'done')]"/>
+<separator/>
+<group expand="0" string="Group By">
+<filter string="Employee" domain="[]" name="grp_employee" context="{'group_by':'employee_id'}"/>
+<filter string="Advance Month" domain="[]" name="grp_date" context="{'group_by':'date'}"/>
+</group>
+</search>
+        </field>
+    </record>
+
+    <record id="action_employee_advance" model="ir.actions.act_window">
+        <field name="name">EMPLOYEE ADVANCE</field>
+        <field name="res_model">employee.advance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

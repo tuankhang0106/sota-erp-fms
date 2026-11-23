@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Window Action for calendar.alarm -->
+    <record id="action_calendar_alarm" model="ir.actions.act_window">
+        <field name="name">Nhắc nhở (Reminders/Alarms)</field>
+        <field name="res_model">calendar.alarm</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

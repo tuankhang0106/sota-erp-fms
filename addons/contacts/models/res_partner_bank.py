@@ -1,0 +1,46 @@
+# -*- coding: utf-8 -*-
+from odoo import models, fields, api
+
+class ResPartnerBank(models.Model):
+    _name = 'res.partner.bank'
+    _description = 'RES PARTNER BANK'
+    _order = 'id desc'
+
+    activity_ids = fields.One2many(comodel_name="mail.activity", inverse_name='parent_id', string="Activities")
+    activity_state = fields.Selection(selection=[["overdue","Overdue"],["today","Today"],["planned","Planned"]], string="Activity State", readonly=True, help="Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.")
+    activity_user_id = fields.Many2one(comodel_name="res.users", string="Responsible User")
+    activity_type_id = fields.Many2one(comodel_name="mail.activity.type", string="Next Activity Type")
+    activity_type_icon = fields.Char(string="Activity Type Icon", readonly=True, help="Font awesome icon e.g. fa-tasks")
+    activity_date_deadline = fields.Date(string="Next Activity Deadline", readonly=True)
+    my_activity_date_deadline = fields.Date(string="My Activity Deadline", readonly=True)
+    activity_summary = fields.Char(string="Next Activity Summary")
+    activity_exception_decoration = fields.Selection(selection=[["warning","Alert"],["danger","Error"]], string="Activity Exception Decoration", readonly=True, help="Type of the exception activity on record.")
+    activity_exception_icon = fields.Char(string="Icon", readonly=True, help="Icon to indicate an exception activity.")
+    activity_calendar_event_id = fields.Many2one(comodel_name="calendar.event", string="Next Activity Calendar Event", readonly=True)
+    message_is_follower = fields.Boolean(string="Is Follower", readonly=True)
+    message_follower_ids = fields.One2many(comodel_name="mail.followers", inverse_name='parent_id', string="Followers")
+    message_partner_ids = fields.Many2many(comodel_name="res.partner", string="Followers (Partners)")
+    message_ids = fields.One2many(comodel_name="mail.message", inverse_name='parent_id', string="Messages")
+    has_message = fields.Boolean(string="Has Message", readonly=True)
+    message_needaction = fields.Boolean(string="Action Needed", readonly=True, help="If checked, new messages require your attention.")
+    message_needaction_counter = fields.Integer(string="Number of Actions", readonly=True, help="Number of messages requiring action")
+    message_has_error = fields.Boolean(string="Message Delivery error", readonly=True, help="If checked, some messages have a delivery error.")
+    message_has_error_counter = fields.Integer(string="Number of errors", readonly=True, help="Number of messages with delivery error")
+    message_attachment_count = fields.Integer(string="Attachment Count", readonly=True)
+    message_main_attachment_id = fields.Many2one(comodel_name="ir.attachment", string="Main Attachment")
+    website_message_ids = fields.One2many(comodel_name="mail.message", inverse_name='parent_id', string="Website Messages", help="Website communication history")
+    message_has_sms_error = fields.Boolean(string="SMS Delivery error", readonly=True, help="If checked, some messages have a delivery error.")
+    active = fields.Boolean(string="Active")
+    acc_type = fields.Selection(selection=[["bank","Thông thường"],["iban","IBAN"]], string="Type", readonly=True, help="Bank account type: Normal or IBAN. Inferred from the bank account number.")
+    acc_number = fields.Char(string="Account Number", required=True)
+    sanitized_acc_number = fields.Char(string="Sanitized Account Number", readonly=True)
+    acc_holder_name = fields.Char(string="Account Holder Name", help="Account holder name, in case it is different than the name of the Account Holder")
+    partner_id = fields.Many2one(comodel_name="res.partner", string="Account Holder", required=True)
+    allow_out_payment = fields.Boolean(string="Send Money", help="This account can be used for outgoing payments")
+    bank_id = fields.Many2one(comodel_name="res.bank", string="Bank")
+    bank_name = fields.Char(string="Name")
+    bank_bic = fields.Char(string="Bank Identifier Code", help="Sometimes called BIC or Swift.")
+    sequence = fields.Integer(string="Sequence")
+    currency_id = fields.Many2one(comodel_name="res.currency", string="Currency")
+    company_id = fields.Many2one(comodel_name="res.company", string="Company", readonly=True)
+    journal_id = fields.One2many(comodel_name="account.journal", inverse_name='parent_id', string="Account Journal", readonly=True, help="The accounting journal corresponding to this bank account.")

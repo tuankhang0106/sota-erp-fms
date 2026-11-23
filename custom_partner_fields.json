@@ -1,0 +1,1322 @@
+[
+  {
+    "id": 8818,
+    "name": "abbreviation_name",
+    "field_description": "’Party Abbreviation",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8826,
+    "name": "address",
+    "field_description": "Address",
+    "ttype": "text",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8889,
+    "name": "apply_type",
+    "field_description": "Apply Type",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8858,
+    "name": "area",
+    "field_description": "Area",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8808,
+    "name": "area_type",
+    "field_description": "Area",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8828,
+    "name": "bl_address",
+    "field_description": "B/L Address",
+    "ttype": "text",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8839,
+    "name": "bound_ids",
+    "field_description": "Bound",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8846,
+    "name": "branch",
+    "field_description": "Branch",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8893,
+    "name": "brench_ids",
+    "field_description": "Branches",
+    "ttype": "one2many",
+    "relation": "res.partner.brench",
+    "relation_field": "partner_id",
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8896,
+    "name": "can_edit_salesperson",
+    "field_description": "Can Edit Salesperson",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8901,
+    "name": "can_set_won",
+    "field_description": "Can Set Won",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8849,
+    "name": "capacity",
+    "field_description": "Capacity",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 921,
+    "name": "city",
+    "field_description": "City",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "base, sota_vn_address"
+  },
+  {
+    "id": 8897,
+    "name": "class_ids",
+    "field_description": "Classes",
+    "ttype": "many2many",
+    "relation": "res.partner.class",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8898,
+    "name": "class_names",
+    "field_description": "Class Names",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8810,
+    "name": "commodity_id",
+    "field_description": "Commodity",
+    "ttype": "many2one",
+    "relation": "freight.commodity",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8841,
+    "name": "commodity_ids",
+    "field_description": "Commodity",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8853,
+    "name": "competitive_on_market",
+    "field_description": "Competitive on Market",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 10139,
+    "name": "contact_type",
+    "field_description": "Contact Type",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_vn_address"
+  },
+  {
+    "id": 8843,
+    "name": "country_export_ids",
+    "field_description": "Country Export",
+    "ttype": "many2many",
+    "relation": "res.country",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8887,
+    "name": "country_export_search",
+    "field_description": "Countries Export (POL)",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 923,
+    "name": "country_id",
+    "field_description": "Country",
+    "ttype": "many2one",
+    "relation": "res.country",
+    "relation_field": false,
+    "related": false,
+    "modules": "base, sota_vn_address"
+  },
+  {
+    "id": 8844,
+    "name": "country_import_ids",
+    "field_description": "Country Import",
+    "ttype": "many2many",
+    "relation": "res.country",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8888,
+    "name": "country_import_search",
+    "field_description": "Countries Import (POD)",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8891,
+    "name": "credit_amount",
+    "field_description": "Credit Amount",
+    "ttype": "float",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8890,
+    "name": "credit_term",
+    "field_description": "Credit Term (Days)",
+    "ttype": "float",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "portalink_freight_advanced, sota_freight_crm"
+  },
+  {
+    "id": 43513,
+    "name": "crm_convert_date",
+    "field_description": "Conversion Date",
+    "ttype": "date",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8895,
+    "name": "crm_department_id",
+    "field_description": "Sales Department",
+    "ttype": "many2one",
+    "relation": "crm.department",
+    "relation_field": false,
+    "related": "team_id.crm_department_id",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8802,
+    "name": "customer",
+    "field_description": "Is Customer",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8824,
+    "name": "customer_code",
+    "field_description": "Customer Code",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 32016,
+    "name": "customer_get_einvoice",
+    "field_description": "Customer get einvoice",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_vn_edi"
+  },
+  {
+    "id": 8829,
+    "name": "customer_group",
+    "field_description": "Customer Group",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8836,
+    "name": "customer_name",
+    "field_description": "Name",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": "parent_id.name",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8830,
+    "name": "customer_resource",
+    "field_description": "Customer Resource",
+    "ttype": "many2one",
+    "relation": "res.partner.resource",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8809,
+    "name": "customer_status",
+    "field_description": "Customer Status",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8815,
+    "name": "demand",
+    "field_description": "Demand",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8848,
+    "name": "dept_ic_id",
+    "field_description": "Dept IC",
+    "ttype": "many2one",
+    "relation": "hr.department",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 893,
+    "name": "display_name",
+    "field_description": "Display Name",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "base, sota_freight_crm"
+  },
+  {
+    "id": 927,
+    "name": "email",
+    "field_description": "Email",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "base, mail, sota_freight_crm"
+  },
+  {
+    "id": 27925,
+    "name": "email_cc",
+    "field_description": "Email Other",
+    "ttype": "text",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 29612,
+    "name": "email_einvoice",
+    "field_description": "Email E-Invoice",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8847,
+    "name": "establish",
+    "field_description": "Establish",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8817,
+    "name": "fax",
+    "field_description": "Fax",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8797,
+    "name": "file_data",
+    "field_description": "File",
+    "ttype": "binary",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8796,
+    "name": "file_name",
+    "field_description": "File Name",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8816,
+    "name": "foreign_name",
+    "field_description": "Foreign Name",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8811,
+    "name": "freight_country_id",
+    "field_description": "Freight Country",
+    "ttype": "many2one",
+    "relation": "res.country",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 10137,
+    "name": "full_address_vi",
+    "field_description": "Address",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_vn_address"
+  },
+  {
+    "id": 8883,
+    "name": "hs_code_search",
+    "field_description": "HS Codes",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 32017,
+    "name": "id_number",
+    "field_description": "CCCD/CMND",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_vn_edi"
+  },
+  {
+    "id": 26414,
+    "name": "invoice_currency_id",
+    "field_description": "Currency",
+    "ttype": "many2one",
+    "relation": "res.currency",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 28912,
+    "name": "is_account_user",
+    "field_description": "Is Account User",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 8865,
+    "name": "is_agent",
+    "field_description": "Is Agent",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8881,
+    "name": "is_association",
+    "field_description": "Is Association",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8875,
+    "name": "is_bank",
+    "field_description": "Is Bank",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8880,
+    "name": "is_broker_chartering",
+    "field_description": "Is Broker Chartering",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8871,
+    "name": "is_carrier",
+    "field_description": "Is Carrier",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8867,
+    "name": "is_coloader_air",
+    "field_description": "Is Coloader Air",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8866,
+    "name": "is_coloader_sea",
+    "field_description": "Is Coloader Sea",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 931,
+    "name": "is_company",
+    "field_description": "Is a Company",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "base, sota_freight_crm"
+  },
+  {
+    "id": 8869,
+    "name": "is_consignee",
+    "field_description": "Is Consignee",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8850,
+    "name": "is_contract",
+    "field_description": "Contract",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8879,
+    "name": "is_custom",
+    "field_description": "Is Custom",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8863,
+    "name": "is_customer",
+    "field_description": "Is Customer",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8872,
+    "name": "is_forwarder",
+    "field_description": "Is Forwarder",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8877,
+    "name": "is_inner_staff_dept",
+    "field_description": "Is Inner Staff Dept",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8882,
+    "name": "is_nvocc",
+    "field_description": "Is Nvocc",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8878,
+    "name": "is_other",
+    "field_description": "Is Other",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8899,
+    "name": "is_own",
+    "field_description": "Is Own",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8870,
+    "name": "is_payor",
+    "field_description": "Is Payor",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8876,
+    "name": "is_person",
+    "field_description": "Is Person",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8803,
+    "name": "is_pic",
+    "field_description": "Is PIC",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 28233,
+    "name": "is_public_customer",
+    "field_description": "Is Public",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_advanced, sota_freight_crm"
+  },
+  {
+    "id": 8894,
+    "name": "is_restricted",
+    "field_description": "Is Restricted",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_advanced, sota_freight_crm"
+  },
+  {
+    "id": 32172,
+    "name": "is_risk",
+    "field_description": "Rủi ro (HĐ bất hợp pháp)",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_sync_einvoice_bill"
+  },
+  {
+    "id": 8868,
+    "name": "is_shipper",
+    "field_description": "Is Shipper",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8873,
+    "name": "is_trucker",
+    "field_description": "Is Trucker",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8864,
+    "name": "is_vendor",
+    "field_description": "Is Vendor",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8874,
+    "name": "is_warehouse",
+    "field_description": "Is Warehouse",
+    "ttype": "boolean",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 43935,
+    "name": "job_count",
+    "field_description": "Jobs",
+    "ttype": "integer",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 901,
+    "name": "lang",
+    "field_description": "Language",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "base, sota_freight_crm"
+  },
+  {
+    "id": 8800,
+    "name": "lead_state",
+    "field_description": "Lead State",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8900,
+    "name": "lead_taken_date",
+    "field_description": "Lead Taken Date",
+    "ttype": "datetime",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8892,
+    "name": "limit_action",
+    "field_description": "Limit Acton",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8855,
+    "name": "load_type",
+    "field_description": "Load Type",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8837,
+    "name": "location_country_ids",
+    "field_description": "Location Country",
+    "ttype": "many2many",
+    "relation": "res.country",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8838,
+    "name": "location_province_ids",
+    "field_description": "Location State",
+    "ttype": "many2many",
+    "relation": "res.country.state",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8854,
+    "name": "log_in",
+    "field_description": "Log in",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8862,
+    "name": "login_ids",
+    "field_description": "Login",
+    "ttype": "one2many",
+    "relation": "res.partner.login",
+    "relation_field": "partner_id",
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8821,
+    "name": "logistic_type",
+    "field_description": "Logistic Type",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8851,
+    "name": "network",
+    "field_description": "Network",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8827,
+    "name": "office_address",
+    "field_description": "Office Address",
+    "ttype": "text",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8834,
+    "name": "other",
+    "field_description": "Other",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8825,
+    "name": "partner_code",
+    "field_description": "Code",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8820,
+    "name": "party_role",
+    "field_description": "Party Role",
+    "ttype": "many2many",
+    "relation": "freight.party.role",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 39026,
+    "name": "payment_due_days",
+    "field_description": "Payment Due Days",
+    "ttype": "integer",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8860,
+    "name": "payment_term_id",
+    "field_description": "Payment Term",
+    "ttype": "many2one",
+    "relation": "account.payment.term",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8807,
+    "name": "pic_email",
+    "field_description": "Email",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": "pic_id.email",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8805,
+    "name": "pic_function",
+    "field_description": "Job Position",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": "pic_id.function",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8804,
+    "name": "pic_id",
+    "field_description": "Main PIC",
+    "ttype": "many2one",
+    "relation": "res.partner",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8806,
+    "name": "pic_mobile",
+    "field_description": "Mobile",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": "pic_id.mobile",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8813,
+    "name": "pod_id",
+    "field_description": "Port Of Discharge (POD)",
+    "ttype": "many2one",
+    "relation": "freight.port",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8885,
+    "name": "pod_id_search",
+    "field_description": "PODs",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8833,
+    "name": "pod_routing_ids",
+    "field_description": "POD",
+    "ttype": "many2many",
+    "relation": "freight.port",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8812,
+    "name": "pol_id",
+    "field_description": "Port Of Loading (POL)",
+    "ttype": "many2one",
+    "relation": "freight.port",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8884,
+    "name": "pol_id_search",
+    "field_description": "POLs",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8832,
+    "name": "pol_routing_ids",
+    "field_description": "POL",
+    "ttype": "many2many",
+    "relation": "freight.port",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8798,
+    "name": "priority",
+    "field_description": "Priority",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 31022,
+    "name": "quotation_count",
+    "field_description": "Quotation Count",
+    "ttype": "integer",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 31021,
+    "name": "quotation_ids",
+    "field_description": "Quotations",
+    "ttype": "one2many",
+    "relation": "freight.quotation",
+    "relation_field": "partner_id",
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 900,
+    "name": "ref",
+    "field_description": "Code",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "base, sota_freight_crm"
+  },
+  {
+    "id": 8819,
+    "name": "registered_address",
+    "field_description": "Registered Address",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8857,
+    "name": "remark_working",
+    "field_description": "Remark Working",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8831,
+    "name": "routing_ids",
+    "field_description": "Routing",
+    "ttype": "one2many",
+    "relation": "res.partner.routing",
+    "relation_field": "partner_id",
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8859,
+    "name": "service_area",
+    "field_description": "Service Area",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8856,
+    "name": "service_route",
+    "field_description": "Service Route",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8852,
+    "name": "services",
+    "field_description": "Services",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 35038,
+    "name": "shipping_line_ids",
+    "field_description": "Shipping Lines",
+    "ttype": "one2many",
+    "relation": "freight.shipping.line",
+    "relation_field": "partner_id",
+    "related": false,
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 8886,
+    "name": "shipping_term_search",
+    "field_description": "Shipping Terms",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 31683,
+    "name": "short_name",
+    "field_description": "Short Name",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8823,
+    "name": "special_requirement",
+    "field_description": "Special Requirement",
+    "ttype": "text",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8801,
+    "name": "stage_id",
+    "field_description": "Stage",
+    "ttype": "many2one",
+    "relation": "crm.stage",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8799,
+    "name": "state",
+    "field_description": "State",
+    "ttype": "selection",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8835,
+    "name": "task_in_charge",
+    "field_description": "Task In Charge",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 4297,
+    "name": "team_id",
+    "field_description": "Sales Team",
+    "ttype": "many2one",
+    "relation": "crm.team",
+    "relation_field": false,
+    "related": false,
+    "modules": "crm, sales_team, sota_freight_crm"
+  },
+  {
+    "id": 8861,
+    "name": "tel",
+    "field_description": "Tel",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8840,
+    "name": "transport_mode_ids",
+    "field_description": "Transport Mode",
+    "ttype": "many2many",
+    "relation": "freight.transport.mode",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 905,
+    "name": "user_id",
+    "field_description": "Salesperson",
+    "ttype": "many2one",
+    "relation": "res.users",
+    "relation_field": false,
+    "related": false,
+    "modules": "base, mail, sota_freight_crm"
+  },
+  {
+    "id": 8814,
+    "name": "volume",
+    "field_description": "Volume (CBM)",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 8845,
+    "name": "volume_ids",
+    "field_description": "Volume",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 10138,
+    "name": "wards_id",
+    "field_description": "Wards",
+    "ttype": "many2one",
+    "relation": "res.country.wards",
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_vn_address"
+  },
+  {
+    "id": 8822,
+    "name": "website_sanitized",
+    "field_description": "Sanitized Website",
+    "ttype": "char",
+    "relation": false,
+    "relation_field": false,
+    "related": false,
+    "modules": "sota_freight_crm"
+  }
+]

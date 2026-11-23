@@ -1,0 +1,31 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'Email Marketing',
+    'version': '1.0',
+    'category': 'Marketing/Email Marketing',
+    'summary': 'Cloned Module for Email Marketing',
+    'description': """Email Marketing cloned from SotaERP Portalink""",
+    'author': 'Cloned by Antigravity',
+    'website': 'https://portalink.erp.sota-solutions.com/',
+    'depends': ["base","mail"],
+    'data': [
+        'security/ir.model.access.csv',
+        'data/mass_mailing_data.xml',
+        'views/mail_blacklist_views.xml',
+        'views/utm_stage_views.xml',
+        'views/utm_tag_views.xml',
+        'views/link_tracker_views.xml',
+        'views/mailing_trace_report_views.xml',
+        'views/mailing_filter_views.xml',
+        'views/mailing_contact_views.xml',
+        'views/mailing_list_views.xml',
+        'views/mailing_mailing_views.xml',
+        'views/res_config_settings_views.xml',
+        'views/utm_campaign_views.xml',
+        'views/mass_mailing_menus.xml'
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+    'license': 'LGPL-3',
+}

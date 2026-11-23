@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_payment_tree" model="ir.ui.view">
+        <field name="name">account.payment.tree</field>
+        <field name="model">account.payment</field>
+        <field name="arch" type="xml">
+            <tree edit="false" sample="1" decoration-info="state == 'draft'" decoration-muted="state == 'cancel'">
+                    <header>
+                        <button name="action_post" type="object" string="Confirm"/>
+                    </header>
+                    <field name="company_currency_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="suitable_journal_ids" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="available_payment_method_line_ids" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="date" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;posted&quot;, &quot;cancel&quot;]]], &quot;required&quot;: true}"/>
+                    <field name="name" on_change="1"/>
+                    <field name="journal_id" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                <field name="counterpart_account_ids" widget="many2many_tags" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="payment_method_line_id" on_change="1"/>
+                    <field name="partner_id" string="Customer" on_change="1"/>
+                <field name="job_ids" widget="many2many_tags"/>
+                    <field name="amount_signed" string="Amount in Currency" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="currency_id" string="Payment Currency" optional="hide" on_change="1"/>
+                    <field name="amount_company_currency_signed" widget="monetary" string="Amount" sum="Total" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'posted'" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_account_payment_form" model="ir.ui.view">
+        <field name="name">account.payment.form</field>
+        <field name="model">account.payment</field>
+        <field name="arch" type="xml">
+            <form string="Register Payment">
+                    <header>
+                        <button name="action_post" string="Confirm" type="object" class="oe_highlight" data-hotkey="v" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                        <button name="action_draft" string="Reset To Draft" type="object" class="btn btn-secondary" data-hotkey="w" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;posted&quot;, &quot;cancel&quot;]]]}"/>
+                <field name="amount_available_for_refund" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <button name="action_refund_wizard" type="object" string="Refund" class="btn-secondary" modifiers="{&quot;invisible&quot;: [[&quot;amount_available_for_refund&quot;, &quot;&lt;=&quot;, 0]]}"/>
+                        <button name="action_cancel" string="Cancel" type="object" data-hotkey="z" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                        <button name="mark_as_sent" string="Mark as Sent" type="object" data-hotkey="q" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;|&quot;, [&quot;state&quot;, &quot;!=&quot;, &quot;posted&quot;], [&quot;is_move_sent&quot;, &quot;=&quot;, true], [&quot;payment_method_code&quot;, &quot;!=&quot;, &quot;manual&quot;]]}"/>
+                        <button name="unmark_as_sent" string="Unmark as Sent" type="object" data-hotkey="k" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;|&quot;, [&quot;state&quot;, &quot;!=&quot;, &quot;posted&quot;], [&quot;is_move_sent&quot;, &quot;=&quot;, false], [&quot;payment_method_code&quot;, &quot;!=&quot;, &quot;manual&quot;]]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,posted" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    </header>
+                    <field name="edi_blocking_level" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="edi_error_count" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;edi_web_services_to_process&quot;, &quot;in&quot;, [&quot;&quot;, false]], [&quot;state&quot;, &quot;=&quot;, &quot;draft&quot;]]}">
+                         <div>The payment will be processed asynchronously by the following E-invoicing service :
+                            <field name="edi_web_services_to_process" class="oe_inline" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                         </div>
+                         <button name="action_process_edi_web_services" type="object" class="oe_link" string="Process now"/>
+                    </div>
+                    <div class="alert alert-danger" role="alert" style="margin-bottom:0px;" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;edi_error_count&quot;, &quot;=&quot;, 0], [&quot;edi_blocking_level&quot;, &quot;!=&quot;, &quot;error&quot;]]}">
+                        <div class="o_row">
+                            <field name="edi_error_message" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                            <button name="412" string="⇒ See errors" type="action" class="oe_link" modifiers="{&quot;invisible&quot;: [[&quot;edi_error_count&quot;, &quot;=&quot;, 1]]}"/> 
+                            <button name="action_retry_edi_documents_error" type="object" class="oe_link oe_inline" string="Retry"/>
+                        </div>
+                    </div>
+                    <div class="alert alert-warning" role="alert" style="margin-bottom:0px;" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;edi_error_count&quot;, &quot;=&quot;, 0], [&quot;edi_blocking_level&quot;, &quot;!=&quot;, &quot;warning&quot;]]}">
+                        <div class="o_row">
+                            <field name="edi_error_message" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                            <button name="412" string="⇒ See errors" type="action" class="oe_link" modifiers="{&quot;invisible&quot;: [[&quot;edi_error_count&quot;, &quot;=&quot;, 1]]}"/> 
+                        </div>
+                    </div>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;edi_error_count&quot;, &quot;=&quot;, 0], [&quot;edi_blocking_level&quot;, &quot;!=&quot;, &quot;info&quot;]]}">
+                        <div class="o_row">
+                            <field name="edi_error_message" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                            <button name="412" string="⇒ See errors" type="action" class="oe_link" modifiers="{&quot;invisible&quot;: [[&quot;edi_error_count&quot;, &quot;=&quot;, 1]]}"/> 
+                        </div>
+                    </div>
+                    <div class="alert alert-info text-center" role="alert" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;|&quot;, [&quot;paired_internal_transfer_payment_id&quot;, &quot;!=&quot;, false], [&quot;is_internal_transfer&quot;, &quot;=&quot;, false], [&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}">
+                        A second payment will be created automatically in the destination journal.
+                    </div>
+                    <div class="alert alert-warning text-center" role="alert" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;|&quot;, [&quot;is_internal_transfer&quot;, &quot;=&quot;, false], [&quot;require_partner_bank_account&quot;, &quot;=&quot;, false], [&quot;partner_bank_id&quot;, &quot;!=&quot;, false]]}">
+                        The selected payment method requires a bank account but none is set on
+                        <button class="oe_link alert-link" type="object" name="action_open_destination_journal" style="padding: 0; vertical-align: baseline;">the destination journal</button>.
+                    </div>
+                    <sheet>
+                        <!-- Invisible fields -->
+                        <field name="id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="is_move_sent" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="is_reconciled" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="is_matched" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="payment_method_code" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="show_partner_bank_account" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="require_partner_bank_account" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="available_payment_method_line_ids" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="available_partner_bank_ids" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="suitable_journal_ids" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="country_code" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="partner_type" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
+                        <field name="posted_before" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                        <field name="reconciled_invoices_type" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="company_id" on_change="1" modifiers="{&quot;invisible&quot;: true}" can_create="true" can_write="true"/>
+                        <field name="paired_internal_transfer_payment_id" modifiers="{&quot;invisible&quot;: true}" can_create="true" can_write="true"/>
+                        <field name="available_journal_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+
+                        <div class="oe_button_box" name="button_box">
+                            <!-- Invoice stat button -->
+                            <button name="button_open_invoices" type="object" class="oe_stat_button" icon="fa-bars" modifiers="{&quot;invisible&quot;: [[&quot;reconciled_invoices_count&quot;, &quot;=&quot;, 0]]}">
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_text">
+                                        <field name="reconciled_invoices_count" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <span modifiers="{&quot;invisible&quot;: [[&quot;reconciled_invoices_type&quot;, &quot;!=&quot;, &quot;invoice&quot;]]}"> Invoice</span>
+                                        <span modifiers="{&quot;invisible&quot;: [[&quot;reconciled_invoices_type&quot;, &quot;=&quot;, &quot;invoice&quot;]]}"> Credit Note</span>
+                                    </span>
+                                </div>
+                            </button>
+
+                            <!-- Bill stat button -->
+                            <button name="button_open_bills" type="object" class="oe_stat_button" icon="fa-bars" modifiers="{&quot;invisible&quot;: [[&quot;reconciled_bills_count&quot;, &quot;=&quot;, 0]]}">
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_text">
+                                        <field name="reconciled_bills_count" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <span> Bill</span>
+                                    </span>
+                                </div>
+                            </button>
+
+                            <!-- Statement stat button -->
+                            <button name="button_open_statement_lines" type="object" class="oe_stat_button" icon="fa-bars" modifiers="{&quot;invisible&quot;: [[&quot;reconciled_statement_lines_count&quot;, &quot;=&quot;, 0]]}">
+                                <div class="o_form_field o_stat_info">
+                                    <field name="reconciled_statement_lines_count" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <span> Transaction</span>
+                                </div>
+                            </button>
+
+                            <!-- Journal Entry  button -->
+                            <button name="button_open_journal_entry" type="object" class="oe_stat_button" icon="fa-bars">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_text">Journal Entry</span>
+                                </div>
+                            </button>
+                <button name="action_view_refunds" type="object" class="oe_stat_button" icon="fa-money" modifiers="{&quot;invisible&quot;: [[&quot;refunds_count&quot;, &quot;=&quot;, 0]]}">
+                    <field name="refunds_count" widget="statinfo" string="Refunds" modifiers="{&quot;readonly&quot;: true}"/>
+                </button>
+                    <field name="expense_sheet_id" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                    <button name="action_open_expense_report" class="oe_stat_button" string="Expense Report" icon="fa-file-text-o" type="object" modifiers="{&quot;invisible&quot;: [[&quot;expense_sheet_id&quot;, &quot;=&quot;, []]]}"/>
+                        </div>
+
+                        <widget name="web_ribbon" text="Invoicing App Legacy" bg_color="bg-info" tooltip="This payment has been generated through the Invoicing app, before installing Accounting. It has been disabled by the 'Invoicing Switch Threshold Date' setting so that it does not impact your accounting." modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;invoicing_legacy&quot;]]}"/>
+
+                        <div class="oe_title">
+                            <h1 modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"><span>Draft</span></h1>
+                            <h1 modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;draft&quot;]]}"><field name="name" on_change="1" modifiers="{&quot;readonly&quot;: true}"/></h1>
+                        </div>
+
+                        <group>
+                            <group name="group1">
+                                <field name="is_internal_transfer" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                                <field name="payment_type" widget="radio" options="{'horizontal': True}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: true}"/>
+<field name="employee_id" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;partner_type&quot;, &quot;!=&quot;, &quot;employee&quot;]], &quot;readonly&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;], [&quot;partner_type&quot;, &quot;!=&quot;, &quot;employee&quot;]], &quot;required&quot;: [[&quot;partner_type&quot;, &quot;=&quot;, &quot;employee&quot;]]}" can_create="true" can_write="true"/>
+<field name="destination_account_id" modifiers="{&quot;invisible&quot;: [[&quot;partner_type&quot;, &quot;!=&quot;, &quot;employee&quot;]]}" can_create="true" can_write="true"/>
+                                <field name="partner_id" context="{'default_is_company': True}" string="Customer" options="{'no_quick_create': True}" on_change="1" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;partner_type&quot;, &quot;!=&quot;, &quot;customer&quot;], [&quot;is_internal_transfer&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}" can_create="true" can_write="true"/>
+                                <field name="partner_id" context="{'default_is_company': True}" string="Vendor" options="{'no_quick_create': True}" on_change="1" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;partner_type&quot;, &quot;!=&quot;, &quot;supplier&quot;], [&quot;is_internal_transfer&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}" can_create="true" can_write="true"/>
+                                <label for="amount"/>
+                                <div name="amount_div" class="o_row">
+                                    <field name="amount" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                                    <field name="currency_id" options="{'no_create': True, 'no_open': True}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="use_manual_exchange_rate" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                <field name="manual_exchange_rate" force_save="1" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;use_manual_exchange_rate&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: [[&quot;use_manual_exchange_rate&quot;, &quot;=&quot;, true]]}"/>
+                <field name="display_exchange_rate" modifiers="{&quot;readonly&quot;: true}"/>
+                                </div>
+<field name="use_payment_lines" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="date" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: true}"/>
+                                <field name="ref" string="Memo" on_change="1"/>
+<field name="to_reconcile_move_ids" widget="many2many_tags" domain="[('partner_id', '=', partner_id)]" modifiers="{&quot;invisible&quot;: [[&quot;is_internal_transfer&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;posted&quot;]]}" can_create="true" can_write="true"/>
+                            </group>
+                            <group name="group2">
+                                <field name="journal_id" domain="&amp;#10;                        [('id', 'in', available_journal_ids), ('type', 'in', context.get('journal_type_filter', ['bank', 'cash']))]&amp;#10;                    " on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="edi_state" on_change="1" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;edi_state&quot;, &quot;=&quot;, false], [&quot;state&quot;, &quot;=&quot;, &quot;draft&quot;]], &quot;readonly&quot;: true}"/>
+                                <field name="payment_method_line_id" options="{'no_create': True, 'no_open': True}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="payment_method_code" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="suitable_payment_token_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="use_electronic_payment_method" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="payment_token_id" options="{'no_create': True}" modifiers="{&quot;invisible&quot;: [[&quot;use_electronic_payment_method&quot;, &quot;!=&quot;, true]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}" can_create="true" can_write="true"/>
+
+                                <field name="partner_bank_id" string="Customer Bank Account" context="{'default_partner_id': partner_id, 'default_allow_out_payment': True}" on_change="1" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;|&quot;, &quot;|&quot;, [&quot;show_partner_bank_account&quot;, &quot;=&quot;, false], [&quot;partner_type&quot;, &quot;!=&quot;, &quot;customer&quot;], [&quot;is_internal_transfer&quot;, &quot;=&quot;, true], [&quot;payment_type&quot;, &quot;=&quot;, &quot;inbound&quot;]], &quot;required&quot;: [[&quot;require_partner_bank_account&quot;, &quot;=&quot;, true], [&quot;is_internal_transfer&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+
+                                <field name="partner_bank_id" string="Vendor Bank Account" context="{'default_partner_id': partner_id, 'default_allow_out_payment': True}" on_change="1" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;|&quot;, &quot;|&quot;, [&quot;show_partner_bank_account&quot;, &quot;=&quot;, false], [&quot;partner_type&quot;, &quot;!=&quot;, &quot;supplier&quot;], [&quot;is_internal_transfer&quot;, &quot;=&quot;, true], [&quot;payment_type&quot;, &quot;=&quot;, &quot;inbound&quot;]], &quot;required&quot;: [[&quot;require_partner_bank_account&quot;, &quot;=&quot;, true], [&quot;is_internal_transfer&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+
+                                <!-- This field should always be readonly but using readonly="1" overrides the other partner_bank_id
+                                fields readonly condition in the framework, preventing the modification of these fields -->
+                                <field name="partner_bank_id" string="Company Bank Account" context="{'default_partner_id': partner_id, 'default_allow_out_payment': True}" on_change="1" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;|&quot;, [&quot;show_partner_bank_account&quot;, &quot;=&quot;, false], [&quot;is_internal_transfer&quot;, &quot;=&quot;, true], [&quot;payment_type&quot;, &quot;=&quot;, &quot;outbound&quot;]], &quot;required&quot;: [[&quot;require_partner_bank_account&quot;, &quot;=&quot;, true], [&quot;is_internal_transfer&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+
+                                <field name="destination_journal_id" context="{'default_partner_id': partner_id}" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_internal_transfer&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: [[&quot;is_internal_transfer&quot;, &quot;=&quot;, true], [&quot;state&quot;, &quot;=&quot;, &quot;draft&quot;]]}" can_create="true" can_write="true"/>
+                <field name="job_ids" widget="many2many_tags" modifiers="{&quot;readonly&quot;: [[&quot;id&quot;, &quot;!=&quot;, false]]}" can_create="true" can_write="true"/>
+                <field name="company_id" on_change="1" can_create="true" can_write="true"/>
+                <field name="source_payment_id" modifiers="{&quot;invisible&quot;: [[&quot;source_payment_id&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                </group>
+                    <group>
+                                <field name="qr_code" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <div colspan="2" class="text-center" modifiers="{&quot;invisible&quot;: [[&quot;qr_code&quot;, &quot;=&quot;, false]]}">
+                                    <field name="qr_code" widget="html" modifiers="{&quot;readonly&quot;: true}"/>
+                                </div>
+                            </group>
+                        </group>
+<div class="alert alert-info border-0 rounded-0" role="alert" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;is_internal_transfer&quot;, &quot;=&quot;, true], [&quot;use_payment_lines&quot;, &quot;=&quot;, false]]}">
+You can add other destination accounts into Payment Details
+if you don't find it on Destination Account field.
+</div>
+<notebook>
+<page name="account_payment_line_ids" colspan="4" string="Payment Details" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;is_internal_transfer&quot;, &quot;=&quot;, true], [&quot;use_payment_lines&quot;, &quot;=&quot;, false]]}">
+<label for="suggest_lines"/>
+<field name="suggest_lines" on_change="1" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;is_internal_transfer&quot;, &quot;=&quot;, true], [&quot;use_payment_lines&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;posted&quot;, &quot;cancel&quot;]]]}"/>
+<field name="account_payment_line_ids" options="{'no_create_edit': True}" nolabel="1" mode="tree" context="{'default_name': ref}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;posted&quot;, &quot;cancel&quot;]]]}">
+<tree editable="bottom">
+<field name="name" widget="section_and_note_text" modifiers="{&quot;required&quot;: true}"/>
+<field name="account_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+<field name="amount" modifiers="{&quot;required&quot;: true}"/>
+<field name="currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="company_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="move_line_ids" modifiers="{&quot;column_invisible&quot;: true}" can_create="true" can_write="true"/>
+<field name="amount_suggested" modifiers="{&quot;column_invisible&quot;: true}"/>
+</tree>
+</field>
+</page>
+<page string="Receipt Printing" name="receipt_print">
+<group>
+<field name="recipient_payer" string="Payer" modifiers="{&quot;invisible&quot;: [[&quot;payment_type&quot;, &quot;!=&quot;, &quot;inbound&quot;]]}"/>
+<field name="recipient_payer" string="Recipient" modifiers="{&quot;invisible&quot;: [[&quot;payment_type&quot;, &quot;!=&quot;, &quot;outbound&quot;]]}"/>
+<field name="no_of_origin"/>
+</group>
+</page>
+</notebook>
+                    </sheet>
+                    <div class="o_attachment_preview"/>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_account_payment_search" model="ir.ui.view">
+        <field name="name">account.payment.search</field>
+        <field name="model">account.payment</field>
+        <field name="arch" type="xml">
+            <search string="Payments">
+                    <field name="name" string="Payment" filter_domain="['|', '|', '|', '|', ('name', 'ilike', self), ('partner_id', 'ilike', self), ('ref', 'ilike', self), ('amount_company_currency_signed' , 'ilike', self), ('amount', 'ilike', self)]"/>
+                    <field name="partner_id" string="Customer/Vendor"/>
+                    <field name="journal_id"/>
+                    <field name="is_internal_transfer"/>
+                    <separator/>
+                    <filter string="Customer Payments" name="inbound_filter" domain="[('partner_type', '=', 'customer'), ('is_internal_transfer', '=', False)]"/>
+                    <filter string="Vendor Payments" name="outbound_filter" domain="[('partner_type', '=', 'supplier'), ('is_internal_transfer', '=', False)]"/>
+                    <filter string="Internal Transfers" name="transfers_filter" domain="[('is_internal_transfer', '=', True)]"/>
+                    <separator/>
+                    <filter string="Draft" name="state_draft" domain="[('state', '=', 'draft')]"/>
+                    <filter string="Posted" name="state_posted" domain="[('state', '=', 'posted')]"/>
+                    <separator/>
+                    <filter string="Sent" name="state_sent" domain="[('is_move_sent', '=', True)]"/>
+                    <filter string="No Bank Matching" name="unmatched" domain="[('is_matched', '=', False)]"/>
+                    <filter string="Reconciled" name="reconciled" domain="[('is_reconciled', '=', True)]"/>
+                    <separator/>
+                    <filter string="Payment Date" name="date" date="date"/>
+                    <separator/>
+                    <field name="company_id"/>
+                    <filter string="Customer/Vendor" name="partner" domain="[]" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Journal" name="journal" domain="[]" context="{'group_by': 'journal_id'}"/>
+                    <filter string="Payment Method Line" name="paymentmethodline" domain="[]" context="{'group_by': 'payment_method_line_id'}"/>
+                    <filter string="Status" name="state" domain="[]" context="{'group_by': 'state'}"/>
+                    <filter string="Payment Date" name="groupby_date" domain="[]" context="{'group_by': 'date'}"/>
+                    <filter string="Currency" name="currency" domain="[]" context="{'group_by': 'currency_id'}"/>
+                    <filter string="Company" name="company" domain="[]" context="{'group_by': 'company_id'}"/>
+                    <separator/>
+                    <filter string="Late Activities" name="activities_overdue" domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]" help="Show all records which has next action date is before today" modifiers="{&quot;invisible&quot;: true}"/>
+                    <filter string="Today Activities" name="activities_today" domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                    <filter string="Future Activities" name="activities_upcoming_all" domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="action_account_payment" model="ir.actions.act_window">
+        <field name="name">ACCOUNT PAYMENT</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

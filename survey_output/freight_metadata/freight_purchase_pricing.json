@@ -1,0 +1,942 @@
+{
+  "fields": {
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "message_main_attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Main Attachment",
+      "type": "many2one"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "product_tmpl_id": {
+      "readonly": false,
+      "relation": "product.template",
+      "required": false,
+      "string": "Route",
+      "type": "many2one"
+    },
+    "transport_mode_id": {
+      "readonly": false,
+      "relation": "freight.transport.mode",
+      "required": true,
+      "string": "Transport Mode",
+      "type": "many2one"
+    },
+    "transport_mode": {
+      "readonly": true,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "freight_port_domain_ids": {
+      "readonly": true,
+      "required": false,
+      "string": "Freight Port Domain",
+      "type": "char"
+    },
+    "freight_port_pol_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Port Of Loading (POL)",
+      "type": "many2one"
+    },
+    "freight_port_pod_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Port Of Discharge (POD)",
+      "type": "many2one"
+    },
+    "service_line_ids": {
+      "readonly": false,
+      "relation": "freight.service.line",
+      "required": false,
+      "string": "Service Line",
+      "type": "one2many"
+    },
+    "sales_pricing_id": {
+      "readonly": false,
+      "relation": "freight.sales.pricing",
+      "required": false,
+      "string": "Sales Pricing",
+      "type": "one2many"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Vendor",
+      "type": "many2one"
+    },
+    "partner_display": {
+      "readonly": true,
+      "required": false,
+      "string": "Vendor Name",
+      "type": "char"
+    },
+    "pic_domain_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Contact",
+      "type": "one2many"
+    },
+    "pic_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "PIC",
+      "type": "many2one"
+    },
+    "pic_display": {
+      "readonly": true,
+      "required": false,
+      "string": "Pic Display",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "PIC",
+      "type": "many2one"
+    },
+    "carrier_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Carrier",
+      "type": "many2one"
+    },
+    "swap_carrier_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Swap Carrier",
+      "type": "many2many"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "swap_carrier_names": {
+      "readonly": true,
+      "required": false,
+      "string": "Swap Carrier Names",
+      "type": "char"
+    },
+    "com_carrier": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "yes",
+          "Yes"
+        ],
+        [
+          "no",
+          "NO"
+        ]
+      ],
+      "string": "Carrier's COM",
+      "type": "selection"
+    },
+    "com_carrier_number": {
+      "readonly": false,
+      "required": false,
+      "string": "Com Carrier Number",
+      "type": "char"
+    },
+    "freetime_pol": {
+      "readonly": false,
+      "required": false,
+      "string": "Freetime at POL",
+      "type": "char"
+    },
+    "freetime_pod": {
+      "readonly": false,
+      "required": false,
+      "string": "Freetime at POD",
+      "type": "char"
+    },
+    "incoterm": {
+      "readonly": false,
+      "relation": "freight.incoterms",
+      "required": false,
+      "string": "Incoterms",
+      "type": "many2one"
+    },
+    "transit_time": {
+      "readonly": false,
+      "required": false,
+      "string": "Transit Time",
+      "type": "char"
+    },
+    "date_of_week_ids": {
+      "readonly": false,
+      "relation": "freight.day.of.week",
+      "required": false,
+      "string": "Date",
+      "type": "many2many"
+    },
+    "liner_term": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "fios",
+          "FIOS"
+        ],
+        [
+          "filo",
+          "FILO"
+        ],
+        [
+          "lilo",
+          "LILO"
+        ],
+        [
+          "fifo",
+          "FIFO"
+        ],
+        [
+          "ftlhh",
+          "FTLH/H"
+        ]
+      ],
+      "string": "Liner Term",
+      "type": "selection"
+    },
+    "bound": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "import",
+          "Import"
+        ],
+        [
+          "export",
+          "Export"
+        ],
+        [
+          "other",
+          "Other"
+        ]
+      ],
+      "string": "Bound",
+      "type": "selection"
+    },
+    "load_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "fcl",
+          "FCL"
+        ],
+        [
+          "lcl",
+          "LCL"
+        ]
+      ],
+      "string": "Load Type",
+      "type": "selection"
+    },
+    "place_of_receipt_street": {
+      "help": "Enter the street address for the pricing information.",
+      "readonly": false,
+      "required": false,
+      "string": "Custom Street",
+      "type": "char"
+    },
+    "place_of_receipt_country_id": {
+      "help": "Select the country.",
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "place_of_receipt_state_id": {
+      "help": "Select the state.",
+      "readonly": false,
+      "relation": "res.country.state",
+      "required": false,
+      "string": "State",
+      "type": "many2one"
+    },
+    "place_of_receipt_ward_id": {
+      "readonly": false,
+      "relation": "res.country.wards",
+      "required": false,
+      "string": "Ward",
+      "type": "many2one"
+    },
+    "place_of_delivery_street": {
+      "help": "Enter the street address for the delivery information.",
+      "readonly": false,
+      "required": false,
+      "string": "Delivery Street",
+      "type": "char"
+    },
+    "place_of_delivery_state_id": {
+      "help": "Select the delivery state.",
+      "readonly": false,
+      "relation": "res.country.state",
+      "required": false,
+      "string": "Delivery State",
+      "type": "many2one"
+    },
+    "place_of_delivery_ward_id": {
+      "help": "Enter the delivery ZIP code.",
+      "readonly": false,
+      "relation": "res.country.wards",
+      "required": false,
+      "string": "Delivery ZIP",
+      "type": "many2one"
+    },
+    "place_of_delivery_country_id": {
+      "help": "Select the delivery country.",
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Delivery Country",
+      "type": "many2one"
+    },
+    "freight_commodity_id": {
+      "readonly": false,
+      "relation": "freight.commodity",
+      "required": false,
+      "string": "Commodity",
+      "type": "many2one"
+    },
+    "freight_transit_type_id": {
+      "readonly": false,
+      "relation": "freight.transit.type",
+      "required": false,
+      "string": "Transit Type",
+      "type": "many2one"
+    },
+    "freight_transit_time": {
+      "readonly": false,
+      "required": false,
+      "string": "Transit Time",
+      "type": "integer"
+    },
+    "freight_port_of_receipt_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Port of Receipt",
+      "type": "many2one"
+    },
+    "freight_port_of_delivery_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Port of Delivery",
+      "type": "many2one"
+    },
+    "remark_sales": {
+      "readonly": false,
+      "required": false,
+      "string": "Remark Sales",
+      "type": "text"
+    },
+    "transit_port": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Transit Port",
+      "type": "many2many"
+    },
+    "freight_free_time_ori": {
+      "readonly": false,
+      "required": false,
+      "string": "Free time Ori",
+      "type": "char"
+    },
+    "freight_free_time_dest": {
+      "readonly": false,
+      "required": false,
+      "string": "Free Time Dest",
+      "type": "char"
+    },
+    "frequency": {
+      "readonly": false,
+      "required": false,
+      "string": "Frequency",
+      "type": "char"
+    },
+    "code": {
+      "readonly": false,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "unit_ids": {
+      "readonly": true,
+      "relation": "freight.unit",
+      "required": false,
+      "string": "Units",
+      "type": "many2many"
+    },
+    "total_freight_net_price": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Freight Net Price",
+      "type": "float"
+    },
+    "total_surcharge_net_price": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Surcharge Price",
+      "type": "float"
+    },
+    "total_net_price": {
+      "readonly": true,
+      "required": false,
+      "string": "Total",
+      "type": "float"
+    },
+    "total_freight_guildline_price": {
+      "readonly": true,
+      "required": false,
+      "string": "Freight Guideline Price",
+      "type": "float"
+    },
+    "total_surcharge_guildline_price": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Guideline Price (Surcharge)",
+      "type": "float"
+    },
+    "total_guildline_price": {
+      "readonly": true,
+      "required": false,
+      "string": "Total",
+      "type": "float"
+    },
+    "quotation_ids": {
+      "readonly": false,
+      "relation": "freight.quotation",
+      "required": false,
+      "string": "Quotation",
+      "type": "one2many"
+    },
+    "quotation_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Quotation Count",
+      "type": "integer"
+    },
+    "note": {
+      "readonly": false,
+      "required": false,
+      "string": "Note",
+      "type": "text"
+    },
+    "date_start": {
+      "readonly": false,
+      "required": false,
+      "string": "From Date",
+      "type": "date"
+    },
+    "date_end": {
+      "readonly": false,
+      "required": false,
+      "string": "To Date",
+      "type": "date"
+    },
+    "expiry_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "valid",
+          "Valid"
+        ],
+        [
+          "expiring",
+          "Expiring Soon"
+        ],
+        [
+          "expired",
+          "Expired"
+        ]
+      ],
+      "string": "Expiry State",
+      "type": "selection"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "place_of_received": {
+      "readonly": false,
+      "required": false,
+      "string": "Place of Receipt",
+      "type": "char"
+    },
+    "place_of_delivery": {
+      "readonly": false,
+      "required": false,
+      "string": "Place of Delivery",
+      "type": "char"
+    },
+    "service_terms_id": {
+      "readonly": false,
+      "relation": "freight.service.terms",
+      "required": false,
+      "string": "Service Terms",
+      "type": "many2one"
+    },
+    "trade_name_id": {
+      "readonly": false,
+      "relation": "freight.trade.name",
+      "required": false,
+      "string": "Trade Name",
+      "type": "many2one"
+    },
+    "is_pin": {
+      "readonly": false,
+      "required": false,
+      "string": "PIN",
+      "type": "boolean"
+    },
+    "fcl_line_ids": {
+      "readonly": false,
+      "relation": "freight.purchase.pricing.fcl.line",
+      "required": false,
+      "string": "Fcl Line",
+      "type": "one2many"
+    },
+    "fcl_other_line_ids": {
+      "readonly": false,
+      "relation": "freight.purchase.pricing.fcl.other.line",
+      "required": false,
+      "string": "Fcl Other Line",
+      "type": "one2many"
+    },
+    "lcl_line_ids": {
+      "readonly": false,
+      "relation": "freight.purchase.pricing.lcl.line",
+      "required": false,
+      "string": "Lcl Line",
+      "type": "one2many"
+    },
+    "lcl_other_line_ids": {
+      "readonly": false,
+      "relation": "freight.purchase.pricing.lcl.other.line",
+      "required": false,
+      "string": "Lcl Other Line",
+      "type": "one2many"
+    },
+    "air_line_ids": {
+      "readonly": false,
+      "relation": "freight.purchase.pricing.air.line",
+      "required": false,
+      "string": "Air Line",
+      "type": "one2many"
+    },
+    "air_other_line_ids": {
+      "readonly": false,
+      "relation": "freight.purchase.pricing.air.other.line",
+      "required": false,
+      "string": "Air Other Line",
+      "type": "one2many"
+    },
+    "truck_line_ids": {
+      "readonly": false,
+      "relation": "freight.purchase.pricing.truck.line",
+      "required": false,
+      "string": "Truck Line",
+      "type": "one2many"
+    },
+    "truck_other_line_ids": {
+      "readonly": false,
+      "relation": "freight.purchase.pricing.truck.other.line",
+      "required": false,
+      "string": "Truck Other Line",
+      "type": "one2many"
+    },
+    "attachment_ids": {
+      "help": "Upload files related to this purchase pricing",
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachments",
+      "type": "many2many"
+    },
+    "attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "dummy_text": {
+      "readonly": true,
+      "required": false,
+      "string": "Dummy Text",
+      "type": "char"
+    },
+    "carrier_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Carrier Code",
+      "type": "char"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "is_dry": {
+      "readonly": false,
+      "required": false,
+      "string": "Dry?",
+      "type": "boolean"
+    },
+    "routing_service": {
+      "readonly": false,
+      "required": false,
+      "string": "Routing Service",
+      "type": "char"
+    },
+    "remark": {
+      "readonly": false,
+      "required": false,
+      "string": "Remark",
+      "type": "char"
+    },
+    "fcl_currency_ids": {
+      "readonly": true,
+      "required": false,
+      "string": "Curr",
+      "type": "text"
+    },
+    "fcl_ctnr_types": {
+      "readonly": true,
+      "required": false,
+      "string": "Type Cont",
+      "type": "text"
+    },
+    "fcl_fare_names": {
+      "readonly": true,
+      "required": false,
+      "string": "Fare Name",
+      "type": "text"
+    },
+    "fcl_fare_codes": {
+      "readonly": true,
+      "required": false,
+      "string": "Fcl Fare Codes",
+      "type": "text"
+    },
+    "fcl_guideline_20": {
+      "readonly": true,
+      "required": false,
+      "string": "20'",
+      "type": "text"
+    },
+    "fcl_guideline_40": {
+      "readonly": true,
+      "required": false,
+      "string": "40'",
+      "type": "text"
+    },
+    "fcl_guideline_4h": {
+      "readonly": true,
+      "required": false,
+      "string": "40HC",
+      "type": "text"
+    },
+    "fcl_guideline_45": {
+      "readonly": true,
+      "required": false,
+      "string": "45'",
+      "type": "text"
+    },
+    "fcl_sort_20": {
+      "readonly": true,
+      "required": false,
+      "string": "Sort 20",
+      "type": "float"
+    },
+    "fcl_sort_40": {
+      "readonly": true,
+      "required": false,
+      "string": "Sort 40",
+      "type": "float"
+    },
+    "fcl_sort_4h": {
+      "readonly": true,
+      "required": false,
+      "string": "Sort 4H",
+      "type": "float"
+    },
+    "fcl_sort_45": {
+      "readonly": true,
+      "required": false,
+      "string": "Sort 45",
+      "type": "float"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree string=\"Purchase Pricing\">\n                    <field name=\"bound\" modifiers=\"{&quot;required&quot;: true}\"/>\n                    <field name=\"trade_name_id\" options=\"{'no_open': True}\"/>\n                    <field name=\"freight_port_pol_id\" options=\"{'no_open': True}\"/>\n                    <field name=\"freight_port_pod_id\" options=\"{'no_open': True}\"/>\n                    <field name=\"partner_id\" string=\"Carrier Name\" options=\"{'no_open': True}\"/>\n                    <field name=\"fcl_currency_ids\" string=\"Curr\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"freetime_pol\"/>\n                    <field name=\"freetime_pod\"/>\n                    <field name=\"fcl_ctnr_types\" string=\"Type Cont\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"fcl_fare_names\" string=\"Fare Name\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"fcl_guideline_20\" string=\"20'\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"fcl_guideline_40\" string=\"40'\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"fcl_guideline_4h\" string=\"40HC\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"fcl_guideline_45\" string=\"45'\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"fcl_sort_20\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                    <field name=\"fcl_sort_40\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                    <field name=\"fcl_sort_4h\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                    <field name=\"fcl_sort_45\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                    <field name=\"pic_id\" options=\"{'no_open': True}\"/>\n                    <field name=\"com_carrier_number\" string=\"Commission\"/>\n                    <field name=\"date_start\" string=\"From\" options=\"{'filter_operator': '&gt;='}\"/>\n                    <field name=\"date_end\" string=\"To\" options=\"{'filter_operator': '&lt;='}\"/>\n                    <field name=\"remark\"/>\n                    <field name=\"user_id\" string=\"Operator\" options=\"{'no_open': True}\" modifiers=\"{&quot;required&quot;: true}\"/>\n                    <field name=\"routing_service\"/>\n                    <field name=\"transit_time\"/>\n                    <field name=\"create_date\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                </tree>",
+      "id": 2545,
+      "model": "freight.purchase.pricing"
+    },
+    "form": {
+      "arch": "<form>\n                <header>\n                    <button name=\"action_create_quotation\" type=\"object\" string=\"Tạo báo giá\" class=\"btn-primary\"/>\n                </header>\n                <sheet>\n                    <div class=\"oe_button_box\" name=\"button_box\">\n                        <button name=\"action_open_quotations\" type=\"object\" class=\"oe_stat_button\" icon=\"fa-file-text-o\">\n                            <field name=\"quotation_count\" widget=\"statinfo\" string=\"Báo giá\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        </button>\n                    </div>\n                    <group>\n                        <group style=\"width:70%\">\n                            <group style=\"width:40%;min-width:300px;\">\n                                <!--                            <group>-->\n                                <field name=\"code\" string=\"Code\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                <field name=\"freight_port_domain_ids\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                                <field name=\"partner_id\" string=\"Carrier\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"pic_id\" string=\"PIC\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"pic_domain_ids\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                                <label for=\"date_start\" string=\"Validity\"/>\n                                <div class=\"o_row w-100\">\n                                    <field name=\"date_start\" string=\"Start Date\"/>\n                                    <i title=\"Validity\" class=\"fa fa-long-arrow-right fa-lg text-muted\"/>\n                                    <field name=\"date_end\" string=\"End Date\"/>\n                                </div>\n                                <field name=\"is_pin\" widget=\"boolean_toggle\"/>\n                <field name=\"is_dry\"/>\n                <field name=\"routing_service\"/>\n                <field name=\"remark\"/>\n\n                            </group>\n                            <group style=\"width:60%;min-width:400px;\">\n                                <field name=\"load_type\" modifiers=\"{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}\"/>\n                                <field name=\"freight_port_pol_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"freight_port_pod_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"transit_port\" widget=\"many2many_tags\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"place_of_received\"/>\n                                <field name=\"place_of_delivery\"/>\n                                <field name=\"com_carrier\"/>\n                                <field name=\"com_carrier_number\" modifiers=\"{&quot;invisible&quot;: [[&quot;com_carrier&quot;, &quot;=&quot;, &quot;no&quot;]]}\"/>\n                            </group>\n                        </group>\n                        <group style=\"width:30%;min-width:300px;\">\n                                <field name=\"transport_mode_id\" string=\"Service\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"false\" can_write=\"false\"/>\n                                <field name=\"bound\" string=\"Bound\" modifiers=\"{&quot;required&quot;: true}\"/>\n                                <field name=\"transport_mode\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                                <field name=\"service_terms_id\" string=\"Services Term\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"trade_name_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"incoterm\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"transit_time\"/>\n                                <field name=\"date_of_week_ids\" widget=\"many2many_tags\" options=\"{'no_create': True, 'no_create_edit': True}\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"freetime_pol\"/>\n                                <field name=\"freetime_pod\"/>\n                                <field name=\"user_id\" string=\"Operator\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"company_id\" can_create=\"true\" can_write=\"true\"/>\n                        </group>\n\n                    </group>\n\n                    <div class=\"row mt16 mb16\" modifiers=\"{&quot;invisible&quot;: [[&quot;load_type&quot;, &quot;=&quot;, false]]}\">\n                        <div class=\"col-12\">\n                            <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 8px;\">\n                                <i class=\"fa fa-info-circle\"/>\n                                Import pricing data from Excel files\n                            </div>\n                            <button name=\"745\" string=\"Import Lines from Excel\" type=\"action\" class=\"btn btn-primary btn-lg\" style=\"width: 250px;\" icon=\"fa-file-excel-o\"/>\n                        </div>\n                    </div>\n\n                    <group string=\"FCL Freight Charge\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;], [&quot;load_type&quot;, &quot;!=&quot;, &quot;fcl&quot;]]}\">\n\n                        <field name=\"fcl_line_ids\" string=\"\">\n                            <tree editable=\"bottom\">\n                                <field name=\"service_id\" string=\"Fare Code\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"carrier_id\" modifiers=\"{&quot;column_invisible&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"freight_service_type\" string=\"Fare Type\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"currency_id\" string=\"Curr\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"ctnr_type\" string=\"Cont Type\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"tax_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"net_20\" sum=\"Total\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"net_40\" sum=\"Total\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"net_4h\" sum=\"Total\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"net_45\" sum=\"Total\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"guideline_20\" sum=\"Total\" string=\"20\"/>\n                                <field name=\"guideline_40\" sum=\"Total\" string=\"40\"/>\n                <field name=\"guideline_4h\" string=\"40HC\" modifiers=\"{&quot;column_invisible&quot;: [[&quot;parent.is_dry&quot;, &quot;=&quot;, false]]}\"/>\n                                <field name=\"guideline_4h\" sum=\"Total\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"guideline_45\" sum=\"Total\" string=\"45\"/>\n                                <field name=\"fcl_unit\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"remark\"/>\n                            </tree>\n                        </field>\n                    </group>\n\n                    <group string=\"LCL Freight Charge\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;], [&quot;load_type&quot;, &quot;!=&quot;, &quot;lcl&quot;]]}\">\n                        <field name=\"lcl_line_ids\" string=\"\">\n                            <tree editable=\"bottom\">\n                                <field name=\"service_id\" string=\"Fare Code\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"carrier_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"freight_service_type\" string=\"Fare Type\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"currency_id\" string=\"Curr\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"net_min_rate\" sum=\"Total\"/>\n                                <field name=\"net_lcl_volume_min\" sum=\"Total\"/>\n                                <field name=\"net_lcl_rate\" sum=\"Total\"/>\n                                <field name=\"net_lcl_volume\" sum=\"Total\"/>\n                                <field name=\"guideline_min_rate\" sum=\"Total\"/>\n                                <field name=\"guideline_lcl_volume_min\" string=\"LCL Volume Min (CBM)\" sum=\"Total\"/>\n                                <field name=\"guideline_lcl_rate\" string=\"LCL Rate\" sum=\"Total\"/>\n                                <field name=\"guideline_lcl_volume\" sum=\"Total\"/>\n                                <field name=\"lcl_unit\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"remark\"/>\n                            </tree>\n                        </field>\n                    </group>\n\n                    <group string=\"Freight Charge\" modifiers=\"{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;not in&quot;, [&quot;air&quot;]]]}\">\n                        <field name=\"air_line_ids\" string=\"\">\n                            <tree editable=\"bottom\">\n                                <field name=\"service_id\" string=\"Fare Code\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"carrier_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"freight_service_type\" string=\"Fare Type\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"currency_id\" string=\"Curr\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"net_min\" sum=\"Total\"/>\n                                <field name=\"minus_45_net\" sum=\"Total\"/>\n                                <field name=\"minus_45_guideline\" sum=\"Total\"/>\n                                <field name=\"plus_45_net\" sum=\"Total\"/>\n                                <field name=\"plus_45_guideline\" sum=\"Total\"/>\n                                <field name=\"plus_100_net\" sum=\"Total\"/>\n                                <field name=\"plus_100_guideline\" sum=\"Total\"/>\n                                <field name=\"plus_300_net\" sum=\"Total\"/>\n                                <field name=\"plus_300_guideline\" sum=\"Total\"/>\n                                <field name=\"plus_500_net\" sum=\"Total\"/>\n                                <field name=\"plus_500_guideline\" sum=\"Total\"/>\n                                <field name=\"plus_1000_net\" sum=\"Total\"/>\n                                <field name=\"plus_1000_guideline\" sum=\"Total\"/>\n                                <field name=\"remark\"/>\n                            </tree>\n                        </field>\n                    </group>\n                    <group string=\"Freight Charge\" modifiers=\"{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;in&quot;, [&quot;air&quot;, &quot;sea&quot;]]]}\">\n                        <field name=\"truck_line_ids\" string=\"\">\n                            <tree editable=\"bottom\">\n                                <field name=\"service_id\" string=\"Fare Code\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"carrier_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"freight_service_type\" string=\"Fare Type\"/>\n                                <field name=\"currency_id\" string=\"Curr\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"unit_price_net\" sum=\"Total\"/>\n                                <field name=\"unit_price_guideline\" sum=\"Total\"/>\n                                <field name=\"fcl_unit\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"remark\"/>\n                            </tree>\n                        </field>\n                    </group>\n\n                    <!-- Attachments Section with Preview -->\n                    <div class=\"row mt32\">\n                        <div class=\"col-12\">\n                            <div class=\"card border-0 shadow-sm\">\n                                <div class=\"card-header bg-white border-bottom\">\n                                    <h5 class=\"mb-0\">\n                                        <i class=\"fa fa-paperclip text-primary\"/>\n                                        Attachments\n                                        <span class=\"badge badge-primary badge-pill ml-2\">\n                                            <field name=\"attachment_count\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        </span>\n                                    </h5>\n                                </div>\n                                <div class=\"card-body\">\n                                    <field name=\"attachment_ids\" widget=\"many2many_attachment_preview\" string=\"Files\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n\n                    <group string=\"Other Charge\" name=\"Other Charge FCL\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;], [&quot;load_type&quot;, &quot;!=&quot;, &quot;fcl&quot;]]}\">\n                        <group>\n                            <button name=\"action_get_carrier_local_charge_pp\" type=\"object\" string=\"Get Carrier Local Charge\" class=\"btn-secondary w-200\" icon=\"fa-search\"/>\n                        </group>\n                        <field name=\"fcl_other_line_ids\" string=\"\">\n                            <tree editable=\"bottom\">\n                                <field name=\"service_id\" string=\"Fare Code\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"carrier_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"freight_service_type\" string=\"Fare Type\"/>\n                                <field name=\"currency_id\" string=\"Curr\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"ctnr_type\" string=\"Cont Type\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"tax_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"type_20\" sum=\"Total\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"type_40\" sum=\"Total\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"type_4h\" sum=\"Total\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"type_45\" sum=\"Total\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"guideline_20\" sum=\"Total\" string=\"20\"/>\n                                <field name=\"guideline_40\" sum=\"Total\" string=\"40\"/>\n                <field name=\"guideline_4h\" string=\"40HC\" modifiers=\"{&quot;column_invisible&quot;: [[&quot;parent.is_dry&quot;, &quot;=&quot;, false]]}\"/>\n                                <field name=\"guideline_4h\" sum=\"Total\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                <field name=\"guideline_45\" sum=\"Total\" string=\"45\"/>\n                                <field name=\"fcl_unit\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"remark\"/>\n                            </tree>\n                        </field>\n                    </group>\n\n                    <group string=\"Other Charge\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;], [&quot;load_type&quot;, &quot;!=&quot;, &quot;lcl&quot;]]}\">\n                        <group>\n                            <button name=\"action_get_carrier_local_charge_pp\" type=\"object\" string=\"Get Carrier Local Charge\" class=\"btn-secondary w-200\" icon=\"fa-search\"/>\n                        </group>\n                        <field name=\"lcl_other_line_ids\" string=\"\">\n                            <tree editable=\"bottom\">\n                                <field name=\"service_id\" string=\"Fare Code\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"carrier_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"freight_service_type\" string=\"Fare Type\"/>\n                                <field name=\"currency_id\" string=\"Curr\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"lcl_rate\" string=\"LCL Rate (Net)\" sum=\"Total\"/>\n                                <field name=\"guideline_lcl_rate\" string=\"LCL Rate\" sum=\"Total\"/>\n                                <field name=\"lcl_unit\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"remark\"/>\n                            </tree>\n                        </field>\n                    </group>\n\n                    <group string=\"Other Charge\" modifiers=\"{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;not in&quot;, [&quot;air&quot;]]]}\">\n                        <field name=\"air_other_line_ids\" string=\"\">\n                            <tree editable=\"bottom\">\n                                <field name=\"service_id\" string=\"Fare\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"carrier_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"currency_id\" string=\"Curr\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"unit_price\" sum=\"Total\"/>\n                                <field name=\"unit_price_guideline\" sum=\"Total\"/>\n                                <field name=\"unit_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"remark\"/>\n                            </tree>\n                        </field>\n                    </group>\n\n                    <group string=\"Other Charge\" modifiers=\"{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;in&quot;, [&quot;air&quot;, &quot;sea&quot;]]]}\">\n                        <field name=\"truck_other_line_ids\" string=\"\">\n                            <tree editable=\"bottom\">\n                                <field name=\"service_id\" string=\"Fare\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"carrier_id\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"freight_service_type\" string=\"Fare Type\"/>\n                                <field name=\"currency_id\" string=\"Curr\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"unit_price\" sum=\"Total\"/>\n                                <field name=\"unit_price_guideline\" sum=\"Total\"/>\n                                <!-- Đơn vị tính (freight.fcl.unit) - builder Tạo báo giá / wizard\n                                     đọc fcl_unit; unit_id ở model này là loại cont (freight.unit). -->\n                                <field name=\"fcl_unit\" string=\"Unit\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"remark\"/>\n                            </tree>\n                        </field>\n                    </group>\n                </sheet>\n                <!--                <div class=\"oe_chatter\">-->\n                <!--                    <field name=\"message_follower_ids\"/>-->\n                <!--                    <field name=\"activity_ids\"/>-->\n                <!--                    <field name=\"message_ids\"/>-->\n                <!--                </div>-->\n            </form>",
+      "id": 2546,
+      "model": "freight.purchase.pricing"
+    },
+    "search": {
+      "arch": "<search>\n                <field name=\"code\"/>\n                <field name=\"partner_id\"/>\n                <field name=\"product_tmpl_id\"/>\n                <field name=\"date_start\"/>\n                <field name=\"date_end\"/>\n                <field name=\"freight_port_of_receipt_id\"/>\n                <field name=\"freight_port_of_delivery_id\"/>\n                <filter name=\"ftr_archived\" string=\"Archived\" domain=\"[('active', '=', False)]\"/>\n                <filter name=\"is_pin\" string=\"Pinned\" domain=\"[('is_pin', '=', True)]\"/>\n            </search>",
+      "id": 2547,
+      "model": "freight.purchase.pricing"
+    },
+    "kanban": {
+      "arch": "<kanban string=\"Freight Purchase Pricing\"><templates><t t-name=\"kanban-box\"><div t-attf-class=\"oe_kanban_card oe_kanban_global_click\"><div class=\"o_kanban_card_content\"><field name=\"code\"/></div></div></t></templates></kanban>",
+      "id": false,
+      "model": "freight.purchase.pricing"
+    },
+    "pivot": {
+      "arch": "<pivot string=\"Freight Purchase Pricing\"/>",
+      "id": false,
+      "model": "freight.purchase.pricing"
+    },
+    "graph": {
+      "arch": "<graph string=\"Freight Purchase Pricing\"><field name=\"code\"/></graph>",
+      "id": false,
+      "model": "freight.purchase.pricing"
+    }
+  }
+}

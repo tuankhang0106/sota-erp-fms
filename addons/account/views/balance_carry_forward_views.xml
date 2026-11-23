@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_balance_carry_forward_tree" model="ir.ui.view">
+        <field name="name">balance.carry.forward.tree</field>
+        <field name="model">balance.carry.forward</field>
+        <field name="arch" type="xml">
+            <tree string="Balance Carry Forward Tree" decoration-muted="state=='cancelled'" decoration-bf="state=='confirmed'" decoration-success="state=='draft'">
+<field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="date" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirmed&quot;, &quot;posted&quot;, &quot;cancelled&quot;]]], &quot;required&quot;: true}"/>
+<field name="forward_date" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirmed&quot;, &quot;posted&quot;, &quot;cancelled&quot;]]], &quot;required&quot;: true}"/>
+<field name="journal_id" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirmed&quot;, &quot;posted&quot;, &quot;cancelled&quot;]]], &quot;required&quot;: true}"/>
+<field name="state" modifiers="{&quot;readonly&quot;: true}"/>
+</tree>
+        </field>
+    </record>
+
+    <record id="view_balance_carry_forward_form" model="ir.ui.view">
+        <field name="name">balance.carry.forward.form</field>
+        <field name="model">balance.carry.forward</field>
+        <field name="arch" type="xml">
+            <form string="Account Balance Carry Forward Form">
+<header>
+<button name="action_confirm" string="Confirm" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+<button name="action_post" type="object" class="oe_highlight" string="Post" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;confirmed&quot;]]]}"/>
+<button name="action_cancel" type="object" string="Cancel Entry" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;confirmed&quot;, &quot;posted&quot;]]]}"/>
+<button name="action_draft" string="Set to Draft" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;cancelled&quot;]]]}"/>
+<field name="state" widget="statusbar" statusbar_visible="draft,confirm,posted" modifiers="{&quot;readonly&quot;: true}"/>
+</header>
+<sheet>
+<div class="oe_button_box" name="button_box">
+<button type="object" name="action_view_account_moves" class="oe_stat_button" icon="fa-pencil-square-o" modifiers="{&quot;invisible&quot;: [[&quot;account_move_ids&quot;, &quot;=&quot;, []]]}">
+<field name="account_moves_count" widget="statinfo" string="Journal Entries" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="account_move_ids" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+</button>
+<button type="object" name="action_view_account_move_lines" class="oe_stat_button" icon="fa-pencil" modifiers="{&quot;invisible&quot;: [[&quot;aml_ids&quot;, &quot;=&quot;, []]]}">
+<field name="aml_count" widget="statinfo" string="Journal Items" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="aml_ids" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+</button>
+</div>
+<div class="oe_title">
+<h1>
+<field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+</h1>
+</div>
+<group>
+<group>
+<field name="date" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirmed&quot;, &quot;posted&quot;, &quot;cancelled&quot;]]], &quot;required&quot;: true}"/>
+<field name="forward_date" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirmed&quot;, &quot;posted&quot;, &quot;cancelled&quot;]]], &quot;required&quot;: true}"/>
+<field name="company_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirmed&quot;, &quot;posted&quot;, &quot;cancelled&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+<field name="company_id" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirmed&quot;, &quot;posted&quot;, &quot;cancelled&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+<field name="journal_id" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirmed&quot;, &quot;posted&quot;, &quot;cancelled&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="report_flag_filter" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirmed&quot;, &quot;posted&quot;, &quot;cancelled&quot;]]]}"/>
+<field name="rule_type" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
+</group>
+<group>
+<field name="forward_rule_ids" widget="many2many_tags" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirmed&quot;, &quot;posted&quot;, &quot;cancelled&quot;]]]}" can_create="true" can_write="true"/>
+</group>
+</group>
+<notebook>
+<page name="rule_lines" string="Rules">
+<field name="forward_rule_line_ids" nolabel="1" modifiers="{&quot;readonly&quot;: true}">
+<tree>
+<field name="sequence" widget="handle"/>
+<field name="source_account_id" modifiers="{&quot;required&quot;: true}"/>
+<field name="balance" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="source_aml_ids" limit="0" on_change="1" modifiers="{&quot;column_invisible&quot;: true}"/>
+<field name="dest_account_id" modifiers="{&quot;required&quot;: true}"/>
+<field name="forward_type" modifiers="{&quot;readonly&quot;: true}"/>
+</tree>
+</field>
+</page>
+</notebook>
+</sheet>
+<div class="oe_chatter">
+<field name="message_follower_ids"/>
+<field name="activity_ids"/>
+<field name="message_ids"/>
+</div>
+</form>
+        </field>
+    </record>
+
+    <record id="view_balance_carry_forward_search" model="ir.ui.view">
+        <field name="name">balance.carry.forward.search</field>
+        <field name="model">balance.carry.forward</field>
+        <field name="arch" type="xml">
+            <search string="Balance Carry Forward"><field name="name"/></search>
+        </field>
+    </record>
+
+    <record id="action_balance_carry_forward" model="ir.actions.act_window">
+        <field name="name">BALANCE CARRY FORWARD</field>
+        <field name="res_model">balance.carry.forward</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

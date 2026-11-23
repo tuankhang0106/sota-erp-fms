@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Window Action for calendar.event.type -->
+    <record id="action_calendar_event_type" model="ir.actions.act_window">
+        <field name="name">Loại cuộc họp (Meeting Types)</field>
+        <field name="res_model">calendar.event.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

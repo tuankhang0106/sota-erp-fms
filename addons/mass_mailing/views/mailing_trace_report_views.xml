@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mailing_trace_report_tree" model="ir.ui.view">
+        <field name="name">mailing.trace.report.tree</field>
+        <field name="model">mailing.trace.report</field>
+        <field name="arch" type="xml">
+            <tree string="Mass Mailing Statistics" sample="1" create="false" delete="false" edit="false">
+                    <field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="campaign" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="mailing_type" modifiers="{&quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="scheduled_date" string="Scheduled On" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="state" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="scheduled" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="sent" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="delivered" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="opened" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="replied" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="clicked" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="canceled" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="error" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="bounced" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_mailing_trace_report_form" model="ir.ui.view">
+        <field name="name">mailing.trace.report.form</field>
+        <field name="model">mailing.trace.report</field>
+        <field name="arch" type="xml">
+            <form create="false" delete="false" edit="false"><sheet string="Mass Mailing Statistics"><group><group><field name="name" modifiers="{&quot;readonly&quot;: true}"/><field name="campaign" modifiers="{&quot;readonly&quot;: true}"/><field name="state" modifiers="{&quot;readonly&quot;: true}"/><field name="scheduled" modifiers="{&quot;readonly&quot;: true}"/><field name="delivered" modifiers="{&quot;readonly&quot;: true}"/><field name="opened" modifiers="{&quot;readonly&quot;: true}"/><field name="bounced" modifiers="{&quot;readonly&quot;: true}"/><field name="clicked" modifiers="{&quot;readonly&quot;: true}"/></group><group><field name="mailing_type" modifiers="{&quot;required&quot;: true}"/><field name="scheduled_date" modifiers="{&quot;readonly&quot;: true}"/><field name="email_from" modifiers="{&quot;readonly&quot;: true}"/><field name="sent" modifiers="{&quot;readonly&quot;: true}"/><field name="error" modifiers="{&quot;readonly&quot;: true}"/><field name="replied" modifiers="{&quot;readonly&quot;: true}"/><field name="canceled" modifiers="{&quot;readonly&quot;: true}"/></group></group><group><separator/></group></sheet></form>
+        </field>
+    </record>
+
+    <record id="view_mailing_trace_report_search" model="ir.ui.view">
+        <field name="name">mailing.trace.report.search</field>
+        <field name="model">mailing.trace.report</field>
+        <field name="arch" type="xml">
+            <search string="Mass Mailing Statistics" create="false" delete="false" edit="false">
+                    <field name="name" string="Mailing"/>
+                    <field name="campaign" string="Campaign"/>
+                    <filter name="filter_scheduled_date" date="scheduled_date"/>
+                    <group expand="0" string="Extended Filters...">
+                        <field name="scheduled_date"/>
+                    </group>
+                    <group expand="1" string="Group By...">
+                        <filter string="Mass Mailing Campaign" domain="[]" name="mass_mailing_campaign" context="{'group_by':'campaign'}"/>
+                        <filter string="State" domain="[]" name="state" context="{'group_by':'state'}"/>
+                        <filter string="Sent By" domain="[]" name="sent_by" context="{'group_by':'email_from'}"/>
+                        <separator/>
+                        <filter string="Scheduled Period" name="scheduled_date" domain="[]" context="{'group_by':'scheduled_date'}"/>
+                    </group>
+                </search>
+        </field>
+    </record>
+
+    <record id="action_mailing_trace_report" model="ir.actions.act_window">
+        <field name="name">MAILING TRACE REPORT</field>
+        <field name="res_model">mailing.trace.report</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

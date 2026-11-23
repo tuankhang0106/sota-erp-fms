@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_departure_reason_tree" model="ir.ui.view">
+        <field name="name">hr.departure.reason.tree</field>
+        <field name="model">hr.departure.reason</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_departure_reason_form" model="ir.ui.view">
+        <field name="name">hr.departure.reason.form</field>
+        <field name="model">hr.departure.reason</field>
+        <field name="arch" type="xml">
+            <form>
+                    <group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                        </group>
+                    </group>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_hr_departure_reason_search" model="ir.ui.view">
+        <field name="name">hr.departure.reason.search</field>
+        <field name="model">hr.departure.reason</field>
+        <field name="arch" type="xml">
+            <search string="Departure Reason"><field name="name"/></search>
+        </field>
+    </record>
+
+    <record id="action_hr_departure_reason" model="ir.actions.act_window">
+        <field name="name">HR DEPARTURE REASON</field>
+        <field name="res_model">hr.departure.reason</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

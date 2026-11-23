@@ -1,0 +1,1036 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_freight_airline_tree" model="ir.ui.view">
+        <field name="name">freight.airline.tree</field>
+        <field name="model">freight.airline</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="name" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="ref" string="IATA Code" on_change="1"/>
+                    <field name="phone"/>
+                    <field name="fax"/>
+                    <field name="pic_id"/>
+                    <field name="country_id"/>
+<!--                    <field name="iata_code"/>-->
+                    <field name="mawb_prefix"/>
+                    <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_airline_form" model="ir.ui.view">
+        <field name="name">freight.airline.form</field>
+        <field name="model">freight.airline</field>
+        <field name="arch" type="xml">
+            <form>
+                    <sheet>
+                        <group>
+                            <field name="name" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="ref" string="IATA Code" on_change="1"/>
+                            <field name="partner_id" string="Related Partner" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;id&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}" can_create="true" can_write="true"/>
+                            <label for="street" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street" on_change="1"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street" on_change="1"/>
+                                <field name="city" placeholder="City" class="o_address_city" on_change="1"/>
+                                <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" on_change="1" can_create="true" can_write="true"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip" on_change="1"/>
+                                <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" can_create="true" can_write="true"/>
+                            </div>
+                            <field name="phone"/>
+                            <field name="fax"/>
+                            <field name="child_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="pic_id" can_create="true" can_write="true"/>
+<!--                            <field name="iata_code"/>-->
+                            <field name="mawb_prefix"/>
+                            <field name="important_note"/>
+                            <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_airline_search" model="ir.ui.view">
+        <field name="name">freight.airline.search</field>
+        <field name="model">freight.airline</field>
+        <field name="arch" type="xml">
+            <search>
+                    <field name="name"/>
+                    <field name="ref"/>
+                    <field name="phone"/>
+                    <field name="fax"/>
+                    <field name="pic_id"/>
+                    <field name="country_id"/>
+<!--                    <field name="iata_code"/>-->
+                    <field name="mawb_prefix"/>
+                    <filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="view_freight_airline_kanban" model="ir.ui.view">
+        <field name="name">freight.airline.kanban</field>
+        <field name="model">freight.airline</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Airline"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" on_change="1" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_airline" model="ir.actions.act_window">
+        <field name="name">AIRLINE</field>
+        <field name="res_model">freight.airline</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_shipping_line_tree" model="ir.ui.view">
+        <field name="name">freight.shipping.line.tree</field>
+        <field name="model">freight.shipping.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                <field name="ref" on_change="1"/>
+                <field name="partner_id" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                <field name="partner_vat" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="scac_code"/>
+                <field name="phone"/>
+                <field name="fax"/>
+                <field name="pic_id"/>
+                <field name="country_id"/>
+                <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_shipping_line_form" model="ir.ui.view">
+        <field name="name">freight.shipping.line.form</field>
+        <field name="model">freight.shipping.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                        <field name="ref" on_change="1"/>
+                        <field name="partner_id" string="Related Partner" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;id&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}" can_create="true" can_write="true"/>
+                        <label for="street" string="Address"/>
+                        <div class="o_address_format">
+                            <field name="street" placeholder="Street..." class="o_address_street" on_change="1"/>
+                            <field name="street2" placeholder="Street 2..." class="o_address_street" on_change="1"/>
+                            <field name="city" placeholder="City" class="o_address_city" on_change="1"/>
+                            <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" on_change="1" can_create="true" can_write="true"/>
+                            <field name="zip" placeholder="ZIP" class="o_address_zip" on_change="1"/>
+                            <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" can_create="true" can_write="true"/>
+                        </div>
+                        <field name="scac_code"/>
+                        <field name="phone"/>
+                        <field name="fax"/>
+                        <field name="pic_id" can_create="true" can_write="true"/>
+                        <field name="child_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_freight_shipping_line_search" model="ir.ui.view">
+        <field name="name">freight.shipping.line.search</field>
+        <field name="model">freight.shipping.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="ref"/>
+                <field name="scac_code"/>
+                <field name="phone"/>
+                <field name="fax"/>
+                <field name="pic_id"/>
+                <field name="country_id"/>
+                <filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_freight_shipping_line_kanban" model="ir.ui.view">
+        <field name="name">freight.shipping.line.kanban</field>
+        <field name="model">freight.shipping.line</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Shipping Line"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" on_change="1" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_shipping_line" model="ir.actions.act_window">
+        <field name="name">SHIPPING.LINE</field>
+        <field name="res_model">freight.shipping.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_trucker_tree" model="ir.ui.view">
+        <field name="name">freight.trucker.tree</field>
+        <field name="model">freight.trucker</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="name" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="country_id"/>
+                    <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <field name="name_in_vietnamese" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="name_in_english"/>
+                    <field name="address"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_trucker_form" model="ir.ui.view">
+        <field name="name">freight.trucker.form</field>
+        <field name="model">freight.trucker</field>
+        <field name="arch" type="xml">
+            <form>
+                    <sheet>
+                        <group>
+                            <field name="name" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="country_id" can_create="true" can_write="true"/>
+                            <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                            <field name="name_in_vietnamese" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="name_in_english"/>
+                            <field name="address" can_create="true" can_write="true"/>
+                            <field name="registered_address" can_create="true" can_write="true"/>
+                            <field name="pic_id" can_create="true" can_write="true"/>
+                            <field name="specialized_route"/>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_trucker_search" model="ir.ui.view">
+        <field name="name">freight.trucker.search</field>
+        <field name="model">freight.trucker</field>
+        <field name="arch" type="xml">
+            <search>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="country_id"/>
+                    <field name="name_in_vietnamese"/>
+                    <field name="name_in_english"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="view_freight_trucker_kanban" model="ir.ui.view">
+        <field name="name">freight.trucker.kanban</field>
+        <field name="model">freight.trucker</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Trucker"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_trucker" model="ir.actions.act_window">
+        <field name="name">TRUCKER</field>
+        <field name="res_model">freight.trucker</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_port_tree" model="ir.ui.view">
+        <field name="name">freight.port.tree</field>
+        <field name="model">freight.port</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="type" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="country_id" on_change="1"/>
+                    <field name="note"/>
+                    <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_port_form" model="ir.ui.view">
+        <field name="name">freight.port.form</field>
+        <field name="model">freight.port</field>
+        <field name="arch" type="xml">
+            <form>
+                    <sheet>
+                        <group>
+                            <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="vat_name"/>
+                            <field name="type" modifiers="{&quot;required&quot;: true}"/>
+                            <label for="street" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+                                <field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" context="{'default_country_id': country_id}" on_change="1" can_create="true" can_write="true"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip" on_change="1"/>
+                                <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" on_change="1" can_create="true" can_write="true"/>
+                            </div>
+                            <field name="note"/>
+                <field name="do_dear" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;!=&quot;, &quot;warehouse&quot;]]}"/>
+                            <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                        </group>
+                <field name="warehouse_mapping_ids" widget="one2many_list" nolabel="1">
+                    <tree editable="top">
+                        <field name="airline_code" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="airline_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                        <field name="warehouse_type"/>
+                        <field name="warehouse_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                    </tree>
+                </field>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_port_search" model="ir.ui.view">
+        <field name="name">freight.port.search</field>
+        <field name="model">freight.port</field>
+        <field name="arch" type="xml">
+            <search>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="country_id"/>
+                    <field name="note"/>
+                    <filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+                    <separator/>
+                    <filter name="ftr_airport" string="Airport" domain="[('type', '=', 'airport')]"/>
+                    <filter name="ftr_seaport" string="Seaport" domain="[('type', '=', 'seaport')]"/>
+                    <filter name="ftr_border_gate" string="Border Gate" domain="[('type', '=', 'border_gate')]"/>
+                    <filter name="ftr_warehouse" string="Warehouse" domain="[('type', '=', 'warehouse')]"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="view_freight_port_kanban" model="ir.ui.view">
+        <field name="name">freight.port.kanban</field>
+        <field name="model">freight.port</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Port"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="code" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_port" model="ir.actions.act_window">
+        <field name="name">PORT</field>
+        <field name="res_model">freight.port</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_vessel_tree" model="ir.ui.view">
+        <field name="name">freight.vessel.tree</field>
+        <field name="model">freight.vessel</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="active"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_vessel_form" model="ir.ui.view">
+        <field name="name">freight.vessel.form</field>
+        <field name="model">freight.vessel</field>
+        <field name="arch" type="xml">
+            <form>
+                    <sheet>
+                        <group>
+                            <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="active"/>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_vessel_search" model="ir.ui.view">
+        <field name="name">freight.vessel.search</field>
+        <field name="model">freight.vessel</field>
+        <field name="arch" type="xml">
+            <search>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <filter string="Archived" name="archived" domain="[('active', '=', False)]"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="view_freight_vessel_kanban" model="ir.ui.view">
+        <field name="name">freight.vessel.kanban</field>
+        <field name="model">freight.vessel</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Vessel"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_vessel" model="ir.actions.act_window">
+        <field name="name">VESSEL</field>
+        <field name="res_model">freight.vessel</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_unit_tree" model="ir.ui.view">
+        <field name="name">freight.unit.tree</field>
+        <field name="model">freight.unit</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="name" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="type" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="cont_type"/>
+                    <field name="active"/>
+                    <field name="note"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_unit_form" model="ir.ui.view">
+        <field name="name">freight.unit.form</field>
+        <field name="model">freight.unit</field>
+        <field name="arch" type="xml">
+            <form>
+                    <sheet>
+                        <group>
+                            <field name="name" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="type" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="cont_type" widget="radio" options="{'horizontal': True}"/>
+                            <field name="active"/>
+                            <field name="note"/>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_unit_search" model="ir.ui.view">
+        <field name="name">freight.unit.search</field>
+        <field name="model">freight.unit</field>
+        <field name="arch" type="xml">
+            <search>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="note"/>
+                    <filter string="Archived" name="archived" domain="[('active', '=', False)]"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="view_freight_unit_kanban" model="ir.ui.view">
+        <field name="name">freight.unit.kanban</field>
+        <field name="model">freight.unit</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Unit"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="code" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_unit" model="ir.actions.act_window">
+        <field name="name">UNIT</field>
+        <field name="res_model">freight.unit</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_fcl_unit_tree" model="ir.ui.view">
+        <field name="name">freight.fcl.unit.tree</field>
+        <field name="model">freight.fcl.unit</field>
+        <field name="arch" type="xml">
+            <tree string="FCL Units">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_fcl_unit_form" model="ir.ui.view">
+        <field name="name">freight.fcl.unit.form</field>
+        <field name="model">freight.fcl.unit</field>
+        <field name="arch" type="xml">
+            <form string="FCL Unit">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_freight_fcl_unit_search" model="ir.ui.view">
+        <field name="name">freight.fcl.unit.search</field>
+        <field name="model">freight.fcl.unit</field>
+        <field name="arch" type="xml">
+            <search string="FCL Unit"><field name="name"/></search>
+        </field>
+    </record>
+
+    <record id="view_freight_fcl_unit_kanban" model="ir.ui.view">
+        <field name="name">freight.fcl.unit.kanban</field>
+        <field name="model">freight.fcl.unit</field>
+        <field name="arch" type="xml">
+            <kanban string="FCL Unit"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_fcl_unit" model="ir.actions.act_window">
+        <field name="name">FCL.UNIT</field>
+        <field name="res_model">freight.fcl.unit</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_package_tree" model="ir.ui.view">
+        <field name="name">freight.package.tree</field>
+        <field name="model">freight.package</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="transport_mode_id" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="note"/>
+                    <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_package_form" model="ir.ui.view">
+        <field name="name">freight.package.form</field>
+        <field name="model">freight.package</field>
+        <field name="arch" type="xml">
+            <form>
+                    <sheet>
+                        <group>
+                            <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="transport_mode_id" modifiers="{&quot;required&quot;: true}" can_create="false" can_write="false"/>
+                            <field name="note"/>
+                            <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_package_search" model="ir.ui.view">
+        <field name="name">freight.package.search</field>
+        <field name="model">freight.package</field>
+        <field name="arch" type="xml">
+            <search>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="transport_mode_id"/>
+                    <field name="note"/>
+                    <filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="view_freight_package_kanban" model="ir.ui.view">
+        <field name="name">freight.package.kanban</field>
+        <field name="model">freight.package</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Package"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_package" model="ir.actions.act_window">
+        <field name="name">PACKAGE</field>
+        <field name="res_model">freight.package</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_commodity_tree" model="ir.ui.view">
+        <field name="name">freight.commodity.tree</field>
+        <field name="model">freight.commodity</field>
+        <field name="arch" type="xml">
+            <tree>
+<field name="name" modifiers="{&quot;required&quot;: true}"/>
+<field name="code" modifiers="{&quot;required&quot;: true}"/>
+<field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+</tree>
+        </field>
+    </record>
+
+    <record id="view_freight_commodity_form" model="ir.ui.view">
+        <field name="name">freight.commodity.form</field>
+        <field name="model">freight.commodity</field>
+        <field name="arch" type="xml">
+            <form>
+<sheet>
+<group>
+<field name="name" modifiers="{&quot;required&quot;: true}"/>
+<field name="code" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+</group>
+</sheet>
+</form>
+        </field>
+    </record>
+
+    <record id="view_freight_commodity_search" model="ir.ui.view">
+        <field name="name">freight.commodity.search</field>
+        <field name="model">freight.commodity</field>
+        <field name="arch" type="xml">
+            <search>
+<field name="name"/>
+<field name="code"/>
+<filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+</search>
+        </field>
+    </record>
+
+    <record id="view_freight_commodity_kanban" model="ir.ui.view">
+        <field name="name">freight.commodity.kanban</field>
+        <field name="model">freight.commodity</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Commodity"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_commodity" model="ir.actions.act_window">
+        <field name="name">COMMODITY</field>
+        <field name="res_model">freight.commodity</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_transit_type_tree" model="ir.ui.view">
+        <field name="name">freight.transit.type.tree</field>
+        <field name="model">freight.transit.type</field>
+        <field name="arch" type="xml">
+            <tree>
+<field name="name" modifiers="{&quot;required&quot;: true}"/>
+<field name="code" modifiers="{&quot;required&quot;: true}"/>
+<field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+</tree>
+        </field>
+    </record>
+
+    <record id="view_freight_transit_type_form" model="ir.ui.view">
+        <field name="name">freight.transit.type.form</field>
+        <field name="model">freight.transit.type</field>
+        <field name="arch" type="xml">
+            <form>
+<sheet>
+<group>
+<field name="name" modifiers="{&quot;required&quot;: true}"/>
+<field name="code" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+</group>
+</sheet>
+</form>
+        </field>
+    </record>
+
+    <record id="view_freight_transit_type_search" model="ir.ui.view">
+        <field name="name">freight.transit.type.search</field>
+        <field name="model">freight.transit.type</field>
+        <field name="arch" type="xml">
+            <search>
+<field name="name"/>
+<field name="code"/>
+<filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+</search>
+        </field>
+    </record>
+
+    <record id="view_freight_transit_type_kanban" model="ir.ui.view">
+        <field name="name">freight.transit.type.kanban</field>
+        <field name="model">freight.transit.type</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Transit Type"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_transit_type" model="ir.actions.act_window">
+        <field name="name">TRANSIT.TYPE</field>
+        <field name="res_model">freight.transit.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_hs_code_tree" model="ir.ui.view">
+        <field name="name">freight.hs.code.tree</field>
+        <field name="model">freight.hs.code</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="remark"/>
+                <field name="country_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_hs_code_form" model="ir.ui.view">
+        <field name="name">freight.hs.code.form</field>
+        <field name="model">freight.hs.code</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="remark"/>
+                        <field name="country_id" can_create="true" can_write="true"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_freight_hs_code_search" model="ir.ui.view">
+        <field name="name">freight.hs.code.search</field>
+        <field name="model">freight.hs.code</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" filter_domain="['|', '|', ('name', 'ilike', self), ('code', 'ilike', self), ('remark', 'ilike', self)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_freight_hs_code_kanban" model="ir.ui.view">
+        <field name="name">freight.hs.code.kanban</field>
+        <field name="model">freight.hs.code</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Hs Code"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_hs_code" model="ir.actions.act_window">
+        <field name="name">HS.CODE</field>
+        <field name="res_model">freight.hs.code</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_incoterms_tree" model="ir.ui.view">
+        <field name="name">freight.incoterms.tree</field>
+        <field name="model">freight.incoterms</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_incoterms_form" model="ir.ui.view">
+        <field name="name">freight.incoterms.form</field>
+        <field name="model">freight.incoterms</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                        <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                        <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_freight_incoterms_search" model="ir.ui.view">
+        <field name="name">freight.incoterms.search</field>
+        <field name="model">freight.incoterms</field>
+        <field name="arch" type="xml">
+            <search>
+<field name="name"/>
+<field name="code"/>
+<filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+</search>
+        </field>
+    </record>
+
+    <record id="view_freight_incoterms_kanban" model="ir.ui.view">
+        <field name="name">freight.incoterms.kanban</field>
+        <field name="model">freight.incoterms</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Incoterms"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_incoterms" model="ir.actions.act_window">
+        <field name="name">INCOTERMS</field>
+        <field name="res_model">freight.incoterms</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_service_terms_tree" model="ir.ui.view">
+        <field name="name">freight.service.terms.tree</field>
+        <field name="model">freight.service.terms</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_service_terms_form" model="ir.ui.view">
+        <field name="name">freight.service.terms.form</field>
+        <field name="model">freight.service.terms</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                        <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                        <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_freight_service_terms_search" model="ir.ui.view">
+        <field name="name">freight.service.terms.search</field>
+        <field name="model">freight.service.terms</field>
+        <field name="arch" type="xml">
+            <search>
+<field name="name"/>
+<field name="code"/>
+<filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+</search>
+        </field>
+    </record>
+
+    <record id="view_freight_service_terms_kanban" model="ir.ui.view">
+        <field name="name">freight.service.terms.kanban</field>
+        <field name="model">freight.service.terms</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Service Terms"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_service_terms" model="ir.actions.act_window">
+        <field name="name">SERVICE.TERMS</field>
+        <field name="res_model">freight.service.terms</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_party_role_tree" model="ir.ui.view">
+        <field name="name">freight.party.role.tree</field>
+        <field name="model">freight.party.role</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_party_role_form" model="ir.ui.view">
+        <field name="name">freight.party.role.form</field>
+        <field name="model">freight.party.role</field>
+        <field name="arch" type="xml">
+            <form>
+                    <sheet>
+                        <group>
+                            <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_party_role_search" model="ir.ui.view">
+        <field name="name">freight.party.role.search</field>
+        <field name="model">freight.party.role</field>
+        <field name="arch" type="xml">
+            <search>
+                    <field name="name" string="Name"/>
+                    <field name="code" string="Code"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="view_freight_party_role_kanban" model="ir.ui.view">
+        <field name="name">freight.party.role.kanban</field>
+        <field name="model">freight.party.role</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Party Role"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_party_role" model="ir.actions.act_window">
+        <field name="name">PARTY.ROLE</field>
+        <field name="res_model">freight.party.role</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_service_tags_tree" model="ir.ui.view">
+        <field name="name">freight.service.tags.tree</field>
+        <field name="model">freight.service.tags</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_service_tags_form" model="ir.ui.view">
+        <field name="name">freight.service.tags.form</field>
+        <field name="model">freight.service.tags</field>
+        <field name="arch" type="xml">
+            <form>
+                    <sheet>
+                        <group>
+                            <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_service_tags_search" model="ir.ui.view">
+        <field name="name">freight.service.tags.search</field>
+        <field name="model">freight.service.tags</field>
+        <field name="arch" type="xml">
+            <search>
+                    <field name="name" string="Name"/>
+                    <field name="code" string="Code"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="view_freight_service_tags_kanban" model="ir.ui.view">
+        <field name="name">freight.service.tags.kanban</field>
+        <field name="model">freight.service.tags</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Service Tags"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_service_tags" model="ir.actions.act_window">
+        <field name="name">SERVICE.TAGS</field>
+        <field name="res_model">freight.service.tags</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_bl_number_tree" model="ir.ui.view">
+        <field name="name">freight.bl.number.tree</field>
+        <field name="model">freight.bl.number</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                <field name="available" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="house_ids" optional="hide" widget="many2many_tags" on_change="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_bl_number_form" model="ir.ui.view">
+        <field name="name">freight.bl.number.form</field>
+        <field name="model">freight.bl.number</field>
+        <field name="arch" type="xml">
+            <form><sheet string="Freight BL Number"><group><group><field name="name" modifiers="{&quot;required&quot;: true}"/></group></group><group><field name="house_ids" on_change="1"><tree default_order="perf_date desc" create="0" string="House Cross Border">
+                <field name="state" modifiers="{&quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="sea_master_bl" string="MBL"/>
+                <field name="name" string="HBL" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                <field name="container_display" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="sea_shipper_id" string="SHPR" on_change="1"/>
+                <field name="sea_consignee_id" string="CNEE" on_change="1"/>
+                <field name="sea_customer_code" string="Customer" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="user_id"/>
+                <field name="sea_por_id" optional="hide"/>
+                <field name="sea_pol_id"/>
+                <field name="sea_pod_id"/>
+                <field name="sea_pvy_id" optional="hide"/>
+                <field name="sea_etd" string="ETD" on_change="1"/>
+                <field name="sea_eta" string="ETA"/>
+                <field name="sea_atd" string="ATD" on_change="1"/>
+                <field name="sea_ata" string="ATA"/>
+                <field name="bound" optional="hide" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                <field name="perf_date" optional="hide"/>
+                <field name="sea_bl_type" string="BL Type" optional="show"/>
+                <field name="sea_bl_status" string="Status"/>
+                <field name="tracking_states_display" string="Tracking Status" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="operator_ids" optional="show" widget="many2many_tags"/>
+                <field name="priority" widget="priority" optional="hide"/>
+                <field name="transport_mode_id" modifiers="{&quot;column_invisible&quot;: true}"/>
+                <field name="is_sea_house" modifiers="{&quot;column_invisible&quot;: true}"/>
+                <field name="company_id" optional="show" modifiers="{&quot;required&quot;: true}"/>
+            </tree></field></group><group><group><field name="available" modifiers="{&quot;readonly&quot;: true}"/></group></group><group><separator/></group></sheet></form>
+        </field>
+    </record>
+
+    <record id="view_freight_bl_number_search" model="ir.ui.view">
+        <field name="name">freight.bl.number.search</field>
+        <field name="model">freight.bl.number</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="ftr_available" string="Available" domain="[('available', '=', True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_freight_bl_number_kanban" model="ir.ui.view">
+        <field name="name">freight.bl.number.kanban</field>
+        <field name="model">freight.bl.number</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight BL Number"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_bl_number" model="ir.actions.act_window">
+        <field name="name">BL.NUMBER</field>
+        <field name="res_model">freight.bl.number</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_procedure_code_tree" model="ir.ui.view">
+        <field name="name">freight.procedure.code.tree</field>
+        <field name="model">freight.procedure.code</field>
+        <field name="arch" type="xml">
+            <tree string="Procedure Code">
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_procedure_code_form" model="ir.ui.view">
+        <field name="name">freight.procedure.code.form</field>
+        <field name="model">freight.procedure.code</field>
+        <field name="arch" type="xml">
+            <form string="Procedure Code">
+                    <sheet>
+                        <group>
+                            <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_procedure_code_search" model="ir.ui.view">
+        <field name="name">freight.procedure.code.search</field>
+        <field name="model">freight.procedure.code</field>
+        <field name="arch" type="xml">
+            <search string="Freight Procedure Information"><field name="name"/></search>
+        </field>
+    </record>
+
+    <record id="view_freight_procedure_code_kanban" model="ir.ui.view">
+        <field name="name">freight.procedure.code.kanban</field>
+        <field name="model">freight.procedure.code</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Procedure Information"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_procedure_code" model="ir.actions.act_window">
+        <field name="name">PROCEDURE.CODE</field>
+        <field name="res_model">freight.procedure.code</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,493 @@
+{
+  "fields": {
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "message_main_attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Main Attachment",
+      "type": "many2one"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "customer_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "carrier_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Carrier",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salesperson",
+      "type": "many2one"
+    },
+    "class_urgent": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "normal",
+          "Normal"
+        ],
+        [
+          "important",
+          "Important"
+        ]
+      ],
+      "string": "Class",
+      "type": "selection"
+    },
+    "pol_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "POL",
+      "type": "many2one"
+    },
+    "pod_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": true,
+      "string": "POD",
+      "type": "many2one"
+    },
+    "incoterms_id": {
+      "readonly": false,
+      "relation": "freight.incoterms",
+      "required": true,
+      "string": "Incoterms",
+      "type": "many2one"
+    },
+    "commodity_id": {
+      "readonly": false,
+      "relation": "freight.commodity",
+      "required": true,
+      "string": "Commodity",
+      "type": "many2one"
+    },
+    "door_address": {
+      "readonly": false,
+      "required": false,
+      "string": "Door Address",
+      "type": "char"
+    },
+    "type_of_cont": {
+      "readonly": false,
+      "required": false,
+      "string": "Type of Cont",
+      "type": "char"
+    },
+    "transport_term_of_oog_bulk": {
+      "readonly": false,
+      "required": false,
+      "string": "Transport term of OOG/Bulk",
+      "type": "char"
+    },
+    "msds_dg_form_filename": {
+      "readonly": false,
+      "required": false,
+      "string": "MSDS+DG FORM",
+      "type": "char"
+    },
+    "msds_dg_form": {
+      "readonly": false,
+      "required": false,
+      "string": "MSDS+DG FORM",
+      "type": "binary"
+    },
+    "etd_request_cargo_ready": {
+      "readonly": false,
+      "required": false,
+      "string": "ETD Request/Cargo Ready",
+      "type": "datetime"
+    },
+    "gross_weight": {
+      "readonly": false,
+      "required": false,
+      "string": "Cargo Volume",
+      "type": "char"
+    },
+    "other_request": {
+      "readonly": false,
+      "required": false,
+      "string": "Other Request",
+      "type": "char"
+    },
+    "date": {
+      "readonly": true,
+      "required": false,
+      "string": "Date",
+      "type": "date"
+    },
+    "state": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "checking",
+          "Checking"
+        ],
+        [
+          "done",
+          "Done"
+        ],
+        [
+          "no_solution",
+          "No Solution"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "sales_state": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "pending",
+          "Pending"
+        ],
+        [
+          "find_other_solution",
+          "Find Other Solution"
+        ],
+        [
+          "win",
+          "Win"
+        ],
+        [
+          "loss",
+          "Loss"
+        ]
+      ],
+      "string": "Inquiry Status",
+      "type": "selection"
+    },
+    "log_note": {
+      "readonly": false,
+      "required": false,
+      "string": "Log Note",
+      "type": "text"
+    },
+    "reason": {
+      "readonly": false,
+      "required": false,
+      "string": "Reason",
+      "type": "text"
+    },
+    "name": {
+      "readonly": true,
+      "required": true,
+      "string": "Sales Inquiry No.",
+      "type": "char"
+    },
+    "team_id": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Salesman Team",
+      "type": "many2one"
+    },
+    "quotation_ids": {
+      "readonly": false,
+      "relation": "freight.quotation",
+      "required": false,
+      "string": "Quotations",
+      "type": "one2many"
+    },
+    "quotation_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Quotation Count",
+      "type": "integer"
+    },
+    "pricing_pic_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Pricing PIC",
+      "type": "many2many"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "transport_mode_ids": {
+      "readonly": false,
+      "relation": "freight.transport.mode",
+      "required": false,
+      "string": "Service",
+      "type": "many2many"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree>\n                <field name=\"name\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                <field name=\"customer_id\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"user_id\"/>\n                <field name=\"carrier_id\"/>\n                <field name=\"class_urgent\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"pol_id\"/>\n                <field name=\"pod_id\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"door_address\"/>\n                <field name=\"incoterms_id\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"type_of_cont\"/>\n                <field name=\"transport_term_of_oog_bulk\"/>\n                <field name=\"commodity_id\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"msds_dg_form_filename\" string=\"MSDS+DG FORM\"/>\n                <field name=\"etd_request_cargo_ready\"/>\n                <field name=\"gross_weight\"/>\n                <field name=\"other_request\"/>\n                <field name=\"pricing_pic_ids\" widget=\"many2many_tags\"/>\n                <field name=\"state\"/>\n                <field name=\"sales_state\"/>\n                <field name=\"company_id\" optional=\"show\"/>\n            </tree>",
+      "id": 2551,
+      "model": "freight.sales.inquiry"
+    },
+    "form": {
+      "arch": "<form string=\"Sales Inquiry\" class=\"freight_inquiry_form\">\n                <header>\n                    <div>\n                        <button name=\"action_send_mail\" type=\"object\" string=\"Send Email\" class=\"btn-primary\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;checking&quot;]]}\"/>\n                        <button name=\"action_send\" type=\"object\" string=\"Send\" class=\"oe_highlight\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}\"/>\n                        <button name=\"action_done\" type=\"object\" string=\"Done\" class=\"oe_highlight\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;checking&quot;]]}\"/>\n                        <button name=\"action_no_solution\" type=\"object\" string=\"No Solution\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;checking&quot;]]}\"/>\n                        <button name=\"action_set_to_draft\" type=\"object\" string=\"Set To Draft\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;checking&quot;, &quot;done&quot;]]]}\"/>\n                        <button name=\"action_restore\" type=\"object\" string=\"Restore\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;no_solution&quot;]]}\"/>\n                        <button name=\"action_create_quotation\" type=\"object\" string=\"Create Quotation\"/>\n                    </div>\n                    <div class=\"double_statusbar\">\n                        <field name=\"state\" widget=\"statusbar\" statusbar_visible=\"draft,checking,no_solution,done\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                        <field name=\"sales_state\" widget=\"statusbar\" options=\"{'clickable': 1, 'can_edit': True}\" statusbar_visible=\"pending,find_other_solution,win,loss\" class=\"d-block\"/>\n                    </div>\n                </header>\n\n\n\n                <sheet>\n                    <div class=\"oe_button_box\" name=\"button_box\">\n                        <button name=\"action_view_quotations\" type=\"object\" class=\"oe_stat_button\" icon=\"fa-pencil-square-o\" modifiers=\"{&quot;invisible&quot;: [[&quot;quotation_count&quot;, &quot;=&quot;, 0]]}\">\n                            <field name=\"quotation_count\" widget=\"statinfo\" string=\"Quotations\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        </button>\n                    </div>\n                    <group>\n                        <group>\n                            <field name=\"name\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                            <field name=\"customer_id\" modifiers=\"{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\" can_create=\"true\" can_write=\"true\"/>\n                            <field name=\"carrier_id\" can_create=\"true\" can_write=\"true\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"date\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                            <field name=\"user_id\" options=\"{'can_edit': True}\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;checking&quot;]]]}\" can_create=\"true\" can_write=\"true\"/>\n                            <field name=\"team_id\" can_create=\"true\" can_write=\"true\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"pricing_pic_ids\" widget=\"many2many_tags\" options=\"{'no_create': True, 'can_edit': True}\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;checking&quot;]]]}\" can_create=\"true\" can_write=\"true\"/>\n                            <field name=\"reason\" string=\"Reason No Solution\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;no_solution&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"company_id\" can_create=\"true\" can_write=\"true\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                        </group>\n                        <group>\n                            <field name=\"class_urgent\" modifiers=\"{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"pol_id\" can_create=\"true\" can_write=\"true\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"pod_id\" modifiers=\"{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\" can_create=\"true\" can_write=\"true\"/>\n                            <field name=\"incoterms_id\" modifiers=\"{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\" can_create=\"true\" can_write=\"true\"/>\n                            <field name=\"commodity_id\" modifiers=\"{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"transport_mode_ids\" widget=\"many2many_tags\" options=\"{'no_create': True}\" can_create=\"false\" can_write=\"false\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"door_address\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"type_of_cont\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"transport_term_of_oog_bulk\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"msds_dg_form\" filename=\"msds_dg_form_filename\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"msds_dg_form_filename\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"etd_request_cargo_ready\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"gross_weight\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                            <field name=\"other_request\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                        </group>\n                    </group>\n                </sheet>\n                <div class=\"oe_chatter\">\n                    <field name=\"message_follower_ids\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                    <field name=\"activity_ids\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                    <field name=\"message_ids\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                </div>\n            </form>",
+      "id": 2550,
+      "model": "freight.sales.inquiry"
+    },
+    "search": {
+      "arch": "<search string=\"Sales Inquiry\">\n                <field name=\"name\"/>\n                <field name=\"customer_id\"/>\n                <field name=\"user_id\"/>\n                <field name=\"carrier_id\"/>\n                <field name=\"class_urgent\"/>\n                <field name=\"pol_id\"/>\n                <field name=\"pod_id\"/>\n                <field name=\"door_address\"/>\n                <field name=\"incoterms_id\"/>\n                <field name=\"type_of_cont\"/>\n                <field name=\"transport_term_of_oog_bulk\"/>\n                <field name=\"commodity_id\"/>\n                <field name=\"msds_dg_form\"/>\n                <field name=\"etd_request_cargo_ready\"/>\n                <field name=\"gross_weight\"/>\n                <field name=\"other_request\"/>\n            </search>",
+      "id": 2552,
+      "model": "freight.sales.inquiry"
+    },
+    "kanban": {
+      "arch": "<kanban string=\"Freight Sales Inquiry\"><templates><t t-name=\"kanban-box\"><div t-attf-class=\"oe_kanban_card oe_kanban_global_click\"><div class=\"o_kanban_card_content\"><field name=\"name\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/></div></div></t></templates></kanban>",
+      "id": false,
+      "model": "freight.sales.inquiry"
+    },
+    "pivot": {
+      "arch": "<pivot string=\"Freight Sales Inquiry\"/>",
+      "id": false,
+      "model": "freight.sales.inquiry"
+    },
+    "graph": {
+      "arch": "<graph string=\"Freight Sales Inquiry\"><field name=\"name\"/></graph>",
+      "id": false,
+      "model": "freight.sales.inquiry"
+    }
+  }
+}

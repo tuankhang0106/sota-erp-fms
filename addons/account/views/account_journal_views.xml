@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_journal_tree" model="ir.ui.view">
+        <field name="name">account.journal.tree</field>
+        <field name="model">account.journal</field>
+        <field name="arch" type="xml">
+            <tree string="Account Journal">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="type" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="journal_group_ids" widget="many2many_tags" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="currency_id" optional="hide"/>
+                    <field name="code" optional="show" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="default_account_id" optional="show"/>
+                    <field name="active" optional="hide"/>
+                    <field name="company_id" optional="hide" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    </tree>
+        </field>
+    </record>
+
+    <record id="view_account_journal_form" model="ir.ui.view">
+        <field name="name">account.journal.form</field>
+        <field name="model">account.journal</field>
+        <field name="arch" type="xml">
+            <form string="Account Journal">
+                    <field name="company_id" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="bank_statements_source" modifiers="{&quot;invisible&quot;: true}"/>
+                    <sheet>
+                        <div name="button_box" class="oe_button_box">
+                            <button class="oe_stat_button" type="action" name="290" icon="fa-book" string="Journal Entries" context="{'search_default_journal_id':active_id}"/>
+                        </div>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}"/>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1><field name="name" placeholder="e.g. Customer Invoices" on_change="1" modifiers="{&quot;required&quot;: true}"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                                <field name="type" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+<field name="is_advance_journal"/>
+                            </group>
+                            <group>
+                                <field name="company_id" options="{'no_create': True}" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                                <field name="country_code" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="bank_account" string="Journal Entries">
+                                <group>
+                                    <group string="Accounting Information">
+                                        <field name="default_account_type" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                        <label for="default_account_id" string="Bank Account" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;!=&quot;, &quot;bank&quot;]]}"/>
+                                        <label for="default_account_id" string="Cash Account" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;!=&quot;, &quot;cash&quot;]]}"/>
+                                        <label for="default_account_id" string="Default Income Account" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;!=&quot;, &quot;sale&quot;]]}"/>
+                                        <label for="default_account_id" string="Default Expense Account" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;!=&quot;, &quot;purchase&quot;]]}"/>
+                                        <field name="default_account_id" nolabel="1" options="{'no_quick_create': True}" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;in&quot;, [false, &quot;general&quot;]]], &quot;required&quot;: [&quot;|&quot;, &quot;&amp;&quot;, [&quot;id&quot;, &quot;!=&quot;, false], [&quot;type&quot;, &quot;in&quot;, [&quot;bank&quot;, &quot;cash&quot;]], [&quot;type&quot;, &quot;in&quot;, [&quot;sale&quot;, &quot;purchase&quot;]]]}" can_create="true" can_write="true"/>
+                <field name="reconcile_mode" options="{'no_quick_create': True}" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;not in&quot;, [&quot;bank&quot;, &quot;cash&quot;]]], &quot;required&quot;: [[&quot;type&quot;, &quot;in&quot;, [&quot;bank&quot;, &quot;cash&quot;]]]}"/>
+                <field name="reconcile_aggregate" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;not in&quot;, [&quot;bank&quot;, &quot;cash&quot;]]]}"/>
+                                        <field name="suspense_account_id" options="{'no_quick_create': True}" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;not in&quot;, [&quot;bank&quot;, &quot;cash&quot;]]], &quot;required&quot;: [[&quot;type&quot;, &quot;in&quot;, [&quot;bank&quot;, &quot;cash&quot;]]]}" can_create="true" can_write="true"/>
+                                        <field name="profit_account_id" modifiers="{&quot;invisible&quot;: [&quot;!&quot;, [&quot;type&quot;, &quot;in&quot;, [&quot;cash&quot;, &quot;bank&quot;]]]}" can_create="true" can_write="true"/>
+                                        <field name="loss_account_id" modifiers="{&quot;invisible&quot;: [&quot;!&quot;, [&quot;type&quot;, &quot;in&quot;, [&quot;cash&quot;, &quot;bank&quot;]]]}" can_create="true" can_write="true"/>
+                                        <field name="refund_sequence" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;not in&quot;, [&quot;sale&quot;, &quot;purchase&quot;]]]}"/>
+                                        <field name="payment_sequence" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;not in&quot;, [&quot;bank&quot;, &quot;cash&quot;]]]}"/>
+                                        <field name="code" placeholder="e.g. INV" modifiers="{&quot;required&quot;: true}"/>
+                                        <field name="currency_id" options="{'no_create': True}" on_change="1" can_create="true" can_write="true"/>
+                                    </group>
+                                    <group name="bank_account_number" string="Bank Account Number" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;!=&quot;, &quot;bank&quot;]]}">
+                                        <field name="company_partner_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                        <field name="bank_account_id" string="Account Number" context="{'default_partner_id': company_partner_id}" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="bank_id" modifiers="{&quot;invisible&quot;: [[&quot;bank_account_id&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                                        <field name="bank_statements_source" widget="radio" modifiers="{&quot;required&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;bank&quot;]]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page id="inbound_payment_settings" string="Incoming Payments" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;not in&quot;, [&quot;cash&quot;, &quot;bank&quot;]]]}">
+                                <field name="available_payment_method_ids" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="inbound_payment_method_line_ids" nolabel="1" context="{'default_payment_type': 'inbound'}" on_change="1">
+                                    <tree string="Payment Methods" editable="bottom" decoration-muted="payment_provider_state == 'disabled'">
+                                        <field name="available_payment_method_ids" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                        <field name="payment_type" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                        <field name="company_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="payment_method_id" options="{'no_create': True, 'no_open': True}" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="false" can_write="true"/>
+                                        <field name="name"/>
+                                        <field name="payment_account_id" placeholder="Leave empty to use the default outstanding account" string="Outstanding Receipts accounts" optional="hide" options="{'no_quick_create': True}" can_create="true" can_write="true"/>
+                <field name="payment_provider_state" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="code" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="payment_provider_id" options="{'no_open': True, 'no_create': True}" optional="hide" domain="[('code', '=', code)]" on_change="1" can_create="true" can_write="true"/>
+                <button name="action_open_provider_form" type="object" string="SETUP" class="float-end btn-secondary" modifiers="{&quot;invisible&quot;: [[&quot;payment_provider_id&quot;, &quot;=&quot;, false]]}"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page id="outbound_payment_settings" string="Outgoing Payments" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;not in&quot;, [&quot;cash&quot;, &quot;bank&quot;]]]}">
+                                    <field name="outbound_payment_method_line_ids" nolabel="1" context="{'default_payment_type': 'outbound'}" on_change="1">
+                                        <tree string="Payment Methods" editable="bottom" nolabel="1">
+                                            <field name="available_payment_method_ids" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                            <field name="payment_type" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                            <field name="company_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="payment_method_id" options="{'no_create': True, 'no_open': True}" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="false" can_write="true"/>
+                                            <field name="name"/>
+                                            <field name="payment_account_id" placeholder="Leave empty to use the default outstanding account" string="Outstanding Payments accounts" optional="hide" options="{'no_quick_create': True}" can_create="true" can_write="true"/>
+                                        </tree>
+                                    </field>
+                                    <field name="selected_payment_method_codes" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                    <group name="outgoing_payment"/>
+                            </page>
+                            <page name="advanced_settings" string="Advanced Settings">
+                                <group>
+                                    <group string="Control-Access">
+                                        <div class="text-muted" colspan="2">Keep empty for no control</div>
+                                        <field name="account_control_ids" widget="many2many_tags" options="{'no_create_edit': True}" can_create="true" can_write="true"/>
+                                        <field name="restrict_mode_hash_table" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;in&quot;, [&quot;bank&quot;, &quot;cash&quot;]]]}"/>
+                                    </group>
+                                    <!-- email alias -->
+                                    <group class="oe_read_only" name="group_alias_ro" string="Create Invoices upon Emails" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;type&quot;, &quot;not in&quot;, [&quot;sale&quot;, &quot;purchase&quot;]], [&quot;alias_domain&quot;, &quot;=&quot;, false]]}">
+                                       <field name="alias_id" on_change="1" can_create="true" can_write="true"/>
+                                    </group>
+                                    <group name="group_alias_no_domain" string="Create Invoices upon Emails" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;type&quot;, &quot;not in&quot;, [&quot;sale&quot;, &quot;purchase&quot;]], [&quot;alias_domain&quot;, &quot;!=&quot;, false]]}">
+                                        <div class="content-group" colspan="2">
+                                            <a type="action" name="269" class="btn btn-link" role="button"><i class="fa fa-fw o_button_icon fa-arrow-right"/> Configure Email Servers</a>
+                                        </div>
+                                    </group>
+                                    <group class="oe_edit_only" name="group_alias_edit" string="Create Invoices upon Emails" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;type&quot;, &quot;not in&quot;, [&quot;sale&quot;, &quot;purchase&quot;]], [&quot;alias_domain&quot;, &quot;=&quot;, false]]}">
+                                        <label string="Email Alias" for="alias_name"/>
+                                        <div class="oe_inline" name="edit_alias" style="display: inline;" dir="ltr">
+                                            <field name="alias_name" class="oe_inline"/>@<field name="alias_domain" class="oe_inline" modifiers="{&quot;readonly&quot;: true}"/>
+                                        </div>
+                                    </group>
+                    <group string="Electronic Data Interchange" modifiers="{&quot;invisible&quot;: [[&quot;compatible_edi_ids&quot;, &quot;=&quot;, []]]}">
+                        <field name="compatible_edi_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="edi_format_ids" widget="many2many_checkboxes" can_create="true" can_write="true"/>
+                    </group>
+                                    <!-- email alias end -->
+                                    <group string="Payment Communications" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;!=&quot;, &quot;sale&quot;]]}">
+                                        <field name="invoice_reference_type" modifiers="{&quot;required&quot;: true}"/>
+                                        <field name="invoice_reference_model" modifiers="{&quot;invisible&quot;: [[&quot;invoice_reference_type&quot;, &quot;=&quot;, &quot;none&quot;]], &quot;required&quot;: true}"/>
+                                    </group>
+                                    <group string="Follow Customer Payments" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;!=&quot;, &quot;sale&quot;]]}">
+                                        <field name="sale_activity_type_id" options="{'no_quick_create': True}" can_create="true" can_write="true"/>
+                                        <field name="sale_activity_user_id" options="{'no_quick_create': True}" modifiers="{&quot;invisible&quot;: [[&quot;sale_activity_type_id&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                                        <field name="sale_activity_note" placeholder="e.g. Give a phone call, check with others , ..." modifiers="{&quot;invisible&quot;: [[&quot;sale_activity_type_id&quot;, &quot;=&quot;, false]]}"/>
+                                    </group>
+                                </group>
+                            </page>
+        <page string="Vietnam E-invoice Configuation" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;type&quot;, &quot;!=&quot;, &quot;sale&quot;], [&quot;country_code&quot;, &quot;!=&quot;, &quot;VN&quot;]]}">
+        <group>
+        <field name="einvoice_enable" widget="boolean_button"/>
+<field name="einvoice_serial_id" on_change="1" modifiers="{&quot;required&quot;: [[&quot;einvoice_enable&quot;, &quot;=&quot;, true]]}" can_create="true" can_write="true"/>
+<field name="einvoice_template_id" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;einvoice_template_id&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+<field name="einvoice_type_id" modifiers="{&quot;invisible&quot;: [[&quot;einvoice_type_id&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+<field name="einvoice_provider_id" modifiers="{&quot;invisible&quot;: [[&quot;einvoice_provider_id&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+        </group>
+        <group>
+        <field name="einvoice_send_mail_option"/>
+        </group>
+        </page>
+                        </notebook>
+                    </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_account_journal_search" model="ir.ui.view">
+        <field name="name">account.journal.search</field>
+        <field name="model">account.journal</field>
+        <field name="arch" type="xml">
+            <search string="Search Account Journal">
+                    <field name="name" string="Journal" filter_domain="['|', ('name', 'ilike', self), ('code', 'ilike', self)]"/>
+                    <filter name="dashboard" string="Favorites" domain="[('show_on_dashboard', '=', True)]"/>
+                    <separator/>
+                    <filter name="sales" string="Sales" domain="[('type', '=', 'sale')]"/>
+                    <filter name="purchases" string="Purchases" domain="[('type', '=', 'purchase')]"/>
+                    <filter name="liquidity" string="Liquidity" domain="['|', ('type', '=', 'cash'), ('type', '=', 'bank')]"/>
+                    <filter name="miscellaneous" string="Miscellaneous" domain="[('type', 'not in', ['sale', 'purchase', 'cash', 'bank'])]"/>
+                    <separator/>
+                    <filter name="inactive" string="Archived" domain="[('active', '=', False)]"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="action_account_journal" model="ir.actions.act_window">
+        <field name="name">ACCOUNT JOURNAL</field>
+        <field name="res_model">account.journal</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

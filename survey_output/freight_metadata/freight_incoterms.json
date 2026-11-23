@@ -1,0 +1,98 @@
+{
+  "fields": {
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "code": {
+      "readonly": false,
+      "required": true,
+      "string": "Code",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree>\n                <field name=\"name\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"code\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"active\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n            </tree>",
+      "id": 1455,
+      "model": "freight.incoterms"
+    },
+    "form": {
+      "arch": "<form>\n                <sheet>\n                    <group>\n                        <field name=\"name\" modifiers=\"{&quot;required&quot;: true}\"/>\n                        <field name=\"code\" modifiers=\"{&quot;required&quot;: true}\"/>\n                        <field name=\"active\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                    </group>\n                </sheet>\n            </form>",
+      "id": 1456,
+      "model": "freight.incoterms"
+    },
+    "search": {
+      "arch": "<search>\n<field name=\"name\"/>\n<field name=\"code\"/>\n<filter name=\"ftr_archived\" string=\"Archived\" domain=\"[('active', '=', False)]\"/>\n</search>",
+      "id": 1457,
+      "model": "freight.incoterms"
+    },
+    "kanban": {
+      "arch": "<kanban string=\"Freight Incoterms\"><templates><t t-name=\"kanban-box\"><div t-attf-class=\"oe_kanban_card oe_kanban_global_click\"><div class=\"o_kanban_card_content\"><field name=\"name\" modifiers=\"{&quot;required&quot;: true}\"/></div></div></t></templates></kanban>",
+      "id": false,
+      "model": "freight.incoterms"
+    },
+    "pivot": {
+      "arch": "<pivot string=\"Freight Incoterms\"/>",
+      "id": false,
+      "model": "freight.incoterms"
+    },
+    "graph": {
+      "arch": "<graph string=\"Freight Incoterms\"><field name=\"name\"/></graph>",
+      "id": false,
+      "model": "freight.incoterms"
+    }
+  }
+}

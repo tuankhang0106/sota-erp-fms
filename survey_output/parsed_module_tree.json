@@ -1,0 +1,2646 @@
+[
+  {
+    "id": 74,
+    "name": "Thảo luận",
+    "xmlid": "mail.menu_root_discuss",
+    "actionID": 107,
+    "actionModel": "ir.actions.client",
+    "children": []
+  },
+  {
+    "id": 117,
+    "name": "Lịch",
+    "xmlid": "calendar.mail_menu_calendar",
+    "actionID": 181,
+    "actionModel": "ir.actions.act_window",
+    "children": []
+  },
+  {
+    "id": 164,
+    "name": "Activity Dashboard",
+    "xmlid": "sh_activities_management.sh_activity_dashboard",
+    "actionID": 257,
+    "actionModel": "ir.actions.client",
+    "children": [
+      {
+        "id": 175,
+        "name": "Dashboard",
+        "xmlid": "sh_activities_management.sh_menu_activity_dashboard",
+        "actionID": 257,
+        "actionModel": "ir.actions.client",
+        "children": []
+      },
+      {
+        "id": 169,
+        "name": "Activity",
+        "xmlid": "sh_activities_management.sh_activity",
+        "actionID": 251,
+        "actionModel": "ir.actions.act_window",
+        "children": [
+          {
+            "id": 170,
+            "name": "All Activities",
+            "xmlid": "sh_activities_management.all_activity",
+            "actionID": 251,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 171,
+            "name": "Supervisor Activities",
+            "xmlid": "sh_activities_management.sh_supervisor_activity",
+            "actionID": 254,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 172,
+            "name": "My Activities",
+            "xmlid": "sh_activities_management.sh_my_activity",
+            "actionID": 253,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 174,
+        "name": "Reporting",
+        "xmlid": "sh_activities_management.reporting",
+        "actionID": 252,
+        "actionModel": "ir.actions.act_window",
+        "children": []
+      },
+      {
+        "id": 165,
+        "name": "Configuration",
+        "xmlid": "sh_activities_management.menu_config",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 173,
+            "name": "Activity Tags",
+            "xmlid": "sh_activities_management.sh_activity_tags",
+            "actionID": 255,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 166,
+            "name": "Activity Alarm",
+            "xmlid": "sh_activities_management.sh_activity_alarm_manu",
+            "actionID": 245,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 167,
+            "name": "Settings",
+            "xmlid": "sh_activities_management.menu_config_activity",
+            "actionID": 233,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 309,
+    "name": "Vận chuyển",
+    "xmlid": "sota_freight_crm.menu_freight",
+    "actionID": 638,
+    "actionModel": "ir.actions.act_window",
+    "children": [
+      {
+        "id": 331,
+        "name": "Báo giá",
+        "xmlid": "sota_freight_crm.freight_quotation_menu_parent",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 332,
+            "name": "Báo giá",
+            "xmlid": "sota_freight_crm.freight_quotation_menu",
+            "actionID": 454,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 587,
+        "name": "Dashboard FMS",
+        "xmlid": "",
+        "actionID": 859,
+        "actionModel": "ir.actions.client",
+        "children": []
+      },
+      {
+        "id": 437,
+        "name": "Quản lý Job",
+        "xmlid": "sota_freight_advanced.menu_freight_job_management",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 509,
+            "name": "Quản lý Job",
+            "xmlid": "sota_freight_advanced.freight_job_menu1",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 510,
+                "name": "Job",
+                "xmlid": "sota_freight_advanced.freight_job_menu2",
+                "actionID": 638,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 438,
+            "name": "Quản lý House",
+            "xmlid": "sota_freight_advanced.menu_freight_house_management",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 443,
+                "name": "House Sea B/L",
+                "xmlid": "sota_freight_advanced.freight_shipment_house_menu",
+                "actionID": 624,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 444,
+                "name": "House Air B/L",
+                "xmlid": "sota_freight_advanced.freight_shipment_house_air",
+                "actionID": 625,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 534,
+                "name": "House Cross Border",
+                "xmlid": "sota_freight_advanced_v2.freight_shipment_house_multi_menu",
+                "actionID": 761,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 439,
+            "name": "Quản lý Master",
+            "xmlid": "sota_freight_advanced.menu_freight_master_management",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 445,
+                "name": "Master SEA B/L",
+                "xmlid": "sota_freight_advanced.freight_shipment_sea_master_menu",
+                "actionID": 626,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 446,
+                "name": "Master AIR B/L",
+                "xmlid": "sota_freight_advanced.freight_shipment_air_master_menu",
+                "actionID": 627,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 535,
+                "name": "Master Cross Border",
+                "xmlid": "sota_freight_advanced_v2.freight_shipment_master_multi_menu",
+                "actionID": 762,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 454,
+        "name": "Quản lý thanh toán",
+        "xmlid": "sota_freight_advanced.freight_credit_note_menu",
+        "actionID": 634,
+        "actionModel": "ir.actions.act_window",
+        "children": [
+          {
+            "id": 530,
+            "name": "Credit Note",
+            "xmlid": "sota_freight_advanced.freight_credit_note_submenu",
+            "actionID": 634,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 531,
+            "name": "Bảng tổng hợp công nợ",
+            "xmlid": "sota_freight_advanced.menu_freight_soa_credit",
+            "actionID": 749,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 515,
+        "name": "Debit Note / SOA",
+        "xmlid": "sota_freight_advanced.freight_debit_note_menu_parent",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 455,
+            "name": "Debit Note",
+            "xmlid": "sota_freight_advanced.freight_debit_note_menu",
+            "actionID": 635,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 517,
+            "name": "Bảng tổng hợp công nợ",
+            "xmlid": "sota_freight_advanced.menu_freight_soa_debit",
+            "actionID": 719,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 514,
+        "name": "DC Note / SOA",
+        "xmlid": "sota_freight_advanced.freight_dc_note_menu_parent",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 467,
+            "name": "DC Note",
+            "xmlid": "sota_freight_advanced.freight_dc_note_menu",
+            "actionID": 648,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 516,
+            "name": "Bảng tổng hợp công nợ",
+            "xmlid": "sota_freight_advanced.menu_freight_soa_dc",
+            "actionID": 718,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 596,
+            "name": "SOA Debt Offset",
+            "xmlid": "sota_freight_advanced.menu_freight_soa_debt_offset",
+            "actionID": 875,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 526,
+        "name": "Giá cả",
+        "xmlid": "sota_freight_crm.menu_freight_pricing",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 527,
+            "name": "Bảng giá mua",
+            "xmlid": "sota_freight_crm.menu_freight_purchase_pricing",
+            "actionID": 746,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 529,
+            "name": "Yêu cầu báo giá",
+            "xmlid": "sota_freight_crm.freight_sales_inquiry_menu",
+            "actionID": 748,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 554,
+        "name": "Liên hệ",
+        "xmlid": "sota_freight_crm.menu_freight_contact",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 556,
+            "name": "Đối tác",
+            "xmlid": "sota_freight_crm.menu_freight_partner",
+            "actionID": 436,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 555,
+            "name": "Người phụ trách",
+            "xmlid": "sota_freight_crm.menu_freight_pics",
+            "actionID": 435,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 441,
+        "name": "Báo cáo",
+        "xmlid": "sota_freight_advanced.menu_freight_report",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 468,
+            "name": "Báo cáo hiệu suất",
+            "xmlid": "sota_freight_advanced.freight_performance_report_menu",
+            "actionID": 672,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 469,
+            "name": "Lợi nhuận Job theo ngày thực hiện",
+            "xmlid": "sota_freight_advanced.freight_selling_profit_by_job_perf_date_menu",
+            "actionID": 673,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 602,
+            "name": "Báo cáo quản trị theo lô hàng",
+            "xmlid": "sota_freight_advanced_v2.menu_freight_daily_performance",
+            "actionID": 880,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 594,
+            "name": "Lợi nhuận Job theo ngày TH (mới)",
+            "xmlid": "sota_freight_advanced_v2.menu_job_profit_perf_date_new",
+            "actionID": 868,
+            "actionModel": "ir.actions.client",
+            "children": []
+          },
+          {
+            "id": 613,
+            "name": "Báo cáo chi tiết doanh thu giá vốn",
+            "xmlid": "sota_freight_advanced_v2.menu_freight_dp_detail",
+            "actionID": 902,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 545,
+            "name": "Phân tích P/L theo ngày thực hiện",
+            "xmlid": "sota_freight_advanced_v2.menu_freight_pl_detail_reports",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 546,
+                "name": "P/L theo phòng ban",
+                "xmlid": "sota_freight_advanced_v2.menu_freight_pl_by_ops",
+                "actionID": 763,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 547,
+                "name": "P/L theo nhân viên KD",
+                "xmlid": "sota_freight_advanced_v2.menu_freight_pl_by_salesman",
+                "actionID": 764,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 579,
+                "name": "P/L Snapshots",
+                "xmlid": "sota_freight_advanced_v2.menu_freight_pl_snapshot",
+                "actionID": 840,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 310,
+        "name": "Cấu hình",
+        "xmlid": "sota_freight_crm.menu_freight_configuration",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 335,
+            "name": "Cài đặt",
+            "xmlid": "sota_freight_crm.view_freight_setting_menu",
+            "actionID": 456,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 311,
+            "name": "Nhà vận chuyển",
+            "xmlid": "sota_freight_crm.menu_freight_transportation_carrier",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 315,
+                "name": "Hãng hàng không",
+                "xmlid": "sota_freight_crm.menu_airline",
+                "actionID": 437,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 316,
+                "name": "Hãng vận tải biển",
+                "xmlid": "sota_freight_crm.menu_freight_shipping_line",
+                "actionID": 438,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 325,
+                "name": "Hãng xe",
+                "xmlid": "sota_freight_crm.menu_trucker",
+                "actionID": 447,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 313,
+            "name": "Sản phẩm",
+            "xmlid": "sota_freight_crm.menu_freight_product",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 314,
+                "name": "Dịch vụ Vận tải",
+                "xmlid": "sota_freight_crm.menu_freight_product_service",
+                "actionID": 433,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 597,
+                "name": "Local Charge Vendor",
+                "xmlid": "sota_freight_crm.menu_freight_local_charge",
+                "actionID": 876,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 598,
+                "name": "Local Charge Carrier",
+                "xmlid": "sota_freight_crm.menu_freight_local_charge_carrier",
+                "actionID": 877,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 589,
+            "name": "Cargo & Products",
+            "xmlid": "sota_freight_crm.menu_freight_cargo_products",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 326,
+                "name": "Container/Đơn vị",
+                "xmlid": "sota_freight_crm.menu_freight_unit",
+                "actionID": 448,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 525,
+                "name": "Đơn vị FCL",
+                "xmlid": "sota_freight_crm.menu_freight_fcl_unit",
+                "actionID": 743,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 320,
+                "name": "Kiện hàng",
+                "xmlid": "sota_freight_crm.menu_package",
+                "actionID": 442,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 317,
+                "name": "Hàng hóa",
+                "xmlid": "sota_freight_crm.menu_freight_commodity",
+                "actionID": 439,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 590,
+            "name": "Locations & Routes",
+            "xmlid": "sota_freight_crm.menu_freight_locations",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 322,
+                "name": "Cảng",
+                "xmlid": "sota_freight_crm.menu_port",
+                "actionID": 444,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 327,
+                "name": "Tàu",
+                "xmlid": "sota_freight_crm.menu_freight_vesel",
+                "actionID": 449,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 324,
+                "name": "Loại hình vận chuyển",
+                "xmlid": "sota_freight_crm.menu_freight_transit_type",
+                "actionID": 446,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 591,
+            "name": "Customs",
+            "xmlid": "sota_freight_crm.menu_freight_customs",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 318,
+                "name": "Mã HS",
+                "xmlid": "sota_freight_crm.menu_freight_hs_code",
+                "actionID": 440,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 466,
+                "name": "Mã thủ tục",
+                "xmlid": "sota_freight_advanced.menu_procedure_code_information",
+                "actionID": 647,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 459,
+                "name": "Số quản lý",
+                "xmlid": "sota_freight_advanced.menu_freight_bl_number",
+                "actionID": 639,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 592,
+            "name": "Commercial Terms",
+            "xmlid": "sota_freight_crm.menu_freight_commercial_terms",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 319,
+                "name": "Incoterms",
+                "xmlid": "sota_freight_crm.menu_freight_incoterms",
+                "actionID": 441,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 323,
+                "name": "Điều khoản dịch vụ",
+                "xmlid": "sota_freight_crm.menu_freight_service_terms",
+                "actionID": 445,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 321,
+                "name": "Vai trò đối tác",
+                "xmlid": "sota_freight_crm.menu_freight_party_role",
+                "actionID": 443,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 448,
+                "name": "Nhãn dịch vụ",
+                "xmlid": "sota_freight_advanced.menu_freight_service_tags",
+                "actionID": 629,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 593,
+            "name": "Finance",
+            "xmlid": "sota_freight_crm.menu_freight_finance",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 465,
+                "name": "Bank Information",
+                "xmlid": "sota_freight_advanced.menu_bank_information",
+                "actionID": 646,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 461,
+                "name": "Tài khoản nhà cung cấp",
+                "xmlid": "sota_freight_advanced.vendor_menu",
+                "actionID": 641,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 599,
+                "name": "Banks",
+                "xmlid": "sota_freight_crm.menu_freight_res_bank",
+                "actionID": 61,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 312,
+                "name": "Tiền tệ",
+                "xmlid": "sota_freight_crm.menu_freight_curency_rate",
+                "actionID": 67,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 462,
+                "name": "Hợp đồng nhà cung cấp",
+                "xmlid": "sota_freight_advanced.menu_freight_vendor_contract",
+                "actionID": 642,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 575,
+                "name": "Transfer Cost Config",
+                "xmlid": "sota_freight_advanced_v2.menu_freight_transfer_cost_config",
+                "actionID": 829,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 573,
+                "name": "Quantity Rules",
+                "xmlid": "sota_freight_advanced.menu_freight_qty_rule_global",
+                "actionID": 824,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 603,
+            "name": "Hồ sơ quyền báo cáo quản trị",
+            "xmlid": "sota_freight_advanced_v2.menu_freight_dp_access_profile",
+            "actionID": 881,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 614,
+            "name": "Mã DT / Mã GV",
+            "xmlid": "sota_freight_advanced_v2.menu_freight_dp_account_code",
+            "actionID": 903,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 471,
+            "name": "Trình gộp nhân viên KD",
+            "xmlid": "sota_freight_advanced.wizard_merge_salesman_menu",
+            "actionID": 676,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 552,
+            "name": "Địa chỉ D/O",
+            "xmlid": "sota_freight_advanced_v2.menu_do_address",
+            "actionID": 772,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 582,
+    "name": "My Dashboard",
+    "xmlid": "ks_dashboard_ninja.board_menu_root",
+    "actionID": 843,
+    "actionModel": "ir.actions.client",
+    "children": [
+      {
+        "id": 583,
+        "name": "Configuration",
+        "xmlid": "ks_dashboard_ninja.configuration_menu",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 584,
+            "name": "Dashboards",
+            "xmlid": "ks_dashboard_ninja.dashboard_menu",
+            "actionID": 844,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 585,
+            "name": "Dashboard Layouts",
+            "xmlid": "ks_dashboard_ninja.dashboard_layout_menu",
+            "actionID": 846,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 586,
+            "name": "Import Dashboards",
+            "xmlid": "ks_dashboard_ninja.ks_import_dashboard_menu",
+            "actionID": 852,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 168,
+    "name": "Mass Activities Dynamic Action",
+    "xmlid": "sh_activities_management.sh_activity_management_dynamic_action_action_menu",
+    "actionID": 250,
+    "actionModel": "ir.actions.act_window",
+    "children": []
+  },
+  {
+    "id": 123,
+    "name": "Liên hệ",
+    "xmlid": "contacts.menu_contacts",
+    "actionID": 436,
+    "actionModel": "ir.actions.act_window",
+    "children": [
+      {
+        "id": 124,
+        "name": "Liên hệ",
+        "xmlid": "contacts.res_partner_menu_contacts",
+        "actionID": 436,
+        "actionModel": "ir.actions.act_window",
+        "children": []
+      },
+      {
+        "id": 612,
+        "name": "Người phụ trách",
+        "xmlid": "sota_freight_crm.menu_contacts_freight_pics",
+        "actionID": 435,
+        "actionModel": "ir.actions.act_window",
+        "children": []
+      },
+      {
+        "id": 125,
+        "name": "Cấu hình",
+        "xmlid": "contacts.res_partner_menu_config",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 126,
+            "name": "Thẻ liên hệ",
+            "xmlid": "contacts.menu_partner_category_form",
+            "actionID": 59,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 127,
+            "name": "Danh xưng",
+            "xmlid": "contacts.menu_partner_title_contact",
+            "actionID": 55,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 128,
+            "name": "Ngành nghề ",
+            "xmlid": "contacts.res_partner_industry_menu",
+            "actionID": 60,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 129,
+            "name": "Bản địa hóa",
+            "xmlid": "contacts.menu_localisation",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 130,
+                "name": "Quốc gia",
+                "xmlid": "contacts.menu_country_partner",
+                "actionID": 63,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 132,
+                "name": "Tỉnh/TP/Bang",
+                "xmlid": "contacts.menu_country_state_partner",
+                "actionID": 65,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 131,
+                "name": "Nhóm quốc gia",
+                "xmlid": "contacts.menu_country_group",
+                "actionID": 64,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 345,
+                "name": "Phường/Xã/Thị trấn",
+                "xmlid": "sota_vn_address.menu_action_wards",
+                "actionID": 485,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 133,
+            "name": "Tài khoản ngân hàng",
+            "xmlid": "contacts.menu_config_bank_accounts",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 134,
+                "name": "Ngân hàng",
+                "xmlid": "contacts.menu_action_res_bank_form",
+                "actionID": 61,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 135,
+                "name": "Tài khoản ngân hàng",
+                "xmlid": "contacts.menu_action_res_partner_bank_form",
+                "actionID": 62,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 231,
+    "name": "CRM",
+    "xmlid": "crm.crm_menu_root",
+    "actionID": 450,
+    "actionModel": "ir.actions.act_window",
+    "children": [
+      {
+        "id": 232,
+        "name": "Bán hàng",
+        "xmlid": "crm.crm_menu_sales",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 236,
+            "name": "Khách hàng",
+            "xmlid": "crm.res_partner_menu_customer",
+            "actionID": 450,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 328,
+            "name": "Lead",
+            "xmlid": "crm.res_partner_menu_customer_lead",
+            "actionID": 451,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 234,
+            "name": "Hoạt động của tôi",
+            "xmlid": "crm.crm_lead_menu_my_activities",
+            "actionID": 356,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 333,
+            "name": "Báo giá",
+            "xmlid": "sota_freight_crm.freight_quotation_crm_menu",
+            "actionID": 454,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 235,
+            "name": "Đội ngũ",
+            "xmlid": "crm.sales_team_menu_team_pipeline",
+            "actionID": 229,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 329,
+            "name": "Người phụ trách",
+            "xmlid": "sota_freight_crm.res_partner_menu_pic",
+            "actionID": 452,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 536,
+        "name": "Cước",
+        "xmlid": "sota_freight_advanced_v2.menu_freight_crm",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 537,
+            "name": "Quản lý Job",
+            "xmlid": "sota_freight_advanced_v2.menu_freight_job_management_crm",
+            "actionID": 638,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 538,
+            "name": "Quản lý House",
+            "xmlid": "sota_freight_advanced_v2.menu_freight_house_management_crm",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 539,
+                "name": "House Sea B/L",
+                "xmlid": "sota_freight_advanced_v2.freight_shipment_house_sea_crm",
+                "actionID": 624,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 540,
+                "name": "House Air B/L",
+                "xmlid": "sota_freight_advanced_v2.freight_shipment_house_air_crm",
+                "actionID": 625,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 541,
+            "name": "Bảng giá",
+            "xmlid": "sota_freight_advanced_v2.menu_freight_pricing_crm",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 542,
+                "name": "Bảng giá mua",
+                "xmlid": "sota_freight_advanced_v2.menu_freight_purchase_pricing_crm",
+                "actionID": 746,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 543,
+                "name": "Yêu cầu báo giá",
+                "xmlid": "sota_freight_advanced_v2.freight_sales_inquiry_menu_crm",
+                "actionID": 748,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 330,
+        "name": "Các kỳ KPI",
+        "xmlid": "sota_freight_crm.menu_crm_kpi_period",
+        "actionID": 453,
+        "actionModel": "ir.actions.act_window",
+        "children": []
+      },
+      {
+        "id": 588,
+        "name": "Dashboard CRM",
+        "xmlid": "",
+        "actionID": 860,
+        "actionModel": "ir.actions.client",
+        "children": []
+      },
+      {
+        "id": 238,
+        "name": "Báo cáo",
+        "xmlid": "crm.crm_menu_report",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 601,
+            "name": "Báo cáo kinh doanh",
+            "xmlid": "sota_freight_crm.menu_crm_sales_report",
+            "actionID": 879,
+            "actionModel": "ir.actions.client",
+            "children": []
+          },
+          {
+            "id": 336,
+            "name": "KPI",
+            "xmlid": "sota_freight_crm.crm_kpi_report_menu",
+            "actionID": 457,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 243,
+        "name": "Cấu hình",
+        "xmlid": "crm.crm_menu_config",
+        "actionID": 341,
+        "actionModel": "ir.actions.server",
+        "children": [
+          {
+            "id": 244,
+            "name": "Cài đặt",
+            "xmlid": "crm.crm_config_settings_menu",
+            "actionID": 361,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 246,
+            "name": "Đội ngũ kinh doanh bán hàng",
+            "xmlid": "crm.crm_team_config",
+            "actionID": 230,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 334,
+            "name": "Phòng kinh doanh",
+            "xmlid": "sota_freight_crm.sales_department_config_menu",
+            "actionID": 455,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 600,
+            "name": "Nguồn khách hàng",
+            "xmlid": "sota_freight_crm.res_partner_resource_config_menu",
+            "actionID": 878,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 248,
+            "name": "Loại hoạt động",
+            "xmlid": "crm.crm_team_menu_config_activity_types",
+            "actionID": 232,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 249,
+            "name": "Kế hoạch định kỳ",
+            "xmlid": "crm.crm_recurring_plan_menu_config",
+            "actionID": 349,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 250,
+            "name": "Quy trình",
+            "xmlid": "crm.menu_crm_config_lead",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 252,
+                "name": "Thẻ",
+                "xmlid": "crm.menu_crm_lead_categ",
+                "actionID": 59,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 253,
+                "name": "Lý do mất",
+                "xmlid": "crm.menu_crm_lost_reason",
+                "actionID": 350,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 340,
+            "name": "Tạo lead",
+            "xmlid": "crm_iap_mine.crm_menu_lead_generation",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 341,
+                "name": "Yêu cầu tìm lead",
+                "xmlid": "crm_iap_mine.crm_iap_lead_mining_request_menu_action",
+                "actionID": 472,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 158,
+    "name": "Bảng điều khiển",
+    "xmlid": "spreadsheet_dashboard.spreadsheet_dashboard_menu_root",
+    "actionID": 234,
+    "actionModel": "ir.actions.client",
+    "children": [
+      {
+        "id": 159,
+        "name": "Bảng điều khiển",
+        "xmlid": "spreadsheet_dashboard.spreadsheet_dashboard_menu_dashboard",
+        "actionID": 234,
+        "actionModel": "ir.actions.client",
+        "children": []
+      },
+      {
+        "id": 160,
+        "name": "Cấu hình",
+        "xmlid": "spreadsheet_dashboard.spreadsheet_dashboard_menu_configuration",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 161,
+            "name": "Bảng điều khiển",
+            "xmlid": "spreadsheet_dashboard.spreadsheet_dashboard_menu_configuration_dashboards",
+            "actionID": 235,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 178,
+    "name": "Kế toán",
+    "xmlid": "account.menu_finance",
+    "actionID": 333,
+    "actionModel": "ir.actions.act_window",
+    "children": [
+      {
+        "id": 179,
+        "name": "Bảng thông tin",
+        "xmlid": "account.menu_board_journal_1",
+        "actionID": 333,
+        "actionModel": "ir.actions.act_window",
+        "children": []
+      },
+      {
+        "id": 180,
+        "name": "Khách hàng",
+        "xmlid": "account.menu_finance_receivables",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 181,
+            "name": "Hóa đơn",
+            "xmlid": "account.menu_action_move_out_invoice_type",
+            "actionID": 300,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 182,
+            "name": "Hóa đơn điều chỉnh",
+            "xmlid": "account.menu_action_move_out_refund_type",
+            "actionID": 301,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 183,
+            "name": "Nhận hàng",
+            "xmlid": "account.menu_action_move_out_receipt_type",
+            "actionID": 304,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 548,
+            "name": "Giấy báo có",
+            "xmlid": "sota_freight_advanced_v2.menu_action_account_payments_receivable_bank",
+            "actionID": 768,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 549,
+            "name": "Phiếu thu",
+            "xmlid": "sota_freight_advanced_v2.menu_action_account_payments_receivable_cash",
+            "actionID": 769,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 576,
+            "name": "Luân chuyển nội bộ (Mua bán ngoại tệ)",
+            "xmlid": "sota_freight_advanced_v2.menu_action_account_payments_internal_transfer_receivable",
+            "actionID": 834,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 185,
+            "name": "Sản phẩm",
+            "xmlid": "account.product_product_menu_sellable",
+            "actionID": 322,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 186,
+            "name": "Khách hàng",
+            "xmlid": "account.menu_account_customer",
+            "actionID": 331,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 187,
+        "name": "Nhà cung cấp",
+        "xmlid": "account.menu_finance_payables",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 188,
+            "name": "Hoá đơn",
+            "xmlid": "account.menu_action_move_in_invoice_type",
+            "actionID": 302,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 189,
+            "name": "Hoàn tiền",
+            "xmlid": "account.menu_action_move_in_refund_type",
+            "actionID": 303,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 190,
+            "name": "Nhận hàng",
+            "xmlid": "account.menu_action_move_in_receipt_type",
+            "actionID": 305,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 550,
+            "name": "Giấy báo nợ",
+            "xmlid": "sota_freight_advanced_v2.menu_action_account_payments_payable_bank",
+            "actionID": 770,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 551,
+            "name": "Phiếu chi",
+            "xmlid": "sota_freight_advanced_v2.menu_action_account_payments_payable_cash",
+            "actionID": 771,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 306,
+            "name": "Chi phí nhân viên",
+            "xmlid": "hr_expense.menu_hr_expense_account_employee_expenses",
+            "actionID": 425,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 577,
+            "name": "Luân chuyển nội bộ (Mua bán ngoại tệ)",
+            "xmlid": "sota_freight_advanced_v2.menu_action_account_payments_internal_transfer_payable",
+            "actionID": 834,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 567,
+            "name": "Hóa đơn đầu vào (GDT)",
+            "xmlid": "sota_sync_einvoice_bill.menu_gdt_einvoice_bill",
+            "actionID": 800,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 192,
+            "name": "Sản phẩm",
+            "xmlid": "account.product_product_menu_purchasable",
+            "actionID": 323,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 193,
+            "name": "Nhà cung cấp",
+            "xmlid": "account.menu_account_supplier",
+            "actionID": 332,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 194,
+        "name": "Kế toán",
+        "xmlid": "account.menu_finance_entries",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 195,
+            "name": "Các sổ nhật ký",
+            "xmlid": "account.menu_finance_entries_accounting_miscellaneous",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 196,
+                "name": "Bút toán phát sinh",
+                "xmlid": "account.menu_action_move_journal_line_form",
+                "actionID": 299,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 197,
+                "name": "Chi tiết bút toán",
+                "xmlid": "account.menu_action_account_moves_all",
+                "actionID": 298,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 198,
+            "name": "Quản lý",
+            "xmlid": "account.menu_finance_entries_management",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 571,
+                "name": "Kết chuyển số dư tài khoản",
+                "xmlid": "sota_account_closing_entry_forward.account_balance_carry_forward_menu",
+                "actionID": 807,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 199,
+                "name": "Bút toán phát sinh quản trị",
+                "xmlid": "account.menu_action_analytic_lines_tree",
+                "actionID": 173,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 559,
+                "name": "Tài sản",
+                "xmlid": "sota_account_asset.menu_action_account_asset_asset",
+                "actionID": 781,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 201,
+            "name": "Tác vụ",
+            "xmlid": "account.menu_finance_entries_actions",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 572,
+                "name": "Reconcile",
+                "xmlid": "account_reconcile_oca.account_account_reconcile_menu",
+                "actionID": 814,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 532,
+                "name": "Lock Dates",
+                "xmlid": "om_fiscal_year.menu_action_change_lock_date",
+                "actionID": 751,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 574,
+            "name": "Transfer Service Cost",
+            "xmlid": "sota_freight_advanced_v2.menu_freight_transfer_service_cost",
+            "actionID": 828,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 202,
+        "name": "Báo cáo",
+        "xmlid": "account.menu_finance_reports",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 205,
+            "name": "Báo cáo sao kê",
+            "xmlid": "account.account_reports_legal_statements_menu",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 349,
+                "name": "Bảng cân đối kế toán",
+                "xmlid": "to_account_reports.balance_sheet_client_menu",
+                "actionID": 487,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 350,
+                "name": "Lãi và lỗ",
+                "xmlid": "to_account_reports.profit_and_loss_client_menu",
+                "actionID": 488,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 351,
+                "name": "Báo cáo lưu chuyển tiền tệ",
+                "xmlid": "to_account_reports.cash_flow_client_menu",
+                "actionID": 489,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 352,
+                "name": "Bảng tóm tắt Hoạt động",
+                "xmlid": "to_account_reports.executive_summary_client_menu",
+                "actionID": 490,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 353,
+                "name": "Báo cáo thuế",
+                "xmlid": "to_account_reports.tax_report_client_menu",
+                "actionID": 491,
+                "actionModel": "ir.actions.client",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 346,
+            "name": "Báo cáo kiểm toán",
+            "xmlid": "to_account_reports.audit_reports_root_menu",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 354,
+                "name": "Sổ cái",
+                "xmlid": "to_account_reports.general_ledger_client_menu",
+                "actionID": 492,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 355,
+                "name": "Bảng cân đối phát sinh",
+                "xmlid": "to_account_reports.trial_balance_client_menu",
+                "actionID": 493,
+                "actionModel": "ir.actions.client",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 344,
+            "name": "Báo cáo kế toán Việt Nam",
+            "xmlid": "l10n_vn_viin.account_reports_vn_menu",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 360,
+                "name": "Sổ chi tiết tài khoản (S38-DN)",
+                "xmlid": "l10n_vn_viin_account_reports.l10n_vn_s38dn_menu",
+                "actionID": 502,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 361,
+                "name": "Sổ nhật ký chung (S03a-DN)",
+                "xmlid": "l10n_vn_viin_account_reports.l10n_vn_s03adn_menu",
+                "actionID": 503,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 362,
+                "name": "Sổ cái (S03b-DN)",
+                "xmlid": "l10n_vn_viin_account_reports.l10n_vn_s03bdn_menu",
+                "actionID": 504,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 363,
+                "name": "Sổ quỹ tiền mặt (S07-DN)",
+                "xmlid": "l10n_vn_viin_account_reports.l10n_vn_s07dn_menu",
+                "actionID": 505,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 364,
+                "name": "Sổ tiền gửi ngân hàng (S08-DN)",
+                "xmlid": "l10n_vn_viin_account_reports.l10n_vn_s08dn_menu",
+                "actionID": 506,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 347,
+            "name": "Báo cáo đối tác",
+            "xmlid": "to_account_reports.partner_reports_root_menu",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 356,
+                "name": "Sổ cái đối tác",
+                "xmlid": "to_account_reports.partner_ledger_client_menu",
+                "actionID": 494,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 610,
+                "name": "Chi tiết công nợ phải thu theo hóa đơn",
+                "xmlid": "sota_freight_advanced_v2.menu_freight_ar_invoice_detail",
+                "actionID": 887,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 611,
+                "name": "Phân tích công nợ phải thu",
+                "xmlid": "sota_freight_advanced_v2.menu_freight_ar_invoice_line",
+                "actionID": 888,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 357,
+                "name": "Tuổi nợ phải thu",
+                "xmlid": "to_account_reports.aged_receivable_client_menu",
+                "actionID": 495,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 358,
+                "name": "Tuổi nợ phải trả",
+                "xmlid": "to_account_reports.aged_payable_client_menu",
+                "actionID": 496,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 523,
+                "name": "Sổ Công Nợ một Khách hàng/Nhà cung cấp",
+                "xmlid": "to_account_reports.menu_single_partner_ledger_report",
+                "actionID": 741,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 524,
+                "name": "Sổ Công Nợ Theo Tài Khoản",
+                "xmlid": "to_account_reports.menu_account_based_partner_ledger_report",
+                "actionID": 742,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 595,
+                "name": "Công Nợ Phải Thu - Phải Trả",
+                "xmlid": "sota_freight_advanced.menu_debt_ar_ap_report",
+                "actionID": 869,
+                "actionModel": "ir.actions.client",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 203,
+            "name": "Quản lý",
+            "xmlid": "account.account_reports_management_menu",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 204,
+                "name": "Phân tích Hoá đơn",
+                "xmlid": "account.menu_action_account_invoice_report_all",
+                "actionID": 325,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 553,
+                "name": "Daily Cash Flow",
+                "xmlid": "to_account_reports.daily_cash_flow_client_menu",
+                "actionID": 773,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 337,
+                "name": "Phân tích kết chuyển / phân bổ",
+                "xmlid": "viin_account.menu_account_transfer_allocation",
+                "actionID": 466,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 560,
+                "name": "Tài sản",
+                "xmlid": "sota_account_asset.menu_action_asset_asset_report",
+                "actionID": 782,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 561,
+                "name": "Tài sản cố định",
+                "xmlid": "sota_account_asset.menu_action_fixed_asset_report",
+                "actionID": 787,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 359,
+            "name": "Bảng kê hóa đơn",
+            "xmlid": "l10n_vn_viin_account_reports.invoice_declaration_vn_statements_menu",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 365,
+                "name": "Bảng kê hóa đơn, chứng từ bán ra (01 -1/GTGT)",
+                "xmlid": "l10n_vn_viin_account_reports.l10n_vn_c119_01gtgt_menu",
+                "actionID": 892,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 366,
+                "name": "Bảng kê hóa đơn, chứng từ mua vào (01 - 2/GTGT)",
+                "xmlid": "l10n_vn_viin_account_reports.l10n_vn_c119_02gtgt_menu",
+                "actionID": 893,
+                "actionModel": "ir.actions.client",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 604,
+            "name": "Báo cáo kế toán Việt Nam - xem trước",
+            "xmlid": "to_account_reports.vn_accounting_reports_preview_root_menu",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 605,
+                "name": "Sổ nhật ký chung (S03a-DN)",
+                "xmlid": "to_account_reports.general_journal_client_menu",
+                "actionID": 882,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 606,
+                "name": "Sổ cái (S03b-DN)",
+                "xmlid": "to_account_reports.ledger_report_client_menu",
+                "actionID": 883,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 607,
+                "name": "Sổ quỹ tiền mặt (S07-DN)",
+                "xmlid": "to_account_reports.cash_book_client_menu",
+                "actionID": 884,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 608,
+                "name": "Sổ tiền gửi ngân hàng (S08-DN)",
+                "xmlid": "to_account_reports.bank_deposit_client_menu",
+                "actionID": 885,
+                "actionModel": "ir.actions.client",
+                "children": []
+              },
+              {
+                "id": 609,
+                "name": "Sổ chi tiết tài khoản (S38-DN)",
+                "xmlid": "to_account_reports.account_detail_sheet_client_menu",
+                "actionID": 886,
+                "actionModel": "ir.actions.client",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 206,
+        "name": "Cấu hình",
+        "xmlid": "account.menu_finance_configuration",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 207,
+            "name": "Thiết lập",
+            "xmlid": "account.menu_account_config",
+            "actionID": 328,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 208,
+            "name": "Lên hóa đơn",
+            "xmlid": "account.account_invoicing_menu",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 209,
+                "name": "Các điều khoản thanh toán",
+                "xmlid": "account.menu_action_payment_term_form",
+                "actionID": 318,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 210,
+                "name": "Điều khoản thương mại",
+                "xmlid": "account.menu_action_incoterm_open",
+                "actionID": 337,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 211,
+            "name": "Ngân hàng",
+            "xmlid": "account.account_banks_menu",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 212,
+                "name": "Thêm tài khoản ngân hàng",
+                "xmlid": "account.menu_action_account_bank_journal_form",
+                "actionID": 320,
+                "actionModel": "ir.actions.server",
+                "children": []
+              },
+              {
+                "id": 213,
+                "name": "Đối tượng đối soát",
+                "xmlid": "account.action_account_reconcile_model_menu",
+                "actionID": 315,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 214,
+            "name": "Kế toán",
+            "xmlid": "account.account_account_menu",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 215,
+                "name": "Hệ thống tài khoản",
+                "xmlid": "account.menu_action_account_form",
+                "actionID": 309,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 216,
+                "name": "Thuế",
+                "xmlid": "account.menu_action_tax_form",
+                "actionID": 316,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 217,
+                "name": "Các sổ nhật ký",
+                "xmlid": "account.menu_action_account_journal_form",
+                "actionID": 311,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 219,
+                "name": "Tiền tệ",
+                "xmlid": "account.menu_action_currency_form",
+                "actionID": 67,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 220,
+                "name": "Vị thế tài chính",
+                "xmlid": "account.menu_action_account_fiscal_position_form",
+                "actionID": 330,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 221,
+                "name": "Nhóm sổ nhật ký",
+                "xmlid": "account.menu_action_account_journal_group_list",
+                "actionID": 312,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 223,
+            "name": "Thanh toán",
+            "xmlid": "account.root_payment_menu",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 293,
+                "name": "Các nhà cung cấp thanh toán",
+                "xmlid": "account_payment.payment_provider_menu",
+                "actionID": 264,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 224,
+            "name": "Quản lý",
+            "xmlid": "account.account_management_menu",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 225,
+                "name": "Nhóm sản phẩm",
+                "xmlid": "account.menu_product_product_categories",
+                "actionID": 215,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 226,
+                "name": "Làm tròn tiền",
+                "xmlid": "account.menu_action_rounding_form_view",
+                "actionID": 326,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 558,
+                "name": "Nhóm Tài sản",
+                "xmlid": "sota_account_asset.account_asset_category_purchase_menu",
+                "actionID": 780,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 570,
+                "name": "Các quy tắc kết chuyển",
+                "xmlid": "sota_account_closing_entry_forward.account_balance_carry_forward_rule_menu",
+                "actionID": 806,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 562,
+            "name": "Vietnam E-invoice",
+            "xmlid": "sota_vn_edi.menu_vn_einvoice_root",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 563,
+                "name": "E-Invoice Provider",
+                "xmlid": "sota_vn_edi.menu_einvoice_provider",
+                "actionID": 794,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 564,
+                "name": "E-Invoice Serial",
+                "xmlid": "sota_vn_edi.menu_einvoice_serial",
+                "actionID": 795,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 566,
+                "name": "E-Invoice Template",
+                "xmlid": "sota_vn_edi.menu_einvoice_template",
+                "actionID": 797,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 565,
+                "name": "E-Invoice Type",
+                "xmlid": "sota_vn_edi.menu_einvoice_type",
+                "actionID": 796,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 227,
+            "name": "Kế toán phân tích",
+            "xmlid": "account.menu_analytic_accounting",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 228,
+                "name": "Mô hình phân bổ phân tích",
+                "xmlid": "account.menu_analytic__distribution_model",
+                "actionID": 177,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 229,
+                "name": "Các tài khoản phân tích",
+                "xmlid": "account.account_analytic_def_account",
+                "actionID": 175,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 230,
+                "name": "Kế hoạch phân tích",
+                "xmlid": "account.account_analytic_plan_menu",
+                "actionID": 176,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 338,
+                "name": "Thẻ TK quản trị",
+                "xmlid": "viin_analytic_tag.account_analytic_tag_menu",
+                "actionID": 467,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 255,
+    "name": "Email Marketing",
+    "xmlid": "mass_mailing.mass_mailing_menu_root",
+    "actionID": 385,
+    "actionModel": "ir.actions.act_window",
+    "children": [
+      {
+        "id": 256,
+        "name": "Mailings",
+        "xmlid": "mass_mailing.mass_mailing_menu",
+        "actionID": 385,
+        "actionModel": "ir.actions.act_window",
+        "children": []
+      },
+      {
+        "id": 257,
+        "name": "Danh sách liên hệ",
+        "xmlid": "mass_mailing.mass_mailing_mailing_list_menu",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 258,
+            "name": "Danh sách liên hệ",
+            "xmlid": "mass_mailing.menu_email_mass_mailing_lists",
+            "actionID": 384,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 259,
+            "name": "Liên hệ của danh sách liên hệ",
+            "xmlid": "mass_mailing.menu_email_mass_mailing_contacts",
+            "actionID": 383,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 260,
+        "name": "Chiến dịch",
+        "xmlid": "mass_mailing.menu_email_campaigns",
+        "actionID": 390,
+        "actionModel": "ir.actions.act_window",
+        "children": []
+      },
+      {
+        "id": 261,
+        "name": "Báo cáo",
+        "xmlid": "mass_mailing.menu_mass_mailing_report",
+        "actionID": 379,
+        "actionModel": "ir.actions.act_window",
+        "children": []
+      },
+      {
+        "id": 262,
+        "name": "Cấu hình",
+        "xmlid": "mass_mailing.mass_mailing_configuration",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 263,
+            "name": "Thiết lập",
+            "xmlid": "mass_mailing.menu_mass_mailing_global_settings",
+            "actionID": 389,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 264,
+            "name": "Các giai đoạn của chiến dịch",
+            "xmlid": "mass_mailing.menu_view_mass_mailing_stages",
+            "actionID": 170,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 265,
+            "name": "Thẻ chiến dịch",
+            "xmlid": "mass_mailing.mass_mailing_tag_menu",
+            "actionID": 171,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 266,
+            "name": "Kiểm soát đường dẫn",
+            "xmlid": "mass_mailing.link_tracker_menu_mass_mailing",
+            "actionID": 205,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 267,
+            "name": "Địa chỉ email bị liệt vào danh sách đen",
+            "xmlid": "mass_mailing.mail_blacklist_mm_menu",
+            "actionID": 123,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 268,
+            "name": "Bộ lọc yêu thích",
+            "xmlid": "mass_mailing.mailing_filter_menu_action",
+            "actionID": 380,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 136,
+    "name": "Nhân viên",
+    "xmlid": "hr.menu_hr_root",
+    "actionID": 193,
+    "actionModel": "ir.actions.act_window",
+    "children": [
+      {
+        "id": 138,
+        "name": "Nhân viên",
+        "xmlid": "hr.menu_hr_employee_payroll",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 139,
+            "name": "Nhân viên",
+            "xmlid": "hr.menu_hr_employee_user",
+            "actionID": 193,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 162,
+            "name": "Hợp đồng",
+            "xmlid": "hr_contract.hr_menu_contract_history",
+            "actionID": 238,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 146,
+        "name": "Phòng/Ban",
+        "xmlid": "hr.menu_hr_department_kanban",
+        "actionID": 198,
+        "actionModel": "ir.actions.act_window",
+        "children": []
+      },
+      {
+        "id": 143,
+        "name": "Cấu hình",
+        "xmlid": "hr.menu_human_resources_configuration",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 155,
+            "name": "Thiết lập",
+            "xmlid": "hr.hr_menu_configuration",
+            "actionID": 201,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 144,
+            "name": "Nhân viên",
+            "xmlid": "hr.menu_config_employee",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 145,
+                "name": "Phòng/Ban",
+                "xmlid": "hr.menu_hr_department_tree",
+                "actionID": 199,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 147,
+                "name": "Vị trí làm việc",
+                "xmlid": "hr.menu_hr_work_location_tree",
+                "actionID": 200,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 148,
+                "name": "Lý do nghỉ việc",
+                "xmlid": "hr.menu_hr_departure_reason_tree",
+                "actionID": 185,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 150,
+            "name": "Tuyển dụng",
+            "xmlid": "hr.menu_config_recruitment",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 151,
+                "name": "Vị trí công việc",
+                "xmlid": "hr.menu_view_hr_job",
+                "actionID": 187,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              },
+              {
+                "id": 152,
+                "name": "Loại việc làm",
+                "xmlid": "hr.menu_view_hr_contract_type",
+                "actionID": 186,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 153,
+            "name": "Kế hoạch hoạt động",
+            "xmlid": "hr.menu_config_plan",
+            "actionID": false,
+            "actionModel": false,
+            "children": [
+              {
+                "id": 154,
+                "name": "Xử lý vào làm/thôi việc",
+                "xmlid": "hr.menu_config_plan_plan",
+                "actionID": 188,
+                "actionModel": "ir.actions.act_window",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 495,
+    "name": "Tạm ứng Nhân viên",
+    "xmlid": "to_hr_employee_advance.employee_advance_menu_root",
+    "actionID": 704,
+    "actionModel": "ir.actions.act_window",
+    "children": [
+      {
+        "id": 496,
+        "name": "Đề nghị/Khai báo",
+        "xmlid": "to_hr_employee_advance.employee_advance_menu",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 499,
+            "name": "Đề nghị/Khai báo",
+            "xmlid": "to_hr_employee_advance.employee_advance_menu_request",
+            "actionID": 704,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 500,
+            "name": "Chờ duyệt",
+            "xmlid": "to_hr_employee_advance.employee_advance_menu_to_approve",
+            "actionID": 705,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 501,
+            "name": "Đã phê duyệt",
+            "xmlid": "to_hr_employee_advance.employee_advance_menu_approved",
+            "actionID": 706,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 502,
+            "name": "Đã thanh toán",
+            "xmlid": "to_hr_employee_advance.employee_advance_menu_paid",
+            "actionID": 707,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 503,
+            "name": "Đã đối soát",
+            "xmlid": "to_hr_employee_advance.employee_advance_menu_reconciled",
+            "actionID": 708,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 497,
+        "name": "Kế toán",
+        "xmlid": "to_hr_employee_advance.employee_advance_menu_accounting",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 505,
+            "name": "Đối soát tạm ứng",
+            "xmlid": "to_hr_employee_advance.employee_advance_reconcile_menu",
+            "actionID": 710,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 498,
+            "name": "Đối soát hàng loạt",
+            "xmlid": "to_hr_employee_advance.employee_advance_reconcile_batch_menu",
+            "actionID": 703,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 504,
+        "name": "Báo cáo",
+        "xmlid": "to_hr_employee_advance.employee_advance_menu_report",
+        "actionID": 709,
+        "actionModel": "ir.actions.act_window",
+        "children": []
+      },
+      {
+        "id": 506,
+        "name": "Cấu hình",
+        "xmlid": "to_hr_employee_advance.employee_advance_menu_configuration",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 507,
+            "name": "Thiết lập",
+            "xmlid": "to_hr_employee_advance.employee_advance_menu_general_settings",
+            "actionID": 711,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 297,
+    "name": "Chi phí",
+    "xmlid": "hr_expense.menu_hr_expense_root",
+    "actionID": 421,
+    "actionModel": "ir.actions.act_window",
+    "children": [
+      {
+        "id": 298,
+        "name": "Chi phí của tôi",
+        "xmlid": "hr_expense.menu_hr_expense_my_expenses",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 299,
+            "name": "Chi phí của tôi",
+            "xmlid": "hr_expense.menu_hr_expense_my_expenses_all",
+            "actionID": 421,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 300,
+            "name": "Kê khai của Tôi",
+            "xmlid": "hr_expense.menu_hr_expense_sheet_my_reports",
+            "actionID": 423,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 301,
+        "name": "Kê khai chi phí",
+        "xmlid": "hr_expense.menu_hr_expense_report",
+        "actionID": 424,
+        "actionModel": "ir.actions.act_window",
+        "children": []
+      },
+      {
+        "id": 302,
+        "name": "Báo cáo",
+        "xmlid": "hr_expense.menu_hr_expense_reports",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 303,
+            "name": "Phân tích Chi phí",
+            "xmlid": "hr_expense.menu_hr_expense_all_expenses",
+            "actionID": 420,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 304,
+        "name": "Cấu hình",
+        "xmlid": "hr_expense.menu_hr_expense_configuration",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 308,
+            "name": "Thiết lập",
+            "xmlid": "hr_expense.menu_hr_expense_global_settings",
+            "actionID": 431,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 305,
+            "name": "Danh mục chi phí",
+            "xmlid": "hr_expense.menu_hr_product",
+            "actionID": 422,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Thiết lập",
+    "xmlid": "base.menu_administration",
+    "actionID": 85,
+    "actionModel": "ir.actions.act_window",
+    "children": [
+      {
+        "id": 70,
+        "name": "Thiết lập chung",
+        "xmlid": "base_setup.menu_config",
+        "actionID": 85,
+        "actionModel": "ir.actions.act_window",
+        "children": []
+      },
+      {
+        "id": 7,
+        "name": "Người dùng & Công ty",
+        "xmlid": "base.menu_users",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 64,
+            "name": "Người dùng",
+            "xmlid": "base.menu_action_res_users",
+            "actionID": 70,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 61,
+            "name": "Công ty",
+            "xmlid": "base.menu_action_res_company_form",
+            "actionID": 53,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 69,
+            "name": "Login Details",
+            "xmlid": "login_user_detail.menu_1_list",
+            "actionID": 79,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          },
+          {
+            "id": 106,
+            "name": "Roles",
+            "xmlid": "base_user_role.menu_action_res_users_role_tree",
+            "actionID": 154,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 581,
+        "name": "System Usage",
+        "xmlid": "sota_system_usage.menu_system_usage",
+        "actionID": false,
+        "actionModel": false,
+        "children": [
+          {
+            "id": 580,
+            "name": "OCR Usage Log",
+            "xmlid": "sota_freight_advanced.menu_freight_ocr_log",
+            "actionID": 841,
+            "actionModel": "ir.actions.act_window",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

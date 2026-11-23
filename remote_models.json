@@ -1,0 +1,3770 @@
+[
+  {
+    "id": 466,
+    "model": "account.account",
+    "name": "Account",
+    "modules": "account, l10n_multilang, l10n_vn_viin, spreadsheet_account, viin_account"
+  },
+  {
+    "id": 385,
+    "model": "account.analytic.account",
+    "name": "Analytic Account",
+    "modules": "account, analytic, hr_expense, l10n_multilang, viin_hr_account"
+  },
+  {
+    "id": 1414,
+    "model": "account.asset.category",
+    "name": "Asset Category",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 1413,
+    "model": "account.asset.asset",
+    "name": "Asset/Revenue Recognition",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 1491,
+    "model": "balance.carry.forward",
+    "name": "Balance Carry Forward",
+    "modules": "sota_account_closing_entry_forward, sota_account_closing_entry_forward_flag"
+  },
+  {
+    "id": 88,
+    "model": "res.partner.bank",
+    "name": "Bank Accounts",
+    "modules": "account, account_qr_code_sepa, base, base_iban, hr"
+  },
+  {
+    "id": 391,
+    "model": "calendar.event",
+    "name": "Calendar Event",
+    "modules": "calendar, calendar_sms, crm"
+  },
+  {
+    "id": 94,
+    "model": "res.company",
+    "name": "Companies",
+    "modules": "account, account_reconcile_oca, base, hr, hr_expense, l10n_vn_viin, mail, mass_mailing, om_fiscal_year, partner_autocomplete, payment, product, resource, sh_activities_management, sh_activity_base, snailmail, snailmail_account, social_media, sota_account_asset, sota_account_closing_entry_forward, sota_account_closing_entry_forward_l10n_vn, sota_currency_rate_live, sota_freight_advanced, sota_freight_advanced_v2, sota_freight_crm, sota_rebranding, sota_sync_einvoice_bill, sota_vn_address, sota_vn_edi, spreadsheet_account, to_base, to_hr_employee_advance, to_hr_expense, viin_account, viin_hr_account, web"
+  },
+  {
+    "id": 85,
+    "model": "res.partner",
+    "name": "Contact",
+    "modules": "account, auth_signup, base, base_geolocalize, bus, calendar, crm, hr, mail, mass_mailing, partner_autocomplete, payment, phone_validation, portal, portalink_freight_advanced, privacy_lookup, product, sales_team, sms, snailmail, sota_freight_advanced, sota_freight_advanced_v2, sota_freight_crm, sota_sync_einvoice_bill, sota_vn_address, sota_vn_edi, to_account_reports, to_base, viin_account, viin_hr"
+  },
+  {
+    "id": 436,
+    "model": "hr.contract",
+    "name": "Contract",
+    "modules": "hr_contract"
+  },
+  {
+    "id": 402,
+    "model": "hr.department",
+    "name": "Department",
+    "modules": "hr, hr_expense, sota_freight_advanced_v2, viin_hr, viin_hr_account"
+  },
+  {
+    "id": 172,
+    "model": "mail.channel",
+    "name": "Discussion Channel",
+    "modules": "hr, mail, mail_bot"
+  },
+  {
+    "id": 1448,
+    "model": "einvoice.provider",
+    "name": "Einvoice Provider",
+    "modules": "sota_vn_edi"
+  },
+  {
+    "id": 1450,
+    "model": "einvoice.serial",
+    "name": "Einvoice Serial",
+    "modules": "sota_vn_edi"
+  },
+  {
+    "id": 1449,
+    "model": "einvoice.template",
+    "name": "Einvoice Template",
+    "modules": "sota_vn_edi"
+  },
+  {
+    "id": 153,
+    "model": "mail.thread.cc",
+    "name": "Email CC management",
+    "modules": "mail"
+  },
+  {
+    "id": 151,
+    "model": "mail.thread",
+    "name": "Email Thread",
+    "modules": "account, mail, mail_bot, mass_mailing, portal, sms, snailmail, sota_freight_advanced, to_base, to_mail_notif_and_email"
+  },
+  {
+    "id": 399,
+    "model": "hr.employee",
+    "name": "Employee",
+    "modules": "hr, hr_contract, hr_expense, hr_org_chart, sota_freight_advanced, sota_freight_advanced_v2, to_hr_employee_advance, viin_hr, viin_hr_account"
+  },
+  {
+    "id": 578,
+    "model": "hr.expense",
+    "name": "Expense",
+    "modules": "hr_expense, portalink_freight_advanced, sota_freight_advanced, sota_freight_advanced_v2, to_hr_expense"
+  },
+  {
+    "id": 579,
+    "model": "hr.expense.sheet",
+    "name": "Expense Report",
+    "modules": "hr_expense, sota_freight_advanced, sota_freight_advanced_v2, to_hr_expense"
+  },
+  {
+    "id": 902,
+    "model": "freight.booking.line",
+    "name": "Freight Booking Line",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 948,
+    "model": "freight.credit.note",
+    "name": "Freight Credit Note",
+    "modules": "portalink_freight_advanced, sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 950,
+    "model": "freight.dc.note",
+    "name": "Freight DC Note",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 946,
+    "model": "freight.debit.note",
+    "name": "Freight Debit Note",
+    "modules": "portalink_freight_advanced, sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 934,
+    "model": "freight.document.line.buying",
+    "name": "Freight Document Line Buying",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 1072,
+    "model": "freight.document.line.pay.on.behalf",
+    "name": "Freight Document Pay On Behalf Line",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 952,
+    "model": "freight.job",
+    "name": "Freight Job",
+    "modules": "portalink_freight_advanced, sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 991,
+    "model": "freight.local.charge",
+    "name": "Freight Local Charge",
+    "modules": "sota_freight_advanced, sota_freight_crm"
+  },
+  {
+    "id": 901,
+    "model": "freight.booking",
+    "name": "Freight Order",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 994,
+    "model": "freight.booking.external",
+    "name": "Freight Order External",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 936,
+    "model": "freight.purchase.pricing",
+    "name": "Freight Purchase Pricing",
+    "modules": "portalink_freight_advanced, sota_freight_advanced, sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 592,
+    "model": "freight.quotation",
+    "name": "Freight Quotation",
+    "modules": "portalink_freight_advanced, sota_freight_advanced, sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 596,
+    "model": "freight.quotation.template",
+    "name": "Freight Quotation Template",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 1002,
+    "model": "freight.sales.inquiry",
+    "name": "Freight Sales Inquiry",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 913,
+    "model": "freight.shipment",
+    "name": "Freight Shipment",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 914,
+    "model": "freight.shipment.house",
+    "name": "Freight Shipment House",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 915,
+    "model": "freight.shipment.master",
+    "name": "Freight Shipment Master",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 1063,
+    "model": "freight.soa",
+    "name": "Freight Statement of Account",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 1057,
+    "model": "employee.advance",
+    "name": "HR Employee Advance",
+    "modules": "sota_freight_advanced, to_hr_employee_advance"
+  },
+  {
+    "id": 1058,
+    "model": "employee.advance.reconcile",
+    "name": "HR Employee Advance Reconcile",
+    "modules": "sota_freight_advanced, to_hr_employee_advance"
+  },
+  {
+    "id": 404,
+    "model": "hr.job",
+    "name": "Job Position",
+    "modules": "hr"
+  },
+  {
+    "id": 470,
+    "model": "account.journal",
+    "name": "Journal",
+    "modules": "account, account_edi, account_payment, account_reconcile_oca, account_statement_base, hr_expense, l10n_multilang, l10n_vn_viin, sota_vn_edi, to_hr_employee_advance"
+  },
+  {
+    "id": 479,
+    "model": "account.move",
+    "name": "Journal Entry",
+    "modules": "account, account_debit_note, account_edi, account_payment, account_payment_invoice_online_payment_patch, account_reconcile_oca, account_sequence, fms_account_manual_exchange_rate, hr_expense, l10n_vn_viin, sota_account_asset, sota_account_closing_entry_forward, sota_currency_rate_live, sota_freight_advanced, sota_freight_advanced_v2, sota_freight_vn_edi, sota_sync_einvoice_bill, sota_vn_edi, to_account_counterpart, to_account_reports, to_accounting_entry_report_flag, to_hr_employee_advance, to_hr_expense, to_legal_invoice_number, viin_account"
+  },
+  {
+    "id": 523,
+    "model": "crm.lead",
+    "name": "Lead/Opportunity",
+    "modules": "crm, crm_iap_enrich, crm_iap_mine, iap_crm, mass_mailing_crm, sota_freight_crm"
+  },
+  {
+    "id": 159,
+    "model": "mail.blacklist",
+    "name": "Mail Blacklist",
+    "modules": "mail"
+  },
+  {
+    "id": 152,
+    "model": "mail.thread.blacklist",
+    "name": "Mail Blacklist mixin",
+    "modules": "mail"
+  },
+  {
+    "id": 536,
+    "model": "mailing.contact",
+    "name": "Mailing Contact",
+    "modules": "mass_mailing"
+  },
+  {
+    "id": 1946,
+    "model": "freight.dp.access.profile",
+    "name": "Management Report Access Profile",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 539,
+    "model": "mailing.mailing",
+    "name": "Mass Mailing",
+    "modules": "mass_mailing, mass_mailing_crm"
+  },
+  {
+    "id": 483,
+    "model": "account.payment",
+    "name": "Payments",
+    "modules": "account, account_edi, account_payment, fms_account_manual_exchange_rate, hr_expense, l10n_vn_viin, sota_currency_rate_live, sota_freight_advanced, sota_freight_advanced_v2, to_account_payment, to_hr_employee_advance, to_hr_expense, viin_account, viin_hr_account"
+  },
+  {
+    "id": 336,
+    "model": "phone.blacklist",
+    "name": "Phone Blacklist",
+    "modules": "phone_validation"
+  },
+  {
+    "id": 337,
+    "model": "mail.thread.phone",
+    "name": "Phone Blacklist Mixin",
+    "modules": "phone_validation, sms"
+  },
+  {
+    "id": 476,
+    "model": "account.reconcile.model",
+    "name": "Preset to create journal entries during a invoices and payments matching",
+    "modules": "account"
+  },
+  {
+    "id": 413,
+    "model": "product.template",
+    "name": "Product",
+    "modules": "account, hr_expense, portalink_freight_advanced, product, sota_account_asset, sota_freight_advanced, sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 414,
+    "model": "product.product",
+    "name": "Product Variant",
+    "modules": "account, hr_expense, product, sota_freight_crm, sota_vn_edi"
+  },
+  {
+    "id": 432,
+    "model": "crm.team",
+    "name": "Sales Team",
+    "modules": "crm, sales_team, sh_activities_management, sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 431,
+    "model": "crm.team.member",
+    "name": "Sales Team Member",
+    "modules": "crm, sales_team, sota_freight_advanced_v2"
+  },
+  {
+    "id": 489,
+    "model": "account.account.template",
+    "name": "Templates for Accounts",
+    "modules": "account, l10n_multilang, viin_account"
+  },
+  {
+    "id": 121,
+    "model": "auth_totp.wizard",
+    "name": "2-Factor Setup Wizard",
+    "modules": "auth_totp"
+  },
+  {
+    "id": 637,
+    "model": "account.edi.xml.ubl_a_nz",
+    "name": "A-NZ BIS Billing 3.0",
+    "modules": "account_edi_ubl_cii"
+  },
+  {
+    "id": 1702,
+    "model": "ks_dashboard_ninja.arti_int",
+    "name": "AI Dashboard",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1703,
+    "model": "ks_dashboard_ninja.ai_dashboard",
+    "name": "AI Dashboard",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 927,
+    "model": "ams.address",
+    "name": "AMS Address",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 103,
+    "model": "res.users.apikeys.description",
+    "name": "API Key Description",
+    "modules": "base, portal"
+  },
+  {
+    "id": 2033,
+    "model": "freight.ar.invoice.line",
+    "name": "AR Invoice Analysis",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 2032,
+    "model": "freight.ar.invoice.report",
+    "name": "AR Invoice Detail Report",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 368,
+    "model": "report.report_xlsx.abstract",
+    "name": "Abstract XLSX Report",
+    "modules": "report_xlsx, report_xlsx_helper"
+  },
+  {
+    "id": 95,
+    "model": "res.groups",
+    "name": "Access Groups",
+    "modules": "access_restricted, account, base, base_user_role, mail, sota_storage_usage"
+  },
+  {
+    "id": 1502,
+    "model": "account.account.reconcile",
+    "name": "Account Account Reconcile",
+    "modules": "account_reconcile_oca"
+  },
+  {
+    "id": 499,
+    "model": "account.cash.rounding",
+    "name": "Account Cash Rounding",
+    "modules": "account"
+  },
+  {
+    "id": 490,
+    "model": "account.chart.template",
+    "name": "Account Chart Template",
+    "modules": "account, l10n_multilang, l10n_vn_viin, sota_account_asset, sota_account_closing_entry_forward, sota_account_closing_entry_forward_l10n_vn, to_hr_employee_advance, to_hr_expense, viin_account"
+  },
+  {
+    "id": 627,
+    "model": "account.common.report",
+    "name": "Account Common Report",
+    "modules": "l10n_vn_viin_account_reports, viin_account"
+  },
+  {
+    "id": 645,
+    "model": "wizard.account.counterpart.generator",
+    "name": "Account Counterpart Generating Wizard",
+    "modules": "to_account_counterpart"
+  },
+  {
+    "id": 1062,
+    "model": "account.advance.payment.register",
+    "name": "Account Employee Advance Payment Register",
+    "modules": "to_hr_employee_advance"
+  },
+  {
+    "id": 467,
+    "model": "account.group",
+    "name": "Account Group",
+    "modules": "account, l10n_multilang"
+  },
+  {
+    "id": 513,
+    "model": "account.invoice.send",
+    "name": "Account Invoice Send",
+    "modules": "account, snailmail_account"
+  },
+  {
+    "id": 469,
+    "model": "account.journal.group",
+    "name": "Account Journal Group",
+    "modules": "account"
+  },
+  {
+    "id": 1330,
+    "model": "report.sota_freight_advanced.report_account_move_xlsx",
+    "name": "Account Move List XLSX Report",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 509,
+    "model": "account.move.reversal",
+    "name": "Account Move Reversal",
+    "modules": "account"
+  },
+  {
+    "id": 647,
+    "model": "report.l10n_vn_viin.report_account_payment",
+    "name": "Account Payment Report",
+    "modules": "l10n_vn_viin"
+  },
+  {
+    "id": 1501,
+    "model": "account.reconcile.abstract",
+    "name": "Account Reconcile Abstract",
+    "modules": "account_reconcile_oca"
+  },
+  {
+    "id": 465,
+    "model": "account.account.tag",
+    "name": "Account Tag",
+    "modules": "account, l10n_multilang, l10n_vn_viin"
+  },
+  {
+    "id": 626,
+    "model": "account.transfer.allocation",
+    "name": "Account Transfer / Allocation",
+    "modules": "to_account_counterpart, viin_account"
+  },
+  {
+    "id": 507,
+    "model": "account.unreconcile",
+    "name": "Account Unreconcile",
+    "modules": "account"
+  },
+  {
+    "id": 468,
+    "model": "account.root",
+    "name": "Account codes first 2 digits",
+    "modules": "account"
+  },
+  {
+    "id": 520,
+    "model": "report.account.report_invoice_with_payments",
+    "name": "Account report with payment lines",
+    "modules": "account"
+  },
+  {
+    "id": 519,
+    "model": "report.account.report_invoice",
+    "name": "Account report without payment lines",
+    "modules": "account"
+  },
+  {
+    "id": 515,
+    "model": "account.tour.upload.bill",
+    "name": "Account tour upload bill",
+    "modules": "account"
+  },
+  {
+    "id": 516,
+    "model": "account.tour.upload.bill.email.confirm",
+    "name": "Account tour upload bill email confirm",
+    "modules": "account"
+  },
+  {
+    "id": 2246,
+    "model": "print.form.docx",
+    "name": "Accounting Form Word Builder",
+    "modules": "to_hr_employee_advance"
+  },
+  {
+    "id": 501,
+    "model": "account.report",
+    "name": "Accounting Report",
+    "modules": "account, l10n_vn_viin_account_reports, sota_freight_advanced, to_account_reports, to_account_reports_report_off"
+  },
+  {
+    "id": 504,
+    "model": "account.report.column",
+    "name": "Accounting Report Column",
+    "modules": "account, to_account_reports"
+  },
+  {
+    "id": 503,
+    "model": "account.report.expression",
+    "name": "Accounting Report Expression",
+    "modules": "account, to_account_reports"
+  },
+  {
+    "id": 505,
+    "model": "account.report.external.value",
+    "name": "Accounting Report External Value",
+    "modules": "account"
+  },
+  {
+    "id": 502,
+    "model": "account.report.line",
+    "name": "Accounting Report Line",
+    "modules": "account, to_account_reports"
+  },
+  {
+    "id": 495,
+    "model": "account.fiscal.position.account.template",
+    "name": "Accounts Mapping Template of Fiscal Position",
+    "modules": "account"
+  },
+  {
+    "id": 463,
+    "model": "account.fiscal.position.account",
+    "name": "Accounts Mapping of Fiscal Position",
+    "modules": "account"
+  },
+  {
+    "id": 517,
+    "model": "account.accrued.orders.wizard",
+    "name": "Accrued Orders Wizard",
+    "modules": "account"
+  },
+  {
+    "id": 158,
+    "model": "mail.activity",
+    "name": "Activity",
+    "modules": "calendar, crm, mail, sh_activities_management, sota_freight_crm, sota_mobile_notification"
+  },
+  {
+    "id": 447,
+    "model": "activity.dashboard",
+    "name": "Activity Dashboard",
+    "modules": "sh_activities_management"
+  },
+  {
+    "id": 443,
+    "model": "activity.feedback",
+    "name": "Activity Feedback",
+    "modules": "sh_activities_management"
+  },
+  {
+    "id": 147,
+    "model": "mail.activity.mixin",
+    "name": "Activity Mixin",
+    "modules": "calendar, mail, sh_activities_management"
+  },
+  {
+    "id": 449,
+    "model": "sh.activity.tags",
+    "name": "Activity Tags",
+    "modules": "sh_activities_management"
+  },
+  {
+    "id": 157,
+    "model": "mail.activity.type",
+    "name": "Activity Type",
+    "modules": "calendar, mail"
+  },
+  {
+    "id": 545,
+    "model": "mailing.contact.to.list",
+    "name": "Add Contacts to Mailing List",
+    "modules": "mass_mailing"
+  },
+  {
+    "id": 1537,
+    "model": "account.debit.note",
+    "name": "Add Debit Note wizard",
+    "modules": "account_debit_note"
+  },
+  {
+    "id": 1498,
+    "model": "add.multiple.charges.wizard",
+    "name": "Add Multiple Charges",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1404,
+    "model": "freight.quotation.purchase.pricing.wizard",
+    "name": "Add quotation lines from purchase pricing search",
+    "modules": "portalink_freight_advanced, sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 82,
+    "model": "format.address.mixin",
+    "name": "Address Format",
+    "modules": "base"
+  },
+  {
+    "id": 2247,
+    "model": "report.to_hr_employee_advance.report_employee_advance_request",
+    "name": "Advance Request Form (03-TT)",
+    "modules": "to_hr_employee_advance"
+  },
+  {
+    "id": 450,
+    "model": "sh.activity.alarm",
+    "name": "Alarm Reminder",
+    "modules": "sh_activities_management"
+  },
+  {
+    "id": 388,
+    "model": "account.analytic.distribution.model",
+    "name": "Analytic Distribution Model",
+    "modules": "account, analytic, viin_hr_account"
+  },
+  {
+    "id": 386,
+    "model": "account.analytic.line",
+    "name": "Analytic Line",
+    "modules": "account, analytic, viin_account, viin_analytic_tag"
+  },
+  {
+    "id": 387,
+    "model": "analytic.mixin",
+    "name": "Analytic Mixin",
+    "modules": "analytic, viin_account"
+  },
+  {
+    "id": 384,
+    "model": "account.analytic.applicability",
+    "name": "Analytic Plan's Applicabilities",
+    "modules": "account, analytic, hr_expense"
+  },
+  {
+    "id": 383,
+    "model": "account.analytic.plan",
+    "name": "Analytic Plans",
+    "modules": "analytic"
+  },
+  {
+    "id": 628,
+    "model": "account.analytic.tag",
+    "name": "Analytic Tags",
+    "modules": "viin_analytic_tag"
+  },
+  {
+    "id": 1415,
+    "model": "account.asset.depreciation.line",
+    "name": "Asset Depreciation Line",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 1421,
+    "model": "asset.dispose.wizard",
+    "name": "Asset Dispose Wizard",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 1420,
+    "model": "asset.sell.wizard",
+    "name": "Asset Sell Wizard",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 1422,
+    "model": "asset.asset.report",
+    "name": "Assets Analysis",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 329,
+    "model": "web_editor.assets",
+    "name": "Assets Utils",
+    "modules": "web_editor"
+  },
+  {
+    "id": 416,
+    "model": "product.attribute.value",
+    "name": "Attribute Value",
+    "modules": "product"
+  },
+  {
+    "id": 120,
+    "model": "auth_totp.device",
+    "name": "Authentication Device",
+    "modules": "auth_totp"
+  },
+  {
+    "id": 1010,
+    "model": "report.sota_freight_advanced.report_auth_letter_invoice_xlsx",
+    "name": "Authorize Letter Invoice XLSX",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1009,
+    "model": "report.sota_freight_advanced.report_authorize_letter_xlsx",
+    "name": "Authorize Letter XLSX",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 460,
+    "model": "sequence.mixin",
+    "name": "Automatic sequence",
+    "modules": "account, account_sequence"
+  },
+  {
+    "id": 77,
+    "model": "avatar.mixin",
+    "name": "Avatar Mixin",
+    "modules": "base"
+  },
+  {
+    "id": 634,
+    "model": "account.edi.xml.ubl_de",
+    "name": "BIS3 DE (XRechnung)",
+    "modules": "account_edi_ubl_cii"
+  },
+  {
+    "id": 1324,
+    "model": "db.backup",
+    "name": "Backup configuration record",
+    "modules": "auto_backup"
+  },
+  {
+    "id": 1490,
+    "model": "balance.carry.forward.rule",
+    "name": "Balance Carry Forward Rule",
+    "modules": "sota_account_closing_entry_forward"
+  },
+  {
+    "id": 1492,
+    "model": "balance.carry.forward.rule.line",
+    "name": "Balance carry Forward Rule Line",
+    "modules": "sota_account_closing_entry_forward, sota_account_closing_entry_forward_flag"
+  },
+  {
+    "id": 87,
+    "model": "res.bank",
+    "name": "Bank",
+    "modules": "base, sota_freight_advanced, sota_freight_crm"
+  },
+  {
+    "id": 486,
+    "model": "account.bank.statement",
+    "name": "Bank Statement",
+    "modules": "account, account_reconcile_oca, account_statement_base"
+  },
+  {
+    "id": 487,
+    "model": "account.bank.statement.line",
+    "name": "Bank Statement Line",
+    "modules": "account, account_reconcile_oca, account_statement_base, sota_currency_rate_live, to_hr_employee_advance"
+  },
+  {
+    "id": 512,
+    "model": "account.setup.bank.manual.config",
+    "name": "Bank setup manual config",
+    "modules": "account"
+  },
+  {
+    "id": 1846,
+    "model": "customs.declaration.batch.import.line",
+    "name": "Batch Customs Declaration Line",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1845,
+    "model": "customs.declaration.batch.import.wizard",
+    "name": "Batch Customs Declaration Upload Wizard",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1718,
+    "model": "binary.field.preview",
+    "name": "Binary Field Preview",
+    "modules": "sota_binary_file_preview"
+  },
+  {
+    "id": 910,
+    "model": "custom.booking.schedule.information",
+    "name": "Booking Customs Schedule Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 906,
+    "model": "danger.cargo.information",
+    "name": "Booking Dangerous Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 908,
+    "model": "booking.line.attachment",
+    "name": "Booking Line Attachment",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1437,
+    "model": "hr.expense.sheet.bulk.payment",
+    "name": "Bulk Payment Registration for Expense Sheets",
+    "modules": "to_hr_expense"
+  },
+  {
+    "id": 529,
+    "model": "crm.activity.report",
+    "name": "CRM Activity Analysis",
+    "modules": "crm"
+  },
+  {
+    "id": 601,
+    "model": "crm.activity.log.type",
+    "name": "CRM Activity Log Type",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 640,
+    "model": "crm.iap.lead.industry",
+    "name": "CRM IAP Lead Industry",
+    "modules": "crm_iap_mine"
+  },
+  {
+    "id": 621,
+    "model": "crm.kpi.entry",
+    "name": "CRM KPI Entry",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 620,
+    "model": "crm.kpi.period",
+    "name": "CRM KPI Period",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 643,
+    "model": "crm.iap.lead.mining.request",
+    "name": "CRM Lead Mining Request",
+    "modules": "crm_iap_mine"
+  },
+  {
+    "id": 528,
+    "model": "crm.recurring.plan",
+    "name": "CRM Recurring revenue plans",
+    "modules": "crm"
+  },
+  {
+    "id": 1933,
+    "model": "crm.sales.report",
+    "name": "CRM Sales Report",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 1932,
+    "model": "crm.sales.order.event",
+    "name": "CRM Sales Report - Order Event",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 522,
+    "model": "crm.stage",
+    "name": "CRM Stages",
+    "modules": "crm, sota_freight_crm"
+  },
+  {
+    "id": 433,
+    "model": "crm.tag",
+    "name": "CRM Tag",
+    "modules": "sales_team"
+  },
+  {
+    "id": 389,
+    "model": "calendar.attendee",
+    "name": "Calendar Attendee Information",
+    "modules": "calendar"
+  },
+  {
+    "id": 394,
+    "model": "calendar.filters",
+    "name": "Calendar Filters",
+    "modules": "calendar"
+  },
+  {
+    "id": 396,
+    "model": "calendar.provider.config",
+    "name": "Calendar Provider Configuration Wizard",
+    "modules": "calendar"
+  },
+  {
+    "id": 380,
+    "model": "utm.stage",
+    "name": "Campaign Stage",
+    "modules": "utm"
+  },
+  {
+    "id": 175,
+    "model": "mail.shortcode",
+    "name": "Canned Response / Shortcode",
+    "modules": "mail"
+  },
+  {
+    "id": 1493,
+    "model": "account.balance.carry.forward.wizard",
+    "name": "Carry Balance Forward",
+    "modules": "sota_account_closing_entry_forward"
+  },
+  {
+    "id": 1340,
+    "model": "change.lock.date",
+    "name": "Change Lock Date",
+    "modules": "om_fiscal_year"
+  },
+  {
+    "id": 99,
+    "model": "change.password.wizard",
+    "name": "Change Password Wizard",
+    "modules": "base"
+  },
+  {
+    "id": 430,
+    "model": "product.label.layout",
+    "name": "Choose the sheet layout to print the labels",
+    "modules": "product"
+  },
+  {
+    "id": 629,
+    "model": "account.edi.common",
+    "name": "Common functions for EDI documents: generate the data, the constraints, etc",
+    "modules": "account_edi_ubl_cii"
+  },
+  {
+    "id": 139,
+    "model": "bus.bus",
+    "name": "Communication Bus",
+    "modules": "bus"
+  },
+  {
+    "id": 89,
+    "model": "res.config",
+    "name": "Config",
+    "modules": "base"
+  },
+  {
+    "id": 90,
+    "model": "res.config.installer",
+    "name": "Config Installer",
+    "modules": "base"
+  },
+  {
+    "id": 397,
+    "model": "hr.contract.type",
+    "name": "Contract Type",
+    "modules": "hr"
+  },
+  {
+    "id": 438,
+    "model": "hr.contract.history",
+    "name": "Contract history",
+    "modules": "hr_contract"
+  },
+  {
+    "id": 532,
+    "model": "crm.lead2opportunity.partner.mass",
+    "name": "Convert Lead to Opportunity (in mass)",
+    "modules": "crm"
+  },
+  {
+    "id": 531,
+    "model": "crm.lead2opportunity.partner",
+    "name": "Convert Lead to Opportunity (not in mass)",
+    "modules": "crm"
+  },
+  {
+    "id": 1326,
+    "model": "copy.house.bl.wizard",
+    "name": "Copy House B/L Wizard",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1481,
+    "model": "copy.master.bl.wizard",
+    "name": "Copy Master B/L Wizard",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 78,
+    "model": "res.country",
+    "name": "Country",
+    "modules": "base"
+  },
+  {
+    "id": 79,
+    "model": "res.country.group",
+    "name": "Country Group",
+    "modules": "base, product"
+  },
+  {
+    "id": 80,
+    "model": "res.country.state",
+    "name": "Country state",
+    "modules": "base, sota_freight_crm, sota_vn_address"
+  },
+  {
+    "id": 506,
+    "model": "account.automatic.entry.wizard",
+    "name": "Create Automatic Entries",
+    "modules": "account, viin_account"
+  },
+  {
+    "id": 362,
+    "model": "wizard.create.role.from.user",
+    "name": "Create role from user wizard",
+    "modules": "base_user_role"
+  },
+  {
+    "id": 623,
+    "model": "crm.kpi.report",
+    "name": "Crm Kpi Report",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 92,
+    "model": "res.currency",
+    "name": "Currency",
+    "modules": "account, base, l10n_vn_viin, product, sota_currency_rate_live, sota_freight_advanced, spreadsheet, to_hr_employee_advance, to_vietnamese_number2words"
+  },
+  {
+    "id": 93,
+    "model": "res.currency.rate",
+    "name": "Currency Rate",
+    "modules": "base, sota_currency_rate_live, spreadsheet, to_base"
+  },
+  {
+    "id": 1360,
+    "model": "customs.declaration.import.wizard",
+    "name": "Customs Declaration Import Wizard",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1353,
+    "model": "freight.customs.job",
+    "name": "Customs Job",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 956,
+    "model": "job.custom.attachment",
+    "name": "Customs Job Attachment",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 964,
+    "model": "custom.schedule.information",
+    "name": "Customs Job Schedule Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 965,
+    "model": "custom.operation.information",
+    "name": "Customs Operation Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1646,
+    "model": "freight.debt.offset.wizard",
+    "name": "Cấn trừ công nợ phải thu / phải trả",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1354,
+    "model": "freight.do.address",
+    "name": "DO Address",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1705,
+    "model": "ks.dashboard.wizard",
+    "name": "Dashboard Creation Wizard",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1707,
+    "model": "ks.dashboard.delete.wizard",
+    "name": "Dashboard Delete Wizard",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1706,
+    "model": "ks.dashboard.duplicate.wizard",
+    "name": "Dashboard Duplicate Wizard",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1684,
+    "model": "ks_dashboard_ninja.board",
+    "name": "Dashboard Ninja",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1694,
+    "model": "ks_dashboard_ninja.child_board",
+    "name": "Dashboard Ninja Child Board",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1696,
+    "model": "ks_dashboard_ninja.board_custom_filters",
+    "name": "Dashboard Ninja Custom Filters",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1695,
+    "model": "ks_dashboard_ninja.board_defined_filters",
+    "name": "Dashboard Ninja Defined Filters",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1687,
+    "model": "ks.dashboard.csv.group.by",
+    "name": "Dashboard Ninja Group By",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1689,
+    "model": "ks.dashboard.group.by",
+    "name": "Dashboard Ninja Group By",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1693,
+    "model": "ks_ninja_dashboard.item_action",
+    "name": "Dashboard Ninja Item Actions",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1691,
+    "model": "ks_dashboard_ninja.item_action",
+    "name": "Dashboard Ninja Items Action Lines",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1686,
+    "model": "ks_dashboard_ninja.item_goal",
+    "name": "Dashboard Ninja Items Goal Lines",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1692,
+    "model": "ks_dashboard_item.multiplier",
+    "name": "Dashboard Ninja Items Multiplier Lines",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1701,
+    "model": "ks_dashboard_ninja.kpi_mail",
+    "name": "Dashboard Ninja Kpi mail",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1688,
+    "model": "ks.dashboard.csv.new",
+    "name": "Dashboard Ninja New",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1690,
+    "model": "ks.dashboard.new",
+    "name": "Dashboard Ninja New",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1697,
+    "model": "ks_dashboard_ninja.board_template",
+    "name": "Dashboard Ninja Template",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1685,
+    "model": "ks_dashboard_ninja.item",
+    "name": "Dashboard Ninja items",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1433,
+    "model": "freight.day.of.week",
+    "name": "Day of Week",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 106,
+    "model": "decimal.precision",
+    "name": "Decimal Precision",
+    "modules": "account, base, product"
+  },
+  {
+    "id": 403,
+    "model": "hr.departure.reason",
+    "name": "Departure Reason",
+    "modules": "hr"
+  },
+  {
+    "id": 409,
+    "model": "hr.departure.wizard",
+    "name": "Departure Wizard",
+    "modules": "hr, hr_contract"
+  },
+  {
+    "id": 452,
+    "model": "digest.digest",
+    "name": "Digest",
+    "modules": "account, crm, digest"
+  },
+  {
+    "id": 453,
+    "model": "digest.tip",
+    "name": "Digest Tips",
+    "modules": "digest"
+  },
+  {
+    "id": 907,
+    "model": "document.cargo",
+    "name": "Document Cargo",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 160,
+    "model": "mail.followers",
+    "name": "Document Followers",
+    "modules": "mail, sms"
+  },
+  {
+    "id": 636,
+    "model": "account.edi.xml.ubl_efff",
+    "name": "E-FFF (BE)",
+    "modules": "account_edi_ubl_cii"
+  },
+  {
+    "id": 1454,
+    "model": "einvoice.adjust.wizard",
+    "name": "E-invoice Adjust Wizard",
+    "modules": "sota_vn_edi"
+  },
+  {
+    "id": 1453,
+    "model": "einvoice.cancel.wizard",
+    "name": "E-invoice Cancel Wizard",
+    "modules": "sota_vn_edi"
+  },
+  {
+    "id": 1452,
+    "model": "einvoice.reason.wizard",
+    "name": "E-invoice Reason Wizard",
+    "modules": "sota_vn_edi"
+  },
+  {
+    "id": 1455,
+    "model": "einvoice.replace.wizard",
+    "name": "E-invoice Replace Wizard",
+    "modules": "sota_vn_edi"
+  },
+  {
+    "id": 575,
+    "model": "account.edi.format",
+    "name": "EDI format",
+    "modules": "account_edi, account_edi_ubl_cii"
+  },
+  {
+    "id": 1451,
+    "model": "einvoice.type",
+    "name": "Einvoice Type",
+    "modules": "sota_vn_edi"
+  },
+  {
+    "id": 576,
+    "model": "account.edi.document",
+    "name": "Electronic Document for an account.move",
+    "modules": "account_edi"
+  },
+  {
+    "id": 145,
+    "model": "mail.alias",
+    "name": "Email Aliases",
+    "modules": "hr, mail"
+  },
+  {
+    "id": 148,
+    "model": "mail.alias.mixin",
+    "name": "Email Aliases Mixin",
+    "modules": "mail"
+  },
+  {
+    "id": 202,
+    "model": "mail.template.preview",
+    "name": "Email Template Preview",
+    "modules": "mail"
+  },
+  {
+    "id": 169,
+    "model": "mail.template",
+    "name": "Email Templates",
+    "modules": "account_edi, account_edi_ubl_cii, l10n_vn_viin, mail, sota_freight_advanced, to_base"
+  },
+  {
+    "id": 199,
+    "model": "mail.compose.message",
+    "name": "Email composition wizard",
+    "modules": "mail, mass_mailing, sota_freight_advanced, sota_freight_crm, to_base"
+  },
+  {
+    "id": 200,
+    "model": "mail.resend.message",
+    "name": "Email resend wizard",
+    "modules": "mail"
+  },
+  {
+    "id": 1061,
+    "model": "employee.advance.payment",
+    "name": "Employee Advance Payment",
+    "modules": "sota_freight_advanced, to_hr_employee_advance"
+  },
+  {
+    "id": 1060,
+    "model": "employee.advance.reconcile.batch",
+    "name": "Employee Advance Reconcile Batch",
+    "modules": "to_hr_employee_advance"
+  },
+  {
+    "id": 400,
+    "model": "hr.employee.category",
+    "name": "Employee Category",
+    "modules": "hr"
+  },
+  {
+    "id": 392,
+    "model": "calendar.alarm",
+    "name": "Event Alarm",
+    "modules": "calendar, calendar_sms"
+  },
+  {
+    "id": 393,
+    "model": "calendar.alarm_manager",
+    "name": "Event Alarm Manager",
+    "modules": "calendar, calendar_sms"
+  },
+  {
+    "id": 395,
+    "model": "calendar.event.type",
+    "name": "Event Meeting Type",
+    "modules": "calendar"
+  },
+  {
+    "id": 390,
+    "model": "calendar.recurrence",
+    "name": "Event Recurrence Rule",
+    "modules": "calendar"
+  },
+  {
+    "id": 581,
+    "model": "hr.expense.approve.duplicate",
+    "name": "Expense Approve Duplicate",
+    "modules": "hr_expense"
+  },
+  {
+    "id": 580,
+    "model": "hr.expense.refuse.wizard",
+    "name": "Expense Refuse Reason Wizard",
+    "modules": "hr_expense"
+  },
+  {
+    "id": 583,
+    "model": "hr.expense.split",
+    "name": "Expense Split",
+    "modules": "hr_expense"
+  },
+  {
+    "id": 582,
+    "model": "hr.expense.split.wizard",
+    "name": "Expense Split Wizard",
+    "modules": "hr_expense"
+  },
+  {
+    "id": 997,
+    "model": "external.danger.cargo.information",
+    "name": "External Booking Dangerous Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 998,
+    "model": "external.document.cargo",
+    "name": "External Document Cargo",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 622,
+    "model": "freight.fcl.unit",
+    "name": "FCL Unit",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 630,
+    "model": "account.edi.xml.cii",
+    "name": "Factur-x/XRechnung CII 2.2.0",
+    "modules": "account_edi_ubl_cii"
+  },
+  {
+    "id": 1704,
+    "model": "ks_dashboard_ninja.fetch_key",
+    "name": "Fetch API key",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 527,
+    "model": "crm.lead.scoring.frequency.field",
+    "name": "Fields that can be used for predictive lead scoring computation",
+    "modules": "crm"
+  },
+  {
+    "id": 1419,
+    "model": "asset.fill.missing.values.wizard",
+    "name": "Fill missing values to Asset",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 461,
+    "model": "account.fiscal.position",
+    "name": "Fiscal Position",
+    "modules": "account, l10n_multilang, viin_account"
+  },
+  {
+    "id": 1342,
+    "model": "account.fiscal.year",
+    "name": "Fiscal Year",
+    "modules": "om_fiscal_year"
+  },
+  {
+    "id": 1424,
+    "model": "report.sota_account_asset.report_fixed_asset_book",
+    "name": "Fixed Asset Book XLSX Report",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 1425,
+    "model": "report.sota_account_asset.report_fixed_asset_depreciation",
+    "name": "Fixed Asset Depreciation XLSX Report",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 1423,
+    "model": "fixed.asset.report",
+    "name": "Fixed Asset Report",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 358,
+    "model": "snailmail.letter.format.error",
+    "name": "Format Error Sending a Snailmail Letter",
+    "modules": "snailmail"
+  },
+  {
+    "id": 607,
+    "model": "freight.airline",
+    "name": "Freight Airline",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 986,
+    "model": "freight.bl.number",
+    "name": "Freight BL Number",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1000,
+    "model": "freight.bank.information",
+    "name": "Freight Bank Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 903,
+    "model": "freight.booking.cargo.information",
+    "name": "Freight Booking Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 995,
+    "model": "freight.booking.external.cargo.information",
+    "name": "Freight Booking Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 611,
+    "model": "freight.commodity",
+    "name": "Freight Commodity",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 949,
+    "model": "freight.credit.note.line",
+    "name": "Freight Credit Note Line",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 612,
+    "model": "freight.customs.department",
+    "name": "Freight Customs Department",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 951,
+    "model": "freight.dc.note.line",
+    "name": "Freight Debit Note Line",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 947,
+    "model": "freight.debit.note.line",
+    "name": "Freight Debit Note Line",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 985,
+    "model": "freight.goods.description.suggest",
+    "name": "Freight Description Suggest",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 591,
+    "model": "freight.document.general",
+    "name": "Freight Document General",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 935,
+    "model": "freight.document.line.selling",
+    "name": "Freight Document Line Selling",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 933,
+    "model": "freight.document.line",
+    "name": "Freight Document Lines",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 590,
+    "model": "freight.hs.code",
+    "name": "Freight Hs Code",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 605,
+    "model": "freight.incoterms",
+    "name": "Freight Incoterms",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 974,
+    "model": "freight.truck.job",
+    "name": "Freight Job",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 1322,
+    "model": "freight.job.booking.confirmation",
+    "name": "Freight Job Booking Confirmation",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 968,
+    "model": "freight.job.sea.cargo.information",
+    "name": "Freight Job Sea Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 973,
+    "model": "freight.job.truck.cargo.information",
+    "name": "Freight Job Truck Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 992,
+    "model": "freight.local.charge.line",
+    "name": "Freight Local Charge Line",
+    "modules": "sota_freight_advanced, sota_freight_crm"
+  },
+  {
+    "id": 993,
+    "model": "freight.local.other.charge.line",
+    "name": "Freight Local Other Charge Line",
+    "modules": "sota_freight_advanced, sota_freight_crm"
+  },
+  {
+    "id": 613,
+    "model": "freight.package",
+    "name": "Freight Package",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 615,
+    "model": "freight.party.role",
+    "name": "Freight Party Role",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 1003,
+    "model": "freight.performance.report",
+    "name": "Freight Performance Report",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 614,
+    "model": "freight.port",
+    "name": "Freight Port",
+    "modules": "sota_freight_advanced, sota_freight_crm"
+  },
+  {
+    "id": 1001,
+    "model": "freight.procedure.code",
+    "name": "Freight Procedure Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1428,
+    "model": "freight.product.qty.rule",
+    "name": "Freight Product Quantity Fill Rule",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 593,
+    "model": "freight.quotation.line",
+    "name": "Freight Quotation Lines",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 594,
+    "model": "freight.quotation.other.line",
+    "name": "Freight Quotation Other Lines",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 595,
+    "model": "freight.quotation.pay.on.behalf.line",
+    "name": "Freight Quotation Pay On Behalf Lines",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 597,
+    "model": "freight.quotation.line.template",
+    "name": "Freight Quotation Template Line",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 2235,
+    "model": "freight.rate.visibility",
+    "name": "Freight Rate Visibility by Department",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 2244,
+    "model": "freight.rate.visibility.mixin",
+    "name": "Freight Rate Visibility per Document",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1007,
+    "model": "report.sota_freight_advanced.report_isf5_plus_2_xlsx",
+    "name": "Freight Report ISF5 + 2",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 624,
+    "model": "report.sota_freight_crm.report_quotation_xlsx",
+    "name": "Freight Report Quotation XLSX",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 1008,
+    "model": "report.sota_freight_advanced.report_quotation_xlsx",
+    "name": "Freight Report Quotation XLSX",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1064,
+    "model": "freight.soa.line",
+    "name": "Freight SOA Line",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1758,
+    "model": "report.sota_freight_advanced.report_freight_soa_xlsx",
+    "name": "Freight SOA XLSX Report",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 1005,
+    "model": "freight.selling.profit.by.line",
+    "name": "Freight Selling Profit By Line",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1361,
+    "model": "freight.selling.profit.detail",
+    "name": "Freight Selling Profit Detail Report",
+    "modules": "portalink_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 598,
+    "model": "freight.service.line",
+    "name": "Freight Service Line",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 987,
+    "model": "freight.service.tags",
+    "name": "Freight Service Tags",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 616,
+    "model": "freight.service.terms",
+    "name": "Freight Service Terms",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 911,
+    "model": "freight.shipment.tracking",
+    "name": "Freight Shipment Tracking",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 608,
+    "model": "freight.shipping.line",
+    "name": "Freight Shipping Line",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 999,
+    "model": "freight.trade.name",
+    "name": "Freight Trade Name",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 617,
+    "model": "freight.transit.type",
+    "name": "Freight Transit Type",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 618,
+    "model": "freight.transport.mode",
+    "name": "Freight Transport Mode",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 1611,
+    "model": "freight.truck.plate",
+    "name": "Freight Truck Plate",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 975,
+    "model": "freight.truck.summary.job",
+    "name": "Freight Truck Summary",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 609,
+    "model": "freight.trucker",
+    "name": "Freight Trucker",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 606,
+    "model": "freight.unit",
+    "name": "Freight Unit",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 588,
+    "model": "freight.update.currency.rate.abstract",
+    "name": "Freight Update Currency Rate",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 610,
+    "model": "freight.vessel",
+    "name": "Freight Vessel",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 482,
+    "model": "account.full.reconcile",
+    "name": "Full Reconcile",
+    "modules": "account, sota_freight_advanced"
+  },
+  {
+    "id": 1456,
+    "model": "gdt.einvoice.bill",
+    "name": "GDT E-Invoice (Hóa đơn đầu vào)",
+    "modules": "sota_sync_einvoice_bill"
+  },
+  {
+    "id": 458,
+    "model": "payment.link.wizard",
+    "name": "Generate Payment Link",
+    "modules": "account_payment, payment"
+  },
+  {
+    "id": 530,
+    "model": "crm.lead.lost",
+    "name": "Get Lost Reason",
+    "modules": "crm"
+  },
+  {
+    "id": 521,
+    "model": "report.account.report_hash_integrity",
+    "name": "Get hash integrity result as PDF.",
+    "modules": "account"
+  },
+  {
+    "id": 1325,
+    "model": "report.sota_freight_advanced.report_goods_delivery_job_xlsx",
+    "name": "Goods Delivery XLSX",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1011,
+    "model": "report.sota_freight_advanced.report_goods_delivery_xlsx",
+    "name": "Goods Delivery XLSX",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 441,
+    "model": "portal.wizard",
+    "name": "Grant Portal Access",
+    "modules": "portal"
+  },
+  {
+    "id": 434,
+    "model": "spreadsheet.dashboard.group",
+    "name": "Group of dashboards",
+    "modules": "spreadsheet_dashboard"
+  },
+  {
+    "id": 173,
+    "model": "mail.guest",
+    "name": "Guest",
+    "modules": "mail"
+  },
+  {
+    "id": 1056,
+    "model": "employee.advance.line",
+    "name": "HR Employee Advance Line",
+    "modules": "to_hr_employee_advance"
+  },
+  {
+    "id": 1059,
+    "model": "employee.advance.reconcile.line",
+    "name": "HR Employee Advance Reconcile Line",
+    "modules": "sota_freight_advanced_v2, to_hr_employee_advance"
+  },
+  {
+    "id": 639,
+    "model": "crm.iap.lead.helpers",
+    "name": "Helper methods for crm_iap_mine modules",
+    "modules": "crm_iap_mine"
+  },
+  {
+    "id": 451,
+    "model": "sh.recurring.activities",
+    "name": "Helps to keep manage the recurrent Events",
+    "modules": "sh_activities_management"
+  },
+  {
+    "id": 1356,
+    "model": "house.multi.buying.rate",
+    "name": "House Multi Buying Rate",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1358,
+    "model": "house.multi.buying.rate.cost",
+    "name": "House Multi Buying Rate Cost",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1357,
+    "model": "house.multi.pay.on.behalf.rate",
+    "name": "House Multi Pay On Behalf Rate",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1355,
+    "model": "house.multi.selling.rate",
+    "name": "House Multi Selling Rate",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 925,
+    "model": "house.print.sea.selling.rate",
+    "name": "House Print Sea Selling Rate",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 1031,
+    "model": "line.rate.abstract",
+    "name": "House Rate Line (Abstract)",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 921,
+    "model": "house.sea.selling.rate",
+    "name": "House Sea Selling Rate",
+    "modules": "portalink_freight_advanced, sota_freight_advanced"
+  },
+  {
+    "id": 143,
+    "model": "iap.account",
+    "name": "IAP Account",
+    "modules": "iap, iap_mail"
+  },
+  {
+    "id": 144,
+    "model": "iap.enrich.api",
+    "name": "IAP Lead Enrichment API",
+    "modules": "iap"
+  },
+  {
+    "id": 343,
+    "model": "iap.autocomplete.api",
+    "name": "IAP Partner Autocomplete API",
+    "modules": "partner_autocomplete"
+  },
+  {
+    "id": 174,
+    "model": "mail.ice.server",
+    "name": "ICE server",
+    "modules": "mail"
+  },
+  {
+    "id": 76,
+    "model": "image.mixin",
+    "name": "Image Mixin",
+    "modules": "base"
+  },
+  {
+    "id": 1700,
+    "model": "ks_dashboard_ninja.import",
+    "name": "Import Dashboard",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 2236,
+    "model": "vnaccs.job.import.wizard",
+    "name": "Import Jobs from VNACCS Declaration Report",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1323,
+    "model": "wizard.import.purchase.pricing",
+    "name": "Import Purchase Pricing from Excel",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 155,
+    "model": "fetchmail.server",
+    "name": "Incoming Mail Server",
+    "modules": "mail, microsoft_outlook"
+  },
+  {
+    "id": 500,
+    "model": "account.incoterms",
+    "name": "Incoterms",
+    "modules": "account"
+  },
+  {
+    "id": 86,
+    "model": "res.partner.industry",
+    "name": "Industry",
+    "modules": "base"
+  },
+  {
+    "id": 204,
+    "model": "mail.wizard.invite",
+    "name": "Invite wizard",
+    "modules": "mail, sota_freight_advanced"
+  },
+  {
+    "id": 662,
+    "model": "abstract.l10n_vn.c119.gtgt",
+    "name": "Invoice Declaration Abstract",
+    "modules": "l10n_vn_viin_account_reports"
+  },
+  {
+    "id": 909,
+    "model": "freight.invoice.issuance",
+    "name": "Invoice Issuance",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1770,
+    "model": "report.sota_freight_advanced.report_invoice_xlsx",
+    "name": "Invoice XLSX Report",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 518,
+    "model": "account.invoice.report",
+    "name": "Invoices Statistics",
+    "modules": "account"
+  },
+  {
+    "id": 1075,
+    "model": "job.buying.rate",
+    "name": "Job Buying Rate",
+    "modules": "portalink_freight_advanced, sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 1230,
+    "model": "job.pay.on.behalf.rate",
+    "name": "Job Pay On Behalf Rate",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 1073,
+    "model": "job.quotation.information",
+    "name": "Job Quotation Information",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 1074,
+    "model": "job.selling.rate",
+    "name": "Job Selling Rate",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 648,
+    "model": "report.l10n_vn_viin.report_account_move_journal_entry",
+    "name": "Journal Entry Report",
+    "modules": "l10n_vn_viin"
+  },
+  {
+    "id": 480,
+    "model": "account.move.line",
+    "name": "Journal Item",
+    "modules": "account, account_edi, account_reconcile_oca, fms_account_manual_exchange_rate, hr_expense, l10n_vn_viin_account_reports_report_off, sota_account_asset, sota_account_closing_entry_forward, sota_currency_rate_live, sota_freight_advanced, sota_freight_advanced_v2, sota_freight_vn_edi, sota_vn_edi, to_account_counterpart, to_accounting_entry_report_flag, viin_account, viin_analytic_tag"
+  },
+  {
+    "id": 644,
+    "model": "account.move.line.ctp",
+    "name": "Journal Item Counterpart",
+    "modules": "to_account_counterpart"
+  },
+  {
+    "id": 1091,
+    "model": "kpi.provider",
+    "name": "KPI Provider",
+    "modules": "account, base_setup"
+  },
+  {
+    "id": 2110,
+    "model": "freight.tax.company.mixin",
+    "name": "Keep Freight Line Tax In Line Company",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 81,
+    "model": "res.lang",
+    "name": "Languages",
+    "modules": "base"
+  },
+  {
+    "id": 526,
+    "model": "crm.lead.scoring.frequency",
+    "name": "Lead Scoring Frequency",
+    "modules": "crm"
+  },
+  {
+    "id": 410,
+    "model": "link.tracker",
+    "name": "Link Tracker",
+    "modules": "link_tracker, mass_mailing"
+  },
+  {
+    "id": 412,
+    "model": "link.tracker.click",
+    "name": "Link Tracker Click",
+    "modules": "link_tracker, mass_mailing"
+  },
+  {
+    "id": 411,
+    "model": "link.tracker.code",
+    "name": "Link Tracker Code",
+    "modules": "link_tracker"
+  },
+  {
+    "id": 170,
+    "model": "mail.channel.member",
+    "name": "Listeners of a Channel",
+    "modules": "mail"
+  },
+  {
+    "id": 2284,
+    "model": "freight.service.lock.mixin",
+    "name": "Lock rate lines of completed services",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 116,
+    "model": "login.detail",
+    "name": "Login Details",
+    "modules": "login_user_detail"
+  },
+  {
+    "id": 335,
+    "model": "mail.bot",
+    "name": "Mail Bot",
+    "modules": "mail_bot"
+  },
+  {
+    "id": 150,
+    "model": "mail.composer.mixin",
+    "name": "Mail Composer Mixin",
+    "modules": "mail"
+  },
+  {
+    "id": 161,
+    "model": "mail.gateway.allowed",
+    "name": "Mail Gateway Allowed",
+    "modules": "mail"
+  },
+  {
+    "id": 171,
+    "model": "mail.channel.rtc.session",
+    "name": "Mail RTC session",
+    "modules": "mail"
+  },
+  {
+    "id": 149,
+    "model": "mail.render.mixin",
+    "name": "Mail Render Mixin",
+    "modules": "link_tracker, mail, mass_mailing"
+  },
+  {
+    "id": 203,
+    "model": "mail.template.reset",
+    "name": "Mail Template Reset",
+    "modules": "mail"
+  },
+  {
+    "id": 168,
+    "model": "mail.tracking.value",
+    "name": "Mail Tracking Value",
+    "modules": "mail, sota_freight_advanced"
+  },
+  {
+    "id": 544,
+    "model": "mailing.contact.import",
+    "name": "Mailing Contact Import",
+    "modules": "mass_mailing"
+  },
+  {
+    "id": 540,
+    "model": "mailing.filter",
+    "name": "Mailing Favorite Filters",
+    "modules": "mass_mailing"
+  },
+  {
+    "id": 537,
+    "model": "mailing.list",
+    "name": "Mailing List",
+    "modules": "mass_mailing"
+  },
+  {
+    "id": 538,
+    "model": "mailing.trace",
+    "name": "Mailing Statistics",
+    "modules": "mass_mailing"
+  },
+  {
+    "id": 2286,
+    "model": "freight.dp.account.code",
+    "name": "Management Report Revenue/Cost Code",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1947,
+    "model": "freight.daily.performance",
+    "name": "Management Report by Shipment",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 445,
+    "model": "sh.mark.as.done",
+    "name": "Mark As Done",
+    "modules": "sh_activities_management"
+  },
+  {
+    "id": 543,
+    "model": "mailing.trace.report",
+    "name": "Mass Mailing Statistics",
+    "modules": "mass_mailing"
+  },
+  {
+    "id": 535,
+    "model": "mailing.contact.subscription",
+    "name": "Mass Mailing Subscription Information",
+    "modules": "mass_mailing"
+  },
+  {
+    "id": 1648,
+    "model": "access_limit_max_users.protection.mixin",
+    "name": "Max Users Limit Protection Mixin",
+    "modules": "access_limit_max_users"
+  },
+  {
+    "id": 546,
+    "model": "mailing.list.merge",
+    "name": "Merge Mass Mailing List",
+    "modules": "mass_mailing"
+  },
+  {
+    "id": 533,
+    "model": "crm.merge.opportunity",
+    "name": "Merge Opportunities",
+    "modules": "crm"
+  },
+  {
+    "id": 1017,
+    "model": "wizard.merge.salesman",
+    "name": "Merge Salesman Wizard",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 166,
+    "model": "mail.message",
+    "name": "Message",
+    "modules": "mail, portal, sms, snailmail, sota_mobile_notification, to_base"
+  },
+  {
+    "id": 156,
+    "model": "mail.notification",
+    "name": "Message Notifications",
+    "modules": "mail, sms, snailmail, to_mail_notif_and_email"
+  },
+  {
+    "id": 163,
+    "model": "mail.message.reaction",
+    "name": "Message Reaction",
+    "modules": "mail"
+  },
+  {
+    "id": 165,
+    "model": "mail.message.subtype",
+    "name": "Message subtypes",
+    "modules": "mail"
+  },
+  {
+    "id": 1531,
+    "model": "microsoft.outlook.mixin",
+    "name": "Microsoft Outlook Mixin",
+    "modules": "microsoft_outlook"
+  },
+  {
+    "id": 1417,
+    "model": "asset.modify",
+    "name": "Modify Asset",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 1665,
+    "model": "freight.ocr.log",
+    "name": "OCR Usage Log",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1715,
+    "model": "freight.ocr.vendor.bill.wizard",
+    "name": "OCR Vendor Bill",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1716,
+    "model": "freight.ocr.vendor.bill.wizard.line",
+    "name": "OCR Vendor Bill Line",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1328,
+    "model": "one2many",
+    "name": "One2many Copy Onchange Patch",
+    "modules": "ps_copy_one2many_line"
+  },
+  {
+    "id": 1609,
+    "model": "sota.storage.usage.open",
+    "name": "Open Sota Storage Usage",
+    "modules": "sota_storage_usage"
+  },
+  {
+    "id": 511,
+    "model": "account.financial.year.op",
+    "name": "Opening Balance of Financial Year",
+    "modules": "account"
+  },
+  {
+    "id": 1339,
+    "model": "treeview.operator.filter",
+    "name": "Operator Filter",
+    "modules": "sota_treeview_filter"
+  },
+  {
+    "id": 524,
+    "model": "crm.lost.reason",
+    "name": "Opp. Lost Reason",
+    "modules": "crm"
+  },
+  {
+    "id": 976,
+    "model": "job.document.cargo",
+    "name": "Other Document Cargo",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 957,
+    "model": "job.other.attachment",
+    "name": "Other Job Attachment",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 967,
+    "model": "other.cargo.information",
+    "name": "Other Job Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 966,
+    "model": "other.schedule.information",
+    "name": "Other Job Schedule Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 167,
+    "model": "mail.mail",
+    "name": "Outgoing Mails",
+    "modules": "mail, mass_mailing"
+  },
+  {
+    "id": 349,
+    "model": "sms.sms",
+    "name": "Outgoing SMS",
+    "modules": "sms"
+  },
+  {
+    "id": 1659,
+    "model": "freight.pl.snapshot.compare",
+    "name": "P/L Snapshot Comparison (vs Current)",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1660,
+    "model": "freight.pl.snapshot.compare.line",
+    "name": "P/L Snapshot Comparison Line",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1661,
+    "model": "freight.pl.snapshot.compare.period",
+    "name": "P/L Snapshot Comparison Period Option",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1658,
+    "model": "freight.pl.snapshot.line",
+    "name": "P/L Snapshot Line (per Job)",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1657,
+    "model": "freight.pl.snapshot",
+    "name": "P/L by Department Snapshot",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 73,
+    "model": "report.paperformat",
+    "name": "Paper Format Config",
+    "modules": "base"
+  },
+  {
+    "id": 481,
+    "model": "account.partial.reconcile",
+    "name": "Partial Reconcile",
+    "modules": "account, sota_freight_advanced"
+  },
+  {
+    "id": 344,
+    "model": "res.partner.autocomplete.sync",
+    "name": "Partner Autocomplete Sync",
+    "modules": "partner_autocomplete"
+  },
+  {
+    "id": 600,
+    "model": "res.partner.brench",
+    "name": "Partner Branch",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 603,
+    "model": "res.partner.class",
+    "name": "Partner Class",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 599,
+    "model": "res.partner.login",
+    "name": "Partner Login",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 1432,
+    "model": "res.partner.resource",
+    "name": "Partner Resource",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 604,
+    "model": "res.partner.routing",
+    "name": "Partner Routing",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 83,
+    "model": "res.partner.category",
+    "name": "Partner Tags",
+    "modules": "base"
+  },
+  {
+    "id": 84,
+    "model": "res.partner.title",
+    "name": "Partner Title",
+    "modules": "base"
+  },
+  {
+    "id": 369,
+    "model": "report.report_xlsx.partner_xlsx",
+    "name": "Partner XLSX Report",
+    "modules": "report_xlsx"
+  },
+  {
+    "id": 474,
+    "model": "account.reconcile.model.partner.mapping",
+    "name": "Partner mapping for reconciliation models",
+    "modules": "account"
+  },
+  {
+    "id": 201,
+    "model": "mail.resend.partner",
+    "name": "Partner with additional information for mail resend",
+    "modules": "mail"
+  },
+  {
+    "id": 98,
+    "model": "res.users.identitycheck",
+    "name": "Password Check Wizard",
+    "modules": "base"
+  },
+  {
+    "id": 455,
+    "model": "payment.icon",
+    "name": "Payment Icon",
+    "modules": "payment"
+  },
+  {
+    "id": 1327,
+    "model": "account.payment.line",
+    "name": "Payment Line",
+    "modules": "to_account_payment"
+  },
+  {
+    "id": 485,
+    "model": "account.payment.method.line",
+    "name": "Payment Methods",
+    "modules": "account, account_payment"
+  },
+  {
+    "id": 484,
+    "model": "account.payment.method",
+    "name": "Payment Methods",
+    "modules": "account, account_payment"
+  },
+  {
+    "id": 454,
+    "model": "payment.provider",
+    "name": "Payment Provider",
+    "modules": "account_payment, payment"
+  },
+  {
+    "id": 649,
+    "model": "report.l10n_vn_viin.report_account_move_payment_receipt",
+    "name": "Payment Receipt Report",
+    "modules": "l10n_vn_viin"
+  },
+  {
+    "id": 577,
+    "model": "payment.refund.wizard",
+    "name": "Payment Refund Wizard",
+    "modules": "account_payment"
+  },
+  {
+    "id": 2252,
+    "model": "report.sota_freight_advanced.report_payment_request_credit_note",
+    "name": "Payment Request Report (Payment Note)",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 2251,
+    "model": "report.sota_freight_advanced.report_payment_request_soa",
+    "name": "Payment Request Report (SOA)",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 477,
+    "model": "account.payment.term",
+    "name": "Payment Terms",
+    "modules": "account"
+  },
+  {
+    "id": 478,
+    "model": "account.payment.term.line",
+    "name": "Payment Terms Line",
+    "modules": "account"
+  },
+  {
+    "id": 456,
+    "model": "payment.token",
+    "name": "Payment Token",
+    "modules": "payment"
+  },
+  {
+    "id": 457,
+    "model": "payment.transaction",
+    "name": "Payment Transaction",
+    "modules": "account_payment, payment"
+  },
+  {
+    "id": 459,
+    "model": "payment.provider.onboarding.wizard",
+    "name": "Payment provider onboarding wizard",
+    "modules": "payment"
+  },
+  {
+    "id": 641,
+    "model": "crm.iap.lead.role",
+    "name": "People Role",
+    "modules": "crm_iap_mine"
+  },
+  {
+    "id": 642,
+    "model": "crm.iap.lead.seniority",
+    "name": "People Seniority",
+    "modules": "crm_iap_mine"
+  },
+  {
+    "id": 1499,
+    "model": "freight.job.customer.seq",
+    "name": "Per-customer job sequence",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 408,
+    "model": "hr.plan.wizard",
+    "name": "Plan Wizard",
+    "modules": "hr"
+  },
+  {
+    "id": 406,
+    "model": "hr.plan.activity.type",
+    "name": "Plan activity type",
+    "modules": "hr"
+  },
+  {
+    "id": 1076,
+    "model": "freight.port.warehouse.mapping",
+    "name": "Port Warehouse Mapping",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 439,
+    "model": "portal.mixin",
+    "name": "Portal Mixin",
+    "modules": "portal"
+  },
+  {
+    "id": 440,
+    "model": "portal.share",
+    "name": "Portal Sharing",
+    "modules": "portal"
+  },
+  {
+    "id": 442,
+    "model": "portal.wizard.user",
+    "name": "Portal User Config",
+    "modules": "portal"
+  },
+  {
+    "id": 1012,
+    "model": "report.sota_freight_advanced.report_pre_alert_xlsx",
+    "name": "Pre Alert XLSX",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 423,
+    "model": "product.pricelist",
+    "name": "Pricelist",
+    "modules": "product"
+  },
+  {
+    "id": 429,
+    "model": "report.product.report_pricelist",
+    "name": "Pricelist Report",
+    "modules": "product"
+  },
+  {
+    "id": 424,
+    "model": "product.pricelist.item",
+    "name": "Pricelist Rule",
+    "modules": "product"
+  },
+  {
+    "id": 2248,
+    "model": "print.form.wizard",
+    "name": "Print Accounting Form",
+    "modules": "sota_freight_advanced, to_hr_employee_advance"
+  },
+  {
+    "id": 339,
+    "model": "privacy.log",
+    "name": "Privacy Log",
+    "modules": "privacy_lookup"
+  },
+  {
+    "id": 340,
+    "model": "privacy.lookup.wizard",
+    "name": "Privacy Lookup Wizard",
+    "modules": "privacy_lookup"
+  },
+  {
+    "id": 341,
+    "model": "privacy.lookup.wizard.line",
+    "name": "Privacy Lookup Wizard Line",
+    "modules": "privacy_lookup"
+  },
+  {
+    "id": 415,
+    "model": "product.attribute",
+    "name": "Product Attribute",
+    "modules": "product"
+  },
+  {
+    "id": 420,
+    "model": "product.attribute.custom.value",
+    "name": "Product Attribute Custom Value",
+    "modules": "product"
+  },
+  {
+    "id": 421,
+    "model": "product.category",
+    "name": "Product Category",
+    "modules": "account, product, sota_freight_advanced, viin_account"
+  },
+  {
+    "id": 428,
+    "model": "report.product.report_producttemplatelabel_dymo",
+    "name": "Product Label Report",
+    "modules": "product"
+  },
+  {
+    "id": 427,
+    "model": "report.product.report_producttemplatelabel",
+    "name": "Product Label Report",
+    "modules": "product"
+  },
+  {
+    "id": 422,
+    "model": "product.packaging",
+    "name": "Product Packaging",
+    "modules": "product"
+  },
+  {
+    "id": 426,
+    "model": "product.tag",
+    "name": "Product Tag",
+    "modules": "product"
+  },
+  {
+    "id": 419,
+    "model": "product.template.attribute.exclusion",
+    "name": "Product Template Attribute Exclusion",
+    "modules": "product"
+  },
+  {
+    "id": 417,
+    "model": "product.template.attribute.line",
+    "name": "Product Template Attribute Line",
+    "modules": "product"
+  },
+  {
+    "id": 418,
+    "model": "product.template.attribute.value",
+    "name": "Product Template Attribute Value",
+    "modules": "product"
+  },
+  {
+    "id": 364,
+    "model": "uom.uom",
+    "name": "Product Unit of Measure",
+    "modules": "account_edi, product, uom"
+  },
+  {
+    "id": 363,
+    "model": "uom.category",
+    "name": "Product UoM Categories",
+    "modules": "uom"
+  },
+  {
+    "id": 401,
+    "model": "hr.employee.public",
+    "name": "Public Employee",
+    "modules": "hr, hr_contract, hr_expense, hr_org_chart, viin_hr"
+  },
+  {
+    "id": 195,
+    "model": "publisher_warranty.contract",
+    "name": "Publisher Warranty Contract",
+    "modules": "mail"
+  },
+  {
+    "id": 937,
+    "model": "freight.purchase.pricing.fcl.line",
+    "name": "Purchase Pricing FCL Line",
+    "modules": "portalink_freight_advanced, sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 938,
+    "model": "freight.purchase.pricing.fcl.other.line",
+    "name": "Purchase Pricing FCL Other Line",
+    "modules": "portalink_freight_advanced, sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 939,
+    "model": "freight.purchase.pricing.lcl.line",
+    "name": "Purchase Pricing LCL Line",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 940,
+    "model": "freight.purchase.pricing.lcl.other.line",
+    "name": "Purchase Pricing LCL Other Line",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 943,
+    "model": "freight.purchase.pricing.truck.line",
+    "name": "Purchase Pricing Truck Line",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 944,
+    "model": "freight.purchase.pricing.truck.other.line",
+    "name": "Purchase Pricing Truck Other Line",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 365,
+    "model": "py3o.template",
+    "name": "Py3o template",
+    "modules": "report_py3o"
+  },
+  {
+    "id": 1928,
+    "model": "freight.quotation.currency.rate",
+    "name": "Quotation Exchange Rate",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 1929,
+    "model": "freight.quotation.rate.mixin",
+    "name": "Quotation Exchange Rate Table",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 625,
+    "model": "report.sota_freight_crm.report_quotation_xlsx_vi",
+    "name": "Quotation XLSX Report (Vietnamese)",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 589,
+    "model": "readonly.by.state.mixins",
+    "name": "Readonly by State",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 497,
+    "model": "account.reconcile.model.line.template",
+    "name": "Reconcile Model Line Template",
+    "modules": "account"
+  },
+  {
+    "id": 496,
+    "model": "account.reconcile.model.template",
+    "name": "Reconcile Model Template",
+    "modules": "account"
+  },
+  {
+    "id": 1503,
+    "model": "account.account.reconcile.data",
+    "name": "Reconcile data model to store user info",
+    "modules": "account_reconcile_oca"
+  },
+  {
+    "id": 514,
+    "model": "account.payment.register",
+    "name": "Register Payment",
+    "modules": "account, account_payment, fms_account_manual_exchange_rate, hr_expense, sota_freight_advanced, sota_freight_advanced_v2, to_account_reports, to_hr_employee_advance, to_hr_expense"
+  },
+  {
+    "id": 510,
+    "model": "account.resequence.wizard",
+    "name": "Remake the sequence of Journal Entries.",
+    "modules": "account, account_edi"
+  },
+  {
+    "id": 198,
+    "model": "mail.blacklist.remove",
+    "name": "Remove email from blacklist wizard",
+    "modules": "mail"
+  },
+  {
+    "id": 338,
+    "model": "phone.blacklist.remove",
+    "name": "Remove phone from blacklist",
+    "modules": "phone_validation"
+  },
+  {
+    "id": 1006,
+    "model": "report.sota_freight_advanced.report_isf10_plus_2_xlsx",
+    "name": "Report ISF10+2 XLSX",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 72,
+    "model": "report.layout",
+    "name": "Report Layout",
+    "modules": "base"
+  },
+  {
+    "id": 367,
+    "model": "py3o.report",
+    "name": "Report Py30",
+    "modules": "report_py3o"
+  },
+  {
+    "id": 352,
+    "model": "sms.resend.recipient",
+    "name": "Resend Notification",
+    "modules": "sms"
+  },
+  {
+    "id": 16,
+    "model": "reset.view.arch.wizard",
+    "name": "Reset View Architecture Wizard",
+    "modules": "base"
+  },
+  {
+    "id": 370,
+    "model": "resource.mixin",
+    "name": "Resource Mixin",
+    "modules": "resource"
+  },
+  {
+    "id": 374,
+    "model": "resource.calendar.leaves",
+    "name": "Resource Time Off Detail",
+    "modules": "hr_contract, resource"
+  },
+  {
+    "id": 371,
+    "model": "resource.calendar",
+    "name": "Resource Working Time",
+    "modules": "hr_contract, resource"
+  },
+  {
+    "id": 373,
+    "model": "resource.resource",
+    "name": "Resources",
+    "modules": "hr, hr_contract, resource"
+  },
+  {
+    "id": 1418,
+    "model": "asset.revaluation.wizard",
+    "name": "Revaluation Wizard of Asset",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 1416,
+    "model": "account.asset.revaluation.line",
+    "name": "Revalution Line of Asset",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 475,
+    "model": "account.reconcile.model.line",
+    "name": "Rules for the reconciliation model",
+    "modules": "account"
+  },
+  {
+    "id": 638,
+    "model": "account.edi.xml.ubl_sg",
+    "name": "SG BIS Billing 3.0",
+    "modules": "account_edi_ubl_cii"
+  },
+  {
+    "id": 444,
+    "model": "sh.mail.activity",
+    "name": "SH Mail Activity",
+    "modules": "sh_activities_management"
+  },
+  {
+    "id": 635,
+    "model": "account.edi.xml.ubl_nl",
+    "name": "SI-UBL 2.0 (NLCIUS)",
+    "modules": "account_edi_ubl_cii"
+  },
+  {
+    "id": 348,
+    "model": "sms.api",
+    "name": "SMS API",
+    "modules": "sms"
+  },
+  {
+    "id": 353,
+    "model": "sms.resend",
+    "name": "SMS Resend",
+    "modules": "sms"
+  },
+  {
+    "id": 354,
+    "model": "sms.template.preview",
+    "name": "SMS Template Preview",
+    "modules": "sms"
+  },
+  {
+    "id": 355,
+    "model": "sms.template.reset",
+    "name": "SMS Template Reset",
+    "modules": "sms"
+  },
+  {
+    "id": 350,
+    "model": "sms.template",
+    "name": "SMS Templates",
+    "modules": "sms"
+  },
+  {
+    "id": 437,
+    "model": "hr.payroll.structure.type",
+    "name": "Salary Structure Type",
+    "modules": "hr_contract"
+  },
+  {
+    "id": 602,
+    "model": "crm.department",
+    "name": "Sales Department",
+    "modules": "sh_activities_management, sota_freight_crm"
+  },
+  {
+    "id": 945,
+    "model": "freight.sales.pricing",
+    "name": "Sales Pricing",
+    "modules": "sota_freight_crm"
+  },
+  {
+    "id": 547,
+    "model": "mailing.mailing.test",
+    "name": "Sample Mail Wizard",
+    "modules": "mass_mailing"
+  },
+  {
+    "id": 164,
+    "model": "mail.message.schedule",
+    "name": "Scheduled Messages",
+    "modules": "mail"
+  },
+  {
+    "id": 922,
+    "model": "house.sea.buying.rate",
+    "name": "Sea House Buying Rate",
+    "modules": "portalink_freight_advanced, sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 1351,
+    "model": "house.sea.buying.rate.cost",
+    "name": "Sea House Buying Rate Cost",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 918,
+    "model": "house.sea.container.information",
+    "name": "Sea House Container Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1032,
+    "model": "house.sea.pay.on.behalf.rate",
+    "name": "Sea House Pay On Behalf Rate",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 919,
+    "model": "house.sea.quotation.information",
+    "name": "Sea House Quotation Information",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 916,
+    "model": "house.sea.schedule.information",
+    "name": "Sea House Schedule Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 953,
+    "model": "job.sea.attachment",
+    "name": "Sea Job Attachment",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 970,
+    "model": "danger.sea.cargo.information",
+    "name": "Sea Job Dangerous Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 961,
+    "model": "sea.schedule.information",
+    "name": "Sea Job Schedule Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 351,
+    "model": "sms.composer",
+    "name": "Send SMS Wizard",
+    "modules": "sms"
+  },
+  {
+    "id": 1405,
+    "model": "freight.quotation.purchase.pricing.wizard.line",
+    "name": "Service lines selected from purchase pricing",
+    "modules": "portalink_freight_advanced, sota_freight_crm"
+  },
+  {
+    "id": 448,
+    "model": "sh.activity.dynamic.action",
+    "name": "Sh Activity Create Action",
+    "modules": "sh_activities_management"
+  },
+  {
+    "id": 984,
+    "model": "freight.shipment.container",
+    "name": "Shipment Container",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 912,
+    "model": "freight.shipment.package",
+    "name": "Shipment Package",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1359,
+    "model": "shipping.instruction.wizard",
+    "name": "Shipping Instruction Format Selection Wizard",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 104,
+    "model": "res.users.apikeys.show",
+    "name": "Show API Key",
+    "modules": "base"
+  },
+  {
+    "id": 357,
+    "model": "snailmail.confirm",
+    "name": "Snailmail Confirm",
+    "modules": "snailmail"
+  },
+  {
+    "id": 586,
+    "model": "snailmail.confirm.invoice",
+    "name": "Snailmail Confirm Invoice",
+    "modules": "snailmail_account"
+  },
+  {
+    "id": 356,
+    "model": "snailmail.letter",
+    "name": "Snailmail Letter",
+    "modules": "snailmail"
+  },
+  {
+    "id": 1480,
+    "model": "sota.mobile.device",
+    "name": "Sota Mobile Device",
+    "modules": "sota_mobile_notification"
+  },
+  {
+    "id": 1608,
+    "model": "sota.storage.usage",
+    "name": "Sota Storage Usage",
+    "modules": "sota_storage_usage"
+  },
+  {
+    "id": 1500,
+    "model": "sparse_fields.test",
+    "name": "Sparse fields Test",
+    "modules": "base_sparse_field"
+  },
+  {
+    "id": 435,
+    "model": "spreadsheet.dashboard",
+    "name": "Spreadsheet Dashboard",
+    "modules": "spreadsheet_dashboard"
+  },
+  {
+    "id": 162,
+    "model": "mail.link.preview",
+    "name": "Store link preview data",
+    "modules": "mail"
+  },
+  {
+    "id": 425,
+    "model": "product.supplierinfo",
+    "name": "Supplier Pricelist",
+    "modules": "product"
+  },
+  {
+    "id": 1457,
+    "model": "sync.einvoice.bill.wizard",
+    "name": "Sync E-Invoice Bill from GDT",
+    "modules": "sota_sync_einvoice_bill"
+  },
+  {
+    "id": 1709,
+    "model": "freight.sync.selling.buying.wizard",
+    "name": "Sync Selling Lines To Buying",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1710,
+    "model": "freight.sync.selling.buying.wizard.line",
+    "name": "Sync Selling To Buying Line",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 472,
+    "model": "account.tax",
+    "name": "Tax",
+    "modules": "account, l10n_multilang, sota_freight_advanced, sota_freight_crm, sota_vn_edi, viin_account"
+  },
+  {
+    "id": 471,
+    "model": "account.tax.group",
+    "name": "Tax Group",
+    "modules": "account, l10n_vn_viin, viin_account"
+  },
+  {
+    "id": 494,
+    "model": "account.fiscal.position.tax.template",
+    "name": "Tax Mapping Template of Fiscal Position",
+    "modules": "account"
+  },
+  {
+    "id": 462,
+    "model": "account.fiscal.position.tax",
+    "name": "Tax Mapping of Fiscal Position",
+    "modules": "account"
+  },
+  {
+    "id": 473,
+    "model": "account.tax.repartition.line",
+    "name": "Tax Repartition Line",
+    "modules": "account"
+  },
+  {
+    "id": 492,
+    "model": "account.tax.repartition.line.template",
+    "name": "Tax Repartition Line Template",
+    "modules": "account"
+  },
+  {
+    "id": 154,
+    "model": "template.reset.mixin",
+    "name": "Template Reset Mixin",
+    "modules": "mail"
+  },
+  {
+    "id": 488,
+    "model": "account.group.template",
+    "name": "Template for Account Groups",
+    "modules": "account, l10n_multilang"
+  },
+  {
+    "id": 493,
+    "model": "account.fiscal.position.template",
+    "name": "Template for Fiscal Position",
+    "modules": "account, l10n_multilang"
+  },
+  {
+    "id": 491,
+    "model": "account.tax.template",
+    "name": "Templates for Taxes",
+    "modules": "account, l10n_multilang"
+  },
+  {
+    "id": 382,
+    "model": "report.report_xlsx_helper.test_partner_xlsx",
+    "name": "Test Partner XLSX Report",
+    "modules": "report_xlsx_helper"
+  },
+  {
+    "id": 91,
+    "model": "res.config.settings",
+    "name": "Test config settings",
+    "modules": "access_apps, access_restricted, account, account_payment_invoice_online_payment_patch, account_reconcile_oca, analytic, auth_signup, base, base_geolocalize, base_setup, crm, crm_iap_enrich, digest, google_recaptcha, hr, hr_expense, iap, ks_dashboard_ninja, l10n_vn_viin, mail, mass_mailing, microsoft_outlook, om_fiscal_year, partner_autocomplete, portal, product, sh_activities_management, sh_activity_base, snailmail, snailmail_account, sota_account_closing_entry_forward, sota_currency_rate_live, sota_freight_advanced, sota_freight_advanced_v2, sota_freight_crm, sota_mobile_notification, sota_sync_einvoice_bill, to_base, to_hr_employee_advance, viin_account, viin_hr_account, web_unsplash"
+  },
+  {
+    "id": 1426,
+    "model": "report.sota_account_asset.report_tool_book",
+    "name": "Tool Book XLSX Report",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 1427,
+    "model": "report.sota_account_asset.report_tool_depreciation",
+    "name": "Tool Depreciation XLSX Report",
+    "modules": "sota_account_asset"
+  },
+  {
+    "id": 905,
+    "model": "total.container.custom.volume.cargo.information",
+    "name": "Total Container Custom Volume Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 904,
+    "model": "total.container.volume.cargo.information",
+    "name": "Total Container Volume Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 996,
+    "model": "total.external.container.volume.cargo.information",
+    "name": "Total Container Volume Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 960,
+    "model": "total.container.volume.custom.cargo.information",
+    "name": "Total Container Volume Custom Cargo Information",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 958,
+    "model": "total.container.volume.sea.cargo.information",
+    "name": "Total Container Volume Sea Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 959,
+    "model": "total.container.volume.truck.cargo.information",
+    "name": "Total Container Volume Truck Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 142,
+    "model": "web_tour.tour",
+    "name": "Tours",
+    "modules": "web_tour"
+  },
+  {
+    "id": 1540,
+    "model": "freight.transfer.cost.config",
+    "name": "Transfer Cost Account Configuration",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1542,
+    "model": "freight.transfer.service.cost.wizard",
+    "name": "Transfer Service Cost Wizard",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1541,
+    "model": "freight.transfer.service.cost.wizard.line",
+    "name": "Transfer Service Cost Wizard Preview Line",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1337,
+    "model": "treeview.settings.filter",
+    "name": "Treeview Filter Settings",
+    "modules": "sota_treeview_filter"
+  },
+  {
+    "id": 1338,
+    "model": "treeview.settings.filter.line",
+    "name": "Treeview Filter Settings Line",
+    "modules": "sota_treeview_filter"
+  },
+  {
+    "id": 955,
+    "model": "job.truck.attachment",
+    "name": "Truck Job Attachment",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 971,
+    "model": "danger.truck.cargo.information",
+    "name": "Truck Job Dangerous Cargo Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 983,
+    "model": "freight.job.truck.invoice.issuance",
+    "name": "Truck Job Invoice Issuance",
+    "modules": "sota_freight_advanced, sota_freight_advanced_v2"
+  },
+  {
+    "id": 963,
+    "model": "truck.schedule.information",
+    "name": "Truck Job Schedule Information",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 631,
+    "model": "account.edi.xml.ubl_20",
+    "name": "UBL 2.0",
+    "modules": "account_edi_ubl_cii"
+  },
+  {
+    "id": 632,
+    "model": "account.edi.xml.ubl_21",
+    "name": "UBL 2.1",
+    "modules": "account_edi_ubl_cii"
+  },
+  {
+    "id": 633,
+    "model": "account.edi.xml.ubl_bis3",
+    "name": "UBL BIS Billing 3.0.12",
+    "modules": "account_edi_ubl_cii"
+  },
+  {
+    "id": 375,
+    "model": "utm.campaign",
+    "name": "UTM Campaign",
+    "modules": "crm, link_tracker, mass_mailing, mass_mailing_crm, utm"
+  },
+  {
+    "id": 376,
+    "model": "utm.medium",
+    "name": "UTM Medium",
+    "modules": "mass_mailing, utm"
+  },
+  {
+    "id": 377,
+    "model": "utm.mixin",
+    "name": "UTM Mixin",
+    "modules": "utm"
+  },
+  {
+    "id": 378,
+    "model": "utm.source",
+    "name": "UTM Source",
+    "modules": "mass_mailing, utm"
+  },
+  {
+    "id": 379,
+    "model": "utm.source.mixin",
+    "name": "UTM Source Mixin",
+    "modules": "utm"
+  },
+  {
+    "id": 381,
+    "model": "utm.tag",
+    "name": "UTM Tag",
+    "modules": "utm"
+  },
+  {
+    "id": 2,
+    "model": "_unknown",
+    "name": "Unknown",
+    "modules": "base"
+  },
+  {
+    "id": 2372,
+    "model": "freight.job.unlock.service.wizard",
+    "name": "Unlock Job and Reopen Services",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 1341,
+    "model": "unposted.entries.warning",
+    "name": "Unposted Entries Warning",
+    "modules": "om_fiscal_year"
+  },
+  {
+    "id": 1642,
+    "model": "wizard.soa.update.exchange.rate",
+    "name": "Update Exchange Rate for SOA Notes",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 359,
+    "model": "snailmail.letter.missing.required.fields",
+    "name": "Update address of partner",
+    "modules": "snailmail"
+  },
+  {
+    "id": 534,
+    "model": "crm.lead.pls.update",
+    "name": "Update the probabilities",
+    "modules": "crm"
+  },
+  {
+    "id": 1331,
+    "model": "wizard.bol.ocr.house",
+    "name": "Upload Bill of Lading OCR - House BL",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1332,
+    "model": "wizard.bol.ocr.master",
+    "name": "Upload Bill of Lading OCR - Master BL",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 97,
+    "model": "res.users",
+    "name": "User",
+    "modules": "access_limit_max_users, access_restricted, account, auth_signup, auth_totp, auth_totp_mail, auth_totp_portal, base, base_import, base_setup, base_user_role, bus, calendar, contacts, crm, digest, hr, hr_contract, hr_expense, login_user_detail, mail, mail_bot, mass_mailing, phone_validation, resource, sales_team, sh_activities_management, sota_binary_file_preview, sota_freight_advanced, sota_freight_advanced_v2, sota_storage_usage, to_base, to_mail_notif_and_email, viin_hr, web_responsive, web_unsplash"
+  },
+  {
+    "id": 140,
+    "model": "bus.presence",
+    "name": "User Presence",
+    "modules": "bus, mail"
+  },
+  {
+    "id": 176,
+    "model": "res.users.settings",
+    "name": "User Settings",
+    "modules": "mail, sota_freight_crm"
+  },
+  {
+    "id": 177,
+    "model": "res.users.settings.volumes",
+    "name": "User Settings Volumes",
+    "modules": "mail"
+  },
+  {
+    "id": 360,
+    "model": "res.users.role",
+    "name": "User role",
+    "modules": "base_user_role"
+  },
+  {
+    "id": 100,
+    "model": "change.password.user",
+    "name": "User, Change Password Wizard",
+    "modules": "base"
+  },
+  {
+    "id": 101,
+    "model": "change.password.own",
+    "name": "User, change own password wizard",
+    "modules": "base"
+  },
+  {
+    "id": 102,
+    "model": "res.users.apikeys",
+    "name": "Users API Keys",
+    "modules": "base"
+  },
+  {
+    "id": 105,
+    "model": "res.users.deletion",
+    "name": "Users Deletion Request",
+    "modules": "base"
+  },
+  {
+    "id": 96,
+    "model": "res.users.log",
+    "name": "Users Log",
+    "modules": "base"
+  },
+  {
+    "id": 361,
+    "model": "res.users.role.line",
+    "name": "Users associated to a role",
+    "modules": "base_user_role"
+  },
+  {
+    "id": 2237,
+    "model": "vnaccs.job.import.line",
+    "name": "VNACCS Job Import Line",
+    "modules": "sota_freight_advanced_v2"
+  },
+  {
+    "id": 508,
+    "model": "validate.account.move",
+    "name": "Validate Account Move",
+    "modules": "account"
+  },
+  {
+    "id": 988,
+    "model": "vendor.account",
+    "name": "Vendor Account",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 989,
+    "model": "freight.vendor.contract",
+    "name": "Vendor Contract",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 661,
+    "model": "l10n_vn.b09dnn",
+    "name": "VietNam B09-DNN Report Wizard",
+    "modules": "l10n_vn_viin_account_reports"
+  },
+  {
+    "id": 657,
+    "model": "l10n_vn.s03adn",
+    "name": "VietNam S03a-DN Report Wizard",
+    "modules": "l10n_vn_viin_account_reports, l10n_vn_viin_account_reports_report_off"
+  },
+  {
+    "id": 658,
+    "model": "l10n_vn.s03bdn",
+    "name": "VietNam S03b-DN Report Wizard",
+    "modules": "l10n_vn_viin_account_reports"
+  },
+  {
+    "id": 654,
+    "model": "report.l10n_vn_viin_account_reports.report_s07dn",
+    "name": "VietNam S07dn Report",
+    "modules": "l10n_vn_viin_account_reports, sota_freight_advanced"
+  },
+  {
+    "id": 659,
+    "model": "l10n_vn.s07dn",
+    "name": "VietNam S07dn Report Wizard",
+    "modules": "l10n_vn_viin_account_reports, l10n_vn_viin_account_reports_report_off"
+  },
+  {
+    "id": 655,
+    "model": "report.l10n_vn_viin_account_reports.report_s08dn",
+    "name": "VietNam S08dn Report",
+    "modules": "l10n_vn_viin_account_reports"
+  },
+  {
+    "id": 660,
+    "model": "l10n_vn.s08dn",
+    "name": "VietNam S08dn Report Wizard",
+    "modules": "l10n_vn_viin_account_reports"
+  },
+  {
+    "id": 656,
+    "model": "l10n_vn.s38dn",
+    "name": "VietNam S38-DN Report Wizard",
+    "modules": "l10n_vn_viin_account_reports, l10n_vn_viin_account_reports_report_off"
+  },
+  {
+    "id": 646,
+    "model": "report.l10n_vn.common",
+    "name": "Vietnam Common Report",
+    "modules": "l10n_vn_viin"
+  },
+  {
+    "id": 664,
+    "model": "l10n_vn.c119.02gtgt",
+    "name": "Vietnam Invoice Declaration purchase 01 -2/GTGT",
+    "modules": "l10n_vn_viin_account_reports"
+  },
+  {
+    "id": 663,
+    "model": "l10n_vn.c119.01gtgt",
+    "name": "Vietnam Invoice Declaration sale 01 -1/GTGT",
+    "modules": "l10n_vn_viin_account_reports"
+  },
+  {
+    "id": 652,
+    "model": "report.l10n_vn_viin_account_reports.report_s03adn",
+    "name": "Vietnam S03a-DN Report",
+    "modules": "l10n_vn_viin_account_reports"
+  },
+  {
+    "id": 653,
+    "model": "report.l10n_vn_viin_account_reports.report_s03bdn",
+    "name": "Vietnam S03b-DN Report",
+    "modules": "l10n_vn_viin_account_reports"
+  },
+  {
+    "id": 651,
+    "model": "report.l10n_vn_viin_account_reports.report_s38dn",
+    "name": "Vietnam S38-DN Report",
+    "modules": "l10n_vn_viin_account_reports"
+  },
+  {
+    "id": 117,
+    "model": "to.vietnamese.number2words",
+    "name": "Vietnamese Number to Words",
+    "modules": "to_vietnamese_number2words"
+  },
+  {
+    "id": 650,
+    "model": "res.country.wards",
+    "name": "Wards",
+    "modules": "sota_vn_address"
+  },
+  {
+    "id": 331,
+    "model": "web_editor.converter.test.sub",
+    "name": "Web Editor Converter Subtest",
+    "modules": "web_editor"
+  },
+  {
+    "id": 330,
+    "model": "web_editor.converter.test",
+    "name": "Web Editor Converter Test",
+    "modules": "web_editor"
+  },
+  {
+    "id": 1016,
+    "model": "wizard.booking.convert.job",
+    "name": "Wizard Convert Job",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1013,
+    "model": "wizard.create.am.service",
+    "name": "Wizard Create Account Move Service",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1015,
+    "model": "wizard.create.bill.service",
+    "name": "Wizard Create Bill Service",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1014,
+    "model": "wizard.create.invoice.service",
+    "name": "Wizard Create Invoice Service",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1645,
+    "model": "wizard.refund.container.deposit",
+    "name": "Wizard Hoàn Cược Container",
+    "modules": "sota_freight_advanced"
+  },
+  {
+    "id": 1018,
+    "model": "wizard.notify",
+    "name": "Wizard Notify",
+    "modules": "sota_freight_advanced_v2, sota_freight_crm"
+  },
+  {
+    "id": 372,
+    "model": "resource.calendar.attendance",
+    "name": "Work Detail",
+    "modules": "resource"
+  },
+  {
+    "id": 407,
+    "model": "hr.work.location",
+    "name": "Work Location",
+    "modules": "hr"
+  },
+  {
+    "id": 405,
+    "model": "hr.plan",
+    "name": "plan",
+    "modules": "hr"
+  },
+  {
+    "id": 548,
+    "model": "mailing.mailing.schedule.date",
+    "name": "schedule a mailing",
+    "modules": "mass_mailing"
+  },
+  {
+    "id": 1699,
+    "model": "ks_to.do.description",
+    "name": "to do description",
+    "modules": "ks_dashboard_ninja"
+  },
+  {
+    "id": 1698,
+    "model": "ks_to.do.headers",
+    "name": "to do headers",
+    "modules": "ks_dashboard_ninja"
+  }
+]

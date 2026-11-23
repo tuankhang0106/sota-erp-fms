@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View for mail.message -->
+    <record id="view_mail_message_tree" model="ir.ui.view">
+        <field name="name">mail.message.tree</field>
+        <field name="model">mail.message</field>
+        <field name="arch" type="xml">
+            <tree string="Messages">
+                    <field name="date"/>
+                    <field name="subject"/>
+                    <field name="author_id"/>
+                    <field name="model"/>
+                    <field name="res_id"/>
+                <field name="record_name" string="Related Record"/>
+                <button name="action_open_document" type="object" string="Open Record" icon="fa-external-link" title="Open Record"/>
+                </tree>
+        </field>
+    </record>
+
+    <!-- Form View for mail.message -->
+    <record id="view_mail_message_form" model="ir.ui.view">
+        <field name="name">mail.message.form</field>
+        <field name="model">mail.message</field>
+        <field name="arch" type="xml">
+            <form string="Message" duplicate="0">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_open_document" string="Open Document" type="object" class="oe_link" icon="fa-file-text-o" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;model&quot;, &quot;=&quot;, false], [&quot;res_id&quot;, &quot;=&quot;, 0]]}"/>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="subject"/>
+                                <field name="date"/>
+                                <field name="email_from"/>
+                                <field name="author_id" can_create="true" can_write="true"/>
+                                <field name="message_type" modifiers="{&quot;required&quot;: true}"/>
+                                <field name="subtype_id" can_create="true" can_write="true"/>
+                                <field name="is_internal"/>
+                            </group>
+                            <group>
+                                <field name="model"/>
+                                <field name="res_id"/>
+                                <field name="record_name"/>
+                                <field name="parent_id" can_create="true" can_write="true"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Body" name="body">
+                                <field name="body" options="{'style-inline': true}"/>
+                            </page>
+                            <page string="Gateway" name="gateway">
+                                <group>
+                                    <group>
+                                        <field name="reply_to"/>
+                                        <field name="reply_to_force_new"/>
+                                    </group>
+                                    <group>
+                                        <field name="message_id" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="mail_server_id" can_create="true" can_write="true"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Recipients" name="recipients">
+                                <group>
+                                    <group>
+                                        <field name="partner_ids" widget="many2many_tags" can_create="true" can_write="true"/>
+                                    </group>
+                                    <group>
+                                        <field name="notified_partner_ids" widget="many2many_tags" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="starred_partner_ids" widget="many2many_tags" can_create="true" can_write="true"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <field name="notification_ids" on_change="1">
+                                        <tree>
+                                            <field name="res_partner_id"/>
+                                            <field name="is_read"/>
+                                            <field name="notification_type" modifiers="{&quot;required&quot;: true}"/>
+                                            <field name="notification_status"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Tracking" name="page_tracking">
+                                <field name="tracking_value_ids"><tree string="Tracking Value">
+                    <field name="field" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="old_value_integer" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="old_value_float" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="old_value_char" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="old_value_text" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="old_value_datetime" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="new_value_integer" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="new_value_float" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="new_value_char" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="new_value_text" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="new_value_datetime" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="mail_message_id" modifiers="{&quot;required&quot;: true}"/>
+                </tree></field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <!-- Search View for mail.message -->
+    <record id="view_mail_message_search" model="ir.ui.view">
+        <field name="name">mail.message.search</field>
+        <field name="model">mail.message</field>
+        <field name="arch" type="xml">
+            <search string="Messages Search">
+                    <field name="body" string="Content" filter_domain="['|', ('subject', 'ilike', self), ('body', 'ilike', self)]"/>
+                    <field name="subject"/>
+                    <field name="message_type"/>
+                    <field name="author_id"/>
+                    <field name="partner_ids"/>
+                    <field name="model"/>
+                    <field name="res_id"/>
+                    <field name="parent_id"/>
+                    <filter string="Has Mentions" name="filter_has_mentions" domain="[('partner_ids.user_ids', 'in', [uid])]"/>
+                    <separator/>
+                    <filter string="Need Action" name="message_needaction" help="Unread messages" domain="[('needaction', '=', True)]"/>
+                    <separator/>
+                </search>
+        </field>
+    </record>
+
+    <!-- Window Action for mail.message -->
+    <record id="action_mail_message" model="ir.actions.act_window">
+        <field name="name">Tin nhắn (Messages)</field>
+        <field name="res_model">mail.message</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_mail_message_search"/>
+    </record>
+
+</odoo>

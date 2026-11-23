@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu Vận chuyển (ID: 309, Action: 638) -->
+    <menuitem id="menu_freight_root"
+              name="Vận chuyển"
+              web_icon="sota_freight_crm,static/description/icon.png"
+              sequence="4"/>
+
+    <!-- 1. Báo giá -->
+    <menuitem id="menu_freight_quotation_parent"
+              name="Báo giá"
+              parent="menu_freight_root"
+              sequence="10"/>
+
+    <menuitem id="menu_freight_quotation"
+              name="Báo giá"
+              parent="menu_freight_quotation_parent"
+              action="action_freight_quotation"
+              sequence="1"/>
+
+    <!-- 2. Dashboard FMS (Client Action) -->
+    <record id="action_fms_dashboard" model="ir.actions.client">
+        <field name="name">Dashboard FMS</field>
+        <field name="tag">fms_dashboard</field>
+    </record>
+
+    <menuitem id="menu_fms_dashboard"
+              name="Dashboard FMS"
+              parent="menu_freight_root"
+              action="action_fms_dashboard"
+              sequence="20"/>
+
+    <!-- 3. Quản lý Job -->
+    <menuitem id="menu_freight_job_management"
+              name="Quản lý Job"
+              parent="menu_freight_root"
+              sequence="30"/>
+
+    <menuitem id="menu_freight_job"
+              name="Job"
+              parent="menu_freight_job_management"
+              action="action_freight_job"
+              sequence="1"/>
+
+    <!-- Subgroup: Quản lý House -->
+    <menuitem id="menu_freight_house_management"
+              name="Quản lý House"
+              parent="menu_freight_job_management"
+              sequence="10"/>
+
+    <menuitem id="menu_freight_house_sea"
+              name="House Sea B/L"
+              parent="menu_freight_house_management"
+              action="action_freight_house_sea"
+              sequence="1"/>
+
+    <menuitem id="menu_freight_house_air"
+              name="House Air B/L"
+              parent="menu_freight_house_management"
+              action="action_freight_house_air"
+              sequence="2"/>
+
+    <menuitem id="menu_freight_house_cross_border"
+              name="House Cross Border"
+              parent="menu_freight_house_management"
+              action="action_freight_house_cross_border"
+              sequence="3"/>
+
+    <!-- Subgroup: Quản lý Master -->
+    <menuitem id="menu_freight_master_management"
+              name="Quản lý Master"
+              parent="menu_freight_job_management"
+              sequence="20"/>
+
+    <menuitem id="menu_freight_master_sea"
+              name="Master SEA B/L"
+              parent="menu_freight_master_management"
+              action="action_freight_master_sea"
+              sequence="1"/>
+
+    <menuitem id="menu_freight_master_air"
+              name="Master AIR B/L"
+              parent="menu_freight_master_management"
+              action="action_freight_master_air"
+              sequence="2"/>
+
+    <menuitem id="menu_freight_master_cross_border"
+              name="Master Cross Border"
+              parent="menu_freight_master_management"
+              action="action_freight_master_cross_border"
+              sequence="3"/>
+
+    <!-- 4. Quản lý thanh toán (Credit Note) -->
+    <menuitem id="menu_freight_credit_parent"
+              name="Quản lý thanh toán"
+              parent="menu_freight_root"
+              sequence="40"/>
+
+    <menuitem id="menu_freight_credit_note"
+              name="Credit Note"
+              parent="menu_freight_credit_parent"
+              action="action_freight_credit_note"
+              sequence="1"/>
+
+    <menuitem id="menu_freight_soa_credit"
+              name="Bảng tổng hợp công nợ"
+              parent="menu_freight_credit_parent"
+              action="action_freight_soa"
+              sequence="2"/>
+
+    <!-- 5. Debit Note / SOA -->
+    <menuitem id="menu_freight_debit_parent"
+              name="Debit Note / SOA"
+              parent="menu_freight_root"
+              sequence="50"/>
+
+    <menuitem id="menu_freight_debit_note"
+              name="Debit Note"
+              parent="menu_freight_debit_parent"
+              action="action_freight_debit_note"
+              sequence="1"/>
+
+    <menuitem id="menu_freight_soa_debit"
+              name="Bảng tổng hợp công nợ"
+              parent="menu_freight_debit_parent"
+              action="action_freight_soa"
+              sequence="2"/>
+
+    <!-- 6. DC Note / SOA -->
+    <menuitem id="menu_freight_dc_parent"
+              name="DC Note / SOA"
+              parent="menu_freight_root"
+              sequence="60"/>
+
+    <menuitem id="menu_freight_dc_note"
+              name="DC Note"
+              parent="menu_freight_dc_parent"
+              action="action_freight_dc_note"
+              sequence="1"/>
+
+    <menuitem id="menu_freight_soa_dc"
+              name="Bảng tổng hợp công nợ"
+              parent="menu_freight_dc_parent"
+              action="action_freight_soa"
+              sequence="2"/>
+
+    <!-- 7. Giá cả -->
+    <menuitem id="menu_freight_pricing_root"
+              name="Giá cả"
+              parent="menu_freight_root"
+              sequence="70"/>
+
+    <menuitem id="menu_freight_purchase_pricing"
+              name="Bảng giá mua"
+              parent="menu_freight_pricing_root"
+              action="action_freight_purchase_pricing"
+              sequence="1"/>
+
+    <menuitem id="menu_freight_sales_inquiry"
+              name="Yêu cầu báo giá"
+              parent="menu_freight_pricing_root"
+              action="action_freight_sales_inquiry"
+              sequence="2"/>
+
+    <!-- 8. Cấu hình -->
+    <menuitem id="menu_freight_config_root"
+              name="Cấu hình"
+              parent="menu_freight_root"
+              sequence="100"
+              groups="base.group_system"/>
+
+    <!-- Nhà vận chuyển -->
+    <menuitem id="menu_freight_carriers"
+              name="Nhà vận chuyển"
+              parent="menu_freight_config_root"
+              sequence="10"/>
+
+    <menuitem id="menu_freight_airline"
+              name="Hãng hàng không"
+              parent="menu_freight_carriers"
+              action="action_freight_airline"
+              sequence="1"/>
+
+    <menuitem id="menu_freight_shipping_line"
+              name="Hãng vận tải biển"
+              parent="menu_freight_carriers"
+              action="action_freight_shipping_line"
+              sequence="2"/>
+
+    <menuitem id="menu_freight_trucker"
+              name="Hãng xe"
+              parent="menu_freight_carriers"
+              action="action_freight_trucker"
+              sequence="3"/>
+
+    <!-- Cargo &amp; Products -->
+    <menuitem id="menu_freight_cargo"
+              name="Cargo &amp; Products"
+              parent="menu_freight_config_root"
+              sequence="20"/>
+
+    <menuitem id="menu_freight_unit"
+              name="Container/Đơn vị"
+              parent="menu_freight_cargo"
+              action="action_freight_unit"
+              sequence="1"/>
+
+    <menuitem id="menu_freight_fcl_unit"
+              name="Đơn vị FCL"
+              parent="menu_freight_cargo"
+              action="action_freight_fcl_unit"
+              sequence="2"/>
+
+    <menuitem id="menu_freight_package"
+              name="Kiện hàng"
+              parent="menu_freight_cargo"
+              action="action_freight_package"
+              sequence="3"/>
+
+    <menuitem id="menu_freight_commodity"
+              name="Hàng hóa"
+              parent="menu_freight_cargo"
+              action="action_freight_commodity"
+              sequence="4"/>
+
+    <!-- Locations &amp; Routes -->
+    <menuitem id="menu_freight_locations"
+              name="Locations &amp; Routes"
+              parent="menu_freight_config_root"
+              sequence="30"/>
+
+    <menuitem id="menu_freight_port"
+              name="Cảng"
+              parent="menu_freight_locations"
+              action="action_freight_port"
+              sequence="1"/>
+
+    <menuitem id="menu_freight_vessel"
+              name="Tàu"
+              parent="menu_freight_locations"
+              action="action_freight_vessel"
+              sequence="2"/>
+
+    <menuitem id="menu_freight_transit_type"
+              name="Loại hình vận chuyển"
+              parent="menu_freight_locations"
+              action="action_freight_transit_type"
+              sequence="3"/>
+
+    <!-- Customs -->
+    <menuitem id="menu_freight_customs"
+              name="Customs"
+              parent="menu_freight_config_root"
+              sequence="40"/>
+
+    <menuitem id="menu_freight_hs_code"
+              name="Mã HS"
+              parent="menu_freight_customs"
+              action="action_freight_hs_code"
+              sequence="1"/>
+
+    <menuitem id="menu_freight_procedure_code"
+              name="Mã thủ tục"
+              parent="menu_freight_customs"
+              action="action_freight_procedure_code"
+              sequence="2"/>
+
+    <menuitem id="menu_freight_bl_number"
+              name="Số quản lý"
+              parent="menu_freight_customs"
+              action="action_freight_bl_number"
+              sequence="3"/>
+
+    <!-- Commercial Terms -->
+    <menuitem id="menu_freight_terms"
+              name="Commercial Terms"
+              parent="menu_freight_config_root"
+              sequence="50"/>
+
+    <menuitem id="menu_freight_incoterms"
+              name="Incoterms"
+              parent="menu_freight_terms"
+              action="action_freight_incoterms"
+              sequence="1"/>
+
+    <menuitem id="menu_freight_service_terms"
+              name="Điều khoản dịch vụ"
+              parent="menu_freight_terms"
+              action="action_freight_service_terms"
+              sequence="2"/>
+
+    <menuitem id="menu_freight_party_role"
+              name="Vai trò đối tác"
+              parent="menu_freight_terms"
+              action="action_freight_party_role"
+              sequence="3"/>
+
+    <menuitem id="menu_freight_service_tags"
+              name="Nhãn dịch vụ"
+              parent="menu_freight_terms"
+              action="action_freight_service_tags"
+              sequence="4"/>
+</odoo>

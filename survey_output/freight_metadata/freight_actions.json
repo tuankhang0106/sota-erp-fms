@@ -1,0 +1,1255 @@
+{
+  "433": {
+    "id": 433,
+    "name": "Dịch vụ Vận tải",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.freight_product_service_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới sản phẩm</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Dịch vụ Vận tải",
+    "view_id": false,
+    "domain": false,
+    "context": "{\"search_default_ftr_freight_service\": 1,\n                               \"default_freight_type\": 'service',\n                               \"default_detailed_type\": 'service',\n                                \"default_can_be_expensed\": True}\n        ",
+    "res_id": 0,
+    "res_model": "product.template",
+    "target": "current",
+    "view_mode": "kanban,list,form",
+    "views": [
+      [
+        1434,
+        "kanban"
+      ],
+      [
+        1433,
+        "list"
+      ],
+      [
+        1430,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": [
+      1432,
+      "product.template.search"
+    ],
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Sản phẩm\">\\n                <field name=\"name\" string=\"Sản phẩm\" filter_domain=\"[\\'|\\', \\'|\\', \\'|\\', \\'|\\', (\\'local_name\\', \\'ilike\\', self), (\\'default_code\\', \\'ilike\\', self), (\\'product_variant_ids.default_code\\', \\'ilike\\', self),(\\'name\\', \\'ilike\\', self), (\\'barcode\\', \\'ilike\\', self)]\"/>\\n                <field name=\"transport_mode_ids\"/>\\n                <filter name=\"ftr_archived\" string=\"Đã lưu trữ\" domain=\"[(\\'active\\', \\'=\\', False)]\"/>\\n                <filter string=\"Dịch vụ\" name=\"ftr_freight_service\" domain=\"[(\\'freight_type\\', \\'=\\', \\'service\\')]\"/>\\n                <separator/>\\n                <group string=\"Nhóm theo\">\\n                    <filter string=\"Phương thức vận chuyển\" name=\"group_by_transport_mode_ids\" context=\"{\\'group_by\\': \\'transport_mode_ids\\'}\"/>\\n                    <filter string=\"Loại hình Vận tải\" name=\"group_by_freight_type\" context=\"{\\'group_by\\': \\'freight_type\\'}\"/>\\n                    <filter string=\"POL\" name=\"group_by_pol\" context=\"{\\'group_by\\': \\'freight_port_pol_id\\'}\"/>\\n                    <filter string=\"POD\" name=\"group_by_pod\" context=\"{\\'group_by\\': \\'freight_port_pod_id\\'}\"/>\\n                </group>\\n            </search>', 'id': 1432, 'model': 'product.template', 'models': {'product.template': ('image_1920', 'image_1024', 'image_512', 'image_256', 'image_128', 'activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'sequence', 'description', 'description_purchase', 'description_sale', 'detailed_type', 'type', 'categ_id', 'currency_id', 'cost_currency_id', 'list_price', 'standard_price', 'volume', 'volume_uom_name', 'weight', 'weight_uom_name', 'sale_ok', 'purchase_ok', 'uom_id', 'uom_name', 'uom_po_id', 'company_id', 'packaging_ids', 'seller_ids', 'variant_seller_ids', 'active', 'color', 'is_product_variant', 'attribute_line_ids', 'valid_product_template_attribute_line_ids', 'product_variant_ids', 'product_variant_id', 'product_variant_count', 'barcode', 'default_code', 'pricelist_item_count', 'can_image_1024_be_zoomed', 'has_configurable_attributes', 'product_tooltip', 'priority', 'product_tag_ids', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'taxes_id', 'tax_string', 'supplier_taxes_id', 'property_account_income_id', 'property_account_expense_id', 'account_tag_ids', 'can_be_expensed', 'asset_category_id', 'deferred_revenue_category_id', 'freight_type', 'transport_mode_ids', 'freight_port_pol_id', 'freight_port_pod_id', 'freight_country_id', 'freight_port_of_receipt_id', 'freight_port_of_delivery_id', 'freight_service_type', 'default_tax_id', 'charge_scope', 'local_name', 'is_com_fee', 'freight_qty_rule_ids', 'show_plate_number', 'show_customs_declaration_no', 'job_profit_group', 'is_com_customer_fee')}}",
+    "groups_id": []
+  },
+  "437": {
+    "id": 437,
+    "name": "Hãng hàng không",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_airline",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Hãng hàng không",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.airline",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                    <field name=\"name\"/>\\n                    <field name=\"ref\"/>\\n                    <field name=\"phone\"/>\\n                    <field name=\"fax\"/>\\n                    <field name=\"pic_id\"/>\\n                    <field name=\"country_id\"/>\\n<!--                    <field name=\"iata_code\"/>-->\\n                    <field name=\"mawb_prefix\"/>\\n                    <filter name=\"ftr_archived\" string=\"Đã lưu trữ\" domain=\"[(\\'active\\', \\'=\\', False)]\"/>\\n                </search>', 'id': 1445, 'model': 'freight.airline', 'models': {'freight.airline': ('name', 'partner_id', 'phone', 'fax', 'pic_id', 'child_ids', 'country_id', 'active', 'iata_code', 'mawb_prefix', 'company_type', 'important_note', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'email_normalized', 'is_blacklisted', 'message_bounce', 'activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'image_1920', 'image_1024', 'image_512', 'image_256', 'image_128', 'avatar_1920', 'avatar_1024', 'avatar_512', 'avatar_256', 'avatar_128', 'translated_display_name', 'date', 'title', 'parent_id', 'parent_name', 'ref', 'lang', 'active_lang_count', 'tz', 'tz_offset', 'user_id', 'vat', 'same_vat_partner_id', 'same_company_registry_partner_id', 'company_registry', 'bank_ids', 'website', 'comment', 'category_id', 'employee', 'function', 'type', 'street', 'street2', 'zip', 'city', 'state_id', 'country_code', 'partner_latitude', 'partner_longitude', 'email', 'email_formatted', 'mobile', 'is_company', 'is_public', 'industry_id', 'company_id', 'color', 'user_ids', 'partner_share', 'contact_address', 'commercial_partner_id', 'commercial_company_name', 'company_name', 'barcode', 'self', 'im_status', 'date_localization', 'channel_ids', 'signup_token', 'signup_type', 'signup_expiration', 'signup_valid', 'signup_url', 'meeting_count', 'meeting_ids', 'calendar_last_notif_ack', 'employee_ids', 'employees_count', 'property_product_pricelist', 'team_id', 'partner_gid', 'additional_info', 'phone_sanitized', 'phone_sanitized_blacklisted', 'phone_blacklisted', 'mobile_blacklisted', 'phone_mobile_search', 'payment_token_ids', 'payment_token_count', 'credit', 'credit_limit', 'use_partner_credit_limit', 'show_credit_limit', 'debit', 'debit_limit', 'total_invoiced', 'currency_id', 'journal_item_count', 'property_account_payable_id', 'property_account_receivable_id', 'property_account_position_id', 'property_payment_term_id', 'property_supplier_payment_term_id', 'ref_company_ids', 'supplier_invoice_count', 'has_unreconciled_entries', 'last_time_entries_checked', 'invoice_ids', 'contract_ids', 'bank_account_count', 'trust', 'invoice_warn', 'invoice_warn_msg', 'supplier_rank', 'customer_rank', 'duplicated_bank_account_partners_count', 'is_coa_installed', 'opportunity_ids', 'opportunity_count', 'billing_type', 'property_account_other_receivable_id', 'property_account_other_payable_id', 'customer_get_einvoice', 'id_number', 'is_risk', 'full_address_vi', 'wards_id', 'contact_type', 'file_name', 'file_data', 'email_cc', 'email_einvoice', 'is_public_customer', 'priority', 'state', 'lead_state', 'stage_id', 'customer', 'is_pic', 'pic_function', 'pic_mobile', 'pic_email', 'area_type', 'customer_status', 'commodity_id', 'freight_country_id', 'pol_id', 'pod_id', 'volume', 'demand', 'foreign_name', 'short_name', 'abbreviation_name', 'registered_address', 'party_role', 'logistic_type', 'website_sanitized', 'special_requirement', 'customer_code', 'partner_code', 'address', 'office_address', 'bl_address', 'customer_group', 'customer_resource', 'routing_ids', 'pol_routing_ids', 'pod_routing_ids', 'other', 'task_in_charge', 'customer_name', 'location_country_ids', 'location_province_ids', 'bound_ids', 'transport_mode_ids', 'commodity_ids', 'country_export_ids', 'country_import_ids', 'volume_ids', 'branch', 'establish', 'dept_ic_id', 'capacity', 'is_contract', 'network', 'services', 'competitive_on_market', 'log_in', 'load_type', 'service_route', 'remark_working', 'area', 'service_area', 'payment_term_id', 'invoice_currency_id', 'tel', 'login_ids', 'is_customer', 'is_vendor', 'is_agent', 'is_coloader_sea', 'is_coloader_air', 'is_shipper', 'is_consignee', 'is_payor', 'is_carrier', 'is_forwarder', 'is_trucker', 'is_warehouse', 'is_bank', 'is_person', 'is_inner_staff_dept', 'is_other', 'is_custom', 'is_broker_chartering', 'is_association', 'is_nvocc', 'hs_code_search', 'pol_id_search', 'pod_id_search', 'shipping_term_search', 'country_export_search', 'country_import_search', 'apply_type', 'credit_term', 'credit_amount', 'limit_action', 'payment_due_days', 'brench_ids', 'quotation_ids', 'quotation_count', 'is_restricted', 'crm_department_id', 'can_edit_salesperson', 'class_ids', 'class_names', 'is_own', 'lead_taken_date', 'can_set_won', 'crm_convert_date', 'job_count', 'is_account_user', 'shipping_line_ids')}}",
+    "groups_id": []
+  },
+  "438": {
+    "id": 438,
+    "name": "Hãng vận tải biển",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_shipping_line",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Hãng vận tải biển",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.shipping.line",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                <field name=\"name\"/>\\n                <field name=\"ref\"/>\\n                <field name=\"scac_code\"/>\\n                <field name=\"phone\"/>\\n                <field name=\"fax\"/>\\n                <field name=\"pic_id\"/>\\n                <field name=\"country_id\"/>\\n                <filter name=\"ftr_archived\" string=\"Đã lưu trữ\" domain=\"[(\\'active\\', \\'=\\', False)]\"/>\\n            </search>', 'id': 1448, 'model': 'freight.shipping.line', 'models': {'freight.shipping.line': ('name', 'scac_code', 'partner_id', 'phone', 'fax', 'pic_id', 'child_ids', 'country_id', 'company_type', 'active', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'partner_vat', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'email_normalized', 'is_blacklisted', 'message_bounce', 'activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'image_1920', 'image_1024', 'image_512', 'image_256', 'image_128', 'avatar_1920', 'avatar_1024', 'avatar_512', 'avatar_256', 'avatar_128', 'translated_display_name', 'date', 'title', 'parent_id', 'parent_name', 'ref', 'lang', 'active_lang_count', 'tz', 'tz_offset', 'user_id', 'vat', 'same_vat_partner_id', 'same_company_registry_partner_id', 'company_registry', 'bank_ids', 'website', 'comment', 'category_id', 'employee', 'function', 'type', 'street', 'street2', 'zip', 'city', 'state_id', 'country_code', 'partner_latitude', 'partner_longitude', 'email', 'email_formatted', 'mobile', 'is_company', 'is_public', 'industry_id', 'company_id', 'color', 'user_ids', 'partner_share', 'contact_address', 'commercial_partner_id', 'commercial_company_name', 'company_name', 'barcode', 'self', 'im_status', 'date_localization', 'channel_ids', 'signup_token', 'signup_type', 'signup_expiration', 'signup_valid', 'signup_url', 'meeting_count', 'meeting_ids', 'calendar_last_notif_ack', 'employee_ids', 'employees_count', 'property_product_pricelist', 'team_id', 'partner_gid', 'additional_info', 'phone_sanitized', 'phone_sanitized_blacklisted', 'phone_blacklisted', 'mobile_blacklisted', 'phone_mobile_search', 'payment_token_ids', 'payment_token_count', 'credit', 'credit_limit', 'use_partner_credit_limit', 'show_credit_limit', 'debit', 'debit_limit', 'total_invoiced', 'currency_id', 'journal_item_count', 'property_account_payable_id', 'property_account_receivable_id', 'property_account_position_id', 'property_payment_term_id', 'property_supplier_payment_term_id', 'ref_company_ids', 'supplier_invoice_count', 'has_unreconciled_entries', 'last_time_entries_checked', 'invoice_ids', 'contract_ids', 'bank_account_count', 'trust', 'invoice_warn', 'invoice_warn_msg', 'supplier_rank', 'customer_rank', 'duplicated_bank_account_partners_count', 'is_coa_installed', 'opportunity_ids', 'opportunity_count', 'billing_type', 'property_account_other_receivable_id', 'property_account_other_payable_id', 'customer_get_einvoice', 'id_number', 'is_risk', 'full_address_vi', 'wards_id', 'contact_type', 'file_name', 'file_data', 'email_cc', 'email_einvoice', 'is_public_customer', 'priority', 'state', 'lead_state', 'stage_id', 'customer', 'is_pic', 'pic_function', 'pic_mobile', 'pic_email', 'area_type', 'customer_status', 'commodity_id', 'freight_country_id', 'pol_id', 'pod_id', 'volume', 'demand', 'foreign_name', 'short_name', 'abbreviation_name', 'registered_address', 'party_role', 'logistic_type', 'website_sanitized', 'special_requirement', 'customer_code', 'partner_code', 'address', 'office_address', 'bl_address', 'customer_group', 'customer_resource', 'routing_ids', 'pol_routing_ids', 'pod_routing_ids', 'other', 'task_in_charge', 'customer_name', 'location_country_ids', 'location_province_ids', 'bound_ids', 'transport_mode_ids', 'commodity_ids', 'country_export_ids', 'country_import_ids', 'volume_ids', 'branch', 'establish', 'dept_ic_id', 'capacity', 'is_contract', 'network', 'services', 'competitive_on_market', 'log_in', 'load_type', 'service_route', 'remark_working', 'area', 'service_area', 'payment_term_id', 'invoice_currency_id', 'tel', 'login_ids', 'is_customer', 'is_vendor', 'is_agent', 'is_coloader_sea', 'is_coloader_air', 'is_shipper', 'is_consignee', 'is_payor', 'is_carrier', 'is_forwarder', 'is_trucker', 'is_warehouse', 'is_bank', 'is_person', 'is_inner_staff_dept', 'is_other', 'is_custom', 'is_broker_chartering', 'is_association', 'is_nvocc', 'hs_code_search', 'pol_id_search', 'pod_id_search', 'shipping_term_search', 'country_export_search', 'country_import_search', 'apply_type', 'credit_term', 'credit_amount', 'limit_action', 'payment_due_days', 'brench_ids', 'quotation_ids', 'quotation_count', 'is_restricted', 'crm_department_id', 'can_edit_salesperson', 'class_ids', 'class_names', 'is_own', 'lead_taken_date', 'can_set_won', 'crm_convert_date', 'job_count', 'is_account_user', 'shipping_line_ids')}}",
+    "groups_id": []
+  },
+  "439": {
+    "id": 439,
+    "name": "Hàng hóa vận chuyển",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_commodity",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Hàng hóa vận chuyển",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.commodity",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n<field name=\"name\"/>\\n<field name=\"code\"/>\\n<filter name=\"ftr_archived\" string=\"Đã lưu trữ\" domain=\"[(\\'active\\', \\'=\\', False)]\"/>\\n</search>', 'id': 1451, 'model': 'freight.commodity', 'models': {'freight.commodity': ('name', 'code', 'active', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "440": {
+    "id": 440,
+    "name": "Mã HS",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_hs_code",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Mã HS",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.hs.code",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                <field name=\"name\" filter_domain=\"[\\'|\\', \\'|\\', (\\'name\\', \\'ilike\\', self), (\\'code\\', \\'ilike\\', self), (\\'remark\\', \\'ilike\\', self)]\"/>\\n            </search>', 'id': 1454, 'model': 'freight.hs.code', 'models': {'freight.hs.code': ('name', 'code', 'hs_group', 'remark', 'country_id', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "441": {
+    "id": 441,
+    "name": "Incoterms vận tải",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_incoterms",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Incoterms vận tải",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.incoterms",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n<field name=\"name\"/>\\n<field name=\"code\"/>\\n<filter name=\"ftr_archived\" string=\"Đã lưu trữ\" domain=\"[(\\'active\\', \\'=\\', False)]\"/>\\n</search>', 'id': 1457, 'model': 'freight.incoterms', 'models': {'freight.incoterms': ('name', 'code', 'active', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "442": {
+    "id": 442,
+    "name": "Kiện hàng",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_package",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Kiện hàng",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.package",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                    <field name=\"name\"/>\\n                    <field name=\"code\"/>\\n                    <field name=\"transport_mode_id\"/>\\n                    <field name=\"note\"/>\\n                    <filter name=\"ftr_archived\" string=\"Đã lưu trữ\" domain=\"[(\\'active\\', \\'=\\', False)]\"/>\\n                </search>', 'id': 1460, 'model': 'freight.package', 'models': {'freight.package': ('name', 'code', 'note', 'transport_mode_id', 'active', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "443": {
+    "id": 443,
+    "name": "Vai trò đối tác Vận tải",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_party_role",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Vai trò đối tác Vận tải",
+    "view_id": [
+      1462,
+      "freight.party.role.tree"
+    ],
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.party.role",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        1462,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                    <field name=\"name\" string=\"Tên\"/>\\n                    <field name=\"code\" string=\"Mã nội bộ\"/>\\n                </search>', 'id': 1463, 'model': 'freight.party.role', 'models': {'freight.party.role': ('name', 'code', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "444": {
+    "id": 444,
+    "name": "Cảng",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_port",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Cảng",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.port",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                    <field name=\"name\"/>\\n                    <field name=\"code\"/>\\n                    <field name=\"country_id\"/>\\n                    <field name=\"note\"/>\\n                    <filter name=\"ftr_archived\" string=\"Đã lưu trữ\" domain=\"[(\\'active\\', \\'=\\', False)]\"/>\\n                    <separator/>\\n                    <filter name=\"ftr_airport\" string=\"Sân bay\" domain=\"[(\\'type\\', \\'=\\', \\'airport\\')]\"/>\\n                    <filter name=\"ftr_seaport\" string=\"Cảng biển\" domain=\"[(\\'type\\', \\'=\\', \\'seaport\\')]\"/>\\n                    <filter name=\"ftr_border_gate\" string=\"Cửa khẩu\" domain=\"[(\\'type\\', \\'=\\', \\'border_gate\\')]\"/>\\n                    <filter name=\"ftr_warehouse\" string=\"Kho hàng\" domain=\"[(\\'type\\', \\'=\\', \\'warehouse\\')]\"/>\\n                </search>', 'id': 1466, 'model': 'freight.port', 'models': {'freight.port': ('display_name', 'name', 'code', 'type', 'street', 'street2', 'zip', 'city', 'state_id', 'country_id', 'note', 'active', 'schedule_k_code', 'vat_name', 'id', '__last_update', 'create_uid', 'create_date', 'write_uid', 'write_date', 'warehouse_mapping_ids', 'do_dear')}}",
+    "groups_id": []
+  },
+  "445": {
+    "id": 445,
+    "name": "Điều khoản Dịch vụ Vận tải",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_service_terms",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Điều khoản Dịch vụ Vận tải",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.service.terms",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n<field name=\"name\"/>\\n<field name=\"code\"/>\\n<filter name=\"ftr_archived\" string=\"Đã lưu trữ\" domain=\"[(\\'active\\', \\'=\\', False)]\"/>\\n</search>', 'id': 1469, 'model': 'freight.service.terms', 'models': {'freight.service.terms': ('name', 'code', 'active', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "446": {
+    "id": 446,
+    "name": "Loại hình Vận chuyển",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_transit_type",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Loại hình Vận chuyển",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.transit.type",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n<field name=\"name\"/>\\n<field name=\"code\"/>\\n<filter name=\"ftr_archived\" string=\"Đã lưu trữ\" domain=\"[(\\'active\\', \\'=\\', False)]\"/>\\n</search>', 'id': 1472, 'model': 'freight.transit.type', 'models': {'freight.transit.type': ('name', 'code', 'active', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "447": {
+    "id": 447,
+    "name": "Hãng xe",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_trucker",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Hãng xe",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.trucker",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                    <field name=\"name\"/>\\n                    <field name=\"code\"/>\\n                    <field name=\"country_id\"/>\\n                    <field name=\"name_in_vietnamese\"/>\\n                    <field name=\"name_in_english\"/>\\n                </search>', 'id': 1475, 'model': 'freight.trucker', 'models': {'freight.trucker': ('name', 'code', 'country_id', 'active', 'name_in_vietnamese', 'name_in_english', 'address', 'registered_address', 'pic_id', 'specialized_route', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "448": {
+    "id": 448,
+    "name": "Container/Đơn vị",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_unit",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Container/Đơn vị",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.unit",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                    <field name=\"name\"/>\\n                    <field name=\"code\"/>\\n                    <field name=\"note\"/>\\n                    <filter string=\"Đã lưu trữ\" name=\"archived\" domain=\"[(\\'active\\', \\'=\\', False)]\"/>\\n                </search>', 'id': 1478, 'model': 'freight.unit', 'models': {'freight.unit': ('name', 'code', 'type', 'cont_type', 'active', 'note', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "449": {
+    "id": 449,
+    "name": "Tàu",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_vessel",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Tàu",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.vessel",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                    <field name=\"name\"/>\\n                    <field name=\"code\"/>\\n                    <filter string=\"Đã lưu trữ\" name=\"archived\" domain=\"[(\\'active\\', \\'=\\', False)]\"/>\\n                </search>', 'id': 1481, 'model': 'freight.vessel', 'models': {'freight.vessel': ('name', 'code', 'active', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "454": {
+    "id": 454,
+    "name": "Báo giá",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.freight_quotation_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Báo giá",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.quotation",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Lô hàng\">\\n                <field name=\"name\"/>\\n                <field name=\"partner_id\"/>\\n                <separator/>\\n                <filter string=\"Vận chuyển hàng không\" name=\"air_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'air\\')]\"/>\\n                <filter string=\"Vận chuyển đường biển\" name=\"ocean_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'sea\\')]\"/>\\n                <filter string=\"Vận chuyển đường bộ\" name=\"land_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'land\\')]\"/>\\n                <separator/>\\n                <!-- Gần hết hạn: Validity To trong 7 ngày tới (tính cả hôm nay), bỏ báo giá đã hủy -->\\n                <filter string=\"Sắp hết hạn\" name=\"expiring_soon\" domain=\"[(\\'state\\', \\'!=\\', \\'cancel\\'), (\\'date_end\\', \\'&gt;=\\', context_today().strftime(\\'%Y-%m-%d\\')), (\\'date_end\\', \\'&lt;\\', (context_today() + relativedelta(days=8)).strftime(\\'%Y-%m-%d\\'))]\"/>\\n                <filter string=\"Tự động gia hạn\" name=\"auto_extension\" domain=\"[(\\'auto_extension\\', \\'=\\', \\'yes\\')]\"/>\\n                <!--                <group expand=\"1\" string=\"Group By\">-->\\n                <!--                    <filter string=\"Transport Mode\" name=\"group_by_transport_mode\"-->\\n                <!--                            context=\"{\\'group_by\\': \\'transport_mode\\'}\"/>-->\\n                <!--                    <filter string=\"Customer\" name=\"group_by_customer\" context=\"{\\'group_by\\': \\'partner_id\\'}\"/>-->\\n                <!--                    <filter string=\"Salesman\" name=\"group_by_user\" context=\"{\\'group_by\\': \\'user_id\\'}\"/>-->\\n                <!--                    <filter string=\"PIC\" name=\"group_by_pic\" context=\"{\\'group_by\\': \\'pic_id\\'}\"/>-->\\n                <!--                    <filter string=\"State\" name=\"group_by_state\" context=\"{\\'group_by\\': \\'state\\'}\"/>-->\\n                <!--                </group>-->\\n            </search>', 'id': 1497, 'model': 'freight.quotation', 'models': {'freight.quotation': ('rate_table_enabled', 'rate_total_html', 'rate_missing', 'exchange_rate_date', 'exchange_rate', 'activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'transport_mode_ids', 'transport_mode_id', 'transport_mode', 'company_id', 'company_currency_id', 'date', 'perf_date', 'partner_id', 'shipper_id', 'consignee_id', 'pic_id', 'partner_display', 'shipper_display', 'consignee_display', 'pic_display', 'user_id', 'user_ids', 'route_id', 'port_pol_id', 'port_pol_display', 'port_pod_id', 'port_pod_display', 'vessel_id', 'vessel_display', 'airline_id', 'shipping_line_id', 'trucker_id', 'priority', 'remark', 'port_receipt_id', 'country_receipt_id', 'port_receipt_display', 'port_delivery_id', 'country_delivery_id', 'port_delivery_display', 'bound', 'quantity', 'payment_date_specific', 'payment_date', 'payment_term_id', 'incoterms_id', 'freight_term', 'etd_date', 'etd_datetime', 'eta_date', 'eta_datetime', 'etd_display', 'eta_display', 'onboard_date', 'onboard_datetime', 'onboard_display', 'weight_unit', 'volume_unit', 'cont_qty', 'cont_unit', 'is_air', 'is_ocean', 'is_trucking', 'is_other', 'is_custom', 'partner_code', 'quotation_type', 'phone', 'email', 'currency_id', 'net_total', 'tax_total', 'grand_total', 'profit_total', 'percent_profit', 'cost_total', 'unit_id', 'qty_id', 'price_id', 'state', 'issue_date', 'date_sent', 'is_sent_overdue', 'date_start', 'date_end', 'auto_extension', 'auto_renew_unit', 'auto_renew_qty', 'expiry_reminder_end', 'expiry_notice_end', 'booking_id', 'supervisor_ids', 'house_id', 'service_line_ids', 'payment_term_type', 'si_close_at', 'gross_weight', 'volume', 'package_quantity', 'warehouse_id', 'service_terms_id', 'via_id', 'final_destination_display', 'line_ids', 'other_line_ids', 'pay_on_behalf_line_ids', 'rate_line_ids', 'quotation_lines_total', 'quotation_template_id', 'origin', 'domain_sale_team_ids', 'sale_team_id', 'can_final', 'can_unlock', 'can_confirm', 'commodity_id', 'pickup', 'final_destination', 'pic_ids', 'bottom_remark', 'pol_id', 'pod_id', 'cargo_volume', 'transit_time', 'domain_pol_ids', 'signature', 'due_date', 'crm_department_id', 'bill_number', 'cd_number', 'sales_pricing_id', 'purchase_pricing_id', 'sales_inquiry_id', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'vendor_pp_id', 'job_id', 'hbl_id', 'operator_ids', 'fare_product_id', 'fare_currency_id', 'fare_unit_id', 'fare_quantity', 'fare_unit_price', 'fare_total_amount')}}",
+    "groups_id": []
+  },
+  "624": {
+    "id": 624,
+    "name": "House Sea B/L",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.freight_shipment_house_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "House Sea B/L",
+    "view_id": false,
+    "domain": "[('is_sea_house', '=', True)]",
+    "context": "{'freight_shipment_house': 1, 'default_is_sea_house': True}\n        ",
+    "res_id": 0,
+    "res_model": "freight.shipment.house",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        1991,
+        "list"
+      ],
+      [
+        1993,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Lô hàng\">\\n                <field name=\"name\"/>\\n                <field name=\"air_customer_code\" string=\"Customer\" filter_domain=\"[\\'|\\',\\'&amp;\\',(\\'is_air_house\\',\\'=\\',True),(\\'air_customer_code\\',\\'ilike\\',self),\\'&amp;\\',(\\'is_sea_house\\',\\'=\\',True),(\\'sea_customer_code\\',\\'ilike\\',self)]\"/>\\n                <field name=\"route_id\"/>\\n                <!--                <field name=\"partner_id\"/>-->\\n                <field name=\"transport_mode\"/>\\n                <field name=\"pic_id\"/>\\n                <field name=\"user_id\"/>\\n                <field name=\"port_receipt_id\"/>\\n                <field name=\"port_delivery_id\"/>\\n                <field name=\"shipper_id\"/>\\n                <field name=\"operator_ids\" widget=\"many2many_tags\"/>\\n                <field name=\"consignee_id\" string=\"Consignee\" filter_domain=\"[\\'|\\', \\'|\\', \\'|\\', \\'|\\', \\'|\\', (\\'sea_consignee_id.name\\', \\'ilike\\', self), (\\'sea_consignee_id.partner_code\\', \\'ilike\\', self), (\\'sea_consignee_id.vat\\', \\'ilike\\', self), (\\'air_consignee_id.name\\', \\'ilike\\', self), (\\'air_consignee_id.partner_code\\', \\'ilike\\', self), (\\'air_consignee_id.vat\\', \\'ilike\\', self)]\"/>\\n                <field name=\"sea_master_bl_ids\" string=\"Master BL\" filter_domain=\"[\\'|\\',(\\'sea_master_bl_ids\\', \\'ilike\\', self), (\\'air_master_bl_ids\\', \\'ilike\\', self)]\"/>\\n                <field name=\"job_id\"/>\\n                <field name=\"sea_selling_line_ids\" string=\"Dịch vụ\" filter_domain=\"[\\'|\\', \\'|\\', \\'|\\', (\\'sea_selling_line_ids.product_id.name\\', \\'ilike\\', self), (\\'sea_buying_line_ids.product_id.name\\', \\'ilike\\', self), (\\'air_selling_line_ids.product_id.name\\', \\'ilike\\', self), (\\'air_buying_line_ids.product_id.name\\', \\'ilike\\', self)]\"/>\\n                <separator/>\\n                <filter string=\"Vận chuyển Hàng không\" name=\"air_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'air\\')]\"/>\\n                <filter string=\"Vận chuyển Đường biển\" name=\"ocean_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'sea\\')]\"/>\\n                <filter string=\"Vận chuyển đường bộ\" name=\"land_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'land\\')]\"/>\\n                <group expand=\"1\" string=\"Nhóm theo\">\\n                    <filter string=\"Kiểu dịch vụ\" name=\"group_by_transport_mode\" context=\"{\\'group_by\\': \\'transport_mode\\'}\"/>\\n                    <filter string=\"Customer\" name=\"group_by_customer\" context=\"{\\'group_by\\': \\'partner_id\\'}\"/>\\n                    <filter string=\"Nhân viên bán hàng\" name=\"group_by_user\" context=\"{\\'group_by\\': \\'user_id\\'}\"/>\\n                    <filter string=\"PIC\" name=\"group_by_pic\" context=\"{\\'group_by\\': \\'pic_id\\'}\"/>\\n                    <filter string=\"Trạng thái\" name=\"group_by_state\" context=\"{\\'group_by\\': \\'state\\'}\"/>\\n                </group>\\n            </search>', 'id': 1992, 'model': 'freight.shipment.house', 'models': {'freight.shipment.house': ('rv_hide_selling', 'rv_hide_buying', 'exchange_rate_date', 'exchange_rate', 'access_url', 'access_token', 'access_warning', 'activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'transport_mode_ids', 'transport_mode_id', 'transport_mode', 'company_id', 'company_currency_id', 'date', 'perf_date', 'partner_id', 'shipper_id', 'consignee_id', 'pic_id', 'partner_display', 'shipper_display', 'consignee_display', 'pic_display', 'user_id', 'user_ids', 'route_id', 'port_pol_id', 'port_pol_display', 'port_pod_id', 'port_pod_display', 'vessel_id', 'vessel_display', 'airline_id', 'shipping_line_id', 'trucker_id', 'priority', 'remark', 'port_receipt_id', 'country_receipt_id', 'port_receipt_display', 'port_delivery_id', 'country_delivery_id', 'port_delivery_display', 'bound', 'quantity', 'payment_date_specific', 'payment_date', 'payment_term_id', 'incoterms_id', 'freight_term', 'etd_date', 'etd_datetime', 'eta_date', 'eta_datetime', 'etd_display', 'eta_display', 'onboard_date', 'onboard_datetime', 'onboard_display', 'weight_unit', 'volume_unit', 'cont_qty', 'cont_unit', 'is_air', 'is_ocean', 'is_trucking', 'is_other', 'is_custom', 'is_sea_house', 'is_air_house', 'hbl_count', 'state', 'custom_id', 'sea_bl_type', 'job_id', 'job_status', 'sr_no', 'si_close_at', 'gross_weight', 'charge_weight', 'volume', 'package_quantity', 'is_dangerous_good', 'second_shipper_id', 'notify_id', 'notify_display', 'also_notify_id', 'also_notify_display', 'load_type', 'shipment_type', 'hawb_type_air', 'inner_package_qty', 'transport_mode_code', 'received_date', 'via_id', 'origin_id', 'final_destination_id', 'final_destination_display', 'issued_date', 'issued_at', 'foreign_partner_id', 'foreign_partner_display', 'co_loader_id', 'warehouse_id', 'sub_master', 'doc_closing_date', 'delivery_date', 'bl_dept', 'trucking_date', 'insurrance', 'handling_information', 'can_create_pob', 'other_charge_print', 'currency_id', 'wt_val_mt', 'other_mt', 'dv_carrier', 'dv_customs', 'insurances', 'accounting_information', 'signature_id', 'service_type', 'rate_class', 'team_id', 'department_id', 'air_freight_print', 'an_show_fare_detail', 'no_of_bl', 'payable_at', 'hbl_received_date', 'cargo_closing_date', 'cargo_delivery_date', 'pickup_date', 'goods_receipt_no', 'free_storage_period_from', 'free_storage_period_to', 'do_date', 'arrival_notice_date', 'issue_agent_id', 'print_partner_id', 'lc_no', 'ams_no', 'ts_eta', 'fn', 'switch_bl', 'switch_shipper_id', 'feeder_vessel_id', 'mother_vessel_id', 'feeder_voyage', 'mother_voyage', 'hbl_type', 'number_of_org_hbl', 'truck_plate_no', 'chassis_no', 'cut_off_time', 'voyage', 'cargo_close_at', 'cargo_type', 'service_terms_id', 'num_and_type_container', 'hawb_no', 'mawb_no', 'flight_no', 'flight_number', 'selling_line_ids', 'buying_line_ids', 'sea_selling_line_ids', 'sea_buying_line_ids', 'sea_pay_on_behalf_line_ids', 'air_selling_line_ids', 'air_buying_line_ids', 'air_pay_on_behalf_line_ids', 'total_local_selling', 'total_local_selling_amt', 'total_local_selling_vat', 'total_local_buying', 'total_margin', 'percent_margin', 'vendor_id', 'copy_selling_house_id', 'copy_buying_house_id', 'copy_pob_house_id', 'insurance_polity', 'edit_name', 'debit_note_ids', 'debit_note_count', 'credit_note_ids', 'credit_note_count', 'mark_and_numbers', 'description_of_goods_1', 'description_of_goods_2', 'description_of_goods', 'containers_description', 'sea_house_bl', 'sea_master_bl', 'is_sea_master', 'is_air_master', 'sea_shipment', 'sea_bound', 'sea_bl_status', 'sea_load_type', 'sea_shipper_id', 'sea_shipper_code', 'sea_shipper_text', 'dc_note_ids', 'dc_note_count', 'unstuffing_date', 'berthing_date', 'warehouse_manager', 'warehouse_phone_number', 'email_to', 'email_house_to', 'email_cc_house_to', 'email_an_edo_to', 'email_cc_an_edo_to', 'email_cc_partner', 'email_cc_consignee', 'operator_ids', 'sea_consignee_id', 'sea_consignee_display', 'sea_consignee_text', 'sea_notify_id', 'sea_notify_display', 'sea_notify_text', 'ams_address_id', 'sea_carrier_id', 'sea_carrier_code', 'vessel', 'voyage2', 'sea_atd', 'sea_ata', 'mvvd_id', 'mvvd', 'mvvd_display', 'sea_etd', 'sea_eta', 'sea_por_id', 'sea_por_code', 'sea_pol_id', 'sea_pol_code', 'sea_ts_id', 'sea_ts_code', 'sea_pod_id', 'sea_pod_code', 'sea_pvy_id', 'sea_pvy_code', 'sea_issue_at_id', 'sea_issue_at_code', 'sea_issue_date', 'sea_no_of_bl', 'sea_issue_at', 'sea_bl_manage_no', 'sea_schedule_ids', 'sea_container_information_ids', 'sea_partner_id', 'sea_partner_code', 'sea_partner_address', 'sea_co_loader_id', 'sea_co_loader_role_code', 'sea_customer_id', 'sea_customer_code', 'sea_pic_ids', 'sea_pic_id', 'sea_pic_phone', 'sea_pic_email', 'sea_bl_dept', 'sea_warehouse', 'sea_service_term_id', 'sea_incoterm_id', 'sea_freight_term_print', 'sea_freight_term_id', 'sea_pay_at', 'sea_pay_at_code', 'sea_job_id', 'sea_inner_order_no', 'sea_liner_bkg_no', 'sea_internal_remark', 'sea_external_remark', 'sea_product_pic_id', 'sea_fcl_unit', 'sea_house_quotation_ids', 'air_house_quotation_ids', 'print_sea_selling_line_ids', 'display_sea_code', 'display_sea_name', 'air_house_bl', 'air_master_bl', 'air_bl_type', 'air_bound', 'air_switch_bl', 'air_shipment', 'air_shipper_id', 'air_shipper_code', 'air_shipper_text', 'air_consignee_id', 'air_consignee_display', 'air_consignee_text', 'air_notify_id', 'air_notify_display', 'air_notify_text', 'air_pol_id', 'air_pol_code', 'air_pod_id', 'air_pod_code', 'air_etd', 'air_atd', 'air_via1', 'air_via2', 'air_via3', 'by_carrier_air_line_1', 'by_carrier_air_line_2', 'by_carrier_air_line_3', 'by_carrier_air_line_summary', 'air_schedule_ids', 'air_product_pic_id', 'by_carrier_air_line_display1', 'by_carrier_air_line_display2', 'by_carrier_air_line_display3', 'air_eta', 'air_ata', 'air_issue_date', 'air_no_of_bl', 'air_issue_at_id', 'air_bl_manage_no', 'air_partner_id', 'air_partner_code', 'air_partner_address', 'air_co_loader_id', 'air_co_loader_role_code', 'air_customer_id', 'air_customer_code', 'air_pic_ids', 'air_pic_id', 'air_pic_phone', 'air_pic_email', 'air_bl_dept', 'air_warehouse', 'air_service_term_id', 'air_incoterm_id', 'air_freight_term_print', 'air_freight_term_id', 'air_pay_at', 'air_pay_at_code', 'air_job_id', 'air_inner_order_no', 'air_liner_bkg_no', 'air_internal_remark', 'air_external_remark', 'air_package', 'air_package_unit', 'air_gross_weight', 'air_charge_weight', 'air_cbm', 'dim_length', 'dim_width', 'dim_height', 'air_rate_class', 'air_weight_ids', 'print_air_selling_line_ids', 'tracking_ids', 'customs_department_ids', 'package_ids', 'container_ids', 'container_display', 'distributed_buying_line_ids', 'air_master_bl_ids', 'sea_master_bl_ids', 'mhs_code', 'mnf_deadline', 'volume_weight', 'own_state', 'quotation_ids', 'is_notify_same_as_consignee', 'notify_party_address', 'remark_dos', 'do_release_date', 'dos_dear', 'delivery_name', 'bl_number_id', 'freight_term_for_printing', 'onboard_date_option', 'display_freight_amount', 'show_service_terms', 'show_onboard_date', 'show_receive_date', 'bl_remark', 'devanning_remark', 'is_non_negotiable', 'container_info_print_type', 'container_detail', 'bl_text_print', 'print_as_agent', 'stamp_print', 'description_of_good', 'can_create_master', 'expense_number', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'sea_buying_cost_line_ids', 'air_buying_cost_line_ids', 'do_address_id', 'is_multi_house', 'inv_no', 'multi_selling_line_ids', 'multi_buying_line_ids', 'multi_pob_line_ids', 'multi_buying_cost_line_ids', 'tracking_states_display', 'job_freight_done')}}",
+    "groups_id": []
+  },
+  "625": {
+    "id": 625,
+    "name": "House Air B/L",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.freight_shipment_house_air_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "House Air B/L",
+    "view_id": false,
+    "domain": "[('is_air_house', '=', True)]",
+    "context": "{'freight_shipment_house': 1, 'default_is_air_house': True}\n        ",
+    "res_id": 0,
+    "res_model": "freight.shipment.house",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        2508,
+        "list"
+      ],
+      [
+        1994,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Lô hàng\">\\n                <field name=\"name\"/>\\n                <field name=\"air_customer_code\" string=\"Customer\" filter_domain=\"[\\'|\\',\\'&amp;\\',(\\'is_air_house\\',\\'=\\',True),(\\'air_customer_code\\',\\'ilike\\',self),\\'&amp;\\',(\\'is_sea_house\\',\\'=\\',True),(\\'sea_customer_code\\',\\'ilike\\',self)]\"/>\\n                <field name=\"route_id\"/>\\n                <!--                <field name=\"partner_id\"/>-->\\n                <field name=\"transport_mode\"/>\\n                <field name=\"pic_id\"/>\\n                <field name=\"user_id\"/>\\n                <field name=\"port_receipt_id\"/>\\n                <field name=\"port_delivery_id\"/>\\n                <field name=\"shipper_id\"/>\\n                <field name=\"operator_ids\" widget=\"many2many_tags\"/>\\n                <field name=\"consignee_id\" string=\"Consignee\" filter_domain=\"[\\'|\\', \\'|\\', \\'|\\', \\'|\\', \\'|\\', (\\'sea_consignee_id.name\\', \\'ilike\\', self), (\\'sea_consignee_id.partner_code\\', \\'ilike\\', self), (\\'sea_consignee_id.vat\\', \\'ilike\\', self), (\\'air_consignee_id.name\\', \\'ilike\\', self), (\\'air_consignee_id.partner_code\\', \\'ilike\\', self), (\\'air_consignee_id.vat\\', \\'ilike\\', self)]\"/>\\n                <field name=\"sea_master_bl_ids\" string=\"Master BL\" filter_domain=\"[\\'|\\',(\\'sea_master_bl_ids\\', \\'ilike\\', self), (\\'air_master_bl_ids\\', \\'ilike\\', self)]\"/>\\n                <field name=\"job_id\"/>\\n                <field name=\"sea_selling_line_ids\" string=\"Dịch vụ\" filter_domain=\"[\\'|\\', \\'|\\', \\'|\\', (\\'sea_selling_line_ids.product_id.name\\', \\'ilike\\', self), (\\'sea_buying_line_ids.product_id.name\\', \\'ilike\\', self), (\\'air_selling_line_ids.product_id.name\\', \\'ilike\\', self), (\\'air_buying_line_ids.product_id.name\\', \\'ilike\\', self)]\"/>\\n                <separator/>\\n                <filter string=\"Vận chuyển Hàng không\" name=\"air_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'air\\')]\"/>\\n                <filter string=\"Vận chuyển Đường biển\" name=\"ocean_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'sea\\')]\"/>\\n                <filter string=\"Vận chuyển đường bộ\" name=\"land_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'land\\')]\"/>\\n                <group expand=\"1\" string=\"Nhóm theo\">\\n                    <filter string=\"Kiểu dịch vụ\" name=\"group_by_transport_mode\" context=\"{\\'group_by\\': \\'transport_mode\\'}\"/>\\n                    <filter string=\"Customer\" name=\"group_by_customer\" context=\"{\\'group_by\\': \\'partner_id\\'}\"/>\\n                    <filter string=\"Nhân viên bán hàng\" name=\"group_by_user\" context=\"{\\'group_by\\': \\'user_id\\'}\"/>\\n                    <filter string=\"PIC\" name=\"group_by_pic\" context=\"{\\'group_by\\': \\'pic_id\\'}\"/>\\n                    <filter string=\"Trạng thái\" name=\"group_by_state\" context=\"{\\'group_by\\': \\'state\\'}\"/>\\n                </group>\\n            </search>', 'id': 1992, 'model': 'freight.shipment.house', 'models': {'freight.shipment.house': ('rv_hide_selling', 'rv_hide_buying', 'exchange_rate_date', 'exchange_rate', 'access_url', 'access_token', 'access_warning', 'activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'transport_mode_ids', 'transport_mode_id', 'transport_mode', 'company_id', 'company_currency_id', 'date', 'perf_date', 'partner_id', 'shipper_id', 'consignee_id', 'pic_id', 'partner_display', 'shipper_display', 'consignee_display', 'pic_display', 'user_id', 'user_ids', 'route_id', 'port_pol_id', 'port_pol_display', 'port_pod_id', 'port_pod_display', 'vessel_id', 'vessel_display', 'airline_id', 'shipping_line_id', 'trucker_id', 'priority', 'remark', 'port_receipt_id', 'country_receipt_id', 'port_receipt_display', 'port_delivery_id', 'country_delivery_id', 'port_delivery_display', 'bound', 'quantity', 'payment_date_specific', 'payment_date', 'payment_term_id', 'incoterms_id', 'freight_term', 'etd_date', 'etd_datetime', 'eta_date', 'eta_datetime', 'etd_display', 'eta_display', 'onboard_date', 'onboard_datetime', 'onboard_display', 'weight_unit', 'volume_unit', 'cont_qty', 'cont_unit', 'is_air', 'is_ocean', 'is_trucking', 'is_other', 'is_custom', 'is_sea_house', 'is_air_house', 'hbl_count', 'state', 'custom_id', 'sea_bl_type', 'job_id', 'job_status', 'sr_no', 'si_close_at', 'gross_weight', 'charge_weight', 'volume', 'package_quantity', 'is_dangerous_good', 'second_shipper_id', 'notify_id', 'notify_display', 'also_notify_id', 'also_notify_display', 'load_type', 'shipment_type', 'hawb_type_air', 'inner_package_qty', 'transport_mode_code', 'received_date', 'via_id', 'origin_id', 'final_destination_id', 'final_destination_display', 'issued_date', 'issued_at', 'foreign_partner_id', 'foreign_partner_display', 'co_loader_id', 'warehouse_id', 'sub_master', 'doc_closing_date', 'delivery_date', 'bl_dept', 'trucking_date', 'insurrance', 'handling_information', 'can_create_pob', 'other_charge_print', 'currency_id', 'wt_val_mt', 'other_mt', 'dv_carrier', 'dv_customs', 'insurances', 'accounting_information', 'signature_id', 'service_type', 'rate_class', 'team_id', 'department_id', 'air_freight_print', 'an_show_fare_detail', 'no_of_bl', 'payable_at', 'hbl_received_date', 'cargo_closing_date', 'cargo_delivery_date', 'pickup_date', 'goods_receipt_no', 'free_storage_period_from', 'free_storage_period_to', 'do_date', 'arrival_notice_date', 'issue_agent_id', 'print_partner_id', 'lc_no', 'ams_no', 'ts_eta', 'fn', 'switch_bl', 'switch_shipper_id', 'feeder_vessel_id', 'mother_vessel_id', 'feeder_voyage', 'mother_voyage', 'hbl_type', 'number_of_org_hbl', 'truck_plate_no', 'chassis_no', 'cut_off_time', 'voyage', 'cargo_close_at', 'cargo_type', 'service_terms_id', 'num_and_type_container', 'hawb_no', 'mawb_no', 'flight_no', 'flight_number', 'selling_line_ids', 'buying_line_ids', 'sea_selling_line_ids', 'sea_buying_line_ids', 'sea_pay_on_behalf_line_ids', 'air_selling_line_ids', 'air_buying_line_ids', 'air_pay_on_behalf_line_ids', 'total_local_selling', 'total_local_selling_amt', 'total_local_selling_vat', 'total_local_buying', 'total_margin', 'percent_margin', 'vendor_id', 'copy_selling_house_id', 'copy_buying_house_id', 'copy_pob_house_id', 'insurance_polity', 'edit_name', 'debit_note_ids', 'debit_note_count', 'credit_note_ids', 'credit_note_count', 'mark_and_numbers', 'description_of_goods_1', 'description_of_goods_2', 'description_of_goods', 'containers_description', 'sea_house_bl', 'sea_master_bl', 'is_sea_master', 'is_air_master', 'sea_shipment', 'sea_bound', 'sea_bl_status', 'sea_load_type', 'sea_shipper_id', 'sea_shipper_code', 'sea_shipper_text', 'dc_note_ids', 'dc_note_count', 'unstuffing_date', 'berthing_date', 'warehouse_manager', 'warehouse_phone_number', 'email_to', 'email_house_to', 'email_cc_house_to', 'email_an_edo_to', 'email_cc_an_edo_to', 'email_cc_partner', 'email_cc_consignee', 'operator_ids', 'sea_consignee_id', 'sea_consignee_display', 'sea_consignee_text', 'sea_notify_id', 'sea_notify_display', 'sea_notify_text', 'ams_address_id', 'sea_carrier_id', 'sea_carrier_code', 'vessel', 'voyage2', 'sea_atd', 'sea_ata', 'mvvd_id', 'mvvd', 'mvvd_display', 'sea_etd', 'sea_eta', 'sea_por_id', 'sea_por_code', 'sea_pol_id', 'sea_pol_code', 'sea_ts_id', 'sea_ts_code', 'sea_pod_id', 'sea_pod_code', 'sea_pvy_id', 'sea_pvy_code', 'sea_issue_at_id', 'sea_issue_at_code', 'sea_issue_date', 'sea_no_of_bl', 'sea_issue_at', 'sea_bl_manage_no', 'sea_schedule_ids', 'sea_container_information_ids', 'sea_partner_id', 'sea_partner_code', 'sea_partner_address', 'sea_co_loader_id', 'sea_co_loader_role_code', 'sea_customer_id', 'sea_customer_code', 'sea_pic_ids', 'sea_pic_id', 'sea_pic_phone', 'sea_pic_email', 'sea_bl_dept', 'sea_warehouse', 'sea_service_term_id', 'sea_incoterm_id', 'sea_freight_term_print', 'sea_freight_term_id', 'sea_pay_at', 'sea_pay_at_code', 'sea_job_id', 'sea_inner_order_no', 'sea_liner_bkg_no', 'sea_internal_remark', 'sea_external_remark', 'sea_product_pic_id', 'sea_fcl_unit', 'sea_house_quotation_ids', 'air_house_quotation_ids', 'print_sea_selling_line_ids', 'display_sea_code', 'display_sea_name', 'air_house_bl', 'air_master_bl', 'air_bl_type', 'air_bound', 'air_switch_bl', 'air_shipment', 'air_shipper_id', 'air_shipper_code', 'air_shipper_text', 'air_consignee_id', 'air_consignee_display', 'air_consignee_text', 'air_notify_id', 'air_notify_display', 'air_notify_text', 'air_pol_id', 'air_pol_code', 'air_pod_id', 'air_pod_code', 'air_etd', 'air_atd', 'air_via1', 'air_via2', 'air_via3', 'by_carrier_air_line_1', 'by_carrier_air_line_2', 'by_carrier_air_line_3', 'by_carrier_air_line_summary', 'air_schedule_ids', 'air_product_pic_id', 'by_carrier_air_line_display1', 'by_carrier_air_line_display2', 'by_carrier_air_line_display3', 'air_eta', 'air_ata', 'air_issue_date', 'air_no_of_bl', 'air_issue_at_id', 'air_bl_manage_no', 'air_partner_id', 'air_partner_code', 'air_partner_address', 'air_co_loader_id', 'air_co_loader_role_code', 'air_customer_id', 'air_customer_code', 'air_pic_ids', 'air_pic_id', 'air_pic_phone', 'air_pic_email', 'air_bl_dept', 'air_warehouse', 'air_service_term_id', 'air_incoterm_id', 'air_freight_term_print', 'air_freight_term_id', 'air_pay_at', 'air_pay_at_code', 'air_job_id', 'air_inner_order_no', 'air_liner_bkg_no', 'air_internal_remark', 'air_external_remark', 'air_package', 'air_package_unit', 'air_gross_weight', 'air_charge_weight', 'air_cbm', 'dim_length', 'dim_width', 'dim_height', 'air_rate_class', 'air_weight_ids', 'print_air_selling_line_ids', 'tracking_ids', 'customs_department_ids', 'package_ids', 'container_ids', 'container_display', 'distributed_buying_line_ids', 'air_master_bl_ids', 'sea_master_bl_ids', 'mhs_code', 'mnf_deadline', 'volume_weight', 'own_state', 'quotation_ids', 'is_notify_same_as_consignee', 'notify_party_address', 'remark_dos', 'do_release_date', 'dos_dear', 'delivery_name', 'bl_number_id', 'freight_term_for_printing', 'onboard_date_option', 'display_freight_amount', 'show_service_terms', 'show_onboard_date', 'show_receive_date', 'bl_remark', 'devanning_remark', 'is_non_negotiable', 'container_info_print_type', 'container_detail', 'bl_text_print', 'print_as_agent', 'stamp_print', 'description_of_good', 'can_create_master', 'expense_number', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'sea_buying_cost_line_ids', 'air_buying_cost_line_ids', 'do_address_id', 'is_multi_house', 'inv_no', 'multi_selling_line_ids', 'multi_buying_line_ids', 'multi_pob_line_ids', 'multi_buying_cost_line_ids', 'tracking_states_display', 'job_freight_done')}}",
+    "groups_id": []
+  },
+  "626": {
+    "id": 626,
+    "name": "Master SEA B/L",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.freight_shipment_master_sea_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Master SEA B/L",
+    "view_id": false,
+    "domain": "[('is_sea_master', '=', True)]",
+    "context": "{'freight_shipment_master': 1, 'default_is_sea_master': True, 'default_transport_mode_id':\n            'sea'}\n        ",
+    "res_id": 0,
+    "res_model": "freight.shipment.master",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        2487,
+        "list"
+      ],
+      [
+        2000,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": [
+      1999,
+      "name"
+    ],
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Lô hàng\">\\n                <field name=\"name\"/>\\n                <field name=\"partner_id\"/>\\n                <field name=\"transport_mode\"/>\\n                <field name=\"job_id\"/>\\n                <field name=\"pic_id\"/>\\n                <field name=\"user_id\"/>\\n                <field name=\"port_receipt_id\"/>\\n                <field name=\"port_delivery_id\"/>\\n                <field name=\"sea_shipper_code\" string=\"Shipper\"/>\\n                <field name=\"operator_ids\" widget=\"many2many_tags\"/>\\n                <field name=\"consignee_id\" string=\"Consignee\" filter_domain=\"[\\'|\\', \\'|\\', \\'|\\', \\'|\\', \\'|\\', (\\'sea_consignee_id.name\\', \\'ilike\\', self), (\\'sea_consignee_id.partner_code\\', \\'ilike\\', self), (\\'sea_consignee_id.vat\\', \\'ilike\\', self), (\\'air_consignee_id.name\\', \\'ilike\\', self), (\\'air_consignee_id.partner_code\\', \\'ilike\\', self), (\\'air_consignee_id.vat\\', \\'ilike\\', self)]\"/>\\n                <field name=\"sea_house_bl_display_ids\" string=\"Vận đơn phụ\" filter_domain=\"[\\'|\\',(\\'air_house_bl_display_ids\\', \\'ilike\\', self), (\\'sea_house_bl_display_ids\\', \\'ilike\\', self)]\"/>\\n                <separator/>\\n                <filter string=\"Vận chuyển Hàng không\" name=\"air_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'air\\')]\"/>\\n                <filter string=\"Vận chuyển Đường biển\" name=\"ocean_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'sea\\')]\"/>\\n                <filter string=\"Vận chuyển đường bộ\" name=\"land_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'land\\')]\"/>\\n                <group expand=\"1\" string=\"Nhóm theo\">\\n                    <filter string=\"Kiểu dịch vụ\" name=\"group_by_transport_mode\" context=\"{\\'group_by\\': \\'transport_mode\\'}\"/>\\n                    <filter string=\"Customer\" name=\"group_by_customer\" context=\"{\\'group_by\\': \\'partner_id\\'}\"/>\\n                    <filter string=\"Shipper\" name=\"group_by_sea_shipper\" context=\"{\\'group_by\\': \\'sea_shipper_code\\'}\"/>\\n                    <filter string=\"Bán hàng\" name=\"group_by_user\" context=\"{\\'group_by\\': \\'user_id\\'}\"/>\\n                    <filter string=\"PIC\" name=\"group_by_pic\" context=\"{\\'group_by\\': \\'pic_id\\'}\"/>\\n                    <filter string=\"Trạng thái\" name=\"group_by_state\" context=\"{\\'group_by\\': \\'state\\'}\"/>\\n                </group>\\n            </search>', 'id': 1999, 'model': 'freight.shipment.master', 'models': {'freight.shipment.master': ('rv_hide_selling', 'rv_hide_buying', 'exchange_rate_date', 'exchange_rate', 'access_url', 'access_token', 'access_warning', 'activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'transport_mode_ids', 'transport_mode_id', 'transport_mode', 'company_id', 'company_currency_id', 'date', 'perf_date', 'partner_id', 'shipper_id', 'consignee_id', 'pic_id', 'partner_display', 'shipper_display', 'consignee_display', 'pic_display', 'user_id', 'user_ids', 'route_id', 'port_pol_id', 'port_pol_display', 'port_pod_id', 'port_pod_display', 'vessel_id', 'vessel_display', 'airline_id', 'shipping_line_id', 'trucker_id', 'priority', 'remark', 'port_receipt_id', 'country_receipt_id', 'port_receipt_display', 'port_delivery_id', 'country_delivery_id', 'port_delivery_display', 'bound', 'quantity', 'payment_date_specific', 'payment_date', 'payment_term_id', 'incoterms_id', 'freight_term', 'etd_date', 'etd_datetime', 'eta_date', 'eta_datetime', 'etd_display', 'eta_display', 'onboard_date', 'onboard_datetime', 'onboard_display', 'weight_unit', 'volume_unit', 'cont_qty', 'cont_unit', 'is_air', 'is_ocean', 'is_trucking', 'is_other', 'is_custom', 'is_sea_house', 'is_air_house', 'hbl_count', 'state', 'custom_id', 'sea_bl_type', 'job_id', 'job_status', 'sr_no', 'si_close_at', 'gross_weight', 'charge_weight', 'volume', 'package_quantity', 'is_dangerous_good', 'second_shipper_id', 'notify_id', 'notify_display', 'also_notify_id', 'also_notify_display', 'load_type', 'shipment_type', 'hawb_type_air', 'inner_package_qty', 'transport_mode_code', 'received_date', 'via_id', 'origin_id', 'final_destination_id', 'final_destination_display', 'issued_date', 'issued_at', 'foreign_partner_id', 'foreign_partner_display', 'co_loader_id', 'warehouse_id', 'sub_master', 'doc_closing_date', 'delivery_date', 'bl_dept', 'trucking_date', 'insurrance', 'handling_information', 'can_create_pob', 'other_charge_print', 'currency_id', 'wt_val_mt', 'other_mt', 'dv_carrier', 'dv_customs', 'insurances', 'accounting_information', 'signature_id', 'service_type', 'rate_class', 'team_id', 'department_id', 'air_freight_print', 'an_show_fare_detail', 'no_of_bl', 'payable_at', 'hbl_received_date', 'cargo_closing_date', 'cargo_delivery_date', 'pickup_date', 'goods_receipt_no', 'free_storage_period_from', 'free_storage_period_to', 'do_date', 'arrival_notice_date', 'issue_agent_id', 'print_partner_id', 'lc_no', 'ams_no', 'ts_eta', 'fn', 'switch_bl', 'switch_shipper_id', 'feeder_vessel_id', 'mother_vessel_id', 'feeder_voyage', 'mother_voyage', 'hbl_type', 'number_of_org_hbl', 'truck_plate_no', 'chassis_no', 'cut_off_time', 'voyage', 'cargo_close_at', 'cargo_type', 'service_terms_id', 'num_and_type_container', 'hawb_no', 'mawb_no', 'flight_no', 'flight_number', 'selling_line_ids', 'buying_line_ids', 'sea_selling_line_ids', 'sea_buying_line_ids', 'sea_pay_on_behalf_line_ids', 'air_selling_line_ids', 'air_buying_line_ids', 'air_pay_on_behalf_line_ids', 'total_local_selling', 'total_local_selling_amt', 'total_local_selling_vat', 'total_local_buying', 'total_margin', 'percent_margin', 'vendor_id', 'copy_selling_house_id', 'copy_buying_house_id', 'copy_pob_house_id', 'insurance_polity', 'edit_name', 'debit_note_ids', 'debit_note_count', 'credit_note_ids', 'credit_note_count', 'mark_and_numbers', 'description_of_goods_1', 'description_of_goods_2', 'description_of_goods', 'containers_description', 'sea_house_bl', 'sea_master_bl', 'is_sea_master', 'is_air_master', 'sea_shipment', 'sea_bound', 'sea_bl_status', 'sea_load_type', 'sea_shipper_id', 'sea_shipper_code', 'sea_shipper_text', 'dc_note_ids', 'dc_note_count', 'unstuffing_date', 'berthing_date', 'warehouse_manager', 'warehouse_phone_number', 'email_to', 'email_house_to', 'email_cc_house_to', 'email_an_edo_to', 'email_cc_an_edo_to', 'email_cc_partner', 'email_cc_consignee', 'operator_ids', 'sea_consignee_id', 'sea_consignee_display', 'sea_consignee_text', 'sea_notify_id', 'sea_notify_display', 'sea_notify_text', 'ams_address_id', 'sea_carrier_id', 'sea_carrier_code', 'vessel', 'voyage2', 'sea_atd', 'sea_ata', 'mvvd_id', 'mvvd', 'mvvd_display', 'sea_etd', 'sea_eta', 'sea_por_id', 'sea_por_code', 'sea_pol_id', 'sea_pol_code', 'sea_ts_id', 'sea_ts_code', 'sea_pod_id', 'sea_pod_code', 'sea_pvy_id', 'sea_pvy_code', 'sea_issue_at_id', 'sea_issue_at_code', 'sea_issue_date', 'sea_no_of_bl', 'sea_issue_at', 'sea_bl_manage_no', 'sea_schedule_ids', 'sea_container_information_ids', 'sea_partner_id', 'sea_partner_code', 'sea_partner_address', 'sea_co_loader_id', 'sea_co_loader_role_code', 'sea_customer_id', 'sea_customer_code', 'sea_pic_ids', 'sea_pic_id', 'sea_pic_phone', 'sea_pic_email', 'sea_bl_dept', 'sea_warehouse', 'sea_service_term_id', 'sea_incoterm_id', 'sea_freight_term_print', 'sea_freight_term_id', 'sea_pay_at', 'sea_pay_at_code', 'sea_job_id', 'sea_inner_order_no', 'sea_liner_bkg_no', 'sea_internal_remark', 'sea_external_remark', 'sea_product_pic_id', 'sea_fcl_unit', 'sea_house_quotation_ids', 'air_house_quotation_ids', 'print_sea_selling_line_ids', 'display_sea_code', 'display_sea_name', 'air_house_bl', 'air_master_bl', 'air_bl_type', 'air_bound', 'air_switch_bl', 'air_shipment', 'air_shipper_id', 'air_shipper_code', 'air_shipper_text', 'air_consignee_id', 'air_consignee_display', 'air_consignee_text', 'air_notify_id', 'air_notify_display', 'air_notify_text', 'air_pol_id', 'air_pol_code', 'air_pod_id', 'air_pod_code', 'air_etd', 'air_atd', 'air_via1', 'air_via2', 'air_via3', 'by_carrier_air_line_1', 'by_carrier_air_line_2', 'by_carrier_air_line_3', 'by_carrier_air_line_summary', 'air_schedule_ids', 'air_product_pic_id', 'by_carrier_air_line_display1', 'by_carrier_air_line_display2', 'by_carrier_air_line_display3', 'air_eta', 'air_ata', 'air_issue_date', 'air_no_of_bl', 'air_issue_at_id', 'air_bl_manage_no', 'air_partner_id', 'air_partner_code', 'air_partner_address', 'air_co_loader_id', 'air_co_loader_role_code', 'air_customer_id', 'air_customer_code', 'air_pic_ids', 'air_pic_id', 'air_pic_phone', 'air_pic_email', 'air_bl_dept', 'air_warehouse', 'air_service_term_id', 'air_incoterm_id', 'air_freight_term_print', 'air_freight_term_id', 'air_pay_at', 'air_pay_at_code', 'air_job_id', 'air_inner_order_no', 'air_liner_bkg_no', 'air_internal_remark', 'air_external_remark', 'air_package', 'air_package_unit', 'air_gross_weight', 'air_charge_weight', 'air_cbm', 'dim_length', 'dim_width', 'dim_height', 'air_rate_class', 'air_weight_ids', 'print_air_selling_line_ids', 'tracking_ids', 'customs_department_ids', 'package_ids', 'container_ids', 'container_display', 'distributed_buying_line_ids', 'air_master_bl_ids', 'sea_master_bl_ids', 'mhs_code', 'mnf_deadline', 'volume_weight', 'own_state', 'quotation_ids', 'is_notify_same_as_consignee', 'notify_party_address', 'remark_dos', 'do_release_date', 'dos_dear', 'delivery_name', 'bl_number_id', 'freight_term_for_printing', 'onboard_date_option', 'display_freight_amount', 'show_service_terms', 'show_onboard_date', 'show_receive_date', 'bl_remark', 'devanning_remark', 'is_non_negotiable', 'container_info_print_type', 'container_detail', 'bl_text_print', 'print_as_agent', 'stamp_print', 'description_of_good', 'can_create_master', 'expense_number', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'sea_buying_cost_line_ids', 'air_buying_cost_line_ids', 'do_address_id', 'is_multi_house', 'inv_no', 'multi_selling_line_ids', 'multi_buying_line_ids', 'multi_pob_line_ids', 'multi_buying_cost_line_ids', 'tracking_states_display', 'job_freight_done', 'sea_house_bl_ids', 'sea_house_bl_display_ids', 'sea_house_container_information_ids', 'air_signature_id', 'air_signature_text', 'air_bl_rent', 'agent_id', 'agent_display', 'air_mrn_no', 'air_msn_no', 'air_consol_closed', 'air_master_currency_id', 'air_wt_val', 'air_other', 'air_incoterms', 'air_account_information', 'air_dv_carriage', 'air_dv_custom', 'air_insurance', 'air_house_bl_ids', 'air_house_bl_display_ids', 'is_multi_master')}}",
+    "groups_id": []
+  },
+  "627": {
+    "id": 627,
+    "name": "Master AIR B/L",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.freight_shipment_master_air_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Master AIR B/L",
+    "view_id": false,
+    "domain": "[('is_air_master', '=', True)]",
+    "context": "{'freight_shipment_master': 1, 'default_is_air_master': True, 'default_transport_mode_id':\n            'air'}\n        ",
+    "res_id": 0,
+    "res_model": "freight.shipment.master",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        2486,
+        "list"
+      ],
+      [
+        2001,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": [
+      2625,
+      "name"
+    ],
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Lô hàng\">\\n                <field name=\"name\"/>\\n                <field name=\"partner_id\"/>\\n                <field name=\"transport_mode\"/>\\n                <field name=\"job_id\"/>\\n                <field name=\"pic_id\"/>\\n                <field name=\"user_id\"/>\\n                <field name=\"port_receipt_id\"/>\\n                <field name=\"port_delivery_id\"/>\\n                <field name=\"air_shipper_code\" string=\"Shipper\"/>\\n            <field name=\"operator_ids\" widget=\"many2many_tags\"/>\\n                <field name=\"consignee_id\" string=\"Consignee\" filter_domain=\"[\\'|\\', \\'|\\', \\'|\\', \\'|\\', \\'|\\', (\\'sea_consignee_id.name\\', \\'ilike\\', self), (\\'sea_consignee_id.partner_code\\', \\'ilike\\', self), (\\'sea_consignee_id.vat\\', \\'ilike\\', self), (\\'air_consignee_id.name\\', \\'ilike\\', self), (\\'air_consignee_id.partner_code\\', \\'ilike\\', self), (\\'air_consignee_id.vat\\', \\'ilike\\', self)]\"/>\\n                <field name=\"sea_house_bl_display_ids\" string=\"Vận đơn phụ\" filter_domain=\"[\\'|\\',(\\'air_house_bl_display_ids\\', \\'ilike\\', self), (\\'sea_house_bl_display_ids\\', \\'ilike\\', self)]\"/>\\n                <separator/>\\n                <filter string=\"Vận chuyển Hàng không\" name=\"air_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'air\\')]\"/>\\n                <filter string=\"Vận chuyển Đường biển\" name=\"ocean_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'sea\\')]\"/>\\n                <filter string=\"Vận chuyển đường bộ\" name=\"land_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'land\\')]\"/>\\n                <group expand=\"1\" string=\"Nhóm theo\">\\n                    <filter string=\"Kiểu dịch vụ\" name=\"group_by_transport_mode\" context=\"{\\'group_by\\': \\'transport_mode\\'}\"/>\\n                    <filter string=\"Customer\" name=\"group_by_customer\" context=\"{\\'group_by\\': \\'partner_id\\'}\"/>\\n                    <filter string=\"Shipper\" name=\"group_by_air_shipper\" context=\"{\\'group_by\\': \\'air_shipper_code\\'}\"/>\\n                    <filter string=\"Bán hàng\" name=\"group_by_user\" context=\"{\\'group_by\\': \\'user_id\\'}\"/>\\n                    <filter string=\"PIC\" name=\"group_by_pic\" context=\"{\\'group_by\\': \\'pic_id\\'}\"/>\\n                    <filter string=\"Trạng thái\" name=\"group_by_state\" context=\"{\\'group_by\\': \\'state\\'}\"/>\\n                </group>\\n            </search>', 'id': 2625, 'model': 'freight.shipment.master', 'models': {'freight.shipment.master': ('rv_hide_selling', 'rv_hide_buying', 'exchange_rate_date', 'exchange_rate', 'access_url', 'access_token', 'access_warning', 'activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'transport_mode_ids', 'transport_mode_id', 'transport_mode', 'company_id', 'company_currency_id', 'date', 'perf_date', 'partner_id', 'shipper_id', 'consignee_id', 'pic_id', 'partner_display', 'shipper_display', 'consignee_display', 'pic_display', 'user_id', 'user_ids', 'route_id', 'port_pol_id', 'port_pol_display', 'port_pod_id', 'port_pod_display', 'vessel_id', 'vessel_display', 'airline_id', 'shipping_line_id', 'trucker_id', 'priority', 'remark', 'port_receipt_id', 'country_receipt_id', 'port_receipt_display', 'port_delivery_id', 'country_delivery_id', 'port_delivery_display', 'bound', 'quantity', 'payment_date_specific', 'payment_date', 'payment_term_id', 'incoterms_id', 'freight_term', 'etd_date', 'etd_datetime', 'eta_date', 'eta_datetime', 'etd_display', 'eta_display', 'onboard_date', 'onboard_datetime', 'onboard_display', 'weight_unit', 'volume_unit', 'cont_qty', 'cont_unit', 'is_air', 'is_ocean', 'is_trucking', 'is_other', 'is_custom', 'is_sea_house', 'is_air_house', 'hbl_count', 'state', 'custom_id', 'sea_bl_type', 'job_id', 'job_status', 'sr_no', 'si_close_at', 'gross_weight', 'charge_weight', 'volume', 'package_quantity', 'is_dangerous_good', 'second_shipper_id', 'notify_id', 'notify_display', 'also_notify_id', 'also_notify_display', 'load_type', 'shipment_type', 'hawb_type_air', 'inner_package_qty', 'transport_mode_code', 'received_date', 'via_id', 'origin_id', 'final_destination_id', 'final_destination_display', 'issued_date', 'issued_at', 'foreign_partner_id', 'foreign_partner_display', 'co_loader_id', 'warehouse_id', 'sub_master', 'doc_closing_date', 'delivery_date', 'bl_dept', 'trucking_date', 'insurrance', 'handling_information', 'can_create_pob', 'other_charge_print', 'currency_id', 'wt_val_mt', 'other_mt', 'dv_carrier', 'dv_customs', 'insurances', 'accounting_information', 'signature_id', 'service_type', 'rate_class', 'team_id', 'department_id', 'air_freight_print', 'an_show_fare_detail', 'no_of_bl', 'payable_at', 'hbl_received_date', 'cargo_closing_date', 'cargo_delivery_date', 'pickup_date', 'goods_receipt_no', 'free_storage_period_from', 'free_storage_period_to', 'do_date', 'arrival_notice_date', 'issue_agent_id', 'print_partner_id', 'lc_no', 'ams_no', 'ts_eta', 'fn', 'switch_bl', 'switch_shipper_id', 'feeder_vessel_id', 'mother_vessel_id', 'feeder_voyage', 'mother_voyage', 'hbl_type', 'number_of_org_hbl', 'truck_plate_no', 'chassis_no', 'cut_off_time', 'voyage', 'cargo_close_at', 'cargo_type', 'service_terms_id', 'num_and_type_container', 'hawb_no', 'mawb_no', 'flight_no', 'flight_number', 'selling_line_ids', 'buying_line_ids', 'sea_selling_line_ids', 'sea_buying_line_ids', 'sea_pay_on_behalf_line_ids', 'air_selling_line_ids', 'air_buying_line_ids', 'air_pay_on_behalf_line_ids', 'total_local_selling', 'total_local_selling_amt', 'total_local_selling_vat', 'total_local_buying', 'total_margin', 'percent_margin', 'vendor_id', 'copy_selling_house_id', 'copy_buying_house_id', 'copy_pob_house_id', 'insurance_polity', 'edit_name', 'debit_note_ids', 'debit_note_count', 'credit_note_ids', 'credit_note_count', 'mark_and_numbers', 'description_of_goods_1', 'description_of_goods_2', 'description_of_goods', 'containers_description', 'sea_house_bl', 'sea_master_bl', 'is_sea_master', 'is_air_master', 'sea_shipment', 'sea_bound', 'sea_bl_status', 'sea_load_type', 'sea_shipper_id', 'sea_shipper_code', 'sea_shipper_text', 'dc_note_ids', 'dc_note_count', 'unstuffing_date', 'berthing_date', 'warehouse_manager', 'warehouse_phone_number', 'email_to', 'email_house_to', 'email_cc_house_to', 'email_an_edo_to', 'email_cc_an_edo_to', 'email_cc_partner', 'email_cc_consignee', 'operator_ids', 'sea_consignee_id', 'sea_consignee_display', 'sea_consignee_text', 'sea_notify_id', 'sea_notify_display', 'sea_notify_text', 'ams_address_id', 'sea_carrier_id', 'sea_carrier_code', 'vessel', 'voyage2', 'sea_atd', 'sea_ata', 'mvvd_id', 'mvvd', 'mvvd_display', 'sea_etd', 'sea_eta', 'sea_por_id', 'sea_por_code', 'sea_pol_id', 'sea_pol_code', 'sea_ts_id', 'sea_ts_code', 'sea_pod_id', 'sea_pod_code', 'sea_pvy_id', 'sea_pvy_code', 'sea_issue_at_id', 'sea_issue_at_code', 'sea_issue_date', 'sea_no_of_bl', 'sea_issue_at', 'sea_bl_manage_no', 'sea_schedule_ids', 'sea_container_information_ids', 'sea_partner_id', 'sea_partner_code', 'sea_partner_address', 'sea_co_loader_id', 'sea_co_loader_role_code', 'sea_customer_id', 'sea_customer_code', 'sea_pic_ids', 'sea_pic_id', 'sea_pic_phone', 'sea_pic_email', 'sea_bl_dept', 'sea_warehouse', 'sea_service_term_id', 'sea_incoterm_id', 'sea_freight_term_print', 'sea_freight_term_id', 'sea_pay_at', 'sea_pay_at_code', 'sea_job_id', 'sea_inner_order_no', 'sea_liner_bkg_no', 'sea_internal_remark', 'sea_external_remark', 'sea_product_pic_id', 'sea_fcl_unit', 'sea_house_quotation_ids', 'air_house_quotation_ids', 'print_sea_selling_line_ids', 'display_sea_code', 'display_sea_name', 'air_house_bl', 'air_master_bl', 'air_bl_type', 'air_bound', 'air_switch_bl', 'air_shipment', 'air_shipper_id', 'air_shipper_code', 'air_shipper_text', 'air_consignee_id', 'air_consignee_display', 'air_consignee_text', 'air_notify_id', 'air_notify_display', 'air_notify_text', 'air_pol_id', 'air_pol_code', 'air_pod_id', 'air_pod_code', 'air_etd', 'air_atd', 'air_via1', 'air_via2', 'air_via3', 'by_carrier_air_line_1', 'by_carrier_air_line_2', 'by_carrier_air_line_3', 'by_carrier_air_line_summary', 'air_schedule_ids', 'air_product_pic_id', 'by_carrier_air_line_display1', 'by_carrier_air_line_display2', 'by_carrier_air_line_display3', 'air_eta', 'air_ata', 'air_issue_date', 'air_no_of_bl', 'air_issue_at_id', 'air_bl_manage_no', 'air_partner_id', 'air_partner_code', 'air_partner_address', 'air_co_loader_id', 'air_co_loader_role_code', 'air_customer_id', 'air_customer_code', 'air_pic_ids', 'air_pic_id', 'air_pic_phone', 'air_pic_email', 'air_bl_dept', 'air_warehouse', 'air_service_term_id', 'air_incoterm_id', 'air_freight_term_print', 'air_freight_term_id', 'air_pay_at', 'air_pay_at_code', 'air_job_id', 'air_inner_order_no', 'air_liner_bkg_no', 'air_internal_remark', 'air_external_remark', 'air_package', 'air_package_unit', 'air_gross_weight', 'air_charge_weight', 'air_cbm', 'dim_length', 'dim_width', 'dim_height', 'air_rate_class', 'air_weight_ids', 'print_air_selling_line_ids', 'tracking_ids', 'customs_department_ids', 'package_ids', 'container_ids', 'container_display', 'distributed_buying_line_ids', 'air_master_bl_ids', 'sea_master_bl_ids', 'mhs_code', 'mnf_deadline', 'volume_weight', 'own_state', 'quotation_ids', 'is_notify_same_as_consignee', 'notify_party_address', 'remark_dos', 'do_release_date', 'dos_dear', 'delivery_name', 'bl_number_id', 'freight_term_for_printing', 'onboard_date_option', 'display_freight_amount', 'show_service_terms', 'show_onboard_date', 'show_receive_date', 'bl_remark', 'devanning_remark', 'is_non_negotiable', 'container_info_print_type', 'container_detail', 'bl_text_print', 'print_as_agent', 'stamp_print', 'description_of_good', 'can_create_master', 'expense_number', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'sea_buying_cost_line_ids', 'air_buying_cost_line_ids', 'do_address_id', 'is_multi_house', 'inv_no', 'multi_selling_line_ids', 'multi_buying_line_ids', 'multi_pob_line_ids', 'multi_buying_cost_line_ids', 'tracking_states_display', 'job_freight_done', 'sea_house_bl_ids', 'sea_house_bl_display_ids', 'sea_house_container_information_ids', 'air_signature_id', 'air_signature_text', 'air_bl_rent', 'agent_id', 'agent_display', 'air_mrn_no', 'air_msn_no', 'air_consol_closed', 'air_master_currency_id', 'air_wt_val', 'air_other', 'air_incoterms', 'air_account_information', 'air_dv_carriage', 'air_dv_custom', 'air_insurance', 'air_house_bl_ids', 'air_house_bl_display_ids', 'is_multi_master')}}",
+    "groups_id": []
+  },
+  "629": {
+    "id": 629,
+    "name": "Nhãn dịch vụ",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.action_freight_service_tags",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Nhãn dịch vụ",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.service.tags",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                    <field name=\"name\" string=\"Tên\"/>\\n                    <field name=\"code\" string=\"Dịch vụ\"/>\\n                </search>', 'id': 2006, 'model': 'freight.service.tags', 'models': {'freight.service.tags': ('name', 'code', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "634": {
+    "id": 634,
+    "name": "Quản lý thanh toán",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.freight_credit_note_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Quản lý thanh toán",
+    "view_id": false,
+    "domain": false,
+    "context": "{'freight_credit_note': 1}",
+    "res_id": 0,
+    "res_model": "freight.credit.note",
+    "target": "current",
+    "view_mode": "list,kanban,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "kanban"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                <field name=\"name\" string=\"Số CD\"/>\\n                <field name=\"partner_id\" string=\"Nhà cung cấp\"/>\\n                <field name=\"job_id\" string=\"Job\"/>\\n                <field name=\"remark\" string=\"Remark\" filter_domain=\"[\\'|\\', (\\'remark\\', \\'like\\', self), (\\'line_ids.remark\\', \\'like\\', self)]\"/>\\n                <field name=\"perf_date\" string=\"Performance Date\"/>\\n                <filter name=\"filter_perf_date\" string=\"Performance Date\" date=\"perf_date\"/>\\n  <filter string=\"Vendor COM\" name=\"filter_vendor_com\" domain=\"[(\\'line_ids.product_id.is_com_fee\\',\\'=\\',True)]\"/>\\n  <filter string=\"Customer COM\" name=\"filter_customer_com\" domain=\"[(\\'line_ids.product_id.is_com_customer_fee\\',\\'=\\',True)]\"/>\\n                <separator/>\\n                <filter name=\"vendor_vn\" string=\"Nhà cung cấp VN\" domain=\"[(\\'partner_id.country_id.code\\', \\'=\\', \\'VN\\')]\"/>\\n                <filter name=\"vendor_foreign\" string=\"Nhà cung cấp nước ngoài\" domain=\"[(\\'partner_id.country_id.code\\', \\'!=\\', \\'VN\\'), (\\'partner_id.country_id\\', \\'!=\\', False)]\"/>\\n                <separator/>\\n                <filter name=\"not_paid\" string=\"Not Paid\" domain=\"[(\\'payment_state\\', \\'=\\', \\'not_paid\\')]\"/>\\n                <filter name=\"partial_paid\" string=\"Partially Paid\" domain=\"[(\\'payment_state\\', \\'=\\', \\'partial\\')]\"/>\\n                <filter name=\"paid\" string=\"Paid\" domain=\"[(\\'payment_state\\', \\'=\\', \\'paid\\')]\"/>\\n                <group expand=\"0\" string=\"Group By\">\\n                    <filter name=\"group_by_partner\" string=\"Nhà cung cấp\" context=\"{\\'group_by\\': \\'partner_id\\'}\"/>\\n                    <filter name=\"group_by_job\" string=\"Job\" context=\"{\\'group_by\\': \\'job_id\\'}\"/>\\n                    <filter name=\"group_by_house\" string=\"House B/L\" context=\"{\\'group_by\\': \\'house_id\\'}\"/>\\n                </group>\\n            </search>', 'id': 2623, 'model': 'freight.credit.note', 'models': {'freight.credit.note': ('activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'transport_mode_ids', 'transport_mode_id', 'transport_mode', 'company_id', 'company_currency_id', 'date', 'perf_date', 'partner_id', 'shipper_id', 'consignee_id', 'pic_id', 'partner_display', 'shipper_display', 'consignee_display', 'pic_display', 'user_id', 'user_ids', 'route_id', 'port_pol_id', 'port_pol_display', 'port_pod_id', 'port_pod_display', 'vessel_id', 'vessel_display', 'airline_id', 'shipping_line_id', 'trucker_id', 'priority', 'remark', 'port_receipt_id', 'country_receipt_id', 'port_receipt_display', 'port_delivery_id', 'country_delivery_id', 'port_delivery_display', 'bound', 'quantity', 'payment_date_specific', 'payment_date', 'payment_term_id', 'incoterms_id', 'freight_term', 'etd_date', 'etd_datetime', 'eta_date', 'eta_datetime', 'etd_display', 'eta_display', 'onboard_date', 'onboard_datetime', 'onboard_display', 'weight_unit', 'volume_unit', 'cont_qty', 'cont_unit', 'is_air', 'is_ocean', 'is_trucking', 'is_other', 'is_custom', 'state', 'due_date', 'payer_id', 'job_id', 'set_off_amount', 'reference', 'pay_for', 'pic_email', 'vendor_invoice_no', 'payment_request_method', 'payment_request_remarks', 'voyage', 'flight_no', 'line_ids', 'master_id', 'house_id', 'salesman_id', 'buying_line_ids', 'bill_ids', 'bill_count', 'currency_id', 'payment_ids', 'related_payment_ids', 'payment_count', 'paid_amount', 'amount_untaxed', 'amount_taxed', 'amount_total', 'amount_total_foreign', 'amount_residual', 'payment_state', 'exchange_rate', 'can_cancel', 'need_bill', 'mark_is_paid', 'settled_by_offset', 'soa_id', 'soa_invoice_id', 'soa_payment_id', 'soa_line_ids', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'is_com', 'bill_of_lading', 'sent_by', 'approved_by', 'billed_by', 'can_send', 'can_approve', 'can_create_bill', 'can_cancel_from_draft', 'can_cancel_from_sent', 'can_cancel_from_approved', 'can_set_to_draft', 'source_salesman_id', 'etd_job', 'customer_id')}}",
+    "groups_id": []
+  },
+  "635": {
+    "id": 635,
+    "name": "Debit Note",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.freight_debit_note_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Debit Note",
+    "view_id": false,
+    "domain": false,
+    "context": "{'freight_debit_note': 1}",
+    "res_id": 0,
+    "res_model": "freight.debit.note",
+    "target": "current",
+    "view_mode": "list,kanban,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "kanban"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n<field name=\"name\"/>\\n<field name=\"partner_id\"/>\\n<field name=\"job_id\"/>\\n                <field name=\"remark\" string=\"Remark\" filter_domain=\"[\\'|\\', (\\'remark\\', \\'like\\', self), (\\'line_ids.remark\\', \\'like\\', self)]\"/>\\n                <field name=\"perf_date\" string=\"Performance Date\"/>\\n                <filter name=\"filter_perf_date\" string=\"Performance Date\" date=\"perf_date\"/>\\n<filter name=\"ftr_for\" string=\"Nợ ngoại tệ\" domain=\"[\\'|\\', (\\'house_id\\', \\'!=\\', False), (\\'master_id\\', \\'!=\\', False)]\"/>\\n<filter name=\"ftr_log\" string=\"Nợ LOG\" domain=\"[(\\'house_id\\', \\'=\\', False), (\\'master_id\\', \\'=\\', False)]\"/>\\n                <separator/>\\n                <filter name=\"not_paid\" string=\"Not Paid\" domain=\"[(\\'payment_state\\', \\'=\\', \\'not_paid\\')]\"/>\\n                <filter name=\"partial_paid\" string=\"Partially Paid\" domain=\"[(\\'payment_state\\', \\'=\\', \\'partial\\')]\"/>\\n                <filter name=\"paid\" string=\"Paid\" domain=\"[(\\'payment_state\\', \\'=\\', \\'paid\\')]\"/>\\n                <group string=\"Nhóm theo\">\\n                    <filter string=\"Customer\" name=\"group_by_partner_id\" context=\"{\\'group_by\\': \\'partner_id\\'}\"/>\\n                    <filter string=\"Job\" name=\"group_by_job_id\" context=\"{\\'group_by\\': \\'job_id\\'}\"/>\\n                    <filter string=\"House B/L\" name=\"group_by_house_id\" context=\"{\\'group_by\\': \\'house_id\\'}\"/>\\n                </group>\\n</search>', 'id': 2521, 'model': 'freight.debit.note', 'models': {'freight.debit.note': ('activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'transport_mode_ids', 'transport_mode_id', 'transport_mode', 'company_id', 'company_currency_id', 'date', 'perf_date', 'partner_id', 'shipper_id', 'consignee_id', 'pic_id', 'partner_display', 'shipper_display', 'consignee_display', 'pic_display', 'user_id', 'user_ids', 'route_id', 'port_pol_id', 'port_pol_display', 'port_pod_id', 'port_pod_display', 'vessel_id', 'vessel_display', 'airline_id', 'shipping_line_id', 'trucker_id', 'priority', 'remark', 'port_receipt_id', 'country_receipt_id', 'port_receipt_display', 'port_delivery_id', 'country_delivery_id', 'port_delivery_display', 'bound', 'quantity', 'payment_date_specific', 'payment_date', 'payment_term_id', 'incoterms_id', 'freight_term', 'etd_date', 'etd_datetime', 'eta_date', 'eta_datetime', 'etd_display', 'eta_display', 'onboard_date', 'onboard_datetime', 'onboard_display', 'weight_unit', 'volume_unit', 'cont_qty', 'cont_unit', 'is_air', 'is_ocean', 'is_trucking', 'is_other', 'is_custom', 'state', 'due_date', 'selling_line_ids', 'voyage', 'flight_no', 'job_id', 'line_ids', 'house_id', 'master_id', 'bill_of_lading', 'house_bl_display', 'salesman_id', 'invoice_ids', 'invoice_count', 'soa_id', 'soa_invoice_id', 'soa_payment_id', 'soa_line_ids', 'currency_id', 'payment_ids', 'related_payment_ids', 'payment_count', 'paid_amount', 'amount_untaxed', 'amount_taxed', 'amount_total', 'foreign_currency_id', 'amount_total_foreign', 'amount_residual', 'is_fully_paid', 'exchange_rate', 'need_invoice', 'need_register_pay_on_behalf', 'need_register', 'debit_lines_total', 'can_cancel', 'set_off_amount', 'reference', 'bank_id', 'bank_name', 'email_note_to', 'email_cc_note_to', 'team_id', 'create_invoice_in_vnd_only', 'cd_customs_job_ids', 'can_invoice', 'mark_is_paid', 'settled_by_offset', 'payment_state', 'show_send_email_button', 'department_id', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'invoice_form', 'tax_rounding_method', 'exchange_rate_mismatch', 'is_near_due', 'eta_job', 'etd_job', 'carrier_id', 'pol_display', 'pod_display')}}",
+    "groups_id": []
+  },
+  "638": {
+    "id": 638,
+    "name": "Job",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.freight_job_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Job",
+    "view_id": false,
+    "domain": false,
+    "context": "{'freight_job': 1}",
+    "res_id": 0,
+    "res_model": "freight.job",
+    "target": "current",
+    "view_mode": "list,kanban,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "kanban"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Job\">\\n                <field name=\"name\" string=\"Tên | Inner Job\" filter_domain=\"[\\'|\\', \\'|\\', (\\'name\\',\\'ilike\\',self), (\\'sea_inner_job\\', \\'ilike\\', self), (\\'air_inner_job\\', \\'ilike\\', self)]\"/>\\n                <field name=\"partner_id\"/>\\n                <field name=\"transport_mode_ids\" widget=\"many2many_tags\" options=\"{\\'no_open\\': True}\"/>\\n                <field name=\"pic_id\"/>\\n                <field name=\"user_id\"/>\\n                <field name=\"operator_ids\" widget=\"many2many_tags\"/>\\n<!--                <field name=\"port_receipt_id\"/>-->\\n                <field name=\"port_delivery_id\"/>\\n                <field name=\"shipper_id\"/>\\n                <field name=\"consignee_id\" string=\"Consignee\" filter_domain=\"[\\'|\\', \\'|\\', \\'|\\', \\'|\\', \\'|\\', \\'|\\', \\'|\\', \\'|\\', (\\'consignee_id.name\\', \\'ilike\\', self), (\\'consignee_id.partner_code\\', \\'ilike\\', self), (\\'consignee_id.vat\\', \\'ilike\\', self), (\\'air_consignee_id.name\\', \\'ilike\\', self), (\\'air_consignee_id.partner_code\\', \\'ilike\\', self), (\\'air_consignee_id.vat\\', \\'ilike\\', self), (\\'truck_job_ids.consignee_id.name\\', \\'ilike\\', self), (\\'truck_job_ids.consignee_id.partner_code\\', \\'ilike\\', self), (\\'truck_job_ids.consignee_id.vat\\', \\'ilike\\', self)]\"/>\\n                <separator/>\\n                <field name=\"house_ids\" string=\"HBL | HAWB\" filter_domain=\"[\\'|\\', (\\'house_ids.name\\', \\'ilike\\', self), (\\'truck_job_ids.truck_bl\\', \\'ilike\\', self)]\"/>\\n                <field name=\"master_ids\" string=\"MBL | MAWB\" filter_domain=\"[\\'|\\', (\\'master_ids.name\\', \\'ilike\\', self), (\\'truck_job_ids.truck_master_bl\\', \\'ilike\\', self)]\"/>\\n                <field name=\"container_no_display\" string=\"Container No\"/>\\n                <field name=\"booking_no\"/>\\n                <filter string=\"Vận chuyển Hàng không\" name=\"air_carriage\" domain=\"[(\\'is_air\\', \\'=\\', True)]\"/>\\n                <filter string=\"Vận chuyển Đường biển\" name=\"ocean_carriage\" domain=\"[(\\'is_ocean\\', \\'=\\', True)]\"/>\\n                <filter string=\"Vận chuyển đường bộ\" name=\"land_carriage\" domain=\"[(\\'is_trucking\\', \\'=\\', True)]\"/>\\n                <filter string=\"Customs\" name=\"customs\" domain=\"[(\\'is_custom\\', \\'=\\', True)]\"/>\\n                <filter string=\"Other\" name=\"other\" domain=\"[(\\'is_other\\', \\'=\\', True)]\"/>\\n                <filter string=\"Tháng hiện tại\" name=\"current_month\" domain=\"[(\\'date\\', \\'&gt;=\\', (context_today() + relativedelta(day=1)).strftime(\\'%Y-%m-%d\\')), (\\'date\\', \\'&lt;=\\', (context_today() + relativedelta(months=1, day=1, days=-1)).strftime(\\'%Y-%m-%d\\'))]\"/>\\n                <filter name=\"date\" string=\"Thời gian tạo\" date=\"date\"/>\\n                <group expand=\"1\" string=\"Nhóm theo\">\\n                    <filter string=\"Kiểu dịch vụ\" name=\"group_by_transport_mode_ids\" context=\"{\\'group_by\\': \\'transport_mode_ids\\'}\"/>\\n                    <filter string=\"Customer\" name=\"group_by_customer\" context=\"{\\'group_by\\': \\'partner_id\\'}\"/>\\n                    <filter string=\"Nhân viên bán hàng\" name=\"group_by_user\" context=\"{\\'group_by\\': \\'salesman_ids\\'}\"/>\\n                    <filter string=\"Operator\" name=\"group_by_operator\" context=\"{\\'group_by\\': \\'operator_ids\\'}\"/>\\n                    <filter string=\"PIC\" name=\"group_by_pic\" context=\"{\\'group_by\\': \\'pic_id\\'}\"/>\\n                    <filter string=\"Trạng thái\" name=\"group_by_state\" context=\"{\\'group_by\\': \\'state\\'}\"/>\\n                    <filter string=\"Chiều\" name=\"group_by_bound\" context=\"{\\'group_by\\': \\'bound\\'}\"/>\\n                    <filter string=\"Thời gian tạo\" name=\"group_by_date\" context=\"{\\'group_by\\': \\'date:day\\'}\"/>\\n                </group>\\n                <separator/>\\n                <filter name=\"filter_truck_pending\" string=\"Trucking: Đang xử lý\" domain=\"[(\\'is_trucking\\', \\'=\\', True), (\\'truck_done\\', \\'=\\', False)]\"/>\\n                <filter name=\"filter_truck_done\" string=\"Trucking: Hoàn thành\" domain=\"[(\\'truck_done\\', \\'=\\', True)]\"/>\\n                <separator/>\\n                <filter name=\"filter_customs_pending\" string=\"Hải quan: Đang xử lý\" domain=\"[(\\'is_custom\\', \\'=\\', True), (\\'customs_done\\', \\'=\\', False)]\"/>\\n                <filter name=\"filter_customs_done\" string=\"Hải quan: Hoàn thành\" domain=\"[(\\'customs_done\\', \\'=\\', True)]\"/>\\n                <separator/>\\n                <filter name=\"filter_freight_pending\" string=\"Vận chuyển: Đang xử lý\" domain=\"[\\'|\\', \\'|\\', (\\'is_ocean\\', \\'=\\', True), (\\'is_air\\', \\'=\\', True), (\\'is_multi\\', \\'=\\', True), (\\'freight_done\\', \\'=\\', False)]\"/>\\n                <filter name=\"filter_freight_done\" string=\"Vận chuyển: Hoàn thành\" domain=\"[(\\'freight_done\\', \\'=\\', True)]\"/>\\n            </search>', 'id': 2047, 'model': 'freight.job', 'models': {'freight.job': ('rv_hide_selling', 'rv_hide_buying', 'activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'transport_mode_ids', 'transport_mode_id', 'transport_mode', 'company_id', 'company_currency_id', 'date', 'perf_date', 'partner_id', 'shipper_id', 'consignee_id', 'pic_id', 'partner_display', 'shipper_display', 'consignee_display', 'pic_display', 'user_id', 'user_ids', 'route_id', 'port_pol_id', 'port_pol_display', 'port_pod_id', 'port_pod_display', 'vessel_id', 'vessel_display', 'airline_id', 'shipping_line_id', 'trucker_id', 'priority', 'remark', 'port_receipt_id', 'country_receipt_id', 'port_receipt_display', 'port_delivery_id', 'country_delivery_id', 'port_delivery_display', 'bound', 'quantity', 'payment_date_specific', 'payment_date', 'payment_term_id', 'incoterms_id', 'freight_term', 'etd_date', 'etd_datetime', 'eta_date', 'eta_datetime', 'etd_display', 'eta_display', 'onboard_date', 'onboard_datetime', 'onboard_display', 'weight_unit', 'volume_unit', 'cont_qty', 'cont_unit', 'is_air', 'is_ocean', 'is_trucking', 'is_other', 'is_custom', 'is_name_manual', 'state', 'master_ids', 'master_code', 'master_ids_air_count', 'master_ids_sea_count', 'data_fill_quotation_id', 'quotation_ids', 'quotation_count', 'expense_ids', 'expense_count', 'house_ids', 'house_bl_display', 'container_no_display', 'house_ids_sea_count', 'house_ids_air_count', 'master_id', 'local_name', 'foreign_name', 'phone', 'email', 'fill_data_by_internal', 'fill_data_by_external', 'customer_com', 'customer_com_usd', 'liner_com', 'liner_com_usd', 'receipt_date', 'closed_date', 'clearance_date', 'si_close_at', 'air_si_close_at', 'freight_term_air', 'gross_weight', 'charge_weight', 'volume', 'package_quantity', 'warehouse_id', 'warehouse_code', 'warehouse_type', 'is_dangerous_good', 'co_loader_id', 'house_id', 'cargo_close_at', 'warehouse_sea_id', 'load_type', 'service_terms_id', 'service_terms_air_id', 'operator_ids', 'team_id', 'department_id', 'house_bl', 'bl_type', 'job_no', 'truck_plate_no', 'chassis_no', 'cut_off_time', 'truck_job_ids', 'truck_plate_ids', 'truck_summary_ids', 'truck_quotation_id', 'truck_payer', 'copy_selling_job_truck_id', 'truck_selling_ids', 'copy_buying_job_truck_id', 'truck_buying_ids', 'truck_pay_on_behalf_ids', 'copy_pob_job_truck_id', 'sea_partner_id', 'sea_partner_code', 'sea_inner_job', 'voyage', 'voyage2', 'vessel', 'mvvd_id', 'mvvd', 'type_of_bill', 'cargo_type', 'num_and_type_container', 'product_pic', 'carrier_id', 'co_loader_sea_id', 'carrier_code', 'shipper_code', 'consignee_code', 'partner_code', 'co_loader_sea_role_code', 'booking_no', 'por_id', 'por_code', 'pol_id', 'pol_code', 'pol_etd', 'pol_atd', 'dummy_text', 'ts_id', 'ts_code', 'pod_id', 'pod_code', 'pod_eta', 'pod_ata', 'pvy_id', 'pvy_code', 'attachment_ids', 'total_cargo_sea_information_ids', 'schedule_ids', 'sea_job_cargo_ids', 'sea_incoterm_id', 'close_time', 'por_display', 'pvy_display', 'air_inner_job', 'hawb_no', 'flight_no', 'via_id', 'air_shipper_id', 'air_shipper_code', 'air_consignee_id', 'air_consignee_code', 'air_co_loader_id', 'air_co_loader_role_code', 'air_partner_id', 'air_partner_code', 'air_vendor_id', 'sea_vendor_id', 'air_product_pic', 'flight_number', 'air_pol_id', 'air_pol_code', 'air_pol_code_ref', 'air_pol_etd', 'air_pol_atd', 'air_ts_id', 'air_ts_code', 'air_ts_id_2', 'air_ts_code_2', 'air_ts_id_3', 'air_ts_code_3', 'air_pod_id', 'air_pod_code', 'air_pod_code_ref', 'air_pod_eta', 'air_pod_ata', 'by_carrier_id', 'by_carrier_id_2', 'by_carrier_id_3', 'by_carrier_code', 'by_carrier_code_2', 'by_carrier_code_3', 'air_payment_term_id', 'air_type_of_bill', 'air_remark', 'air_attachment_ids', 'air_schedule_ids', 'flight_details', 'detail_handle_docs', 'air_job_cargo_ids', 'air_incoterm_id', 'air_important_note', 'air_hbl_count', 'custom_inner_job', 'custom_area', 'custom_bound', 'custom_incoterms_id', 'custom_shipper_id', 'custom_shipper_code', 'custom_consignee_id', 'custom_consignee_code', 'custom_co_loader_id', 'custom_co_loader_role_code', 'custom_partner_id', 'custom_partner_code', 'custom_commodity', 'custom_commodity_vietnamese', 'custom_procedure_id', 'custom_hs_code', 'custom_quantity_cds', 'custom_remark', 'custom_attachment_ids', 'custom_schedule_ids', 'custom_operation_ids', 'custom_quotation_id', 'total_cargo_custom_information_ids', 'custom_payer', 'copy_selling_job_custom_id', 'custom_selling_ids', 'copy_buying_job_custom_id', 'custom_buying_ids', 'custom_pay_on_behalf_ids', 'copy_pob_job_custom_id', 'unique_cds_number_count', 'unique_container_count', 'custom_selected_status', 'custom_selected_status_count', 'custom_pic_id', 'custom_pic_phone', 'custom_pic_email', 'can_create_pob', 'other_inner_job', 'other_area', 'other_shipper_id', 'other_shipper_code', 'other_consignee_id', 'other_consignee_code', 'other_co_loader_id', 'other_co_loader_role_code', 'other_partner_id', 'other_partner_code', 'other_bound', 'other_incoterms_id', 'other_commodity', 'other_hs_code', 'other_quantity_cds', 'other_remark', 'other_document_ids', 'other_attachment_ids', 'other_schedule_ids', 'other_cargo_information', 'copy_selling_job_other_id', 'other_selling_ids', 'copy_buying_job_other_id', 'other_buying_ids', 'other_pay_on_behalf_ids', 'copy_pob_job_other_id', 'apply_other_quotation_ids', 'apply_truck_quotation_ids', 'apply_custom_quotation_ids', 'other_pic_id', 'other_pic_phone', 'other_pic_email', 'other_selected_status', 'other_type_cds_selected', 'other_selected_status_count', 'status', 'status_detail', 'status_details', 'freight_default_bl_type', 'buying_line_ids', 'selling_line_ids', 'pay_on_behalf_line_ids', 'selling_line_count', 'buying_line_count', 'debit_note_count', 'debit_note_ids', 'credit_note_count', 'credit_note_ids', 'dc_note_count', 'dc_note_ids', 'is_paid', 'is_paid_to_sale', 'insurance_polity', 'can_create_master', 'exchange_rate_date_other', 'exchange_rate_date_customs', 'exchange_rate_date_truck', 'exchange_rate_other', 'exchange_rate_custom', 'exchange_rate_truck', 'sea_booking_confirmation_ids', 'air_booking_confirmation_ids', 'total_selling_amt', 'total_buying_amt', 'margin_amt_percent', 'total_local_amount', 'total_local_amount_buy', 'margin_local_percent', 'margin_local', 'total_vat', 'total_vat_buy', 'margin_vat_percent', 'margin_vat', 'total_vat_foreign', 'total_vat_foreign_buy', 'margin_vat_foreign_percent', 'total_amount', 'total_amount_buy', 'total_pay_on_behalf', 'margin_total_percent', 'margin_total', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'truck_seq', 'customs_seq', 'driver', 'multi_shipper_id', 'multi_consignee_id', 'inv_no', 'has_unallocated_master_buying', 'display_pol_etd', 'display_pod_eta', 'multi_booking_confirmation_ids', 'salesman_ids', 'customs_cd_numbers', 'pol_display', 'pod_display', 'log_shipper_id', 'log_consignee_id', 'log_vendor_id', 'customs_job_ids', 'customer_mapping_ids', 'shipper_mapping_ids', 'consignee_mapping_ids', 'total_com_amount', 'is_cost_transferred', 'transfer_entry_ids', 'transfer_entry_count', 'transfer_amount', 'expense_move_ids', 'expense_total_amount', 'revenue_move_ids', 'revenue_amount', 'is_multi', 'house_ids_multi_count', 'master_ids_multi_count', 'truck_done', 'customs_done', 'freight_done', 'has_freight_service', 'truck_status', 'customs_status', 'freight_status', 'done_selling', 'done_buying', 'job_seq_no', 'portalink_total_buy', 'portalink_com_vendor_amount', 'portalink_com_customer_amount', 'portalink_total_com')}}",
+    "groups_id": []
+  },
+  "639": {
+    "id": 639,
+    "name": "Số quản lý",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.action_freight_bl_number",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Số quản lý",
+    "view_id": false,
+    "domain": false,
+    "context": "{'search_default_ftr_available': 1}",
+    "res_id": 0,
+    "res_model": "freight.bl.number",
+    "target": "current",
+    "view_mode": "list",
+    "views": [
+      [
+        false,
+        "list"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                <field name=\"name\"/>\\n                <filter name=\"ftr_available\" string=\"Có sẵn\" domain=\"[(\\'available\\', \\'=\\', True)]\"/>\\n            </search>', 'id': 2057, 'model': 'freight.bl.number', 'models': {'freight.bl.number': ('name', 'house_ids', 'available', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "647": {
+    "id": 647,
+    "name": "Mã thủ tục",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.action_freight_procedure_code",
+    "help": "<p class=\"o_view_nocontent_smiling_face\">\n                    Create new procedure code\n                </p>\n            ",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Mã thủ tục",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.procedure.code",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Freight Procedure Information\"><field name=\"name\"/></search>', 'id': False, 'model': 'freight.procedure.code', 'models': {'freight.procedure.code': ('name', 'code', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "648": {
+    "id": 648,
+    "name": "DC Note",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.freight_dc_note_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "DC Note",
+    "view_id": false,
+    "domain": false,
+    "context": "{'freight_dc_note': 1}",
+    "res_id": 0,
+    "res_model": "freight.dc.note",
+    "target": "current",
+    "view_mode": "list,kanban,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "kanban"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                <field name=\"name\"/>\\n                <field name=\"partner_id\"/>\\n                <field name=\"job_id\"/>\\n                <field name=\"remark\" string=\"Remark\" filter_domain=\"[\\'|\\', (\\'remark\\', \\'like\\', self), (\\'line_ids.remark\\', \\'like\\', self)]\"/>\\n                <field name=\"perf_date\" string=\"Performance Date\"/>\\n                <filter name=\"filter_perf_date\" string=\"Performance Date\" date=\"perf_date\"/>\\n                <filter name=\"ftr_for\" string=\"Nợ ngoại tệ\" domain=\"[\\'|\\', (\\'house_id\\', \\'!=\\', False), (\\'master_id\\', \\'!=\\', False)]\"/>\\n                <filter name=\"ftr_log\" string=\"Nợ LOG\" domain=\"[(\\'house_id\\', \\'=\\', False), (\\'master_id\\', \\'=\\', False)]\"/>\\n                <separator/>\\n                <filter name=\"not_paid\" string=\"Not Paid\" domain=\"[(\\'payment_state\\', \\'=\\', \\'not_paid\\')]\"/>\\n                <filter name=\"partial_paid\" string=\"Partially Paid\" domain=\"[(\\'payment_state\\', \\'=\\', \\'partial\\')]\"/>\\n                <filter name=\"paid\" string=\"Paid\" domain=\"[(\\'payment_state\\', \\'=\\', \\'paid\\')]\"/>\\n                <group string=\"Nhóm theo\">\\n                    <filter string=\"Customer\" name=\"group_by_partner_id\" context=\"{\\'group_by\\': \\'partner_id\\'}\"/>\\n                    <filter string=\"Job\" name=\"group_by_job_id\" context=\"{\\'group_by\\': \\'job_id\\'}\"/>\\n                    <filter string=\"House B/L\" name=\"group_by_house_id\" context=\"{\\'group_by\\': \\'house_id\\'}\"/>\\n                </group>\\n            </search>', 'id': 2522, 'model': 'freight.dc.note', 'models': {'freight.dc.note': ('activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'transport_mode_ids', 'transport_mode_id', 'transport_mode', 'company_id', 'company_currency_id', 'date', 'perf_date', 'partner_id', 'shipper_id', 'consignee_id', 'pic_id', 'partner_display', 'shipper_display', 'consignee_display', 'pic_display', 'user_id', 'user_ids', 'route_id', 'port_pol_id', 'port_pol_display', 'port_pod_id', 'port_pod_display', 'vessel_id', 'vessel_display', 'airline_id', 'shipping_line_id', 'trucker_id', 'priority', 'remark', 'port_receipt_id', 'country_receipt_id', 'port_receipt_display', 'port_delivery_id', 'country_delivery_id', 'port_delivery_display', 'bound', 'quantity', 'payment_date_specific', 'payment_date', 'payment_term_id', 'incoterms_id', 'freight_term', 'etd_date', 'etd_datetime', 'eta_date', 'eta_datetime', 'etd_display', 'eta_display', 'onboard_date', 'onboard_datetime', 'onboard_display', 'weight_unit', 'volume_unit', 'cont_qty', 'cont_unit', 'is_air', 'is_ocean', 'is_trucking', 'is_other', 'is_custom', 'state', 'due_date', 'selling_line_ids', 'voyage', 'flight_no', 'job_id', 'line_ids', 'house_id', 'master_id', 'bill_of_lading', 'house_bl_display', 'salesman_id', 'invoice_ids', 'invoice_count', 'soa_id', 'soa_invoice_id', 'soa_payment_id', 'soa_line_ids', 'currency_id', 'payment_ids', 'related_payment_ids', 'payment_count', 'paid_amount', 'amount_untaxed', 'amount_taxed', 'amount_total', 'foreign_currency_id', 'amount_total_foreign', 'amount_residual', 'is_fully_paid', 'exchange_rate', 'need_invoice', 'need_register_pay_on_behalf', 'need_register', 'debit_lines_total', 'can_cancel', 'set_off_amount', 'reference', 'bank_id', 'bank_name', 'email_note_to', 'email_cc_note_to', 'team_id', 'create_invoice_in_vnd_only', 'cd_customs_job_ids', 'can_invoice', 'mark_is_paid', 'settled_by_offset', 'payment_state', 'show_send_email_button', 'department_id', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'invoice_form', 'tax_rounding_method', 'exchange_rate_mismatch', 'is_near_due', 'eta_job', 'etd_job', 'carrier_id', 'pol_display', 'pod_display', 'create_dc_invoice_in_vnd_only', 'buying_line_id', 'amount_credit_foreign', 'amount_untaxed_foreign', 'amount_taxed_foreign')}}",
+    "groups_id": []
+  },
+  "718": {
+    "id": 718,
+    "name": "Bảng tổng hợp công nợ",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.action_freight_soa_dc",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Bảng tổng hợp công nợ",
+    "view_id": false,
+    "domain": "[('type', '=', 'dc')]",
+    "context": "{'default_type': 'dc', 'default_currency_id': 2}",
+    "res_id": 0,
+    "res_model": "freight.soa",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Freight Statement of Account\"><field name=\"name\"/></search>', 'id': False, 'model': 'freight.soa', 'models': {'freight.soa': ('activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'type', 'purpose', 'state', 'date', 'company_id', 'currency_id', 'is_foreign_currency', 'has_foreign_line', 'payment_exchange_rate', 'partner_id', 'date_from', 'date_to', 'note', 'line_ids', 'dc_note_ids', 'dc_note_count', 'debit_note_ids', 'debit_note_count', 'credit_note_ids', 'credit_note_count', 'amount_total', 'amount_residual', 'invoice_date', 'invoice_ids', 'invoice_count', 'invoice_no', 'bill_count', 'show_invoice_as_bill', 'payment_count', 'payment_state', 'payment_ids', 'split_bill', 'related_payment_ids', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "719": {
+    "id": 719,
+    "name": "Bảng tổng hợp công nợ",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.action_freight_soa_debit",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Bảng tổng hợp công nợ",
+    "view_id": false,
+    "domain": "[('type', '=', 'debit')]",
+    "context": "{'default_type': 'debit', 'default_currency_id': 24}",
+    "res_id": 0,
+    "res_model": "freight.soa",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Freight Statement of Account\"><field name=\"name\"/></search>', 'id': False, 'model': 'freight.soa', 'models': {'freight.soa': ('activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'type', 'purpose', 'state', 'date', 'company_id', 'currency_id', 'is_foreign_currency', 'has_foreign_line', 'payment_exchange_rate', 'partner_id', 'date_from', 'date_to', 'note', 'line_ids', 'dc_note_ids', 'dc_note_count', 'debit_note_ids', 'debit_note_count', 'credit_note_ids', 'credit_note_count', 'amount_total', 'amount_residual', 'invoice_date', 'invoice_ids', 'invoice_count', 'invoice_no', 'bill_count', 'show_invoice_as_bill', 'payment_count', 'payment_state', 'payment_ids', 'split_bill', 'related_payment_ids', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "743": {
+    "id": 743,
+    "name": "Đơn vị FCL",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_fcl_unit",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Đơn vị FCL",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.fcl.unit",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"FCL Unit\"><field name=\"name\"/></search>', 'id': False, 'model': 'freight.fcl.unit', 'models': {'freight.fcl.unit': ('name', 'code', 'active', 'uom_id', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'category_id', 'factor', 'factor_inv', 'rounding', 'uom_type', 'ratio', 'color')}}",
+    "groups_id": []
+  },
+  "746": {
+    "id": 746,
+    "name": "Bảng giá mua",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_purchase_pricing",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Bảng giá mua",
+    "view_id": false,
+    "domain": false,
+    "context": "{'search_default_groupby_product': 1, 'freight_purchase_pricing': 1}",
+    "res_id": 0,
+    "res_model": "freight.purchase.pricing",
+    "target": "current",
+    "view_mode": "list,kanban,form",
+    "views": [
+      [
+        2545,
+        "list"
+      ],
+      [
+        2546,
+        "form"
+      ],
+      [
+        false,
+        "kanban"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                <field name=\"code\"/>\\n                <field name=\"partner_id\"/>\\n                <field name=\"product_tmpl_id\"/>\\n                <field name=\"date_start\"/>\\n                <field name=\"date_end\"/>\\n                <field name=\"freight_port_of_receipt_id\"/>\\n                <field name=\"freight_port_of_delivery_id\"/>\\n                <filter name=\"ftr_archived\" string=\"Đã lưu trữ\" domain=\"[(\\'active\\', \\'=\\', False)]\"/>\\n                <filter name=\"is_pin\" string=\"Đã ghim\" domain=\"[(\\'is_pin\\', \\'=\\', True)]\"/>\\n            </search>', 'id': 2547, 'model': 'freight.purchase.pricing', 'models': {'freight.purchase.pricing': ('activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'product_tmpl_id', 'transport_mode_id', 'transport_mode', 'freight_port_domain_ids', 'freight_port_pol_id', 'freight_port_pod_id', 'service_line_ids', 'sales_pricing_id', 'partner_id', 'partner_display', 'pic_domain_ids', 'pic_id', 'pic_display', 'user_id', 'carrier_id', 'swap_carrier_ids', 'company_id', 'swap_carrier_names', 'com_carrier', 'com_carrier_number', 'freetime_pol', 'freetime_pod', 'incoterm', 'transit_time', 'date_of_week_ids', 'liner_term', 'bound', 'load_type', 'place_of_receipt_street', 'place_of_receipt_country_id', 'place_of_receipt_state_id', 'place_of_receipt_ward_id', 'place_of_delivery_street', 'place_of_delivery_state_id', 'place_of_delivery_ward_id', 'place_of_delivery_country_id', 'freight_commodity_id', 'freight_transit_type_id', 'freight_transit_time', 'freight_port_of_receipt_id', 'freight_port_of_delivery_id', 'remark_sales', 'transit_port', 'freight_free_time_ori', 'freight_free_time_dest', 'frequency', 'code', 'unit_ids', 'total_freight_net_price', 'total_surcharge_net_price', 'total_net_price', 'total_freight_guildline_price', 'total_surcharge_guildline_price', 'total_guildline_price', 'quotation_ids', 'quotation_count', 'note', 'date_start', 'date_end', 'expiry_state', 'active', 'place_of_received', 'place_of_delivery', 'service_terms_id', 'trade_name_id', 'is_pin', 'fcl_line_ids', 'fcl_other_line_ids', 'lcl_line_ids', 'lcl_other_line_ids', 'air_line_ids', 'air_other_line_ids', 'truck_line_ids', 'truck_other_line_ids', 'attachment_ids', 'attachment_count', 'dummy_text', 'carrier_code', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'is_dry', 'routing_service', 'remark', 'fcl_currency_ids', 'fcl_ctnr_types', 'fcl_fare_names', 'fcl_fare_codes', 'fcl_guideline_20', 'fcl_guideline_40', 'fcl_guideline_4h', 'fcl_guideline_45', 'fcl_sort_20', 'fcl_sort_40', 'fcl_sort_4h', 'fcl_sort_45')}}",
+    "groups_id": []
+  },
+  "748": {
+    "id": 748,
+    "name": "Yêu cầu báo giá",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.freight_sales_inquiry_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Yêu cầu báo giá",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "freight.sales.inquiry",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Yêu cầu báo giá\">\\n                <field name=\"name\"/>\\n                <field name=\"customer_id\"/>\\n                <field name=\"user_id\"/>\\n                <field name=\"carrier_id\"/>\\n                <field name=\"class_urgent\"/>\\n                <field name=\"pol_id\"/>\\n                <field name=\"pod_id\"/>\\n                <field name=\"door_address\"/>\\n                <field name=\"incoterms_id\"/>\\n                <field name=\"type_of_cont\"/>\\n                <field name=\"transport_term_of_oog_bulk\"/>\\n                <field name=\"commodity_id\"/>\\n                <field name=\"msds_dg_form\"/>\\n                <field name=\"etd_request_cargo_ready\"/>\\n                <field name=\"gross_weight\"/>\\n                <field name=\"other_request\"/>\\n            </search>', 'id': 2552, 'model': 'freight.sales.inquiry', 'models': {'freight.sales.inquiry': ('activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'customer_id', 'carrier_id', 'user_id', 'class_urgent', 'pol_id', 'pod_id', 'incoterms_id', 'commodity_id', 'door_address', 'type_of_cont', 'transport_term_of_oog_bulk', 'msds_dg_form_filename', 'msds_dg_form', 'etd_request_cargo_ready', 'gross_weight', 'other_request', 'date', 'state', 'sales_state', 'log_note', 'reason', 'name', 'team_id', 'quotation_ids', 'quotation_count', 'pricing_pic_ids', 'company_id', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'transport_mode_ids')}}",
+    "groups_id": []
+  },
+  "749": {
+    "id": 749,
+    "name": "Bảng tổng hợp công nợ",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.action_freight_soa_credit",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Bảng tổng hợp công nợ",
+    "view_id": false,
+    "domain": "[('type', '=', 'credit')]",
+    "context": "{'default_type': 'credit', 'default_currency_id': 24}",
+    "res_id": 0,
+    "res_model": "freight.soa",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Freight Statement of Account\"><field name=\"name\"/></search>', 'id': False, 'model': 'freight.soa', 'models': {'freight.soa': ('activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'type', 'purpose', 'state', 'date', 'company_id', 'currency_id', 'is_foreign_currency', 'has_foreign_line', 'payment_exchange_rate', 'partner_id', 'date_from', 'date_to', 'note', 'line_ids', 'dc_note_ids', 'dc_note_count', 'debit_note_ids', 'debit_note_count', 'credit_note_ids', 'credit_note_count', 'amount_total', 'amount_residual', 'invoice_date', 'invoice_ids', 'invoice_count', 'invoice_no', 'bill_count', 'show_invoice_as_bill', 'payment_count', 'payment_state', 'payment_ids', 'split_bill', 'related_payment_ids', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "761": {
+    "id": 761,
+    "name": "House Cross Border",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced_v2.freight_shipment_house_multi_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "House Cross Border",
+    "view_id": false,
+    "domain": "[('is_multi_house', '=', True)]",
+    "context": "{'default_is_multi_house': True}",
+    "res_id": 0,
+    "res_model": "freight.shipment.house",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        2581,
+        "list"
+      ],
+      [
+        2763,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Lô hàng\">\\n                <field name=\"name\"/>\\n                <field name=\"air_customer_code\" string=\"Customer\" filter_domain=\"[\\'|\\',\\'&amp;\\',(\\'is_air_house\\',\\'=\\',True),(\\'air_customer_code\\',\\'ilike\\',self),\\'&amp;\\',(\\'is_sea_house\\',\\'=\\',True),(\\'sea_customer_code\\',\\'ilike\\',self)]\"/>\\n                <field name=\"route_id\"/>\\n                <!--                <field name=\"partner_id\"/>-->\\n                <field name=\"transport_mode\"/>\\n                <field name=\"pic_id\"/>\\n                <field name=\"user_id\"/>\\n                <field name=\"port_receipt_id\"/>\\n                <field name=\"port_delivery_id\"/>\\n                <field name=\"shipper_id\"/>\\n                <field name=\"operator_ids\" widget=\"many2many_tags\"/>\\n                <field name=\"consignee_id\" string=\"Consignee\" filter_domain=\"[\\'|\\', \\'|\\', \\'|\\', \\'|\\', \\'|\\', (\\'sea_consignee_id.name\\', \\'ilike\\', self), (\\'sea_consignee_id.partner_code\\', \\'ilike\\', self), (\\'sea_consignee_id.vat\\', \\'ilike\\', self), (\\'air_consignee_id.name\\', \\'ilike\\', self), (\\'air_consignee_id.partner_code\\', \\'ilike\\', self), (\\'air_consignee_id.vat\\', \\'ilike\\', self)]\"/>\\n                <field name=\"sea_master_bl_ids\" string=\"Master BL\" filter_domain=\"[\\'|\\',(\\'sea_master_bl_ids\\', \\'ilike\\', self), (\\'air_master_bl_ids\\', \\'ilike\\', self)]\"/>\\n                <field name=\"job_id\"/>\\n                <field name=\"sea_selling_line_ids\" string=\"Dịch vụ\" filter_domain=\"[\\'|\\', \\'|\\', \\'|\\', (\\'sea_selling_line_ids.product_id.name\\', \\'ilike\\', self), (\\'sea_buying_line_ids.product_id.name\\', \\'ilike\\', self), (\\'air_selling_line_ids.product_id.name\\', \\'ilike\\', self), (\\'air_buying_line_ids.product_id.name\\', \\'ilike\\', self)]\"/>\\n                <separator/>\\n                <filter string=\"Vận chuyển Hàng không\" name=\"air_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'air\\')]\"/>\\n                <filter string=\"Vận chuyển Đường biển\" name=\"ocean_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'sea\\')]\"/>\\n                <filter string=\"Vận chuyển đường bộ\" name=\"land_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'land\\')]\"/>\\n                <group expand=\"1\" string=\"Nhóm theo\">\\n                    <filter string=\"Kiểu dịch vụ\" name=\"group_by_transport_mode\" context=\"{\\'group_by\\': \\'transport_mode\\'}\"/>\\n                    <filter string=\"Customer\" name=\"group_by_customer\" context=\"{\\'group_by\\': \\'partner_id\\'}\"/>\\n                    <filter string=\"Nhân viên bán hàng\" name=\"group_by_user\" context=\"{\\'group_by\\': \\'user_id\\'}\"/>\\n                    <filter string=\"PIC\" name=\"group_by_pic\" context=\"{\\'group_by\\': \\'pic_id\\'}\"/>\\n                    <filter string=\"Trạng thái\" name=\"group_by_state\" context=\"{\\'group_by\\': \\'state\\'}\"/>\\n                </group>\\n            </search>', 'id': 1992, 'model': 'freight.shipment.house', 'models': {'freight.shipment.house': ('rv_hide_selling', 'rv_hide_buying', 'exchange_rate_date', 'exchange_rate', 'access_url', 'access_token', 'access_warning', 'activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'transport_mode_ids', 'transport_mode_id', 'transport_mode', 'company_id', 'company_currency_id', 'date', 'perf_date', 'partner_id', 'shipper_id', 'consignee_id', 'pic_id', 'partner_display', 'shipper_display', 'consignee_display', 'pic_display', 'user_id', 'user_ids', 'route_id', 'port_pol_id', 'port_pol_display', 'port_pod_id', 'port_pod_display', 'vessel_id', 'vessel_display', 'airline_id', 'shipping_line_id', 'trucker_id', 'priority', 'remark', 'port_receipt_id', 'country_receipt_id', 'port_receipt_display', 'port_delivery_id', 'country_delivery_id', 'port_delivery_display', 'bound', 'quantity', 'payment_date_specific', 'payment_date', 'payment_term_id', 'incoterms_id', 'freight_term', 'etd_date', 'etd_datetime', 'eta_date', 'eta_datetime', 'etd_display', 'eta_display', 'onboard_date', 'onboard_datetime', 'onboard_display', 'weight_unit', 'volume_unit', 'cont_qty', 'cont_unit', 'is_air', 'is_ocean', 'is_trucking', 'is_other', 'is_custom', 'is_sea_house', 'is_air_house', 'hbl_count', 'state', 'custom_id', 'sea_bl_type', 'job_id', 'job_status', 'sr_no', 'si_close_at', 'gross_weight', 'charge_weight', 'volume', 'package_quantity', 'is_dangerous_good', 'second_shipper_id', 'notify_id', 'notify_display', 'also_notify_id', 'also_notify_display', 'load_type', 'shipment_type', 'hawb_type_air', 'inner_package_qty', 'transport_mode_code', 'received_date', 'via_id', 'origin_id', 'final_destination_id', 'final_destination_display', 'issued_date', 'issued_at', 'foreign_partner_id', 'foreign_partner_display', 'co_loader_id', 'warehouse_id', 'sub_master', 'doc_closing_date', 'delivery_date', 'bl_dept', 'trucking_date', 'insurrance', 'handling_information', 'can_create_pob', 'other_charge_print', 'currency_id', 'wt_val_mt', 'other_mt', 'dv_carrier', 'dv_customs', 'insurances', 'accounting_information', 'signature_id', 'service_type', 'rate_class', 'team_id', 'department_id', 'air_freight_print', 'an_show_fare_detail', 'no_of_bl', 'payable_at', 'hbl_received_date', 'cargo_closing_date', 'cargo_delivery_date', 'pickup_date', 'goods_receipt_no', 'free_storage_period_from', 'free_storage_period_to', 'do_date', 'arrival_notice_date', 'issue_agent_id', 'print_partner_id', 'lc_no', 'ams_no', 'ts_eta', 'fn', 'switch_bl', 'switch_shipper_id', 'feeder_vessel_id', 'mother_vessel_id', 'feeder_voyage', 'mother_voyage', 'hbl_type', 'number_of_org_hbl', 'truck_plate_no', 'chassis_no', 'cut_off_time', 'voyage', 'cargo_close_at', 'cargo_type', 'service_terms_id', 'num_and_type_container', 'hawb_no', 'mawb_no', 'flight_no', 'flight_number', 'selling_line_ids', 'buying_line_ids', 'sea_selling_line_ids', 'sea_buying_line_ids', 'sea_pay_on_behalf_line_ids', 'air_selling_line_ids', 'air_buying_line_ids', 'air_pay_on_behalf_line_ids', 'total_local_selling', 'total_local_selling_amt', 'total_local_selling_vat', 'total_local_buying', 'total_margin', 'percent_margin', 'vendor_id', 'copy_selling_house_id', 'copy_buying_house_id', 'copy_pob_house_id', 'insurance_polity', 'edit_name', 'debit_note_ids', 'debit_note_count', 'credit_note_ids', 'credit_note_count', 'mark_and_numbers', 'description_of_goods_1', 'description_of_goods_2', 'description_of_goods', 'containers_description', 'sea_house_bl', 'sea_master_bl', 'is_sea_master', 'is_air_master', 'sea_shipment', 'sea_bound', 'sea_bl_status', 'sea_load_type', 'sea_shipper_id', 'sea_shipper_code', 'sea_shipper_text', 'dc_note_ids', 'dc_note_count', 'unstuffing_date', 'berthing_date', 'warehouse_manager', 'warehouse_phone_number', 'email_to', 'email_house_to', 'email_cc_house_to', 'email_an_edo_to', 'email_cc_an_edo_to', 'email_cc_partner', 'email_cc_consignee', 'operator_ids', 'sea_consignee_id', 'sea_consignee_display', 'sea_consignee_text', 'sea_notify_id', 'sea_notify_display', 'sea_notify_text', 'ams_address_id', 'sea_carrier_id', 'sea_carrier_code', 'vessel', 'voyage2', 'sea_atd', 'sea_ata', 'mvvd_id', 'mvvd', 'mvvd_display', 'sea_etd', 'sea_eta', 'sea_por_id', 'sea_por_code', 'sea_pol_id', 'sea_pol_code', 'sea_ts_id', 'sea_ts_code', 'sea_pod_id', 'sea_pod_code', 'sea_pvy_id', 'sea_pvy_code', 'sea_issue_at_id', 'sea_issue_at_code', 'sea_issue_date', 'sea_no_of_bl', 'sea_issue_at', 'sea_bl_manage_no', 'sea_schedule_ids', 'sea_container_information_ids', 'sea_partner_id', 'sea_partner_code', 'sea_partner_address', 'sea_co_loader_id', 'sea_co_loader_role_code', 'sea_customer_id', 'sea_customer_code', 'sea_pic_ids', 'sea_pic_id', 'sea_pic_phone', 'sea_pic_email', 'sea_bl_dept', 'sea_warehouse', 'sea_service_term_id', 'sea_incoterm_id', 'sea_freight_term_print', 'sea_freight_term_id', 'sea_pay_at', 'sea_pay_at_code', 'sea_job_id', 'sea_inner_order_no', 'sea_liner_bkg_no', 'sea_internal_remark', 'sea_external_remark', 'sea_product_pic_id', 'sea_fcl_unit', 'sea_house_quotation_ids', 'air_house_quotation_ids', 'print_sea_selling_line_ids', 'display_sea_code', 'display_sea_name', 'air_house_bl', 'air_master_bl', 'air_bl_type', 'air_bound', 'air_switch_bl', 'air_shipment', 'air_shipper_id', 'air_shipper_code', 'air_shipper_text', 'air_consignee_id', 'air_consignee_display', 'air_consignee_text', 'air_notify_id', 'air_notify_display', 'air_notify_text', 'air_pol_id', 'air_pol_code', 'air_pod_id', 'air_pod_code', 'air_etd', 'air_atd', 'air_via1', 'air_via2', 'air_via3', 'by_carrier_air_line_1', 'by_carrier_air_line_2', 'by_carrier_air_line_3', 'by_carrier_air_line_summary', 'air_schedule_ids', 'air_product_pic_id', 'by_carrier_air_line_display1', 'by_carrier_air_line_display2', 'by_carrier_air_line_display3', 'air_eta', 'air_ata', 'air_issue_date', 'air_no_of_bl', 'air_issue_at_id', 'air_bl_manage_no', 'air_partner_id', 'air_partner_code', 'air_partner_address', 'air_co_loader_id', 'air_co_loader_role_code', 'air_customer_id', 'air_customer_code', 'air_pic_ids', 'air_pic_id', 'air_pic_phone', 'air_pic_email', 'air_bl_dept', 'air_warehouse', 'air_service_term_id', 'air_incoterm_id', 'air_freight_term_print', 'air_freight_term_id', 'air_pay_at', 'air_pay_at_code', 'air_job_id', 'air_inner_order_no', 'air_liner_bkg_no', 'air_internal_remark', 'air_external_remark', 'air_package', 'air_package_unit', 'air_gross_weight', 'air_charge_weight', 'air_cbm', 'dim_length', 'dim_width', 'dim_height', 'air_rate_class', 'air_weight_ids', 'print_air_selling_line_ids', 'tracking_ids', 'customs_department_ids', 'package_ids', 'container_ids', 'container_display', 'distributed_buying_line_ids', 'air_master_bl_ids', 'sea_master_bl_ids', 'mhs_code', 'mnf_deadline', 'volume_weight', 'own_state', 'quotation_ids', 'is_notify_same_as_consignee', 'notify_party_address', 'remark_dos', 'do_release_date', 'dos_dear', 'delivery_name', 'bl_number_id', 'freight_term_for_printing', 'onboard_date_option', 'display_freight_amount', 'show_service_terms', 'show_onboard_date', 'show_receive_date', 'bl_remark', 'devanning_remark', 'is_non_negotiable', 'container_info_print_type', 'container_detail', 'bl_text_print', 'print_as_agent', 'stamp_print', 'description_of_good', 'can_create_master', 'expense_number', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'sea_buying_cost_line_ids', 'air_buying_cost_line_ids', 'do_address_id', 'is_multi_house', 'inv_no', 'multi_selling_line_ids', 'multi_buying_line_ids', 'multi_pob_line_ids', 'multi_buying_cost_line_ids', 'tracking_states_display', 'job_freight_done')}}",
+    "groups_id": []
+  },
+  "762": {
+    "id": 762,
+    "name": "Master Cross Border",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced_v2.freight_shipment_master_multi_action",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Master Cross Border",
+    "view_id": false,
+    "domain": "[('is_multi_master', '=', True)]",
+    "context": "{'default_is_multi_master': True}",
+    "res_id": 0,
+    "res_model": "freight.shipment.master",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        2585,
+        "list"
+      ],
+      [
+        2584,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Lô hàng\">\\n                <field name=\"name\"/>\\n                <field name=\"partner_id\"/>\\n                <field name=\"transport_mode\"/>\\n                <field name=\"job_id\"/>\\n                <field name=\"pic_id\"/>\\n                <field name=\"user_id\"/>\\n                <field name=\"port_receipt_id\"/>\\n                <field name=\"port_delivery_id\"/>\\n                <field name=\"sea_shipper_code\" string=\"Shipper\"/>\\n                <field name=\"operator_ids\" widget=\"many2many_tags\"/>\\n                <field name=\"consignee_id\" string=\"Consignee\" filter_domain=\"[\\'|\\', \\'|\\', \\'|\\', \\'|\\', \\'|\\', (\\'sea_consignee_id.name\\', \\'ilike\\', self), (\\'sea_consignee_id.partner_code\\', \\'ilike\\', self), (\\'sea_consignee_id.vat\\', \\'ilike\\', self), (\\'air_consignee_id.name\\', \\'ilike\\', self), (\\'air_consignee_id.partner_code\\', \\'ilike\\', self), (\\'air_consignee_id.vat\\', \\'ilike\\', self)]\"/>\\n                <field name=\"sea_house_bl_display_ids\" string=\"Vận đơn phụ\" filter_domain=\"[\\'|\\',(\\'air_house_bl_display_ids\\', \\'ilike\\', self), (\\'sea_house_bl_display_ids\\', \\'ilike\\', self)]\"/>\\n                <separator/>\\n                <filter string=\"Vận chuyển Hàng không\" name=\"air_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'air\\')]\"/>\\n                <filter string=\"Vận chuyển Đường biển\" name=\"ocean_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'sea\\')]\"/>\\n                <filter string=\"Vận chuyển đường bộ\" name=\"land_carriage\" domain=\"[(\\'transport_mode\\', \\'=\\', \\'land\\')]\"/>\\n                <group expand=\"1\" string=\"Nhóm theo\">\\n                    <filter string=\"Kiểu dịch vụ\" name=\"group_by_transport_mode\" context=\"{\\'group_by\\': \\'transport_mode\\'}\"/>\\n                    <filter string=\"Customer\" name=\"group_by_customer\" context=\"{\\'group_by\\': \\'partner_id\\'}\"/>\\n                    <filter string=\"Shipper\" name=\"group_by_sea_shipper\" context=\"{\\'group_by\\': \\'sea_shipper_code\\'}\"/>\\n                    <filter string=\"Bán hàng\" name=\"group_by_user\" context=\"{\\'group_by\\': \\'user_id\\'}\"/>\\n                    <filter string=\"PIC\" name=\"group_by_pic\" context=\"{\\'group_by\\': \\'pic_id\\'}\"/>\\n                    <filter string=\"Trạng thái\" name=\"group_by_state\" context=\"{\\'group_by\\': \\'state\\'}\"/>\\n                </group>\\n            </search>', 'id': 1999, 'model': 'freight.shipment.master', 'models': {'freight.shipment.master': ('rv_hide_selling', 'rv_hide_buying', 'exchange_rate_date', 'exchange_rate', 'access_url', 'access_token', 'access_warning', 'activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'transport_mode_ids', 'transport_mode_id', 'transport_mode', 'company_id', 'company_currency_id', 'date', 'perf_date', 'partner_id', 'shipper_id', 'consignee_id', 'pic_id', 'partner_display', 'shipper_display', 'consignee_display', 'pic_display', 'user_id', 'user_ids', 'route_id', 'port_pol_id', 'port_pol_display', 'port_pod_id', 'port_pod_display', 'vessel_id', 'vessel_display', 'airline_id', 'shipping_line_id', 'trucker_id', 'priority', 'remark', 'port_receipt_id', 'country_receipt_id', 'port_receipt_display', 'port_delivery_id', 'country_delivery_id', 'port_delivery_display', 'bound', 'quantity', 'payment_date_specific', 'payment_date', 'payment_term_id', 'incoterms_id', 'freight_term', 'etd_date', 'etd_datetime', 'eta_date', 'eta_datetime', 'etd_display', 'eta_display', 'onboard_date', 'onboard_datetime', 'onboard_display', 'weight_unit', 'volume_unit', 'cont_qty', 'cont_unit', 'is_air', 'is_ocean', 'is_trucking', 'is_other', 'is_custom', 'is_sea_house', 'is_air_house', 'hbl_count', 'state', 'custom_id', 'sea_bl_type', 'job_id', 'job_status', 'sr_no', 'si_close_at', 'gross_weight', 'charge_weight', 'volume', 'package_quantity', 'is_dangerous_good', 'second_shipper_id', 'notify_id', 'notify_display', 'also_notify_id', 'also_notify_display', 'load_type', 'shipment_type', 'hawb_type_air', 'inner_package_qty', 'transport_mode_code', 'received_date', 'via_id', 'origin_id', 'final_destination_id', 'final_destination_display', 'issued_date', 'issued_at', 'foreign_partner_id', 'foreign_partner_display', 'co_loader_id', 'warehouse_id', 'sub_master', 'doc_closing_date', 'delivery_date', 'bl_dept', 'trucking_date', 'insurrance', 'handling_information', 'can_create_pob', 'other_charge_print', 'currency_id', 'wt_val_mt', 'other_mt', 'dv_carrier', 'dv_customs', 'insurances', 'accounting_information', 'signature_id', 'service_type', 'rate_class', 'team_id', 'department_id', 'air_freight_print', 'an_show_fare_detail', 'no_of_bl', 'payable_at', 'hbl_received_date', 'cargo_closing_date', 'cargo_delivery_date', 'pickup_date', 'goods_receipt_no', 'free_storage_period_from', 'free_storage_period_to', 'do_date', 'arrival_notice_date', 'issue_agent_id', 'print_partner_id', 'lc_no', 'ams_no', 'ts_eta', 'fn', 'switch_bl', 'switch_shipper_id', 'feeder_vessel_id', 'mother_vessel_id', 'feeder_voyage', 'mother_voyage', 'hbl_type', 'number_of_org_hbl', 'truck_plate_no', 'chassis_no', 'cut_off_time', 'voyage', 'cargo_close_at', 'cargo_type', 'service_terms_id', 'num_and_type_container', 'hawb_no', 'mawb_no', 'flight_no', 'flight_number', 'selling_line_ids', 'buying_line_ids', 'sea_selling_line_ids', 'sea_buying_line_ids', 'sea_pay_on_behalf_line_ids', 'air_selling_line_ids', 'air_buying_line_ids', 'air_pay_on_behalf_line_ids', 'total_local_selling', 'total_local_selling_amt', 'total_local_selling_vat', 'total_local_buying', 'total_margin', 'percent_margin', 'vendor_id', 'copy_selling_house_id', 'copy_buying_house_id', 'copy_pob_house_id', 'insurance_polity', 'edit_name', 'debit_note_ids', 'debit_note_count', 'credit_note_ids', 'credit_note_count', 'mark_and_numbers', 'description_of_goods_1', 'description_of_goods_2', 'description_of_goods', 'containers_description', 'sea_house_bl', 'sea_master_bl', 'is_sea_master', 'is_air_master', 'sea_shipment', 'sea_bound', 'sea_bl_status', 'sea_load_type', 'sea_shipper_id', 'sea_shipper_code', 'sea_shipper_text', 'dc_note_ids', 'dc_note_count', 'unstuffing_date', 'berthing_date', 'warehouse_manager', 'warehouse_phone_number', 'email_to', 'email_house_to', 'email_cc_house_to', 'email_an_edo_to', 'email_cc_an_edo_to', 'email_cc_partner', 'email_cc_consignee', 'operator_ids', 'sea_consignee_id', 'sea_consignee_display', 'sea_consignee_text', 'sea_notify_id', 'sea_notify_display', 'sea_notify_text', 'ams_address_id', 'sea_carrier_id', 'sea_carrier_code', 'vessel', 'voyage2', 'sea_atd', 'sea_ata', 'mvvd_id', 'mvvd', 'mvvd_display', 'sea_etd', 'sea_eta', 'sea_por_id', 'sea_por_code', 'sea_pol_id', 'sea_pol_code', 'sea_ts_id', 'sea_ts_code', 'sea_pod_id', 'sea_pod_code', 'sea_pvy_id', 'sea_pvy_code', 'sea_issue_at_id', 'sea_issue_at_code', 'sea_issue_date', 'sea_no_of_bl', 'sea_issue_at', 'sea_bl_manage_no', 'sea_schedule_ids', 'sea_container_information_ids', 'sea_partner_id', 'sea_partner_code', 'sea_partner_address', 'sea_co_loader_id', 'sea_co_loader_role_code', 'sea_customer_id', 'sea_customer_code', 'sea_pic_ids', 'sea_pic_id', 'sea_pic_phone', 'sea_pic_email', 'sea_bl_dept', 'sea_warehouse', 'sea_service_term_id', 'sea_incoterm_id', 'sea_freight_term_print', 'sea_freight_term_id', 'sea_pay_at', 'sea_pay_at_code', 'sea_job_id', 'sea_inner_order_no', 'sea_liner_bkg_no', 'sea_internal_remark', 'sea_external_remark', 'sea_product_pic_id', 'sea_fcl_unit', 'sea_house_quotation_ids', 'air_house_quotation_ids', 'print_sea_selling_line_ids', 'display_sea_code', 'display_sea_name', 'air_house_bl', 'air_master_bl', 'air_bl_type', 'air_bound', 'air_switch_bl', 'air_shipment', 'air_shipper_id', 'air_shipper_code', 'air_shipper_text', 'air_consignee_id', 'air_consignee_display', 'air_consignee_text', 'air_notify_id', 'air_notify_display', 'air_notify_text', 'air_pol_id', 'air_pol_code', 'air_pod_id', 'air_pod_code', 'air_etd', 'air_atd', 'air_via1', 'air_via2', 'air_via3', 'by_carrier_air_line_1', 'by_carrier_air_line_2', 'by_carrier_air_line_3', 'by_carrier_air_line_summary', 'air_schedule_ids', 'air_product_pic_id', 'by_carrier_air_line_display1', 'by_carrier_air_line_display2', 'by_carrier_air_line_display3', 'air_eta', 'air_ata', 'air_issue_date', 'air_no_of_bl', 'air_issue_at_id', 'air_bl_manage_no', 'air_partner_id', 'air_partner_code', 'air_partner_address', 'air_co_loader_id', 'air_co_loader_role_code', 'air_customer_id', 'air_customer_code', 'air_pic_ids', 'air_pic_id', 'air_pic_phone', 'air_pic_email', 'air_bl_dept', 'air_warehouse', 'air_service_term_id', 'air_incoterm_id', 'air_freight_term_print', 'air_freight_term_id', 'air_pay_at', 'air_pay_at_code', 'air_job_id', 'air_inner_order_no', 'air_liner_bkg_no', 'air_internal_remark', 'air_external_remark', 'air_package', 'air_package_unit', 'air_gross_weight', 'air_charge_weight', 'air_cbm', 'dim_length', 'dim_width', 'dim_height', 'air_rate_class', 'air_weight_ids', 'print_air_selling_line_ids', 'tracking_ids', 'customs_department_ids', 'package_ids', 'container_ids', 'container_display', 'distributed_buying_line_ids', 'air_master_bl_ids', 'sea_master_bl_ids', 'mhs_code', 'mnf_deadline', 'volume_weight', 'own_state', 'quotation_ids', 'is_notify_same_as_consignee', 'notify_party_address', 'remark_dos', 'do_release_date', 'dos_dear', 'delivery_name', 'bl_number_id', 'freight_term_for_printing', 'onboard_date_option', 'display_freight_amount', 'show_service_terms', 'show_onboard_date', 'show_receive_date', 'bl_remark', 'devanning_remark', 'is_non_negotiable', 'container_info_print_type', 'container_detail', 'bl_text_print', 'print_as_agent', 'stamp_print', 'description_of_good', 'can_create_master', 'expense_number', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'sea_buying_cost_line_ids', 'air_buying_cost_line_ids', 'do_address_id', 'is_multi_house', 'inv_no', 'multi_selling_line_ids', 'multi_buying_line_ids', 'multi_pob_line_ids', 'multi_buying_cost_line_ids', 'tracking_states_display', 'job_freight_done', 'sea_house_bl_ids', 'sea_house_bl_display_ids', 'sea_house_container_information_ids', 'air_signature_id', 'air_signature_text', 'air_bl_rent', 'agent_id', 'agent_display', 'air_mrn_no', 'air_msn_no', 'air_consol_closed', 'air_master_currency_id', 'air_wt_val', 'air_other', 'air_incoterms', 'air_account_information', 'air_dv_carriage', 'air_dv_custom', 'air_insurance', 'air_house_bl_ids', 'air_house_bl_display_ids', 'is_multi_master')}}",
+    "groups_id": []
+  },
+  "875": {
+    "id": 875,
+    "name": "SOA Debt Offset",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_advanced.action_freight_soa_debt_offset",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "SOA Debt Offset",
+    "view_id": false,
+    "domain": "[('type', '=', 'dc'), ('line_ids.credit_note_id', '!=', False)]",
+    "context": "{'default_type': 'dc', 'default_currency_id': 2}",
+    "res_id": 0,
+    "res_model": "freight.soa",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Freight Statement of Account\"><field name=\"name\"/></search>', 'id': False, 'model': 'freight.soa', 'models': {'freight.soa': ('activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'name', 'type', 'purpose', 'state', 'date', 'company_id', 'currency_id', 'is_foreign_currency', 'has_foreign_line', 'payment_exchange_rate', 'partner_id', 'date_from', 'date_to', 'note', 'line_ids', 'dc_note_ids', 'dc_note_count', 'debit_note_ids', 'debit_note_count', 'credit_note_ids', 'credit_note_count', 'amount_total', 'amount_residual', 'invoice_date', 'invoice_ids', 'invoice_count', 'invoice_no', 'bill_count', 'show_invoice_as_bill', 'payment_count', 'payment_state', 'payment_ids', 'split_bill', 'related_payment_ids', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "876": {
+    "id": 876,
+    "name": "Freight Local Charge Vendor",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_local_charge",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Freight Local Charge Vendor",
+    "view_id": false,
+    "domain": false,
+    "context": "{'default_type': 'vendor'}",
+    "res_id": 0,
+    "res_model": "freight.local.charge",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        2867,
+        "list"
+      ],
+      [
+        2874,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                <field name=\"vendor_id\"/>\\n                <field name=\"carrier_id\"/>\\n                <field name=\"transport_mode_id\"/>\\n                <field name=\"remark\"/>\\n            </search>', 'id': 2875, 'model': 'freight.local.charge', 'models': {'freight.local.charge': ('activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'vendor_id', 'vendor_display', 'carrier_id', 'transport_mode_id', 'transport_mode_code', 'unit_id', 'line_ids', 'other_line_ids', 'remark', 'bound', 'local_charge_type', 'trade', 'trade_name_id', 'date_from', 'date_to', 'type', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "877": {
+    "id": 877,
+    "name": "Freight Local Charge Carrier",
+    "type": "ir.actions.act_window",
+    "xml_id": "sota_freight_crm.action_freight_local_charge_carrier",
+    "help": "<p class='o_view_nocontent_smiling_face'>Tạo mới chứng từ</p>",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Freight Local Charge Carrier",
+    "view_id": false,
+    "domain": false,
+    "context": "{'default_type': 'carrier'}",
+    "res_id": 0,
+    "res_model": "freight.local.charge",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        2868,
+        "list"
+      ],
+      [
+        2874,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search>\\n                <field name=\"vendor_id\"/>\\n                <field name=\"carrier_id\"/>\\n                <field name=\"transport_mode_id\"/>\\n                <field name=\"remark\"/>\\n            </search>', 'id': 2875, 'model': 'freight.local.charge', 'models': {'freight.local.charge': ('activity_ids', 'activity_state', 'activity_user_id', 'activity_type_id', 'activity_type_icon', 'activity_date_deadline', 'my_activity_date_deadline', 'activity_summary', 'activity_exception_decoration', 'activity_exception_icon', 'activity_calendar_event_id', 'message_is_follower', 'message_follower_ids', 'message_partner_ids', 'message_ids', 'has_message', 'message_needaction', 'message_needaction_counter', 'message_has_error', 'message_has_error_counter', 'message_attachment_count', 'message_main_attachment_id', 'website_message_ids', 'message_has_sms_error', 'vendor_id', 'vendor_display', 'carrier_id', 'transport_mode_id', 'transport_mode_code', 'unit_id', 'line_ids', 'other_line_ids', 'remark', 'bound', 'local_charge_type', 'trade', 'trade_name_id', 'date_from', 'date_to', 'type', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  }
+}

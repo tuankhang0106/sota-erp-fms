@@ -1,0 +1,77 @@
+{
+  "fields": {
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Action Name",
+      "type": "char"
+    },
+    "model_id": {
+      "help": "The model this field belongs to",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": true,
+      "string": "Applies To",
+      "type": "many2one"
+    },
+    "sh_group_ids": {
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Groups",
+      "type": "many2many"
+    },
+    "action_id": {
+      "readonly": false,
+      "relation": "ir.actions.act_window",
+      "required": false,
+      "string": "Related Action",
+      "type": "many2one"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  },
+  "views": null
+}

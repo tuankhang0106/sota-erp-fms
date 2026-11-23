@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_country_state_tree" model="ir.ui.view">
+        <field name="name">res.country.state.tree</field>
+        <field name="model">res.country.state</field>
+        <field name="arch" type="xml">
+            <tree string="State" editable="bottom">
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="country_id" options="{'no_create': True, 'no_open': True}" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="name_extension"/>
+                <field name="sequence_id" can_create="true" can_write="true"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_res_country_state_form" model="ir.ui.view">
+        <field name="name">res.country.state.form</field>
+        <field name="model">res.country.state</field>
+        <field name="arch" type="xml">
+            <form string="State">
+                    <sheet>
+                        <group>
+                            <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="code" modifiers="{&quot;required&quot;: true}"/>
+                <field name="accents"/>
+                            <field name="country_id" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="sequence_id" can_create="true" can_write="true"/>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_res_country_state_search" model="ir.ui.view">
+        <field name="name">res.country.state.search</field>
+        <field name="model">res.country.state</field>
+        <field name="arch" type="xml">
+            <search string="Country">
+                    <field name="name"/>
+                    <field name="country_id"/>
+                    <group string="Group By">
+                        <filter name="groupby_country" string="Country" context="{'group_by': 'country_id'}"/>
+                    </group>
+                </search>
+        </field>
+    </record>
+
+    <record id="action_res_country_state" model="ir.actions.act_window">
+        <field name="name">RES COUNTRY STATE</field>
+        <field name="res_model">res.country.state</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

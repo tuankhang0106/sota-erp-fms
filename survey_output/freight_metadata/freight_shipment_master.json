@@ -1,0 +1,3612 @@
+{
+  "fields": {
+    "rv_hide_selling": {
+      "help": "Technical: hide selling rates for the current user on this document.",
+      "readonly": true,
+      "required": false,
+      "string": "Hide Selling Rates",
+      "type": "boolean"
+    },
+    "rv_hide_buying": {
+      "help": "Technical: hide buying rates for the current user on this document.",
+      "readonly": true,
+      "required": false,
+      "string": "Hide Buying Rates",
+      "type": "boolean"
+    },
+    "exchange_rate_date": {
+      "readonly": false,
+      "required": true,
+      "string": "Exchange Rate Date",
+      "type": "date"
+    },
+    "exchange_rate": {
+      "readonly": true,
+      "required": true,
+      "string": "Exchange Rate (VND/USD)",
+      "type": "float"
+    },
+    "access_url": {
+      "help": "Customer Portal URL",
+      "readonly": true,
+      "required": false,
+      "string": "Portal Access URL",
+      "type": "char"
+    },
+    "access_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Security Token",
+      "type": "char"
+    },
+    "access_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Access warning",
+      "type": "text"
+    },
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "message_main_attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Main Attachment",
+      "type": "many2one"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": true,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "transport_mode_ids": {
+      "readonly": true,
+      "relation": "freight.transport.mode",
+      "required": false,
+      "string": "Transport Mode",
+      "type": "many2many"
+    },
+    "transport_mode_id": {
+      "readonly": false,
+      "relation": "freight.transport.mode",
+      "required": false,
+      "string": "Transport Mode",
+      "type": "many2one"
+    },
+    "transport_mode": {
+      "readonly": true,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "date": {
+      "readonly": false,
+      "required": true,
+      "string": "Date",
+      "type": "date"
+    },
+    "perf_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Performance Date",
+      "type": "date"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "shipper_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Shipper",
+      "type": "many2one"
+    },
+    "consignee_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Consignee",
+      "type": "many2one"
+    },
+    "pic_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "P.I.C",
+      "type": "many2one"
+    },
+    "partner_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Partner Display",
+      "type": "char"
+    },
+    "shipper_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Shipper Display",
+      "type": "char"
+    },
+    "consignee_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Consignee Display",
+      "type": "char"
+    },
+    "pic_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Pic Display",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salesman",
+      "type": "many2one"
+    },
+    "user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "PICs",
+      "type": "many2many"
+    },
+    "route_id": {
+      "readonly": true,
+      "relation": "product.template",
+      "required": false,
+      "string": "Route",
+      "type": "many2one"
+    },
+    "port_pol_id": {
+      "readonly": true,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Port Of Loading (POL)",
+      "type": "many2one"
+    },
+    "port_pol_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Port Pol Display",
+      "type": "char"
+    },
+    "port_pod_id": {
+      "readonly": true,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Port Of Discharge (POD)",
+      "type": "many2one"
+    },
+    "port_pod_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Port Pod Display",
+      "type": "char"
+    },
+    "vessel_id": {
+      "readonly": false,
+      "relation": "freight.vessel",
+      "required": false,
+      "string": "Vessel",
+      "type": "many2one"
+    },
+    "vessel_display": {
+      "readonly": true,
+      "required": false,
+      "string": "Vessel Display",
+      "type": "char"
+    },
+    "airline_id": {
+      "readonly": false,
+      "relation": "freight.airline",
+      "required": false,
+      "string": "Carrier Airline",
+      "type": "many2one"
+    },
+    "shipping_line_id": {
+      "readonly": false,
+      "relation": "freight.shipping.line",
+      "required": false,
+      "string": "Carrier Ocean",
+      "type": "many2one"
+    },
+    "trucker_id": {
+      "readonly": false,
+      "relation": "freight.trucker",
+      "required": false,
+      "string": "Carrier Trucking",
+      "type": "many2one"
+    },
+    "priority": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Low"
+        ],
+        [
+          "1",
+          "Medium"
+        ],
+        [
+          "2",
+          "High"
+        ],
+        [
+          "3",
+          "Very High"
+        ]
+      ],
+      "string": "Priority",
+      "type": "selection"
+    },
+    "remark": {
+      "readonly": false,
+      "required": false,
+      "string": "Remark",
+      "type": "text"
+    },
+    "port_receipt_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Place Of Receipt",
+      "type": "many2one"
+    },
+    "country_receipt_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country Receipt",
+      "type": "many2one"
+    },
+    "port_receipt_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Port Receipt Display",
+      "type": "char"
+    },
+    "port_delivery_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Port Delivery",
+      "type": "many2one"
+    },
+    "country_delivery_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country Delivery",
+      "type": "many2one"
+    },
+    "port_delivery_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Port Delivery Display",
+      "type": "char"
+    },
+    "bound": {
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "export",
+          "Export"
+        ],
+        [
+          "import",
+          "Import"
+        ],
+        [
+          "other",
+          "Other"
+        ]
+      ],
+      "string": "Bound",
+      "type": "selection"
+    },
+    "quantity": {
+      "readonly": false,
+      "required": false,
+      "string": "Quantity",
+      "type": "char"
+    },
+    "payment_date_specific": {
+      "readonly": false,
+      "required": false,
+      "string": "Payment Date Specific",
+      "type": "boolean"
+    },
+    "payment_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Payment Date",
+      "type": "datetime"
+    },
+    "payment_term_id": {
+      "readonly": false,
+      "relation": "account.payment.term",
+      "required": false,
+      "string": "Payment Term",
+      "type": "many2one"
+    },
+    "incoterms_id": {
+      "readonly": false,
+      "relation": "freight.incoterms",
+      "required": false,
+      "string": "Incoterms",
+      "type": "many2one"
+    },
+    "freight_term": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "freight prepaid",
+          "FREIGHT PREPAID"
+        ],
+        [
+          "freight collect",
+          "FREIGHT COLLECT"
+        ]
+      ],
+      "string": "Freight Term",
+      "type": "selection"
+    },
+    "etd_date": {
+      "readonly": false,
+      "required": false,
+      "string": "ETD Date",
+      "type": "date"
+    },
+    "etd_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "ETD Datetime",
+      "type": "datetime"
+    },
+    "eta_date": {
+      "readonly": false,
+      "required": false,
+      "string": "ETA Date",
+      "type": "date"
+    },
+    "eta_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "ETA Datetime",
+      "type": "datetime"
+    },
+    "etd_display": {
+      "readonly": true,
+      "required": false,
+      "string": "Etd Display",
+      "type": "datetime"
+    },
+    "eta_display": {
+      "readonly": true,
+      "required": false,
+      "string": "Eta Display",
+      "type": "datetime"
+    },
+    "onboard_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Onboard Date",
+      "type": "date"
+    },
+    "onboard_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "Onboard Datetime",
+      "type": "datetime"
+    },
+    "onboard_display": {
+      "readonly": true,
+      "required": false,
+      "string": "Onboard Display",
+      "type": "datetime"
+    },
+    "weight_unit": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "kg",
+          "KG"
+        ],
+        [
+          "lb",
+          "LB"
+        ]
+      ],
+      "string": "Weight Unit",
+      "type": "selection"
+    },
+    "volume_unit": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "cbm",
+          "CBM"
+        ]
+      ],
+      "string": "Volume Unit",
+      "type": "selection"
+    },
+    "cont_qty": {
+      "readonly": false,
+      "required": false,
+      "string": "Cont Qty",
+      "type": "integer"
+    },
+    "cont_unit": {
+      "readonly": false,
+      "relation": "freight.unit",
+      "required": false,
+      "string": "Cont Unit",
+      "type": "many2one"
+    },
+    "is_air": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Air",
+      "type": "boolean"
+    },
+    "is_ocean": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Ocean",
+      "type": "boolean"
+    },
+    "is_trucking": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Trucking",
+      "type": "boolean"
+    },
+    "is_other": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Other",
+      "type": "boolean"
+    },
+    "is_custom": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Custom",
+      "type": "boolean"
+    },
+    "is_sea_house": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Sea House",
+      "type": "boolean"
+    },
+    "is_air_house": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Air House",
+      "type": "boolean"
+    },
+    "hbl_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Hbl Count",
+      "type": "integer"
+    },
+    "state": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "confirm",
+          "Confirmed"
+        ],
+        [
+          "revise",
+          "Revised"
+        ],
+        [
+          "done",
+          "Closed"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "custom_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Custom",
+      "type": "many2one"
+    },
+    "sea_bl_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "original",
+          "Original"
+        ],
+        [
+          "surrender",
+          "Surrender"
+        ],
+        [
+          "seaway",
+          "Seaway"
+        ],
+        [
+          "express",
+          "Express"
+        ],
+        [
+          "endorsed",
+          "Endorsed OBL"
+        ]
+      ],
+      "string": "Sea Bl Type",
+      "type": "selection"
+    },
+    "job_id": {
+      "readonly": false,
+      "relation": "freight.job",
+      "required": true,
+      "string": "Job No.",
+      "type": "many2one"
+    },
+    "job_status": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "booked",
+          "Booked"
+        ],
+        [
+          "departed",
+          "Departed"
+        ],
+        [
+          "arrived",
+          "Arrived"
+        ],
+        [
+          "offloaded",
+          "Offloaded"
+        ],
+        [
+          "replanned",
+          "Replanned"
+        ],
+        [
+          "pending",
+          "Pending"
+        ]
+      ],
+      "string": "Job Status",
+      "type": "selection"
+    },
+    "sr_no": {
+      "readonly": false,
+      "required": false,
+      "string": "S/R No",
+      "type": "char"
+    },
+    "si_close_at": {
+      "readonly": false,
+      "required": false,
+      "string": "S/I Close at",
+      "type": "datetime"
+    },
+    "gross_weight": {
+      "readonly": false,
+      "required": false,
+      "string": "Gross Weight",
+      "type": "float"
+    },
+    "charge_weight": {
+      "readonly": false,
+      "required": false,
+      "string": "Chargeable Weight",
+      "type": "float"
+    },
+    "volume": {
+      "readonly": false,
+      "required": false,
+      "string": "Volume (CBM)",
+      "type": "float"
+    },
+    "package_quantity": {
+      "readonly": false,
+      "required": false,
+      "string": "Package Quantity",
+      "type": "integer"
+    },
+    "is_dangerous_good": {
+      "readonly": false,
+      "required": false,
+      "string": "Dangerous Goods",
+      "type": "boolean"
+    },
+    "second_shipper_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Second Shipper",
+      "type": "many2one"
+    },
+    "notify_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Notify",
+      "type": "many2one"
+    },
+    "notify_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Notify Display",
+      "type": "char"
+    },
+    "also_notify_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Also Notify",
+      "type": "many2one"
+    },
+    "also_notify_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Also Notify Display",
+      "type": "char"
+    },
+    "load_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "fcl",
+          "FCL"
+        ],
+        [
+          "lcl",
+          "LCL"
+        ],
+        [
+          "dry_bulk",
+          "Dry Bulk"
+        ],
+        [
+          "break_bulk",
+          "Break Bulk"
+        ],
+        [
+          "roro",
+          "RORO"
+        ],
+        [
+          "other",
+          "Other"
+        ]
+      ],
+      "string": "Load Type",
+      "type": "selection"
+    },
+    "shipment_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "house",
+          "House"
+        ],
+        [
+          "direct",
+          "Direct"
+        ]
+      ],
+      "string": "Shipment Type",
+      "type": "selection"
+    },
+    "hawb_type_air": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "express",
+          "Express"
+        ],
+        [
+          "normal",
+          "Normal"
+        ]
+      ],
+      "string": "HAWB Type",
+      "type": "selection"
+    },
+    "inner_package_qty": {
+      "readonly": false,
+      "required": false,
+      "string": "Inner Pkg's",
+      "type": "integer"
+    },
+    "transport_mode_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Transport Mode Code",
+      "type": "char"
+    },
+    "received_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Received Date",
+      "type": "date"
+    },
+    "via_id": {
+      "readonly": true,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Transit Air",
+      "type": "many2one"
+    },
+    "origin_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Origin",
+      "type": "many2one"
+    },
+    "final_destination_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Final Destination",
+      "type": "many2one"
+    },
+    "final_destination_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Final Destination Display",
+      "type": "char"
+    },
+    "issued_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Date Of Issue",
+      "type": "date"
+    },
+    "issued_at": {
+      "readonly": false,
+      "relation": "res.country.state",
+      "required": false,
+      "string": "Place Of Issue",
+      "type": "many2one"
+    },
+    "foreign_partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "foreign_partner_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Foreign Partner Display",
+      "type": "char"
+    },
+    "co_loader_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Co-Loader",
+      "type": "many2one"
+    },
+    "warehouse_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    },
+    "sub_master": {
+      "readonly": false,
+      "required": false,
+      "string": "Sub Master",
+      "type": "char"
+    },
+    "doc_closing_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Doc Closing Date",
+      "type": "datetime"
+    },
+    "delivery_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Delivery Date",
+      "type": "datetime"
+    },
+    "bl_dept": {
+      "readonly": false,
+      "relation": "hr.department",
+      "required": false,
+      "string": "Bl Dept",
+      "type": "many2one"
+    },
+    "trucking_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Trucking Date",
+      "type": "date"
+    },
+    "insurrance": {
+      "readonly": false,
+      "required": false,
+      "string": "Insurance",
+      "type": "char"
+    },
+    "handling_information": {
+      "readonly": false,
+      "required": false,
+      "string": "Handling Information",
+      "type": "text"
+    },
+    "can_create_pob": {
+      "help": "Disable Approve for Expenses",
+      "readonly": true,
+      "required": false,
+      "string": "Can Create POB",
+      "type": "boolean"
+    },
+    "other_charge_print": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "as_arranged",
+          "AS ARRANGED"
+        ],
+        [
+          "as_agreed",
+          "AS AGREED"
+        ],
+        [
+          "other_charge_print",
+          "OTHER CHARGE PRINT"
+        ]
+      ],
+      "string": "Other Charge Print",
+      "type": "selection"
+    },
+    "currency_id": {
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "wt_val_mt": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "ppd",
+          "PPD"
+        ],
+        [
+          "cct",
+          "CCT"
+        ],
+        [
+          "ppd_cct",
+          "PPD & CCT"
+        ]
+      ],
+      "string": "WT/VAL",
+      "type": "selection"
+    },
+    "other_mt": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "ppd",
+          "PPD"
+        ],
+        [
+          "cct",
+          "CCT"
+        ],
+        [
+          "ppd_cct",
+          "PPD & CCT"
+        ]
+      ],
+      "string": "Other",
+      "type": "selection"
+    },
+    "dv_carrier": {
+      "readonly": false,
+      "required": false,
+      "string": "D.V Carrier",
+      "type": "char"
+    },
+    "dv_customs": {
+      "readonly": false,
+      "required": false,
+      "string": "D.V Customs",
+      "type": "char"
+    },
+    "insurances": {
+      "readonly": false,
+      "required": false,
+      "string": "Insurances",
+      "type": "char"
+    },
+    "accounting_information": {
+      "readonly": true,
+      "required": false,
+      "string": "ACCOUNTING INFORMATION",
+      "type": "char"
+    },
+    "signature_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Signature",
+      "type": "many2one"
+    },
+    "service_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "air",
+          "Air"
+        ],
+        [
+          "Air/sea",
+          "Air/Sea"
+        ]
+      ],
+      "string": "Service Type",
+      "type": "selection"
+    },
+    "rate_class": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "M",
+          "Minimum Charge"
+        ],
+        [
+          "N",
+          "Normal Charge"
+        ],
+        [
+          "Q",
+          "Quantity Rate"
+        ],
+        [
+          "C",
+          "Specific Commodity Rate"
+        ],
+        [
+          "R",
+          "Class Rate Reduction"
+        ],
+        [
+          "S",
+          "Class Rate Surcharge"
+        ],
+        [
+          "U",
+          "ULD, Basic Charge or Rate"
+        ],
+        [
+          "E",
+          "ULD, Additional(Pivot) Rate"
+        ],
+        [
+          "X",
+          "ULD, Additional Information"
+        ]
+      ],
+      "string": "Rate Class",
+      "type": "selection"
+    },
+    "team_id": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Salesman Team",
+      "type": "many2one"
+    },
+    "department_id": {
+      "readonly": true,
+      "relation": "crm.department",
+      "required": false,
+      "string": "Salesman Department",
+      "type": "many2one"
+    },
+    "air_freight_print": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "as_arranged",
+          "AS ARRANGED"
+        ],
+        [
+          "as_agreed",
+          "AS AGREED"
+        ],
+        [
+          "air_freight_print",
+          " AIR FREIGHT PRINT"
+        ]
+      ],
+      "string": "Air Freight Print",
+      "type": "selection"
+    },
+    "an_show_fare_detail": {
+      "readonly": false,
+      "required": false,
+      "string": "AN Show Fare Detail",
+      "type": "boolean"
+    },
+    "no_of_bl": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "ZERO"
+        ],
+        [
+          "1",
+          "ONE"
+        ],
+        [
+          "2",
+          "TWO"
+        ],
+        [
+          "3",
+          "THREE"
+        ]
+      ],
+      "string": "No Of Bl",
+      "type": "selection"
+    },
+    "payable_at": {
+      "readonly": false,
+      "required": false,
+      "string": "Payable At",
+      "type": "char"
+    },
+    "hbl_received_date": {
+      "help": "Date of delivery of original bill of lading to customer",
+      "readonly": false,
+      "required": false,
+      "string": "HBL Received date",
+      "type": "date"
+    },
+    "cargo_closing_date": {
+      "help": "The date the customer must deliver the goods to us",
+      "readonly": false,
+      "required": false,
+      "string": "Cargo Closing Date",
+      "type": "datetime"
+    },
+    "cargo_delivery_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Cargo Delivery Date",
+      "type": "datetime"
+    },
+    "pickup_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Pickup Date",
+      "type": "datetime"
+    },
+    "goods_receipt_no": {
+      "readonly": false,
+      "required": false,
+      "string": "Goods Receipt No",
+      "type": "char"
+    },
+    "free_storage_period_from": {
+      "readonly": false,
+      "required": false,
+      "string": "Free Storage Period From",
+      "type": "datetime"
+    },
+    "free_storage_period_to": {
+      "readonly": false,
+      "required": false,
+      "string": "Free Storage Period To",
+      "type": "datetime"
+    },
+    "do_date": {
+      "help": "Date of delivery of documents to customer",
+      "readonly": false,
+      "required": false,
+      "string": "D/O Date",
+      "type": "date"
+    },
+    "arrival_notice_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Arrival Notice Date",
+      "type": "date"
+    },
+    "issue_agent_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Issue Agent",
+      "type": "many2one"
+    },
+    "print_partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner (Print)",
+      "type": "many2one"
+    },
+    "lc_no": {
+      "readonly": false,
+      "required": false,
+      "string": "L/C No",
+      "type": "char"
+    },
+    "ams_no": {
+      "readonly": false,
+      "required": false,
+      "string": "AMS No",
+      "type": "char"
+    },
+    "ts_eta": {
+      "readonly": false,
+      "required": false,
+      "string": "T/S ETA",
+      "type": "date"
+    },
+    "fn": {
+      "readonly": false,
+      "required": false,
+      "string": "F/N",
+      "type": "char"
+    },
+    "switch_bl": {
+      "readonly": false,
+      "required": false,
+      "string": "Switch BL",
+      "type": "boolean"
+    },
+    "switch_shipper_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Switch Shipper",
+      "type": "many2one"
+    },
+    "feeder_vessel_id": {
+      "readonly": false,
+      "relation": "freight.vessel",
+      "required": false,
+      "string": "Feeder Vessel",
+      "type": "many2one"
+    },
+    "mother_vessel_id": {
+      "readonly": false,
+      "relation": "freight.vessel",
+      "required": false,
+      "string": "Mother Vessel",
+      "type": "many2one"
+    },
+    "feeder_voyage": {
+      "readonly": false,
+      "required": false,
+      "string": "Feeder Voyage",
+      "type": "char"
+    },
+    "mother_voyage": {
+      "readonly": false,
+      "required": false,
+      "string": "Mother Voyage",
+      "type": "char"
+    },
+    "hbl_type": {
+      "readonly": false,
+      "required": false,
+      "string": "HBL Type",
+      "type": "char"
+    },
+    "number_of_org_hbl": {
+      "readonly": false,
+      "required": false,
+      "string": "Number Of Org Hbl",
+      "type": "integer"
+    },
+    "truck_plate_no": {
+      "readonly": false,
+      "required": false,
+      "string": "Truck Plate No",
+      "type": "char"
+    },
+    "chassis_no": {
+      "readonly": false,
+      "required": false,
+      "string": "Chassis No",
+      "type": "char"
+    },
+    "cut_off_time": {
+      "readonly": false,
+      "required": false,
+      "string": "Cut off time",
+      "type": "char"
+    },
+    "voyage": {
+      "readonly": false,
+      "required": false,
+      "string": "Voy",
+      "type": "char"
+    },
+    "cargo_close_at": {
+      "readonly": false,
+      "required": false,
+      "string": "Cargo close at",
+      "type": "datetime"
+    },
+    "cargo_type": {
+      "readonly": false,
+      "required": false,
+      "string": "Cargo type",
+      "type": "char"
+    },
+    "service_terms_id": {
+      "readonly": true,
+      "relation": "freight.service.terms",
+      "required": false,
+      "string": "Service Terms",
+      "type": "many2one"
+    },
+    "num_and_type_container": {
+      "readonly": false,
+      "required": false,
+      "string": "Number & type of containers",
+      "type": "char"
+    },
+    "hawb_no": {
+      "readonly": false,
+      "required": false,
+      "string": "HAWB No",
+      "type": "char"
+    },
+    "mawb_no": {
+      "readonly": false,
+      "required": false,
+      "string": "MAWB No",
+      "type": "char"
+    },
+    "flight_no": {
+      "readonly": false,
+      "required": false,
+      "string": "Flight No.",
+      "type": "char"
+    },
+    "flight_number": {
+      "readonly": false,
+      "required": false,
+      "string": "Flight Number",
+      "type": "char"
+    },
+    "selling_line_ids": {
+      "readonly": false,
+      "relation": "freight.document.line.selling",
+      "required": false,
+      "string": "Selling (Debit)",
+      "type": "one2many"
+    },
+    "buying_line_ids": {
+      "readonly": false,
+      "relation": "freight.document.line.buying",
+      "required": false,
+      "string": "Buying (Credit)",
+      "type": "one2many"
+    },
+    "sea_selling_line_ids": {
+      "readonly": false,
+      "relation": "house.sea.selling.rate",
+      "required": false,
+      "string": "Selling (Debit)",
+      "type": "one2many"
+    },
+    "sea_buying_line_ids": {
+      "readonly": false,
+      "relation": "house.sea.buying.rate",
+      "required": false,
+      "string": "Buying (Credit)",
+      "type": "one2many"
+    },
+    "sea_pay_on_behalf_line_ids": {
+      "readonly": false,
+      "relation": "house.sea.pay.on.behalf.rate",
+      "required": false,
+      "string": "Pay On Behalf (Debit)",
+      "type": "one2many"
+    },
+    "air_selling_line_ids": {
+      "readonly": false,
+      "relation": "house.air.selling.rate",
+      "required": false,
+      "string": "Selling",
+      "type": "one2many"
+    },
+    "air_buying_line_ids": {
+      "readonly": false,
+      "relation": "house.air.buying.rate",
+      "required": false,
+      "string": "Buying",
+      "type": "one2many"
+    },
+    "air_pay_on_behalf_line_ids": {
+      "readonly": false,
+      "relation": "house.air.pay.on.behalf.rate",
+      "required": false,
+      "string": "Pay On Behalf",
+      "type": "one2many"
+    },
+    "total_local_selling": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Local Selling",
+      "type": "monetary"
+    },
+    "total_local_selling_amt": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Local Selling Amt",
+      "type": "monetary"
+    },
+    "total_local_selling_vat": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Local Vat",
+      "type": "monetary"
+    },
+    "total_local_buying": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Local Buying",
+      "type": "monetary"
+    },
+    "total_margin": {
+      "readonly": true,
+      "required": false,
+      "string": "Gross Margin",
+      "type": "monetary"
+    },
+    "percent_margin": {
+      "readonly": true,
+      "required": false,
+      "string": "Percent Margin",
+      "type": "float"
+    },
+    "vendor_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Vendor",
+      "type": "many2one"
+    },
+    "copy_selling_house_id": {
+      "readonly": false,
+      "relation": "freight.shipment.house",
+      "required": false,
+      "string": "Copy From House",
+      "type": "many2one"
+    },
+    "copy_buying_house_id": {
+      "readonly": false,
+      "relation": "freight.shipment.house",
+      "required": false,
+      "string": "Copy From House",
+      "type": "many2one"
+    },
+    "copy_pob_house_id": {
+      "readonly": false,
+      "relation": "freight.shipment.house",
+      "required": false,
+      "string": "Copy From House",
+      "type": "many2one"
+    },
+    "insurance_polity": {
+      "readonly": false,
+      "required": false,
+      "string": "Insurance Polity",
+      "type": "char"
+    },
+    "edit_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Edit Name",
+      "type": "boolean"
+    },
+    "debit_note_ids": {
+      "readonly": false,
+      "relation": "freight.debit.note",
+      "required": false,
+      "string": "Debit Note",
+      "type": "one2many"
+    },
+    "debit_note_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Debit Note Count",
+      "type": "integer"
+    },
+    "credit_note_ids": {
+      "readonly": false,
+      "relation": "freight.credit.note",
+      "required": false,
+      "string": "Credit Note",
+      "type": "one2many"
+    },
+    "credit_note_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Credit Note Count",
+      "type": "integer"
+    },
+    "mark_and_numbers": {
+      "readonly": false,
+      "required": false,
+      "string": "Marks and Numbers",
+      "type": "text"
+    },
+    "description_of_goods_1": {
+      "readonly": false,
+      "relation": "freight.goods.description.suggest",
+      "required": false,
+      "string": "Description Of Goods 1",
+      "type": "many2one"
+    },
+    "description_of_goods_2": {
+      "readonly": false,
+      "relation": "freight.goods.description.suggest",
+      "required": false,
+      "string": "Description Of Goods 2",
+      "type": "many2one"
+    },
+    "description_of_goods": {
+      "readonly": false,
+      "required": false,
+      "string": "Description of Goods",
+      "type": "text"
+    },
+    "containers_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Containers Description",
+      "type": "char"
+    },
+    "sea_house_bl": {
+      "readonly": false,
+      "required": false,
+      "string": "House B/L No",
+      "type": "char"
+    },
+    "sea_master_bl": {
+      "readonly": false,
+      "required": false,
+      "string": "Sea Master Bl",
+      "type": "char"
+    },
+    "is_sea_master": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Sea Master",
+      "type": "boolean"
+    },
+    "is_air_master": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Air Master",
+      "type": "boolean"
+    },
+    "sea_shipment": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "house",
+          "House"
+        ],
+        [
+          "direct",
+          "Direct"
+        ]
+      ],
+      "string": "Sea Shipment",
+      "type": "selection"
+    },
+    "sea_bound": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "import",
+          "Import"
+        ],
+        [
+          "export",
+          "Export"
+        ],
+        [
+          "other",
+          "Other"
+        ]
+      ],
+      "string": "Sea Bound",
+      "type": "selection"
+    },
+    "sea_bl_status": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "release",
+          "Release"
+        ],
+        [
+          "hold",
+          "Hold"
+        ]
+      ],
+      "string": "Sea Bl Status",
+      "type": "selection"
+    },
+    "sea_load_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "fcl",
+          "FCL"
+        ],
+        [
+          "lcl",
+          "LCL"
+        ],
+        [
+          "dry_bulk",
+          "Dry Bulk"
+        ],
+        [
+          "break_bulk",
+          "Break Bulk"
+        ],
+        [
+          "roro",
+          "RORO"
+        ],
+        [
+          "other",
+          "Other"
+        ]
+      ],
+      "string": "Load Type",
+      "type": "selection"
+    },
+    "sea_shipper_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Sea Shipper",
+      "type": "many2one"
+    },
+    "sea_shipper_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Shipper Code",
+      "type": "char"
+    },
+    "sea_shipper_text": {
+      "readonly": false,
+      "required": false,
+      "string": "Sea Shipper Text",
+      "type": "text"
+    },
+    "dc_note_ids": {
+      "readonly": false,
+      "relation": "freight.dc.note",
+      "required": false,
+      "string": "Dc Note",
+      "type": "one2many"
+    },
+    "dc_note_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Dc Note Count",
+      "type": "integer"
+    },
+    "unstuffing_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Unstuffing Date",
+      "type": "date"
+    },
+    "berthing_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Berthing Date",
+      "type": "date"
+    },
+    "warehouse_manager": {
+      "readonly": false,
+      "required": false,
+      "string": "Warehouse Manager",
+      "type": "char"
+    },
+    "warehouse_phone_number": {
+      "readonly": false,
+      "required": false,
+      "string": "Warehouse Phone Number",
+      "type": "char"
+    },
+    "email_to": {
+      "readonly": false,
+      "required": false,
+      "string": "Email To",
+      "type": "char"
+    },
+    "email_house_to": {
+      "readonly": false,
+      "required": false,
+      "string": "House Email To",
+      "type": "char"
+    },
+    "email_cc_house_to": {
+      "readonly": false,
+      "required": false,
+      "string": "House Email To",
+      "type": "text"
+    },
+    "email_an_edo_to": {
+      "readonly": false,
+      "required": false,
+      "string": "AN/EDO Email To",
+      "type": "char"
+    },
+    "email_cc_an_edo_to": {
+      "readonly": false,
+      "required": false,
+      "string": "AN/EDO Email CC",
+      "type": "text"
+    },
+    "email_cc_partner": {
+      "readonly": false,
+      "required": false,
+      "string": "Customer Email CC",
+      "type": "char"
+    },
+    "email_cc_consignee": {
+      "readonly": false,
+      "required": false,
+      "string": "Consignee Email CC",
+      "type": "char"
+    },
+    "operator_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Operators",
+      "type": "many2many"
+    },
+    "sea_consignee_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Consignee",
+      "type": "many2one"
+    },
+    "sea_consignee_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Sea Consignee Display",
+      "type": "char"
+    },
+    "sea_consignee_text": {
+      "readonly": false,
+      "required": false,
+      "string": "Sea Consignee Text",
+      "type": "text"
+    },
+    "sea_notify_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Notify",
+      "type": "many2one"
+    },
+    "sea_notify_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Sea Notify Display",
+      "type": "char"
+    },
+    "sea_notify_text": {
+      "readonly": false,
+      "required": false,
+      "string": "Sea Notify Text",
+      "type": "text"
+    },
+    "ams_address_id": {
+      "readonly": false,
+      "relation": "ams.address",
+      "required": false,
+      "string": "AMS Address",
+      "type": "many2one"
+    },
+    "sea_carrier_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Carrier",
+      "type": "many2one"
+    },
+    "sea_carrier_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Carrier Code",
+      "type": "char"
+    },
+    "vessel": {
+      "readonly": false,
+      "required": false,
+      "string": "Vessel",
+      "type": "char"
+    },
+    "voyage2": {
+      "readonly": false,
+      "required": false,
+      "string": "Voy",
+      "type": "char"
+    },
+    "sea_atd": {
+      "readonly": false,
+      "required": false,
+      "string": "ATD",
+      "type": "date"
+    },
+    "sea_ata": {
+      "readonly": false,
+      "required": false,
+      "string": "ATA",
+      "type": "date"
+    },
+    "mvvd_id": {
+      "readonly": false,
+      "relation": "freight.vessel",
+      "required": false,
+      "string": "Mvvd",
+      "type": "many2one"
+    },
+    "mvvd": {
+      "readonly": false,
+      "required": false,
+      "string": "MVVD",
+      "type": "char"
+    },
+    "mvvd_display": {
+      "readonly": true,
+      "required": false,
+      "string": "Mvvd Display",
+      "type": "char"
+    },
+    "sea_etd": {
+      "readonly": false,
+      "required": false,
+      "string": "ETD",
+      "type": "date"
+    },
+    "sea_eta": {
+      "readonly": false,
+      "required": false,
+      "string": "ETA",
+      "type": "date"
+    },
+    "sea_por_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "POR",
+      "type": "many2one"
+    },
+    "sea_por_code": {
+      "readonly": false,
+      "required": false,
+      "string": "POR Code",
+      "type": "char"
+    },
+    "sea_pol_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "POL",
+      "type": "many2one"
+    },
+    "sea_pol_code": {
+      "readonly": false,
+      "required": false,
+      "string": "POL Code",
+      "type": "char"
+    },
+    "sea_ts_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "T/S",
+      "type": "many2one"
+    },
+    "sea_ts_code": {
+      "readonly": false,
+      "required": false,
+      "string": "TS Code",
+      "type": "char"
+    },
+    "sea_pod_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "POD",
+      "type": "many2one"
+    },
+    "sea_pod_code": {
+      "readonly": false,
+      "required": false,
+      "string": "POD Code",
+      "type": "char"
+    },
+    "sea_pvy_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "PVY",
+      "type": "many2one"
+    },
+    "sea_pvy_code": {
+      "readonly": false,
+      "required": false,
+      "string": "PVY Code",
+      "type": "char"
+    },
+    "sea_issue_at_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Issue At",
+      "type": "many2one"
+    },
+    "sea_issue_at_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Issue At",
+      "type": "char"
+    },
+    "sea_issue_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Issue Date",
+      "type": "date"
+    },
+    "sea_no_of_bl": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Zero"
+        ],
+        [
+          "1",
+          "One"
+        ],
+        [
+          "2",
+          "Two"
+        ],
+        [
+          "3",
+          "Three"
+        ],
+        [
+          "4",
+          "Four"
+        ]
+      ],
+      "string": "Sea No Of Bl",
+      "type": "selection"
+    },
+    "sea_issue_at": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "scs_hn",
+          "SCS HN"
+        ],
+        [
+          "scs_hcm",
+          "SCS HCM"
+        ]
+      ],
+      "string": "Sea Issue At",
+      "type": "selection"
+    },
+    "sea_bl_manage_no": {
+      "readonly": false,
+      "required": false,
+      "string": "BL Manage No",
+      "type": "char"
+    },
+    "sea_schedule_ids": {
+      "readonly": false,
+      "relation": "house.sea.schedule.information",
+      "required": false,
+      "string": "Schedule",
+      "type": "one2many"
+    },
+    "sea_container_information_ids": {
+      "readonly": false,
+      "relation": "house.sea.container.information",
+      "required": false,
+      "string": "Container Information",
+      "type": "one2many"
+    },
+    "sea_partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "sea_partner_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Partner Code",
+      "type": "char"
+    },
+    "sea_partner_address": {
+      "readonly": false,
+      "required": false,
+      "string": "Address",
+      "type": "text"
+    },
+    "sea_co_loader_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Co-loader",
+      "type": "many2one"
+    },
+    "sea_co_loader_role_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Co-loader Code",
+      "type": "char"
+    },
+    "sea_customer_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Sea Customer",
+      "type": "many2one"
+    },
+    "sea_customer_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Customer Code",
+      "type": "char"
+    },
+    "sea_pic_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Available PICs (Sea)",
+      "type": "many2many"
+    },
+    "sea_pic_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer PIC",
+      "type": "many2one"
+    },
+    "sea_pic_phone": {
+      "readonly": true,
+      "required": false,
+      "string": "PIC Phone",
+      "type": "char"
+    },
+    "sea_pic_email": {
+      "readonly": true,
+      "required": false,
+      "string": "PIC Email",
+      "type": "char"
+    },
+    "sea_bl_dept": {
+      "readonly": false,
+      "relation": "hr.department",
+      "required": false,
+      "string": "BL Department",
+      "type": "many2one"
+    },
+    "sea_warehouse": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    },
+    "sea_service_term_id": {
+      "readonly": false,
+      "relation": "freight.service.terms",
+      "required": false,
+      "string": "Service Term",
+      "type": "many2one"
+    },
+    "sea_incoterm_id": {
+      "readonly": false,
+      "relation": "freight.incoterms",
+      "required": false,
+      "string": "Incoterm",
+      "type": "many2one"
+    },
+    "sea_freight_term_print": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "prepaid",
+          "Prepaid"
+        ],
+        [
+          "collect",
+          "Collect"
+        ]
+      ],
+      "string": "Freight Term",
+      "type": "selection"
+    },
+    "sea_freight_term_id": {
+      "readonly": false,
+      "relation": "account.payment.term",
+      "required": false,
+      "string": "Freight Term",
+      "type": "many2one"
+    },
+    "sea_pay_at": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Payable At",
+      "type": "many2one"
+    },
+    "sea_pay_at_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Payable At Code",
+      "type": "char"
+    },
+    "sea_job_id": {
+      "readonly": false,
+      "relation": "freight.job",
+      "required": false,
+      "string": "Job No",
+      "type": "many2one"
+    },
+    "sea_inner_order_no": {
+      "readonly": false,
+      "relation": "freight.booking",
+      "required": false,
+      "string": "Inner Order No (Sea) (Master)",
+      "type": "many2many"
+    },
+    "sea_liner_bkg_no": {
+      "readonly": false,
+      "required": false,
+      "string": "Liner BKG No",
+      "type": "char"
+    },
+    "sea_internal_remark": {
+      "readonly": false,
+      "required": false,
+      "string": "Internal Remark",
+      "type": "char"
+    },
+    "sea_external_remark": {
+      "readonly": false,
+      "required": false,
+      "string": "External Remark",
+      "type": "char"
+    },
+    "sea_product_pic_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Product PIC",
+      "type": "many2one"
+    },
+    "sea_fcl_unit": {
+      "readonly": true,
+      "relation": "freight.package",
+      "required": false,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "sea_house_quotation_ids": {
+      "readonly": false,
+      "relation": "house.sea.quotation.information",
+      "required": false,
+      "string": "Quotation",
+      "type": "one2many"
+    },
+    "air_house_quotation_ids": {
+      "readonly": false,
+      "relation": "house.air.quotation.information",
+      "required": false,
+      "string": "Quotation",
+      "type": "one2many"
+    },
+    "print_sea_selling_line_ids": {
+      "readonly": false,
+      "relation": "house.print.sea.selling.rate",
+      "required": false,
+      "string": "Print Sea Selling Lines",
+      "type": "one2many"
+    },
+    "display_sea_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Sea Code Display",
+      "type": "char"
+    },
+    "display_sea_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Sea Name Display",
+      "type": "char"
+    },
+    "air_house_bl": {
+      "readonly": false,
+      "required": false,
+      "string": "House B/L No",
+      "type": "char"
+    },
+    "air_master_bl": {
+      "readonly": false,
+      "required": false,
+      "string": "Air Master Bl",
+      "type": "char"
+    },
+    "air_bl_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "normal",
+          "Normal"
+        ],
+        [
+          "express",
+          "Express"
+        ]
+      ],
+      "string": "Air Bl Type",
+      "type": "selection"
+    },
+    "air_bound": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "import",
+          "Import"
+        ],
+        [
+          "export",
+          "Export"
+        ],
+        [
+          "other",
+          "Other"
+        ]
+      ],
+      "string": "Air Bound",
+      "type": "selection"
+    },
+    "air_switch_bl": {
+      "readonly": false,
+      "required": false,
+      "string": "Switch BL",
+      "type": "boolean"
+    },
+    "air_shipment": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "house",
+          "House"
+        ],
+        [
+          "direct",
+          "Direct"
+        ]
+      ],
+      "string": "Air Shipment",
+      "type": "selection"
+    },
+    "air_shipper_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Air Shipper",
+      "type": "many2one"
+    },
+    "air_shipper_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Shipper Code",
+      "type": "char"
+    },
+    "air_shipper_text": {
+      "readonly": false,
+      "required": false,
+      "string": "Air Shipper Text",
+      "type": "text"
+    },
+    "air_consignee_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Consignee",
+      "type": "many2one"
+    },
+    "air_consignee_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Air Consignee Display",
+      "type": "char"
+    },
+    "air_consignee_text": {
+      "readonly": false,
+      "required": false,
+      "string": "Air Consignee Text",
+      "type": "text"
+    },
+    "air_notify_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Notify",
+      "type": "many2one"
+    },
+    "air_notify_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Air Notify Display",
+      "type": "char"
+    },
+    "air_notify_text": {
+      "readonly": false,
+      "required": false,
+      "string": "Air Notify Text",
+      "type": "text"
+    },
+    "air_pol_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "POL",
+      "type": "many2one"
+    },
+    "air_pol_code": {
+      "readonly": false,
+      "required": false,
+      "string": "POL Code",
+      "type": "char"
+    },
+    "air_pod_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "POD",
+      "type": "many2one"
+    },
+    "air_pod_code": {
+      "readonly": false,
+      "required": false,
+      "string": "POD Code",
+      "type": "char"
+    },
+    "air_etd": {
+      "readonly": false,
+      "required": false,
+      "string": "ETD",
+      "type": "datetime"
+    },
+    "air_atd": {
+      "readonly": false,
+      "required": false,
+      "string": "ATD",
+      "type": "datetime"
+    },
+    "air_via1": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Via 1",
+      "type": "many2one"
+    },
+    "air_via2": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Via 2",
+      "type": "many2one"
+    },
+    "air_via3": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Via 3",
+      "type": "many2one"
+    },
+    "by_carrier_air_line_1": {
+      "readonly": false,
+      "relation": "freight.airline",
+      "required": false,
+      "string": "Carrier",
+      "type": "many2one"
+    },
+    "by_carrier_air_line_2": {
+      "readonly": false,
+      "relation": "freight.airline",
+      "required": false,
+      "string": "Carrier 2",
+      "type": "many2one"
+    },
+    "by_carrier_air_line_3": {
+      "readonly": false,
+      "relation": "freight.airline",
+      "required": false,
+      "string": "Carrier 3",
+      "type": "many2one"
+    },
+    "by_carrier_air_line_summary": {
+      "readonly": true,
+      "required": false,
+      "string": "By Carrier Air Line Summary",
+      "type": "text"
+    },
+    "air_schedule_ids": {
+      "readonly": false,
+      "relation": "house.air.schedule.information",
+      "required": false,
+      "string": "Schedule",
+      "type": "one2many"
+    },
+    "air_product_pic_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Product PIC",
+      "type": "many2one"
+    },
+    "by_carrier_air_line_display1": {
+      "readonly": true,
+      "required": false,
+      "string": "Carrier Code 1",
+      "type": "char"
+    },
+    "by_carrier_air_line_display2": {
+      "readonly": true,
+      "required": false,
+      "string": "Carrier Code 2",
+      "type": "char"
+    },
+    "by_carrier_air_line_display3": {
+      "readonly": true,
+      "required": false,
+      "string": "Carrier Code 3",
+      "type": "char"
+    },
+    "air_eta": {
+      "readonly": false,
+      "required": false,
+      "string": "ETA",
+      "type": "datetime"
+    },
+    "air_ata": {
+      "readonly": false,
+      "required": false,
+      "string": "ATA",
+      "type": "datetime"
+    },
+    "air_issue_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Issue Date",
+      "type": "date"
+    },
+    "air_no_of_bl": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ]
+      ],
+      "string": "Air No Of Bl",
+      "type": "selection"
+    },
+    "air_issue_at_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Issue At",
+      "type": "many2one"
+    },
+    "air_bl_manage_no": {
+      "readonly": false,
+      "required": false,
+      "string": "BL Manage No",
+      "type": "char"
+    },
+    "air_partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Parnter",
+      "type": "many2one"
+    },
+    "air_partner_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Partner Code",
+      "type": "char"
+    },
+    "air_partner_address": {
+      "readonly": true,
+      "required": false,
+      "string": "Address",
+      "type": "char"
+    },
+    "air_co_loader_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Co-loader",
+      "type": "many2one"
+    },
+    "air_co_loader_role_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Co-loader Code",
+      "type": "char"
+    },
+    "air_customer_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Air Customer",
+      "type": "many2one"
+    },
+    "air_customer_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Customer Code",
+      "type": "char"
+    },
+    "air_pic_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Available PICs",
+      "type": "many2many"
+    },
+    "air_pic_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer PIC",
+      "type": "many2one"
+    },
+    "air_pic_phone": {
+      "readonly": false,
+      "required": false,
+      "string": "PIC Phone",
+      "type": "char"
+    },
+    "air_pic_email": {
+      "readonly": false,
+      "required": false,
+      "string": "PIC Email",
+      "type": "char"
+    },
+    "air_bl_dept": {
+      "readonly": false,
+      "relation": "hr.department",
+      "required": false,
+      "string": "BL Department",
+      "type": "many2one"
+    },
+    "air_warehouse": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    },
+    "air_service_term_id": {
+      "readonly": false,
+      "relation": "freight.service.terms",
+      "required": false,
+      "string": "Service Term",
+      "type": "many2one"
+    },
+    "air_incoterm_id": {
+      "readonly": false,
+      "relation": "freight.incoterms",
+      "required": false,
+      "string": "Incoterm",
+      "type": "many2one"
+    },
+    "air_freight_term_print": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "prepaid",
+          "Prepaid"
+        ],
+        [
+          "collect",
+          "Collect"
+        ]
+      ],
+      "string": "Freight Term",
+      "type": "selection"
+    },
+    "air_freight_term_id": {
+      "readonly": false,
+      "relation": "account.payment.term",
+      "required": false,
+      "string": "Freight Term",
+      "type": "many2one"
+    },
+    "air_pay_at": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Payable At",
+      "type": "many2one"
+    },
+    "air_pay_at_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Payable At Code",
+      "type": "char"
+    },
+    "air_job_id": {
+      "readonly": false,
+      "relation": "freight.job",
+      "required": false,
+      "string": "Job No",
+      "type": "many2one"
+    },
+    "air_inner_order_no": {
+      "readonly": false,
+      "relation": "freight.booking",
+      "required": false,
+      "string": "Inner Order No (Air)",
+      "type": "many2many"
+    },
+    "air_liner_bkg_no": {
+      "readonly": false,
+      "required": false,
+      "string": "Liner BKG No",
+      "type": "char"
+    },
+    "air_internal_remark": {
+      "readonly": false,
+      "required": false,
+      "string": "Internal Remark",
+      "type": "text"
+    },
+    "air_external_remark": {
+      "readonly": false,
+      "required": false,
+      "string": "External Remark",
+      "type": "text"
+    },
+    "air_package": {
+      "readonly": false,
+      "required": false,
+      "string": "Package",
+      "type": "integer"
+    },
+    "air_package_unit": {
+      "readonly": false,
+      "relation": "freight.package",
+      "required": false,
+      "string": "Package Unit",
+      "type": "many2one"
+    },
+    "air_gross_weight": {
+      "readonly": false,
+      "required": false,
+      "string": "Gross Weight",
+      "type": "float"
+    },
+    "air_charge_weight": {
+      "readonly": false,
+      "required": false,
+      "string": "Charge Weight",
+      "type": "float"
+    },
+    "air_cbm": {
+      "readonly": false,
+      "required": false,
+      "string": "CBM",
+      "type": "float"
+    },
+    "dim_length": {
+      "readonly": false,
+      "required": false,
+      "string": "Length",
+      "type": "float"
+    },
+    "dim_width": {
+      "readonly": false,
+      "required": false,
+      "string": "Width",
+      "type": "float"
+    },
+    "dim_height": {
+      "readonly": false,
+      "required": false,
+      "string": "Height",
+      "type": "float"
+    },
+    "air_rate_class": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "m",
+          "M"
+        ],
+        [
+          "n",
+          "N"
+        ],
+        [
+          "q",
+          "Q"
+        ]
+      ],
+      "string": "Rate Class",
+      "type": "selection"
+    },
+    "air_weight_ids": {
+      "readonly": false,
+      "relation": "air.house.weight.information",
+      "required": false,
+      "string": "Weight",
+      "type": "one2many"
+    },
+    "print_air_selling_line_ids": {
+      "readonly": false,
+      "relation": "house.print.air.selling.rate",
+      "required": false,
+      "string": "Print Air Selling Lines",
+      "type": "one2many"
+    },
+    "tracking_ids": {
+      "readonly": false,
+      "relation": "freight.shipment.tracking",
+      "required": false,
+      "string": "Tracking",
+      "type": "one2many"
+    },
+    "customs_department_ids": {
+      "readonly": false,
+      "relation": "freight.customs.department",
+      "required": false,
+      "string": "Customs Department",
+      "type": "one2many"
+    },
+    "package_ids": {
+      "readonly": false,
+      "relation": "freight.shipment.package",
+      "required": false,
+      "string": "Packages",
+      "type": "one2many"
+    },
+    "container_ids": {
+      "readonly": false,
+      "relation": "freight.shipment.container",
+      "required": false,
+      "string": "Containers",
+      "type": "one2many"
+    },
+    "container_display": {
+      "readonly": true,
+      "required": false,
+      "string": "CONT",
+      "type": "text"
+    },
+    "distributed_buying_line_ids": {
+      "readonly": false,
+      "relation": "freight.document.line.buying",
+      "required": false,
+      "string": "Distributed Buying Line",
+      "type": "one2many"
+    },
+    "air_master_bl_ids": {
+      "readonly": false,
+      "required": false,
+      "string": "Air Master Bl",
+      "type": "char"
+    },
+    "sea_master_bl_ids": {
+      "readonly": false,
+      "required": false,
+      "string": "Sea Master Bl",
+      "type": "char"
+    },
+    "mhs_code": {
+      "readonly": false,
+      "required": false,
+      "string": "MHS Code",
+      "type": "char"
+    },
+    "mnf_deadline": {
+      "readonly": false,
+      "required": false,
+      "string": "MNF Deadline",
+      "type": "datetime"
+    },
+    "volume_weight": {
+      "readonly": false,
+      "required": false,
+      "string": "Volume Weight",
+      "type": "float"
+    },
+    "own_state": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "hold",
+          "Hold"
+        ],
+        [
+          "release",
+          "Release"
+        ]
+      ],
+      "string": "Own State",
+      "type": "selection"
+    },
+    "quotation_ids": {
+      "readonly": false,
+      "relation": "freight.quotation",
+      "required": false,
+      "string": "Quotation No.",
+      "type": "one2many"
+    },
+    "is_notify_same_as_consignee": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Notify Same As Consignee",
+      "type": "boolean"
+    },
+    "notify_party_address": {
+      "readonly": true,
+      "required": false,
+      "string": "Notify Party Address",
+      "type": "char"
+    },
+    "remark_dos": {
+      "readonly": false,
+      "required": false,
+      "string": "Remark Dos",
+      "type": "text"
+    },
+    "do_release_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Do Release Date",
+      "type": "date"
+    },
+    "dos_dear": {
+      "readonly": false,
+      "required": false,
+      "string": "Dos Dear",
+      "type": "text"
+    },
+    "delivery_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Delivery Name",
+      "type": "char"
+    },
+    "bl_number_id": {
+      "readonly": false,
+      "relation": "freight.bl.number",
+      "required": false,
+      "string": "Bl Number",
+      "type": "many2one"
+    },
+    "freight_term_for_printing": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "prepaid",
+          "FREIGHT PREPAID"
+        ],
+        [
+          "collect",
+          "FREIGHT COLLECT"
+        ]
+      ],
+      "string": "Freight Term For Printing",
+      "type": "selection"
+    },
+    "onboard_date_option": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "laden_on_board",
+          "laden on board"
+        ],
+        [
+          "clean_on_board",
+          "clean on board"
+        ],
+        [
+          "received_date",
+          "received date"
+        ],
+        [
+          "received_shipment",
+          "received shipment"
+        ]
+      ],
+      "string": "Onboard Date Option",
+      "type": "selection"
+    },
+    "display_freight_amount": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "as_arrange",
+          "AS ARRANGED"
+        ],
+        [
+          "freight_amount",
+          "FREIGHT AMOUNT"
+        ]
+      ],
+      "string": "Display Freight Amount",
+      "type": "selection"
+    },
+    "show_service_terms": {
+      "readonly": false,
+      "required": false,
+      "string": "Show Service Terms",
+      "type": "boolean"
+    },
+    "show_onboard_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Show Onboard Date",
+      "type": "boolean"
+    },
+    "show_receive_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Show Receive Date",
+      "type": "boolean"
+    },
+    "bl_remark": {
+      "readonly": false,
+      "required": false,
+      "string": "Bl Remark",
+      "type": "char"
+    },
+    "devanning_remark": {
+      "readonly": false,
+      "required": false,
+      "string": "Devanning Remark",
+      "type": "char"
+    },
+    "is_non_negotiable": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Non Negotiable",
+      "type": "boolean"
+    },
+    "container_info_print_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "c+s",
+          "Container + Seal No"
+        ],
+        [
+          "c+s(t)",
+          "Container + Seal No(Type)"
+        ],
+        [
+          "c+s(t)+p",
+          "Container + Seal No(Type) + Package"
+        ],
+        [
+          "c+s(t)+p+w+m",
+          "Container + Seal No(Type) + Package + Weight + Measure"
+        ],
+        [
+          "c+s+p+w",
+          "Container + Seal No + Package + Weight"
+        ],
+        [
+          "c+s(p)",
+          "Container + Seal No(Print Code)"
+        ]
+      ],
+      "string": "Container Info Print Type",
+      "type": "selection"
+    },
+    "container_detail": {
+      "readonly": false,
+      "required": false,
+      "string": "Container Detail",
+      "type": "boolean"
+    },
+    "bl_text_print": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "Draft B/L"
+        ],
+        [
+          "surrendered",
+          "Surrender"
+        ],
+        [
+          "signed",
+          "Signed"
+        ],
+        [
+          "copy",
+          "Copy B/L"
+        ],
+        [
+          "seaway",
+          "Seaway"
+        ],
+        [
+          "obl",
+          "OBL"
+        ]
+      ],
+      "string": "Bl Text Print",
+      "type": "selection"
+    },
+    "print_as_agent": {
+      "readonly": false,
+      "required": false,
+      "string": "Print As Agent",
+      "type": "boolean"
+    },
+    "stamp_print": {
+      "readonly": false,
+      "required": false,
+      "string": "Stamp Print",
+      "type": "boolean"
+    },
+    "description_of_good": {
+      "readonly": false,
+      "required": false,
+      "string": "Description of Goods",
+      "type": "text"
+    },
+    "can_create_master": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Create Master",
+      "type": "boolean"
+    },
+    "expense_number": {
+      "readonly": true,
+      "required": false,
+      "string": "Expense Number",
+      "type": "integer"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "sea_buying_cost_line_ids": {
+      "readonly": false,
+      "relation": "house.sea.buying.rate.cost",
+      "required": false,
+      "string": "Buying (Cost)",
+      "type": "one2many"
+    },
+    "air_buying_cost_line_ids": {
+      "readonly": false,
+      "relation": "house.air.buying.rate.cost",
+      "required": false,
+      "string": "Buying (Cost)",
+      "type": "one2many"
+    },
+    "do_address_id": {
+      "readonly": false,
+      "relation": "freight.do.address",
+      "required": false,
+      "string": "DO Address",
+      "type": "many2one"
+    },
+    "is_multi_house": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Multi House",
+      "type": "boolean"
+    },
+    "inv_no": {
+      "readonly": false,
+      "required": false,
+      "string": "INV No",
+      "type": "char"
+    },
+    "multi_selling_line_ids": {
+      "readonly": false,
+      "relation": "house.multi.selling.rate",
+      "required": false,
+      "string": "Cross Border Selling (Debit)",
+      "type": "one2many"
+    },
+    "multi_buying_line_ids": {
+      "readonly": false,
+      "relation": "house.multi.buying.rate",
+      "required": false,
+      "string": "Cross Border Buying (Credit)",
+      "type": "one2many"
+    },
+    "multi_pob_line_ids": {
+      "readonly": false,
+      "relation": "house.multi.pay.on.behalf.rate",
+      "required": false,
+      "string": "Cross Border Pay On Behalf",
+      "type": "one2many"
+    },
+    "multi_buying_cost_line_ids": {
+      "readonly": false,
+      "relation": "house.multi.buying.rate.cost",
+      "required": false,
+      "string": "Cross Border Buying Cost",
+      "type": "one2many"
+    },
+    "tracking_states_display": {
+      "readonly": true,
+      "required": false,
+      "string": "Tracking Status",
+      "type": "char"
+    },
+    "job_freight_done": {
+      "readonly": true,
+      "required": false,
+      "string": "Freight Completed",
+      "type": "boolean"
+    },
+    "sea_house_bl_ids": {
+      "readonly": false,
+      "relation": "freight.shipment.house",
+      "required": false,
+      "string": "Sea House Bl",
+      "type": "many2many"
+    },
+    "sea_house_bl_display_ids": {
+      "readonly": true,
+      "relation": "freight.shipment.house",
+      "required": false,
+      "string": "Sea House Bl",
+      "type": "many2many"
+    },
+    "sea_house_container_information_ids": {
+      "readonly": true,
+      "relation": "freight.shipment.container",
+      "required": false,
+      "string": "Sea House Container Information",
+      "type": "one2many"
+    },
+    "air_signature_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Air Signature",
+      "type": "many2one"
+    },
+    "air_signature_text": {
+      "readonly": true,
+      "required": false,
+      "string": "Email Signature",
+      "type": "html"
+    },
+    "air_bl_rent": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "receive_fwd_cargo",
+          "Receive FWD Cargo"
+        ],
+        [
+          "send_fwd_cargo",
+          "Send FWD Cargo"
+        ],
+        [
+          "consol",
+          "Consol"
+        ]
+      ],
+      "string": "B/L Rent",
+      "type": "selection"
+    },
+    "agent_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Agent",
+      "type": "many2one"
+    },
+    "agent_display": {
+      "readonly": true,
+      "required": false,
+      "string": "Agent Display",
+      "type": "char"
+    },
+    "air_mrn_no": {
+      "readonly": false,
+      "required": false,
+      "string": "MRN No",
+      "type": "char"
+    },
+    "air_msn_no": {
+      "readonly": false,
+      "required": false,
+      "string": "MSN No",
+      "type": "char"
+    },
+    "air_consol_closed": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "yes",
+          "Yes"
+        ],
+        [
+          "no",
+          "No"
+        ]
+      ],
+      "string": "Consol Closed",
+      "type": "selection"
+    },
+    "air_master_currency_id": {
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "air_wt_val": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "ppd",
+          "PPD"
+        ],
+        [
+          "cct",
+          "CCT"
+        ]
+      ],
+      "string": "WT/VAL",
+      "type": "selection"
+    },
+    "air_other": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "ppd",
+          "PPD"
+        ],
+        [
+          "cct",
+          "CCT"
+        ]
+      ],
+      "string": "Other",
+      "type": "selection"
+    },
+    "air_incoterms": {
+      "readonly": false,
+      "relation": "freight.incoterms",
+      "required": false,
+      "string": "Incoterms",
+      "type": "many2one"
+    },
+    "air_account_information": {
+      "readonly": false,
+      "required": false,
+      "string": "Account Information",
+      "type": "char"
+    },
+    "air_dv_carriage": {
+      "readonly": false,
+      "required": false,
+      "string": "D.V Carriage",
+      "type": "char"
+    },
+    "air_dv_custom": {
+      "readonly": false,
+      "required": false,
+      "string": "D.V Customs",
+      "type": "char"
+    },
+    "air_insurance": {
+      "readonly": false,
+      "required": false,
+      "string": "Insurance",
+      "type": "char"
+    },
+    "air_house_bl_ids": {
+      "readonly": true,
+      "relation": "freight.shipment.house",
+      "required": false,
+      "string": "Air House Bl",
+      "type": "many2many"
+    },
+    "air_house_bl_display_ids": {
+      "readonly": true,
+      "relation": "freight.shipment.house",
+      "required": false,
+      "string": "Air House Bl",
+      "type": "many2many"
+    },
+    "is_multi_master": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Multi Master",
+      "type": "boolean"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree default_order=\"perf_date desc\" create=\"0\">\n                <field name=\"name\" string=\"MAWB\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                <field name=\"air_pol_id\" string=\"POL\"/>\n                <field name=\"air_pod_id\" string=\"POD\"/>\n                <field name=\"air_atd\" widget=\"air_datetime\"/>\n                <field name=\"air_ata\" widget=\"air_datetime\"/>\n                <field name=\"air_shipper_id\" string=\"SHPR\" on_change=\"1\"/>\n                <field name=\"air_consignee_id\" string=\"CNEE\" on_change=\"1\"/>\n                <field name=\"by_carrier_air_line_summary\" string=\"CARRIER\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"partner_id\" optional=\"hide\"/>\n                <field name=\"user_id\" optional=\"hide\"/>\n                <field name=\"air_bound\" optional=\"hide\" on_change=\"1\"/>\n                <field name=\"perf_date\"/>\n                <field name=\"operator_ids\" widget=\"many2many_tags\" optional=\"hide\"/>\n<!--                <field name=\"priority\" widget=\"priority\"/>-->\n                <field name=\"perf_date\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                <field name=\"company_id\" optional=\"show\" modifiers=\"{&quot;required&quot;: true}\"/>\n            </tree>",
+      "id": 2486,
+      "model": "freight.shipment.master"
+    },
+    "form": {
+      "arch": "<form create=\"0\" js_class=\"sota_freight_master_sea_form\">\n                <header>\n                    <button name=\"action_create_sea_house\" type=\"object\" class=\"oe_highlight\" string=\"Create Sea House\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}\"/>\n                <button name=\"create_multi_house\" type=\"object\" class=\"oe_highlight\" string=\"Create Cross Border House\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;!=&quot;, true]]}\"/>\n                    <widget name=\"ocr_form_upload\" options=\"{'ocr_method': 'document_bol_create_mbl', 'label': 'Upload BOL'}\"/>\n                </header>\n                <sheet>\n                    <div class=\"oe_button_box\" name=\"button_box\">\n                        <button name=\"action_get_expense_view\" class=\"oe_stat_button\" icon=\"fa-file-text-o\" type=\"object\">\n                            <field name=\"expense_number\" widget=\"statinfo\" string=\"Expenses\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        </button>\n                        <button name=\"action_open_credit_note\" class=\"oe_stat_button\" icon=\"fa-credit-card\" type=\"object\">\n                            <field name=\"credit_note_count\" widget=\"statinfo\" string=\"Payment Management\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        </button>\n                        <button name=\"action_open_debit_note\" class=\"oe_stat_button\" icon=\"fa-money\" type=\"object\">\n                            <field name=\"debit_note_count\" widget=\"statinfo\" string=\"Debit Notes\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        </button>\n                        <button name=\"action_open_dc_note\" class=\"oe_stat_button\" icon=\"fa-exchange\" type=\"object\">\n                            <field name=\"dc_note_count\" widget=\"statinfo\" string=\"DC Notes\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        </button>\n                    </div>\n                    <group>\n                        <group>\n                            <group>\n                                <field name=\"is_sea_master\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                <field name=\"is_multi_master\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                                <field name=\"is_air_master\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                                <field name=\"is_sea_house\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                                <field name=\"is_air_house\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                                <field name=\"transport_mode_id\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: true}\" can_create=\"false\" can_write=\"false\"/>\n                                <field name=\"transport_mode_ids\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                                <field name=\"transport_mode\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                                <field name=\"name\" string=\"Master BL\" modifiers=\"{&quot;required&quot;: true}\"/>\n                                <field name=\"sea_house_bl_ids\" widget=\"many2many_tags\" string=\"Sea House\" options=\"{'no_quick_create': True, 'no_create_edit': True}\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                <field name=\"job_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                                <field name=\"sea_incoterm_id\" string=\"Incoterm\" can_create=\"true\" can_write=\"true\"/>\n                            </group>\n                            <group>\n                                <field name=\"sea_bl_type\" string=\"MBL Type\"/>\n                                <field name=\"sea_shipment\" string=\"Shipment\"/>\n                                <field name=\"sea_service_term_id\" can_create=\"true\" can_write=\"true\"/>\n                            </group>\n                        </group>\n                        <group>\n                            <group>\n                                <field name=\"sea_bl_status\" string=\"BL Release Status\"/>\n                                <field name=\"switch_bl\"/>\n                            </group>\n                            <group>\n                                <field name=\"sea_bound\" string=\"Bound\" on_change=\"1\"/>\n                                <field name=\"sea_load_type\"/>\n                                <field name=\"company_id\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                            </group>\n                        </group>\n                    </group>\n                    <notebook>\n                        <page string=\"Header\">\n                            <group>\n                                <group string=\"Party Information\">\n                                    <field name=\"sea_shipper_id\" string=\"Shipper\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                    <field name=\"sea_shipper_code\" string=\"Shipper Name\"/>\n                                    <field name=\"sea_shipper_text\" string=\"\"/>\n                                    <field name=\"sea_consignee_id\" string=\"Consignee\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                    <field name=\"sea_consignee_display\" string=\"Consignee Name\"/>\n                                    <field name=\"sea_consignee_text\" string=\"\"/>\n                                    <label for=\"sea_notify_id\" string=\"Notify\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_notify_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <button name=\"copy_consignee_to_notify\" type=\"object\" class=\"oe_highlight\" string=\"Copy Cnee\"/>\n                                    </div>\n                                    <field name=\"sea_notify_display\" string=\"Notify Name\"/>\n                                    <field name=\"sea_notify_text\" string=\"\"/>\n                                </group>\n                                <group string=\"Schedule Information\">\n                                    <label for=\"sea_carrier_id\" string=\"Carrier\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_carrier_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"sea_carrier_code\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    </div>\n                                    <label for=\"vessel\" string=\"Feeder Vessel\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}\"/>\n                <label for=\"vessel\" string=\"1st Truck\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;!=&quot;, true]]}\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"vessel\"/>\n                                        <label for=\"voyage\" string=\"Feeder Voyage\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}\"/>\n                                        <field name=\"voyage\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}\"/>\n                                    </div>\n                                    <label for=\"mvvd\" string=\"M.VVD\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}\"/>\n                <label for=\"mvvd\" string=\"2nd Truck\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;!=&quot;, true]]}\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"mvvd\"/>\n                                        <label for=\"voyage2\" string=\"M.VVD Voyage\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}\"/>\n                                        <field name=\"voyage2\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}\"/>\n                                    </div>\n                                    <label for=\"sea_etd\" string=\"ETD-ETA\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_etd\" on_change=\"1\"/>\n                                        <field name=\"sea_eta\"/>\n                                    </div>\n                                    <label for=\"sea_atd\" string=\"ATD-ATA\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_atd\" on_change=\"1\"/>\n                                        <field name=\"sea_ata\"/>\n                                    </div>\n                                    <field name=\"onboard_date\"/>\n                                    <field name=\"perf_date\"/>\n                                    <label for=\"sea_por_id\" string=\"POR\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_por_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"sea_por_code\"/>\n                                    </div>\n                                    <label for=\"sea_pol_id\" string=\"POL\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_pol_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"sea_pol_code\"/>\n                                    </div>\n                                    <label for=\"sea_ts_id\" string=\"T/S\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_ts_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"sea_ts_code\"/>\n                                    </div>\n                                    <label for=\"sea_pod_id\" string=\"POD\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_pod_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"sea_pod_code\"/>\n                                    </div>\n                                    <label for=\"sea_pvy_id\" string=\"PVY\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_pvy_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"sea_pvy_code\"/>\n                                    </div>\n                                    <field name=\"mhs_code\" on_change=\"1\"/>\n                                    <field name=\"mnf_deadline\" on_change=\"1\"/>\n                                    <button name=\"action_open_house_sea_schedule\" type=\"object\" class=\"oe_highlight\" icon=\"fa-ship\" string=\"Schedules\"/>\n                                </group>\n                            </group>\n                            <group>\n                                <group string=\"Master Container Information\">\n                                    <field name=\"gross_weight\" on_change=\"1\"/>\n                                    <field name=\"charge_weight\"/>\n                                    <field name=\"volume\"/>\n                                </group>\n                                <group string=\"Document Information\" name=\"sea_master_document_info_block\">\n                                    <field name=\"vendor_id\" can_create=\"true\" can_write=\"true\"/>\n                                    <label for=\"sea_partner_id\" string=\"Partner\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_partner_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"sea_partner_code\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    </div>\n                                    <field name=\"sea_partner_address\"/>\n                <field name=\"do_address_id\" can_create=\"true\" can_write=\"true\"/>\n\n                                    <label for=\"sea_co_loader_id\" string=\"Co-loader\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_co_loader_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"sea_co_loader_role_code\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    </div>\n\n                                    <label for=\"sea_customer_id\" string=\"Customer\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_customer_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"sea_customer_code\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    </div>\n                                    <field name=\"sea_pic_ids\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                                    <label for=\"sea_pic_id\" string=\"Customer PIC\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"sea_pic_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"sea_pic_phone\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"sea_pic_email\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    </div>\n                                    <field name=\"sea_product_pic_id\" string=\"Pricing PIC\" can_create=\"true\" can_write=\"true\"/>\n                                    <field name=\"operator_ids\" widget=\"many2many_tags\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                    <field name=\"user_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                    <field name=\"team_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                    <field name=\"department_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    <label for=\"unstuffing_date\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"unstuffing_date\"/>\n                                        <button name=\"action_send_master_lcl_email\" type=\"object\" string=\"Update\" class=\"oe_highlight\" modifiers=\"{&quot;invisible&quot;: [[&quot;sea_load_type&quot;, &quot;not in&quot;, [&quot;fcl&quot;, &quot;lcl&quot;]]]}\"/>\n                                    </div>\n                                    <field name=\"berthing_date\"/>\n                                    <field name=\"sea_warehouse\" can_create=\"true\" can_write=\"true\"/>\n                                    <label for=\"warehouse_manager\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"warehouse_manager\"/>\n                                        <label for=\"warehouse_phone_number\"/>\n                                        <field name=\"warehouse_phone_number\"/>\n                                    </div>\n                                </group>\n                            </group>\n                            <label for=\"container_ids\"/>\n                            <field name=\"container_ids\" string=\"Containers\" on_change=\"1\">\n                                <tree editable=\"bottom\">\n                                    <field name=\"master_id\" on_change=\"1\" modifiers=\"{&quot;column_invisible&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                    <field name=\"name\" on_change=\"1\"/>\n                                    <field name=\"size\"/>\n                                    <field name=\"unit_id\" can_create=\"true\" can_write=\"true\"/>\n                                    <field name=\"seal_1\"/>\n                                    <field name=\"seal_2\"/>\n                                    <field name=\"package_quantity\" on_change=\"1\"/>\n                                    <field name=\"sea_fcl_unit\" can_create=\"true\" can_write=\"true\"/>\n                                    <field name=\"gross_weight\" on_change=\"1\"/>\n                                    <field name=\"volume\" on_change=\"1\"/>\n                                </tree>\n                            </field>\n                            <notebook>\n                                <page string=\"House B/L Information\">\n                                    <field name=\"sea_house_bl_display_ids\" modifiers=\"{&quot;readonly&quot;: true}\">\n                                        <tree modifiers=\"{&quot;readonly&quot;: true}\">\n                                            <field name=\"name\" string=\"HBL No.\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                                            <field name=\"sea_pol_id\"/>\n                                            <field name=\"sea_ts_id\"/>\n                                            <field name=\"sea_pod_id\"/>\n                                            <field name=\"sea_shipper_code\"/>\n                                            <field name=\"package_quantity\" sum=\"Total\"/>\n                                            <field name=\"gross_weight\" sum=\"Total\" digits=\"[16, 3]\"/>\n                                            <field name=\"volume\" sum=\"Total\" digits=\"[16, 3]\"/>\n                                        </tree>\n                                    </field>\n                                </page>\n                                <page string=\"House Container Information\">\n                                    <field name=\"sea_house_container_information_ids\" modifiers=\"{&quot;readonly&quot;: true}\">\n                                        <tree editable=\"bottom\">\n                                            <field name=\"house_id\" string=\"Sea House BL\" on_change=\"1\"/>\n                                            <field name=\"name\" on_change=\"1\"/>\n                                            <field name=\"size\"/>\n                                            <field name=\"unit_id\"/>\n                                            <field name=\"seal_1\"/>\n                                            <field name=\"seal_2\"/>\n                                            <field name=\"package_quantity\" sum=\"Total\" on_change=\"1\"/>\n                                            <field name=\"sea_fcl_unit\"/>\n                                            <field name=\"gross_weight\" string=\"Weight\" sum=\"Total\" digits=\"[16, 3]\" on_change=\"1\"/>\n                                            <field name=\"volume\" string=\"Measure\" sum=\"Total\" digits=\"[16, 3]\" on_change=\"1\"/>\n                                            <field name=\"is_part\"/>\n                                            <field name=\"is_main\"/>\n                                        </tree>\n                                    </field>\n                                </page>\n                            </notebook>\n                        </page>\n                        <!--                        <page name=\"Container\">-->\n                        <!--                            <group name=\"volume_information\" string=\"Volume Information\">-->\n                        <!--                                <group>-->\n                        <!--                                    &lt;!&ndash;                                    <label string=\"Quantity Of Container\" for=\"cont_qty\"/>&ndash;&gt;-->\n                        <!--                                    &lt;!&ndash;                                    <div class=\"o_row\">&ndash;&gt;-->\n                        <!--                                    &lt;!&ndash;                                        <field class=\"col-6\" name=\"cont_qty\" readonly=\"1\"/>&ndash;&gt;-->\n                        <!--                                    &lt;!&ndash;                                        <label name=\"Type Of Container\" for=\"cont_unit\"/>&ndash;&gt;-->\n                        <!--                                    &lt;!&ndash;                                        <field name=\"cont_unit\" readonly=\"1\"/>&ndash;&gt;-->\n                        <!--                                    &lt;!&ndash;                                    </div>&ndash;&gt;-->\n                        <!--                                    <label string=\"Package Quantity\" for=\"package_quantity\"/>-->\n                        <!--                                    <div class=\"o_row\">-->\n                        <!--                                        <field class=\"col-6\" name=\"package_quantity\"/>-->\n                        <!--                                        <field name=\"sea_fcl_unit\"/>-->\n                        <!--                                    </div>-->\n                        <!--                                    <label string=\"Gross W/T\" for=\"gross_weight\"/>-->\n                        <!--                                    <div class=\"o_row\">-->\n                        <!--                                        <field class=\"col-6\" name=\"gross_weight\"/>-->\n                        <!--                                        <label string=\"Weight Unit\" for=\"weight_unit\"/>-->\n                        <!--                                        <field name=\"weight_unit\"/>-->\n                        <!--                                    </div>-->\n                        <!--                                    &lt;!&ndash;                                    <field name=\"rate_class\"/>&ndash;&gt;-->\n                        <!--                                    &lt;!&ndash;                                    <field name=\"charge_weight\"/>&ndash;&gt;-->\n                        <!--                                    <label string=\"Volume\" for=\"volume\"/>-->\n                        <!--                                    <div class=\"o_row\">-->\n                        <!--                                        <field class=\"col-6\" name=\"volume\"/>-->\n                        <!--                                        <label name=\"Volume Unit\" for=\"volume_unit\"/>-->\n                        <!--                                        <field name=\"volume_unit\"/>-->\n                        <!--                                    </div>-->\n                        <!--                                    &lt;!&ndash;                                    <field name=\"inner_package_qty\"/>&ndash;&gt;-->\n                        <!--                                </group>-->\n                        <!--                                <group>-->\n                        <!--                                    <field name=\"sea_container_information_ids\" string=\"\">-->\n                        <!--                                        <tree editable=\"bottom\">-->\n                        <!--                                            <field name=\"size\"/>-->\n                        <!--                                            <field name=\"type\"/>-->\n                        <!--                                            <field name=\"quantity\"/>-->\n                        <!--                                            <field name=\"part\"/>-->\n                        <!--                                            <field name=\"main\"/>-->\n                        <!--                                        </tree>-->\n                        <!--                                    </field>-->\n                        <!--                                </group>-->\n                        <!--                            </group>-->\n                        <!--                            <group string=\"Container Volume\">-->\n                        <!--                                <label for=\"containers_description\" string=\"\"/>-->\n                        <!--                                <div class=\"o_row\">-->\n                        <!--                                    <button name=\"action_say_info\"-->\n                        <!--                                            type=\"object\"-->\n                        <!--                                            class=\"oe_highlight\"-->\n                        <!--                                            icon=\"fa-volume-up\"-->\n                        <!--                                            string=\"Say Info\"/>-->\n                        <!--                                    <field name=\"containers_description\" string=\"Total Number Of Container\"/>-->\n                        <!--                                </div>-->\n                        <!--                            </group>-->\n                        <!--                            <label for=\"container_ids\"/>-->\n                        <!--                            <field name=\"container_ids\">-->\n                        <!--                                <tree editable=\"bottom\">-->\n                        <!--                                    <field name=\"name\"/>-->\n                        <!--                                    <field name=\"unit_id\"/>-->\n                        <!--                                    <field name=\"size\"/>-->\n                        <!--                                    <field name=\"sea_fcl_unit\"/>-->\n                        <!--                                    <field name=\"seal_1\"/>-->\n                        <!--                                    <field name=\"seal_2\"/>-->\n                        <!--                                    <field name=\"package_quantity\" string=\"Package Quantity\"/>-->\n                        <!--                                    <field name=\"gross_weight\"/>-->\n                        <!--                                    <field name=\"volume\" string=\"Measure\"/>-->\n                        <!--                                    <field name=\"is_part\"/>-->\n                        <!--                                    <field name=\"is_main\"/>-->\n                        <!--                                    <field name=\"soc_coc\"/>-->\n                        <!--                                    <field name=\"cont_mark\"/>-->\n                        <!--                                </tree>-->\n                        <!--                            </field>-->\n                        <!--                        </page>-->\n                        <page name=\"Marks &amp; Description (Print)\" modifiers=\"{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;=&quot;, &quot;other&quot;]]}\">\n                            <group>\n                                <group>\n                                    <field name=\"mark_and_numbers\"/>\n                                    <field name=\"handling_information\" modifiers=\"{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}\"/>\n                                </group>\n                                <group modifiers=\"{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}\">\n                                    <group>\n                                        <label for=\"description_of_good\"/>\n                                        <button name=\"add_dimension_desc_air\" class=\"d-block oe_highlight py-0\" type=\"object\">\n                                            <div style=\"width: 105px;\">Add Dimension</div>\n                                        </button>\n                                    </group>\n                                    <field name=\"description_of_good\"/>\n                                </group>\n                            </group>\n                            <group modifiers=\"{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}\">\n                                <label name=\"Suggest #1\" string=\"Suggest #1\" for=\"description_of_goods_1\"/>\n                                <div class=\"o_row\">\n                                    <field name=\"description_of_goods_1\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                    <label name=\"Suggest #2\" string=\"Suggest #2\" for=\"description_of_goods_2\"/>\n                                    <field name=\"description_of_goods_2\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                </div>\n                                <field name=\"description_of_goods\"/>\n                                <field name=\"container_info_print_type\"/>\n                            </group>\n                        </page>\n                        <page name=\"Freight\">\n                            <group>\n                                <group>\n                                    <field name=\"sea_house_quotation_ids\" modifiers=\"{&quot;invisible&quot;: true}\">\n                                        <tree editable=\"bottom\">\n                                            <field name=\"job_id\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                                            <field name=\"quotation_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                            <field name=\"customer_id\" can_create=\"true\" can_write=\"true\"/>\n                                            <button name=\"apply_quotation\" type=\"object\" string=\"Apply\" class=\"btn-primary\" icon=\"fa-check\" colspan=\"1\"/>\n                                            <field name=\"status\"/>\n                                        </tree>\n                                    </field>\n                                </group>\n                            </group>\n                            <group>\n                                <group name=\"exchange_rate\" string=\"Exchange Rate\">\n                                    <field name=\"currency_id\" can_create=\"true\" can_write=\"true\"/>\n                                    <label string=\"Date\" for=\"exchange_rate_date\"/>\n                                    <div class=\"o_row\">\n                                        <field name=\"exchange_rate_date\" style=\"width: 30%!important;\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\"/>\n                                    </div>\n                                    <label string=\"Rate\" for=\"exchange_rate\"/>\n                                    <div class=\"o_row exchange_rate_row\">\n                                        <field name=\"exchange_rate\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                                        <span>VND/USD</span>\n                                    </div>\n                                </group>\n\n                                <group string=\"Total &amp; Margin\" name=\"total_margin_section\" modifiers=\"{&quot;invisible&quot;: true}\">\n                                    <field name=\"total_local_selling\" modifiers=\"{&quot;invisible&quot;: [[&quot;rv_hide_selling&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: true}\"/>\n                                    <field name=\"total_local_buying\" modifiers=\"{&quot;invisible&quot;: [[&quot;rv_hide_buying&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: true}\"/>\n                                    <field name=\"company_currency_id\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                                    <field name=\"total_margin\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    <field name=\"percent_margin\" widget=\"percentage\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                </group>\n                            </group>\n                            <group string=\"Selling\" name=\"selling_group\" modifiers=\"{&quot;invisible&quot;: true}\">\n                                <group>\n                                    <div style=\"width: 200px!important;\">\n                                        <button name=\"action_get_vendor_local_charge\" type=\"object\" string=\"Get Carrier Local Charge\" class=\"oe_link oe_inline py-0 mb-1\" icon=\"fa-plus\"/>\n                                        <button name=\"action_add_multiple_charges\" type=\"object\" string=\"Add Multiple Charges\" class=\"oe_link oe_inline py-0 mb-1\" icon=\"fa-list\"/>\n                                    </div>\n                                </group>\n                                <field name=\"sea_selling_line_ids\" string=\"\" on_change=\"1\">\n                                    <tree editable=\"bottom\" decoration-danger=\"not have_note_line\">\n                                        <field name=\"partner_id\" context=\"{'party_role': 'sota_freight_crm.party_sale_customer'}\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: [[&quot;have_note_line&quot;, &quot;=&quot;, true]], &quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"have_note_line\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n<!--                                        <field name=\"partner_code\" string=\"Customer Name\"/>-->\n                                        <field name=\"transport_mode_id\" string=\"Service\" can_create=\"false\" can_write=\"false\"/>\n                                        <field name=\"product_id\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"product_name\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"tax_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"fare_type\"/>\n                                        <field name=\"currency_id\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"company_currency_id\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                                        <field name=\"exchange_rate\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"fcl_unit\" string=\"Unit\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"qty\" on_change=\"1\"/>\n                                        <field name=\"rate\" on_change=\"1\"/>\n                                        <field name=\"amt\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"vat_foreign\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"local_amount\" sum=\"Total\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"vat\" sum=\"Total\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"total_amount\" sum=\"Total\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"remark\"/>\n                                        <!--                                        <field name=\"evidence\"/>-->\n                                        <field name=\"user_id\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"invoice_no\"/>\n                                        <field name=\"billing_date\"/>\n                                        <!--                                        <field name=\"tax_no\"/>-->\n                                        <!--                                        <field name=\"tax_date\"/>-->\n                                        <!--                                        <field name=\"invoice_date\"/>-->\n                                        <!--                                        <field name=\"tax_ys\"/>-->\n                                        <!--                                        <field name=\"pl_ys\"/>-->\n                                        <!--                                        <field name=\"group_ys\"/>-->\n                                        <!--                                        <field name=\"slip_date\"/>-->\n                                        <!--                                        <field name=\"set_off\"/>-->\n                                        <!--                                        <field name=\"set_off_date\"/>-->\n                                        <!--                                        <field name=\"department\"/>-->\n                                        <!--                                        <field name=\"create_date\"/>-->\n                                        <button name=\"action_view_note\" type=\"object\" string=\"View Debit/DC Note\" class=\"btn-secondary\" icon=\"fa-eye\" modifiers=\"{&quot;invisible&quot;: [[&quot;have_note_line&quot;, &quot;=&quot;, false]]}\"/>\n                                        <button name=\"generate_note_line\" type=\"object\" string=\"Create Debit/DC Note\" class=\"btn-secondary\" icon=\"fa-plus\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;id&quot;, &quot;=&quot;, false], [&quot;have_note_line&quot;, &quot;=&quot;, true]]}\"/>\n                                        <!--                                        <field name=\"department\"/>-->\n                                        <!--                                        <field name=\"office\"/>-->\n                                    </tree>\n                                </field>\n                            </group>\n                            <group string=\"Buying\" name=\"buying_group\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;rv_hide_buying&quot;, &quot;=&quot;, true], [&quot;rv_hide_buying&quot;, &quot;=&quot;, true]]}\">\n                                <group>\n                                    <div style=\"width: 200px!important;\">\n                                        <button name=\"action_get_vendor_local_charge\" type=\"object\" string=\"Apply Vendor Local Charge\" class=\"oe_link oe_inline py-0 mb-1\" icon=\"fa-plus\"/>\n                                        <button name=\"action_ocr_vendor_bill\" type=\"object\" string=\"OCR Vendor Bill\" class=\"oe_link oe_inline py-0 mb-1\" context=\"{'buying_field': 'sea_buying_line_ids'}\" icon=\"fa-upload\"/>\n                                    </div>\n                <div style=\"width: 200px!important;\">\n                    <button name=\"action_distribute_buying_costs\" type=\"object\" string=\"Distribute To House\" class=\"oe_link oe_inline py-0 mb-1\" icon=\"fa-share-alt\"/>\n                    <button name=\"action_fill_all_houses\" type=\"object\" string=\"Fill All Houses\" class=\"oe_link oe_inline py-0 mb-1\" icon=\"fa-home\"/>\n                </div>\n                                </group>\n                                <field name=\"sea_buying_line_ids\" string=\"\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: [[&quot;job_freight_done&quot;, &quot;=&quot;, true]]}\">\n                                    <tree editable=\"bottom\" decoration-danger=\"not have_note_line and not skip_note_line\">\n                <field name=\"job_id\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                <field name=\"transport_mode\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                <field name=\"distribute_house_ids\" widget=\"many2many_tags\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"vendor_id\" context=\"{'party_role': 'sota_freight_crm.party_vendor'}\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"have_note_line\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                                        <field name=\"skip_note_line\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                                        <field name=\"transport_mode_id\" string=\"Service\" can_create=\"false\" can_write=\"false\"/>\n                                        <field name=\"employee_prepaid_id\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"expense_id\" string=\"Expense Ref\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"expense_attachment_id\" widget=\"preview_binary\" string=\"Attachment\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"product_id\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"product_name\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"tax_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"fare_type\"/>\n                                        <field name=\"currency_id\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"company_currency_id\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                                        <field name=\"exchange_rate\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"fcl_unit\" string=\"Unit\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"qty\" on_change=\"1\"/>\n                                        <field name=\"rate\" on_change=\"1\"/>\n                                        <field name=\"amt\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"vat_foreign\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"local_amount\" sum=\"Total\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"vat\" sum=\"Total\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <!--                                        <field name=\"pay_for\"/>-->\n                                        <field name=\"total_amount_foreign\" optional=\"hide\" sum=\"Total\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"total_amount\" sum=\"Total\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"remark\"/>\n                                        <!--                                        <field name=\"evidence\"/>-->\n                                        <field name=\"user_id\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"invoice_no\"/>\n                                        <field name=\"billing_date\"/>\n\n                                        <button name=\"action_view_note\" type=\"object\" string=\"View Credit Note\" class=\"btn-secondary\" icon=\"fa-eye\" modifiers=\"{&quot;invisible&quot;: [[&quot;have_note_line&quot;, &quot;=&quot;, false]]}\"/>\n                                        <button name=\"generate_note_line\" type=\"object\" string=\"Create Credit Note\" class=\"btn-secondary\" icon=\"fa-plus\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;id&quot;, &quot;=&quot;, false], [&quot;have_note_line&quot;, &quot;=&quot;, true]]}\"/>\n                                        <!--                                        <field name=\"tax_no\"/>-->\n                                        <!--                                        <field name=\"tax_date\"/>-->\n                                        <!--                                        <field name=\"invoice_date\"/>-->\n                                        <!--                                        <field name=\"tax_ys\"/>-->\n                                        <!--                                        <field name=\"pl_ys\"/>-->\n                                        <!--                                        <field name=\"group_ys\"/>-->\n                                        <!--                                        <field name=\"slip_date\"/>-->\n                                        <!--                                        <field name=\"set_off\"/>-->\n                                        <!--                                        <field name=\"set_off_date\"/>-->\n                                        <!--                                        <field name=\"department\"/>-->\n                                        <!--                                        <field name=\"create_date\"/>-->\n                                        <!--                                        <field name=\"department\"/>-->\n                                        <!--                                        <field name=\"office\"/>-->\n                                    </tree>\n                                </field>\n                <field name=\"multi_buying_line_ids\" string=\"\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;!=&quot;, true]], &quot;readonly&quot;: [[&quot;job_freight_done&quot;, &quot;=&quot;, true]]}\">\n                    <tree editable=\"bottom\" decoration-danger=\"not have_note_line and not skip_note_line\">\n                        <field name=\"have_note_line\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                        <field name=\"skip_note_line\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                        <field name=\"job_id\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                        <field name=\"transport_mode\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                        <field name=\"multi_distribute_house_ids\" widget=\"many2many_tags\" can_create=\"true\" can_write=\"true\"/>\n                        <field name=\"vendor_id\" context=\"{'party_role': 'sota_freight_crm.party_vendor'}\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n<!--                        <field name=\"vendor_display\" string=\"Vendor Name\"/>-->\n                        <field name=\"transport_mode_id\" string=\"Service\" can_create=\"false\" can_write=\"false\"/>\n                        <field name=\"employee_prepaid_id\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        <field name=\"expense_id\" string=\"Expense Ref\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        <field name=\"product_id\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                        <!-- <field name=\"product_name\"/> -->\n                        <field name=\"tax_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                        <field name=\"fare_type\"/>\n                        <field name=\"currency_id\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                        <field name=\"exchange_rate\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        <field name=\"fcl_unit\" string=\"Unit\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                        <field name=\"qty\" on_change=\"1\"/>\n                        <field name=\"rate\" on_change=\"1\"/>\n                        <field name=\"amt\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        <field name=\"vat_foreign\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        <field name=\"local_amount\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        <field name=\"vat\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        <field name=\"total_amount\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        <field name=\"remark\"/>\n                        <field name=\"user_id\" can_create=\"true\" can_write=\"true\"/>\n                        <field name=\"invoice_no\"/>\n                        <field name=\"billing_date\"/>\n                        <button name=\"action_view_note\" type=\"object\" string=\"View Credit Note\" class=\"btn-secondary\" icon=\"fa-eye\" modifiers=\"{&quot;invisible&quot;: [[&quot;have_note_line&quot;, &quot;=&quot;, false]]}\"/>\n                        <button name=\"generate_note_line\" type=\"object\" string=\"Create Credit Note\" class=\"btn-secondary\" icon=\"fa-plus\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;id&quot;, &quot;=&quot;, false], [&quot;have_note_line&quot;, &quot;=&quot;, true]]}\"/>\n                    </tree>\n                </field>\n                            </group>\n                            <group string=\"Pay on Behalf\" name=\"pob_group\" modifiers=\"{&quot;invisible&quot;: true}\">\n                                <field name=\"sea_pay_on_behalf_line_ids\" string=\"\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: [[&quot;job_freight_done&quot;, &quot;=&quot;, true]]}\">\n                                    <tree editable=\"bottom\" decoration-danger=\"not have_note_line\">\n                                        <field name=\"company_id\" on_change=\"1\" modifiers=\"{&quot;column_invisible&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"have_note_line\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                                        <field name=\"can_create_pob\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                                        <field name=\"vendor_id\" context=\"{'party_role': 'sota_freight_crm.party_vendor'}\" modifiers=\"{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]]}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"partner_id\" string=\"Prepaid By\" domain=\"[]\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"pay_for\" context=\"{'party_role': 'sota_freight_crm.party_sale_customer'}\" modifiers=\"{&quot;readonly&quot;: [&quot;|&quot;, [&quot;have_note_line&quot;, &quot;=&quot;, true], [&quot;can_create_pob&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"transport_mode_id\" string=\"Service\" can_create=\"false\" can_write=\"false\"/>\n                                        <field name=\"expense_id\" string=\"Expense Ref\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"expense_attachment_id\" widget=\"preview_binary\" string=\"Attachment\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"product_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"product_name\" modifiers=\"{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]]}\"/>\n                                        <field name=\"tax_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]]}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"fare_type\"/>\n                                        <field name=\"currency_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"exchange_rate\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"fcl_unit\" string=\"Unit\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"qty\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]]}\"/>\n                                        <field name=\"rate\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]]}\"/>\n                                        <field name=\"amt\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"local_amount\" sum=\"Total\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"vat_foreign\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"vat\" sum=\"Total\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"total_amount\" sum=\"Total\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"remark\"/>\n                                        <!--                                        <field name=\"evidence\"/>-->\n                                        <field name=\"debit_line_ids\" on_change=\"1\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                        <field name=\"dc_line_ids\" on_change=\"1\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                                        <field name=\"user_id\" can_create=\"true\" can_write=\"true\"/>\n                                        <field name=\"invoice_no\"/>\n                                        <field name=\"billing_date\"/>\n                                        <button name=\"action_view_note\" type=\"object\" string=\"View Debit/DC Note\" class=\"btn-secondary\" icon=\"fa-eye\" modifiers=\"{&quot;invisible&quot;: [[&quot;have_note_line&quot;, &quot;=&quot;, false]]}\"/>\n                                        <button name=\"generate_note_line\" type=\"object\" string=\"Create Debit/DC Note\" class=\"btn-secondary\" icon=\"fa-plus\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;id&quot;, &quot;=&quot;, false], [&quot;have_note_line&quot;, &quot;=&quot;, true]]}\"/>\n                                        <!--                                        <field name=\"tax_no\"/>-->\n                                        <!--                                        <field name=\"tax_date\"/>-->\n                                        <!--                                        <field name=\"invoice_date\"/>-->\n                                        <!--                                        <field name=\"tax_ys\"/>-->\n                                        <!--                                        <field name=\"pl_ys\"/>-->\n                                        <!--                                        <field name=\"group_ys\"/>-->\n                                        <!--                                        <field name=\"slip_date\"/>-->\n                                        <!--                                        <field name=\"set_off\"/>-->\n                                        <!--                                        <field name=\"set_off_date\"/>-->\n                                        <!--                                        <field name=\"create_date\"/>-->\n                                        <!--                                        <field name=\"department\"/>-->\n                                        <!--                                        <field name=\"office\"/>-->\n                                    </tree>\n                                </field>\n                            </group>\n                        </page>\n                        <!--                        <page name=\"Marks &amp; Description (Print)\"-->\n                        <!--                              attrs=\"{'invisible': [('transport_mode', '=', 'other')]}\">-->\n                        <!--                            <group>-->\n                        <!--                                <group>-->\n                        <!--                                    <field name=\"mark_and_numbers\"/>-->\n                        <!--                                    <field name=\"handling_information\"-->\n                        <!--                                           attrs=\"{'invisible': [('transport_mode', '!=', 'air')]}\"/>-->\n                        <!--                                </group>-->\n                        <!--                                <group attrs=\"{'invisible': [('transport_mode', '!=', 'air')]}\">-->\n                        <!--                                    <group>-->\n                        <!--                                        <label for=\"description_of_good\"/>-->\n                        <!--                                        <button name=\"add_dimension_desc_air\" class=\"d-block oe_highlight py-0\"-->\n                        <!--                                                type=\"object\">-->\n                        <!--                                            <div style=\"width: 105px;\">Add Dimension</div>-->\n                        <!--                                        </button>-->\n                        <!--                                    </group>-->\n                        <!--                                    <field name=\"description_of_good\"/>-->\n                        <!--                                </group>-->\n                        <!--                            </group>-->\n\n                        <!--                            <group string=\"HBL Print Option\">-->\n                        <!--                                <group attrs=\"{'invisible': [('transport_mode', '!=', 'sea')]}\">-->\n                        <!--                                    <field name=\"container_detail\" invisible=\"1\"/>-->\n                        <!--                                    <field name=\"container_info_print_type\"-->\n                        <!--                                           attrs=\"{'invisible': [('container_detail', '=', True)]}\"/>-->\n                        <!--                                    <label name=\"Notify Party\" for=\"notify_party_address\"/>-->\n                        <!--                                    <div class=\"o_row\">-->\n                        <!--                                        <label for=\"is_notify_same_as_consignee\" string=\"Same as consignee?\"/>-->\n                        <!--                                        <field name=\"is_notify_same_as_consignee\"/>-->\n                        <!--                                        <field name=\"notify_party_address\" string=\"Notify Party\"/>-->\n                        <!--                                    </div>-->\n                        <!--                                    <field name=\"freight_term_for_printing\"/>-->\n                        <!--                                    <field name=\"onboard_date_option\"/>-->\n                        <!--                                    <field name=\"display_freight_amount\"/>-->\n                        <!--                                    <field name=\"bl_remark\" string=\"BL Remark\"/>-->\n                        <!--                                    <field name=\"devanning_remark\"/>-->\n                        <!--                                </group>-->\n                        <!--                                <group attrs=\"{'invisible': [('transport_mode', '!=', 'sea')]}\">-->\n                        <!--                                    <field name=\"bl_text_print\" string=\"BL Text Print\"/>-->\n                        <!--                                    <field name=\"show_service_terms\"/>-->\n                        <!--                                    <field name=\"show_onboard_date\"/>-->\n                        <!--                                    <field name=\"show_receive_date\"/>-->\n                        <!--                                    <field name=\"is_non_negotiable\"/>-->\n                        <!--                                    <field name=\"print_as_agent\"/>-->\n                        <!--                                    <field name=\"stamp_print\"/>-->\n                        <!--                                </group>-->\n                        <!--                                <group attrs=\"{'invisible': [('transport_mode', '!=', 'air')]}\">-->\n                        <!--                                    <label name=\"Notify Party\" for=\"notify_party_address\"/>-->\n                        <!--                                    <div class=\"o_row\">-->\n                        <!--                                        <label for=\"is_notify_same_as_consignee\" string=\"Same as consignee?\"/>-->\n                        <!--                                        <field name=\"is_notify_same_as_consignee\"/>-->\n                        <!--                                        <field name=\"notify_party_address\" string=\"Notify Party\"/>-->\n                        <!--                                    </div>-->\n                        <!--                                    <field name=\"air_freight_print\"/>-->\n                        <!--                                    <field name=\"other_charge_print\"/>-->\n                        <!--                                </group>-->\n                        <!--                            </group>-->\n                        <!--                            <group string=\"Print Preview\">-->\n                        <!--                                <field name=\"print_sea_selling_line_ids\">-->\n                        <!--                                    <tree editable=\"bottom\">-->\n                        <!--                                        <field name=\"sea_freight_term_print\" invisible=\"1\"/>-->\n                        <!--                                        <field name=\"product_id\"/>-->\n                        <!--                                        <field name=\"product_name\"/>-->\n                        <!--                                        <field name=\"fare_type\"/>-->\n                        <!--                                        <field name=\"currency_id\"/>-->\n                        <!--                                        <field name=\"rate\"/>-->\n                        <!--                                        <field name=\"fcl_unit\"/>-->\n                        <!--                                        <field name=\"qty\"/>-->\n                        <!--                                        <field name=\"foreign_amount\"/>-->\n                        <!--                                        <field name=\"prepaid_collect\"/>-->\n                        <!--                                        <field name=\"is_print\"/>-->\n                        <!--                                    </tree>-->\n                        <!--                                </field>-->\n                        <!--                            </group>-->\n                        <!--                            <group attrs=\"{'invisible': [('transport_mode', '!=', 'sea')]}\">-->\n                        <!--                                <label name=\"Suggest #1\" string=\"Suggest #1\" for=\"description_of_goods_1\"/>-->\n                        <!--                                <div class=\"o_row\">-->\n                        <!--                                    <field name=\"description_of_goods_1\"/>-->\n                        <!--                                    <label name=\"Suggest #2\" string=\"Suggest #2\" for=\"description_of_goods_2\"/>-->\n                        <!--                                    <field name=\"description_of_goods_2\"/>-->\n                        <!--                                </div>-->\n                        <!--                                <field name=\"description_of_goods\"/>-->\n                        <!--                            </group>-->\n                        <!--                            &lt;!&ndash;                            <group string=\"Delivery Request Print Option\">&ndash;&gt;-->\n                        <!--                            &lt;!&ndash;                                <field name=\"dos_dear\"/>&ndash;&gt;-->\n                        <!--                            &lt;!&ndash;                                <field name=\"do_release_date\"/>&ndash;&gt;-->\n                        <!--                            &lt;!&ndash;                                <field name=\"delivery_name\"/>&ndash;&gt;-->\n                        <!--                            &lt;!&ndash;                                <field name=\"remark_dos\"/>&ndash;&gt;-->\n                        <!--                            &lt;!&ndash;                            </group>&ndash;&gt;-->\n                        <!--                            &lt;!&ndash;                            <group string=\"Arrival Notice Print Option\">&ndash;&gt;-->\n                        <!--                            &lt;!&ndash;                                <field name=\"arrival_notice_date\"/>&ndash;&gt;-->\n                        <!--                            &lt;!&ndash;                            </group>&ndash;&gt;-->\n                        <!--                        </page>-->\n                    </notebook>\n                </sheet>\n                <div class=\"oe_chatter\">\n                    <field name=\"message_follower_ids\"/>\n                    <field name=\"activity_ids\"/>\n                    <field name=\"message_ids\"/>\n                </div>\n            <field name=\"rv_hide_selling\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/><field name=\"rv_hide_buying\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/><field name=\"job_freight_done\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/></form>",
+      "id": 2000,
+      "model": "freight.shipment.master"
+    },
+    "search": {
+      "arch": "<search string=\"Shipments\">\n                <field name=\"name\"/>\n                <field name=\"partner_id\"/>\n                <field name=\"transport_mode\"/>\n                <field name=\"job_id\"/>\n                <field name=\"pic_id\"/>\n                <field name=\"user_id\"/>\n                <field name=\"port_receipt_id\"/>\n                <field name=\"port_delivery_id\"/>\n                <field name=\"sea_shipper_code\" string=\"Shipper\"/>\n                <field name=\"operator_ids\" widget=\"many2many_tags\"/>\n                <field name=\"consignee_id\" string=\"Consignee\" filter_domain=\"['|', '|', '|', '|', '|', ('sea_consignee_id.name', 'ilike', self), ('sea_consignee_id.partner_code', 'ilike', self), ('sea_consignee_id.vat', 'ilike', self), ('air_consignee_id.name', 'ilike', self), ('air_consignee_id.partner_code', 'ilike', self), ('air_consignee_id.vat', 'ilike', self)]\"/>\n                <field name=\"sea_house_bl_display_ids\" string=\"House BL\" filter_domain=\"['|',('air_house_bl_display_ids', 'ilike', self), ('sea_house_bl_display_ids', 'ilike', self)]\"/>\n                <separator/>\n                <filter string=\"Air Carriage\" name=\"air_carriage\" domain=\"[('transport_mode', '=', 'air')]\"/>\n                <filter string=\"Ocean Carriage\" name=\"ocean_carriage\" domain=\"[('transport_mode', '=', 'sea')]\"/>\n                <filter string=\"Land Carriage\" name=\"land_carriage\" domain=\"[('transport_mode', '=', 'land')]\"/>\n                <group expand=\"1\" string=\"Group By\">\n                    <filter string=\"Transport Mode\" name=\"group_by_transport_mode\" context=\"{'group_by': 'transport_mode'}\"/>\n                    <filter string=\"Customer\" name=\"group_by_customer\" context=\"{'group_by': 'partner_id'}\"/>\n                    <filter string=\"Shipper\" name=\"group_by_sea_shipper\" context=\"{'group_by': 'sea_shipper_code'}\"/>\n                    <filter string=\"Sale\" name=\"group_by_user\" context=\"{'group_by': 'user_id'}\"/>\n                    <filter string=\"PIC\" name=\"group_by_pic\" context=\"{'group_by': 'pic_id'}\"/>\n                    <filter string=\"State\" name=\"group_by_state\" context=\"{'group_by': 'state'}\"/>\n                </group>\n            </search>",
+      "id": 1999,
+      "model": "freight.shipment.master"
+    },
+    "kanban": {
+      "arch": "<kanban string=\"Freight Shipment Master\"><templates><t t-name=\"kanban-box\"><div t-attf-class=\"oe_kanban_card oe_kanban_global_click\"><div class=\"o_kanban_card_content\"><field name=\"name\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/></div></div></t></templates></kanban>",
+      "id": false,
+      "model": "freight.shipment.master"
+    },
+    "pivot": {
+      "arch": "<pivot string=\"Freight Shipment Master\"/>",
+      "id": false,
+      "model": "freight.shipment.master"
+    },
+    "graph": {
+      "arch": "<graph string=\"Freight Shipment Master\"><field name=\"name\"/></graph>",
+      "id": false,
+      "model": "freight.shipment.master"
+    }
+  }
+}

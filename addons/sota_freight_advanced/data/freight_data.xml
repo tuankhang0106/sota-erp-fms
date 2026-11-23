@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Incoterms -->
+        <record id="incoterm_fob" model="freight.incoterms">
+            <field name="name">FOB - Free on Board</field>
+            <field name="code">FOB</field>
+        </record>
+        <record id="incoterm_cif" model="freight.incoterms">
+            <field name="name">CIF - Cost, Insurance, and Freight</field>
+            <field name="code">CIF</field>
+        </record>
+        <record id="incoterm_exw" model="freight.incoterms">
+            <field name="name">EXW - Ex Works</field>
+            <field name="code">EXW</field>
+        </record>
+
+        <!-- Container Units -->
+        <record id="unit_20gp" model="freight.unit">
+            <field name="name">20'GP - General Purpose</field>
+            <field name="code">20GP</field>
+        </record>
+        <record id="unit_40gp" model="freight.unit">
+            <field name="name">40'GP - General Purpose</field>
+            <field name="code">40GP</field>
+        </record>
+        <record id="unit_40hc" model="freight.unit">
+            <field name="name">40'HC - High Cube</field>
+            <field name="code">40HC</field>
+        </record>
+
+        <!-- Major Ports -->
+        <record id="port_vnsgn" model="freight.port">
+            <field name="name">Cat Lai Port, Ho Chi Minh City</field>
+            <field name="code">VNSGN</field>
+            <field name="port_type">sea</field>
+        </record>
+        <record id="port_vnhph" model="freight.port">
+            <field name="name">Hai Phong Port</field>
+            <field name="code">VNHPH</field>
+            <field name="port_type">sea</field>
+        </record>
+        <record id="port_sgn_air" model="freight.port">
+            <field name="name">Tan Son Nhat International Airport</field>
+            <field name="code">SGN</field>
+            <field name="port_type">air</field>
+        </record>
+        <record id="port_han_air" model="freight.port">
+            <field name="name">Noi Bai International Airport</field>
+            <field name="code">HAN</field>
+            <field name="port_type">air</field>
+        </record>
+    </data>
+</odoo>

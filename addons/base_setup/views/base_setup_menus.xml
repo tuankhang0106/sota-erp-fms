@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_base_setup_root"
+              name="Thiết lập (Settings &amp; Administration)"
+              sequence="14"/>
+
+    <menuitem id="menu_res_company"
+              name="RES COMPANY"
+              parent="menu_base_setup_root"
+              action="action_res_company"
+              sequence="10"/>
+
+    <menuitem id="menu_res_users"
+              name="RES USERS"
+              parent="menu_base_setup_root"
+              action="action_res_users"
+              sequence="10"/>
+
+    <menuitem id="menu_login_detail"
+              name="LOGIN DETAIL"
+              parent="menu_base_setup_root"
+              action="action_login_detail"
+              sequence="10"/>
+
+    <menuitem id="menu_res_config_settings"
+              name="RES CONFIG SETTINGS"
+              parent="menu_base_setup_root"
+              action="action_res_config_settings"
+              sequence="10"/>
+
+    <menuitem id="menu_res_users_role"
+              name="RES USERS ROLE"
+              parent="menu_base_setup_root"
+              action="action_res_users_role"
+              sequence="10"/>
+
+    <menuitem id="menu_freight_ocr_log"
+              name="FREIGHT OCR LOG"
+              parent="menu_base_setup_root"
+              action="action_freight_ocr_log"
+              sequence="10"/>
+
+</odoo>

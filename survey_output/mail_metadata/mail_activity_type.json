@@ -1,0 +1,736 @@
+{
+  "fields": {
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Default Summary",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Create Uid",
+      "type": "many2one"
+    },
+    "delay_count": {
+      "help": "Number of days/week/month before executing the action. It allows to plan the action deadline.",
+      "readonly": false,
+      "required": false,
+      "string": "Schedule",
+      "type": "integer"
+    },
+    "delay_unit": {
+      "help": "Unit of delay",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "days",
+          "days"
+        ],
+        [
+          "weeks",
+          "weeks"
+        ],
+        [
+          "months",
+          "months"
+        ]
+      ],
+      "string": "Delay units",
+      "type": "selection"
+    },
+    "delay_label": {
+      "readonly": true,
+      "required": false,
+      "string": "Delay Label",
+      "type": "char"
+    },
+    "delay_from": {
+      "help": "Type of delay",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "current_date",
+          "after completion date"
+        ],
+        [
+          "previous_activity",
+          "after previous activity deadline"
+        ]
+      ],
+      "string": "Delay Type",
+      "type": "selection"
+    },
+    "icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": false,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "decoration_type": {
+      "help": "Change the background color of the related activities of this type.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Decoration Type",
+      "type": "selection"
+    },
+    "res_model": {
+      "help": "Specify a model if the activity should be specific to a model and not available when managing activities for other models.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "account.account",
+          "Account"
+        ],
+        [
+          "account.analytic.account",
+          "Analytic Account"
+        ],
+        [
+          "account.asset.category",
+          "Asset Category"
+        ],
+        [
+          "account.asset.asset",
+          "Asset/Revenue Recognition"
+        ],
+        [
+          "balance.carry.forward",
+          "Balance Carry Forward"
+        ],
+        [
+          "res.partner.bank",
+          "Bank Accounts"
+        ],
+        [
+          "calendar.event",
+          "Calendar Event"
+        ],
+        [
+          "res.company",
+          "Companies"
+        ],
+        [
+          "res.partner",
+          "Contact"
+        ],
+        [
+          "hr.contract",
+          "Contract"
+        ],
+        [
+          "hr.department",
+          "Department"
+        ],
+        [
+          "mail.channel",
+          "Discussion Channel"
+        ],
+        [
+          "einvoice.provider",
+          "Einvoice Provider"
+        ],
+        [
+          "einvoice.serial",
+          "Einvoice Serial"
+        ],
+        [
+          "einvoice.template",
+          "Einvoice Template"
+        ],
+        [
+          "mail.thread.cc",
+          "Email CC management"
+        ],
+        [
+          "mail.thread",
+          "Email Thread"
+        ],
+        [
+          "hr.employee",
+          "Employee"
+        ],
+        [
+          "hr.expense",
+          "Expense"
+        ],
+        [
+          "hr.expense.sheet",
+          "Expense Report"
+        ],
+        [
+          "freight.booking.line",
+          "Freight Booking Line"
+        ],
+        [
+          "freight.credit.note",
+          "Freight Credit Note"
+        ],
+        [
+          "freight.dc.note",
+          "Freight DC Note"
+        ],
+        [
+          "freight.debit.note",
+          "Freight Debit Note"
+        ],
+        [
+          "freight.document.line.buying",
+          "Freight Document Line Buying"
+        ],
+        [
+          "freight.document.line.pay.on.behalf",
+          "Freight Document Pay On Behalf Line"
+        ],
+        [
+          "freight.job",
+          "Freight Job"
+        ],
+        [
+          "freight.local.charge",
+          "Freight Local Charge"
+        ],
+        [
+          "freight.booking",
+          "Freight Order"
+        ],
+        [
+          "freight.booking.external",
+          "Freight Order External"
+        ],
+        [
+          "freight.purchase.pricing",
+          "Freight Purchase Pricing"
+        ],
+        [
+          "freight.quotation",
+          "Freight Quotation"
+        ],
+        [
+          "freight.quotation.template",
+          "Freight Quotation Template"
+        ],
+        [
+          "freight.sales.inquiry",
+          "Freight Sales Inquiry"
+        ],
+        [
+          "freight.shipment",
+          "Freight Shipment"
+        ],
+        [
+          "freight.shipment.house",
+          "Freight Shipment House"
+        ],
+        [
+          "freight.shipment.master",
+          "Freight Shipment Master"
+        ],
+        [
+          "freight.soa",
+          "Freight Statement of Account"
+        ],
+        [
+          "employee.advance",
+          "HR Employee Advance"
+        ],
+        [
+          "employee.advance.reconcile",
+          "HR Employee Advance Reconcile"
+        ],
+        [
+          "hr.job",
+          "Job Position"
+        ],
+        [
+          "account.journal",
+          "Journal"
+        ],
+        [
+          "account.move",
+          "Journal Entry"
+        ],
+        [
+          "crm.lead",
+          "Lead/Opportunity"
+        ],
+        [
+          "mail.blacklist",
+          "Mail Blacklist"
+        ],
+        [
+          "mail.thread.blacklist",
+          "Mail Blacklist mixin"
+        ],
+        [
+          "mailing.contact",
+          "Mailing Contact"
+        ],
+        [
+          "freight.dp.access.profile",
+          "Management Report Access Profile"
+        ],
+        [
+          "mailing.mailing",
+          "Mass Mailing"
+        ],
+        [
+          "account.payment",
+          "Payments"
+        ],
+        [
+          "phone.blacklist",
+          "Phone Blacklist"
+        ],
+        [
+          "mail.thread.phone",
+          "Phone Blacklist Mixin"
+        ],
+        [
+          "account.reconcile.model",
+          "Preset to create journal entries during a invoices and payments matching"
+        ],
+        [
+          "product.template",
+          "Product"
+        ],
+        [
+          "product.product",
+          "Product Variant"
+        ],
+        [
+          "crm.team",
+          "Sales Team"
+        ],
+        [
+          "crm.team.member",
+          "Sales Team Member"
+        ],
+        [
+          "account.account.template",
+          "Templates for Accounts"
+        ]
+      ],
+      "string": "Model",
+      "type": "selection"
+    },
+    "triggered_next_type_id": {
+      "help": "Automatically schedule this activity once the current one is marked as done.",
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Trigger",
+      "type": "many2one"
+    },
+    "chaining_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "suggest",
+          "Suggest Next Activity"
+        ],
+        [
+          "trigger",
+          "Trigger Next Activity"
+        ]
+      ],
+      "string": "Chaining Type",
+      "type": "selection"
+    },
+    "suggested_next_type_ids": {
+      "help": "Suggest these activities once the current one is marked as done.",
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Suggest",
+      "type": "many2many"
+    },
+    "previous_type_ids": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Preceding Activities",
+      "type": "many2many"
+    },
+    "category": {
+      "help": "Actions may trigger specific behavior like opening calendar view or automatically mark as done when a document is uploaded",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "default",
+          "None"
+        ],
+        [
+          "upload_file",
+          "Upload Document"
+        ],
+        [
+          "phonecall",
+          "Phonecall"
+        ],
+        [
+          "meeting",
+          "Meeting"
+        ]
+      ],
+      "string": "Action",
+      "type": "selection"
+    },
+    "mail_template_ids": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Email templates",
+      "type": "many2many"
+    },
+    "default_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Default User",
+      "type": "many2one"
+    },
+    "default_note": {
+      "readonly": false,
+      "required": false,
+      "string": "Default Note",
+      "type": "html"
+    },
+    "initial_res_model": {
+      "help": "Technical field to keep track of the model at the start of editing to support UX related behaviour",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "account.account",
+          "Account"
+        ],
+        [
+          "account.analytic.account",
+          "Analytic Account"
+        ],
+        [
+          "account.asset.category",
+          "Asset Category"
+        ],
+        [
+          "account.asset.asset",
+          "Asset/Revenue Recognition"
+        ],
+        [
+          "balance.carry.forward",
+          "Balance Carry Forward"
+        ],
+        [
+          "res.partner.bank",
+          "Bank Accounts"
+        ],
+        [
+          "calendar.event",
+          "Calendar Event"
+        ],
+        [
+          "res.company",
+          "Companies"
+        ],
+        [
+          "res.partner",
+          "Contact"
+        ],
+        [
+          "hr.contract",
+          "Contract"
+        ],
+        [
+          "hr.department",
+          "Department"
+        ],
+        [
+          "mail.channel",
+          "Discussion Channel"
+        ],
+        [
+          "einvoice.provider",
+          "Einvoice Provider"
+        ],
+        [
+          "einvoice.serial",
+          "Einvoice Serial"
+        ],
+        [
+          "einvoice.template",
+          "Einvoice Template"
+        ],
+        [
+          "mail.thread.cc",
+          "Email CC management"
+        ],
+        [
+          "mail.thread",
+          "Email Thread"
+        ],
+        [
+          "hr.employee",
+          "Employee"
+        ],
+        [
+          "hr.expense",
+          "Expense"
+        ],
+        [
+          "hr.expense.sheet",
+          "Expense Report"
+        ],
+        [
+          "freight.booking.line",
+          "Freight Booking Line"
+        ],
+        [
+          "freight.credit.note",
+          "Freight Credit Note"
+        ],
+        [
+          "freight.dc.note",
+          "Freight DC Note"
+        ],
+        [
+          "freight.debit.note",
+          "Freight Debit Note"
+        ],
+        [
+          "freight.document.line.buying",
+          "Freight Document Line Buying"
+        ],
+        [
+          "freight.document.line.pay.on.behalf",
+          "Freight Document Pay On Behalf Line"
+        ],
+        [
+          "freight.job",
+          "Freight Job"
+        ],
+        [
+          "freight.local.charge",
+          "Freight Local Charge"
+        ],
+        [
+          "freight.booking",
+          "Freight Order"
+        ],
+        [
+          "freight.booking.external",
+          "Freight Order External"
+        ],
+        [
+          "freight.purchase.pricing",
+          "Freight Purchase Pricing"
+        ],
+        [
+          "freight.quotation",
+          "Freight Quotation"
+        ],
+        [
+          "freight.quotation.template",
+          "Freight Quotation Template"
+        ],
+        [
+          "freight.sales.inquiry",
+          "Freight Sales Inquiry"
+        ],
+        [
+          "freight.shipment",
+          "Freight Shipment"
+        ],
+        [
+          "freight.shipment.house",
+          "Freight Shipment House"
+        ],
+        [
+          "freight.shipment.master",
+          "Freight Shipment Master"
+        ],
+        [
+          "freight.soa",
+          "Freight Statement of Account"
+        ],
+        [
+          "employee.advance",
+          "HR Employee Advance"
+        ],
+        [
+          "employee.advance.reconcile",
+          "HR Employee Advance Reconcile"
+        ],
+        [
+          "hr.job",
+          "Job Position"
+        ],
+        [
+          "account.journal",
+          "Journal"
+        ],
+        [
+          "account.move",
+          "Journal Entry"
+        ],
+        [
+          "crm.lead",
+          "Lead/Opportunity"
+        ],
+        [
+          "mail.blacklist",
+          "Mail Blacklist"
+        ],
+        [
+          "mail.thread.blacklist",
+          "Mail Blacklist mixin"
+        ],
+        [
+          "mailing.contact",
+          "Mailing Contact"
+        ],
+        [
+          "freight.dp.access.profile",
+          "Management Report Access Profile"
+        ],
+        [
+          "mailing.mailing",
+          "Mass Mailing"
+        ],
+        [
+          "account.payment",
+          "Payments"
+        ],
+        [
+          "phone.blacklist",
+          "Phone Blacklist"
+        ],
+        [
+          "mail.thread.phone",
+          "Phone Blacklist Mixin"
+        ],
+        [
+          "account.reconcile.model",
+          "Preset to create journal entries during a invoices and payments matching"
+        ],
+        [
+          "product.template",
+          "Product"
+        ],
+        [
+          "product.product",
+          "Product Variant"
+        ],
+        [
+          "crm.team",
+          "Sales Team"
+        ],
+        [
+          "crm.team.member",
+          "Sales Team Member"
+        ],
+        [
+          "account.account.template",
+          "Templates for Accounts"
+        ]
+      ],
+      "string": "Initial model",
+      "type": "selection"
+    },
+    "res_model_change": {
+      "readonly": false,
+      "required": false,
+      "string": "Model has change",
+      "type": "boolean"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree string=\"Activities\" sample=\"1\">\n                <field name=\"sequence\" widget=\"handle\"/>\n                <field name=\"name\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"summary\"/>\n                <field name=\"delay_label\" string=\"Planned in\" class=\"text-end\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"delay_from\" string=\"Type\" modifiers=\"{&quot;required&quot;: true}\"/>\n                </tree>",
+      "id": 271,
+      "model": "mail.activity.type"
+    },
+    "form": {
+      "arch": "<form string=\"Activities\">\n                <sheet>\n                    <widget name=\"web_ribbon\" title=\"Archived\" bg_color=\"bg-danger\" modifiers=\"{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}\"/>\n                    <div class=\"oe_title\">\n                        <label for=\"name\" class=\"oe_edit_only\"/>\n                        <h1><field name=\"name\" placeholder=\"e.g. Schedule a meeting\" modifiers=\"{&quot;required&quot;: true}\"/></h1>\n                    </div>\n                    <group>\n                        <group name=\"activity_details\" string=\"Activity Settings\">\n                            <field name=\"active\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                            <field name=\"category\"/>\n                            <field name=\"default_user_id\" options=\"{'no_create': True}\" domain=\"[('share', '=', False)]\" can_create=\"true\" can_write=\"true\"/>\n                            <field name=\"res_model\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                            <field name=\"res_model_change\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                            <field name=\"initial_res_model\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                            <field name=\"summary\" placeholder=\"e.g. &quot;Discuss proposal&quot;\"/>\n                            </group>\n                        <group name=\"activity_planning\" string=\"Next Activity\">\n                            <field name=\"chaining_type\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: [[&quot;category&quot;, &quot;=&quot;, &quot;upload_file&quot;]], &quot;required&quot;: true}\"/>\n                            <field name=\"triggered_next_type_id\" options=\"{'no_open': True}\" context=\"{'default_res_model': res_model}\" modifiers=\"{&quot;invisible&quot;: [&quot;&amp;&quot;, [&quot;chaining_type&quot;, &quot;=&quot;, &quot;suggest&quot;], [&quot;category&quot;, &quot;!=&quot;, &quot;upload_file&quot;]], &quot;required&quot;: [&quot;&amp;&quot;, [&quot;chaining_type&quot;, &quot;=&quot;, &quot;trigger&quot;], [&quot;category&quot;, &quot;!=&quot;, &quot;upload_file&quot;]]}\" can_create=\"true\" can_write=\"true\"/>\n                            <field name=\"suggested_next_type_ids\" widget=\"many2many_tags\" context=\"{'default_res_model': res_model}\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;chaining_type&quot;, &quot;=&quot;, &quot;trigger&quot;], [&quot;category&quot;, &quot;=&quot;, &quot;upload_file&quot;]]}\" can_create=\"true\" can_write=\"true\"/>\n                            <field name=\"mail_template_ids\" widget=\"many2many_tags\" domain=\"[('model_id.model', '=', res_model)]\" context=\"{'default_model': res_model}\" modifiers=\"{&quot;invisible&quot;: [[&quot;res_model&quot;, &quot;=&quot;, false]]}\" can_create=\"true\" can_write=\"true\"/>\n                            <label for=\"delay_count\"/>\n                            <div>\n                                <field class=\"oe_inline pe-1 o_input_3ch\" name=\"delay_count\"/>\n                                <field class=\"oe_inline ps-1 pe-2\" name=\"delay_unit\" modifiers=\"{&quot;required&quot;: true}\"/>\n                                <field class=\"oe_inline\" name=\"delay_from\" modifiers=\"{&quot;required&quot;: true}\"/>\n                            </div>\n                        </group>\n                    </group>\n                    <label for=\"default_note\" class=\"fw-bold\"/>\n                    <field nolabel=\"1\" name=\"default_note\" placeholder=\"e.g. &quot;Go over the offer and discuss details&quot;\" class=\"oe-bordered-editor\"/>\n                    <p class=\"alert alert-info\" role=\"alert\" modifiers=\"{&quot;invisible&quot;: [[&quot;res_model_change&quot;, &quot;=&quot;, false]]}\">Modifying the model can have an impact on existing activities using this activity type, be careful.</p>\n                </sheet>\n            </form>",
+      "id": 269,
+      "model": "mail.activity.type"
+    },
+    "search": {
+      "arch": "<search string=\"Activities\">\n                <field name=\"name\"/>\n                <filter string=\"Archived\" domain=\"[('active', '=', False)]\" name=\"archived\"/>\n            </search>",
+      "id": 270,
+      "model": "mail.activity.type"
+    }
+  }
+}

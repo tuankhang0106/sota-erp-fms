@@ -1,0 +1,99 @@
+{
+  "fields": {
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "BL Number",
+      "type": "char"
+    },
+    "house_ids": {
+      "readonly": false,
+      "relation": "freight.shipment.house",
+      "required": false,
+      "string": "House",
+      "type": "one2many"
+    },
+    "available": {
+      "readonly": true,
+      "required": false,
+      "string": "Available",
+      "type": "boolean"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree editable=\"bottom\">\n                <field name=\"name\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"available\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"house_ids\" optional=\"hide\" widget=\"many2many_tags\" on_change=\"1\"/>\n            </tree>",
+      "id": 2056,
+      "model": "freight.bl.number"
+    },
+    "form": {
+      "arch": "<form><sheet string=\"Freight BL Number\"><group><group><field name=\"name\" modifiers=\"{&quot;required&quot;: true}\"/></group></group><group><field name=\"house_ids\" on_change=\"1\"><tree default_order=\"perf_date desc\" create=\"0\" string=\"House Cross Border\">\n                <field name=\"state\" modifiers=\"{&quot;required&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                <field name=\"sea_master_bl\" string=\"MBL\"/>\n                <field name=\"name\" string=\"HBL\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                <field name=\"container_display\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"sea_shipper_id\" string=\"SHPR\" on_change=\"1\"/>\n                <field name=\"sea_consignee_id\" string=\"CNEE\" on_change=\"1\"/>\n                <field name=\"sea_customer_code\" string=\"Customer\" optional=\"hide\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"user_id\"/>\n                <field name=\"sea_por_id\" optional=\"hide\"/>\n                <field name=\"sea_pol_id\"/>\n                <field name=\"sea_pod_id\"/>\n                <field name=\"sea_pvy_id\" optional=\"hide\"/>\n                <field name=\"sea_etd\" string=\"ETD\" on_change=\"1\"/>\n                <field name=\"sea_eta\" string=\"ETA\"/>\n                <field name=\"sea_atd\" string=\"ATD\" on_change=\"1\"/>\n                <field name=\"sea_ata\" string=\"ATA\"/>\n                <field name=\"bound\" optional=\"hide\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                <field name=\"perf_date\" optional=\"hide\"/>\n                <field name=\"sea_bl_type\" string=\"BL Type\" optional=\"show\"/>\n                <field name=\"sea_bl_status\" string=\"Status\"/>\n                <field name=\"tracking_states_display\" string=\"Tracking Status\" optional=\"show\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"operator_ids\" optional=\"show\" widget=\"many2many_tags\"/>\n                <field name=\"priority\" widget=\"priority\" optional=\"hide\"/>\n                <field name=\"transport_mode_id\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                <field name=\"is_sea_house\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                <field name=\"company_id\" optional=\"show\" modifiers=\"{&quot;required&quot;: true}\"/>\n            </tree></field></group><group><group><field name=\"available\" modifiers=\"{&quot;readonly&quot;: true}\"/></group></group><group><separator/></group></sheet></form>",
+      "id": false,
+      "model": "freight.bl.number"
+    },
+    "search": {
+      "arch": "<search>\n                <field name=\"name\"/>\n                <filter name=\"ftr_available\" string=\"Available\" domain=\"[('available', '=', True)]\"/>\n            </search>",
+      "id": 2057,
+      "model": "freight.bl.number"
+    },
+    "kanban": {
+      "arch": "<kanban string=\"Freight BL Number\"><templates><t t-name=\"kanban-box\"><div t-attf-class=\"oe_kanban_card oe_kanban_global_click\"><div class=\"o_kanban_card_content\"><field name=\"name\" modifiers=\"{&quot;required&quot;: true}\"/></div></div></t></templates></kanban>",
+      "id": false,
+      "model": "freight.bl.number"
+    },
+    "pivot": {
+      "arch": "<pivot string=\"Freight BL Number\"/>",
+      "id": false,
+      "model": "freight.bl.number"
+    },
+    "graph": {
+      "arch": "<graph string=\"Freight BL Number\"><field name=\"name\"/></graph>",
+      "id": false,
+      "model": "freight.bl.number"
+    }
+  }
+}

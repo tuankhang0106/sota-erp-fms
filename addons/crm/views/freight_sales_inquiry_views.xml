@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_freight_sales_inquiry_tree" model="ir.ui.view">
+        <field name="name">freight.sales.inquiry.tree</field>
+        <field name="model">freight.sales.inquiry</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                <field name="customer_id" modifiers="{&quot;required&quot;: true}"/>
+                <field name="user_id"/>
+                <field name="carrier_id"/>
+                <field name="class_urgent" modifiers="{&quot;required&quot;: true}"/>
+                <field name="pol_id"/>
+                <field name="pod_id" modifiers="{&quot;required&quot;: true}"/>
+                <field name="door_address"/>
+                <field name="incoterms_id" modifiers="{&quot;required&quot;: true}"/>
+                <field name="type_of_cont"/>
+                <field name="transport_term_of_oog_bulk"/>
+                <field name="commodity_id" modifiers="{&quot;required&quot;: true}"/>
+                <field name="msds_dg_form_filename" string="MSDS+DG FORM"/>
+                <field name="etd_request_cargo_ready"/>
+                <field name="gross_weight"/>
+                <field name="other_request"/>
+                <field name="pricing_pic_ids" widget="many2many_tags"/>
+                <field name="state"/>
+                <field name="sales_state"/>
+                <field name="company_id" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_sales_inquiry_form" model="ir.ui.view">
+        <field name="name">freight.sales.inquiry.form</field>
+        <field name="model">freight.sales.inquiry</field>
+        <field name="arch" type="xml">
+            <form string="Sales Inquiry" class="freight_inquiry_form">
+                <header>
+                    <div>
+                        <button name="action_send_mail" type="object" string="Send Email" class="btn-primary" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;checking&quot;]]}"/>
+                        <button name="action_send" type="object" string="Send" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                        <button name="action_done" type="object" string="Done" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;checking&quot;]]}"/>
+                        <button name="action_no_solution" type="object" string="No Solution" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;checking&quot;]]}"/>
+                        <button name="action_set_to_draft" type="object" string="Set To Draft" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;checking&quot;, &quot;done&quot;]]]}"/>
+                        <button name="action_restore" type="object" string="Restore" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;no_solution&quot;]]}"/>
+                        <button name="action_create_quotation" type="object" string="Create Quotation"/>
+                    </div>
+                    <div class="double_statusbar">
+                        <field name="state" widget="statusbar" statusbar_visible="draft,checking,no_solution,done" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                        <field name="sales_state" widget="statusbar" options="{'clickable': 1, 'can_edit': True}" statusbar_visible="pending,find_other_solution,win,loss" class="d-block"/>
+                    </div>
+                </header>
+
+
+
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_quotations" type="object" class="oe_stat_button" icon="fa-pencil-square-o" modifiers="{&quot;invisible&quot;: [[&quot;quotation_count&quot;, &quot;=&quot;, 0]]}">
+                            <field name="quotation_count" widget="statinfo" string="Quotations" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                            <field name="customer_id" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}" can_create="true" can_write="true"/>
+                            <field name="carrier_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="date" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="user_id" options="{'can_edit': True}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;checking&quot;]]]}" can_create="true" can_write="true"/>
+                            <field name="team_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="pricing_pic_ids" widget="many2many_tags" options="{'no_create': True, 'can_edit': True}" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;checking&quot;]]]}" can_create="true" can_write="true"/>
+                            <field name="reason" string="Reason No Solution" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;no_solution&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="company_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                        </group>
+                        <group>
+                            <field name="class_urgent" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="pol_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="pod_id" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}" can_create="true" can_write="true"/>
+                            <field name="incoterms_id" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}" can_create="true" can_write="true"/>
+                            <field name="commodity_id" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}" can_create="true" can_write="true"/>
+                <field name="transport_mode_ids" widget="many2many_tags" options="{'no_create': True}" can_create="false" can_write="false" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="door_address" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="type_of_cont" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="transport_term_of_oog_bulk" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="msds_dg_form" filename="msds_dg_form_filename" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="msds_dg_form_filename" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="etd_request_cargo_ready" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="gross_weight" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                            <field name="other_request" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                    <field name="activity_ids" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                    <field name="message_ids" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_freight_sales_inquiry_search" model="ir.ui.view">
+        <field name="name">freight.sales.inquiry.search</field>
+        <field name="model">freight.sales.inquiry</field>
+        <field name="arch" type="xml">
+            <search string="Sales Inquiry">
+                <field name="name"/>
+                <field name="customer_id"/>
+                <field name="user_id"/>
+                <field name="carrier_id"/>
+                <field name="class_urgent"/>
+                <field name="pol_id"/>
+                <field name="pod_id"/>
+                <field name="door_address"/>
+                <field name="incoterms_id"/>
+                <field name="type_of_cont"/>
+                <field name="transport_term_of_oog_bulk"/>
+                <field name="commodity_id"/>
+                <field name="msds_dg_form"/>
+                <field name="etd_request_cargo_ready"/>
+                <field name="gross_weight"/>
+                <field name="other_request"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_freight_sales_inquiry" model="ir.actions.act_window">
+        <field name="name">FREIGHT SALES INQUIRY</field>
+        <field name="res_model">freight.sales.inquiry</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

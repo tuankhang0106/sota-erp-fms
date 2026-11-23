@@ -1,0 +1,1130 @@
+{
+  "fields": {
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "message_main_attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Main Attachment",
+      "type": "many2one"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": true,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "transport_mode_ids": {
+      "readonly": false,
+      "relation": "freight.transport.mode",
+      "required": false,
+      "string": "Transport Mode",
+      "type": "many2many"
+    },
+    "transport_mode_id": {
+      "readonly": false,
+      "relation": "freight.transport.mode",
+      "required": false,
+      "string": "Transport Mode",
+      "type": "many2one"
+    },
+    "transport_mode": {
+      "readonly": true,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "date": {
+      "readonly": false,
+      "required": true,
+      "string": "Issue Date",
+      "type": "date"
+    },
+    "perf_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Performance Date",
+      "type": "date"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Vendor",
+      "type": "many2one"
+    },
+    "shipper_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Shipper",
+      "type": "many2one"
+    },
+    "consignee_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Consignee",
+      "type": "many2one"
+    },
+    "pic_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "PIC",
+      "type": "many2one"
+    },
+    "partner_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Partner Display",
+      "type": "char"
+    },
+    "shipper_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Shipper Display",
+      "type": "char"
+    },
+    "consignee_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Consignee Display",
+      "type": "char"
+    },
+    "pic_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Pic Display",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salesman",
+      "type": "many2one"
+    },
+    "user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "PICs",
+      "type": "many2many"
+    },
+    "route_id": {
+      "readonly": false,
+      "relation": "product.template",
+      "required": false,
+      "string": "Route",
+      "type": "many2one"
+    },
+    "port_pol_id": {
+      "readonly": true,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Port Of Loading (POL)",
+      "type": "many2one"
+    },
+    "port_pol_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Port Pol Display",
+      "type": "char"
+    },
+    "port_pod_id": {
+      "readonly": true,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Port Of Discharge (POD)",
+      "type": "many2one"
+    },
+    "port_pod_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Port Pod Display",
+      "type": "char"
+    },
+    "vessel_id": {
+      "readonly": true,
+      "relation": "freight.vessel",
+      "required": false,
+      "string": "Vessel",
+      "type": "many2one"
+    },
+    "vessel_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Vessel Display",
+      "type": "char"
+    },
+    "airline_id": {
+      "readonly": false,
+      "relation": "freight.airline",
+      "required": false,
+      "string": "Carrier Airline",
+      "type": "many2one"
+    },
+    "shipping_line_id": {
+      "readonly": false,
+      "relation": "freight.shipping.line",
+      "required": false,
+      "string": "Carrier Ocean",
+      "type": "many2one"
+    },
+    "trucker_id": {
+      "readonly": false,
+      "relation": "freight.trucker",
+      "required": false,
+      "string": "Carrier Trucking",
+      "type": "many2one"
+    },
+    "priority": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Low"
+        ],
+        [
+          "1",
+          "Medium"
+        ],
+        [
+          "2",
+          "High"
+        ],
+        [
+          "3",
+          "Very High"
+        ]
+      ],
+      "string": "Priority",
+      "type": "selection"
+    },
+    "remark": {
+      "readonly": false,
+      "required": false,
+      "string": "Remark",
+      "type": "text"
+    },
+    "port_receipt_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Place Of Receipt",
+      "type": "many2one"
+    },
+    "country_receipt_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country Receipt",
+      "type": "many2one"
+    },
+    "port_receipt_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Port Receipt Display",
+      "type": "char"
+    },
+    "port_delivery_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Port Delivery",
+      "type": "many2one"
+    },
+    "country_delivery_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country Delivery",
+      "type": "many2one"
+    },
+    "port_delivery_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Port Delivery Display",
+      "type": "char"
+    },
+    "bound": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "export",
+          "Export"
+        ],
+        [
+          "import",
+          "Import"
+        ],
+        [
+          "other",
+          "Other"
+        ]
+      ],
+      "string": "Bound",
+      "type": "selection"
+    },
+    "quantity": {
+      "readonly": false,
+      "required": false,
+      "string": "Quantity",
+      "type": "char"
+    },
+    "payment_date_specific": {
+      "readonly": false,
+      "required": false,
+      "string": "Payment Date Specific",
+      "type": "boolean"
+    },
+    "payment_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Payment Date",
+      "type": "datetime"
+    },
+    "payment_term_id": {
+      "readonly": false,
+      "relation": "account.payment.term",
+      "required": false,
+      "string": "Payment Term",
+      "type": "many2one"
+    },
+    "incoterms_id": {
+      "readonly": false,
+      "relation": "freight.incoterms",
+      "required": false,
+      "string": "Incoterms",
+      "type": "many2one"
+    },
+    "freight_term": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "freight prepaid",
+          "FREIGHT PREPAID"
+        ],
+        [
+          "freight collect",
+          "FREIGHT COLLECT"
+        ]
+      ],
+      "string": "Freight Term",
+      "type": "selection"
+    },
+    "etd_date": {
+      "readonly": false,
+      "required": false,
+      "string": "ETD Date",
+      "type": "date"
+    },
+    "etd_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "ETD Datetime",
+      "type": "datetime"
+    },
+    "eta_date": {
+      "readonly": false,
+      "required": false,
+      "string": "ETA Date",
+      "type": "date"
+    },
+    "eta_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "ETA Datetime",
+      "type": "datetime"
+    },
+    "etd_display": {
+      "readonly": true,
+      "required": false,
+      "string": "Etd Display",
+      "type": "datetime"
+    },
+    "eta_display": {
+      "readonly": true,
+      "required": false,
+      "string": "Eta Display",
+      "type": "datetime"
+    },
+    "onboard_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Onboard Date",
+      "type": "date"
+    },
+    "onboard_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "Onboard Datetime",
+      "type": "datetime"
+    },
+    "onboard_display": {
+      "readonly": true,
+      "required": false,
+      "string": "Onboard Display",
+      "type": "datetime"
+    },
+    "weight_unit": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "kg",
+          "KG"
+        ],
+        [
+          "lb",
+          "LB"
+        ]
+      ],
+      "string": "Weight Unit",
+      "type": "selection"
+    },
+    "volume_unit": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "cbm",
+          "CBM"
+        ]
+      ],
+      "string": "Volume Unit",
+      "type": "selection"
+    },
+    "cont_qty": {
+      "readonly": false,
+      "required": false,
+      "string": "Cont Qty",
+      "type": "integer"
+    },
+    "cont_unit": {
+      "readonly": false,
+      "relation": "freight.unit",
+      "required": false,
+      "string": "Cont Unit",
+      "type": "many2one"
+    },
+    "is_air": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Air",
+      "type": "boolean"
+    },
+    "is_ocean": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Ocean",
+      "type": "boolean"
+    },
+    "is_trucking": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Trucking",
+      "type": "boolean"
+    },
+    "is_other": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Other",
+      "type": "boolean"
+    },
+    "is_custom": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Custom",
+      "type": "boolean"
+    },
+    "state": {
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "sent",
+          "Sent"
+        ],
+        [
+          "approved",
+          "Approved"
+        ],
+        [
+          "partial_invoiced",
+          "Partial Billed"
+        ],
+        [
+          "billed",
+          "Billed"
+        ],
+        [
+          "cancel",
+          "Cancel"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "due_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Due Date",
+      "type": "date"
+    },
+    "payer_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Payer",
+      "type": "many2one"
+    },
+    "job_id": {
+      "readonly": true,
+      "relation": "freight.job",
+      "required": false,
+      "string": "Job",
+      "type": "many2one"
+    },
+    "set_off_amount": {
+      "readonly": false,
+      "required": false,
+      "string": "Set Off Amount",
+      "type": "float"
+    },
+    "reference": {
+      "readonly": false,
+      "required": false,
+      "string": "Reference No",
+      "type": "char"
+    },
+    "pay_for": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Pay For",
+      "type": "many2one"
+    },
+    "pic_email": {
+      "readonly": true,
+      "required": false,
+      "string": "Email",
+      "type": "char"
+    },
+    "vendor_invoice_no": {
+      "readonly": false,
+      "required": false,
+      "string": "Vendor Invoice No.",
+      "type": "char"
+    },
+    "payment_request_method": {
+      "help": "Payment method printed on the Payment Request (05-TT). Empty: Bank Transfer if the vendor has a bank account, otherwise Cash.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "cash",
+          "Cash"
+        ],
+        [
+          "transfer",
+          "Bank Transfer"
+        ]
+      ],
+      "string": "Payment Method",
+      "type": "selection"
+    },
+    "payment_request_remarks": {
+      "help": "Printed on the Payment Request (05-TT) under the payment method, e.g. banking information and payment deadline.",
+      "readonly": false,
+      "required": false,
+      "string": "Payment Remarks",
+      "type": "text"
+    },
+    "voyage": {
+      "readonly": true,
+      "required": false,
+      "string": "Voy",
+      "type": "char"
+    },
+    "flight_no": {
+      "readonly": true,
+      "required": false,
+      "string": "Flight No",
+      "type": "char"
+    },
+    "line_ids": {
+      "readonly": false,
+      "relation": "freight.credit.note.line",
+      "required": false,
+      "string": "Credit Note Lines",
+      "type": "one2many"
+    },
+    "master_id": {
+      "readonly": true,
+      "relation": "freight.shipment.master",
+      "required": false,
+      "string": "Master B/L",
+      "type": "many2one"
+    },
+    "house_id": {
+      "readonly": true,
+      "relation": "freight.shipment.house",
+      "required": false,
+      "string": "House B/L",
+      "type": "many2one"
+    },
+    "salesman_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salesman",
+      "type": "many2one"
+    },
+    "buying_line_ids": {
+      "readonly": false,
+      "relation": "freight.document.line.buying",
+      "required": false,
+      "string": "Buying Line",
+      "type": "one2many"
+    },
+    "bill_ids": {
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Bills",
+      "type": "many2many"
+    },
+    "bill_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Bill Count",
+      "type": "integer"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": true,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "payment_ids": {
+      "readonly": false,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Payment",
+      "type": "one2many"
+    },
+    "related_payment_ids": {
+      "readonly": true,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Related Payment",
+      "type": "many2many"
+    },
+    "payment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Payment Count",
+      "type": "integer"
+    },
+    "paid_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Paid Amount",
+      "type": "monetary"
+    },
+    "amount_untaxed": {
+      "readonly": true,
+      "required": false,
+      "string": "Untaxed Amount",
+      "type": "monetary"
+    },
+    "amount_taxed": {
+      "readonly": true,
+      "required": false,
+      "string": "Taxed Amount",
+      "type": "monetary"
+    },
+    "amount_total": {
+      "readonly": true,
+      "required": false,
+      "string": "Total",
+      "type": "monetary"
+    },
+    "amount_total_foreign": {
+      "readonly": true,
+      "required": false,
+      "string": "Total (Foreign)",
+      "type": "monetary"
+    },
+    "amount_residual": {
+      "readonly": true,
+      "required": false,
+      "string": "Residual Amount",
+      "type": "monetary"
+    },
+    "payment_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_paid",
+          "Not Paid"
+        ],
+        [
+          "paid",
+          "Paid"
+        ],
+        [
+          "partial",
+          "Partially Paid"
+        ]
+      ],
+      "string": "Payment Status",
+      "type": "selection"
+    },
+    "exchange_rate": {
+      "readonly": true,
+      "required": false,
+      "string": "Exchange Rate",
+      "type": "float"
+    },
+    "can_cancel": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Cancel",
+      "type": "boolean"
+    },
+    "need_bill": {
+      "readonly": true,
+      "required": false,
+      "string": "Need Bill",
+      "type": "boolean"
+    },
+    "mark_is_paid": {
+      "help": "Tick when small rounding residual remains after foreign currency payment.",
+      "readonly": false,
+      "required": false,
+      "string": "Mark as Paid",
+      "type": "boolean"
+    },
+    "settled_by_offset": {
+      "help": "Note đã được cấn trừ công nợ trên SOA Debt Offset. Coi như đã tất toán, không xuất bill riêng nữa.",
+      "readonly": true,
+      "required": false,
+      "string": "Settled by Debt Offset",
+      "type": "boolean"
+    },
+    "soa_id": {
+      "readonly": true,
+      "relation": "freight.soa",
+      "required": false,
+      "string": "SOA",
+      "type": "many2one"
+    },
+    "soa_invoice_id": {
+      "readonly": true,
+      "relation": "freight.soa",
+      "required": false,
+      "string": "Invoice SOA",
+      "type": "many2one"
+    },
+    "soa_payment_id": {
+      "readonly": true,
+      "relation": "freight.soa",
+      "required": false,
+      "string": "Payment SOA",
+      "type": "many2one"
+    },
+    "soa_line_ids": {
+      "readonly": false,
+      "relation": "freight.soa.line",
+      "required": false,
+      "string": "SOA Lines",
+      "type": "one2many"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "is_com": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Com",
+      "type": "boolean"
+    },
+    "bill_of_lading": {
+      "readonly": true,
+      "required": false,
+      "string": "Bill Of Lading",
+      "type": "char"
+    },
+    "sent_by": {
+      "help": "Người click Send",
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Sent By",
+      "type": "many2one"
+    },
+    "approved_by": {
+      "help": "Người click Approve",
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Approved By",
+      "type": "many2one"
+    },
+    "billed_by": {
+      "help": "Người click Create Bill",
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Billed By",
+      "type": "many2one"
+    },
+    "can_send": {
+      "help": "Hiển thị nút Send",
+      "readonly": true,
+      "required": false,
+      "string": "Can Send",
+      "type": "boolean"
+    },
+    "can_approve": {
+      "help": "Hiển thị nút Approve (chỉ Phòng GD)",
+      "readonly": true,
+      "required": false,
+      "string": "Can Approve",
+      "type": "boolean"
+    },
+    "can_create_bill": {
+      "help": "Hiển thị nút Create Bill (chỉ Kế toán)",
+      "readonly": true,
+      "required": false,
+      "string": "Can Create Bill",
+      "type": "boolean"
+    },
+    "can_cancel_from_draft": {
+      "help": "Hiển thị nút Cancel từ Draft",
+      "readonly": true,
+      "required": false,
+      "string": "Can Cancel From Draft",
+      "type": "boolean"
+    },
+    "can_cancel_from_sent": {
+      "help": "Hiển thị nút Cancel từ Sent (chỉ Phòng GD)",
+      "readonly": true,
+      "required": false,
+      "string": "Can Cancel From Sent",
+      "type": "boolean"
+    },
+    "can_cancel_from_approved": {
+      "help": "Hiển thị nút Cancel từ Approved (chỉ Kế toán)",
+      "readonly": true,
+      "required": false,
+      "string": "Can Cancel From Approved",
+      "type": "boolean"
+    },
+    "can_set_to_draft": {
+      "help": "Hiển thị nút Set to Draft",
+      "readonly": true,
+      "required": false,
+      "string": "Can Set To Draft",
+      "type": "boolean"
+    },
+    "source_salesman_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Source Salesman",
+      "type": "many2one"
+    },
+    "etd_job": {
+      "readonly": true,
+      "required": false,
+      "string": "ETD",
+      "type": "date"
+    },
+    "customer_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree default_order=\"date desc\" create=\"0\">\n                    <field name=\"name\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                    <field name=\"partner_id\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"is_com\" optional=\"show\" on_change=\"1\"/>\n                    <field name=\"job_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"customer_id\" optional=\"show\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"pic_id\" optional=\"show\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"house_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"master_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"date\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"etd_job\" optional=\"show\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"due_date\" optional=\"show\"/>\n                    <field name=\"salesman_id\" optional=\"show\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"activity_ids\" widget=\"list_activity\"/>\n                    <field name=\"amount_untaxed\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"amount_total\" sum=\"Total\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"amount_total_foreign\" sum=\"Total (Foreign)\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"paid_amount\" sum=\"Paid Amount\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"amount_residual\" sum=\"Residual Amount\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"company_id\" optional=\"show\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\"/>\n                    <field name=\"payment_state\" widget=\"badge\" decoration-danger=\"payment_state == 'not_paid'\" decoration-warning=\"payment_state in ('partial',)\" decoration-success=\"payment_state in ('paid',)\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    <field name=\"state\" widget=\"badge\" decoration-danger=\"state == 'cancel'\" decoration-warning=\"state == 'partial_invoiced'\" decoration-success=\"state == 'billed'\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                    <field name=\"currency_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                    <field name=\"company_currency_id\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                <header>\n                    <button name=\"action_bulk_send_credit_note\" type=\"object\" string=\"Send\" class=\"btn-primary\"/>\n                    <button name=\"action_bulk_cancel_credit_note\" type=\"object\" string=\"Cancel\" class=\"btn-danger\"/>\n                    <button name=\"action_bulk_approve_credit_note\" type=\"object\" string=\"Approve\" class=\"btn-success\"/>\n                    <button name=\"action_bulk_create_bill_credit_note\" type=\"object\" string=\"Create Bill\" class=\"btn-primary\"/>\n                    <button name=\"action_open_payment_request_print\" type=\"object\" string=\"Print Payment Request\"/>\n                </header>\n                </tree>",
+      "id": 2037,
+      "model": "freight.credit.note"
+    },
+    "form": {
+      "arch": "<form edit=\"1\">\n                    <header>\n                        <button name=\"action_create_bills\" string=\"Create Bill\" type=\"object\" class=\"oe_highlight\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;need_bill&quot;, &quot;=&quot;, false], [&quot;can_create_bill&quot;, &quot;=&quot;, false]]}\"/>\n                        <button name=\"action_register_payment\" string=\"Register Payment\" type=\"object\" class=\"oe_highlight\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;draft&quot;, &quot;cancel&quot;, &quot;sent&quot;]]]}\"/>\n                        <button name=\"action_approve_credit_note\" string=\"Approve\" type=\"object\" class=\"oe_highlight\" modifiers=\"{&quot;invisible&quot;: [[&quot;can_approve&quot;, &quot;=&quot;, false]]}\"/>\n                <button name=\"action_send_credit_note\" string=\"Send\" type=\"object\" class=\"oe_highlight\" modifiers=\"{&quot;invisible&quot;: [[&quot;can_send&quot;, &quot;=&quot;, false]]}\"/>\n                        <button name=\"action_cancel\" type=\"object\" string=\"Cancel\" modifiers=\"{&quot;invisible&quot;: [&quot;&amp;&quot;, &quot;&amp;&quot;, [&quot;can_cancel_from_draft&quot;, &quot;=&quot;, false], [&quot;can_cancel_from_sent&quot;, &quot;=&quot;, false], [&quot;can_cancel_from_approved&quot;, &quot;=&quot;, false]]}\"/>\n                        <button name=\"action_draft\" type=\"object\" string=\"Set to Draft\" modifiers=\"{&quot;invisible&quot;: [[&quot;can_set_to_draft&quot;, &quot;=&quot;, false]]}\"/>\n                        <button name=\"action_split_credit_note\" type=\"object\" string=\"Split Credit Note\"/>\n                        <button name=\"action_open_payment_request_print\" type=\"object\" string=\"Print Payment Request\"/>\n                        <field name=\"state\" widget=\"statusbar\" statusbar_visible=\"draft,sent,approved,partial_invoiced,billed\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                        <field name=\"can_cancel\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                <field name=\"is_com\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                <field name=\"can_send\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                <field name=\"can_approve\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                <field name=\"can_create_bill\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                <field name=\"can_cancel_from_draft\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                <field name=\"can_cancel_from_sent\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                <field name=\"can_cancel_from_approved\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                <field name=\"can_set_to_draft\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                        <field name=\"need_bill\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                    </header>\n                    <sheet>\n                        <div class=\"oe_button_box\" name=\"button_box\">\n                            <button class=\"oe_stat_button\" type=\"object\" name=\"action_open_bills\" icon=\"fa-pencil-square-o\">\n                                <field string=\"Bills\" name=\"bill_count\" widget=\"statinfo\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                            </button>\n                            <button class=\"oe_stat_button\" type=\"object\" name=\"action_open_payments\" icon=\"fa-credit-card\">\n                                <field string=\"Payments\" name=\"payment_count\" widget=\"statinfo\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                            </button>\n                            <button class=\"oe_stat_button\" type=\"object\" name=\"action_open_soa\" icon=\"fa-file-text-o\" modifiers=\"{&quot;invisible&quot;: [[&quot;soa_id&quot;, &quot;=&quot;, false]]}\">\n                                <field name=\"soa_id\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                                <span class=\"o_stat_text\">SOA</span>\n                            </button>\n                        </div>\n                        <widget name=\"web_ribbon\" title=\"Paid\" modifiers=\"{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;paid&quot;]]}\"/>\n                        <widget name=\"web_ribbon\" title=\"Partial\" modifiers=\"{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;partial&quot;]]}\"/>\n                        <field name=\"payment_state\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                        <div class=\"oe_title\">\n                            <h1>\n                                <span class=\"o_form_label\">CD No.</span>\n                                <field name=\"name\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                            </h1>\n                        </div>\n                        <group>\n                            <group string=\"Party Information\">\n                                <label for=\"partner_id\"/>\n                                <div class=\"o_row\">\n                                    <field name=\"partner_id\" style=\"max-width: 35%\" options=\"{'no_create': True, 'no_create_edit': True}\" context=\"{'form_view_ref': 'sota_freight_advanced.view_partner_form_inherit'}\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                <field name=\"is_com\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: [[&quot;is_com&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}\"/>\n                                    <field name=\"partner_display\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                </div>\n                                <label for=\"shipper_id\" string=\"Shipper\"/>\n                                <div class=\"o_row\">\n                                    <field name=\"shipper_id\" style=\"max-width: 35%\" options=\"{'no_create': True, 'no_create_edit': True}\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    <field name=\"shipper_display\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                </div>\n                                <label for=\"consignee_id\" string=\"Consignee\"/>\n                                <div class=\"o_row\">\n                                    <field name=\"consignee_id\" style=\"max-width: 35%\" options=\"{'no_create': True, 'no_create_edit': True}\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    <field name=\"consignee_display\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                </div>\n                                <field name=\"pay_for\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"pic_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                <field name=\"pic_email\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                <field name=\"vendor_invoice_no\"/>\n                                <field name=\"mark_is_paid\" widget=\"boolean_toggle\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;not in&quot;, [&quot;partial&quot;]], [&quot;mark_is_paid&quot;, &quot;=&quot;, false]]}\"/>\n                            </group>\n                            <group string=\"Internal Information\">\n                                <field name=\"job_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                <field name=\"perf_date\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                <field name=\"master_id\" domain=\"[('job_id', '=', job_id)]\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                <field name=\"house_id\" domain=\"[('job_id', '=', job_id)]\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                <field name=\"reference\"/>\n                                <field name=\"company_id\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                            </group>\n                        </group>\n                        <group>\n                            <group string=\"Accounting Information\">\n                                <field name=\"date\" string=\"Billing Date\" modifiers=\"{&quot;required&quot;: true}\"/>\n                                <field name=\"due_date\"/>\n                                <field name=\"payment_request_method\"/>\n                                <field name=\"payment_request_remarks\" placeholder=\"Banking information, payment deadline...\"/>\n<!--                                <field name=\"manual_exchange_rate\"/>-->\n<!--                                <label for=\"exchange_rate\"/>-->\n<!--                                <div class=\"o_row\">-->\n<!--                                    <field name=\"exchange_rate\" readonly=\"0\"/>-->\n<!--                                    <span>VND/USD</span>-->\n<!--                                </div>-->\n<!--                                <field name=\"set_off_amount\"/>-->\n                            </group>\n                        </group>\n                        <notebook>\n                            <page string=\"Service\">\n                                <field name=\"line_ids\" mode=\"tree,kanban\" widget=\"section_and_note_one2many\" on_change=\"1\">\n                                    <tree editable=\"bottom\">\n                                        <control>\n                                            <create name=\"add_product_control\" string=\"Add a product\"/>\n                                            <create name=\"add_section_control\" string=\"Add a section\" context=\"{'default_display_type': 'line_section'}\"/>\n                                            <create name=\"add_note_control\" string=\"Add a note\" context=\"{'default_display_type': 'line_note'}\"/>\n                                        </control>\n                                        <field name=\"sequence\" widget=\"handle\" on_change=\"1\"/>\n                                        <field name=\"selected_for_split\"/>\n                                        <field name=\"vendor_invoice_no\"/>\n                                        <field name=\"transport_mode_id\" string=\"Service\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"product_id\" string=\"Fare\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"fare_type\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"product_name\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"tax_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"currency_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"exchange_rate\" on_change=\"1\"/>\n                                        <field name=\"fcl_unit\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"qty\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"rate\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"amt\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"local_amount\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"vat_foreign\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"vat\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        <field name=\"remark\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n<!--                                        <field name=\"evidence\" readonly=\"1\"/>-->\n<!--                                        <field name=\"tax_no\" readonly=\"1\"/>-->\n<!--                                        <field name=\"tax_date\" readonly=\"1\"/>-->\n<!--                                        <field name=\"slip_no\" readonly=\"1\"/>-->\n<!--                                        <field name=\"department\" readonly=\"1\"/>-->\n<!--                                        <field name=\"office\" readonly=\"1\"/>-->\n                                    </tree>\n                                </field>\n                                <group name=\"note_group\" class=\"mt-2 mt-md-0\">\n                                    <group>\n                                        <field colspan=\"2\" name=\"remark\" placeholder=\"Remark\"/>\n                                    </group>\n                                    <group class=\"oe_subtotal_footer\" name=\"sale_total\">\n                                        <group string=\"Total\">\n                                            <field name=\"amount_untaxed\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                            <field name=\"amount_taxed\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                            <field name=\"amount_total\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        </group>\n                                        <group string=\"Payment Status\">\n                                            <field name=\"paid_amount\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                            <field name=\"amount_residual\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                        </group>\n                                    </group>\n                                    <div class=\"clearfix\"/>\n                                </group>\n                            </page>\n                        </notebook>\n                    </sheet>\n                    <div class=\"oe_chatter\">\n                        <field name=\"message_follower_ids\"/>\n                        <field name=\"activity_ids\"/>\n                        <field name=\"message_ids\"/>\n                    </div>\n                </form>",
+      "id": 2038,
+      "model": "freight.credit.note"
+    },
+    "search": {
+      "arch": "<search>\n                <field name=\"name\" string=\"CD No.\"/>\n                <field name=\"partner_id\" string=\"Vendor\"/>\n                <field name=\"job_id\" string=\"Job\"/>\n                <field name=\"remark\" string=\"Remark\" filter_domain=\"['|', ('remark', 'like', self), ('line_ids.remark', 'like', self)]\"/>\n                <field name=\"perf_date\" string=\"Performance Date\"/>\n                <filter name=\"filter_perf_date\" string=\"Performance Date\" date=\"perf_date\"/>\n  <filter string=\"Vendor COM\" name=\"filter_vendor_com\" domain=\"[('line_ids.product_id.is_com_fee','=',True)]\"/>\n  <filter string=\"Customer COM\" name=\"filter_customer_com\" domain=\"[('line_ids.product_id.is_com_customer_fee','=',True)]\"/>\n                <separator/>\n                <filter name=\"vendor_vn\" string=\"Vendor VN\" domain=\"[('partner_id.country_id.code', '=', 'VN')]\"/>\n                <filter name=\"vendor_foreign\" string=\"Vendor Foreign\" domain=\"[('partner_id.country_id.code', '!=', 'VN'), ('partner_id.country_id', '!=', False)]\"/>\n                <separator/>\n                <filter name=\"not_paid\" string=\"Not Paid\" domain=\"[('payment_state', '=', 'not_paid')]\"/>\n                <filter name=\"partial_paid\" string=\"Partially Paid\" domain=\"[('payment_state', '=', 'partial')]\"/>\n                <filter name=\"paid\" string=\"Paid\" domain=\"[('payment_state', '=', 'paid')]\"/>\n                <group expand=\"0\" string=\"Group By\">\n                    <filter name=\"group_by_partner\" string=\"Vendor\" context=\"{'group_by': 'partner_id'}\"/>\n                    <filter name=\"group_by_job\" string=\"Job\" context=\"{'group_by': 'job_id'}\"/>\n                    <filter name=\"group_by_house\" string=\"House B/L\" context=\"{'group_by': 'house_id'}\"/>\n                </group>\n            </search>",
+      "id": 2623,
+      "model": "freight.credit.note"
+    },
+    "kanban": {
+      "arch": "<kanban string=\"Freight Credit Note\"><templates><t t-name=\"kanban-box\"><div t-attf-class=\"oe_kanban_card oe_kanban_global_click\"><div class=\"o_kanban_card_content\"><field name=\"name\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/></div></div></t></templates></kanban>",
+      "id": false,
+      "model": "freight.credit.note"
+    },
+    "pivot": {
+      "arch": "<pivot string=\"Freight Credit Note\"/>",
+      "id": false,
+      "model": "freight.credit.note"
+    },
+    "graph": {
+      "arch": "<graph string=\"Freight Credit Note\"><field name=\"name\"/></graph>",
+      "id": false,
+      "model": "freight.credit.note"
+    }
+  }
+}

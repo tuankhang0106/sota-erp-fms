@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_company_user,res.company.user,model_res_company,base.group_user,1,1,1,0
+access_res_company_manager,res.company.manager,model_res_company,base.group_system,1,1,1,1
+access_res_users_user,res.users.user,model_res_users,base.group_user,1,1,1,0
+access_res_users_manager,res.users.manager,model_res_users,base.group_system,1,1,1,1
+access_login_detail_user,login.detail.user,model_login_detail,base.group_user,1,1,1,0
+access_login_detail_manager,login.detail.manager,model_login_detail,base.group_system,1,1,1,1
+access_res_config_settings_user,res.config.settings.user,model_res_config_settings,base.group_user,1,1,1,0
+access_res_config_settings_manager,res.config.settings.manager,model_res_config_settings,base.group_system,1,1,1,1
+access_res_users_role_user,res.users.role.user,model_res_users_role,base.group_user,1,1,1,0
+access_res_users_role_manager,res.users.role.manager,model_res_users_role,base.group_system,1,1,1,1
+access_freight_ocr_log_user,freight.ocr.log.user,model_freight_ocr_log,base.group_user,1,1,1,0
+access_freight_ocr_log_manager,freight.ocr.log.manager,model_freight_ocr_log,base.group_system,1,1,1,1

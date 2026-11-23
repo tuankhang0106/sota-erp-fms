@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_advance_reconcile_batch_user,employee.advance.reconcile.batch.user,model_employee_advance_reconcile_batch,base.group_user,1,1,1,0
+access_employee_advance_reconcile_batch_manager,employee.advance.reconcile.batch.manager,model_employee_advance_reconcile_batch,base.group_system,1,1,1,1
+access_employee_advance_user,employee.advance.user,model_employee_advance,base.group_user,1,1,1,0
+access_employee_advance_manager,employee.advance.manager,model_employee_advance,base.group_system,1,1,1,1
+access_employee_advance_reconcile_user,employee.advance.reconcile.user,model_employee_advance_reconcile,base.group_user,1,1,1,0
+access_employee_advance_reconcile_manager,employee.advance.reconcile.manager,model_employee_advance_reconcile,base.group_system,1,1,1,1
+access_res_config_settings_user,res.config.settings.user,model_res_config_settings,base.group_user,1,1,1,0
+access_res_config_settings_manager,res.config.settings.manager,model_res_config_settings,base.group_system,1,1,1,1

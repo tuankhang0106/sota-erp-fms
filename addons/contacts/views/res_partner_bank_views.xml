@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_bank_tree" model="ir.ui.view">
+        <field name="name">res.partner.bank.tree</field>
+        <field name="model">res.partner.bank</field>
+        <field name="arch" type="xml">
+            <tree string="Bank Accounts">
+                    <field name="sequence" widget="handle"/>
+                    <field name="acc_number" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="bank_name"/>
+                    <field name="company_id" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="partner_id" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="acc_holder_name" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <field name="allow_out_payment" widget="boolean_toggle"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_res_partner_bank_form" model="ir.ui.view">
+        <field name="name">res.partner.bank.form</field>
+        <field name="model">res.partner.bank</field>
+        <field name="arch" type="xml">
+            <form string="Bank account" name="bank_account_form">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}"/>
+                    <group>
+                        <group>
+                            <field name="sequence" modifiers="{&quot;invisible&quot;: true}"/>
+                            <field name="acc_type" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="acc_number" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="company_id" options="{'no_create': True}" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="partner_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            <field name="acc_holder_name"/>
+                        </group>
+                        <group>
+                            <field name="bank_id" can_create="true" can_write="true"/>
+                            <field name="currency_id" options="{'no_create': True}" can_create="true" can_write="true"/>
+                            <field name="allow_out_payment" widget="boolean_toggle"/>
+                            <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                        </group>
+                    </group>
+                </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                    </div>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_res_partner_bank_search" model="ir.ui.view">
+        <field name="name">res.partner.bank.search</field>
+        <field name="model">res.partner.bank</field>
+        <field name="arch" type="xml">
+            <search string="Bank Accounts">
+                    <field name="bank_name" filter_domain="['|', ('bank_name','ilike',self), ('acc_number','ilike',self)]" string="Bank Name"/>
+                    <field name="company_id" modifiers="{&quot;invisible&quot;: true}"/>
+                    <field name="partner_id"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="action_res_partner_bank" model="ir.actions.act_window">
+        <field name="name">RES PARTNER BANK</field>
+        <field name="res_model">res.partner.bank</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

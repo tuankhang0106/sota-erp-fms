@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mail_channel_user,mail.channel.user,model_mail_channel,base.group_user,1,1,1,0
+access_mail_channel_manager,mail.channel.manager,model_mail_channel,base.group_system,1,1,1,1
+access_mail_message_user,mail.message.user,model_mail_message,base.group_user,1,1,1,0
+access_mail_message_manager,mail.message.manager,model_mail_message,base.group_system,1,1,1,1
+access_mail_activity_user,mail.activity.user,model_mail_activity,base.group_user,1,1,1,1
+access_mail_activity_manager,mail.activity.manager,model_mail_activity,base.group_system,1,1,1,1
+access_mail_activity_type_user,mail.activity.type.user,model_mail_activity_type,base.group_user,1,0,0,0
+access_mail_activity_type_manager,mail.activity.type.manager,model_mail_activity_type,base.group_system,1,1,1,1
+access_mail_followers_user,mail.followers.user,model_mail_followers,base.group_user,1,1,1,1

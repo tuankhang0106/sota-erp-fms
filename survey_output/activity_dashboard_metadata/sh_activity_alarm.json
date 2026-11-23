@@ -1,0 +1,104 @@
+{
+  "fields": {
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "email",
+          "Email"
+        ],
+        [
+          "popup",
+          "Popup"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "sh_remind_before": {
+      "readonly": false,
+      "required": false,
+      "string": "Reminder Before",
+      "type": "integer"
+    },
+    "sh_reminder_unit": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "Hour(s)",
+          "Hour(s)"
+        ],
+        [
+          "Minute(s)",
+          "Minute(s)"
+        ],
+        [
+          "Second(s)",
+          "Second(s)"
+        ]
+      ],
+      "string": "Reminder Unit",
+      "type": "selection"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  },
+  "views": null
+}

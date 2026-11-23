@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mail_blacklist_tree" model="ir.ui.view">
+        <field name="name">mail.blacklist.tree</field>
+        <field name="model">mail.blacklist</field>
+        <field name="arch" type="xml">
+            <tree string="Email Blacklist">
+                <field name="create_date" string="Blacklist Date" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="email" modifiers="{&quot;required&quot;: true}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_mail_blacklist_form" model="ir.ui.view">
+        <field name="name">mail.blacklist.form</field>
+        <field name="model">mail.blacklist</field>
+        <field name="arch" type="xml">
+            <form string="Add Email Blacklist" duplicate="false">
+                <header>
+                    <button name="mail_action_blacklist_remove" string="Unblacklist" type="object" class="oe_highlight" context="{'default_email': email}" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;active&quot;, &quot;=&quot;, false], [&quot;email&quot;, &quot;=&quot;, false]]}"/>
+                    <button name="action_add" string="Blacklist" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;active&quot;, &quot;=&quot;, true], [&quot;email&quot;, &quot;=&quot;, false]]}"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}"/>
+                    <group>
+                        <group>
+                            <field name="email" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="active" modifiers="{&quot;readonly&quot;: true}"/>
+                            <br/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mail_blacklist_search" model="ir.ui.view">
+        <field name="name">mail.blacklist.search</field>
+        <field name="model">mail.blacklist</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="email"/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mail_blacklist" model="ir.actions.act_window">
+        <field name="name">MAIL BLACKLIST</field>
+        <field name="res_model">mail.blacklist</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

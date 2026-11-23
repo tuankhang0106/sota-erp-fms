@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_country_group_tree" model="ir.ui.view">
+        <field name="name">res.country.group.tree</field>
+        <field name="model">res.country.group</field>
+        <field name="arch" type="xml">
+            <tree string="Country Group">
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_res_country_group_form" model="ir.ui.view">
+        <field name="name">res.country.group.form</field>
+        <field name="model">res.country.group</field>
+        <field name="arch" type="xml">
+            <form string="Country Group">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" string="Group Name"/>
+                            <h1><field name="name" placeholder="e.g. Europe" modifiers="{&quot;required&quot;: true}"/></h1>
+                        </div>
+                        <group name="country_group">
+                            <field name="country_ids" widget="many2many_tags" options="{'no_open': True, 'no_create': True}" can_create="true" can_write="true"/>
+                        </group>
+                <field name="pricelist_ids" can_create="true" can_write="true"><tree string="Products Price List" sample="1">
+                <field name="sequence" widget="handle"/>
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                <field name="discount_policy" modifiers="{&quot;required&quot;: true}"/>
+                <field name="currency_id" modifiers="{&quot;required&quot;: true}"/>
+                <field name="company_id"/>
+            </tree></field>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_res_country_group_search" model="ir.ui.view">
+        <field name="name">res.country.group.search</field>
+        <field name="model">res.country.group</field>
+        <field name="arch" type="xml">
+            <search string="Country Group"><field name="name"/></search>
+        </field>
+    </record>
+
+    <record id="action_res_country_group" model="ir.actions.act_window">
+        <field name="name">RES COUNTRY GROUP</field>
+        <field name="res_model">res.country.group</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

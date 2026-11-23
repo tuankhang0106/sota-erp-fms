@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action: All Activities (Action 251) -->
+    <record id="action_all_activities" model="ir.actions.act_window">
+        <field name="name">Tất cả hoạt động</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">tree,form,calendar,pivot,graph</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Action: Supervisor Activities (Action 254) -->
+    <record id="action_supervisor_activities" model="ir.actions.act_window">
+        <field name="name">Hoạt động cấp quản lý</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">tree,form,calendar,pivot,graph</field>
+        <field name="context">{'search_default_supervisor': 1}</field>
+    </record>
+
+    <!-- Action: My Activities (Action 253) -->
+    <record id="action_my_activities" model="ir.actions.act_window">
+        <field name="name">Hoạt động của tôi</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">tree,form,calendar,pivot,graph</field>
+        <field name="domain">[('user_id', '=', uid)]</field>
+    </record>
+
+    <!-- Action: Reporting (Action 252) -->
+    <record id="action_activity_reporting" model="ir.actions.act_window">
+        <field name="name">Báo cáo hoạt động</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">pivot,graph,tree</field>
+    </record>
+</odoo>

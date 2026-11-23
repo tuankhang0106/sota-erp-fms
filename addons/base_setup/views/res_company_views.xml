@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_company_tree" model="ir.ui.view">
+        <field name="name">res.company.tree</field>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <tree string="Companies">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="partner_id" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_res_company_form" model="ir.ui.view">
+        <field name="name">res.company.form</field>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <form string="Company">
+                  <sheet>
+                    <field name="logo" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. My Company" widget="field_partner_autocomplete" modifiers="{&quot;required&quot;: true}"/>
+                        </h1>
+                    </div>
+                    <notebook colspan="4">
+                        <page string="General Information" name="general_info">
+                            <group>
+                                <group>
+                                    <label for="street" string="Address"/>
+                                    <div class="o_address_format">
+                    <field name="parent_id" modifiers="{&quot;invisible&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="street" placeholder="Street..." class="o_address_street" modifiers="{&quot;readonly&quot;: [[&quot;parent_id&quot;, &quot;!=&quot;, false]]}"/>
+                    <field name="country_id" placeholder="Country" style="width: 19%" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;parent_id&quot;, &quot;!=&quot;, false]]}" can_create="true" can_write="true"/>
+                    <field name="state_id" style="width: 27%" placeholder="Province/City" options="{&quot;no_open&quot;: True}" domain="[('country_id', '=', country_id)]" context="{'country_id': country_id, 'zip': zip}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;parent_id&quot;, &quot;!=&quot;, false]]}" can_create="true" can_write="true"/>
+                    <field name="wards_id" placeholder="Wards" style="width: 27%" domain="[('state_id', '=', state_id)]" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;parent_id&quot;, &quot;!=&quot;, false]]}" can_create="true" can_write="true"/>
+                    <field name="city" modifiers="{&quot;invisible&quot;: true}"/>
+                    <field name="zip" modifiers="{&quot;invisible&quot;: true}"/>
+                    <field name="street2" modifiers="{&quot;invisible&quot;: true}"/>
+                </div>
+            <field name="vat" widget="field_partner_autocomplete"/>
+                                    <field name="company_registry"/>
+                <field name="partner_gid" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="iap_enrich_auto_done" modifiers="{&quot;invisible&quot;: true}"/>
+                                    <field name="currency_id" options="{'no_create': True, 'no_open': True}" id="company_currency" context="{'active_test': False}" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                </group>
+                                <group>
+                                    <field name="phone" class="o_force_ltr"/>
+                                    <field name="mobile" class="o_force_ltr"/>
+                                    <field name="email"/>
+                                    <field name="website" string="Website" widget="url" placeholder="e.g. https://www.odoo.com"/>
+                <field name="web_title"/>
+                                    <field name="parent_id" can_create="true" can_write="true"/>
+                                    <field name="sequence" modifiers="{&quot;invisible&quot;: true}"/>
+                <field name="image_doc" class="float-start oe_avatar" widget="image" string="Print Logo Quotation" options="{'preview_image': 'image_doc'}"/>
+                <field name="image_stamp" widget="image" string="Signature / Company Stamp" class="oe_avatar" options="{'preview_image': 'image_stamp', 'size': [128, 128]}"/>
+                <field name="image_header" widget="image" string="Report Header Image" class="oe_avatar" options="{'preview_image': 'image_header', 'size': [128, 128]}"/>
+                                </group>
+                                </group>
+                        </page>
+                    </notebook>
+                    </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_res_company_search" model="ir.ui.view">
+        <field name="name">res.company.search</field>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <search string="Companies"><field name="name"/></search>
+        </field>
+    </record>
+
+    <record id="action_res_company" model="ir.actions.act_window">
+        <field name="name">RES COMPANY</field>
+        <field name="res_model">res.company</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

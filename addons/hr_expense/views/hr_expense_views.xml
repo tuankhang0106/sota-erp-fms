@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_expense_tree" model="ir.ui.view">
+        <field name="name">hr.expense.tree</field>
+        <field name="model">hr.expense</field>
+        <field name="arch" type="xml">
+            <tree string="Expenses" multi_edit="1" sample="1" js_class="hr_expense_tree" decoration-info="state == 'draft'" default_order="create_date desc, id desc">
+                    <field name="company_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;refused&quot;]]], &quot;required&quot;: true, &quot;column_invisible&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="company_currency_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="attachment_number" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="date" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]]}"/>
+                    <field name="product_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]]}" can_create="true" can_write="true"/>
+                    <field name="name" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]], &quot;required&quot;: true}"/>
+                    <field name="employee_id" widget="many2one_avatar_employee" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;approved&quot;, &quot;done&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="sheet_id" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="payment_mode" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;, &quot;approved&quot;, &quot;reported&quot;]]]}"/>
+                    <field name="activity_ids" widget="list_activity" optional="show"/>
+                    <field name="accounting_date" optional="hide"/>
+                    <field name="reference" optional="hide"/>
+                    <field name="analytic_distribution" widget="analytic_distribution" optional="show" options="{'product_field': 'product_id', 'business_domain': 'expense'}"/>
+                    <field name="account_id" optional="hide" on_change="1" can_create="true" can_write="true"/>
+                    <field name="company_id" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="unit_amount" string="Unit Price" optional="hide" widget="monetary" options="{'currency_field': 'company_currency_id', 'field_digits': True}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]], &quot;required&quot;: true}"/>
+                    <field name="quantity" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]], &quot;required&quot;: true}"/>
+                    <field name="tax_ids" optional="hide" widget="many2many_tags" on_change="1" can_create="true" can_write="true"/>
+                    <field name="amount_tax_company" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="attachment_number" nolabel="1" class="fa fa-paperclip pe-0" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;attachment_number&quot;, &quot;=&quot;, 0]], &quot;readonly&quot;: true}"/>
+                    <field name="total_amount_company" optional="show" sum="Total Company Currency" widget="monetary" options="{'currency_field': 'company_currency_id'}" decoration-bf="True" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="total_amount" optional="hide" decoration-bf="True" on_change="1"/>
+                    <field name="currency_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;reported&quot;, &quot;approved&quot;, &quot;done&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="state" optional="show" decoration-info="state == 'draft'" decoration-success="state in ['reported', 'approved', 'done']" decoration-danger="state in 'refused'" widget="badge" modifiers="{&quot;readonly&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_expense_form" model="ir.ui.view">
+        <field name="name">hr.expense.form</field>
+        <field name="model">hr.expense</field>
+        <field name="arch" type="xml">
+            <form string="Expenses" class="o_expense_form" js_class="hr_expense_form_view">
+                <header>
+                  <button name="action_submit_expenses" string="Create Report" type="object" class="oe_highlight o_expense_submit" data-hotkey="v" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;attachment_number&quot;, &quot;&lt;=&quot;, 0], [&quot;sheet_id&quot;, &quot;!=&quot;, false]]}"/>
+                  <widget name="attach_document" string="Attach Receipt" action="attach_document" modifiers="{&quot;invisible&quot;: [[&quot;attachment_number&quot;, &quot;&lt;&quot;, 1]]}"/>
+                  <widget name="attach_document" string="Attach Receipt" action="attach_document" highlight="1" modifiers="{&quot;invisible&quot;: [[&quot;attachment_number&quot;, &quot;&gt;=&quot;, 1]]}"/>
+                  <button name="action_submit_expenses" string="Create Report" type="object" class="o_expense_submit" data-hotkey="v" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;attachment_number&quot;, &quot;&gt;=&quot;, 1], [&quot;sheet_id&quot;, &quot;!=&quot;, false]]}"/>
+                  <field name="state" widget="statusbar" statusbar_visible="draft,reported,approved,done,refused" modifiers="{&quot;readonly&quot;: true}"/>
+                  <button name="action_view_sheet" type="object" string="View Report" class="oe_highlight" data-hotkey="w" modifiers="{&quot;invisible&quot;: [[&quot;sheet_id&quot;, &quot;=&quot;, false]]}"/>
+                  <button name="action_split_wizard" string="Split Expense" type="object" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;sheet_id&quot;, &quot;!=&quot;, false], [&quot;product_has_cost&quot;, &quot;=&quot;, true]]}"/>
+                <button name="add_to_job" string="Add To Job Bill" type="object" modifiers="{&quot;invisible&quot;: [[&quot;can_add_to_job&quot;, &quot;=&quot;, false]]}"/>
+                <field name="can_add_to_job" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                </header>
+                <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button class="oe_stat_button" type="object" name="action_open_job" icon="fa-ship" modifiers="{&quot;invisible&quot;: [[&quot;job_id&quot;, &quot;=&quot;, false]]}">
+                        <div class="o_stat_info">
+                            <span class="o_stat_text">Open Job</span>
+                        </div>
+                    </button>
+                </div>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Lunch with Customer" modifiers="{&quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="product_has_cost" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="product_has_tax" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="same_currency" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="is_editable" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="is_ref_editable" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="currency_id" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;reported&quot;, &quot;approved&quot;, &quot;done&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            <field name="company_id" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;refused&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            <field name="company_currency_id" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="amount_tax_company" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="unit_amount" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]], &quot;required&quot;: true}"/>
+                            <field name="attachment_number" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="total_amount_company" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="duplicate_expense_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="sheet_is_editable" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="currency_rate" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+<field name="to_invoice" on_change="1" modifiers="{&quot;readonly&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;in&quot;, [&quot;approved&quot;, &quot;done&quot;, &quot;refused&quot;]], [&quot;payment_mode&quot;, &quot;=&quot;, &quot;3th&quot;]]}"/>
+
+                <field name="vendor_id" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;approved&quot;, &quot;done&quot;, &quot;refused&quot;, &quot;reported&quot;]]], &quot;required&quot;: [[&quot;pay_for&quot;, &quot;=&quot;, false], [&quot;to_invoice&quot;, &quot;=&quot;, true]]}" can_create="true" can_write="true"/>
+                            <label for="product_id"/>
+                            <div>
+                                <field name="product_id" context="{'default_detailed_type': 'service', 'default_can_be_expensed': 1, 'tree_view_ref': 'hr_expense.product_product_expense_tree_view', 'form_view_ref': 'hr_expense.product_product_expense_form_view'}" class="w-100" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                <div class="fst-italic" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;product_description&quot;, &quot;=&quot;, false], [&quot;product_id&quot;, &quot;=&quot;, false]]}">
+                                    <field name="product_description" modifiers="{&quot;readonly&quot;: true}"/>
+                                </div>
+                            </div>
+                            <field name="unit_amount" force_save="1" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;product_has_cost&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: [&quot;|&quot;, [&quot;sheet_is_editable&quot;, &quot;=&quot;, false], [&quot;product_has_cost&quot;, &quot;=&quot;, true]], &quot;required&quot;: true}"/>
+                            <field name="product_uom_category_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <label for="quantity" modifiers="{&quot;invisible&quot;: [[&quot;product_has_cost&quot;, &quot;=&quot;, false]]}"/>
+                            <div modifiers="{&quot;invisible&quot;: [[&quot;product_has_cost&quot;, &quot;=&quot;, false]]}">
+                                <div class="o_row">
+                                    <field name="quantity" class="oe_inline" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}"/>
+                                    <field name="product_uom_id" force_save="1" options="{'no_open': True, 'no_create': True}" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                                </div>
+                            </div>
+
+                            <label for="total_amount" string="Total" modifiers="{&quot;invisible&quot;: [[&quot;product_has_cost&quot;, &quot;=&quot;, true]]}"/>
+                            <div class="o_row" modifiers="{&quot;invisible&quot;: [[&quot;product_has_cost&quot;, &quot;=&quot;, true]]}">
+                                <field name="total_amount" widget="monetary" options="{'currency_field': 'currency_id'}" class="oe_inline" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false]]}"/>
+                                <field name="currency_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;reported&quot;, &quot;approved&quot;, &quot;done&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            </div>
+                            <label for="total_amount_company" modifiers="{&quot;invisible&quot;: [[&quot;same_currency&quot;, &quot;=&quot;, true], [&quot;product_has_cost&quot;, &quot;=&quot;, false]]}"/>
+                            <div class="o_row" modifiers="{&quot;invisible&quot;: [[&quot;same_currency&quot;, &quot;=&quot;, true], [&quot;product_has_cost&quot;, &quot;=&quot;, false]]}">
+                                <field name="total_amount_company" widget="monetary" options="{'currency_field': 'company_currency_id'}" class="oe_inline" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="label_convert_rate" class="ps-0" modifiers="{&quot;readonly&quot;: true}"/>
+                            </div>
+                            <label for="tax_ids"/>
+                            <div class="d-flex o_row">
+                                <div class="p-2">
+                                    <field name="tax_ids" force_save="1" widget="many2many_tags" context="{'default_company_id': company_id, 'default_type_tax_use': 'purchase', 'default_price_include': 1}" options="{}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;is_editable&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                                </div>
+                                <div class="d-flex pt-2">
+                                    <span class="oe_inline o_form_label ms-1 me-1"> ( </span>
+                                    <field name="amount_tax" class="ps-0" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <span class="oe_inline o_form_label ms-1 me-3"> ) </span>
+                                </div>
+                            </div>
+                <label for="untaxed_amount_company"/>
+                <div class="d-flex o_row">
+                    <field name="untaxed_amount_company" widget="monetary" options="{'currency_field': 'company_currency_id'}" nolabel="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <div class="d-flex pt-2" modifiers="{&quot;invisible&quot;: [[&quot;same_currency&quot;, &quot;=&quot;, true]]}">
+                        <span class="oe_inline o_form_label ms-1 me-1"> ( </span>
+                        <field name="untaxed_amount" widget="monetary" options="{'currency_field': 'currency_id'}" nolabel="1" modifiers="{&quot;readonly&quot;: true}"/>
+                        <span class="oe_inline o_form_label ms-1 me-3"> ) </span>
+                    </div>
+                </div>
+                            <label for="employee_id"/>
+                <div>
+                    <field name="employee_id" options="{'relation': 'hr.employee'}" context="{'default_company_id': company_id}" widget="many2one_avatar_employee" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;approved&quot;, &quot;done&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                </div>
+            <label id="lo" for="payment_mode" modifiers="{&quot;invisible&quot;: [[&quot;product_has_cost&quot;, &quot;=&quot;, true]]}"/>
+                            <div id="payment_mode" modifiers="{&quot;invisible&quot;: [[&quot;product_has_cost&quot;, &quot;=&quot;, true]]}">
+                                <field name="payment_mode" widget="radio" options="{'allowed_selection': ['own_account', 'company_account', '3th']}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;, &quot;approved&quot;, &quot;reported&quot;]]]}"/>
+                <field name="allowed_payment_mode" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            </div>
+                <field name="charge_purpose" widget="radio" options="{'horizontal': True}" force_save="1" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;reported&quot;]]], &quot;required&quot;: true}"/>
+                <field name="party_id" modifiers="{&quot;invisible&quot;: [[&quot;payment_mode&quot;, &quot;!=&quot;, &quot;3th&quot;]]}" can_create="true" can_write="true"/>
+                <field name="pay_for" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;charge_purpose&quot;, &quot;!=&quot;, &quot;pay_on_behalf&quot;]], &quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false]], &quot;required&quot;: [[&quot;charge_purpose&quot;, &quot;=&quot;, &quot;pay_on_behalf&quot;]]}" can_create="true" can_write="true"/>
+                <field name="job_id" force_save="1" options="{'no_create': True, 'no_create_edit': True}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false], [&quot;job_id&quot;, &quot;!=&quot;, false]]}" can_create="true" can_write="true"/>
+                <field name="service_job" force_save="1" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false], [&quot;job_id&quot;, &quot;!=&quot;, false]], &quot;required&quot;: [[&quot;job_id&quot;, &quot;!=&quot;, false]]}"/>
+                <field name="house_id" force_save="1" options="{'no_create': True, 'no_create_edit': True}" on_change="1" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;|&quot;, [&quot;service_job&quot;, &quot;not in&quot;, [&quot;sea&quot;, &quot;air&quot;]], [&quot;job_id&quot;, &quot;=&quot;, false], [&quot;master_id&quot;, &quot;!=&quot;, false]], &quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false], [&quot;job_id&quot;, &quot;!=&quot;, false]], &quot;required&quot;: [[&quot;job_id&quot;, &quot;!=&quot;, false], [&quot;master_id&quot;, &quot;=&quot;, false], [&quot;service_job&quot;, &quot;in&quot;, [&quot;sea&quot;, &quot;air&quot;]]]}" can_create="true" can_write="true"/>
+                <field name="master_id" force_save="1" options="{'no_create': True, 'no_create_edit': True}" on_change="1" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;|&quot;, [&quot;service_job&quot;, &quot;not in&quot;, [&quot;sea&quot;, &quot;air&quot;]], [&quot;job_id&quot;, &quot;=&quot;, false], [&quot;house_id&quot;, &quot;!=&quot;, false]], &quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false], [&quot;job_id&quot;, &quot;!=&quot;, false]], &quot;required&quot;: [[&quot;job_id&quot;, &quot;!=&quot;, false], [&quot;house_id&quot;, &quot;=&quot;, false], [&quot;service_job&quot;, &quot;in&quot;, [&quot;sea&quot;, &quot;air&quot;]]]}" can_create="true" can_write="true"/>
+                <field name="customs_id" string="Customs" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;service_job&quot;, &quot;!=&quot;, &quot;customs&quot;]]}" can_create="true" can_write="true"/>
+                <field name="trucking_id" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;service_job&quot;, &quot;!=&quot;, &quot;truck&quot;]]}" can_create="true" can_write="true"/>
+                <field name="plate_number" modifiers="{&quot;invisible&quot;: [[&quot;service_job&quot;, &quot;!=&quot;, &quot;truck&quot;]], &quot;readonly&quot;: true}"/>
+                <field name="cds_number" string="CDs Number" modifiers="{&quot;invisible&quot;: [[&quot;service_job&quot;, &quot;not in&quot;, [&quot;customs&quot;, &quot;truck&quot;]]], &quot;readonly&quot;: true}"/>
+                <field name="customer_id" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="user_id" modifiers="{&quot;readonly&quot;: true}"/>
+                        </group><group>
+                            <field name="reference" modifiers="{&quot;invisible&quot;: [[&quot;product_has_cost&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: [[&quot;is_ref_editable&quot;, &quot;=&quot;, false]]}"/>
+                <field name="accounting_date" modifiers="{&quot;invisible&quot;: [[&quot;to_invoice&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false]], &quot;required&quot;: [[&quot;to_invoice&quot;, &quot;=&quot;, true]]}"/>
+                <field name="acc_date" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}"/>
+                <field name="vat_date" modifiers="{&quot;invisible&quot;: [[&quot;to_invoice&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false]], &quot;required&quot;: [[&quot;to_invoice&quot;, &quot;=&quot;, true]]}"/>
+                            <field name="date" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;sheet_is_editable&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}"/>
+                            <field name="accounting_date" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: [[&quot;to_invoice&quot;, &quot;=&quot;, true]]}"/>
+                            <field name="account_id" options="{'no_create': True}" domain="[('account_type', 'not in',&amp;#10;                    ('liability_payable','asset_cash','liability_credit_card')), ('deprecated', '=', False),&amp;#10;                    ('company_id', '=', company_id)]&amp;#10;                " context="{'default_company_id': company_id}" on_change="1" modifiers="{&quot;readonly&quot;: [&quot;|&quot;, [&quot;is_editable&quot;, &quot;=&quot;, false], [&quot;sheet_is_editable&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                            <field name="sheet_id" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="analytic_distribution" widget="analytic_distribution" options="{'product_field': 'product_id', 'account_field': 'account_id', 'business_domain': 'expense'}" modifiers="{&quot;readonly&quot;: [[&quot;is_editable&quot;, &quot;=&quot;, false]]}"/>
+                            <field name="company_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;refused&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="benefit_inf"/>
+                        </group>
+                    </group>
+                    <div>
+                        <field name="description" placeholder="Notes..." modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;reported&quot;, &quot;refused&quot;]]]}"/>
+                    </div>
+                </sheet>
+                <div class="o_attachment_preview"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_hr_expense_search" model="ir.ui.view">
+        <field name="name">hr.expense.search</field>
+        <field name="model">hr.expense</field>
+        <field name="arch" type="xml">
+            <search string="Expense">
+                    <field string="Expense" name="name" filter_domain="['|', '|', ('employee_id', 'ilike', self), ('name', 'ilike', self), ('product_id', 'ilike', self)]"/>
+                    <field name="date"/>
+                    <field name="employee_id"/>
+                    <filter string="My Expenses" name="my_expenses" domain="[('employee_id.user_id', '=', uid)]"/>
+                    <filter string="My Team" name="my_team_expenses" domain="[('employee_id.parent_id.user_id', '=', uid)]" help="Expenses of Your Team Member"/>
+                    <separator/>
+                    <filter string="To Report" name="no_report" domain="[('sheet_id', '=', False)]"/>
+                    <filter string="Refused" name="refused" domain="[('state', '=', 'refused')]" help="Refused Expenses"/>
+                    <separator/>
+                    <filter string="Expense Date" name="date" date="date"/>
+                    <separator/>
+                    <filter string="Former Employees" name="inactive" domain="[('employee_id.active', '=', False)]"/>
+                    <separator/>
+                    <filter string="Late Activities" name="activities_overdue" domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]" help="Show all records which has next action date is before today" modifiers="{&quot;invisible&quot;: true}"/>
+                    <filter string="Today Activities" name="activities_today" domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                    <filter string="Future Activities" name="activities_upcoming_all" domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Employee" name="employee" domain="[]" context="{'group_by': 'employee_id'}"/>
+                        <filter string="Category" name="product" domain="[]" context="{'group_by': 'product_id'}"/>
+                        <filter string="Status" name="status" domain="[]" context="{'group_by': 'state'}"/>
+                        <filter string="Expense Date" name="expensesmonth" domain="[]" context="{'group_by': 'date'}" help="Expense Date"/>
+                        <filter string="Company" name="company" domain="[]" context="{'group_by': 'company_id'}"/>
+                    </group>
+                </search>
+        </field>
+    </record>
+
+    <record id="action_hr_expense" model="ir.actions.act_window">
+        <field name="name">HR EXPENSE</field>
+        <field name="res_model">hr.expense</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

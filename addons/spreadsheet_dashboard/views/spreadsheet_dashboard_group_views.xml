@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_spreadsheet_dashboard_group_tree" model="ir.ui.view">
+        <field name="name">spreadsheet.dashboard.group.tree</field>
+        <field name="model">spreadsheet.dashboard.group</field>
+        <field name="arch" type="xml">
+            <tree string="Dashboards">
+                <field name="sequence" widget="handle"/>
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_spreadsheet_dashboard_group_form" model="ir.ui.view">
+        <field name="name">spreadsheet.dashboard.group.form</field>
+        <field name="model">spreadsheet.dashboard.group</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Spreadsheets" name="spreadsheets">
+                            <field name="dashboard_ids" context="{'tree_view_ref': 'spreadsheet_dashboard.spreadsheet_dashboard_view_list'}"><tree create="false" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                <field name="group_ids" widget="many2many_tags" can_create="true" can_write="true"/>
+                <field name="dashboard_group_id" optional="hidden" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+            </tree></field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_spreadsheet_dashboard_group_search" model="ir.ui.view">
+        <field name="name">spreadsheet.dashboard.group.search</field>
+        <field name="model">spreadsheet.dashboard.group</field>
+        <field name="arch" type="xml">
+            <search string="Group of dashboards"><field name="name"/></search>
+        </field>
+    </record>
+
+    <record id="action_spreadsheet_dashboard_group" model="ir.actions.act_window">
+        <field name="name">SPREADSHEET DASHBOARD GROUP</field>
+        <field name="res_model">spreadsheet.dashboard.group</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

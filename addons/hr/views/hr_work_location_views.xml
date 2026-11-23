@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_work_location_tree" model="ir.ui.view">
+        <field name="name">hr.work.location.tree</field>
+        <field name="model">hr.work.location</field>
+        <field name="arch" type="xml">
+            <tree string="Work Location">
+                    <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="address_id" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="company_id" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="company_id" modifiers="{&quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_work_location_form" model="ir.ui.view">
+        <field name="name">hr.work.location.form</field>
+        <field name="model">hr.work.location</field>
+        <field name="arch" type="xml">
+            <form string="Work Location">
+                    <field name="company_id" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                                <field name="address_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                <field name="location_number"/>
+                            </group>
+                            <group>
+                                <field name="company_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_hr_work_location_search" model="ir.ui.view">
+        <field name="name">hr.work.location.search</field>
+        <field name="model">hr.work.location</field>
+        <field name="arch" type="xml">
+            <search string="Work Location"><field name="name"/></search>
+        </field>
+    </record>
+
+    <record id="action_hr_work_location" model="ir.actions.act_window">
+        <field name="name">HR WORK LOCATION</field>
+        <field name="res_model">hr.work.location</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

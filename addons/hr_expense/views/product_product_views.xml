@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_product_tree" model="ir.ui.view">
+        <field name="name">product.product.tree</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <tree string="Product Variants" multi_edit="1" duplicate="false" sample="1">
+                <header>
+                    <button string="Print Labels" type="object" name="action_open_label_layout"/>
+                </header>
+                    <field name="priority" widget="priority" nolabel="1" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="default_code" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="barcode" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="name" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="product_template_variant_value_ids" widget="many2many_tags" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="company_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="lst_price" optional="show" string="Sales Price" on_change="1"/>
+                    <field name="standard_price" optional="show" on_change="1"/>
+                    <field name="categ_id" optional="hide" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="product_tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_edit_color': 1}" optional="hide" on_change="1" can_create="true" can_write="true"/>
+                    <field name="type" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="uom_id" options="{'no_open': True, 'no_create': True}" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="product_tmpl_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_product_product_form" model="ir.ui.view">
+        <field name="name">product.product.form</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <form string="Product Variant" duplicate="false">
+                <header>
+                    <button string="Print Labels" type="object" name="action_open_label_layout" modifiers="{&quot;invisible&quot;: [[&quot;detailed_type&quot;, &quot;==&quot;, &quot;service&quot;]]}"/>
+                </header>
+                <sheet name="product_form">
+                    <field name="product_variant_count" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="is_product_variant" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="attribute_line_ids" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                    <field name="type" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                    <field name="company_id" on_change="1" modifiers="{&quot;invisible&quot;: true}" can_create="true" can_write="true"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="open_pricelist_rules" icon="fa-list-ul" type="object">
+                               <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="pricelist_item_count" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </span>
+                                    <span modifiers="{&quot;invisible&quot;: [[&quot;pricelist_item_count&quot;, &quot;=&quot;, 1]]}">
+                                        Extra Prices
+                                    </span>
+                                    <span modifiers="{&quot;invisible&quot;: [[&quot;pricelist_item_count&quot;, &quot;!=&quot;, 1]]}">
+                                        Extra Price
+                                    </span>
+                               </div>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}"/>
+                    <field name="id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                    <div class="oe_title">
+                        <label for="name" string="Product Name"/>
+                        <h1>
+                            <div class="d-flex">
+                                <field name="priority" widget="priority" class="me-3" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field class="text-break" name="name" placeholder="e.g. Cheese Burger" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="product_tmpl_id" class="oe_inline" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true, &quot;required&quot;: [[&quot;id&quot;, &quot;!=&quot;, false]]}" can_create="true" can_write="true"/>
+                            </div>
+                        </h1>
+                    <field name="product_template_variant_value_ids" widget="many2many_tags" modifiers="{&quot;readonly&quot;: true}"/>
+                    </div>
+                    <div name="options">
+                        <span class="d-inline-block">
+                            <field name="sale_ok" on_change="1"/>
+                            <label for="sale_ok"/>
+                        </span>
+                        <span class="d-inline-block">
+                            <field name="purchase_ok" on_change="1"/>
+                            <label for="purchase_ok"/>
+                        </span>
+                    <span class="d-inline-block">
+                        <field name="can_be_expensed" on_change="1"/>
+                        <label for="can_be_expensed"/>
+                    </span>
+                    </div>
+                    <notebook>
+                        <page string="General Information" name="general_information">
+                            <group>
+                                <group name="group_general">
+                                    <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                                    <field name="detailed_type" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                                    <field name="product_tooltip" string="" class="fst-italic text-muted" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="uom_id" options="{'no_create': True}" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                    <field name="uom_po_id" options="{'no_create': True}" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                </group>
+                                <group name="group_standard_price">
+                                    <label for="lst_price"/>
+                <div name="pricing">
+                                      <field name="list_price" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;product_variant_count&quot;, &quot;&gt;&quot;, 1]]}"/>
+                   <field name="lst_price" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}" on_change="1"/>
+                    <span class="ms-2"/><field name="tax_string" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                    <field name="taxes_id" widget="many2many_tags" context="{'default_type_tax_use':'sale', 'search_default_sale': 1, 'search_default_service': type == 'service', 'search_default_goods': type == 'consu'}" on_change="1" can_create="true" can_write="true"/>
+                                    <label for="standard_price" modifiers="{&quot;invisible&quot;: [[&quot;product_variant_count&quot;, &quot;&gt;&quot;, 1], [&quot;is_product_variant&quot;, &quot;=&quot;, false]]}"/>
+                                    <div name="standard_price_uom" modifiers="{&quot;invisible&quot;: [[&quot;product_variant_count&quot;, &quot;&gt;&quot;, 1], [&quot;is_product_variant&quot;, &quot;=&quot;, false]]}">
+                                        <field name="standard_price" class="oe_inline" widget="monetary" options="{'currency_field': 'cost_currency_id', 'field_digits': True}" on_change="1"/>
+                                        <span>per
+                                            <field name="uom_name" class="oe_inline" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        </span>
+                                    </div>
+                    <field name="default_code"/>
+                    <field name="barcode"/>
+                                    <field name="categ_id" string="Product Category" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                    <field name="product_tag_ids" widget="many2many_tags" options="{'no_open': True, 'color_field': 'color'}" on_change="1" can_create="true" can_write="true"/>
+                    <field name="additional_product_tag_ids" widget="many2many_tags" options="{'no_open': True, 'color_field': 'color'}" can_create="true" can_write="true"/>
+                                    <field name="company_id" options="{'no_create': True}" on_change="1" can_create="true" can_write="true"/>
+                                    <field name="currency_id" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                    <field name="cost_currency_id" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                    <field name="product_variant_id" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                </group>
+                            </group>
+                            <group string="Internal Notes">
+                                <field colspan="2" name="description" nolabel="1" placeholder="This note is only for internal purposes." on_change="1"/>
+                            </group>
+                        </page>
+                        <page string="Sales" name="sales" modifiers="{&quot;invisible&quot;: true}">
+                            <group name="sale">
+                                <group string="Upsell &amp; Cross-Sell" name="upsell" modifiers="{&quot;invisible&quot;: true}"/>
+                            </group>
+                            <group>
+                                <group string="Sales Description" name="description">
+                                    <field colspan="2" name="description_sale" nolabel="1" placeholder="This note is added to sales orders and invoices." on_change="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Purchase" name="purchase" modifiers="{&quot;invisible&quot;: [[&quot;purchase_ok&quot;, &quot;=&quot;, false]]}">
+                            <group name="purchase">
+                                <group string="Vendor Bills" name="bill">
+                    <field name="supplier_taxes_id" widget="many2many_tags" context="{'default_type_tax_use':'purchase', 'search_default_purchase': 1, 'search_default_service': type == 'service', 'search_default_goods': type == 'consu'}" on_change="1" can_create="true" can_write="true"/></group>
+                            </group>
+                        </page>
+                        <page string="Inventory" name="inventory" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;service&quot;]]}">
+                            <group name="inventory">
+                                <group name="group_lots_and_weight" string="Logistics" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;not in&quot;, [&quot;product&quot;, &quot;consu&quot;]]]}">
+                                    <label for="weight" modifiers="{&quot;invisible&quot;: [[&quot;product_variant_count&quot;, &quot;&gt;&quot;, 1], [&quot;is_product_variant&quot;, &quot;=&quot;, false]]}"/>
+                                    <div class="o_row" name="weight" modifiers="{&quot;invisible&quot;: [[&quot;product_variant_count&quot;, &quot;&gt;&quot;, 1], [&quot;is_product_variant&quot;, &quot;=&quot;, false]]}">
+                                        <field name="weight" class="oe_inline"/>
+                                        <field name="weight_uom_name" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                    <label for="volume" modifiers="{&quot;invisible&quot;: [[&quot;product_variant_count&quot;, &quot;&gt;&quot;, 1], [&quot;is_product_variant&quot;, &quot;=&quot;, false]]}"/>
+                                    <div class="o_row" name="volume" modifiers="{&quot;invisible&quot;: [[&quot;product_variant_count&quot;, &quot;&gt;&quot;, 1], [&quot;is_product_variant&quot;, &quot;=&quot;, false]]}">
+                                        <field name="volume" string="Volume" class="oe_inline"/>
+                                        <field name="volume_uom_name" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                </group>
+                            </group>
+                            <group name="packaging" string="Packaging" colspan="4">
+                                <field colspan="2" name="packaging_ids" nolabel="1" context="{'tree_view_ref':'product.product_packaging_tree_view2', 'default_company_id': company_id}"><tree string="Product Packagings" name="packaging" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name" string="Packaging" modifiers="{&quot;required&quot;: true}"/>
+                <field name="qty"/>
+                <field name="product_uom_id" options="{'no_open': True, 'no_create': True}" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="barcode" optional="hide"/>
+                <field name="company_id" optional="hide" can_create="true" can_write="true"/>
+                </tree></field>
+                            </group>
+                        </page>
+                    <page string="Accounting" name="invoicing">
+                        <group name="properties">
+                            <group string="Receivables">
+                                <field name="property_account_income_id" on_change="1" can_create="true" can_write="true"/>
+                            </group>
+                            <group string="Payables" name="payables">
+                                <field name="property_account_expense_id" on_change="1" can_create="true" can_write="true"/>
+                <field name="asset_category_id" domain="[('type', '=', 'purchase')]" context="{'default_type': 'purchase'}" on_change="1" can_create="true" can_write="true"/>
+                            </group>
+                        </group>
+                        <group name="accounting"/>
+                    </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_product_product_search" model="ir.ui.view">
+        <field name="name">product.product.search</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <search string="Product">
+                <field name="name" string="Product" filter_domain="['|', '|', ('default_code', 'ilike', self), ('name', 'ilike', self), ('barcode', 'ilike', self)]"/>
+                <field name="categ_id" filter_domain="[('categ_id', 'child_of', raw_value)]"/>
+                <separator/>
+                <filter string="Services" name="services" domain="[('type','=','service')]"/>
+                <filter string="Products" name="consumable" domain="[('type', 'in', ['consu', 'product'])]"/>
+                <separator/>
+                <filter string="Can be Sold" name="filter_to_sell" domain="[('sale_ok','=',True)]"/>
+                <filter string="Can be Purchased" name="filter_to_purchase" domain="[('purchase_ok', '=', True)]"/>
+                    <filter string="Can be Expensed" name="filter_to_expense" domain="[('can_be_expensed', '=', True)]"/>
+                <separator/>
+                <field name="product_template_attribute_value_ids"/>
+                    <field name="product_tmpl_id" string="Product Template"/>
+                <filter string="Late Activities" name="activities_overdue" domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]" help="Show all records which has next action date is before today" modifiers="{&quot;invisible&quot;: true}"/>
+                <filter string="Today Activities" name="activities_today" domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                <filter string="Future Activities" name="activities_upcoming_all" domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))                     ]" modifiers="{&quot;invisible&quot;: true}"/>
+                <separator/>
+                <filter string="Favorites" name="favorites" domain="[('priority','=','1')]"/>
+                <separator/>
+                <filter string="Warnings" name="activities_exception" domain="[('activity_exception_decoration', '!=', False)]"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Product Type" name="type" context="{'group_by':'detailed_type'}"/>
+                    <filter string="Product Category" name="categ_id" context="{'group_by':'categ_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_product_product" model="ir.actions.act_window">
+        <field name="name">PRODUCT PRODUCT</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

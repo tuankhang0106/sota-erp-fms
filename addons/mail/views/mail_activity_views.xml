@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View for mail.activity -->
+    <record id="view_mail_activity_tree" model="ir.ui.view">
+        <field name="name">mail.activity.tree</field>
+        <field name="model">mail.activity</field>
+        <field name="arch" type="xml">
+            <tree string="Next Activities" decoration-danger="sh_date_deadline &lt; current_date and state != 'done'" decoration-success="sh_date_deadline == current_date and state != 'done'" default_order="date_deadline" create="1" decoration-muted="state == 'done'" multi_edit="1">
+                <field name="res_name" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="activity_type_id" on_change="1" can_create="true" can_write="true"/>
+            <field name="user_id" widget="many2one_avatar_user" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="summary" on_change="1"/>
+                <field name="date_deadline" widget="remaining_days" options="{'allow_order': '1'}" on_change="1" modifiers="{&quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="sh_date_deadline" options="{'allow_order': '1'}" string="Due Date" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                <field name="due_in_text" string="Due In" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="domain_sale_team_ids" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="sale_team_id" string="Sale Team" optional="show" on_change="1" can_create="true" can_write="true"/>
+                <field name="crm_department_id" string="Department" optional="show" can_create="true" can_write="true"/>
+                <field name="state" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="sh_state" decoration-success="sh_state == 'done'" decoration-warning="state == 'today' or state == 'planned'" decoration-danger="state == 'cancelled' or state == 'overdue'" widget="badge" string="State"/>
+                <field name="date_done" widget="remaining_days" options="{'allow_order': '1'}" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="sh_activity_tags" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" can_create="true" can_write="true"/>
+                <field name="feedback" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;done&quot;]]}"/>
+                <field name="company_id" optional="hide" can_create="true" can_write="true"/>
+                <field name="create_date" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="write_date" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="date_done" optional="hide" widget="remaining_days" options="{'allow_order': '1'}" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="display_name" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="previous_activity_type_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="res_id" optional="hide" on_change="1"/>
+                <field name="res_model" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="res_model_id" optional="hide" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="supervisor_ids" optional="hide" widget="many2many_avatar_user" can_create="true" can_write="true"/>
+                <field name="sh_user_ids" optional="hide" can_create="true" can_write="true"/>
+                <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+                <field name="activity_cancel" modifiers="{&quot;column_invisible&quot;: true}"/>
+               <field name="activity_done" modifiers="{&quot;column_invisible&quot;: true}"/>
+            <button type="object" string="Edit" name="action_edit_activity" class="btn btn-primary" icon="fa-pencil" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, false]]}"/>
+            <button type="object" string="Origin" name="action_view_activity" class="btn btn-primary" icon="fa-history"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for mail.activity -->
+    <record id="view_mail_activity_form" model="ir.ui.view">
+        <field name="name">mail.activity.form</field>
+        <field name="model">mail.activity</field>
+        <field name="arch" type="xml">
+            <form string="Log an Activity" create="True">
+                <header>
+                    <button string="Mark as Done" name="action_done" type="object" class="btn-secondary" context="{'mail_activity_quick_update': True}" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}"/>
+                    <button string="Done &amp; Schedule Next" name="action_done_schedule_next" type="object" class="btn-secondary" context="{'mail_activity_quick_update': True}" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}"/>
+                    <button name="action_cancel" string="Cancel" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;=&quot;, &quot;done&quot;], [&quot;state&quot;, &quot;=&quot;, &quot;cancel&quot;]]}"/>
+                    <field name="state" widget="statusbar" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                </header>
+                <sheet string="Activity">
+                    <div class="oe_button_box" name="button_box" modifiers="{&quot;invisible&quot;: true}">
+                        <button name="action_open_document" string="Open Document" type="object" class="oe_link" icon="fa-file-text-o" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;res_model&quot;, &quot;=&quot;, false], [&quot;res_id&quot;, &quot;=&quot;, 0]]}"/>
+                    </div>
+                <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                <widget name="web_ribbon" title="Archived" bg_color="bg-danger" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}"/>
+                <group>
+                    <field name="reference" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                </group>
+                    <group modifiers="{&quot;invisible&quot;: true}">
+                        <field name="activity_category" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="res_model" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="res_model_id" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                        <field name="res_id" modifiers="{&quot;invisible&quot;: true}"/>
+                        <field name="chaining_type" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="previous_activity_type_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="has_recommended_activities" modifiers="{&quot;readonly&quot;: true}"/>
+                    </group>
+                    <group modifiers="{&quot;invisible&quot;: [[&quot;has_recommended_activities&quot;, &quot;=&quot;, false]]}">
+                        <field name="recommended_activity_type_id" widget="selection_badge" domain="[('previous_type_ids', '=', previous_activity_type_id)]" string="Recommended Activities" on_change="1" can_create="true" can_write="true"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="activity_type_id" options="{'no_create': True, 'no_open': True}" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="date_done" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="summary" placeholder="e.g. Discuss proposal"/>
+                <field name="crm_sr_show_amount" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="crm_sr_currency_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="crm_sr_revenue" modifiers="{&quot;invisible&quot;: [[&quot;crm_sr_show_amount&quot;, &quot;=&quot;, false]]}"/>
+                <field name="crm_sr_profit" modifiers="{&quot;invisible&quot;: [[&quot;crm_sr_show_amount&quot;, &quot;=&quot;, false]]}"/>
+            <field name="sh_activity_alarm_ids" widget="many2many_tags" can_create="true" can_write="true"/>
+                <field name="sh_create_individual_activity" modifiers="{&quot;invisible&quot;: [[&quot;sh_user_ids&quot;, &quot;=&quot;, []]]}"/>
+                        </group>
+                        <group>
+                            <field name="date_deadline" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
+            <field name="sh_date_deadline" string="Due Date" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+            <field name="domain_sale_team_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+            <field name="sale_team_id" on_change="1" can_create="true" can_write="true"/>
+            <field name="crm_department_id" can_create="true" can_write="true"/>
+                            <field name="user_id" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;activity_category&quot;, &quot;=&quot;, &quot;meeting&quot;]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="company_id" on_change="1" can_create="true" can_write="true"/>
+                <field name="sh_display_multi_user" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="sh_user_ids" widget="many2many_tags" modifiers="{&quot;invisible&quot;: [[&quot;sh_display_multi_user&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                <field name="supervisor_ids" widget="many2many_tags" can_create="true" can_write="true"/>
+                <field name="department_ids" widget="many2many_tags" on_change="1" can_create="true" can_write="true"/>
+                <field name="sh_activity_tags" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" can_create="true" can_write="true"/>
+                <field name="feedback"/>
+                        </group>
+                    </group>
+                    <field name="note" class="oe-bordered-editor" placeholder="Log a note..." modifiers="{&quot;invisible&quot;: [[&quot;activity_category&quot;, &quot;=&quot;, &quot;meeting&quot;]]}"/>
+                    <footer>
+                        <field name="id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                  <field name="calendar_event_id" modifiers="{&quot;invisible&quot;: true}" can_create="true" can_write="true"/>
+                  <button string="Open Calendar" name="action_create_calendar_event" type="object" class="btn-primary" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;activity_category&quot;, &quot;not in&quot;, [&quot;meeting&quot;, &quot;phonecall&quot;]], [&quot;calendar_event_id&quot;, &quot;!=&quot;, false]]}"/>
+                        <button id="mail_activity_schedule" string="Schedule" name="action_close_dialog" type="object" class="btn-primary" data-hotkey="q" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;activity_category&quot;, &quot;in&quot;, [&quot;meeting&quot;, &quot;phonecall&quot;]], [&quot;id&quot;, &quot;!=&quot;, false]]}"/>
+                        <button id="mail_activity_save" string="Save" name="action_close_dialog" type="object" class="btn-primary" data-hotkey="q" modifiers="{&quot;invisible&quot;: [[&quot;activity_category&quot;, &quot;!=&quot;, &quot;phonecall&quot;], [&quot;id&quot;, &quot;=&quot;, false]]}"/>
+                        <button string="Mark as Done" name="action_done" type="object" class="btn-secondary" data-hotkey="w" context="{'mail_activity_quick_update': True}" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;activity_category&quot;, &quot;=&quot;, &quot;meeting&quot;], [&quot;chaining_type&quot;, &quot;=&quot;, &quot;trigger&quot;]]}"/>
+                        <button string="Done &amp; Schedule Next" name="action_done_schedule_next" type="object" class="btn-secondary" data-hotkey="x" context="{'mail_activity_quick_update': True}" modifiers="{&quot;invisible&quot;: [[&quot;chaining_type&quot;, &quot;=&quot;, &quot;trigger&quot;]]}"/>
+                        <button string="Done &amp; Launch Next" name="action_done_schedule_next" type="object" class="btn-secondary" data-hotkey="x" context="{'mail_activity_quick_update': True}" modifiers="{&quot;invisible&quot;: [[&quot;chaining_type&quot;, &quot;=&quot;, &quot;suggest&quot;]]}"/>
+                        <button string="Discard" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View for mail.activity -->
+    <record id="view_mail_activity_search" model="ir.ui.view">
+        <field name="name">mail.activity.search</field>
+        <field name="model">mail.activity</field>
+        <field name="arch" type="xml">
+            <search string="Activity">
+            <field name="res_name" string="Activity" filter_domain="['|','|','|','|','|','|','|',('res_name', 'ilike', self),('activity_type_id','ilike',self),('user_id','ilike',self),('res_model','ilike',self),('res_model_id','ilike',self),('supervisor_ids','ilike',self),('sh_activity_tags','ilike',self),('sh_user_ids','ilike',self)]"/>
+                <field name="supervisor_ids"/>
+                <field name="sh_activity_tags"/>
+                <filter string="Completed Activities" name="activities_completed" domain="[('state', '=', 'done'),('active','=',False)]"/>
+            <filter string="Cancelled Activities" name="activities_cancelled" domain="[('state', '=', 'cancel'),('active','=',False)]"/>
+                <filter string="Archived Activities" name="archived_activities" domain="[('active','=',False)]"/>
+                <filter string="Activity Tags" name="activity_tags" domain="[('sh_activity_tags','!=',False)]"/>
+                <field name="res_model"/>
+                <field name="summary"/>
+                <field name="activity_type_id"/>
+                <filter string="Late Activities" name="activities_overdue" domain="[('date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]" help="Show all records which has next action date is before today" modifiers="{&quot;invisible&quot;: true}"/>
+                <filter string="Today Activities" name="activities_today" domain="[('date_deadline', '=', context_today().strftime('%Y-%m-%d'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                <filter string="Future Activities" name="activities_upcoming_all" domain="[('date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))                         ]" modifiers="{&quot;invisible&quot;: true}"/>
+                <group expand="0" string="Group By">
+                    <filter string="Deadline" name="date_deadline" context="{'group_by': 'date_deadline'}"/>
+                    <filter string="Created By" name="createdby" context="{'group_by': 'create_uid'}"/>
+                    <filter string="Activity Type" name="activittype" context="{'group_by': 'activity_type_id'}"/>
+                <filter string="Assign To" name="assign_to" context="{'group_by':'user_id'}"/>
+                <filter string="Supervisors" name="supervisors" context="{'group_by':'supervisor_ids'}"/>
+                <filter string="Document Model" name="document_model" context="{'group_by':'res_model_id'}"/>
+                <filter string="Tags" name="tags" context="{'group_by':'sh_activity_tags'}"/>
+                <filter string="Assigned Multi Users" name="users" context="{'group_by':'sh_user_ids'}"/>
+                </group>
+            <searchpanel>
+            <field name="company_id" icon="fa-building" enable_counters="1"/>
+            <field name="activity_type_id" icon="fa-tasks" enable_counters="1"/>
+            <field name="user_id" limit="20" hierarchize="0" select="one" icon="fa-users" enable_counters="1"/>
+            <field name="res_model_id" enable_counters="1"/>
+            <field name="sh_state" enable_counters="1" string="State"/>
+            </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <!-- Window Action for mail.activity -->
+    <record id="action_mail_activity" model="ir.actions.act_window">
+        <field name="name">Hoạt động (Activities)</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_mail_activity_search"/>
+    </record>
+
+</odoo>

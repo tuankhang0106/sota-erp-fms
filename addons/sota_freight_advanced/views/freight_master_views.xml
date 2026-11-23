@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_freight_shipment_master_tree" model="ir.ui.view">
+        <field name="name">freight.shipment.master.tree</field>
+        <field name="model">freight.shipment.master</field>
+        <field name="arch" type="xml">
+            <tree default_order="perf_date desc" create="0">
+                <field name="name" string="MAWB" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                <field name="air_pol_id" string="POL"/>
+                <field name="air_pod_id" string="POD"/>
+                <field name="air_atd" widget="air_datetime"/>
+                <field name="air_ata" widget="air_datetime"/>
+                <field name="air_shipper_id" string="SHPR" on_change="1"/>
+                <field name="air_consignee_id" string="CNEE" on_change="1"/>
+                <field name="by_carrier_air_line_summary" string="CARRIER" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="partner_id" optional="hide"/>
+                <field name="user_id" optional="hide"/>
+                <field name="air_bound" optional="hide" on_change="1"/>
+                <field name="perf_date"/>
+                <field name="operator_ids" widget="many2many_tags" optional="hide"/>
+<!--                <field name="priority" widget="priority"/>-->
+                <field name="perf_date" modifiers="{&quot;column_invisible&quot;: true}"/>
+                <field name="company_id" optional="show" modifiers="{&quot;required&quot;: true}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_shipment_master_form" model="ir.ui.view">
+        <field name="name">freight.shipment.master.form</field>
+        <field name="model">freight.shipment.master</field>
+        <field name="arch" type="xml">
+            <form create="0" js_class="sota_freight_master_sea_form">
+                <header>
+                    <button name="action_create_sea_house" type="object" class="oe_highlight" string="Create Sea House" modifiers="{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}"/>
+                <button name="create_multi_house" type="object" class="oe_highlight" string="Create Cross Border House" modifiers="{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;!=&quot;, true]]}"/>
+                    <widget name="ocr_form_upload" options="{'ocr_method': 'document_bol_create_mbl', 'label': 'Upload BOL'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_get_expense_view" class="oe_stat_button" icon="fa-file-text-o" type="object">
+                            <field name="expense_number" widget="statinfo" string="Expenses" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                        <button name="action_open_credit_note" class="oe_stat_button" icon="fa-credit-card" type="object">
+                            <field name="credit_note_count" widget="statinfo" string="Payment Management" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                        <button name="action_open_debit_note" class="oe_stat_button" icon="fa-money" type="object">
+                            <field name="debit_note_count" widget="statinfo" string="Debit Notes" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                        <button name="action_open_dc_note" class="oe_stat_button" icon="fa-exchange" type="object">
+                            <field name="dc_note_count" widget="statinfo" string="DC Notes" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <group>
+                                <field name="is_sea_master" modifiers="{&quot;invisible&quot;: true}"/>
+                <field name="is_multi_master" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                                <field name="is_air_master" modifiers="{&quot;invisible&quot;: true}"/>
+                                <field name="is_sea_house" modifiers="{&quot;invisible&quot;: true}"/>
+                                <field name="is_air_house" modifiers="{&quot;invisible&quot;: true}"/>
+                                <field name="transport_mode_id" on_change="1" modifiers="{&quot;invisible&quot;: true}" can_create="false" can_write="false"/>
+                                <field name="transport_mode_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="transport_mode" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="name" string="Master BL" modifiers="{&quot;required&quot;: true}"/>
+                                <field name="sea_house_bl_ids" widget="many2many_tags" string="Sea House" options="{'no_quick_create': True, 'no_create_edit': True}" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="job_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                                <field name="sea_incoterm_id" string="Incoterm" can_create="true" can_write="true"/>
+                            </group>
+                            <group>
+                                <field name="sea_bl_type" string="MBL Type"/>
+                                <field name="sea_shipment" string="Shipment"/>
+                                <field name="sea_service_term_id" can_create="true" can_write="true"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="sea_bl_status" string="BL Release Status"/>
+                                <field name="switch_bl"/>
+                            </group>
+                            <group>
+                                <field name="sea_bound" string="Bound" on_change="1"/>
+                                <field name="sea_load_type"/>
+                                <field name="company_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            </group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Header">
+                            <group>
+                                <group string="Party Information">
+                                    <field name="sea_shipper_id" string="Shipper" on_change="1" can_create="true" can_write="true"/>
+                                    <field name="sea_shipper_code" string="Shipper Name"/>
+                                    <field name="sea_shipper_text" string=""/>
+                                    <field name="sea_consignee_id" string="Consignee" on_change="1" can_create="true" can_write="true"/>
+                                    <field name="sea_consignee_display" string="Consignee Name"/>
+                                    <field name="sea_consignee_text" string=""/>
+                                    <label for="sea_notify_id" string="Notify"/>
+                                    <div class="o_row">
+                                        <field name="sea_notify_id" on_change="1" can_create="true" can_write="true"/>
+                                        <button name="copy_consignee_to_notify" type="object" class="oe_highlight" string="Copy Cnee"/>
+                                    </div>
+                                    <field name="sea_notify_display" string="Notify Name"/>
+                                    <field name="sea_notify_text" string=""/>
+                                </group>
+                                <group string="Schedule Information">
+                                    <label for="sea_carrier_id" string="Carrier"/>
+                                    <div class="o_row">
+                                        <field name="sea_carrier_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="sea_carrier_code" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                    <label for="vessel" string="Feeder Vessel" modifiers="{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}"/>
+                <label for="vessel" string="1st Truck" modifiers="{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;!=&quot;, true]]}"/>
+                                    <div class="o_row">
+                                        <field name="vessel"/>
+                                        <label for="voyage" string="Feeder Voyage" modifiers="{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}"/>
+                                        <field name="voyage" modifiers="{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}"/>
+                                    </div>
+                                    <label for="mvvd" string="M.VVD" modifiers="{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}"/>
+                <label for="mvvd" string="2nd Truck" modifiers="{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;!=&quot;, true]]}"/>
+                                    <div class="o_row">
+                                        <field name="mvvd"/>
+                                        <label for="voyage2" string="M.VVD Voyage" modifiers="{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}"/>
+                                        <field name="voyage2" modifiers="{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]]}"/>
+                                    </div>
+                                    <label for="sea_etd" string="ETD-ETA"/>
+                                    <div class="o_row">
+                                        <field name="sea_etd" on_change="1"/>
+                                        <field name="sea_eta"/>
+                                    </div>
+                                    <label for="sea_atd" string="ATD-ATA"/>
+                                    <div class="o_row">
+                                        <field name="sea_atd" on_change="1"/>
+                                        <field name="sea_ata"/>
+                                    </div>
+                                    <field name="onboard_date"/>
+                                    <field name="perf_date"/>
+                                    <label for="sea_por_id" string="POR"/>
+                                    <div class="o_row">
+                                        <field name="sea_por_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="sea_por_code"/>
+                                    </div>
+                                    <label for="sea_pol_id" string="POL"/>
+                                    <div class="o_row">
+                                        <field name="sea_pol_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="sea_pol_code"/>
+                                    </div>
+                                    <label for="sea_ts_id" string="T/S"/>
+                                    <div class="o_row">
+                                        <field name="sea_ts_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="sea_ts_code"/>
+                                    </div>
+                                    <label for="sea_pod_id" string="POD"/>
+                                    <div class="o_row">
+                                        <field name="sea_pod_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="sea_pod_code"/>
+                                    </div>
+                                    <label for="sea_pvy_id" string="PVY"/>
+                                    <div class="o_row">
+                                        <field name="sea_pvy_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="sea_pvy_code"/>
+                                    </div>
+                                    <field name="mhs_code" on_change="1"/>
+                                    <field name="mnf_deadline" on_change="1"/>
+                                    <button name="action_open_house_sea_schedule" type="object" class="oe_highlight" icon="fa-ship" string="Schedules"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="Master Container Information">
+                                    <field name="gross_weight" on_change="1"/>
+                                    <field name="charge_weight"/>
+                                    <field name="volume"/>
+                                </group>
+                                <group string="Document Information" name="sea_master_document_info_block">
+                                    <field name="vendor_id" can_create="true" can_write="true"/>
+                                    <label for="sea_partner_id" string="Partner"/>
+                                    <div class="o_row">
+                                        <field name="sea_partner_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="sea_partner_code" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                    <field name="sea_partner_address"/>
+                <field name="do_address_id" can_create="true" can_write="true"/>
+
+                                    <label for="sea_co_loader_id" string="Co-loader"/>
+                                    <div class="o_row">
+                                        <field name="sea_co_loader_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="sea_co_loader_role_code" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+
+                                    <label for="sea_customer_id" string="Customer"/>
+                                    <div class="o_row">
+                                        <field name="sea_customer_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="sea_customer_code" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                    <field name="sea_pic_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                    <label for="sea_pic_id" string="Customer PIC"/>
+                                    <div class="o_row">
+                                        <field name="sea_pic_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="sea_pic_phone" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="sea_pic_email" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                    <field name="sea_product_pic_id" string="Pricing PIC" can_create="true" can_write="true"/>
+                                    <field name="operator_ids" widget="many2many_tags" on_change="1" can_create="true" can_write="true"/>
+                                    <field name="user_id" on_change="1" can_create="true" can_write="true"/>
+                                    <field name="team_id" on_change="1" can_create="true" can_write="true"/>
+                                    <field name="department_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <label for="unstuffing_date"/>
+                                    <div class="o_row">
+                                        <field name="unstuffing_date"/>
+                                        <button name="action_send_master_lcl_email" type="object" string="Update" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;sea_load_type&quot;, &quot;not in&quot;, [&quot;fcl&quot;, &quot;lcl&quot;]]]}"/>
+                                    </div>
+                                    <field name="berthing_date"/>
+                                    <field name="sea_warehouse" can_create="true" can_write="true"/>
+                                    <label for="warehouse_manager"/>
+                                    <div class="o_row">
+                                        <field name="warehouse_manager"/>
+                                        <label for="warehouse_phone_number"/>
+                                        <field name="warehouse_phone_number"/>
+                                    </div>
+                                </group>
+                            </group>
+                            <label for="container_ids"/>
+                            <field name="container_ids" string="Containers" on_change="1">
+                                <tree editable="bottom">
+                                    <field name="master_id" on_change="1" modifiers="{&quot;column_invisible&quot;: true}" can_create="true" can_write="true"/>
+                                    <field name="name" on_change="1"/>
+                                    <field name="size"/>
+                                    <field name="unit_id" can_create="true" can_write="true"/>
+                                    <field name="seal_1"/>
+                                    <field name="seal_2"/>
+                                    <field name="package_quantity" on_change="1"/>
+                                    <field name="sea_fcl_unit" can_create="true" can_write="true"/>
+                                    <field name="gross_weight" on_change="1"/>
+                                    <field name="volume" on_change="1"/>
+                                </tree>
+                            </field>
+                            <notebook>
+                                <page string="House B/L Information">
+                                    <field name="sea_house_bl_display_ids" modifiers="{&quot;readonly&quot;: true}">
+                                        <tree modifiers="{&quot;readonly&quot;: true}">
+                                            <field name="name" string="HBL No." modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                                            <field name="sea_pol_id"/>
+                                            <field name="sea_ts_id"/>
+                                            <field name="sea_pod_id"/>
+                                            <field name="sea_shipper_code"/>
+                                            <field name="package_quantity" sum="Total"/>
+                                            <field name="gross_weight" sum="Total" digits="[16, 3]"/>
+                                            <field name="volume" sum="Total" digits="[16, 3]"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                                <page string="House Container Information">
+                                    <field name="sea_house_container_information_ids" modifiers="{&quot;readonly&quot;: true}">
+                                        <tree editable="bottom">
+                                            <field name="house_id" string="Sea House BL" on_change="1"/>
+                                            <field name="name" on_change="1"/>
+                                            <field name="size"/>
+                                            <field name="unit_id"/>
+                                            <field name="seal_1"/>
+                                            <field name="seal_2"/>
+                                            <field name="package_quantity" sum="Total" on_change="1"/>
+                                            <field name="sea_fcl_unit"/>
+                                            <field name="gross_weight" string="Weight" sum="Total" digits="[16, 3]" on_change="1"/>
+                                            <field name="volume" string="Measure" sum="Total" digits="[16, 3]" on_change="1"/>
+                                            <field name="is_part"/>
+                                            <field name="is_main"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </page>
+                        <!--                        <page name="Container">-->
+                        <!--                            <group name="volume_information" string="Volume Information">-->
+                        <!--                                <group>-->
+                        <!--                                    &lt;!&amp;ndash;                                    <label string="Quantity Of Container" for="cont_qty"/>&amp;ndash;&gt;-->
+                        <!--                                    &lt;!&amp;ndash;                                    <div class="o_row">&amp;ndash;&gt;-->
+                        <!--                                    &lt;!&amp;ndash;                                        <field class="col-6" name="cont_qty" readonly="1"/>&amp;ndash;&gt;-->
+                        <!--                                    &lt;!&amp;ndash;                                        <label name="Type Of Container" for="cont_unit"/>&amp;ndash;&gt;-->
+                        <!--                                    &lt;!&amp;ndash;                                        <field name="cont_unit" readonly="1"/>&amp;ndash;&gt;-->
+                        <!--                                    &lt;!&amp;ndash;                                    </div>&amp;ndash;&gt;-->
+                        <!--                                    <label string="Package Quantity" for="package_quantity"/>-->
+                        <!--                                    <div class="o_row">-->
+                        <!--                                        <field class="col-6" name="package_quantity"/>-->
+                        <!--                                        <field name="sea_fcl_unit"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    <label string="Gross W/T" for="gross_weight"/>-->
+                        <!--                                    <div class="o_row">-->
+                        <!--                                        <field class="col-6" name="gross_weight"/>-->
+                        <!--                                        <label string="Weight Unit" for="weight_unit"/>-->
+                        <!--                                        <field name="weight_unit"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    &lt;!&amp;ndash;                                    <field name="rate_class"/>&amp;ndash;&gt;-->
+                        <!--                                    &lt;!&amp;ndash;                                    <field name="charge_weight"/>&amp;ndash;&gt;-->
+                        <!--                                    <label string="Volume" for="volume"/>-->
+                        <!--                                    <div class="o_row">-->
+                        <!--                                        <field class="col-6" name="volume"/>-->
+                        <!--                                        <label name="Volume Unit" for="volume_unit"/>-->
+                        <!--                                        <field name="volume_unit"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    &lt;!&amp;ndash;                                    <field name="inner_package_qty"/>&amp;ndash;&gt;-->
+                        <!--                                </group>-->
+                        <!--                                <group>-->
+                        <!--                                    <field name="sea_container_information_ids" string="">-->
+                        <!--                                        <tree editable="bottom">-->
+                        <!--                                            <field name="size"/>-->
+                        <!--                                            <field name="type"/>-->
+                        <!--                                            <field name="quantity"/>-->
+                        <!--                                            <field name="part"/>-->
+                        <!--                                            <field name="main"/>-->
+                        <!--                                        </tree>-->
+                        <!--                                    </field>-->
+                        <!--                                </group>-->
+                        <!--                            </group>-->
+                        <!--                            <group string="Container Volume">-->
+                        <!--                                <label for="containers_description" string=""/>-->
+                        <!--                                <div class="o_row">-->
+                        <!--                                    <button name="action_say_info"-->
+                        <!--                                            type="object"-->
+                        <!--                                            class="oe_highlight"-->
+                        <!--                                            icon="fa-volume-up"-->
+                        <!--                                            string="Say Info"/>-->
+                        <!--                                    <field name="containers_description" string="Total Number Of Container"/>-->
+                        <!--                                </div>-->
+                        <!--                            </group>-->
+                        <!--                            <label for="container_ids"/>-->
+                        <!--                            <field name="container_ids">-->
+                        <!--                                <tree editable="bottom">-->
+                        <!--                                    <field name="name"/>-->
+                        <!--                                    <field name="unit_id"/>-->
+                        <!--                                    <field name="size"/>-->
+                        <!--                                    <field name="sea_fcl_unit"/>-->
+                        <!--                                    <field name="seal_1"/>-->
+                        <!--                                    <field name="seal_2"/>-->
+                        <!--                                    <field name="package_quantity" string="Package Quantity"/>-->
+                        <!--                                    <field name="gross_weight"/>-->
+                        <!--                                    <field name="volume" string="Measure"/>-->
+                        <!--                                    <field name="is_part"/>-->
+                        <!--                                    <field name="is_main"/>-->
+                        <!--                                    <field name="soc_coc"/>-->
+                        <!--                                    <field name="cont_mark"/>-->
+                        <!--                                </tree>-->
+                        <!--                            </field>-->
+                        <!--                        </page>-->
+                        <page name="Marks &amp; Description (Print)" modifiers="{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;=&quot;, &quot;other&quot;]]}">
+                            <group>
+                                <group>
+                                    <field name="mark_and_numbers"/>
+                                    <field name="handling_information" modifiers="{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}"/>
+                                </group>
+                                <group modifiers="{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}">
+                                    <group>
+                                        <label for="description_of_good"/>
+                                        <button name="add_dimension_desc_air" class="d-block oe_highlight py-0" type="object">
+                                            <div style="width: 105px;">Add Dimension</div>
+                                        </button>
+                                    </group>
+                                    <field name="description_of_good"/>
+                                </group>
+                            </group>
+                            <group modifiers="{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}">
+                                <label name="Suggest #1" string="Suggest #1" for="description_of_goods_1"/>
+                                <div class="o_row">
+                                    <field name="description_of_goods_1" on_change="1" can_create="true" can_write="true"/>
+                                    <label name="Suggest #2" string="Suggest #2" for="description_of_goods_2"/>
+                                    <field name="description_of_goods_2" on_change="1" can_create="true" can_write="true"/>
+                                </div>
+                                <field name="description_of_goods"/>
+                                <field name="container_info_print_type"/>
+                            </group>
+                        </page>
+                        <page name="Freight">
+                            <group>
+                                <group>
+                                    <field name="sea_house_quotation_ids" modifiers="{&quot;invisible&quot;: true}">
+                                        <tree editable="bottom">
+                                            <field name="job_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                            <field name="quotation_id" on_change="1" can_create="true" can_write="true"/>
+                                            <field name="customer_id" can_create="true" can_write="true"/>
+                                            <button name="apply_quotation" type="object" string="Apply" class="btn-primary" icon="fa-check" colspan="1"/>
+                                            <field name="status"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                            <group>
+                                <group name="exchange_rate" string="Exchange Rate">
+                                    <field name="currency_id" can_create="true" can_write="true"/>
+                                    <label string="Date" for="exchange_rate_date"/>
+                                    <div class="o_row">
+                                        <field name="exchange_rate_date" style="width: 30%!important;" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                                    </div>
+                                    <label string="Rate" for="exchange_rate"/>
+                                    <div class="o_row exchange_rate_row">
+                                        <field name="exchange_rate" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                                        <span>VND/USD</span>
+                                    </div>
+                                </group>
+
+                                <group string="Total &amp; Margin" name="total_margin_section" modifiers="{&quot;invisible&quot;: true}">
+                                    <field name="total_local_selling" modifiers="{&quot;invisible&quot;: [[&quot;rv_hide_selling&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: true}"/>
+                                    <field name="total_local_buying" modifiers="{&quot;invisible&quot;: [[&quot;rv_hide_buying&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: true}"/>
+                                    <field name="company_currency_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                    <field name="total_margin" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="percent_margin" widget="percentage" modifiers="{&quot;readonly&quot;: true}"/>
+                                </group>
+                            </group>
+                            <group string="Selling" name="selling_group" modifiers="{&quot;invisible&quot;: true}">
+                                <group>
+                                    <div style="width: 200px!important;">
+                                        <button name="action_get_vendor_local_charge" type="object" string="Get Carrier Local Charge" class="oe_link oe_inline py-0 mb-1" icon="fa-plus"/>
+                                        <button name="action_add_multiple_charges" type="object" string="Add Multiple Charges" class="oe_link oe_inline py-0 mb-1" icon="fa-list"/>
+                                    </div>
+                                </group>
+                                <field name="sea_selling_line_ids" string="" on_change="1">
+                                    <tree editable="bottom" decoration-danger="not have_note_line">
+                                        <field name="partner_id" context="{'party_role': 'sota_freight_crm.party_sale_customer'}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;have_note_line&quot;, &quot;=&quot;, true]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="have_note_line" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<!--                                        <field name="partner_code" string="Customer Name"/>-->
+                                        <field name="transport_mode_id" string="Service" can_create="false" can_write="false"/>
+                                        <field name="product_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="product_name" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="tax_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="fare_type"/>
+                                        <field name="currency_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="company_currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                        <field name="exchange_rate" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="fcl_unit" string="Unit" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="qty" on_change="1"/>
+                                        <field name="rate" on_change="1"/>
+                                        <field name="amt" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="vat_foreign" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="local_amount" sum="Total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="vat" sum="Total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="total_amount" sum="Total" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="remark"/>
+                                        <!--                                        <field name="evidence"/>-->
+                                        <field name="user_id" can_create="true" can_write="true"/>
+                                        <field name="invoice_no"/>
+                                        <field name="billing_date"/>
+                                        <!--                                        <field name="tax_no"/>-->
+                                        <!--                                        <field name="tax_date"/>-->
+                                        <!--                                        <field name="invoice_date"/>-->
+                                        <!--                                        <field name="tax_ys"/>-->
+                                        <!--                                        <field name="pl_ys"/>-->
+                                        <!--                                        <field name="group_ys"/>-->
+                                        <!--                                        <field name="slip_date"/>-->
+                                        <!--                                        <field name="set_off"/>-->
+                                        <!--                                        <field name="set_off_date"/>-->
+                                        <!--                                        <field name="department"/>-->
+                                        <!--                                        <field name="create_date"/>-->
+                                        <button name="action_view_note" type="object" string="View Debit/DC Note" class="btn-secondary" icon="fa-eye" modifiers="{&quot;invisible&quot;: [[&quot;have_note_line&quot;, &quot;=&quot;, false]]}"/>
+                                        <button name="generate_note_line" type="object" string="Create Debit/DC Note" class="btn-secondary" icon="fa-plus" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;id&quot;, &quot;=&quot;, false], [&quot;have_note_line&quot;, &quot;=&quot;, true]]}"/>
+                                        <!--                                        <field name="department"/>-->
+                                        <!--                                        <field name="office"/>-->
+                                    </tree>
+                                </field>
+                            </group>
+                            <group string="Buying" name="buying_group" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;rv_hide_buying&quot;, &quot;=&quot;, true], [&quot;rv_hide_buying&quot;, &quot;=&quot;, true]]}">
+                                <group>
+                                    <div style="width: 200px!important;">
+                                        <button name="action_get_vendor_local_charge" type="object" string="Apply Vendor Local Charge" class="oe_link oe_inline py-0 mb-1" icon="fa-plus"/>
+                                        <button name="action_ocr_vendor_bill" type="object" string="OCR Vendor Bill" class="oe_link oe_inline py-0 mb-1" context="{'buying_field': 'sea_buying_line_ids'}" icon="fa-upload"/>
+                                    </div>
+                <div style="width: 200px!important;">
+                    <button name="action_distribute_buying_costs" type="object" string="Distribute To House" class="oe_link oe_inline py-0 mb-1" icon="fa-share-alt"/>
+                    <button name="action_fill_all_houses" type="object" string="Fill All Houses" class="oe_link oe_inline py-0 mb-1" icon="fa-home"/>
+                </div>
+                                </group>
+                                <field name="sea_buying_line_ids" string="" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: [[&quot;job_freight_done&quot;, &quot;=&quot;, true]]}">
+                                    <tree editable="bottom" decoration-danger="not have_note_line and not skip_note_line">
+                <field name="job_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="transport_mode" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="distribute_house_ids" widget="many2many_tags" can_create="true" can_write="true"/>
+                                        <field name="vendor_id" context="{'party_role': 'sota_freight_crm.party_vendor'}" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="have_note_line" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                        <field name="skip_note_line" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                        <field name="transport_mode_id" string="Service" can_create="false" can_write="false"/>
+                                        <field name="employee_prepaid_id" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="expense_id" string="Expense Ref" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="expense_attachment_id" widget="preview_binary" string="Attachment" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="product_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="product_name" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="tax_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="fare_type"/>
+                                        <field name="currency_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="company_currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                        <field name="exchange_rate" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="fcl_unit" string="Unit" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="qty" on_change="1"/>
+                                        <field name="rate" on_change="1"/>
+                                        <field name="amt" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="vat_foreign" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="local_amount" sum="Total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="vat" sum="Total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <!--                                        <field name="pay_for"/>-->
+                                        <field name="total_amount_foreign" optional="hide" sum="Total" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="total_amount" sum="Total" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="remark"/>
+                                        <!--                                        <field name="evidence"/>-->
+                                        <field name="user_id" can_create="true" can_write="true"/>
+                                        <field name="invoice_no"/>
+                                        <field name="billing_date"/>
+
+                                        <button name="action_view_note" type="object" string="View Credit Note" class="btn-secondary" icon="fa-eye" modifiers="{&quot;invisible&quot;: [[&quot;have_note_line&quot;, &quot;=&quot;, false]]}"/>
+                                        <button name="generate_note_line" type="object" string="Create Credit Note" class="btn-secondary" icon="fa-plus" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;id&quot;, &quot;=&quot;, false], [&quot;have_note_line&quot;, &quot;=&quot;, true]]}"/>
+                                        <!--                                        <field name="tax_no"/>-->
+                                        <!--                                        <field name="tax_date"/>-->
+                                        <!--                                        <field name="invoice_date"/>-->
+                                        <!--                                        <field name="tax_ys"/>-->
+                                        <!--                                        <field name="pl_ys"/>-->
+                                        <!--                                        <field name="group_ys"/>-->
+                                        <!--                                        <field name="slip_date"/>-->
+                                        <!--                                        <field name="set_off"/>-->
+                                        <!--                                        <field name="set_off_date"/>-->
+                                        <!--                                        <field name="department"/>-->
+                                        <!--                                        <field name="create_date"/>-->
+                                        <!--                                        <field name="department"/>-->
+                                        <!--                                        <field name="office"/>-->
+                                    </tree>
+                                </field>
+                <field name="multi_buying_line_ids" string="" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_multi_master&quot;, &quot;!=&quot;, true]], &quot;readonly&quot;: [[&quot;job_freight_done&quot;, &quot;=&quot;, true]]}">
+                    <tree editable="bottom" decoration-danger="not have_note_line and not skip_note_line">
+                        <field name="have_note_line" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                        <field name="skip_note_line" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                        <field name="job_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                        <field name="transport_mode" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                        <field name="multi_distribute_house_ids" widget="many2many_tags" can_create="true" can_write="true"/>
+                        <field name="vendor_id" context="{'party_role': 'sota_freight_crm.party_vendor'}" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+<!--                        <field name="vendor_display" string="Vendor Name"/>-->
+                        <field name="transport_mode_id" string="Service" can_create="false" can_write="false"/>
+                        <field name="employee_prepaid_id" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="expense_id" string="Expense Ref" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="product_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                        <!-- <field name="product_name"/> -->
+                        <field name="tax_id" on_change="1" can_create="true" can_write="true"/>
+                        <field name="fare_type"/>
+                        <field name="currency_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                        <field name="exchange_rate" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="fcl_unit" string="Unit" on_change="1" can_create="true" can_write="true"/>
+                        <field name="qty" on_change="1"/>
+                        <field name="rate" on_change="1"/>
+                        <field name="amt" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="vat_foreign" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="local_amount" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="vat" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="total_amount" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="remark"/>
+                        <field name="user_id" can_create="true" can_write="true"/>
+                        <field name="invoice_no"/>
+                        <field name="billing_date"/>
+                        <button name="action_view_note" type="object" string="View Credit Note" class="btn-secondary" icon="fa-eye" modifiers="{&quot;invisible&quot;: [[&quot;have_note_line&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="generate_note_line" type="object" string="Create Credit Note" class="btn-secondary" icon="fa-plus" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;id&quot;, &quot;=&quot;, false], [&quot;have_note_line&quot;, &quot;=&quot;, true]]}"/>
+                    </tree>
+                </field>
+                            </group>
+                            <group string="Pay on Behalf" name="pob_group" modifiers="{&quot;invisible&quot;: true}">
+                                <field name="sea_pay_on_behalf_line_ids" string="" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;job_freight_done&quot;, &quot;=&quot;, true]]}">
+                                    <tree editable="bottom" decoration-danger="not have_note_line">
+                                        <field name="company_id" on_change="1" modifiers="{&quot;column_invisible&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="have_note_line" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                        <field name="can_create_pob" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                        <field name="vendor_id" context="{'party_role': 'sota_freight_crm.party_vendor'}" modifiers="{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                                        <field name="partner_id" string="Prepaid By" domain="[]" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="pay_for" context="{'party_role': 'sota_freight_crm.party_sale_customer'}" modifiers="{&quot;readonly&quot;: [&quot;|&quot;, [&quot;have_note_line&quot;, &quot;=&quot;, true], [&quot;can_create_pob&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="transport_mode_id" string="Service" can_create="false" can_write="false"/>
+                                        <field name="expense_id" string="Expense Ref" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="expense_attachment_id" widget="preview_binary" string="Attachment" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="product_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="product_name" modifiers="{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]]}"/>
+                                        <field name="tax_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                                        <field name="fare_type"/>
+                                        <field name="currency_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="exchange_rate" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="fcl_unit" string="Unit" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="qty" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]]}"/>
+                                        <field name="rate" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;can_create_pob&quot;, &quot;=&quot;, false]]}"/>
+                                        <field name="amt" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="local_amount" sum="Total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="vat_foreign" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="vat" sum="Total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="total_amount" sum="Total" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="remark"/>
+                                        <!--                                        <field name="evidence"/>-->
+                                        <field name="debit_line_ids" on_change="1" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                        <field name="dc_line_ids" on_change="1" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                        <field name="user_id" can_create="true" can_write="true"/>
+                                        <field name="invoice_no"/>
+                                        <field name="billing_date"/>
+                                        <button name="action_view_note" type="object" string="View Debit/DC Note" class="btn-secondary" icon="fa-eye" modifiers="{&quot;invisible&quot;: [[&quot;have_note_line&quot;, &quot;=&quot;, false]]}"/>
+                                        <button name="generate_note_line" type="object" string="Create Debit/DC Note" class="btn-secondary" icon="fa-plus" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;id&quot;, &quot;=&quot;, false], [&quot;have_note_line&quot;, &quot;=&quot;, true]]}"/>
+                                        <!--                                        <field name="tax_no"/>-->
+                                        <!--                                        <field name="tax_date"/>-->
+                                        <!--                                        <field name="invoice_date"/>-->
+                                        <!--                                        <field name="tax_ys"/>-->
+                                        <!--                                        <field name="pl_ys"/>-->
+                                        <!--                                        <field name="group_ys"/>-->
+                                        <!--                                        <field name="slip_date"/>-->
+                                        <!--                                        <field name="set_off"/>-->
+                                        <!--                                        <field name="set_off_date"/>-->
+                                        <!--                                        <field name="create_date"/>-->
+                                        <!--                                        <field name="department"/>-->
+                                        <!--                                        <field name="office"/>-->
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <!--                        <page name="Marks &amp; Description (Print)"-->
+                        <!--                              attrs="{'invisible': [('transport_mode', '=', 'other')]}">-->
+                        <!--                            <group>-->
+                        <!--                                <group>-->
+                        <!--                                    <field name="mark_and_numbers"/>-->
+                        <!--                                    <field name="handling_information"-->
+                        <!--                                           attrs="{'invisible': [('transport_mode', '!=', 'air')]}"/>-->
+                        <!--                                </group>-->
+                        <!--                                <group attrs="{'invisible': [('transport_mode', '!=', 'air')]}">-->
+                        <!--                                    <group>-->
+                        <!--                                        <label for="description_of_good"/>-->
+                        <!--                                        <button name="add_dimension_desc_air" class="d-block oe_highlight py-0"-->
+                        <!--                                                type="object">-->
+                        <!--                                            <div style="width: 105px;">Add Dimension</div>-->
+                        <!--                                        </button>-->
+                        <!--                                    </group>-->
+                        <!--                                    <field name="description_of_good"/>-->
+                        <!--                                </group>-->
+                        <!--                            </group>-->
+
+                        <!--                            <group string="HBL Print Option">-->
+                        <!--                                <group attrs="{'invisible': [('transport_mode', '!=', 'sea')]}">-->
+                        <!--                                    <field name="container_detail" invisible="1"/>-->
+                        <!--                                    <field name="container_info_print_type"-->
+                        <!--                                           attrs="{'invisible': [('container_detail', '=', True)]}"/>-->
+                        <!--                                    <label name="Notify Party" for="notify_party_address"/>-->
+                        <!--                                    <div class="o_row">-->
+                        <!--                                        <label for="is_notify_same_as_consignee" string="Same as consignee?"/>-->
+                        <!--                                        <field name="is_notify_same_as_consignee"/>-->
+                        <!--                                        <field name="notify_party_address" string="Notify Party"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    <field name="freight_term_for_printing"/>-->
+                        <!--                                    <field name="onboard_date_option"/>-->
+                        <!--                                    <field name="display_freight_amount"/>-->
+                        <!--                                    <field name="bl_remark" string="BL Remark"/>-->
+                        <!--                                    <field name="devanning_remark"/>-->
+                        <!--                                </group>-->
+                        <!--                                <group attrs="{'invisible': [('transport_mode', '!=', 'sea')]}">-->
+                        <!--                                    <field name="bl_text_print" string="BL Text Print"/>-->
+                        <!--                                    <field name="show_service_terms"/>-->
+                        <!--                                    <field name="show_onboard_date"/>-->
+                        <!--                                    <field name="show_receive_date"/>-->
+                        <!--                                    <field name="is_non_negotiable"/>-->
+                        <!--                                    <field name="print_as_agent"/>-->
+                        <!--                                    <field name="stamp_print"/>-->
+                        <!--                                </group>-->
+                        <!--                                <group attrs="{'invisible': [('transport_mode', '!=', 'air')]}">-->
+                        <!--                                    <label name="Notify Party" for="notify_party_address"/>-->
+                        <!--                                    <div class="o_row">-->
+                        <!--                                        <label for="is_notify_same_as_consignee" string="Same as consignee?"/>-->
+                        <!--                                        <field name="is_notify_same_as_consignee"/>-->
+                        <!--                                        <field name="notify_party_address" string="Notify Party"/>-->
+                        <!--                                    </div>-->
+                        <!--                                    <field name="air_freight_print"/>-->
+                        <!--                                    <field name="other_charge_print"/>-->
+                        <!--                                </group>-->
+                        <!--                            </group>-->
+                        <!--                            <group string="Print Preview">-->
+                        <!--                                <field name="print_sea_selling_line_ids">-->
+                        <!--                                    <tree editable="bottom">-->
+                        <!--                                        <field name="sea_freight_term_print" invisible="1"/>-->
+                        <!--                                        <field name="product_id"/>-->
+                        <!--                                        <field name="product_name"/>-->
+                        <!--                                        <field name="fare_type"/>-->
+                        <!--                                        <field name="currency_id"/>-->
+                        <!--                                        <field name="rate"/>-->
+                        <!--                                        <field name="fcl_unit"/>-->
+                        <!--                                        <field name="qty"/>-->
+                        <!--                                        <field name="foreign_amount"/>-->
+                        <!--                                        <field name="prepaid_collect"/>-->
+                        <!--                                        <field name="is_print"/>-->
+                        <!--                                    </tree>-->
+                        <!--                                </field>-->
+                        <!--                            </group>-->
+                        <!--                            <group attrs="{'invisible': [('transport_mode', '!=', 'sea')]}">-->
+                        <!--                                <label name="Suggest #1" string="Suggest #1" for="description_of_goods_1"/>-->
+                        <!--                                <div class="o_row">-->
+                        <!--                                    <field name="description_of_goods_1"/>-->
+                        <!--                                    <label name="Suggest #2" string="Suggest #2" for="description_of_goods_2"/>-->
+                        <!--                                    <field name="description_of_goods_2"/>-->
+                        <!--                                </div>-->
+                        <!--                                <field name="description_of_goods"/>-->
+                        <!--                            </group>-->
+                        <!--                            &lt;!&amp;ndash;                            <group string="Delivery Request Print Option">&amp;ndash;&gt;-->
+                        <!--                            &lt;!&amp;ndash;                                <field name="dos_dear"/>&amp;ndash;&gt;-->
+                        <!--                            &lt;!&amp;ndash;                                <field name="do_release_date"/>&amp;ndash;&gt;-->
+                        <!--                            &lt;!&amp;ndash;                                <field name="delivery_name"/>&amp;ndash;&gt;-->
+                        <!--                            &lt;!&amp;ndash;                                <field name="remark_dos"/>&amp;ndash;&gt;-->
+                        <!--                            &lt;!&amp;ndash;                            </group>&amp;ndash;&gt;-->
+                        <!--                            &lt;!&amp;ndash;                            <group string="Arrival Notice Print Option">&amp;ndash;&gt;-->
+                        <!--                            &lt;!&amp;ndash;                                <field name="arrival_notice_date"/>&amp;ndash;&gt;-->
+                        <!--                            &lt;!&amp;ndash;                            </group>&amp;ndash;&gt;-->
+                        <!--                        </page>-->
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            <field name="rv_hide_selling" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/><field name="rv_hide_buying" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/><field name="job_freight_done" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/></form>
+        </field>
+    </record>
+
+    <record id="view_freight_shipment_master_search" model="ir.ui.view">
+        <field name="name">freight.shipment.master.search</field>
+        <field name="model">freight.shipment.master</field>
+        <field name="arch" type="xml">
+            <search string="Shipments">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="transport_mode"/>
+                <field name="job_id"/>
+                <field name="pic_id"/>
+                <field name="user_id"/>
+                <field name="port_receipt_id"/>
+                <field name="port_delivery_id"/>
+                <field name="sea_shipper_code" string="Shipper"/>
+                <field name="operator_ids" widget="many2many_tags"/>
+                <field name="consignee_id" string="Consignee" filter_domain="['|', '|', '|', '|', '|', ('sea_consignee_id.name', 'ilike', self), ('sea_consignee_id.partner_code', 'ilike', self), ('sea_consignee_id.vat', 'ilike', self), ('air_consignee_id.name', 'ilike', self), ('air_consignee_id.partner_code', 'ilike', self), ('air_consignee_id.vat', 'ilike', self)]"/>
+                <field name="sea_house_bl_display_ids" string="House BL" filter_domain="['|',('air_house_bl_display_ids', 'ilike', self), ('sea_house_bl_display_ids', 'ilike', self)]"/>
+                <separator/>
+                <filter string="Air Carriage" name="air_carriage" domain="[('transport_mode', '=', 'air')]"/>
+                <filter string="Ocean Carriage" name="ocean_carriage" domain="[('transport_mode', '=', 'sea')]"/>
+                <filter string="Land Carriage" name="land_carriage" domain="[('transport_mode', '=', 'land')]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Transport Mode" name="group_by_transport_mode" context="{'group_by': 'transport_mode'}"/>
+                    <filter string="Customer" name="group_by_customer" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Shipper" name="group_by_sea_shipper" context="{'group_by': 'sea_shipper_code'}"/>
+                    <filter string="Sale" name="group_by_user" context="{'group_by': 'user_id'}"/>
+                    <filter string="PIC" name="group_by_pic" context="{'group_by': 'pic_id'}"/>
+                    <filter string="State" name="group_by_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_freight_shipment_master_kanban" model="ir.ui.view">
+        <field name="name">freight.shipment.master.kanban</field>
+        <field name="model">freight.shipment.master</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Shipment Master"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_shipment_master" model="ir.actions.act_window">
+        <field name="name">Vận đơn chủ (Master B/L)</field>
+        <field name="res_model">freight.shipment.master</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record id="action_freight_master_sea" model="ir.actions.act_window">
+        <field name="name">Master SEA B/L</field>
+        <field name="res_model">freight.shipment.master</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('transport_type', '=', 'sea')]</field>
+    </record>
+
+    <record id="action_freight_master_air" model="ir.actions.act_window">
+        <field name="name">Master AIR B/L</field>
+        <field name="res_model">freight.shipment.master</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('transport_type', '=', 'air')]</field>
+    </record>
+
+    <record id="action_freight_master_cross_border" model="ir.actions.act_window">
+        <field name="name">Master Cross Border</field>
+        <field name="res_model">freight.shipment.master</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('transport_type', '=', 'cross_border')]</field>
+    </record>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_spreadsheet_dashboard_root"
+              name="Bảng điều khiển (Spreadsheet Dashboard)"
+              sequence="8"/>
+
+    <menuitem id="menu_spreadsheet_dashboard_group"
+              name="SPREADSHEET DASHBOARD GROUP"
+              parent="menu_spreadsheet_dashboard_root"
+              action="action_spreadsheet_dashboard_group"
+              sequence="10"/>
+
+</odoo>

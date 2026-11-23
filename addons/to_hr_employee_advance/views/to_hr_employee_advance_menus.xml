@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_to_hr_employee_advance_root"
+              name="Tạm ứng Nhân viên (Employee Advance)"
+              sequence="12"/>
+
+    <menuitem id="menu_employee_advance_reconcile_batch"
+              name="EMPLOYEE ADVANCE RECONCILE BATCH"
+              parent="menu_to_hr_employee_advance_root"
+              action="action_employee_advance_reconcile_batch"
+              sequence="10"/>
+
+    <menuitem id="menu_employee_advance"
+              name="EMPLOYEE ADVANCE"
+              parent="menu_to_hr_employee_advance_root"
+              action="action_employee_advance"
+              sequence="10"/>
+
+    <menuitem id="menu_employee_advance_reconcile"
+              name="EMPLOYEE ADVANCE RECONCILE"
+              parent="menu_to_hr_employee_advance_root"
+              action="action_employee_advance_reconcile"
+              sequence="10"/>
+
+    <menuitem id="menu_res_config_settings"
+              name="RES CONFIG SETTINGS"
+              parent="menu_to_hr_employee_advance_root"
+              action="action_res_config_settings"
+              sequence="10"/>
+
+</odoo>

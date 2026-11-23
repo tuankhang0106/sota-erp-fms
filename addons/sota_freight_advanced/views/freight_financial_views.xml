@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_freight_credit_note_tree" model="ir.ui.view">
+        <field name="name">freight.credit.note.tree</field>
+        <field name="model">freight.credit.note</field>
+        <field name="arch" type="xml">
+            <tree default_order="date desc" create="0">
+                    <field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="partner_id" modifiers="{&quot;required&quot;: true}"/>
+                <field name="is_com" optional="show" on_change="1"/>
+                    <field name="job_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="customer_id" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="pic_id" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="house_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="master_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="date" modifiers="{&quot;required&quot;: true}"/>
+                <field name="etd_job" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="due_date" optional="show"/>
+                    <field name="salesman_id" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="activity_ids" widget="list_activity"/>
+                    <field name="amount_untaxed" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="amount_total" sum="Total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="amount_total_foreign" sum="Total (Foreign)" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="paid_amount" sum="Paid Amount" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="amount_residual" sum="Residual Amount" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="company_id" optional="show" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="payment_state" widget="badge" decoration-danger="payment_state == 'not_paid'" decoration-warning="payment_state in ('partial',)" decoration-success="payment_state in ('paid',)" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="state" widget="badge" decoration-danger="state == 'cancel'" decoration-warning="state == 'partial_invoiced'" decoration-success="state == 'billed'" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="currency_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="company_currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <header>
+                    <button name="action_bulk_send_credit_note" type="object" string="Send" class="btn-primary"/>
+                    <button name="action_bulk_cancel_credit_note" type="object" string="Cancel" class="btn-danger"/>
+                    <button name="action_bulk_approve_credit_note" type="object" string="Approve" class="btn-success"/>
+                    <button name="action_bulk_create_bill_credit_note" type="object" string="Create Bill" class="btn-primary"/>
+                    <button name="action_open_payment_request_print" type="object" string="Print Payment Request"/>
+                </header>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_credit_note_form" model="ir.ui.view">
+        <field name="name">freight.credit.note.form</field>
+        <field name="model">freight.credit.note</field>
+        <field name="arch" type="xml">
+            <form edit="1">
+                    <header>
+                        <button name="action_create_bills" string="Create Bill" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;need_bill&quot;, &quot;=&quot;, false], [&quot;can_create_bill&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="action_register_payment" string="Register Payment" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;draft&quot;, &quot;cancel&quot;, &quot;sent&quot;]]]}"/>
+                        <button name="action_approve_credit_note" string="Approve" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;can_approve&quot;, &quot;=&quot;, false]]}"/>
+                <button name="action_send_credit_note" string="Send" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;can_send&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="action_cancel" type="object" string="Cancel" modifiers="{&quot;invisible&quot;: [&quot;&amp;&quot;, &quot;&amp;&quot;, [&quot;can_cancel_from_draft&quot;, &quot;=&quot;, false], [&quot;can_cancel_from_sent&quot;, &quot;=&quot;, false], [&quot;can_cancel_from_approved&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="action_draft" type="object" string="Set to Draft" modifiers="{&quot;invisible&quot;: [[&quot;can_set_to_draft&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="action_split_credit_note" type="object" string="Split Credit Note"/>
+                        <button name="action_open_payment_request_print" type="object" string="Print Payment Request"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,sent,approved,partial_invoiced,billed" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                        <field name="can_cancel" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="is_com" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                <field name="can_send" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="can_approve" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="can_create_bill" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="can_cancel_from_draft" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="can_cancel_from_sent" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="can_cancel_from_approved" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="can_set_to_draft" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="need_bill" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object" name="action_open_bills" icon="fa-pencil-square-o">
+                                <field string="Bills" name="bill_count" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                            </button>
+                            <button class="oe_stat_button" type="object" name="action_open_payments" icon="fa-credit-card">
+                                <field string="Payments" name="payment_count" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                            </button>
+                            <button class="oe_stat_button" type="object" name="action_open_soa" icon="fa-file-text-o" modifiers="{&quot;invisible&quot;: [[&quot;soa_id&quot;, &quot;=&quot;, false]]}">
+                                <field name="soa_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <span class="o_stat_text">SOA</span>
+                            </button>
+                        </div>
+                        <widget name="web_ribbon" title="Paid" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;paid&quot;]]}"/>
+                        <widget name="web_ribbon" title="Partial" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;partial&quot;]]}"/>
+                        <field name="payment_state" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <div class="oe_title">
+                            <h1>
+                                <span class="o_form_label">CD No.</span>
+                                <field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Party Information">
+                                <label for="partner_id"/>
+                                <div class="o_row">
+                                    <field name="partner_id" style="max-width: 35%" options="{'no_create': True, 'no_create_edit': True}" context="{'form_view_ref': 'sota_freight_advanced.view_partner_form_inherit'}" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                <field name="is_com" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_com&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                                    <field name="partner_display" modifiers="{&quot;readonly&quot;: true}"/>
+                                </div>
+                                <label for="shipper_id" string="Shipper"/>
+                                <div class="o_row">
+                                    <field name="shipper_id" style="max-width: 35%" options="{'no_create': True, 'no_create_edit': True}" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="shipper_display" modifiers="{&quot;readonly&quot;: true}"/>
+                                </div>
+                                <label for="consignee_id" string="Consignee"/>
+                                <div class="o_row">
+                                    <field name="consignee_id" style="max-width: 35%" options="{'no_create': True, 'no_create_edit': True}" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="consignee_display" modifiers="{&quot;readonly&quot;: true}"/>
+                                </div>
+                                <field name="pay_for" can_create="true" can_write="true"/>
+                                <field name="pic_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="pic_email" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="vendor_invoice_no"/>
+                                <field name="mark_is_paid" widget="boolean_toggle" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;not in&quot;, [&quot;partial&quot;]], [&quot;mark_is_paid&quot;, &quot;=&quot;, false]]}"/>
+                            </group>
+                            <group string="Internal Information">
+                                <field name="job_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="perf_date" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="master_id" domain="[('job_id', '=', job_id)]" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="house_id" domain="[('job_id', '=', job_id)]" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="reference"/>
+                                <field name="company_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Accounting Information">
+                                <field name="date" string="Billing Date" modifiers="{&quot;required&quot;: true}"/>
+                                <field name="due_date"/>
+                                <field name="payment_request_method"/>
+                                <field name="payment_request_remarks" placeholder="Banking information, payment deadline..."/>
+<!--                                <field name="manual_exchange_rate"/>-->
+<!--                                <label for="exchange_rate"/>-->
+<!--                                <div class="o_row">-->
+<!--                                    <field name="exchange_rate" readonly="0"/>-->
+<!--                                    <span>VND/USD</span>-->
+<!--                                </div>-->
+<!--                                <field name="set_off_amount"/>-->
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Service">
+                                <field name="line_ids" mode="tree,kanban" widget="section_and_note_one2many" on_change="1">
+                                    <tree editable="bottom">
+                                        <control>
+                                            <create name="add_product_control" string="Add a product"/>
+                                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                        </control>
+                                        <field name="sequence" widget="handle" on_change="1"/>
+                                        <field name="selected_for_split"/>
+                                        <field name="vendor_invoice_no"/>
+                                        <field name="transport_mode_id" string="Service" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="product_id" string="Fare" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="fare_type" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="product_name" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="tax_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="currency_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="exchange_rate" on_change="1"/>
+                                        <field name="fcl_unit" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="qty" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="rate" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="amt" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="local_amount" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="vat_foreign" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="vat" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="remark" modifiers="{&quot;readonly&quot;: true}"/>
+<!--                                        <field name="evidence" readonly="1"/>-->
+<!--                                        <field name="tax_no" readonly="1"/>-->
+<!--                                        <field name="tax_date" readonly="1"/>-->
+<!--                                        <field name="slip_no" readonly="1"/>-->
+<!--                                        <field name="department" readonly="1"/>-->
+<!--                                        <field name="office" readonly="1"/>-->
+                                    </tree>
+                                </field>
+                                <group name="note_group" class="mt-2 mt-md-0">
+                                    <group>
+                                        <field colspan="2" name="remark" placeholder="Remark"/>
+                                    </group>
+                                    <group class="oe_subtotal_footer" name="sale_total">
+                                        <group string="Total">
+                                            <field name="amount_untaxed" modifiers="{&quot;readonly&quot;: true}"/>
+                                            <field name="amount_taxed" modifiers="{&quot;readonly&quot;: true}"/>
+                                            <field name="amount_total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        </group>
+                                        <group string="Payment Status">
+                                            <field name="paid_amount" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                            <field name="amount_residual" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        </group>
+                                    </group>
+                                    <div class="clearfix"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_credit_note_search" model="ir.ui.view">
+        <field name="name">freight.credit.note.search</field>
+        <field name="model">freight.credit.note</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="CD No."/>
+                <field name="partner_id" string="Vendor"/>
+                <field name="job_id" string="Job"/>
+                <field name="remark" string="Remark" filter_domain="['|', ('remark', 'like', self), ('line_ids.remark', 'like', self)]"/>
+                <field name="perf_date" string="Performance Date"/>
+                <filter name="filter_perf_date" string="Performance Date" date="perf_date"/>
+  <filter string="Vendor COM" name="filter_vendor_com" domain="[('line_ids.product_id.is_com_fee','=',True)]"/>
+  <filter string="Customer COM" name="filter_customer_com" domain="[('line_ids.product_id.is_com_customer_fee','=',True)]"/>
+                <separator/>
+                <filter name="vendor_vn" string="Vendor VN" domain="[('partner_id.country_id.code', '=', 'VN')]"/>
+                <filter name="vendor_foreign" string="Vendor Foreign" domain="[('partner_id.country_id.code', '!=', 'VN'), ('partner_id.country_id', '!=', False)]"/>
+                <separator/>
+                <filter name="not_paid" string="Not Paid" domain="[('payment_state', '=', 'not_paid')]"/>
+                <filter name="partial_paid" string="Partially Paid" domain="[('payment_state', '=', 'partial')]"/>
+                <filter name="paid" string="Paid" domain="[('payment_state', '=', 'paid')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_partner" string="Vendor" context="{'group_by': 'partner_id'}"/>
+                    <filter name="group_by_job" string="Job" context="{'group_by': 'job_id'}"/>
+                    <filter name="group_by_house" string="House B/L" context="{'group_by': 'house_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_freight_credit_note_kanban" model="ir.ui.view">
+        <field name="name">freight.credit.note.kanban</field>
+        <field name="model">freight.credit.note</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Credit Note"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_credit_note" model="ir.actions.act_window">
+        <field name="name">Credit Note</field>
+        <field name="res_model">freight.credit.note</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_debit_note_tree" model="ir.ui.view">
+        <field name="name">freight.debit.note.tree</field>
+        <field name="model">freight.debit.note</field>
+        <field name="arch" type="xml">
+            <tree default_order="date desc" create="0" decoration-danger="is_near_due == True">
+<!--                    <header>-->
+<!--                        <button name="action_add_to_soa" type="object" string="Add to SOA" class="btn-primary"/>-->
+<!--                        <button string="Cancel" special="cancel"/>-->
+<!--                    </header>-->
+                    <field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="partner_id" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="shipper_id" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="consignee_id" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="job_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="house_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="house_bl_display" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="eta_job" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="etd_job" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="carrier_id" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="pol_display" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="pod_display" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="etd_job" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="date" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="due_date" optional="show" on_change="1"/>
+                    <field name="salesman_id" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="amount_total" sum="Total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="amount_total_foreign" sum="Total (Foreign)" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="paid_amount" sum="Paid Amount" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="amount_residual" sum="Residual Amount" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="activity_ids" widget="list_activity"/>
+                    <field name="create_uid" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="create_date" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="company_id" optional="show" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="state" widget="badge" decoration-danger="state == 'cancel'" decoration-warning="state == 'partial_invoiced'" decoration-success="state == 'invoiced'" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="payment_state" widget="badge" decoration-danger="payment_state == 'not_paid'" decoration-warning="payment_state in ('partial',)" decoration-success="payment_state in ('paid',)" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="company_currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="foreign_currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="is_near_due" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <header>
+                    <button name="action_bulk_send_debit_note" type="object" string="Send" class="btn-primary"/>
+                    <button name="action_bulk_cancel_debit_note" type="object" string="Cancel" class="btn-danger"/>
+                    <button name="action_bulk_create_invoice_debit_note" type="object" string="Create Invoice" class="btn-primary"/>
+                </header>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_debit_note_form" model="ir.ui.view">
+        <field name="name">freight.debit.note.form</field>
+        <field name="model">freight.debit.note</field>
+        <field name="arch" type="xml">
+            <form edit="1">
+                    <header>
+                        <button name="action_create_invoices" string="Create Invoice" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;need_invoice&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="action_send_debit_note" string="Send" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                        <button name="action_send_email" string="Send Email" type="object" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;=&quot;, &quot;draft&quot;], [&quot;show_send_email_button&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="action_send_email" string="Send Payment Confirmation" type="object" icon="fa-check-circle" context="{'send_confirm_bill': True}" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;=&quot;, &quot;draft&quot;], [&quot;is_fully_paid&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="action_cancel" type="object" string="Cancel" modifiers="{&quot;invisible&quot;: [[&quot;can_cancel&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="action_draft" type="object" string="Set to Draft" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, &quot;cancel&quot;]]}"/>
+                        <button name="action_split_debit_note" type="object" string="Split Debit Note"/>
+                        <button name="action_register_payment" string="Register Payment" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;need_register&quot;, &quot;=&quot;, false]]}"/>
+                        <field name="need_invoice" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="need_register_pay_on_behalf" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="need_register" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="can_cancel" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="amount_total" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="paid_amount" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="is_fully_paid" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="show_send_email_button" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="state" widget="statusbar" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    </header>
+                <field name="is_near_due" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <div class="alert alert-warning" role="alert" modifiers="{&quot;invisible&quot;: [[&quot;is_near_due&quot;, &quot;=&quot;, false]]}">
+                    <strong><i class="fa fa-exclamation-triangle" title="Warning"/> Warning:</strong>
+                    This debit note is approaching its credit term due date. Please follow up on payment.
+                </div>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <field name="soa_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <button class="oe_stat_button" type="object" name="action_open_soa" string="SOA" icon="fa-pencil-square-o" modifiers="{&quot;invisible&quot;: [[&quot;soa_id&quot;, &quot;=&quot;, false]]}"/>
+                            <button class="oe_stat_button" type="object" name="action_open_invoices" icon="fa-pencil-square-o">
+                                <field string="Invoices" name="invoice_count" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                            </button>
+                            <button class="oe_stat_button" type="object" name="action_open_payments" icon="fa-credit-card">
+                                <field string="Payments" name="payment_count" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                            </button>
+                        </div>
+                        <widget name="web_ribbon" title="Paid" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;paid&quot;]]}"/>
+                        <widget name="web_ribbon" title="Partial" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;partial&quot;]]}"/>
+                        <field name="payment_state" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <div class="oe_title">
+                            <h1>
+                                <span class="o_form_label">DN No.</span>
+                                <field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Party Information">
+                                <group class="w-100">
+                                    <label for="partner_id"/>
+                                    <div class="o_row">
+                                        <field name="partner_id" style="max-width: 35%" options="{'no_create': True, 'no_create_edit': True}" context="{'form_view_ref': 'sota_freight_advanced.view_partner_form_inherit'}" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                                        <field name="partner_display" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                    <label for="shipper_id" string="Shipper"/>
+                                    <div class="o_row">
+                                        <field name="shipper_id" style="max-width: 35%" options="{'no_create': True, 'no_create_edit': True}" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="shipper_display" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                    <label for="consignee_id" string="Consignee"/>
+                                    <div class="o_row">
+                                        <field name="consignee_id" style="max-width: 35%" options="{'no_create': True, 'no_create_edit': True}" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="consignee_display" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                    <field name="user_id" on_change="1" can_create="true" can_write="true"/>
+                                    <field name="team_id" on_change="1" can_create="true" can_write="true"/>
+                                    <field name="department_id" modifiers="{&quot;readonly&quot;: true}"/>
+                                </group>
+                                <group class="w-100" string="Accounting Information">
+                                    <label for="date" string="Billing Date"/>
+                <div class="o_row">
+                    <field name="date" nolabel="1" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <button name="action_update_exchange_rate_by_date" type="object" string="Update Ex.Rate" class="btn-link" help="Cập nhật tỉ giá các dòng theo Billing Date này" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;]]]}"/>
+                </div>
+                <field name="exchange_rate_mismatch" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <div class="text-warning small" colspan="2" modifiers="{&quot;invisible&quot;: [[&quot;exchange_rate_mismatch&quot;, &quot;=&quot;, false]]}">
+                    <i class="fa fa-exclamation-triangle"/>
+                    Tỉ giá trên các dòng có thể không khớp với Billing Date. Bấm "Update Rate" để cập nhật <b>nếu cần</b>.
+                </div>
+                <field name="tax_rounding_method" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="invoice_form" string="Invoice Form" modifiers="{&quot;invisible&quot;: [[&quot;tax_rounding_method&quot;, &quot;=&quot;, &quot;round_globally&quot;]]}"/>
+            <field name="due_date" on_change="1"/>
+                                    <field name="create_invoice_in_vnd_only" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                    <field name="mark_is_paid" widget="boolean_toggle" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;not in&quot;, [&quot;partial&quot;]], [&quot;mark_is_paid&quot;, &quot;=&quot;, false]]}"/>
+                                </group>
+                            </group>
+                            <group string="Internal Information">
+                                <field name="job_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="master_id" domain="[('job_id', '=', job_id)]" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="house_id" domain="[('job_id', '=', job_id)]" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="bill_of_lading" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="reference"/>
+                                <field name="create_uid" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="create_date" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="currency_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="company_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Service">
+                                <field name="line_ids" mode="tree" widget="section_and_note_one2many" on_change="1">
+                                    <tree editable="bottom" decoration-success="tax_ref and local_amount &gt; 0" decoration-warning="tax_ref and local_amount &lt; 0">
+                                        <control>
+                                            <create name="add_product_control" string="Add a product"/>
+                                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                        </control>
+                                        <field name="sequence" widget="handle" on_change="1"/>
+                                        <field name="selected_for_split"/>
+<!--                                        <field name="transport_mode_id" string="Service" readonly="1"/>-->
+                                        <field name="product_id" string="Fare" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="fare_type" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="product_name" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="tax_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="currency_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="exchange_rate" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                                        <field name="fcl_unit" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="qty" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="rate" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="amt" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="local_amount" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="vat_foreign" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="vat" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="is_pay_for" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="remark" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="tax_ref" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="state" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<!--                                        <field name="evidence"/>-->
+<!--                                        <field name="tax_no"/>-->
+<!--                                        <field name="tax_date"/>-->
+<!--                                        <field name="slip_no"/>-->
+<!--                                        <field name="department"/>-->
+<!--                                        <field name="office"/>-->
+                                        <field name="truck_job_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="company_currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                    </tree>
+                                </field>
+                                <group name="note_group" class="mt-2 mt-md-0">
+                                    <group>
+                                        <field colspan="2" name="remark" nolabel="1" placeholder="Remark"/>
+                                        <field colspan="2" name="bank_id" string="Bank" on_change="1" can_create="true" can_write="true"/>
+                                        <field colspan="2" name="bank_name" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </group>
+                                    <group class="oe_subtotal_footer" name="sale_total">R
+                                        <group string="Total">
+                                            <field name="company_currency_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                            <field name="amount_untaxed" modifiers="{&quot;readonly&quot;: true}"/>
+                                            <field name="amount_taxed" modifiers="{&quot;readonly&quot;: true}"/>
+                                            <field name="amount_total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        </group>
+                                        <group string="Payment Status">
+                                            <field name="paid_amount" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                            <field name="amount_residual" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        </group>
+                                    </group>
+                                    <div class="clearfix"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_debit_note_search" model="ir.ui.view">
+        <field name="name">freight.debit.note.search</field>
+        <field name="model">freight.debit.note</field>
+        <field name="arch" type="xml">
+            <search>
+<field name="name"/>
+<field name="partner_id"/>
+<field name="job_id"/>
+                <field name="remark" string="Remark" filter_domain="['|', ('remark', 'like', self), ('line_ids.remark', 'like', self)]"/>
+                <field name="perf_date" string="Performance Date"/>
+                <filter name="filter_perf_date" string="Performance Date" date="perf_date"/>
+<filter name="ftr_for" string="Debit FOR" domain="['|', ('house_id', '!=', False), ('master_id', '!=', False)]"/>
+<filter name="ftr_log" string="Debit LOG" domain="[('house_id', '=', False), ('master_id', '=', False)]"/>
+                <separator/>
+                <filter name="not_paid" string="Not Paid" domain="[('payment_state', '=', 'not_paid')]"/>
+                <filter name="partial_paid" string="Partially Paid" domain="[('payment_state', '=', 'partial')]"/>
+                <filter name="paid" string="Paid" domain="[('payment_state', '=', 'paid')]"/>
+                <group string="Group By">
+                    <filter string="Customer" name="group_by_partner_id" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Job" name="group_by_job_id" context="{'group_by': 'job_id'}"/>
+                    <filter string="House B/L" name="group_by_house_id" context="{'group_by': 'house_id'}"/>
+                </group>
+</search>
+        </field>
+    </record>
+
+    <record id="view_freight_debit_note_kanban" model="ir.ui.view">
+        <field name="name">freight.debit.note.kanban</field>
+        <field name="model">freight.debit.note</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Debit Note"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_debit_note" model="ir.actions.act_window">
+        <field name="name">Debit Note</field>
+        <field name="res_model">freight.debit.note</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_dc_note_tree" model="ir.ui.view">
+        <field name="name">freight.dc.note.tree</field>
+        <field name="model">freight.dc.note</field>
+        <field name="arch" type="xml">
+            <tree create="0" default_order="date desc" decoration-danger="is_near_due == True">
+                    <!--                    <header>-->
+                    <!--                        <button name="action_add_to_soa" type="object" string="Add to SOA" class="btn-primary"/>-->
+                    <!--                        <button string="Cancel" special="cancel"/>-->
+                    <!--                    </header>-->
+                    <field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="partner_id" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="shipper_id" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="consignee_id" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="job_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="house_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="house_bl_display" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="eta_job" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="etd_job" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="carrier_id" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="pol_display" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="pod_display" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="etd_job" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="date" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="due_date" optional="show" on_change="1"/>
+                    <field name="salesman_id" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="company_currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="amount_total" sum="Total" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="amount_total_foreign" sum="Total (Foreign)" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="paid_amount" sum="Paid Amount" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="amount_residual" sum="Residual Amount" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="activity_ids" widget="list_activity"/>
+                    <field name="create_uid" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="create_date" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="company_id" optional="show" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="state" widget="badge" decoration-danger="state == 'cancel'" decoration-warning="state == 'partial_invoiced'" decoration-success="state == 'invoiced'" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="payment_state" widget="badge" decoration-danger="payment_state == 'not_paid'" decoration-warning="payment_state in ('partial',)" decoration-success="payment_state in ('paid',)" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="foreign_currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="is_near_due" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <header>
+                    <button name="action_bulk_send_dc_note" type="object" string="Send" class="btn-primary"/>
+                    <button name="action_bulk_cancel_dc_note" type="object" string="Cancel" class="btn-danger"/>
+                    <button name="action_bulk_create_invoice_dc_note" type="object" string="Create Invoice" class="btn-primary"/>
+                </header>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_dc_note_form" model="ir.ui.view">
+        <field name="name">freight.dc.note.form</field>
+        <field name="model">freight.dc.note</field>
+        <field name="arch" type="xml">
+            <form edit="1">
+                    <header>
+                        <button name="action_create_invoices" string="Create Invoice" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;need_invoice&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="action_send_debit_note" string="Send" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+<!--                <button name="action_approve" string="Approve" type="object" groups="account.group_account_invoice"-->
+<!--                            class="oe_highlight" attrs="{'invisible': [('state', '!=', 'sent')]}"/>-->
+                <field name="is_fully_paid" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <button name="action_cancel" type="object" string="Cancel" modifiers="{&quot;invisible&quot;: [[&quot;can_cancel&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="action_draft" type="object" string="Set to Draft" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, &quot;cancel&quot;]]}"/>
+                        <button name="action_register_payment" string="Register Payment" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;draft&quot;, &quot;cancel&quot;]]]}"/>
+                        <button name="action_send_email" string="Send Payment Confirmation" type="object" icon="fa-check-circle" context="{'send_confirm_bill': True}" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;=&quot;, &quot;draft&quot;], [&quot;is_fully_paid&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="action_send_email" string="Send Email" type="object" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;=&quot;, &quot;draft&quot;], [&quot;show_send_email_button&quot;, &quot;=&quot;, false]]}"/>
+                        <field name="need_invoice" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="is_fully_paid" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="can_cancel" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="show_send_email_button" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="state" widget="statusbar" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    </header>
+                <field name="is_near_due" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <div class="alert alert-warning" role="alert" modifiers="{&quot;invisible&quot;: [[&quot;is_near_due&quot;, &quot;=&quot;, false]]}">
+                    <strong><i class="fa fa-exclamation-triangle" title="Warning"/> Warning:</strong>
+                    This DC note is approaching its credit term due date. Please follow up on payment.
+                </div>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <field name="soa_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <button class="oe_stat_button" type="object" name="action_open_soa" string="SOA" icon="fa-pencil-square-o" modifiers="{&quot;invisible&quot;: [[&quot;soa_id&quot;, &quot;=&quot;, false]]}"/>
+                            <button class="oe_stat_button" type="object" name="action_open_invoices" icon="fa-pencil-square-o">
+                                <field string="Invoices" name="invoice_count" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                            </button>
+                            <button class="oe_stat_button" type="object" name="action_open_payments" icon="fa-credit-card">
+                                <field string="Payments" name="payment_count" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                            </button>
+                        </div>
+                        <widget name="web_ribbon" title="Paid" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;paid&quot;]]}"/>
+                        <widget name="web_ribbon" title="Partial" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;partial&quot;]]}"/>
+                        <field name="payment_state" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <div class="oe_title">
+                            <h1>
+                                <span class="o_form_label">DC No.</span>
+                                <field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Party Information">
+                                <group class="w-100">
+                                    <label for="partner_id"/>
+                                    <div class="o_row">
+                                        <field name="partner_id" style="max-width: 35%" options="{'no_create': True, 'no_create_edit': True}" context="{'form_view_ref': 'sota_freight_advanced.view_partner_form_inherit'}" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                                        <field name="partner_display" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                    <label for="shipper_id" string="Shipper"/>
+                                    <div class="o_row">
+                                        <field name="shipper_id" style="max-width: 35%" options="{'no_create': True, 'no_create_edit': True}" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="shipper_display" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                    <label for="consignee_id" string="Consignee"/>
+                                    <div class="o_row">
+                                        <field name="consignee_id" style="max-width: 35%" options="{'no_create': True, 'no_create_edit': True}" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="consignee_display" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                    <field name="user_id" on_change="1" can_create="true" can_write="true"/>
+                                    <field name="team_id" on_change="1" can_create="true" can_write="true"/>
+                                    <field name="department_id" modifiers="{&quot;readonly&quot;: true}"/>
+                                </group>
+                                <group class="w-100" string="Accounting Information">
+                                    <field name="currency_id" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <label for="date" string="Billing Date"/>
+                <div class="o_row">
+                    <field name="date" nolabel="1" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <button name="action_update_exchange_rate_by_date" type="object" string="Update Ex.Rate" class="btn-link" help="Cập nhật tỉ giá các dòng theo Billing Date này" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;]]]}"/>
+                </div>
+                <field name="exchange_rate_mismatch" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <div class="text-warning small" colspan="2" modifiers="{&quot;invisible&quot;: [[&quot;exchange_rate_mismatch&quot;, &quot;=&quot;, false]]}">
+                    <i class="fa fa-exclamation-triangle"/>
+                    Tỉ giá trên các dòng có thể không khớp với Billing Date. Bấm "Update Ex.Rate" để cập nhật <b>nếu cần</b>.
+                </div>
+            <field name="due_date" on_change="1"/>
+                                    <field name="create_dc_invoice_in_vnd_only" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                    <field name="mark_is_paid" widget="boolean_toggle" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;not in&quot;, [&quot;partial&quot;]], [&quot;mark_is_paid&quot;, &quot;=&quot;, false]]}"/>
+                                </group>
+                            </group>
+                            <group string="Internal Information">
+                                <field name="job_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="master_id" domain="[('job_id', '=', job_id)]" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="house_id" domain="[('job_id', '=', job_id)]" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="reference"/>
+                                <field name="create_uid" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="create_date" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="company_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Service">
+                                <field name="line_ids" mode="tree" widget="section_and_note_one2many" on_change="1">
+                                    <tree editable="bottom" decoration-success="tax_ref and local_amount &gt; 0" decoration-warning="tax_ref and local_amount &lt; 0">
+                                        <control>
+                                            <create name="add_product_control" string="Add a product"/>
+                                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                        </control>
+                                        <field name="sequence" widget="handle" on_change="1"/>
+                                        <field name="transport_mode_id" string="Service" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="product_id" string="Fare" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="fare_type" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="product_name" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="tax_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="dr_cr" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="currency_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="exchange_rate" on_change="1"/>
+                                        <field name="fcl_unit" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="qty" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="rate" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="amt" string="Debit (Foreign)" sum="Debit (Foreign)" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="local_amount" string="Debit (Local)" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <!--                                        <field name="credit_foreign"/>-->
+                                        <!--                                        <field name="credit_local"/>-->
+                                        <field name="vat_foreign" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="vat" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="is_pay_for" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="remark" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="tax_ref" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <!--                                        <field name="evidence"/>-->
+                                        <!--                                        <field name="tax_no"/>-->
+                                        <!--                                        <field name="tax_date"/>-->
+                                        <!--                                        <field name="slip_no"/>-->
+                                        <!--                                        <field name="department"/>-->
+                                        <!--                                        <field name="office"/>-->
+                                    </tree>
+                                </field>
+                                <group name="note_group" class="mt-2 mt-md-0">
+                                    <group>
+                                        <field colspan="2" name="remark" nolabel="1" placeholder="Remark"/>
+                                        <field colspan="2" name="bank_id" on_change="1" can_create="true" can_write="true"/>
+                                        <field colspan="2" name="bank_name" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </group>
+                                    <group class="oe_subtotal_footer" name="sale_total">
+                                        <group string="Total">
+                                            <field name="company_currency_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                            <field name="amount_untaxed" string="Untaxed" modifiers="{&quot;readonly&quot;: true}"/>
+                                            <field name="amount_taxed" string="Taxed" modifiers="{&quot;readonly&quot;: true}"/>
+                                            <field name="amount_total" string="Total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        </group>
+                                        <group string="Payment Status">
+                                            <field name="paid_amount" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                            <field name="amount_residual" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        </group>
+                                    </group>
+                                    <div class="clearfix"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_dc_note_search" model="ir.ui.view">
+        <field name="name">freight.dc.note.search</field>
+        <field name="model">freight.dc.note</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="job_id"/>
+                <field name="remark" string="Remark" filter_domain="['|', ('remark', 'like', self), ('line_ids.remark', 'like', self)]"/>
+                <field name="perf_date" string="Performance Date"/>
+                <filter name="filter_perf_date" string="Performance Date" date="perf_date"/>
+                <filter name="ftr_for" string="Debit FOR" domain="['|', ('house_id', '!=', False), ('master_id', '!=', False)]"/>
+                <filter name="ftr_log" string="Debit LOG" domain="[('house_id', '=', False), ('master_id', '=', False)]"/>
+                <separator/>
+                <filter name="not_paid" string="Not Paid" domain="[('payment_state', '=', 'not_paid')]"/>
+                <filter name="partial_paid" string="Partially Paid" domain="[('payment_state', '=', 'partial')]"/>
+                <filter name="paid" string="Paid" domain="[('payment_state', '=', 'paid')]"/>
+                <group string="Group By">
+                    <filter string="Customer" name="group_by_partner_id" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Job" name="group_by_job_id" context="{'group_by': 'job_id'}"/>
+                    <filter string="House B/L" name="group_by_house_id" context="{'group_by': 'house_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_freight_dc_note_kanban" model="ir.ui.view">
+        <field name="name">freight.dc.note.kanban</field>
+        <field name="model">freight.dc.note</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight DC Note"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_dc_note" model="ir.actions.act_window">
+        <field name="name">DC Note</field>
+        <field name="res_model">freight.dc.note</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_freight_soa_tree" model="ir.ui.view">
+        <field name="name">freight.soa.tree</field>
+        <field name="model">freight.soa</field>
+        <field name="arch" type="xml">
+            <tree string="Statements of Account">
+                <header>
+                    <button name="action_open_payment_request_print" type="object" string="Print Payment Request"/>
+                </header>
+                <field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="partner_id" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                <field name="purpose" modifiers="{&quot;required&quot;: true}"/>
+                <field name="date" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="state" modifiers="{&quot;required&quot;: true}"/>
+                <field name="amount_total" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="payment_state" widget="badge" decoration-success="payment_state == 'paid'" decoration-warning="payment_state == 'partial'" decoration-danger="payment_state == 'not_paid'" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="company_id" optional="show" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                <!--                <field name="amount_residual_vnd"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_soa_form" model="ir.ui.view">
+        <field name="name">freight.soa.form</field>
+        <field name="model">freight.soa</field>
+        <field name="arch" type="xml">
+            <form string="Statement of Account" create="true" edit="true">
+                <header>
+                    <button name="action_sent" type="object" string="Sent" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                    <button name="action_create_invoices" type="object" string="Create Invoice" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;not in&quot;, [&quot;sent&quot;, &quot;done&quot;]], [&quot;show_invoice_as_bill&quot;, &quot;=&quot;, true]]}"/>
+                    <button name="action_create_invoices" type="object" string="Create Bill" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;not in&quot;, [&quot;sent&quot;, &quot;done&quot;]], [&quot;show_invoice_as_bill&quot;, &quot;=&quot;, false]]}"/>
+                    <button name="action_register_payment" type="object" string="Register Payment" class="btn-primary" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;not in&quot;, [&quot;sent&quot;, &quot;done&quot;]], [&quot;payment_state&quot;, &quot;=&quot;, &quot;paid&quot;]]}"/>
+                    <button name="838" type="action" string="Update Exchange Rate" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;]], [&quot;is_foreign_currency&quot;, &quot;=&quot;, false]]}"/>
+                    <button name="action_cancel" type="object" string="Cancel" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                    <button name="action_reset_to_draft" type="object" string="Reset to Draft" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;cancel&quot;]]]}"/>
+                    <button name="action_open_payment_request_print" type="object" string="Print Payment Request" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;!=&quot;, &quot;credit&quot;]]}"/>
+                    <button name="action_find_candidates" string="Find DC Notes" type="object" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;], [&quot;type&quot;, &quot;!=&quot;, &quot;dc&quot;]]}"/>
+                    <button name="action_find_candidates" string="Find Debit Notes" type="object" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;], [&quot;type&quot;, &quot;!=&quot;, &quot;debit&quot;]]}"/>
+                    <button name="action_find_candidates" string="Find Credit Notes" type="object" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;], [&quot;type&quot;, &quot;!=&quot;, &quot;credit&quot;]]}"/>
+                    <!-- SOA DC: thêm Credit Note để cấn trừ ròng -->
+                    <button name="action_find_credit_candidates" string="Find Credit Notes" type="object" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;], [&quot;type&quot;, &quot;!=&quot;, &quot;dc&quot;]]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sent,done,cancel" modifiers="{&quot;required&quot;: true}"/>
+                </header>
+
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <field name="show_invoice_as_bill" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <button class="oe_stat_button" type="object" name="action_open_invoices" icon="fa-pencil-square-o" modifiers="{&quot;invisible&quot;: [[&quot;show_invoice_as_bill&quot;, &quot;=&quot;, true]]}">
+                            <field string="Invoices" name="invoice_count" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                        <button class="oe_stat_button" type="object" name="action_open_invoices" icon="fa-pencil-square-o" modifiers="{&quot;invisible&quot;: [[&quot;show_invoice_as_bill&quot;, &quot;=&quot;, false]]}">
+                            <field string="Bills" name="bill_count" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                        <button class="oe_stat_button" type="object" name="action_open_payments" icon="fa-credit-card">
+                            <field string="Payments" name="payment_count" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Paid" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;paid&quot;]]}"/>
+                    <widget name="web_ribbon" title="Partial" bg_color="bg-warning" modifiers="{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;partial&quot;]]}"/>
+                    <field name="payment_state" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <group>
+                        <group>
+                            <field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="partner_id" string="Customer" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            <field name="company_id" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                            <field name="date" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="purpose" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: true}"/>
+                            <field name="date_from" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                            <field name="date_to" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                            <field name="type" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
+                            <field name="is_foreign_currency" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        </group>
+                        <group>
+                            <field name="invoice_no" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="currency_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            <field name="payment_exchange_rate" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;type&quot;, &quot;!=&quot;, &quot;dc&quot;], [&quot;is_foreign_currency&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}"/>
+                            <field name="amount_total" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="amount_residual" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="payment_state" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="split_bill"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Lines">
+                            <field name="line_ids" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}">
+                                <tree create="0" edit="0">
+                                    <field name="job_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="dc_note_id" on_change="1" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.type&quot;, &quot;!=&quot;, &quot;dc&quot;]]}"/>
+                                    <field name="debit_note_id" on_change="1" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.type&quot;, &quot;!=&quot;, &quot;debit&quot;]]}"/>
+                                    <field name="credit_note_id" on_change="1" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.type&quot;, &quot;not in&quot;, [&quot;credit&quot;, &quot;dc&quot;]]]}"/>
+                                    <field name="product_name" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="perf_date" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="date" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="amount_total" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="amount_credit" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="amount_residual" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                </tree>
+                                <form create="0" edit="0">
+                                    <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="job_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                                <field name="dc_note_id" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;parent.type&quot;, &quot;!=&quot;, &quot;dc&quot;]], &quot;readonly&quot;: true}" can_create="true" can_write="true"/>
+                                                <field name="debit_note_id" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;parent.type&quot;, &quot;!=&quot;, &quot;debit&quot;]], &quot;readonly&quot;: true}" can_create="true" can_write="true"/>
+                                                <field name="credit_note_id" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;parent.type&quot;, &quot;not in&quot;, [&quot;credit&quot;, &quot;dc&quot;]]], &quot;readonly&quot;: true}" can_create="true" can_write="true"/>
+                                                <field name="house_id" modifiers="{&quot;readonly&quot;: true}"/>
+                                                <field name="product_name" modifiers="{&quot;readonly&quot;: true}"/>
+                                                <field name="perf_date" modifiers="{&quot;readonly&quot;: true}"/>
+                                                <field name="date" modifiers="{&quot;readonly&quot;: true}"/>
+                                                <field name="amount_total" modifiers="{&quot;readonly&quot;: true}"/>
+                                                <field name="amount_credit" modifiers="{&quot;readonly&quot;: true}"/>
+                                                <field name="amount_residual" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                                <field name="currency_id" modifiers="{&quot;readonly&quot;: true}"/>
+                                            </group>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="note" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_freight_soa_search" model="ir.ui.view">
+        <field name="name">freight.soa.search</field>
+        <field name="model">freight.soa</field>
+        <field name="arch" type="xml">
+            <search string="Freight Statement of Account"><field name="name"/></search>
+        </field>
+    </record>
+
+    <record id="view_freight_soa_kanban" model="ir.ui.view">
+        <field name="name">freight.soa.kanban</field>
+        <field name="model">freight.soa</field>
+        <field name="arch" type="xml">
+            <kanban string="Freight Statement of Account"><templates><t t-name="kanban-box"><div t-attf-class="oe_kanban_card oe_kanban_global_click"><div class="o_kanban_card_content"><field name="name" modifiers="{&quot;readonly&quot;: true}"/></div></div></t></templates></kanban>
+        </field>
+    </record>
+
+    <record id="action_freight_soa" model="ir.actions.act_window">
+        <field name="name">Bảng tổng hợp công nợ (SOA)</field>
+        <field name="res_model">freight.soa</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

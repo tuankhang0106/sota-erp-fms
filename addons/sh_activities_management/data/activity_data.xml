@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="tag_urgent" model="sh.activity.tags">
+            <field name="name">Khẩn cấp (Urgent)</field>
+            <field name="color">1</field>
+        </record>
+        <record id="tag_important" model="sh.activity.tags">
+            <field name="name">Quan trọng (Important)</field>
+            <field name="color">2</field>
+        </record>
+        <record id="tag_followup" model="sh.activity.tags">
+            <field name="name">Theo dõi (Follow-up)</field>
+            <field name="color">3</field>
+        </record>
+    </data>
+</odoo>

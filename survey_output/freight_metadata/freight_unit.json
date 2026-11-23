@@ -1,0 +1,130 @@
+{
+  "fields": {
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "code": {
+      "readonly": false,
+      "required": true,
+      "string": "Code",
+      "type": "char"
+    },
+    "type": {
+      "readonly": false,
+      "required": true,
+      "string": "Unit",
+      "type": "char"
+    },
+    "cont_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "20",
+          "20'"
+        ],
+        [
+          "40",
+          "40'"
+        ],
+        [
+          "hq",
+          "HQ"
+        ]
+      ],
+      "string": "Container Type",
+      "type": "selection"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "note": {
+      "readonly": false,
+      "required": false,
+      "string": "Note",
+      "type": "char"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree>\n                    <field name=\"name\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\"/>\n                    <field name=\"code\" modifiers=\"{&quot;required&quot;: true}\"/>\n                    <field name=\"type\" modifiers=\"{&quot;required&quot;: true}\"/>\n                    <field name=\"cont_type\"/>\n                    <field name=\"active\"/>\n                    <field name=\"note\"/>\n                </tree>",
+      "id": 1477,
+      "model": "freight.unit"
+    },
+    "form": {
+      "arch": "<form>\n                    <sheet>\n                        <group>\n                            <field name=\"name\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\"/>\n                            <field name=\"code\" modifiers=\"{&quot;required&quot;: true}\"/>\n                            <field name=\"type\" modifiers=\"{&quot;required&quot;: true}\"/>\n                            <field name=\"cont_type\" widget=\"radio\" options=\"{'horizontal': True}\"/>\n                            <field name=\"active\"/>\n                            <field name=\"note\"/>\n                        </group>\n                    </sheet>\n                </form>",
+      "id": 1476,
+      "model": "freight.unit"
+    },
+    "search": {
+      "arch": "<search>\n                    <field name=\"name\"/>\n                    <field name=\"code\"/>\n                    <field name=\"note\"/>\n                    <filter string=\"Archived\" name=\"archived\" domain=\"[('active', '=', False)]\"/>\n                </search>",
+      "id": 1478,
+      "model": "freight.unit"
+    },
+    "kanban": {
+      "arch": "<kanban string=\"Freight Unit\"><templates><t t-name=\"kanban-box\"><div t-attf-class=\"oe_kanban_card oe_kanban_global_click\"><div class=\"o_kanban_card_content\"><field name=\"code\" modifiers=\"{&quot;required&quot;: true}\"/></div></div></t></templates></kanban>",
+      "id": false,
+      "model": "freight.unit"
+    },
+    "pivot": {
+      "arch": "<pivot string=\"Freight Unit\"/>",
+      "id": false,
+      "model": "freight.unit"
+    },
+    "graph": {
+      "arch": "<graph string=\"Freight Unit\"><field name=\"code\"/></graph>",
+      "id": false,
+      "model": "freight.unit"
+    }
+  }
+}

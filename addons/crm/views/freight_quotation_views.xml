@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_freight_quotation_tree" model="ir.ui.view">
+        <field name="name">freight.quotation.tree</field>
+        <field name="model">freight.quotation</field>
+        <field name="arch" type="xml">
+            <tree default_order="name desc" decoration-warning="is_sent_overdue == True">
+                <field name="is_sent_overdue" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="priority" widget="priority"/>
+                <field name="issue_date"/>
+                <field name="name" string="Quotation No." modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                <field name="user_id" string="Salesperson"/>
+                <field name="partner_id" modifiers="{&quot;required&quot;: true}"/>
+                <field name="bill_number" string="BILL#"/>
+                <field name="cd_number" string="CD#"/>
+                <field name="commodity_id" string="Commodity"/>
+                <field name="pol_id" string="POL" on_change="1"/>
+                <field name="pod_id" string="POD" on_change="1"/>
+                <field name="company_id" optional="show" modifiers="{&quot;required&quot;: true}"/>
+                <!--                <field name="unit_id"/>-->
+<!--                <field name="qty_id"/>-->
+<!--                <field name="price_id"/>-->
+                <field name="state" string="Status" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                <field name="date_end" string="Valid"/>
+                <field name="auto_extension" optional="hide"/>
+                <field name="remark" string="Remark"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_quotation_form" model="ir.ui.view">
+        <field name="name">freight.quotation.form</field>
+        <field name="model">freight.quotation</field>
+        <field name="arch" type="xml">
+            <form class="freight_quotation_form" js_class="freight_form">
+                <header>
+                    <button name="action_send" type="object" string="Send Quotation" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                    <button name="action_send_mail_quotation" type="object" string="Send Email" class="oe_highlight"/>
+                    <button name="action_convert" type="object" string="Convert" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;sent&quot;]]}"/>
+                    <button name="action_confirm" type="object" string="Confirm" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;can_confirm&quot;, &quot;=&quot;, false]]}"/>
+                    <button name="action_final" type="object" string="Final" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;can_final&quot;, &quot;=&quot;, false]]}"/>
+                    <button name="action_unlock" type="object" string="Unlock" modifiers="{&quot;invisible&quot;: [[&quot;can_unlock&quot;, &quot;=&quot;, false]]}"/>
+                    <button name="action_set_to_draft" type="object" string="Set To Draft" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;draft&quot;, &quot;done&quot;, &quot;final&quot;]]]}"/>
+                    <button name="action_cancel" type="object" string="Cancel" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;in&quot;, &quot;cancel&quot;]]}"/>
+<!--                    <button name="button_update_rate" type="object" string="Update Exchange Rate" attrs="{'invisible': [('quotation_type', '=', '2')]}"/>-->
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sent,done,confirm,final" on_change="1" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                    <field name="can_final" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="can_unlock" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="can_confirm" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <button name="action_create_job" type="object" string="Create Job" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;job_id&quot;, &quot;!=&quot;, false], [&quot;state&quot;, &quot;in&quot;, [&quot;draft&quot;, &quot;cancel&quot;]]]}"/>
+                <button name="action_open_compare_debit" type="object" string="Compare Debit Note" class="oe_highlight" icon="fa-balance-scale"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <group>
+                                <field name="name" string="Quotation No." modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                                <field name="purchase_pricing_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}" can_create="true" can_write="true"/>
+                                <field name="quotation_type" widget="radio" on_change="1" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="partner_id" string="Customer" context="{'form_view_ref': 'sota_freight_crm.fms_customer_view_form'}" on_change="1" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}" can_create="true" can_write="true"/>
+                                <field name="partner_code" string="Customer Name" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="pic_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="pic_id" string="Customer PIC" context="{'form_view_ref': 'sota_freight_crm.fms_pic_customer_view_form'}" on_change="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <label for="email"/>
+                                <div class="o_row">
+                                    <field name="email" string="Email" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <label for="phone"/>
+                                    <field name="phone" string="Tel" modifiers="{&quot;readonly&quot;: true}"/>
+                                </div>
+                                <field name="company_id" on_change="1" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}" can_create="true" can_write="true"/>
+                            </group>
+                            <group>
+                                <field name="issue_date" string="Issue Date" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="date_sent" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="due_date" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="pol_id" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;quotation_type&quot;, &quot;=&quot;, &quot;2&quot;], [&quot;bound&quot;, &quot;!=&quot;, &quot;import&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}" can_create="true" can_write="true"/>
+                                <field name="pod_id" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;quotation_type&quot;, &quot;=&quot;, &quot;2&quot;], [&quot;bound&quot;, &quot;!=&quot;, &quot;import&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}" can_create="true" can_write="true"/>
+                                <field name="domain_pol_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="pickup" string="Pickup" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="final_destination" string="Final Destination" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="cargo_volume" modifiers="{&quot;invisible&quot;: [[&quot;quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="bill_number" string="BILL#" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="cd_number" string="CD#" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                <field name="operator_ids" widget="many2many_tags" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="user_id" string="Salesperson" on_change="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="domain_sale_team_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="sale_team_id" string="Sales Team" on_change="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="crm_department_id" string="Sales Department" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="commodity_id" string="Commodity" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="incoterms_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="transit_time" modifiers="{&quot;invisible&quot;: [[&quot;quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                            </group>
+                            <group>
+                                <field name="transport_mode_id" string="Services" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;quotation_type&quot;, &quot;=&quot;, &quot;1&quot;]], &quot;required&quot;: [[&quot;quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}" can_create="false" can_write="false"/>
+                                <field name="bound" string="Bound" on_change="1" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="currency_id" string="Currency Type" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}" can_create="true" can_write="true"/>
+                <field name="job_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                <field name="sales_inquiry_id" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="company_currency_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="priority" widget="priority" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="remark" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                <field name="rate_table_enabled" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="exchange_rate" string="Ex. Rate" digits="[12,8]" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                                <field name="exchange_rate_date" string="Ex.Rate Date" force_save="1" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;quotation_type&quot;, &quot;=&quot;, &quot;2&quot;], [&quot;rate_table_enabled&quot;, &quot;=&quot;, false]], &quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+
+                            </group>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <label for="date_start" string="Validity"/>
+                            <div class="o_row align-items-center">
+                                <div class="o_col">
+                                    <field name="date_start" string="Start Date" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6c757d" stroke-width="2">
+                                    <line x1="4" y1="12" x2="20" y2="12"/>
+                                    <polyline points="14,6 20,12 14,18"/>
+                                </svg>
+                                <div class="o_col">
+                                    <field name="date_end" string="End Date" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                                </div>
+                            </div>
+                        </group>
+                        <!-- T&amp;#7921; gia h&amp;#7841;n theo Ng&amp;#224;y / Th&amp;#225;ng / Qu&amp;#253; / N&amp;#259;m: n&amp;#7857;m trong group Validity n&amp;#234;n v3 move c&amp;#7843; kh&amp;#7889;i v&amp;#224;o tab Header.
+                             can_edit: v&amp;#7851;n s&amp;#7917;a &amp;#273;&amp;#432;&amp;#7907;c khi b&amp;#225;o gi&amp;#225; &amp;#273;&amp;#227; Confirm/Final (l&amp;#250;c b&amp;#225;o gi&amp;#225; &amp;#273;ang &amp;#273;&amp;#432;&amp;#7907;c d&amp;#249;ng). -->
+                        <group name="quo_auto_renew">
+                            <group>
+                                <field name="auto_extension" options="{'can_edit': True}"/>
+                            </group>
+                            <group>
+                                <field name="auto_renew_unit" options="{'can_edit': True}" modifiers="{&quot;invisible&quot;: [[&quot;auto_extension&quot;, &quot;!=&quot;, &quot;yes&quot;]], &quot;required&quot;: [[&quot;auto_extension&quot;, &quot;=&quot;, &quot;yes&quot;]]}"/>
+                                <field name="auto_renew_qty" options="{'can_edit': True}" modifiers="{&quot;invisible&quot;: [[&quot;auto_extension&quot;, &quot;!=&quot;, &quot;yes&quot;]], &quot;required&quot;: [[&quot;auto_extension&quot;, &quot;=&quot;, &quot;yes&quot;]]}"/>
+                            </group>
+                        </group>
+                    </group>
+                    <field name="transport_mode" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <div class="row mt16 mb16">
+                        <div class="col-12">
+                            <button name="804" type="action" string="Add from Purchase Pricing" class="btn btn-primary btn-lg" style="width: 250px;" icon="fa-list" modifiers="{&quot;invisible&quot;: [[&quot;quotation_type&quot;, &quot;!=&quot;, &quot;1&quot;]]}"/>
+                        </div>
+                    </div>
+                <div class="o_group">
+                    <div class="alert alert-info" role="alert" style="margin-bottom: 10px; border-left: 4px solid #0dcaf0;">
+                        <h5 style="margin-bottom: 10px;">
+                            <i class="fa fa-money" title="Customer COM"/> Customer COM
+                        </h5>
+                        <hr style="margin-top: 5px; margin-bottom: 10px;"/>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="fare_product_id" class="o_form_label">
+                                    <i class="fa fa-tag text-primary" title="Fare"/> Fare
+                                </label>
+                                <field name="fare_product_id" placeholder="Select fare/product..." options="{'no_create': True, 'no_open': True}" string="COM" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="fare_currency_id" class="o_form_label">
+                                    <i class="fa fa-usd text-success" title="Currency"/> Currency
+                                </label>
+                                <field name="fare_currency_id" placeholder="Select currency..." options="{'no_create': True, 'no_open': True}" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}" can_create="true" can_write="true"/>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="fare_unit_id" class="o_form_label">
+                                    <i class="fa fa-cube text-info" title="Unit"/> Unit
+                                </label>
+                                <field name="fare_unit_id" placeholder="Select unit..." options="{'no_create': True, 'no_open': True}" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}" can_create="true" can_write="true"/>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="fare_quantity" class="o_form_label">
+                                    <i class="fa fa-sort-numeric-asc text-warning" title="Quantity"/> Quantity
+                                </label>
+                                <field name="fare_quantity" placeholder="0.00" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="fare_unit_price" class="o_form_label">
+                                    <i class="fa fa-calculator text-primary" title="Unit Price"/> Unit Price
+                                </label>
+                                <field name="fare_unit_price" placeholder="0.00" widget="monetary" options="{'currency_field': 'fare_currency_id'}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="fare_total_amount" class="o_form_label">
+                                    <i class="fa fa-check-circle text-success" title="Total Amount"/> <strong>Total Amount</strong>
+                                </label>
+                                <field name="fare_total_amount" class="text-success font-weight-bold" widget="monetary" options="{'currency_field': 'fare_currency_id'}" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <label for="line_ids" class="fw-bold" name="Freight Charges"/>
+                    <field name="line_ids" class="w-100" widget="section_and_note_one2many" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}">
+                        <tree editable="bottom">
+                            <control>
+                                <create name="add_product_control" string="Add a fare"/>
+                                <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                            </control>
+                            <field name="display_type" modifiers="{&quot;column_invisible&quot;: true}"/>
+                            <field name="sequence" widget="handle"/>
+                            <field name="transport_mode_id" string="Services" on_change="1" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;in&quot;, [&quot;sea&quot;, &quot;air&quot;]]]}" can_create="false" can_write="false"/>
+                            <field name="air_line_id" on_change="1" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="air_line_name" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}"/>
+                            <field name="shipping_line_id" string="Carrier" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}" can_create="true" can_write="true"/>
+                            <!-- <field name="shipping_line_name"
+                                   attrs="{'column_invisible': ['|', ('parent.quotation_type', '=', '1'), ('parent.transport_mode', '!=', 'sea')]}"
+                                   readonly="1"/> -->
+                            <field name="other_carrier_id" string="Carrier" on_change="1" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;in&quot;, [&quot;sea&quot;, &quot;air&quot;]]]}" can_create="true" can_write="true"/>
+                            <field name="other_carrier_name" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;in&quot;, [&quot;sea&quot;, &quot;air&quot;]]]}"/>
+                            <field name="product_id" on_change="1" can_create="true" can_write="true"/>
+                            <field name="fare_type" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                            <field name="weight_level" width="300px" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}"/>
+                            <field name="domain_pol_ids" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                            <field name="pol_id" string="POL" on_change="1" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.bound&quot;, &quot;=&quot;, &quot;import&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="pod_id" string="POD" on_change="1" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.bound&quot;, &quot;=&quot;, &quot;import&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="currency_id" string="Curr" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            <field name="company_currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                            <field name="domain_currency_ids" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                            <field name="fcl_unit" string="FCL Unit" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;!=&quot;, &quot;2&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="fcl_unit" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;!=&quot;, &quot;1&quot;]]}" can_create="true" can_write="true"/>
+  <!-- Option-based Sea: c&amp;#7897;t VAT ngay sau c&amp;#7897;t 45 (Breakdown d&amp;#249;ng c&amp;#7897;t Vat(%) ph&amp;#237;a sau) -->
+                            <field name="tax_id" string="Vat(%)" on_change="1" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}" can_create="true" can_write="true"/>
+
+                            <field name="ctnr_type" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="type_20" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}"/>
+                            <field name="type_40" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}"/>
+                            <field name="type_4h" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}"/>
+                            <field name="type_45" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}"/>
+                            <!--
+                             <field name="lcl_rate"
+                                   attrs="{'column_invisible': ['|', ('parent.quotation_type', '=', '1'), ('parent.transport_mode', '!=', 'sea')]}"/>
+                            <field name="lcl_unit"
+                                   attrs="{'column_invisible': ['|', ('parent.quotation_type', '=', '1'), ('parent.transport_mode', '!=', 'sea')]}"/> -->
+                            <field name="min" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}"/>
+                            <field name="minus_45" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}"/>
+                            <field name="plus_45" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}"/>
+                            <field name="plus_100" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}"/>
+                            <field name="plus_300" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}"/>
+                            <field name="plus_500" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}"/>
+                            <field name="plus_1000" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;air&quot;]]}"/>
+                            <field name="price" on_change="1" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;in&quot;, [&quot;sea&quot;, &quot;air&quot;]]]}"/>
+                            <field name="unit_id" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], &quot;&amp;&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;], [&quot;parent.transport_mode&quot;, &quot;in&quot;, [&quot;sea&quot;, &quot;air&quot;]]]}" can_create="true" can_write="true"/>
+                            <field name="qty" string="Q'ty" on_change="1" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="price" on_change="1" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="tax_id" string="Vat(%)" on_change="1" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="exchange_amount" string="Amount (Excl VAT)" digits="[12,2]" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="tax_amount" string="Vat Amount" digits="[12,2]" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="cost" string="Cost" on_change="1" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="exchange_amount_cost" string="Amount Cost(Excl VAT)" digits="[12,2]" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="profit" string="Profit" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="transit_time" string="T/T" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;not in&quot;, [&quot;air&quot;, &quot;sea&quot;]]]}"/>
+                            <field name="remark" string="Remark"/>
+                            <button name="action_duplicate_line" type="object" icon="fa-clone" title="Duplicate line" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;display_type&quot;, &quot;!=&quot;, false], [&quot;parent.state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                        </tree>
+                    </field>
+
+                    <label for="other_line_ids" class="fw-bold" name="Other Charges"/>
+                    <field name="other_line_ids" mode="tree" string="Other Charges" widget="section_and_note_one2many" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}">
+                        <tree editable="bottom">
+                            <control>
+                                <create name="add_product_control" string="Add a fare"/>
+                                <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                            </control>
+                            <field name="display_type" modifiers="{&quot;column_invisible&quot;: true}"/>
+                            <field name="sequence" widget="handle"/>
+                            <field name="transport_mode_id" string="Services" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;]]}" can_create="false" can_write="false"/>
+                            <field name="product_id" on_change="1" can_create="true" can_write="true"/>
+                            <field name="fare_type" modifiers="{&quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                            <field name="charge_scope" optional="hide"/>
+                            <field name="charge_scope_auto" modifiers="{&quot;column_invisible&quot;: true}"/>
+                            <field name="currency_id" string="Curr" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            <field name="domain_currency_ids" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                            <field name="fcl_unit" string="FCL Unit" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;!=&quot;, &quot;2&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="fcl_unit" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;!=&quot;, &quot;1&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="ctnr_type" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="type_20" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}"/>
+                            <field name="type_40" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}"/>
+                            <field name="type_4h" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}"/>
+                            <field name="type_45" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}"/>
+                            <!-- Option-based Sea: c&amp;#7897;t VAT ngay sau c&amp;#7897;t 45 (Breakdown d&amp;#249;ng c&amp;#7897;t Vat(%) ph&amp;#237;a sau) -->
+                            <field name="tax_id" string="Vat(%)" on_change="1" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}" can_create="true" can_write="true"/>
+                            <!--<field name="lcl_rate"
+                                   attrs="{'column_invisible': ['|', ('parent.quotation_type', '=', '1'), ('parent.transport_mode', '!=', 'sea')]}"/>
+                            <field name="lcl_unit"
+                                   attrs="{'column_invisible': ['|', ('parent.quotation_type', '=', '1'), ('parent.transport_mode', '!=', 'sea')]}"/> -->
+                            <field name="price" on_change="1" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], [&quot;parent.transport_mode&quot;, &quot;in&quot;, [&quot;sea&quot;]]]}"/>
+                            <field name="unit_id" modifiers="{&quot;column_invisible&quot;: [&quot;|&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;1&quot;], &quot;&amp;&quot;, [&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;], [&quot;parent.transport_mode&quot;, &quot;in&quot;, [&quot;sea&quot;]]]}" can_create="true" can_write="true"/>
+                            <field name="qty" string="Q'ty" on_change="1" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="price" on_change="1" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="tax_id" string="Vat(%)" on_change="1" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="exchange_amount" string="Amount (Excl VAT)" digits="[12,2]" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="tax_amount" string="Vat Amount" digits="[12,2]" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="cost" string="Cost" on_change="1" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="exchange_amount_cost" string="Amount Cost(Excl VAT)" digits="[12,2]" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="profit" string="Profit" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: [[&quot;parent.quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                            <field name="remark" string="Remark"/>
+                            <button name="action_duplicate_line" type="object" icon="fa-clone" title="Duplicate line" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;display_type&quot;, &quot;!=&quot;, false], [&quot;parent.state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                        </tree>
+                    </field>
+
+                    <label for="pay_on_behalf_line_ids" class="fw-bold" name="Pay on Behalf" modifiers="{&quot;invisible&quot;: [[&quot;quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]]}"/>
+                    <field name="pay_on_behalf_line_ids" mode="tree" string="Pay on Behalf" widget="section_and_note_one2many" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;quotation_type&quot;, &quot;=&quot;, &quot;2&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}">
+                        <tree editable="bottom">
+                            <control>
+                                <create name="add_product_control" string="Add a fare"/>
+                                <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                            </control>
+                            <field name="display_type" modifiers="{&quot;column_invisible&quot;: true}"/>
+                            <field name="sequence" widget="handle"/>
+                            <field name="product_id" on_change="1" can_create="true" can_write="true"/>
+                            <field name="fare_type" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                            <field name="currency_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            <field name="company_currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                            <field name="domain_currency_ids" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                            <!--                            <field name="exchange_rate" digits="[12,2]" string="Ex.Rate"/>-->
+                            <field name="fcl_unit" can_create="true" can_write="true"/>
+                            <field name="qty" string="Q'ty" on_change="1"/>
+                            <field name="price" on_change="1"/>
+                            <field name="tax_id" string="Vat(%)" on_change="1" can_create="true" can_write="true"/>
+                            <field name="exchange_amount" string="Amount (Excl VAT)" digits="[12,2]" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="tax_amount" string="Vat Amount" digits="[12,2]" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="remark" string="Remark"/>
+                            <button name="action_duplicate_line" type="object" icon="fa-clone" title="Duplicate line" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;display_type&quot;, &quot;!=&quot;, false], [&quot;parent.state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                        </tree>
+                    </field>
+                    <!-- B&amp;#7843;ng t&amp;#7927; gi&amp;#225; b&amp;#225;o gi&amp;#225; + T&amp;#7893;ng theo lo&amp;#7841;i ti&amp;#7873;n (RD #235). Ch&amp;#7881; hi&amp;#7879;n khi c&amp;#244;ng ty
+                         b&amp;#7853;t Thi&amp;#7871;t l&amp;#7853;p &amp;#8250; Freight &amp;#8250; B&amp;#7843;ng t&amp;#7927; gi&amp;#225; b&amp;#225;o gi&amp;#225;. -->
+                    <group name="quo_rate_table" modifiers="{&quot;invisible&quot;: [[&quot;rate_table_enabled&quot;, &quot;=&quot;, false]]}">
+                        <div class="alert alert-warning mb-2" role="alert" colspan="2" modifiers="{&quot;invisible&quot;: [[&quot;rate_missing&quot;, &quot;=&quot;, false]]}">
+                            <i class="fa fa-exclamation-triangle" title="Warning"/>
+                            Missing exchange rate: <field name="rate_missing" class="fw-bold" modifiers="{&quot;readonly&quot;: true}"/>.
+                            Enter it in the table below (or ask Accounting to update the system rate).
+                        </div>
+                        <group string="Quotation Exchange Rates">
+                            <field name="rate_line_ids" nolabel="1" colspan="2" on_change="1" modifiers="{&quot;readonly&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;]], [&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}">
+                                <tree editable="bottom">
+                                    <field name="currency_id" options="{'no_create': True}" width="90px" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                    <field name="rate" width="130px" on_change="1"/>
+                                    <field name="date" width="110px"/>
+                                    <field name="source" width="90px" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group string="Totals by Currency" modifiers="{&quot;invisible&quot;: [[&quot;quotation_type&quot;, &quot;!=&quot;, &quot;1&quot;]]}">
+                            <field name="rate_total_html" nolabel="1" colspan="2" modifiers="{&quot;readonly&quot;: true}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="bottom_remark" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                            <field name="signature" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                        </group>
+                        <group string="Total" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;quotation_type&quot;, &quot;=&quot;, &quot;2&quot;], [&quot;rate_table_enabled&quot;, &quot;=&quot;, true]]}">
+                            <field name="net_total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="cost_total" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="profit_total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="percent_profit" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="tax_total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="grand_total" modifiers="{&quot;readonly&quot;: true}"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                    <field name="activity_ids" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                    <field name="message_ids" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_freight_quotation_search" model="ir.ui.view">
+        <field name="name">freight.quotation.search</field>
+        <field name="model">freight.quotation</field>
+        <field name="arch" type="xml">
+            <search string="Shipments">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <separator/>
+                <filter string="Air Carriage" name="air_carriage" domain="[('transport_mode', '=', 'air')]"/>
+                <filter string="Ocean Carriage" name="ocean_carriage" domain="[('transport_mode', '=', 'sea')]"/>
+                <filter string="Land Carriage" name="land_carriage" domain="[('transport_mode', '=', 'land')]"/>
+                <separator/>
+                <!-- Gần hết hạn: Validity To trong 7 ngày tới (tính cả hôm nay), bỏ báo giá đã hủy -->
+                <filter string="Expiring Soon" name="expiring_soon" domain="[('state', '!=', 'cancel'), ('date_end', '&gt;=', context_today().strftime('%Y-%m-%d')), ('date_end', '&lt;', (context_today() + relativedelta(days=8)).strftime('%Y-%m-%d'))]"/>
+                <filter string="Auto Extension" name="auto_extension" domain="[('auto_extension', '=', 'yes')]"/>
+                <!--                <group expand="1" string="Group By">-->
+                <!--                    <filter string="Transport Mode" name="group_by_transport_mode"-->
+                <!--                            context="{'group_by': 'transport_mode'}"/>-->
+                <!--                    <filter string="Customer" name="group_by_customer" context="{'group_by': 'partner_id'}"/>-->
+                <!--                    <filter string="Salesman" name="group_by_user" context="{'group_by': 'user_id'}"/>-->
+                <!--                    <filter string="PIC" name="group_by_pic" context="{'group_by': 'pic_id'}"/>-->
+                <!--                    <filter string="State" name="group_by_state" context="{'group_by': 'state'}"/>-->
+                <!--                </group>-->
+            </search>
+        </field>
+    </record>
+
+    <record id="action_freight_quotation" model="ir.actions.act_window">
+        <field name="name">FREIGHT QUOTATION</field>
+        <field name="res_model">freight.quotation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

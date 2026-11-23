@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_sh_activity_dynamic_action" model="ir.actions.act_window">
+        <field name="name">Hành động động hàng loạt (Dynamic Actions)</field>
+        <field name="res_model">sh.activity.dynamic.action</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

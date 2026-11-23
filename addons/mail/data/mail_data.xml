@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default General Channel -->
+        <record id="channel_general" model="mail.channel">
+            <field name="name">general</field>
+            <field name="description">Kênh thảo luận chung cho toàn bộ nhân viên công ty</field>
+            <field name="public">public</field>
+        </record>
+
+        <!-- Default Activity Types -->
+        <record id="mail_act_type_email" model="mail.activity.type">
+            <field name="name">Email</field>
+            <field name="icon">fa-envelope</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="mail_act_type_call" model="mail.activity.type">
+            <field name="name">Cuộc gọi</field>
+            <field name="icon">fa-phone</field>
+            <field name="sequence">2</field>
+        </record>
+
+        <record id="mail_act_type_meeting" model="mail.activity.type">
+            <field name="name">Họp</field>
+            <field name="icon">fa-users</field>
+            <field name="sequence">3</field>
+        </record>
+
+        <record id="mail_act_type_todo" model="mail.activity.type">
+            <field name="name">Ghi chú cần làm (To-Do)</field>
+            <field name="icon">fa-tasks</field>
+            <field name="sequence">4</field>
+        </record>
+    </data>
+</odoo>

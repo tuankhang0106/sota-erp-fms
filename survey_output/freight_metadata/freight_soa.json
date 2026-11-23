@@ -1,0 +1,540 @@
+{
+  "fields": {
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "message_main_attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Main Attachment",
+      "type": "many2one"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "SOA Number",
+      "type": "char"
+    },
+    "type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "debit",
+          "Debit"
+        ],
+        [
+          "dc",
+          "DC"
+        ],
+        [
+          "credit",
+          "Credit"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "purpose": {
+      "help": "Xác định mục đích của SOA:\n- Gộp hóa đơn: dùng để gom nhiều Note tạo Invoice/Bill.\n- Nhận/Trả thanh toán: dùng để gom nhiều Note ghi nhận thanh toán.\nMỗi Note có thể thuộc tối đa 1 SOA mỗi mục đích.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "invoice",
+          "Gộp hóa đơn"
+        ],
+        [
+          "payment",
+          "Nhận/Trả thanh toán"
+        ]
+      ],
+      "string": "Purpose",
+      "type": "selection"
+    },
+    "state": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "sent",
+          "Sent to Customer"
+        ],
+        [
+          "done",
+          "invoiced"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "date": {
+      "readonly": false,
+      "required": true,
+      "string": "Date (Exchange Date)",
+      "type": "date"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": false,
+      "relation": "res.currency",
+      "required": true,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "is_foreign_currency": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Foreign Currency",
+      "type": "boolean"
+    },
+    "has_foreign_line": {
+      "help": "True if any note line in the SOA uses a currency other than VND, on a note whose exchange rate can still be edited. Used to show the Update Exchange Rate button even when the SOA currency is VND (Debit SOA gathering multiple currencies).",
+      "readonly": true,
+      "required": false,
+      "string": "Has Foreign Line",
+      "type": "boolean"
+    },
+    "payment_exchange_rate": {
+      "help": "Tỉ giá thanh toán (1 nguyên tệ = X đồng) dùng cho SOA Debt Offset case đã xuất hóa đơn/bill: quy phần dư ra tiền công ty, chênh so tỉ giá gốc sinh 515/635 khi reconcile.",
+      "readonly": false,
+      "required": false,
+      "string": "Payment Exchange Rate",
+      "type": "float"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "date_from": {
+      "readonly": false,
+      "required": false,
+      "string": "From Date",
+      "type": "date"
+    },
+    "date_to": {
+      "readonly": false,
+      "required": false,
+      "string": "To Date",
+      "type": "date"
+    },
+    "note": {
+      "readonly": false,
+      "required": false,
+      "string": "Remark",
+      "type": "text"
+    },
+    "line_ids": {
+      "readonly": false,
+      "relation": "freight.soa.line",
+      "required": false,
+      "string": "SOA Lines",
+      "type": "one2many"
+    },
+    "dc_note_ids": {
+      "readonly": true,
+      "relation": "freight.dc.note",
+      "required": false,
+      "string": "DC Notes",
+      "type": "many2many"
+    },
+    "dc_note_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Dc Note Count",
+      "type": "integer"
+    },
+    "debit_note_ids": {
+      "readonly": true,
+      "relation": "freight.debit.note",
+      "required": false,
+      "string": "Debit Notes",
+      "type": "many2many"
+    },
+    "debit_note_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Debit Note Count",
+      "type": "integer"
+    },
+    "credit_note_ids": {
+      "readonly": true,
+      "relation": "freight.credit.note",
+      "required": false,
+      "string": "Credit Notes",
+      "type": "many2many"
+    },
+    "credit_note_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Credit Note Count",
+      "type": "integer"
+    },
+    "amount_total": {
+      "readonly": true,
+      "required": false,
+      "string": "Total",
+      "type": "monetary"
+    },
+    "amount_residual": {
+      "readonly": true,
+      "required": false,
+      "string": "Residual",
+      "type": "monetary"
+    },
+    "invoice_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Invoice Date",
+      "type": "date"
+    },
+    "invoice_ids": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Invoice",
+      "type": "one2many"
+    },
+    "invoice_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoice Count",
+      "type": "integer"
+    },
+    "invoice_no": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoice No",
+      "type": "char"
+    },
+    "bill_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Bill Count",
+      "type": "integer"
+    },
+    "show_invoice_as_bill": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Invoice As Bill",
+      "type": "boolean"
+    },
+    "payment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Payment Count",
+      "type": "integer"
+    },
+    "payment_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_paid",
+          "Not Paid"
+        ],
+        [
+          "paid",
+          "Paid"
+        ],
+        [
+          "partial",
+          "Partially Paid"
+        ]
+      ],
+      "string": "Payment Status",
+      "type": "selection"
+    },
+    "payment_ids": {
+      "readonly": false,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Payments",
+      "type": "one2many"
+    },
+    "split_bill": {
+      "readonly": false,
+      "required": false,
+      "string": "Split Bill/Invoice",
+      "type": "boolean"
+    },
+    "related_payment_ids": {
+      "readonly": true,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Related Payments",
+      "type": "many2many"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree string=\"Statements of Account\">\n                <header>\n                    <button name=\"action_open_payment_request_print\" type=\"object\" string=\"Print Payment Request\"/>\n                </header>\n                <field name=\"name\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"partner_id\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"purpose\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"date\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"date_from\"/>\n                <field name=\"date_to\"/>\n                <field name=\"state\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"amount_total\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"payment_state\" widget=\"badge\" decoration-success=\"payment_state == 'paid'\" decoration-warning=\"payment_state == 'partial'\" decoration-danger=\"payment_state == 'not_paid'\" optional=\"show\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"company_id\" optional=\"show\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                <!--                <field name=\"amount_residual_vnd\"/>-->\n            </tree>",
+      "id": 2468,
+      "model": "freight.soa"
+    },
+    "form": {
+      "arch": "<form string=\"Statement of Account\" create=\"true\" edit=\"true\">\n                <header>\n                    <button name=\"action_sent\" type=\"object\" string=\"Sent\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}\"/>\n                    <button name=\"action_create_invoices\" type=\"object\" string=\"Create Invoice\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;not in&quot;, [&quot;sent&quot;, &quot;done&quot;]], [&quot;show_invoice_as_bill&quot;, &quot;=&quot;, true]]}\"/>\n                    <button name=\"action_create_invoices\" type=\"object\" string=\"Create Bill\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;not in&quot;, [&quot;sent&quot;, &quot;done&quot;]], [&quot;show_invoice_as_bill&quot;, &quot;=&quot;, false]]}\"/>\n                    <button name=\"action_register_payment\" type=\"object\" string=\"Register Payment\" class=\"btn-primary\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;not in&quot;, [&quot;sent&quot;, &quot;done&quot;]], [&quot;payment_state&quot;, &quot;=&quot;, &quot;paid&quot;]]}\"/>\n                    <button name=\"838\" type=\"action\" string=\"Update Exchange Rate\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;]], [&quot;is_foreign_currency&quot;, &quot;=&quot;, false]]}\"/>\n                    <button name=\"action_cancel\" type=\"object\" string=\"Cancel\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;sent&quot;, &quot;done&quot;]]]}\"/>\n                    <button name=\"action_reset_to_draft\" type=\"object\" string=\"Reset to Draft\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;cancel&quot;]]]}\"/>\n                    <button name=\"action_open_payment_request_print\" type=\"object\" string=\"Print Payment Request\" modifiers=\"{&quot;invisible&quot;: [[&quot;type&quot;, &quot;!=&quot;, &quot;credit&quot;]]}\"/>\n                    <button name=\"action_find_candidates\" string=\"Find DC Notes\" type=\"object\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;], [&quot;type&quot;, &quot;!=&quot;, &quot;dc&quot;]]}\"/>\n                    <button name=\"action_find_candidates\" string=\"Find Debit Notes\" type=\"object\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;], [&quot;type&quot;, &quot;!=&quot;, &quot;debit&quot;]]}\"/>\n                    <button name=\"action_find_candidates\" string=\"Find Credit Notes\" type=\"object\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;], [&quot;type&quot;, &quot;!=&quot;, &quot;credit&quot;]]}\"/>\n                    <!-- SOA DC: thêm Credit Note để cấn trừ ròng -->\n                    <button name=\"action_find_credit_candidates\" string=\"Find Credit Notes\" type=\"object\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;], [&quot;type&quot;, &quot;!=&quot;, &quot;dc&quot;]]}\"/>\n                    <field name=\"state\" widget=\"statusbar\" statusbar_visible=\"draft,sent,done,cancel\" modifiers=\"{&quot;required&quot;: true}\"/>\n                </header>\n\n                <sheet>\n                    <div class=\"oe_button_box\" name=\"button_box\">\n                        <field name=\"show_invoice_as_bill\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                        <button class=\"oe_stat_button\" type=\"object\" name=\"action_open_invoices\" icon=\"fa-pencil-square-o\" modifiers=\"{&quot;invisible&quot;: [[&quot;show_invoice_as_bill&quot;, &quot;=&quot;, true]]}\">\n                            <field string=\"Invoices\" name=\"invoice_count\" widget=\"statinfo\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        </button>\n                        <button class=\"oe_stat_button\" type=\"object\" name=\"action_open_invoices\" icon=\"fa-pencil-square-o\" modifiers=\"{&quot;invisible&quot;: [[&quot;show_invoice_as_bill&quot;, &quot;=&quot;, false]]}\">\n                            <field string=\"Bills\" name=\"bill_count\" widget=\"statinfo\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        </button>\n                        <button class=\"oe_stat_button\" type=\"object\" name=\"action_open_payments\" icon=\"fa-credit-card\">\n                            <field string=\"Payments\" name=\"payment_count\" widget=\"statinfo\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        </button>\n                    </div>\n                    <widget name=\"web_ribbon\" title=\"Paid\" modifiers=\"{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;paid&quot;]]}\"/>\n                    <widget name=\"web_ribbon\" title=\"Partial\" bg_color=\"bg-warning\" modifiers=\"{&quot;invisible&quot;: [[&quot;payment_state&quot;, &quot;!=&quot;, &quot;partial&quot;]]}\"/>\n                    <field name=\"payment_state\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                    <group>\n                        <group>\n                            <field name=\"name\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                            <field name=\"partner_id\" string=\"Customer\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                            <field name=\"company_id\" modifiers=\"{&quot;readonly&quot;: true, &quot;required&quot;: true}\"/>\n                            <field name=\"date\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\"/>\n                            <field name=\"purpose\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: true}\"/>\n                            <field name=\"date_from\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}\"/>\n                            <field name=\"date_to\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}\"/>\n                            <field name=\"type\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: true, &quot;required&quot;: true}\"/>\n                            <field name=\"is_foreign_currency\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                        </group>\n                        <group>\n                            <field name=\"invoice_no\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                            <field name=\"currency_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                            <field name=\"payment_exchange_rate\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;type&quot;, &quot;!=&quot;, &quot;dc&quot;], [&quot;is_foreign_currency&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}\"/>\n                            <field name=\"amount_total\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                            <field name=\"amount_residual\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                            <field name=\"payment_state\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                            <field name=\"split_bill\"/>\n                        </group>\n                    </group>\n\n                    <notebook>\n                        <page string=\"Lines\">\n                            <field name=\"line_ids\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}\">\n                                <tree create=\"0\" edit=\"0\">\n                                    <field name=\"job_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    <field name=\"dc_note_id\" on_change=\"1\" modifiers=\"{&quot;column_invisible&quot;: [[&quot;parent.type&quot;, &quot;!=&quot;, &quot;dc&quot;]]}\"/>\n                                    <field name=\"debit_note_id\" on_change=\"1\" modifiers=\"{&quot;column_invisible&quot;: [[&quot;parent.type&quot;, &quot;!=&quot;, &quot;debit&quot;]]}\"/>\n                                    <field name=\"credit_note_id\" on_change=\"1\" modifiers=\"{&quot;column_invisible&quot;: [[&quot;parent.type&quot;, &quot;not in&quot;, [&quot;credit&quot;, &quot;dc&quot;]]]}\"/>\n                                    <field name=\"product_name\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    <field name=\"perf_date\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    <field name=\"date\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    <field name=\"amount_total\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    <field name=\"amount_credit\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    <field name=\"amount_residual\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    <field name=\"currency_id\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                                </tree>\n                                <form create=\"0\" edit=\"0\">\n                                    <sheet>\n                                        <group>\n                                            <group>\n                                                <field name=\"job_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                                <field name=\"dc_note_id\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: [[&quot;parent.type&quot;, &quot;!=&quot;, &quot;dc&quot;]], &quot;readonly&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                                <field name=\"debit_note_id\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: [[&quot;parent.type&quot;, &quot;!=&quot;, &quot;debit&quot;]], &quot;readonly&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                                <field name=\"credit_note_id\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: [[&quot;parent.type&quot;, &quot;not in&quot;, [&quot;credit&quot;, &quot;dc&quot;]]], &quot;readonly&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                                <field name=\"house_id\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                                <field name=\"product_name\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                                <field name=\"perf_date\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                                <field name=\"date\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                                <field name=\"amount_total\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                                <field name=\"amount_credit\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                                <field name=\"amount_residual\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                                <field name=\"currency_id\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                            </group>\n                                        </group>\n                                    </sheet>\n                                </form>\n                            </field>\n                        </page>\n                        <page string=\"Notes\">\n                            <field name=\"note\" modifiers=\"{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}\"/>\n                        </page>\n                    </notebook>\n                </sheet>\n                <div class=\"oe_chatter\">\n                    <field name=\"message_follower_ids\"/>\n                    <field name=\"activity_ids\"/>\n                    <field name=\"message_ids\"/>\n                </div>\n            </form>",
+      "id": 2469,
+      "model": "freight.soa"
+    },
+    "search": {
+      "arch": "<search string=\"Freight Statement of Account\"><field name=\"name\"/></search>",
+      "id": false,
+      "model": "freight.soa"
+    },
+    "kanban": {
+      "arch": "<kanban string=\"Freight Statement of Account\"><templates><t t-name=\"kanban-box\"><div t-attf-class=\"oe_kanban_card oe_kanban_global_click\"><div class=\"o_kanban_card_content\"><field name=\"name\" modifiers=\"{&quot;readonly&quot;: true}\"/></div></div></t></templates></kanban>",
+      "id": false,
+      "model": "freight.soa"
+    },
+    "pivot": {
+      "arch": "<pivot string=\"Freight Statement of Account\"/>",
+      "id": false,
+      "model": "freight.soa"
+    },
+    "graph": {
+      "arch": "<graph string=\"Freight Statement of Account\"><field name=\"name\"/></graph>",
+      "id": false,
+      "model": "freight.soa"
+    }
+  }
+}

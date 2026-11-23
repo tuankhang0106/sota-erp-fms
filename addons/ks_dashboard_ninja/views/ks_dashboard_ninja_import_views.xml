@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ks_dashboard_ninja_import_tree" model="ir.ui.view">
+        <field name="name">ks_dashboard_ninja.import.tree</field>
+        <field name="model">ks_dashboard_ninja.import</field>
+        <field name="arch" type="xml">
+            <tree string="Import Dashboard" delete="false"><field name="id" modifiers="{&quot;readonly&quot;: true}"/></tree>
+        </field>
+    </record>
+
+    <record id="view_ks_dashboard_ninja_import_form" model="ir.ui.view">
+        <field name="name">ks_dashboard_ninja.import.form</field>
+        <field name="model">ks_dashboard_ninja.import</field>
+        <field name="arch" type="xml">
+            <form string="Import Dashboard" class="ks_import_dashboard_d_none" delete="false">
+                <group>
+                    <group>
+                        <field name="ks_import_dashboard" string="Upload Dashboard Json" modifiers="{&quot;required&quot;: true}"/>
+                        <field name="ks_top_menu_id" string="Show Under Menu" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="ks_do_action" string="Save" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ks_dashboard_ninja_import_search" model="ir.ui.view">
+        <field name="name">ks_dashboard_ninja.import.search</field>
+        <field name="model">ks_dashboard_ninja.import</field>
+        <field name="arch" type="xml">
+            <search string="Import Dashboard" delete="false"><field name="id"/></search>
+        </field>
+    </record>
+
+    <record id="action_ks_dashboard_ninja_import" model="ir.actions.act_window">
+        <field name="name">KS_DASHBOARD_NINJA IMPORT</field>
+        <field name="res_model">ks_dashboard_ninja.import</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

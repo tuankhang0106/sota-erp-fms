@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_crm_lead_tree" model="ir.ui.view">
+        <field name="name">crm.lead.tree</field>
+        <field name="model">crm.lead</field>
+        <field name="arch" type="xml">
+            <tree string="Opportunities" sample="1" multi_edit="1" js_class="crm_iap_lead_mining_request_tree">
+                    <header>
+                        <button name="354" type="action" string="Email"/>
+                <button name="416" type="action" string="SMS"/>
+                    </header>
+                    <field name="company_id" on_change="1" modifiers="{&quot;column_invisible&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="user_company_ids" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="date_deadline" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <field name="create_date" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="name" string="Opportunity" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="partner_id" optional="hide" on_change="1" can_create="true" can_write="true"/>
+                    <field name="contact_name" optional="show"/>
+                    <field name="email_from" on_change="1"/>
+                    <field name="phone" class="o_force_ltr" on_change="1"/>
+                    <field name="company_id" optional="show" on_change="1" can_create="true" can_write="true"/>
+                    <field name="city" optional="hide"/>
+                    <field name="state_id" optional="hide" can_create="true" can_write="true"/>
+                    <field name="country_id" optional="hide" options="{'no_open': True, 'no_create': True}" on_change="1" can_create="true" can_write="true"/>
+                    <!-- Explicit domain due to multi edit -> real company domain would be complicated -->
+                    <field name="user_id" widget="many2one_avatar_user" optional="show" domain="[('share', '=', False)]" on_change="1" can_create="true" can_write="true"/>
+                    <field name="team_id" optional="hide" on_change="1" can_create="true" can_write="true"/>
+                    <field name="priority" optional="hide" widget="priority"/>
+                    <field name="activity_ids" widget="list_activity" on_change="1"/>
+                    <field name="activity_user_id" optional="hide" string="Activity by" widget="many2one_avatar_user" can_create="true" can_write="true"/>
+                    <field name="my_activity_date_deadline" string="My Deadline" widget="remaining_days" options="{'allow_order': '1'}" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="activity_calendar_event_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="campaign_id" optional="hide" can_create="true" can_write="true"/>
+                    <field name="medium_id" optional="hide" can_create="true" can_write="true"/>
+                    <field name="source_id" optional="hide" can_create="true" can_write="true"/>
+                    <field name="company_currency" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="expected_revenue" sum="Expected Revenues" optional="show" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+                    <field name="date_deadline" optional="hide"/>
+                    <field name="recurring_revenue_monthly" sum="Expected MRR" optional="show" widget="monetary" options="{'currency_field': 'company_currency'}" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="recurring_revenue" sum="Recurring Revenue" optional="hide" widget="monetary" options="{'currency_field': 'company_currency'}" on_change="1"/>
+                    <field name="recurring_plan" optional="hide" on_change="1" can_create="true" can_write="true"/>
+                    <field name="stage_id" optional="show" decoration-bf="1" on_change="1" can_create="true" can_write="true"/>
+                    <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <field name="probability" string="Probability (%)" optional="hide"/>
+                    <field name="tag_ids" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}" can_create="true" can_write="true"/>
+                    <field name="referred" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <field name="message_needaction" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <button name="353" type="action" string="Email" icon="fa-envelope"/>
+                <button name="417" type="action" string="SMS" icon="fa-comments"/>
+                    <button name="action_reschedule_meeting" class="text-warning" type="object" string="Reschedule" icon="fa-calendar" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;my_activity_date_deadline&quot;, &quot;=&quot;, false], [&quot;activity_calendar_event_id&quot;, &quot;=&quot;, false]]}"/>
+                    <button name="action_snooze" class="text-warning" type="object" string="Snooze 7d" icon="fa-bell-slash" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;my_activity_date_deadline&quot;, &quot;=&quot;, false], [&quot;activity_calendar_event_id&quot;, &quot;!=&quot;, false]]}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_crm_lead_form" model="ir.ui.view">
+        <field name="name">crm.lead.form</field>
+        <field name="model">crm.lead</field>
+        <field name="arch" type="xml">
+            <form class="o_lead_opportunity_form" js_class="crm_form">
+                    <header>
+                <button string="New Quotation" name="action_sale_quotations_new" type="object" class="oe_highlight" data-hotkey="q" title="Create new quotation" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;type&quot;, &quot;=&quot;, &quot;lead&quot;], &quot;&amp;&quot;, [&quot;probability&quot;, &quot;=&quot;, 0], [&quot;active&quot;, &quot;=&quot;, false]]}"/>
+                        <button name="action_set_won_rainbowman" string="Won" type="object" class="oe_highlight" data-hotkey="w" title="Mark as won" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;|&quot;, [&quot;active&quot;, &quot;=&quot;, false], [&quot;probability&quot;, &quot;=&quot;, 100], [&quot;type&quot;, &quot;=&quot;, &quot;lead&quot;]]}"/>
+                        <button name="344" string="Lost" data-hotkey="l" title="Mark as lost" type="action" context="{'default_lead_id': active_id}" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;type&quot;, &quot;=&quot;, &quot;lead&quot;], &quot;&amp;&quot;, [&quot;active&quot;, &quot;=&quot;, false], [&quot;probability&quot;, &quot;&lt;&quot;, 100]]}"/>
+                        <button name="345" string="Convert to Opportunity" type="action" help="Convert to Opportunity" class="oe_highlight" data-hotkey="v" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;type&quot;, &quot;=&quot;, &quot;opportunity&quot;], [&quot;active&quot;, &quot;=&quot;, false]]}"/>
+                <field name="show_enrich_button" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <button string="Enrich" name="iap_enrich" type="object" class="btn btn-secondary" data-hotkey="g" title="Enrich lead with company data" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;show_enrich_button&quot;, &quot;!=&quot;, true], [&quot;type&quot;, &quot;=&quot;, &quot;opportunity&quot;]]}"/>
+                <button string="Enrich" name="iap_enrich" type="object" class="btn btn-secondary" data-hotkey="g" title="Enrich opportunity with company data" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;show_enrich_button&quot;, &quot;!=&quot;, true], [&quot;type&quot;, &quot;=&quot;, &quot;lead&quot;]]}"/>
+                        <button name="toggle_active" string="Restore" type="object" data-hotkey="z" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;probability&quot;, &quot;&gt;&quot;, 0], [&quot;active&quot;, &quot;=&quot;, true]]}"/>
+                        <button name="action_set_lost" string="Lost" type="object" data-hotkey="l" title="Mark as lost" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;type&quot;, &quot;=&quot;, &quot;opportunity&quot;], &quot;&amp;&quot;, [&quot;probability&quot;, &quot;=&quot;, 0], [&quot;active&quot;, &quot;=&quot;, false]]}"/>
+                        <field name="stage_id" widget="statusbar" class="o_field_statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" domain="['|', ('team_id', '=', team_id), ('team_id', '=', False)]" on_change="1" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;active&quot;, &quot;=&quot;, false], [&quot;type&quot;, &quot;=&quot;, &quot;lead&quot;]]}" can_create="true" can_write="true"/>
+                    </header>
+                    <sheet>
+                        <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                        <field name="company_id" on_change="1" modifiers="{&quot;invisible&quot;: true}" can_create="true" can_write="true"/>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_schedule_meeting" type="object" class="oe_stat_button" icon="fa-calendar" context="{'partner_id': partner_id}" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;lead&quot;]]}">
+                                <div class="o_stat_info">
+                                    <field name="calendar_event_count" class="o_stat_value" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <span class="o_stat_text" modifiers="{&quot;invisible&quot;: [[&quot;calendar_event_count&quot;, &quot;&lt;&quot;, 2]]}"> Meetings</span>
+                                    <span class="o_stat_text" modifiers="{&quot;invisible&quot;: [[&quot;calendar_event_count&quot;, &quot;&gt;&quot;, 1]]}"> Meeting</span>
+                                </div>
+                            </button>
+                            <button name="action_show_potential_duplicates" type="object" class="oe_stat_button" icon="fa-star" modifiers="{&quot;invisible&quot;: [[&quot;duplicate_lead_count&quot;, &quot;&lt;&quot;, 1]]}">
+                                <div class="o_stat_info">
+                                    <field name="duplicate_lead_count" class="o_stat_value" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <span class="o_stat_text" modifiers="{&quot;invisible&quot;: [[&quot;duplicate_lead_count&quot;, &quot;&lt;&quot;, 2]]}">Similar Leads</span>
+                                    <span class="o_stat_text" modifiers="{&quot;invisible&quot;: [[&quot;duplicate_lead_count&quot;, &quot;&gt;&quot;, 1]]}">Similar Lead</span>
+                                </div>
+                            </button>
+                <button name="action_open_quotations" type="object" class="oe_stat_button" icon="fa-file">
+                    Quotations
+                </button>
+                        </div>
+                        <widget name="web_ribbon" title="Lost" bg_color="bg-danger" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;probability&quot;, &quot;&gt;&quot;, 0], [&quot;active&quot;, &quot;=&quot;, true]]}"/>
+                        <widget name="web_ribbon" title="Won" modifiers="{&quot;invisible&quot;: [[&quot;probability&quot;, &quot;&lt;&quot;, 100]]}"/>
+                        <div class="oe_title">
+                            <h1><field class="text-break" name="name" placeholder="e.g. Product Pricing" modifiers="{&quot;required&quot;: true}"/></h1>
+                            <h2 class="d-flex flex-wrap gap-2 g-0 align-items-end pb-3">
+                                <div modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;lead&quot;]]}">
+                                    <label for="expected_revenue" class="oe_edit_only pb-1"/>
+                                    <div class="d-flex align-items-end">
+                                        <field name="company_currency" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                        <field name="expected_revenue" class="oe_inline o_input_13ch" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+                                        <span class="oe_grey p-2"> + </span>
+                                        </div>
+                                </div>
+                                <div class="mx-auto mx-sm-0" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;lead&quot;]]}">
+                                    <field name="recurring_revenue" class="oe_inline o_input_10ch" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+                                </div>
+                                <div modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;lead&quot;]]}">
+                                    <div class="d-flex align-items-end ps-2">
+                                        <field name="recurring_plan" class="oe_inline o_input_12ch" placeholder="E.g. Monthly" options="{'no_create': True, 'no_open': True}" modifiers="{&quot;required&quot;: [[&quot;recurring_revenue&quot;, &quot;!=&quot;, 0]]}" can_create="true" can_write="true"/>
+                                        <span class="oe_grey p-2 d-none d-sm-block"> at </span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="oe_edit_only d-flex pb-1">
+                                        <label for="probability"/>
+                                        <div class="d-flex align-items-center">
+                                            <button class="px-2 py-0 btn btn-link" name="action_set_automated_probability" type="object" modifiers="{&quot;invisible&quot;: [[&quot;is_automated_probability&quot;, &quot;=&quot;, true]]}">
+                                                <i class="fa fa-gear" role="img" title="Switch to automatic probability" aria-label="Switch to automatic probability"/>
+                                            </button>
+                                            <small class="oe_grey h6 mb0 d-flex" modifiers="{&quot;invisible&quot;: [[&quot;is_automated_probability&quot;, &quot;=&quot;, true]]}">
+                                                <field class="mb0" name="automated_probability" force_save="1" on_change="1" modifiers="{&quot;readonly&quot;: true}"/> %
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div id="probability" class="d-flex align-items-baseline">
+                                        <field name="is_automated_probability" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                        <field name="probability" widget="float" class="oe_inline o_input_6ch" on_change="1"/>
+                                        <span class="oe_grey"> %</span>
+                                    </div>
+                                </div>
+                            </h2>
+                        </div>
+                        <group>
+                            <group name="lead_partner" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;opportunity&quot;]]}">
+                                <!-- Preload all the partner's information -->
+                                <field name="is_partner_visible" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="partner_id" widget="res_partner_many2one" context="&amp;#10;                    {&amp;#10;                    'form_view_ref': 'sota_freight_crm.fms_customer_view_form'&amp;#10;                    }&amp;#10;                " on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_partner_visible&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                                <field name="partner_name" on_change="1"/>
+                                <label for="street" string="Address"/>
+                                <div class="o_address_format">
+                                    <field name="street" placeholder="Street..." class="o_address_street"/>
+                                    <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                    <field name="city" placeholder="City" class="o_address_city"/><field name="zip" placeholder="ZIP" class="o_address_zip" on_change="1"/><field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" can_create="true" can_write="true"/>
+                                    
+                                    
+                                    <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" on_change="1" can_create="true" can_write="true"/>
+                                </div>
+                                <field name="website" widget="url" placeholder="e.g. https://www.odoo.com"/>
+                                <field name="lang_active_count" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="lang_code" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="lang_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;lang_active_count&quot;, &quot;&lt;=&quot;, 1]]}" can_create="true" can_write="true"/>
+                            </group>
+
+                            <group name="opportunity_partner" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;lead&quot;]]}">
+                                <field name="partner_id" widget="res_partner_many2one" string="Customer" context="{'res_partner_search_mode': type == 'opportunity' and 'customer' or False,                                         'default_name': contact_name or partner_name,                                         'default_street': street,                                         'default_is_company': type == 'opportunity' and contact_name == False,                                         'default_company_name': type == 'opportunity' and partner_name,                                         'default_street2': street2,                                         'default_city': city,                                         'default_title': title,                                         'default_state_id': state_id,                                         'default_zip': zip,                                         'default_country_id': country_id,                                         'default_function': function,                                         'default_phone': phone,                                         'default_mobile': mobile,                                         'default_email': email_from,                                         'default_user_id': user_id,                                         'default_team_id': team_id,                                         'default_website': website,                                         'default_lang': lang_code,                                         'show_vat': True,                                     }" on_change="1" can_create="true" can_write="true"/>
+                                <field name="is_blacklisted" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="partner_is_blacklisted" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="phone_blacklisted" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="mobile_blacklisted" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="email_state" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="phone_state" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="partner_email_update" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="country_id" string="Country" on_change="1" can_create="true" can_write="true"/>
+                                <field name="partner_phone_update" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="city_id" string="Province / State" can_create="true" can_write="true"/>
+                                <label for="email_from" class="oe_inline" modifiers="{&quot;invisible&quot;: true}"/>
+                                <div class="o_row o_row_readonly" modifiers="{&quot;invisible&quot;: true}">
+                                    <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger" title="This email is blacklisted for mass mailings. Click to unblacklist." type="object" context="{'default_email': email_from}" modifiers="{&quot;invisible&quot;: [[&quot;is_blacklisted&quot;, &quot;=&quot;, false]]}"/>
+                                    <field name="email_from" string="Email" widget="email" on_change="1"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer email will also be updated." modifiers="{&quot;invisible&quot;: [[&quot;partner_email_update&quot;, &quot;=&quot;, false]]}"/>
+                                </div>
+                                <div class="o_row o_row_readonly">
+                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" modifiers="{&quot;invisible&quot;: [[&quot;phone_blacklisted&quot;, &quot;=&quot;, false]]}"/>
+                                    <field name="phone" widget="phone" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." modifiers="{&quot;invisible&quot;: [[&quot;partner_phone_update&quot;, &quot;=&quot;, false]]}"/>
+                                </div>
+                                <field name="lost_reason_id" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}" can_create="true" can_write="true"/>
+                                <field name="date_conversion" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="user_company_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            </group>
+                            <group name="lead_info" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;opportunity&quot;]]}">
+                                <label for="contact_name"/>
+                                <div class="o_row">
+                                    <field name="contact_name" on_change="1"/>
+                                    <field name="title" placeholder="Title" domain="[]" options="{&quot;no_open&quot;: True}" can_create="true" can_write="true"/>
+                                </div>
+                                <field name="is_blacklisted" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="phone_blacklisted" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="email_state" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="phone_state" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="partner_email_update" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="partner_phone_update" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <label for="email_from_group_lead_info" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger" title="This email is blacklisted for mass mailings. Click to unblacklist." type="object" context="{'default_email': email_from}" modifiers="{&quot;invisible&quot;: [[&quot;is_blacklisted&quot;, &quot;=&quot;, false]]}"/>
+                                    <field name="email_from" id="email_from_group_lead_info" string="Email" widget="email" on_change="1"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer email will also be updated." modifiers="{&quot;invisible&quot;: [[&quot;partner_email_update&quot;, &quot;=&quot;, false]]}"/>
+                                </div>
+                                <field name="function"/>
+                                <label for="phone_group_lead_info" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" modifiers="{&quot;invisible&quot;: [[&quot;phone_blacklisted&quot;, &quot;=&quot;, false]]}"/>
+                                    <field name="phone" id="phone_group_lead_info" widget="phone" on_change="1"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." modifiers="{&quot;invisible&quot;: [[&quot;partner_phone_update&quot;, &quot;=&quot;, false]]}"/>
+                                </div>
+                                <label for="mobile" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': mobile}" modifiers="{&quot;invisible&quot;: [[&quot;mobile_blacklisted&quot;, &quot;=&quot;, false]]}"/>
+                                    <field name="mobile" widget="phone" string="Mobile" on_change="1"/>
+                                </div>
+                            </group>
+                            <field name="type" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
+                            <group modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;lead&quot;]]}">
+                                <field name="user_id" context="{'default_sales_team_id': team_id}" widget="many2one_avatar_user" on_change="1" can_create="true" can_write="true"/>
+                                <label for="date_deadline">Expected Closing</label>
+                                <div class="o_lead_opportunity_form_inline_fields">
+                                    <field name="date_deadline" nolabel="1" class="oe_inline"/>
+                                    <field name="priority" widget="priority" nolabel="1" class="oe_inline align-top"/>
+                                </div>
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" can_create="true" can_write="true"/>
+                            </group>
+                            <group modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;opportunity&quot;]]}">
+                                <field name="user_id" context="{'default_sales_team_id': team_id}" widget="many2one_avatar_user" on_change="1" can_create="true" can_write="true"/>
+                                <field name="team_id" options="{'no_open': True, 'no_create': True}" kanban_view_ref="589" on_change="1" can_create="true" can_write="true"/>
+                            </group>
+                            <group name="lead_priority" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;opportunity&quot;]]}">
+                                <field name="priority" widget="priority"/>
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" can_create="true" can_write="true"/>
+                            </group>
+                        </group>
+                        <field name="lead_properties" nolabel="1" columns="2" hideKanbanOption="1" modifiers="{&quot;invisible&quot;: [[&quot;team_id&quot;, &quot;=&quot;, false]]}"/>
+                        <notebook>
+                <page name="pic" string="PICs">
+                    <field widget="many2many" name="child_ids" context="{'default_is_company': False, 'default_is_pic': True, 'form_view_ref': 'sota_freight_crm.fms_pic_view_quick_create_form'}" modifiers="{&quot;readonly&quot;: true}">
+                        <tree>
+                            <field name="name" string="PIC Name"/>
+                            <field name="function" on_change="1"/>
+                            <field name="mobile" string="Mobile Phone" on_change="1"/>
+                            <field name="email" on_change="1"/>
+                            <field name="country_id" string="Location Country" on_change="1"/>
+                            <field name="state_id" string="Location Province" on_change="1"/>
+                        </tree>
+                    </field>
+                </page>
+                <page name="freight" string="Freight Information">
+                    <group>
+                        <group>
+                            <field name="bound"/>
+                            <field name="transport_mode_ids" widget="many2many_tags" can_create="false" can_write="false"/>
+                            <field name="commodity_id" can_create="true" can_write="true"/>
+                            <field name="hs_code" options="{'no_quick_create': True, 'no_create_edit' : True}" can_create="true" can_write="true"/>
+                        </group>
+                        <group>
+                            <field name="volume"/>
+                            <field name="pol_id" can_create="true" can_write="true"/>
+                            <field name="pod_id" can_create="true" can_write="true"/>
+                            <field name="cargo_ready"/>
+                        </group>
+                    </group>
+                </page>
+                            <page string="Internal Notes" name="internal_notes">
+                                <field name="description" placeholder="Add a description..." options="{'collaborative': true}"/>
+                            </page>
+                            <page name="extra" string="Extra Info" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;opportunity&quot;]]}">
+                                <group>
+                                    <group string="Marketing" name="categorization">
+                                        <field name="company_id" options="{'no_create': True}" on_change="1" can_create="true" can_write="true"/>
+                                        <field name="campaign_id" options="{'create_name_field': 'title', 'always_reload': True}" can_create="true" can_write="true"/>
+                                        <field name="medium_id" can_create="true" can_write="true"/>
+                                        <field name="source_id" can_create="true" can_write="true"/>
+                                        <field name="referred"/>
+                                    </group>
+                                    <group string="Analysis">
+                                        <field name="date_open" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="date_closed" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_crm_lead_search" model="ir.ui.view">
+        <field name="name">crm.lead.search</field>
+        <field name="model">crm.lead</field>
+        <field name="arch" type="xml">
+            <search string="Search Opportunities">
+                    <field name="name" string="Opportunity" filter_domain="[                         '|', '|', '|', '|',                         ('partner_id', 'ilike', self),                         ('partner_name', 'ilike', self),                         ('email_from', 'ilike', self),                         ('name', 'ilike', self),                         ('contact_name', 'ilike', self)]"/>
+                    <field name="partner_id" operator="child_of" string="Customer" filter_domain="[                         '|', '|', '|',                         ('partner_id', 'ilike', self),                         ('partner_name', 'ilike', self),                         ('email_from', 'ilike', self),                         ('contact_name', 'ilike', self)]"/>
+                    <field name="tag_ids" string="Tag" filter_domain="[('tag_ids', 'ilike', self)]"/>
+                    <field name="user_id"/>
+                    <field name="team_id"/>
+                    <field name="stage_id" domain="[]"/>
+                    <field name="country_id"/>
+                    <field name="city"/>
+                    <field name="phone_mobile_search"/>
+                    <field name="activity_state"/>
+                    <separator/>
+                    <filter string="My Pipeline" name="assigned_to_me" domain="[('user_id', '=', uid)]" help="Opportunities that are assigned to me"/>
+                    <filter string="Unassigned" name="unassigned" domain="[('user_id', '=', False)]" help="No salesperson"/>
+                    <filter string="Open Opportunities" name="open_opportunities" domain="[('probability', '&lt;', 100), ('type', '=', 'opportunity')]" help="Open Opportunities"/>
+                    <separator/>
+                    <filter string="Unread Messages" name="message_needaction" domain="[('message_needaction', '=', True)]"/>
+                    <separator/>
+                    <filter string="Creation Date" name="creation_date" date="create_date"/>
+                    <filter string="Closed Date" name="close_date" date="date_closed"/>
+                    <separator/>
+                    <filter string="Won" name="won" domain="['&amp;', ('active', '=', True), ('stage_id.is_won', '=', True)]"/>
+                    <filter string="Lost" name="lost" domain="['&amp;', ('active', '=', False), ('probability', '=', 0)]"/>
+                    <separator/>
+                    <filter string="Overdue Opportunities" name="overdue_opp" domain="['&amp;', ('date_closed', '=', False), ('date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                    <filter string="Late Activities" name="activities_overdue" domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]" help="Show all opportunities for which the next action date is before today" modifiers="{&quot;invisible&quot;: true}"/>
+                    <filter string="Today Activities" name="activities_today" domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                    <filter string="Future Activities" name="activities_upcoming_all" domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                    <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <group expand="0" string="Group By" colspan="16">
+                        <filter string="Salesperson" name="salesperson" context="{'group_by':'user_id'}"/>
+                        <filter string="Sales Team" name="saleschannel" context="{'group_by':'team_id'}"/>
+                        <filter name="stage" string="Stage" context="{'group_by':'stage_id'}"/>
+                        <filter name="city" string="City" context="{'group_by': 'city'}"/>
+                        <filter string="Country" name="country" context="{'group_by':'country_id'}"/>
+                        <filter string="Lost Reason" name="lostreason" context="{'group_by':'lost_reason_id'}"/>
+                        <filter string="Company" name="company" context="{'group_by':'company_id'}"/>
+                        <filter string="Campaign" name="compaign" domain="[]" context="{'group_by':'campaign_id'}"/>
+                        <filter string="Medium" name="medium" domain="[]" context="{'group_by':'medium_id'}"/>
+                        <filter string="Source" name="source" domain="[]" context="{'group_by':'source_id'}"/>
+                        <separator orientation="vertical"/>
+                        <filter string="Creation Date" name="month" context="{'group_by':'create_date:month'}"/>
+                        <filter string="Creation Date" name="group_by_create_date_day" context="{'group_by':'create_date:day'}" modifiers="{&quot;invisible&quot;: true}"/>
+                        <filter string="Conversion Date" name="date_conversion" context="{'group_by': 'date_conversion'}"/>
+                        <filter string="Expected Closing" name="date_deadline" context="{'group_by':'date_deadline'}"/>
+                        <filter string="Closed Date" name="date_closed" context="{'group_by':'date_closed'}"/>
+                    </group>
+                </search>
+        </field>
+    </record>
+
+    <record id="action_crm_lead" model="ir.actions.act_window">
+        <field name="name">CRM LEAD</field>
+        <field name="res_model">crm.lead</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_crm_iap_lead_mining_request_tree" model="ir.ui.view">
+        <field name="name">crm.iap.lead.mining.request.tree</field>
+        <field name="model">crm.iap.lead.mining.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" decoration-bf="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                <field name="display_lead_label" string="Number of Leads" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="search_type" modifiers="{&quot;required&quot;: true}"/>
+                <field name="country_ids" widget="many2many_tags" on_change="1"/>
+                <field name="team_id"/>
+                <field name="user_id" on_change="1"/>
+                <field name="tag_ids" widget="many2many_tags"/>
+                <field name="state" decoration-info="state == 'draft'" decoration-success="state == 'done'" decoration-danger="state == 'error'" widget="badge" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_crm_iap_lead_mining_request_form" model="ir.ui.view">
+        <field name="name">crm.iap.lead.mining.request.form</field>
+        <field name="model">crm.iap.lead.mining.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_submit" type="object" string="Submit" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+                    <button name="action_submit" type="object" string="Retry" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;error&quot;]]]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done" modifiers="{&quot;required&quot;: true}"/>
+                </header>
+                <div class="alert alert-danger text-center my-0" role="alert" modifiers="{&quot;invisible&quot;: [[&quot;error_type&quot;, &quot;=&quot;, false]]}">
+                    <field name="error_type" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="lead_type" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
+                    <span modifiers="{&quot;invisible&quot;: [[&quot;error_type&quot;, &quot;!=&quot;, &quot;credits&quot;]]}">
+                        <span>You do not have enough credits to submit this request.
+                            <button name="action_buy_credits" type="object" class="oe_inline p-0 border-0 align-top text-primary">Buy credits.</button>
+                        </span>
+                    </span>
+                    <span modifiers="{&quot;invisible&quot;: [[&quot;error_type&quot;, &quot;!=&quot;, &quot;no_result&quot;]]}">Your request did not return any result (no credits were used). Try removing some filters.</span>
+                </div>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_get_opportunity_action" class="oe_stat_button" type="object" icon="fa-star" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;lead_type&quot;, &quot;!=&quot;, &quot;opportunity&quot;], [&quot;state&quot;, &quot;!=&quot;, &quot;done&quot;]]}">
+                            <div class="o_stat_info">
+                                <field name="lead_count" modifiers="{&quot;readonly&quot;: true}"/>
+                                <span class="o_stat_text">Opportunities</span>
+                            </div>
+                        </button>
+                        <button name="action_get_lead_action" class="oe_stat_button" type="object" icon="fa-star" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;lead_type&quot;, &quot;!=&quot;, &quot;lead&quot;], [&quot;state&quot;, &quot;!=&quot;, &quot;done&quot;]]}">
+                            <div class="o_stat_info">
+                                <field name="lead_count" modifiers="{&quot;readonly&quot;: true}"/>
+                                <span class="o_stat_text">Leads</span>
+                            </div>
+                        </button>
+                    </div>
+                    <span>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="oe_title">
+                                    <h1>
+                                        <field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+
+                    <h2>What do you need ?</h2>
+
+                    <group name="requests">
+                        <group>
+                            <div class="o_row py-3">
+                                <field name="lead_number" nolabel="1" class="oe_inline pe-2 o_input_3ch" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]], &quot;required&quot;: true}"/>
+                                <field name="search_type" widget="selection" nolabel="1" class="oe_inline" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]], &quot;required&quot;: true}"/>
+                            </div>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group name="companies">
+                            <field name="country_ids" widget="many2many_tags" options="{'no_create': True, 'no_open': True}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            <field name="available_state_ids" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="state_ids" widget="many2many_tags" domain="[('id', 'in', available_state_ids)]" options="{'no_create': True, 'no_open': True}" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;country_ids&quot;, &quot;=&quot;, []], [&quot;available_state_ids&quot;, &quot;=&quot;, []]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="industry_ids" widget="many2many_tags" options="{'no_create': True, 'no_open': True}" class="o_industry" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            <field name="filter_on_size" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}"/>
+                            <label for="company_size_min" modifiers="{&quot;invisible&quot;: [[&quot;filter_on_size&quot;, &quot;=&quot;, false]]}"/>
+                            <div modifiers="{&quot;invisible&quot;: [[&quot;filter_on_size&quot;, &quot;=&quot;, false]]}">
+                                From
+                                <field name="company_size_min" class="oe_inline px-2 o_input_5ch" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]], &quot;required&quot;: [[&quot;filter_on_size&quot;, &quot;=&quot;, true]]}"/>
+                                to
+                                <field name="company_size_max" class="oe_inline px-2 o_input_7ch" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]], &quot;required&quot;: [[&quot;filter_on_size&quot;, &quot;=&quot;, true]]}"/>
+                                employees
+                            </div>
+
+                        </group>
+                        <group name="lead_info">
+                            <field name="lead_type" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]], &quot;required&quot;: true}"/>
+                            <field name="team_id" no_create="1" no_open="1" kanban_view_ref="589" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="user_id" no_create="1" no_open="1" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="tag_ids" string="Default Tags" widget="many2many_tags" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}" can_create="true" can_write="true"/>
+                        </group>
+                    </group>
+
+                    <group name="contacts" modifiers="{&quot;invisible&quot;: [[&quot;search_type&quot;, &quot;!=&quot;, &quot;people&quot;]]}">
+                        <div colspan="2" class="py-3">
+                             <field name="contact_number" nolabel="1" class="oe_inline pe-2 col-md-1 o_input_2ch" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]], &quot;required&quot;: [[&quot;search_type&quot;, &quot;=&quot;, &quot;people&quot;]]}"/>
+                             <span class="col-md-6">Extra contacts per Company</span>
+                        </div>
+                    </group>
+                    <group modifiers="{&quot;invisible&quot;: [[&quot;search_type&quot;, &quot;!=&quot;, &quot;people&quot;]]}">
+                        <group>
+                            <field name="contact_filter_type" widget="radio" options="{'horizontal': true}" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}"/>
+                            <field name="preferred_role_id" options="{'no_create_edit': True, 'no_quick_create': True, 'no_open': True}" modifiers="{&quot;invisible&quot;: [[&quot;contact_filter_type&quot;, &quot;!=&quot;, &quot;role&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]], &quot;required&quot;: [[&quot;search_type&quot;, &quot;=&quot;, &quot;people&quot;], [&quot;contact_filter_type&quot;, &quot;=&quot;, &quot;role&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="role_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True, 'no_quick_create': True}" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;preferred_role_id&quot;, &quot;=&quot;, false], [&quot;contact_filter_type&quot;, &quot;!=&quot;, &quot;role&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="seniority_id" options="{'no_create_edit': True, 'no_quick_create': True, 'no_open': True}" modifiers="{&quot;invisible&quot;: [[&quot;contact_filter_type&quot;, &quot;!=&quot;, &quot;seniority&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]], &quot;required&quot;: [[&quot;search_type&quot;, &quot;=&quot;, &quot;people&quot;], [&quot;contact_filter_type&quot;, &quot;=&quot;, &quot;seniority&quot;]]}" can_create="true" can_write="true"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Generate Leads" name="action_submit" type="object" default_focus="1" class="btn-primary" data-hotkey="q" modifiers="{&quot;invisible&quot;: true}"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z" modifiers="{&quot;invisible&quot;: true}"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_crm_iap_lead_mining_request_search" model="ir.ui.view">
+        <field name="name">crm.iap.lead.mining.request.search</field>
+        <field name="model">crm.iap.lead.mining.request</field>
+        <field name="arch" type="xml">
+            <search string="Lead Mining Request">
+                <field name="name"/>
+                <field name="team_id"/>
+                <field name="user_id"/>
+                <field name="tag_ids"/>
+                <filter name="state_is_draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="state_is_done" string="Done" domain="[('state', '=', 'done')]"/>
+                <filter name="state_is_error" string="Error" domain="[('state', '=', 'error')]"/>
+                <separator/>
+                <filter name="type_is_lead" string="Leads" domain="[('lead_type', '=', 'lead')]"/>
+                <filter name="type_is_opportunity" string="Opportunities" domain="[('lead_type', '=', 'opportunity')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Type" name="groupby_lead_type" domain="[]" context="{'group_by':'lead_type'}"/>
+                    <filter string="Sales Team" name="groupby_team_id" domain="[]" context="{'group_by':'team_id'}"/>
+                    <filter string="Salesperson" name="groupby_user_id" domain="[]" context="{'group_by':'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_crm_iap_lead_mining_request" model="ir.actions.act_window">
+        <field name="name">CRM IAP LEAD MINING REQUEST</field>
+        <field name="res_model">crm.iap.lead.mining.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

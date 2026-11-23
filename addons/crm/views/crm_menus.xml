@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_crm_root"
+              name="CRM (Quản lý quan hệ khách hàng)"
+              sequence="7"/>
+
+    <menuitem id="menu_res_partner_category"
+              name="RES PARTNER CATEGORY"
+              parent="menu_crm_root"
+              action="action_res_partner_category"
+              sequence="10"/>
+
+    <menuitem id="menu_crm_team"
+              name="CRM TEAM"
+              parent="menu_crm_root"
+              action="action_crm_team"
+              sequence="10"/>
+
+    <menuitem id="menu_mail_activity_type"
+              name="MAIL ACTIVITY TYPE"
+              parent="menu_crm_root"
+              action="action_mail_activity_type"
+              sequence="10"/>
+
+    <menuitem id="menu_crm_recurring_plan"
+              name="CRM RECURRING PLAN"
+              parent="menu_crm_root"
+              action="action_crm_recurring_plan"
+              sequence="10"/>
+
+    <menuitem id="menu_crm_lost_reason"
+              name="CRM LOST REASON"
+              parent="menu_crm_root"
+              action="action_crm_lost_reason"
+              sequence="10"/>
+
+    <menuitem id="menu_crm_lead"
+              name="CRM LEAD"
+              parent="menu_crm_root"
+              action="action_crm_lead"
+              sequence="10"/>
+
+    <menuitem id="menu_res_config_settings"
+              name="RES CONFIG SETTINGS"
+              parent="menu_crm_root"
+              action="action_res_config_settings"
+              sequence="10"/>
+
+    <menuitem id="menu_res_partner"
+              name="RES PARTNER"
+              parent="menu_crm_root"
+              action="action_res_partner"
+              sequence="10"/>
+
+    <menuitem id="menu_crm_kpi_period"
+              name="CRM KPI PERIOD"
+              parent="menu_crm_root"
+              action="action_crm_kpi_period"
+              sequence="10"/>
+
+    <menuitem id="menu_freight_quotation"
+              name="FREIGHT QUOTATION"
+              parent="menu_crm_root"
+              action="action_freight_quotation"
+              sequence="10"/>
+
+    <menuitem id="menu_crm_department"
+              name="CRM DEPARTMENT"
+              parent="menu_crm_root"
+              action="action_crm_department"
+              sequence="10"/>
+
+    <menuitem id="menu_crm_kpi_report"
+              name="CRM KPI REPORT"
+              parent="menu_crm_root"
+              action="action_crm_kpi_report"
+              sequence="10"/>
+
+    <menuitem id="menu_crm_iap_lead_mining_request"
+              name="CRM IAP LEAD MINING REQUEST"
+              parent="menu_crm_root"
+              action="action_crm_iap_lead_mining_request"
+              sequence="10"/>
+
+    <menuitem id="menu_freight_shipment_house"
+              name="FREIGHT SHIPMENT HOUSE"
+              parent="menu_crm_root"
+              action="action_freight_shipment_house"
+              sequence="10"/>
+
+    <menuitem id="menu_freight_job"
+              name="FREIGHT JOB"
+              parent="menu_crm_root"
+              action="action_freight_job"
+              sequence="10"/>
+
+    <menuitem id="menu_freight_purchase_pricing"
+              name="FREIGHT PURCHASE PRICING"
+              parent="menu_crm_root"
+              action="action_freight_purchase_pricing"
+              sequence="10"/>
+
+    <menuitem id="menu_freight_sales_inquiry"
+              name="FREIGHT SALES INQUIRY"
+              parent="menu_crm_root"
+              action="action_freight_sales_inquiry"
+              sequence="10"/>
+
+    <menuitem id="menu_ks_dashboard_ninja_board"
+              name="KS_DASHBOARD_NINJA BOARD"
+              parent="menu_crm_root"
+              action="action_ks_dashboard_ninja_board"
+              sequence="10"/>
+
+    <menuitem id="menu_res_partner_resource"
+              name="RES PARTNER RESOURCE"
+              parent="menu_crm_root"
+              action="action_res_partner_resource"
+              sequence="10"/>
+
+</odoo>

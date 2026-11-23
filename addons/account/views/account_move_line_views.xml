@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_move_line_tree" model="ir.ui.view">
+        <field name="name">account.move.line.tree</field>
+        <field name="model">account.move.line</field>
+        <field name="arch" type="xml">
+            <tree string="Journal Items" create="false" edit="true" expand="context.get('expand', False)" multi_edit="1" sample="1">
+                    <field name="move_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="date" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="company_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="company_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="journal_id" options="{&quot;no_open&quot;:True}" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="move_name" string="Journal Entry" widget="open_move_widget" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="account_id" options="{'no_open': True, 'no_create': True}" domain="[('company_id', '=', company_id)]" on_change="1" can_create="true" can_write="true"/>
+<field name="ctp_account_ids" widget="many2many_tags" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="partner_id" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;move_type&quot;, &quot;!=&quot;, &quot;entry&quot;]]}" can_create="true" can_write="true"/>
+                    <field name="ref" optional="hide"/>
+                    <field name="product_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="name" optional="show"/>
+                <field name="ar_lot_ref" optional="hide"/>
+                    <field name="tax_ids" widget="many2many_tags" width="0.5" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="amount_currency" optional="show" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_same_currency&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: true}"/>
+                    <field name="currency_id" optional="hide" string="Currency" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_same_currency&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: true, &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="debit" sum="Total Debit" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="credit" sum="Total Credit" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="tax_tag_ids" string="Tax Grids" domain="[('applicability', '=', 'taxes')]" widget="many2many_tags" width="0.5" optional="hide" on_change="1" can_create="true" can_write="true"/>
+                    <field name="discount_date" string="Discount Date" optional="hide"/>
+                    <field name="discount_amount_currency" string="Discount Amount" optional="hide"/>
+                    <field name="tax_line_id" string="Originator Tax" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="date_maturity" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="balance" sum="Total Balance" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="tax_line_id" string="Tax" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="tax_base_amount" sum="Total Base Amount" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="tax_audit" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="amount_residual" sum="Total Residual" string="Residual" optional="hide" modifiers="{&quot;invisible&quot;: [[&quot;is_account_reconcile&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                    <field name="amount_residual_currency" sum="Total Residual in Currency" string="Residual in Currency" optional="hide" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;is_same_currency&quot;, &quot;=&quot;, true], [&quot;is_account_reconcile&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                    <field name="analytic_distribution" widget="analytic_distribution" optional="hide" options="{'product_field': 'product_id', 'account_field': 'account_id', 'force_applicability': 'optional'}"/>
+                <field name="analytic_tag_ids" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}" can_create="true" can_write="true"/>
+
+                    <field name="move_type" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="parent_state" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="forward_aml_id" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="transfer_to_allocation_ids" widget="many2many_tags" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="transfer_from_allocation_ids" widget="many2many_tags" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<button name="action_view_account_transfer_allocation" class="oe_stat_button" icon="fa-bars" type="object" string="View Transfers" modifiers="{&quot;invisible&quot;: [[&quot;transfer_to_allocation_ids&quot;, &quot;=&quot;, []], [&quot;transfer_from_allocation_ids&quot;, &quot;=&quot;, []]]}">
+</button>
+                    <field name="account_type" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="statement_line_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="company_currency_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="is_same_currency" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="is_account_reconcile" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="sequence" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <groupby name="partner_id">
+                        <button name="edit" type="edit" icon="fa-edit" title="Edit"/>
+                    </groupby>
+<field name="expense_id" can_create="true" can_write="true"/>
+<field name="foreign_currency_id" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="foreign_amount_untaxed" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="foreign_amount_total" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_account_move_line_form" model="ir.ui.view">
+        <field name="name">account.move.line.form</field>
+        <field name="model">account.move.line</field>
+        <field name="arch" type="xml">
+            <form string="Journal Item" create="false">
+                    <sheet>
+                        <field name="company_id" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="parent_state" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <group>
+                            <field name="name"/>
+                <field name="ar_lot_ref"/>
+                            <field name="partner_id" domain="['|', ('parent_id', '=', False), ('is_company', '=', True)]" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Information" name="information">
+                                <group>
+                                    <group string="Amount">
+                                        <field name="account_id" options="{'no_create': True}" domain="[('company_id', '=', company_id)]" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="debit" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="credit" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="balance" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="quantity" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </group>
+                                    <group string="Accounting Documents" colspan="2">
+                                        <field name="move_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                                        <field name="statement_line_id" modifiers="{&quot;invisible&quot;: [[&quot;statement_line_id&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                                    </group>
+                                    <group string="Dates">
+                                        <field name="date" modifiers="{&quot;readonly&quot;: true}"/>
+                                        <field name="date_maturity"/>
+                                    </group>
+
+                                    <group string="Taxes" modifiers="{&quot;invisible&quot;: [[&quot;tax_line_id&quot;, &quot;=&quot;, false], [&quot;tax_ids&quot;, &quot;=&quot;, []]]}">
+                                        <field name="tax_line_id" modifiers="{&quot;invisible&quot;: [[&quot;tax_line_id&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                                        <field name="tax_ids" widget="many2many_tags" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;tax_ids&quot;, &quot;=&quot;, []]], &quot;readonly&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="tax_audit" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </group>
+                                    <group string="Matching" modifiers="{&quot;invisible&quot;: [[&quot;matched_debit_ids&quot;, &quot;=&quot;, []], [&quot;matched_credit_ids&quot;, &quot;=&quot;, []]]}">
+                                        <label for="full_reconcile_id"/>
+                                        <div>
+                                            <field name="full_reconcile_id" modifiers="{&quot;invisible&quot;: [[&quot;full_reconcile_id&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                                            <field name="matched_debit_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                            <field name="matched_credit_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                            <button name="open_reconcile_view" class="oe_link" type="object" string="-&gt; View partially reconciled entries" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;full_reconcile_id&quot;, &quot;!=&quot;, false], &quot;&amp;&quot;, [&quot;matched_debit_ids&quot;, &quot;=&quot;, []], [&quot;matched_credit_ids&quot;, &quot;=&quot;, []]]}">
+                                            </button>
+                                        </div>
+                                    </group>
+                                    <group string="Currency">
+                                        <field name="currency_id" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="display_type" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
+                                        <field name="amount_currency" on_change="1" modifiers="{&quot;readonly&quot;: [&quot;|&quot;, [&quot;display_type&quot;, &quot;!=&quot;, &quot;tax&quot;], [&quot;parent_state&quot;, &quot;!=&quot;, &quot;draft&quot;]]}"/>
+                                    </group>
+                                    <group string="Product" modifiers="{&quot;invisible&quot;: [[&quot;product_id&quot;, &quot;=&quot;, false]]}">
+                                        <field name="product_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </group>
+                                    <group string="States">
+                                        <field name="blocked"/>
+                                    </group>
+                                    <group string="Analytic">
+                                        <field name="analytic_distribution" widget="analytic_distribution" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </group>
+</group>
+<div id="forward_aml_id">
+<group string="Balance Carry Forward">
+<field name="forward_aml_id" modifiers="{&quot;readonly&quot;: true}"/>
+</group>
+<label for="forwarded_from_aml_ids"/>
+<div>
+<field name="forwarded_from_aml_ids" modifiers="{&quot;readonly&quot;: true}"><tree string="Journal Items" create="false" edit="true" expand="context.get('expand', False)" multi_edit="1" sample="1">
+                    <field name="move_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="date" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="company_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="company_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="journal_id" options="{&quot;no_open&quot;:True}" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="move_name" string="Journal Entry" widget="open_move_widget" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="account_id" options="{'no_open': True, 'no_create': True}" domain="[('company_id', '=', company_id)]" on_change="1"/>
+<field name="ctp_account_ids" widget="many2many_tags" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="partner_id" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;move_type&quot;, &quot;!=&quot;, &quot;entry&quot;]]}"/>
+                    <field name="ref" optional="hide"/>
+                    <field name="product_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="name" optional="show"/>
+                <field name="ar_lot_ref" optional="hide"/>
+                    <field name="tax_ids" widget="many2many_tags" width="0.5" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="amount_currency" optional="show" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_same_currency&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: true}"/>
+                    <field name="currency_id" optional="hide" string="Currency" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_same_currency&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="debit" sum="Total Debit" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="credit" sum="Total Credit" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="tax_tag_ids" string="Tax Grids" domain="[('applicability', '=', 'taxes')]" widget="many2many_tags" width="0.5" optional="hide" on_change="1"/>
+                    <field name="discount_date" string="Discount Date" optional="hide"/>
+                    <field name="discount_amount_currency" string="Discount Amount" optional="hide"/>
+                    <field name="tax_line_id" string="Originator Tax" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="date_maturity" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="balance" sum="Total Balance" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="tax_line_id" string="Tax" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="tax_base_amount" sum="Total Base Amount" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="tax_audit" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="amount_residual" sum="Total Residual" string="Residual" optional="hide" modifiers="{&quot;invisible&quot;: [[&quot;is_account_reconcile&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                    <field name="amount_residual_currency" sum="Total Residual in Currency" string="Residual in Currency" optional="hide" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;is_same_currency&quot;, &quot;=&quot;, true], [&quot;is_account_reconcile&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                    <field name="analytic_distribution" widget="analytic_distribution" optional="hide" options="{'product_field': 'product_id', 'account_field': 'account_id', 'force_applicability': 'optional'}"/>
+                <field name="analytic_tag_ids" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
+
+                    <field name="move_type" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="parent_state" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="forward_aml_id" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="transfer_to_allocation_ids" widget="many2many_tags" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="transfer_from_allocation_ids" widget="many2many_tags" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<button name="action_view_account_transfer_allocation" class="oe_stat_button" icon="fa-bars" type="object" string="View Transfers" modifiers="{&quot;invisible&quot;: [[&quot;transfer_to_allocation_ids&quot;, &quot;=&quot;, []], [&quot;transfer_from_allocation_ids&quot;, &quot;=&quot;, []]]}">
+</button>
+                    <field name="account_type" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="statement_line_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="company_currency_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="is_same_currency" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="is_account_reconcile" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="sequence" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <groupby name="partner_id">
+                        <button name="edit" type="edit" icon="fa-edit" title="Edit"/>
+                    </groupby>
+<field name="expense_id"/>
+<field name="foreign_currency_id" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="foreign_amount_untaxed" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="foreign_amount_total" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                </tree></field>
+</div>
+</div>
+                            </page>
+                            <page string="Analytic Lines" name="analytic_lines">
+                                <field name="date" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="analytic_line_ids" context="{'tree_view_ref':'analytic.view_account_analytic_line_tree', 'default_general_account_id':account_id, 'default_name': name, 'default_date':date, 'amount': (debit or 0.0)-(credit or 0.0)}"><tree string="Analytic Items" multi_edit="1">
+                <field name="company_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="product_uom_category_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="date" optional="show" modifiers="{&quot;required&quot;: true}"/>
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                <field name="account_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                        <field name="ref" optional="hide"/>
+                        <field name="general_account_id" optional="hide" can_create="true" can_write="true"/>
+                        <field name="move_line_id" widget="line_open_move_widget" optional="hide" on_change="1" can_create="true" can_write="true"/>
+                        <field name="product_id" optional="hide" on_change="1" can_create="true" can_write="true"/>
+                <field name="plan_id" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="currency_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="unit_amount" sum="Quantity" optional="hide" on_change="1"/>
+                <field name="product_uom_id" optional="hide" on_change="1" can_create="true" can_write="true"/>
+                <field name="partner_id" optional="hide" can_create="true" can_write="true"/>
+                <field name="company_id" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                <field name="amount" sum="Total" optional="show" modifiers="{&quot;required&quot;: true}"/>
+                <field name="tag_ids" widget="many2many_tags" optional="hide" options="{'color_field': 'color'}" can_create="true" can_write="true"/>
+            </tree></field>
+                            </page>
+<page id="counterparts" string="Counterparts">
+<group>
+<group>
+<field name="ctp_account_ids" widget="many2many_tags" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="countered_amt" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="countered_amt_currency" modifiers="{&quot;readonly&quot;: true}"/>
+</group>
+<group>
+<field name="countered_status" modifiers="{&quot;readonly&quot;: true}"/>
+</group>
+</group>
+<div id="cr_ctp_ids" modifiers="{&quot;invisible&quot;: [[&quot;credit&quot;, &quot;&gt;&quot;, 0]]}">
+<label for="cr_ctp_ids"/>
+<field name="cr_ctp_ids" on_change="1" modifiers="{&quot;readonly&quot;: true}">
+<tree id="cr_ctp_ids" editable="bottom">
+<field name="cr_aml_id" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+<field name="cr_aml_credit" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="countered_amt" on_change="1"/>
+<field name="countered_amt_currency" on_change="1"/>
+<field name="company_currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+</tree>
+</field>
+</div>
+<div id="dr_ctp_ids" modifiers="{&quot;invisible&quot;: [[&quot;debit&quot;, &quot;&gt;&quot;, 0]]}">
+<label for="dr_ctp_ids"/>
+<field name="dr_ctp_ids" on_change="1" modifiers="{&quot;readonly&quot;: true}">
+<tree id="dr_ctp_ids" editable="bottom">
+<field name="dr_aml_id" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+<field name="dr_aml_debit" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="countered_amt" on_change="1"/>
+<field name="countered_amt_currency" on_change="1"/>
+<field name="company_currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="currency_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+</tree>
+</field>
+</div>
+<div id="ctp_aml_ids">
+<label for="ctp_aml_ids"/>
+<field name="ctp_aml_ids" on_change="1" modifiers="{&quot;readonly&quot;: true}"><tree string="Journal Items" create="false" edit="true" expand="context.get('expand', False)" multi_edit="1" sample="1">
+                    <field name="move_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="date" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="company_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="company_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="journal_id" options="{&quot;no_open&quot;:True}" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="move_name" string="Journal Entry" widget="open_move_widget" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="account_id" options="{'no_open': True, 'no_create': True}" domain="[('company_id', '=', company_id)]" on_change="1"/>
+<field name="ctp_account_ids" widget="many2many_tags" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="partner_id" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;move_type&quot;, &quot;!=&quot;, &quot;entry&quot;]]}"/>
+                    <field name="ref" optional="hide"/>
+                    <field name="product_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="name" optional="show"/>
+                <field name="ar_lot_ref" optional="hide"/>
+                    <field name="tax_ids" widget="many2many_tags" width="0.5" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="amount_currency" optional="show" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_same_currency&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: true}"/>
+                    <field name="currency_id" optional="hide" string="Currency" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_same_currency&quot;, &quot;=&quot;, true]], &quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="debit" sum="Total Debit" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="credit" sum="Total Credit" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="tax_tag_ids" string="Tax Grids" domain="[('applicability', '=', 'taxes')]" widget="many2many_tags" width="0.5" optional="hide" on_change="1"/>
+                    <field name="discount_date" string="Discount Date" optional="hide"/>
+                    <field name="discount_amount_currency" string="Discount Amount" optional="hide"/>
+                    <field name="tax_line_id" string="Originator Tax" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="date_maturity" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="balance" sum="Total Balance" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="tax_line_id" string="Tax" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="tax_base_amount" sum="Total Base Amount" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="tax_audit" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="amount_residual" sum="Total Residual" string="Residual" optional="hide" modifiers="{&quot;invisible&quot;: [[&quot;is_account_reconcile&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                    <field name="amount_residual_currency" sum="Total Residual in Currency" string="Residual in Currency" optional="hide" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;is_same_currency&quot;, &quot;=&quot;, true], [&quot;is_account_reconcile&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                    <field name="analytic_distribution" widget="analytic_distribution" optional="hide" options="{'product_field': 'product_id', 'account_field': 'account_id', 'force_applicability': 'optional'}"/>
+                <field name="analytic_tag_ids" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
+
+                    <field name="move_type" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="parent_state" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="forward_aml_id" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="transfer_to_allocation_ids" widget="many2many_tags" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="transfer_from_allocation_ids" widget="many2many_tags" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<button name="action_view_account_transfer_allocation" class="oe_stat_button" icon="fa-bars" type="object" string="View Transfers" modifiers="{&quot;invisible&quot;: [[&quot;transfer_to_allocation_ids&quot;, &quot;=&quot;, []], [&quot;transfer_from_allocation_ids&quot;, &quot;=&quot;, []]]}">
+</button>
+                    <field name="account_type" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="statement_line_id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="company_currency_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="is_same_currency" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="is_account_reconcile" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="sequence" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <groupby name="partner_id">
+                        <button name="edit" type="edit" icon="fa-edit" title="Edit"/>
+                    </groupby>
+<field name="expense_id"/>
+<field name="foreign_currency_id" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="foreign_amount_untaxed" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="foreign_amount_total" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                </tree></field>
+</div>
+</page>
+                        </notebook>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_account_move_line_search" model="ir.ui.view">
+        <field name="name">account.move.line.search</field>
+        <field name="model">account.move.line</field>
+        <field name="arch" type="xml">
+            <search string="Search Journal Items">
+                    <field name="name" string="Journal Item" filter_domain="[                         '|', '|', '|',                         ('name', 'ilike', self), ('ref', 'ilike', self), ('account_id', 'ilike', self), ('partner_id', 'ilike', self)]"/>
+                    <field name="name"/>
+                    <field name="ref"/>
+                    <field name="date"/>
+<separator/>
+<field name="balance_carry_forward_id"/>
+                    <field name="account_id"/>
+                    <field name="account_type"/>
+                    <field name="partner_id"/>
+                    <field name="journal_id"/>
+                    <field name="move_id" string="Journal Entry" filter_domain="[                         '|', '|', ('move_id.name', 'ilike', self), ('move_id.ref', 'ilike', self), ('move_id.partner_id', 'ilike', self)]"/>
+                    <field name="tax_ids"/>
+<separator/>
+<field name="ctp_account_ids"/>
+<field name="ctp_aml_ids"/>
+                    <field name="tax_line_id" string="Originator Tax"/>
+<field name="analytic_tag_ids"/>
+                    <field name="reconcile_model_id"/>
+                    <field string="Analytic Accounts" name="distribution_analytic_account_ids"/>
+                    <separator/>
+                    <filter string="Unposted" name="unposted" domain="[('parent_state', '=', 'draft')]" help="Unposted Journal Items"/>
+                    <filter string="Posted" name="posted" domain="[('parent_state', '=', 'posted')]" help="Posted Journal Items"/>
+<separator/>
+<filter name="legal_report_off" string="Excluded in Legal Reports" domain="[('legal_report_off','=',True)]" help="Show journal items that are flagged with Excluded in Legal Reports"/>
+<filter name="not_legal_report_on" string="Legal Report On" domain="[('legal_report_off','=',False)]" help="Show journal items that are not flagged with Excluded in Legal Reports"/>
+<separator/>
+                    <filter string="To Check" name="to_check" domain="[('move_id.to_check', '=', True)]"/>
+<separator/>
+<filter string="Expense" name="expense" domain="[('expense_id','!=',False)]"/>
+                    <separator/>
+                    <filter string="Unreconciled" domain="[('amount_residual', '!=', 0), ('account_id.reconcile', '=', True)]" help="Journal items where matching number isn't set" name="unreconciled"/>
+                    <separator/>
+                    <filter string="Sales" name="sales" domain="[('journal_id.type', '=', 'sale')]" context="{'default_journal_type': 'sale'}"/>
+                    <filter string="Purchases" name="purchases" domain="[('journal_id.type', '=', 'purchase')]" context="{'default_journal_type': 'purchase'}"/>
+                    <filter string="Bank" name="bank" domain="[('journal_id.type', '=', 'bank')]" context="{'default_journal_type': 'bank'}"/>
+                    <filter string="Cash" name="cash" domain="[('journal_id.type', '=', 'cash')]" context="{'default_journal_type': 'cash'}"/>
+                    <filter string="Miscellaneous" domain="[('journal_id.type', '=', 'general')]" name="misc_filter" context="{'default_journal_type': 'general'}"/>
+                    <separator/>
+                    <filter string="Payable" domain="[('account_id.account_type', '=', 'liability_payable'), ('account_id.non_trade', '=', False)]" help="From Trade Payable accounts" name="trade_payable"/>
+                    <filter string="Receivable" domain="[('account_id.account_type', '=', 'asset_receivable'), ('account_id.non_trade', '=', False)]" help="From Trade Receivable accounts" name="trade_receivable"/>
+<separator/>
+<filter string="Balance not forwarded" domain="[('forward_aml_id', '=', False)]" name="ftr_balance_not_forwarded" help="Show journal items the balance of which is already forwarded"/>
+<filter string="Balance forwarded" domain="[('forward_aml_id','!=',False)]" name="ftr_balance_forwarded" help="Show journal items the balance of which is NOT yet forwarded"/>
+<separator/>
+<filter string="Closing Items" domain="[('forwarded_from_aml_ids', '!=', False)]" name="ftr_closing_aml" help="Show journal items that are holding balance carried forward)"/>
+                    <filter string="Non Trade Payable" domain="[('account_id.account_type', '=', 'liability_payable'), ('account_id.non_trade', '=', True)]" help="From Non Trade Receivable accounts" name="non_trade_payable" modifiers="{&quot;invisible&quot;: true}"/>
+                    <filter string="Non Trade Receivable" domain="[('account_id.account_type', '=', 'asset_receivable'), ('account_id.non_trade', '=', True)]" help="From Non Trade Receivable accounts" name="non_trade_receivable" modifiers="{&quot;invisible&quot;: true}"/>
+                    <filter string="P&amp;L Accounts" domain="[('account_id.internal_group', 'in', ('income', 'expense'))]" help="From P&amp;L accounts" name="pl_accounts"/>
+                    <separator/>
+                    <filter string="Date" name="date" date="date"/>
+                    <separator/>
+                    <filter string="Report Dates" name="date_between" domain="[('date', '&gt;=', context.get('date_from')), ('date', '&lt;=', context.get('date_to'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                    <filter string="Report Dates" name="date_before" domain="[('date', '&lt;=', context.get('date_to'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                    <separator/>
+                    <filter string="Analytic Accounts" name="analytic_accounts" domain="[('analytic_distribution', 'in', context.get('analytic_ids'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Journal Entry" name="group_by_move" domain="[]" context="{'group_by': 'move_name'}"/>
+                        <filter string="Account" name="group_by_account" domain="[]" context="{'group_by': 'account_id'}"/>
+                        <filter string="Partner" name="group_by_partner" domain="[]" context="{'group_by': 'partner_id'}"/>
+                        <filter string="Journal" name="journal" domain="[]" context="{'group_by': 'journal_id'}"/>
+<filter string="Expense" name="groupby_expense" domain="[]" context="{'group_by': 'expense_id'}"/>
+                        <filter string="Date" name="groupby_date" domain="[]" context="{'group_by': 'date'}"/>
+                        <filter string="Taxes" name="group_by_taxes" domain="[]" context="{'group_by': 'tax_ids'}"/>
+                        <filter string="Tax Grid" name="group_by_tax_tags" domain="[]" context="{'group_by': 'tax_tag_ids'}"/>
+<filter string="Analytic Tags" name="grp_analytic_tags" domain="[]" context="{'group_by': 'analytic_tag_ids'}"/>
+                        <filter string="Matching #" name="group_by_matching" domain="[]" context="{'group_by': 'full_reconcile_id'}"/>
+                    <filter string="Analytic Accounts" name="grp_analytic_accounts" domain="[]" context="{'group_by': 'distribution_analytic_account_ids'}"/>
+                    </group>
+                    <searchpanel class="account_root">
+                        <field name="account_root_id" icon="fa-filter" groupby="account_id" limit="0"/>
+                    </searchpanel>
+                </search>
+        </field>
+    </record>
+
+    <record id="action_account_move_line" model="ir.actions.act_window">
+        <field name="name">ACCOUNT MOVE LINE</field>
+        <field name="res_model">account.move.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

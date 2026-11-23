@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_crm_kpi_period_tree" model="ir.ui.view">
+        <field name="name">crm.kpi.period.tree</field>
+        <field name="model">crm.kpi.period</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="team_id" modifiers="{&quot;required&quot;: true}"/>
+                <field name="month" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                <field name="year" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_crm_kpi_period_form" model="ir.ui.view">
+        <field name="name">crm.kpi.period.form</field>
+        <field name="model">crm.kpi.period</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="generate_entries" type="object" string="Generate Entries"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+
+                            <field name="team_id" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                            <label for="month"/>
+                            <div class="o_row">
+                                <field name="month" modifiers="{&quot;required&quot;: true}"/>
+                                <label for="year" class="fw-bold"/>
+                                <field name="year" modifiers="{&quot;required&quot;: true}"/>
+                            </div>
+
+                        </group>
+
+                    </group>
+                    <group string="Default KPI Targets">
+                        <group>
+                            <field name="default_kpi_calling"/>
+                            <field name="default_kpi_quotation_sent"/>
+                        </group>
+                        <group>
+                            <field name="default_kpi_win_deal"/>
+                            <field name="default_kpi_meeting"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="KPI Entries">
+                            <field name="kpi_entries" mode="tree">
+                                <tree editable="bottom">
+                                    <field name="team_member_ids" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                    <field name="salesperson_id" force_save="1" modifiers="{&quot;readonly&quot;: [[&quot;salesperson_id&quot;, &quot;!=&quot;, false]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                    <field name="kpi_calling"/>
+                                    <field name="kpi_quotation_sent"/>
+                                    <field name="kpi_win_deal"/>
+                                    <field name="kpi_meeting"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_crm_kpi_period_search" model="ir.ui.view">
+        <field name="name">crm.kpi.period.search</field>
+        <field name="model">crm.kpi.period</field>
+        <field name="arch" type="xml">
+            <search string="CRM KPI Period"><field name="name"/></search>
+        </field>
+    </record>
+
+    <record id="action_crm_kpi_period" model="ir.actions.act_window">
+        <field name="name">CRM KPI PERIOD</field>
+        <field name="res_model">crm.kpi.period</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

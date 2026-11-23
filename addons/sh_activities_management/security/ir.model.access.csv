@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sh_activity_tags_user,sh.activity.tags.user,model_sh_activity_tags,base.group_user,1,1,1,0
+access_sh_activity_tags_manager,sh.activity.tags.manager,model_sh_activity_tags,base.group_system,1,1,1,1
+access_sh_activity_alarm_user,sh.activity.alarm.user,model_sh_activity_alarm,base.group_user,1,1,1,0
+access_sh_activity_alarm_manager,sh.activity.alarm.manager,model_sh_activity_alarm,base.group_system,1,1,1,1
+access_sh_activity_dynamic_action_user,sh.activity.dynamic.action.user,model_sh_activity_dynamic_action,base.group_user,1,1,1,1
+access_sh_activity_dynamic_action_manager,sh.activity.dynamic.action.manager,model_sh_activity_dynamic_action,base.group_system,1,1,1,1

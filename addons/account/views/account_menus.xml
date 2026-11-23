@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_account_root"
+              name="Kế toán (Accounting &amp; Invoicing)"
+              sequence="9"/>
+
+    <menuitem id="menu_account_analytic_line"
+              name="ACCOUNT ANALYTIC LINE"
+              parent="menu_account_root"
+              action="action_account_analytic_line"
+              sequence="10"/>
+
+    <menuitem id="menu_account_move_line"
+              name="ACCOUNT MOVE LINE"
+              parent="menu_account_root"
+              action="action_account_move_line"
+              sequence="10"/>
+
+    <menuitem id="menu_account_move"
+              name="ACCOUNT MOVE"
+              parent="menu_account_root"
+              action="action_account_move"
+              sequence="10"/>
+
+    <menuitem id="menu_product_template"
+              name="PRODUCT TEMPLATE"
+              parent="menu_account_root"
+              action="action_product_template"
+              sequence="10"/>
+
+    <menuitem id="menu_res_partner"
+              name="RES PARTNER"
+              parent="menu_account_root"
+              action="action_res_partner"
+              sequence="10"/>
+
+    <menuitem id="menu_account_journal"
+              name="ACCOUNT JOURNAL"
+              parent="menu_account_root"
+              action="action_account_journal"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_expense_sheet"
+              name="HR EXPENSE SHEET"
+              parent="menu_account_root"
+              action="action_hr_expense_sheet"
+              sequence="10"/>
+
+    <menuitem id="menu_change_lock_date"
+              name="CHANGE LOCK DATE"
+              parent="menu_account_root"
+              action="action_change_lock_date"
+              sequence="10"/>
+
+    <menuitem id="menu_account_payment"
+              name="ACCOUNT PAYMENT"
+              parent="menu_account_root"
+              action="action_account_payment"
+              sequence="10"/>
+
+    <menuitem id="menu_account_asset_asset"
+              name="ACCOUNT ASSET ASSET"
+              parent="menu_account_root"
+              action="action_account_asset_asset"
+              sequence="10"/>
+
+    <menuitem id="menu_gdt_einvoice_bill"
+              name="GDT EINVOICE BILL"
+              parent="menu_account_root"
+              action="action_gdt_einvoice_bill"
+              sequence="10"/>
+
+    <menuitem id="menu_balance_carry_forward"
+              name="BALANCE CARRY FORWARD"
+              parent="menu_account_root"
+              action="action_balance_carry_forward"
+              sequence="10"/>
+
+    <menuitem id="menu_account_account_reconcile"
+              name="ACCOUNT ACCOUNT RECONCILE"
+              parent="menu_account_root"
+              action="action_account_account_reconcile"
+              sequence="10"/>
+
+    <menuitem id="menu_freight_job"
+              name="FREIGHT JOB"
+              parent="menu_account_root"
+              action="action_freight_job"
+              sequence="10"/>
+
+</odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_hr_root"
+              name="Nhân viên (Human Resources)"
+              sequence="11"/>
+
+    <menuitem id="menu_hr_departure_reason"
+              name="HR DEPARTURE REASON"
+              parent="menu_hr_root"
+              action="action_hr_departure_reason"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_contract_type"
+              name="HR CONTRACT TYPE"
+              parent="menu_hr_root"
+              action="action_hr_contract_type"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_job"
+              name="HR JOB"
+              parent="menu_hr_root"
+              action="action_hr_job"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_plan"
+              name="HR PLAN"
+              parent="menu_hr_root"
+              action="action_hr_plan"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_employee"
+              name="HR EMPLOYEE"
+              parent="menu_hr_root"
+              action="action_hr_employee"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_department"
+              name="HR DEPARTMENT"
+              parent="menu_hr_root"
+              action="action_hr_department"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_work_location"
+              name="HR WORK LOCATION"
+              parent="menu_hr_root"
+              action="action_hr_work_location"
+              sequence="10"/>
+
+    <menuitem id="menu_res_config_settings"
+              name="RES CONFIG SETTINGS"
+              parent="menu_hr_root"
+              action="action_res_config_settings"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_contract_history"
+              name="HR CONTRACT HISTORY"
+              parent="menu_hr_root"
+              action="action_hr_contract_history"
+              sequence="10"/>
+
+</odoo>

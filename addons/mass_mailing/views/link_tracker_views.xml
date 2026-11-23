@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_link_tracker_tree" model="ir.ui.view">
+        <field name="name">link.tracker.tree</field>
+        <field name="model">link.tracker</field>
+        <field name="arch" type="xml">
+            <tree string="Links" sample="1">
+                    <field name="create_date" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="title"/>
+                    <field name="label"/>
+                    <field name="url" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="short_url" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="count" modifiers="{&quot;readonly&quot;: true}"/>
+                    <button name="action_visit_page" type="object" string="Visit Page" icon="fa-external-link"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_link_tracker_form" model="ir.ui.view">
+        <field name="name">link.tracker.form</field>
+        <field name="model">link.tracker</field>
+        <field name="arch" type="xml">
+            <form string="Website Link" duplicate="0">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button type="object" icon="fa-sign-out" name="action_visit_page" string="Visit Page" class="oe_stat_button"/>
+
+                            <button type="object" class="oe_stat_button" name="action_view_statistics" icon="fa-bar-chart-o">
+                                <field name="count" string="Clicks" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group name="url" string="URL">
+                                <field name="title"/>
+                                <field name="label"/>
+                                <field name="url" modifiers="{&quot;required&quot;: true}"/>
+                                <field name="short_url" modifiers="{&quot;readonly&quot;: true}"/>
+                            </group>
+                            <group name="utm" string="UTM">
+                <field name="mass_mailing_id" can_create="true" can_write="true"/>
+                                <field name="campaign_id" options="{'create_name_field': 'title', 'always_reload': True}" can_create="true" can_write="true"/>
+                                <field name="medium_id" can_create="true" can_write="true"/>
+                                <field name="source_id" can_create="true" can_write="true"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_link_tracker_search" model="ir.ui.view">
+        <field name="name">link.tracker.search</field>
+        <field name="model">link.tracker</field>
+        <field name="arch" type="xml">
+            <search string="Links">
+                    <field name="url" string="Title and URL" filter_domain="['|', ('title', 'ilike', self), ('url', 'ilike', self)]"/>
+                    <field name="title"/>
+                <field name="mass_mailing_id"/>
+                    <field name="label"/>
+                    <field name="campaign_id"/>
+                    <field name="medium_id"/>
+                    <field name="source_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Campaign" name="groupby_campaign_id" context="{'group_by': 'campaign_id'}"/>
+                        <filter string="Medium" name="groupby_medium_id" context="{'group_by': 'medium_id'}"/>
+                        <filter string="Source" name="groupby_source_id" context="{'group_by': 'source_id'}"/>
+                <filter string="Mass Mailing" name="groupby_mass_mailing_id" context="{'group_by': 'mass_mailing_id'}"/>
+                    </group>
+                </search>
+        </field>
+    </record>
+
+    <record id="action_link_tracker" model="ir.actions.act_window">
+        <field name="name">LINK TRACKER</field>
+        <field name="res_model">link.tracker</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

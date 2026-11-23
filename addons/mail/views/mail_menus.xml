@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu Thảo luận (ID: 74, Action: 107) -->
+    <menuitem id="menu_root_discuss"
+              name="Thảo luận"
+              action="action_discuss"
+              web_icon="mail,static/description/icon.png"
+              sequence="1"/>
+
+    <!-- Action Discuss Client -->
+    <record id="action_discuss" model="ir.actions.client">
+        <field name="name">Thảo luận</field>
+        <field name="tag">mail.discuss</field>
+        <field name="res_model">mail.channel</field>
+        <field name="params" eval="&quot;{'default_active_id': 'mail.box_inbox'}&quot;"/>
+    </record>
+
+    <!-- Sub-menus for configuration / backend management -->
+    <menuitem id="menu_discuss_config"
+              name="Cấu hình Thảo luận"
+              parent="menu_root_discuss"
+              sequence="100"
+              groups="base.group_system"/>
+
+    <menuitem id="menu_discuss_channels"
+              name="Quản lý Kênh"
+              parent="menu_discuss_config"
+              action="action_mail_channel"
+              sequence="10"/>
+
+    <menuitem id="menu_discuss_messages"
+              name="Nhật ký Tin nhắn"
+              parent="menu_discuss_config"
+              action="action_mail_message"
+              sequence="20"/>
+
+    <menuitem id="menu_discuss_activity_types"
+              name="Loại hoạt động"
+              parent="menu_discuss_config"
+              action="action_mail_activity_type"
+              sequence="30"/>
+</odoo>

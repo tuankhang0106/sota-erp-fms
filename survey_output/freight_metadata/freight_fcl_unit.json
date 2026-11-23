@@ -1,0 +1,166 @@
+{
+  "fields": {
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "code": {
+      "readonly": false,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "uom_id": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": true,
+      "string": "UOM",
+      "type": "many2one"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "category_id": {
+      "help": "Conversion between Units of Measure can only occur if they belong to the same category. The conversion will be made based on the ratios.",
+      "readonly": false,
+      "relation": "uom.category",
+      "required": true,
+      "string": "Category",
+      "type": "many2one"
+    },
+    "factor": {
+      "help": "How much bigger or smaller this unit is compared to the reference Unit of Measure for this category: 1 * (reference unit) = ratio * (this unit)",
+      "readonly": false,
+      "required": true,
+      "string": "Ratio",
+      "type": "float"
+    },
+    "factor_inv": {
+      "help": "How many times this Unit of Measure is bigger than the reference Unit of Measure in this category: 1 * (this unit) = ratio * (reference unit)",
+      "readonly": true,
+      "required": true,
+      "string": "Bigger Ratio",
+      "type": "float"
+    },
+    "rounding": {
+      "help": "The computed quantity will be a multiple of this value. Use 1.0 for a Unit of Measure that cannot be further split, such as a piece.",
+      "readonly": false,
+      "required": true,
+      "string": "Rounding Precision",
+      "type": "float"
+    },
+    "uom_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "bigger",
+          "Bigger than the reference Unit of Measure"
+        ],
+        [
+          "reference",
+          "Reference Unit of Measure for this category"
+        ],
+        [
+          "smaller",
+          "Smaller than the reference Unit of Measure"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "ratio": {
+      "readonly": false,
+      "required": false,
+      "string": "Combined Ratio",
+      "type": "float"
+    },
+    "color": {
+      "readonly": true,
+      "required": false,
+      "string": "Color",
+      "type": "integer"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree string=\"FCL Units\">\n                <field name=\"name\"/>\n                <field name=\"code\"/>\n                <field name=\"active\"/>\n            </tree>",
+      "id": 2537,
+      "model": "freight.fcl.unit"
+    },
+    "form": {
+      "arch": "<form string=\"FCL Unit\">\n                <sheet>\n                    <group>\n                        <field name=\"name\"/>\n                        <field name=\"code\"/>\n                        <field name=\"active\"/>\n                    </group>\n                </sheet>\n            </form>",
+      "id": 2538,
+      "model": "freight.fcl.unit"
+    },
+    "search": {
+      "arch": "<search string=\"FCL Unit\"><field name=\"name\"/></search>",
+      "id": false,
+      "model": "freight.fcl.unit"
+    },
+    "kanban": {
+      "arch": "<kanban string=\"FCL Unit\"><templates><t t-name=\"kanban-box\"><div t-attf-class=\"oe_kanban_card oe_kanban_global_click\"><div class=\"o_kanban_card_content\"><field name=\"name\"/></div></div></t></templates></kanban>",
+      "id": false,
+      "model": "freight.fcl.unit"
+    },
+    "pivot": {
+      "arch": "<pivot string=\"FCL Unit\"/>",
+      "id": false,
+      "model": "freight.fcl.unit"
+    },
+    "graph": {
+      "arch": "<graph string=\"FCL Unit\"><field name=\"name\"/></graph>",
+      "id": false,
+      "model": "freight.fcl.unit"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ks_dashboard_ninja_board_user,ks_dashboard_ninja.board.user,model_ks_dashboard_ninja_board,base.group_user,1,1,1,0
+access_ks_dashboard_ninja_board_manager,ks_dashboard_ninja.board.manager,model_ks_dashboard_ninja_board,base.group_system,1,1,1,1
+access_ks_dashboard_ninja_child_board_user,ks_dashboard_ninja.child_board.user,model_ks_dashboard_ninja_child_board,base.group_user,1,1,1,0
+access_ks_dashboard_ninja_child_board_manager,ks_dashboard_ninja.child_board.manager,model_ks_dashboard_ninja_child_board,base.group_system,1,1,1,1
+access_ks_dashboard_ninja_import_user,ks_dashboard_ninja.import.user,model_ks_dashboard_ninja_import,base.group_user,1,1,1,0
+access_ks_dashboard_ninja_import_manager,ks_dashboard_ninja.import.manager,model_ks_dashboard_ninja_import,base.group_system,1,1,1,1

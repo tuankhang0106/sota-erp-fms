@@ -1,0 +1,853 @@
+{
+  "fields": {
+    "image_1920": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "image_1024": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 1024",
+      "type": "binary"
+    },
+    "image_512": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 512",
+      "type": "binary"
+    },
+    "image_256": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 256",
+      "type": "binary"
+    },
+    "image_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 128",
+      "type": "binary"
+    },
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "message_main_attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Main Attachment",
+      "type": "many2one"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "sequence": {
+      "help": "Gives the sequence order when displaying a product list",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "html"
+    },
+    "description_purchase": {
+      "readonly": false,
+      "required": false,
+      "string": "Purchase Description",
+      "type": "text"
+    },
+    "description_sale": {
+      "help": "A description of the Product that you want to communicate to your customers. This description will be copied to every Sales Order, Delivery Order and Customer Invoice/Credit Note",
+      "readonly": false,
+      "required": false,
+      "string": "Sales Description",
+      "type": "text"
+    },
+    "detailed_type": {
+      "help": "A storable product is a product for which you manage stock. The Inventory app has to be installed.\nA consumable product is a product for which stock is not managed.\nA service is a non-material product you provide.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "consu",
+          "Consumable"
+        ],
+        [
+          "service",
+          "Service"
+        ]
+      ],
+      "string": "Product Type",
+      "type": "selection"
+    },
+    "type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "consu",
+          "Consumable"
+        ],
+        [
+          "service",
+          "Service"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "categ_id": {
+      "readonly": false,
+      "relation": "product.category",
+      "required": true,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "cost_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Cost Currency",
+      "type": "many2one"
+    },
+    "list_price": {
+      "help": "Price at which the product is sold to customers.",
+      "readonly": false,
+      "required": false,
+      "string": "Sales Price",
+      "type": "float"
+    },
+    "standard_price": {
+      "help": "In Standard Price & AVCO: value of the product (automatically computed in AVCO).\n        In FIFO: value of the next unit that will leave the stock (automatically computed).\n        Used to value the product when the purchase cost is not known (e.g. inventory adjustment).\n        Used to compute margins on sale orders.",
+      "readonly": false,
+      "required": false,
+      "string": "Cost",
+      "type": "float"
+    },
+    "volume": {
+      "readonly": false,
+      "required": false,
+      "string": "Volume",
+      "type": "float"
+    },
+    "volume_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Volume unit of measure label",
+      "type": "char"
+    },
+    "weight": {
+      "readonly": false,
+      "required": false,
+      "string": "Weight",
+      "type": "float"
+    },
+    "weight_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Weight unit of measure label",
+      "type": "char"
+    },
+    "sale_ok": {
+      "readonly": false,
+      "required": false,
+      "string": "Can be Sold",
+      "type": "boolean"
+    },
+    "purchase_ok": {
+      "readonly": false,
+      "required": false,
+      "string": "Can be Purchased",
+      "type": "boolean"
+    },
+    "uom_id": {
+      "help": "Default unit of measure used for all stock operations.",
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": true,
+      "string": "Unit of Measure",
+      "type": "many2one"
+    },
+    "uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Unit of Measure Name",
+      "type": "char"
+    },
+    "uom_po_id": {
+      "help": "Default unit of measure used for purchase orders. It must be in the same category as the default unit of measure.",
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": true,
+      "string": "Purchase UoM",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "packaging_ids": {
+      "help": "Gives the different ways to package the same product.",
+      "readonly": false,
+      "relation": "product.packaging",
+      "required": false,
+      "string": "Product Packages",
+      "type": "one2many"
+    },
+    "seller_ids": {
+      "readonly": false,
+      "relation": "product.supplierinfo",
+      "required": false,
+      "string": "Vendors",
+      "type": "one2many"
+    },
+    "variant_seller_ids": {
+      "readonly": false,
+      "relation": "product.supplierinfo",
+      "required": false,
+      "string": "Variant Seller",
+      "type": "one2many"
+    },
+    "active": {
+      "help": "If unchecked, it will allow you to hide the product without removing it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color Index",
+      "type": "integer"
+    },
+    "is_product_variant": {
+      "readonly": true,
+      "required": false,
+      "string": "Is a product variant",
+      "type": "boolean"
+    },
+    "attribute_line_ids": {
+      "readonly": false,
+      "relation": "product.template.attribute.line",
+      "required": false,
+      "string": "Product Attributes",
+      "type": "one2many"
+    },
+    "valid_product_template_attribute_line_ids": {
+      "readonly": true,
+      "relation": "product.template.attribute.line",
+      "required": false,
+      "string": "Valid Product Attribute Lines",
+      "type": "many2many"
+    },
+    "product_variant_ids": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": true,
+      "string": "Products",
+      "type": "one2many"
+    },
+    "product_variant_id": {
+      "readonly": true,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "product_variant_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Product Variants",
+      "type": "integer"
+    },
+    "barcode": {
+      "readonly": false,
+      "required": false,
+      "string": "Barcode",
+      "type": "char"
+    },
+    "default_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "pricelist_item_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of price rules",
+      "type": "integer"
+    },
+    "can_image_1024_be_zoomed": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Image 1024 be zoomed",
+      "type": "boolean"
+    },
+    "has_configurable_attributes": {
+      "readonly": true,
+      "required": false,
+      "string": "Is a configurable product",
+      "type": "boolean"
+    },
+    "product_tooltip": {
+      "readonly": true,
+      "required": false,
+      "string": "Product Tooltip",
+      "type": "char"
+    },
+    "priority": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Normal"
+        ],
+        [
+          "1",
+          "Favorite"
+        ]
+      ],
+      "string": "Favorite",
+      "type": "selection"
+    },
+    "product_tag_ids": {
+      "readonly": false,
+      "relation": "product.tag",
+      "required": false,
+      "string": "Product Tags",
+      "type": "many2many"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "taxes_id": {
+      "help": "Default taxes used when selling the product.",
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Customer Taxes",
+      "type": "many2many"
+    },
+    "tax_string": {
+      "readonly": true,
+      "required": false,
+      "string": "Tax String",
+      "type": "char"
+    },
+    "supplier_taxes_id": {
+      "help": "Default taxes used when buying the product.",
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Vendor Taxes",
+      "type": "many2many"
+    },
+    "property_account_income_id": {
+      "help": "Keep this field empty to use the default value from the product category.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Income Account",
+      "type": "many2one"
+    },
+    "property_account_expense_id": {
+      "help": "Keep this field empty to use the default value from the product category. If anglo-saxon accounting with automated valuation method is configured, the expense account on the product category will be used.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Expense Account",
+      "type": "many2one"
+    },
+    "account_tag_ids": {
+      "help": "Tags to be set on the base and tax journal items created for this product.",
+      "readonly": false,
+      "relation": "account.account.tag",
+      "required": false,
+      "string": "Account Tags",
+      "type": "many2many"
+    },
+    "can_be_expensed": {
+      "help": "Specify whether the product can be selected in an expense.",
+      "readonly": false,
+      "required": false,
+      "string": "Can be Expensed",
+      "type": "boolean"
+    },
+    "asset_category_id": {
+      "readonly": false,
+      "relation": "account.asset.category",
+      "required": false,
+      "string": "Asset Category",
+      "type": "many2one"
+    },
+    "deferred_revenue_category_id": {
+      "readonly": false,
+      "relation": "account.asset.category",
+      "required": false,
+      "string": "Deferred Revenue Type",
+      "type": "many2one"
+    },
+    "freight_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "route",
+          "Route"
+        ],
+        [
+          "service",
+          "Service"
+        ]
+      ],
+      "string": "Freight Type",
+      "type": "selection"
+    },
+    "transport_mode_ids": {
+      "readonly": false,
+      "relation": "freight.transport.mode",
+      "required": false,
+      "string": "Transport Modes",
+      "type": "many2many"
+    },
+    "freight_port_pol_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Port Of Loading (POL)",
+      "type": "many2one"
+    },
+    "freight_port_pod_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Port Of Discharge (POD)",
+      "type": "many2one"
+    },
+    "freight_country_id": {
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "freight_port_of_receipt_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Place of Receipt",
+      "type": "many2one"
+    },
+    "freight_port_of_delivery_id": {
+      "readonly": false,
+      "relation": "freight.port",
+      "required": false,
+      "string": "Place of Delivery",
+      "type": "many2one"
+    },
+    "freight_service_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "freight",
+          "Freight"
+        ],
+        [
+          "surcharge",
+          "Surcharge"
+        ],
+        [
+          "local_charge",
+          "Local Charge"
+        ],
+        [
+          "inland_charge",
+          "Inland Charge"
+        ],
+        [
+          "logistic_charge",
+          "Logistic Charge"
+        ],
+        [
+          "pay_on_behalf",
+          "Pay On Behalf"
+        ]
+      ],
+      "string": "Service Type",
+      "type": "selection"
+    },
+    "default_tax_id": {
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Default Sale Tax",
+      "type": "many2one"
+    },
+    "charge_scope": {
+      "help": "Where the charge is incurred: in the company's country (Domestic) or abroad (Oversea). Used as the default on quotation Other Charges lines.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "domestic",
+          "Domestic"
+        ],
+        [
+          "oversea",
+          "Oversea"
+        ]
+      ],
+      "string": "Charge Scope",
+      "type": "selection"
+    },
+    "local_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Local Name",
+      "type": "char"
+    },
+    "is_com_fee": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Com Fee",
+      "type": "boolean"
+    },
+    "freight_qty_rule_ids": {
+      "readonly": false,
+      "relation": "freight.product.qty.rule",
+      "required": false,
+      "string": "Quantity Rules",
+      "type": "one2many"
+    },
+    "show_plate_number": {
+      "help": "Trucking fare: invoice lines show the truck plate number, are named by route and grouped by route on SOA invoices.",
+      "readonly": false,
+      "required": false,
+      "string": "Show Plate Number",
+      "type": "boolean"
+    },
+    "show_customs_declaration_no": {
+      "help": "Customs fare: invoice line names show the customs declaration number(s).",
+      "readonly": false,
+      "required": false,
+      "string": "Show Customs Declaration No.",
+      "type": "boolean"
+    },
+    "job_profit_group": {
+      "help": "Nhóm phí dùng cho báo cáo Job Profit by Perf. Date. Để trống: hệ thống tự phân loại theo cách cũ.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "cuoc",
+          "Cước"
+        ],
+        [
+          "local",
+          "Local"
+        ],
+        [
+          "haiquan",
+          "Hải quan"
+        ],
+        [
+          "trucking",
+          "Vận chuyển"
+        ],
+        [
+          "chingoai",
+          "Chi ngoài"
+        ],
+        [
+          "com",
+          "Hoa hồng"
+        ],
+        [
+          "chiho",
+          "Chi hộ"
+        ]
+      ],
+      "string": "Job Profit Group",
+      "type": "selection"
+    },
+    "is_com_customer_fee": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Com Customer Fee",
+      "type": "boolean"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree duplicate=\"0\">\n                <field name=\"name\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"freight_service_type\"/>\n                <field name=\"transport_mode_ids\" widget=\"many2many_tags\"/>\n                <field name=\"freight_port_pod_id\"/>\n            </tree>",
+      "id": 1431,
+      "model": "product.template"
+    },
+    "form": {
+      "arch": "<form string=\"Product\" duplicate=\"0\">\n                <sheet name=\"product_form\">\n                    <field name=\"product_variant_count\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                    <field name=\"detailed_type\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: true, &quot;required&quot;: true}\"/>\n                    <field name=\"is_product_variant\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                    <field name=\"attribute_line_ids\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                    <field name=\"type\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                    <field name=\"company_id\" modifiers=\"{&quot;invisible&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                    <div class=\"oe_button_box\" name=\"button_box\">\n                        <!--                        For inherit-->\n                    </div>\n                    <field name=\"active\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                    <widget name=\"web_ribbon\" title=\"Archived\" bg_color=\"bg-danger\" modifiers=\"{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}\"/>\n                    <field name=\"id\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                    <field name=\"image_1920\" widget=\"image\" class=\"oe_avatar\" options=\"{'preview_image': 'image_128'}\"/>\n                    <div class=\"oe_title\">\n                        <label for=\"name\" string=\"Fare Name\"/>\n                        <h1>\n                            <div class=\"d-flex\">\n                                <field name=\"priority\" widget=\"priority\" class=\"me-3\"/>\n                                <field class=\"text-break\" name=\"name\" placeholder=\"e.g. Ocean Freight\" modifiers=\"{&quot;required&quot;: true}\"/>\n                            </div>\n                        </h1>\n                        <div class=\"o_row\">\n                            <label for=\"default_code\"/>\n                            <field name=\"default_code\"/>\n                            <label for=\"local_name\"/>\n                            <field name=\"local_name\"/>\n                        </div>\n                    </div>\n                    <notebook>\n                        <page string=\"Freight Information\">\n                            <group>\n                                <group>\n                                    <field name=\"freight_type\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    <field name=\"transport_mode_ids\" widget=\"many2many_tags\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"false\" can_write=\"false\"/>\n                                    <field name=\"can_be_expensed\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                                </group>\n                                <group>\n                                    <field name=\"freight_service_type\"/>\n                                    <field name=\"charge_scope\"/>\n                                    <field name=\"is_com_fee\" string=\"Is Com Vendor Fee\"/>\n                    <field name=\"job_profit_group\"/>\n                <field name=\"is_com_customer_fee\"/>\n                    <field name=\"show_plate_number\"/>\n                    <!-- Fare hải quan: số tờ khai (thay hard code 'CUS' / 'CUSTOMS FEE') -->\n                    <field name=\"show_customs_declaration_no\"/>\n                                    <field name=\"categ_id\" string=\"Fare Category\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                    <field name=\"default_tax_id\" options=\"{'no_create': True}\" can_create=\"true\" can_write=\"true\"/>\n                                </group>\n                            </group>\n                        </page>\n                    <page string=\"Quantity Rules\" name=\"freight_qty_rules\">\n                        <field name=\"freight_qty_rule_ids\">\n                            <tree editable=\"bottom\">\n                                <field name=\"fcl_unit\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"qty_rule\" modifiers=\"{&quot;required&quot;: true}\"/>\n                            </tree>\n                        </field>\n                    </page>\n                    </notebook>\n                </sheet>\n                <div class=\"oe_chatter\">\n                    <field name=\"message_follower_ids\"/>\n                    <field name=\"activity_ids\"/>\n                    <field name=\"message_ids\"/>\n                </div>\n            </form>",
+      "id": 1430,
+      "model": "product.template"
+    },
+    "search": {
+      "arch": "<search string=\"Product\">\n                <field name=\"name\" string=\"Product\" filter_domain=\"['|', '|', '|', '|', ('local_name', 'ilike', self), ('default_code', 'ilike', self), ('product_variant_ids.default_code', 'ilike', self),('name', 'ilike', self), ('barcode', 'ilike', self)]\"/>\n                <field name=\"transport_mode_ids\"/>\n                <filter name=\"ftr_archived\" string=\"Archived\" domain=\"[('active', '=', False)]\"/>\n                <filter string=\"Services\" name=\"ftr_freight_service\" domain=\"[('freight_type', '=', 'service')]\"/>\n                <separator/>\n                <group string=\"Group By\">\n                    <filter string=\"Transport Modes\" name=\"group_by_transport_mode_ids\" context=\"{'group_by': 'transport_mode_ids'}\"/>\n                    <filter string=\"Freight Type\" name=\"group_by_freight_type\" context=\"{'group_by': 'freight_type'}\"/>\n                    <filter string=\"POL\" name=\"group_by_pol\" context=\"{'group_by': 'freight_port_pol_id'}\"/>\n                    <filter string=\"POD\" name=\"group_by_pod\" context=\"{'group_by': 'freight_port_pod_id'}\"/>\n                </group>\n            </search>",
+      "id": 1432,
+      "model": "product.template"
+    },
+    "kanban": {
+      "arch": "<kanban sample=\"1\" class=\"o_kanban_product_template\">\n                <field name=\"id\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"product_variant_count\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"currency_id\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"activity_state\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <progressbar field=\"activity_state\" colors=\"{&quot;planned&quot;: &quot;success&quot;, &quot;today&quot;: &quot;warning&quot;, &quot;overdue&quot;: &quot;danger&quot;}\"/>\n                <templates>\n                    <t t-name=\"kanban-box\">\n                        <div class=\"oe_kanban_card oe_kanban_global_click\">\n                            <div class=\"o_kanban_image me-1\">\n                                <img t-att-src=\"kanban_image('product.template', 'image_128', record.id.raw_value)\" alt=\"Product\" class=\"o_image_64_contain\"/>\n                            </div>\n                            <div class=\"oe_kanban_details\">\n                                <div class=\"o_kanban_record_top mb-0\">\n                                    <div class=\"o_kanban_record_headings\">\n                                        <strong class=\"o_kanban_record_title\">\n                                            <field name=\"name\" modifiers=\"{&quot;required&quot;: true}\"/>\n                                        </strong>\n                                    </div>\n                                    <field name=\"priority\" widget=\"priority\"/>\n                                </div>\n                                <t t-if=\"record.default_code.value\">[<field name=\"default_code\"/>]</t>\n                                <div t-if=\"record.product_variant_count.value &gt; 1\">\n                                    <strong>\n                                        <t t-esc=\"record.product_variant_count.value\"/> Variants\n                                    </strong>\n                                </div>\n                                <div name=\"product_lst_price\" class=\"mt-1\">\n                                    Price: <field name=\"list_price\" widget=\"monetary\" options=\"{'currency_field': 'currency_id', 'field_digits': True}\"/>\n                                </div>\n                            </div>\n                        </div>\n                    </t>\n                </templates>\n            </kanban>",
+      "id": 567,
+      "model": "product.template"
+    },
+    "pivot": {
+      "arch": "<pivot string=\"Product\"/>",
+      "id": false,
+      "model": "product.template"
+    },
+    "graph": {
+      "arch": "<graph string=\"Product\"><field name=\"default_code\"/></graph>",
+      "id": false,
+      "model": "product.template"
+    }
+  }
+}

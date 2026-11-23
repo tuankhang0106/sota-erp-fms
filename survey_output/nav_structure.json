@@ -1,0 +1,325 @@
+{
+  "title": "Thảo luận",
+  "bodyTextSnippet": "Thảo luận\nLịch\nActivity Dashboard\nVận chuyển\nMy Dashboard\nMass Activities Dynamic Action\nLiên hệ\nCRM\nBảng điều khiển\nKế toán\nEmail Marketing\nNhân viên\nTạm ứng Nhân viên\nChi phí\nThiết lập\n100\n2\nTô Thị Cẩm Nhung\nBẮT ĐẦU CUỘC HỌP\nHộp thư đến\n99\nĐược gắn sao\nLịch sử\nCÁC KÊNH\ngeneral\nTIN NHẮN TRỰC TIẾP\nLê Thị Thu Thảo\nPhạm Thị Thu Thảo\nSotaERP Bot\nHộp thư đến\nĐÁNH DẤU ĐÃ ĐỌC TẤT CẢ\nTải thêm\n19 tháng 10 năm 2026\nVũ Phượng Hoàng Oanh\n- một tháng trước\ntrên 1Z2KG2450428919011\nChủ đề: Bạn đã được phân công/gán cho PLAE2610015-01\nThân gửi Tô Thị Cẩm Nhung,\n\nBạn đã được phân công/gán cho Freight Lô hàng phụ PLAE2610015-01.\n\n22 tháng 10 năm 2026\nVõ Thị Mỹ Trang\n- một tháng trước\ntrên HD/2026/00132\nChủ đề: Bạn đã được phân công/gán cho Hóa đơn Nháp (* 3136)\nThân gửi Tô Thị Cẩm Nhung,\n\nBạn đã được phân công/gán cho Phiếu kế toán Hóa đơn Nháp (* 3136).\n\n28 tháng 10 năm 2026\nVõ Thị Mỹ Trang\n- 24 ngày trước\ntrên HD/2026/00151\nChủ đề: Bạn đã được phân công/gán cho Hóa đơn Nháp (* 3183)\nThân gửi Tô Thị C",
+  "links": [
+    {
+      "text": "Thảo luận",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=74&action=107",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Lịch",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=117&action=181",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Activity Dashboard",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=164&action=257",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Vận chuyển",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=309&action=638",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "My Dashboard",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=582&action=843",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Mass Activities Dynamic Action",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=168&action=250",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Liên hệ",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=123&action=436",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "CRM",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=231&action=450",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Bảng điều khiển",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=158&action=234",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Kế toán",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=178&action=333",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Email Marketing",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=255&action=385",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Nhân viên",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=136&action=193",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Tạm ứng Nhân viên",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=495&action=704",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Chi phí",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=297&action=421",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Thiết lập",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=4&action=85",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Thảo luận",
+      "href": "https://portalink.erp.sota-solutions.com/web#menu_id=74&action=107",
+      "className": "dropdown-item o_menu_brand d-none d-md-block"
+    },
+    {
+      "text": "100",
+      "href": "https://portalink.erp.sota-solutions.com/web#",
+      "className": "o_MessagingMenu_toggler dropdown-toggle o-no-caret o-dropdown--narrow"
+    },
+    {
+      "text": "2",
+      "href": "https://portalink.erp.sota-solutions.com/web#",
+      "className": "o_ActivityMenuView_dropdownToggle dropdown-toggle o-no-caret o-dropdown--narrow"
+    },
+    {
+      "text": "Tải thêm",
+      "href": "https://portalink.erp.sota-solutions.com/web#",
+      "className": "o_MessageList_item o_MessageList_loadMore align-self-center"
+    },
+    {
+      "text": "1Z2KG2450428919011",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.shipment.house&id=188",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "HD/2026/00132",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=account.move&id=3136",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "HD/2026/00151",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=account.move&id=3183",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "HD/2026/00152",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=account.move&id=3184",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "HD/2026/00154",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=account.move&id=3186",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "HD/2026/00155",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=account.move&id=3187",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "PLSE2611015",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.job&id=239",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "280582989",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.shipment.house&id=212",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "PLSE2611014",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.job&id=238",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "EMIVKRESAL010313",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.shipment.house&id=211",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "SINGAREA FOODSTUFF TRADING LLC",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=res.partner&id=53303",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "DINH QUANG COMPANY LIMITED",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=res.partner&id=67339",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "PLAI2611018",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.job&id=244",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "AAXMN26B0017",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.shipment.house&id=216",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "731-90248465",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.shipment.master&id=149",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "PLAE2609010",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.job&id=189",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "2026803730",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.shipment.house&id=162",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "2026803730",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.shipment.master&id=102",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "PLLE2611021",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.job&id=248",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "EMIVKRESAL010313",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.shipment.master&id=153",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "280582989",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.shipment.master&id=155",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "0313688793 - CÔNG TY TNHH GIAO NHẬN VẬN TẢI THƯƠNG MẠI DỊCH VỤ BẢO TÍN",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=res.partner&id=67348",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "PLSI2611022",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.job&id=249",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "177",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=account.move&id=3376",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "180",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=account.move&id=3379",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "183",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=account.move&id=3380",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "PLAE2611024",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.job&id=251",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "384780174995",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.shipment.house&id=221",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "384780174995",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.shipment.master&id=158",
+      "className": "o_Message_originThreadLink fs-6"
+    },
+    {
+      "text": "PLSI2611022",
+      "href": "https://portalink.erp.sota-solutions.com/web#model=freight.shipment.house&id=232",
+      "className": "o_Message_originThreadLink fs-6"
+    }
+  ],
+  "menuItems": [
+    {
+      "text": "Thảo luận",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Lịch",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Activity Dashboard",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Vận chuyển",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "My Dashboard",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Mass Activities Dynamic Action",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Liên hệ",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "CRM",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Bảng điều khiển",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Kế toán",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Email Marketing",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Nhân viên",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Tạm ứng Nhân viên",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Chi phí",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Thiết lập",
+      "className": "dropdown-item o_app"
+    },
+    {
+      "text": "Thảo luận",
+      "className": "dropdown-item o_menu_brand d-none d-md-block"
+    },
+    {
+      "text": "100",
+      "className": "o_MessagingMenu_toggler dropdown-toggle o-no-caret o-dropdown--narrow"
+    },
+    {
+      "text": "2",
+      "className": "o_ActivityMenuView_dropdownToggle dropdown-toggle o-no-caret o-dropdown--narrow"
+    }
+  ]
+}

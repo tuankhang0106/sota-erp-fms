@@ -1,0 +1,57 @@
+{
+  "title": "Thảo luận",
+  "sidebarItems": [
+    "Hộp thư đến\n99\nĐược gắn sao\nLịch sử",
+    "CÁC KÊNH\ngeneral",
+    "TIN NHẮN TRỰC TIẾP\nLê Thị Thu Thảo\nPhạm Thị Thu Thảo\nSotaERP Bot"
+  ],
+  "buttons": [
+    "BẮT ĐẦU CUỘC HỌP",
+    "Hộp thư đến\n99",
+    "Được gắn sao",
+    "Lịch sử",
+    "general",
+    "Lê Thị Thu Thảo",
+    "Phạm Thị Thu Thảo",
+    "SotaERP Bot",
+    "ĐÁNH DẤU ĐÃ ĐỌC TẤT CẢ"
+  ],
+  "messagesSample": [
+    {
+      "author": "Vũ Phượng Hoàng Oanh",
+      "date": "- một tháng trước",
+      "origin": "1Z2KG2450428919011",
+      "body": "Vũ Phượng Hoàng Oanh\n- một tháng trước\ntrên 1Z2KG2450428919011\nChủ đề: Bạn đã được phân công/gán cho PLAE2610015-01\nThân gửi Tô Thị Cẩm Nhung,\n\nBạn đã được phân công/gán cho Freight Lô hàng phụ PLAE26"
+    },
+    {
+      "author": "Võ Thị Mỹ Trang",
+      "date": "- một tháng trước",
+      "origin": "HD/2026/00132",
+      "body": "Võ Thị Mỹ Trang\n- một tháng trước\ntrên HD/2026/00132\nChủ đề: Bạn đã được phân công/gán cho Hóa đơn Nháp (* 3136)\nThân gửi Tô Thị Cẩm Nhung,\n\nBạn đã được phân công/gán cho Phiếu kế toán Hóa đơn Nháp (*"
+    },
+    {
+      "author": "Võ Thị Mỹ Trang",
+      "date": "- 24 ngày trước",
+      "origin": "HD/2026/00151",
+      "body": "Võ Thị Mỹ Trang\n- 24 ngày trước\ntrên HD/2026/00151\nChủ đề: Bạn đã được phân công/gán cho Hóa đơn Nháp (* 3183)\nThân gửi Tô Thị Cẩm Nhung,\n\nBạn đã được phân công/gán cho Phiếu kế toán Hóa đơn Nháp (* 3"
+    },
+    {
+      "author": "Võ Thị Mỹ Trang",
+      "date": "- 24 ngày trước",
+      "origin": "HD/2026/00152",
+      "body": "Võ Thị Mỹ Trang\n- 24 ngày trước\ntrên HD/2026/00152\nChủ đề: Bạn đã được phân công/gán cho Hóa đơn Nháp (* 3184)\nThân gửi Tô Thị Cẩm Nhung,\n\nBạn đã được phân công/gán cho Phiếu kế toán Hóa đơn Nháp (* 3"
+    },
+    {
+      "author": "Võ Thị Mỹ Trang",
+      "date": "- 24 ngày trước",
+      "origin": "HD/2026/00154",
+      "body": "Võ Thị Mỹ Trang\n- 24 ngày trước\ntrên HD/2026/00154\nChủ đề: Bạn đã được phân công/gán cho Hóa đơn Nháp (* 3186)\nThân gửi Tô Thị Cẩm Nhung,\n\nBạn đã được phân công/gán cho Phiếu kế toán Hóa đơn Nháp (* 3"
+    },
+    {
+      "author": "Võ Thị Mỹ Trang",
+      "date": "- 24 ngày trước",
+      "origin": "HD/2026/00155",
+      "body": "Võ Thị Mỹ Trang\n- 24 ngày trước\ntrên HD/2026/00155\nChủ đề: Bạn đã được phân công/gán cho Hóa đơn Nháp (* 3187)\nThân gửi Tô Thị Cẩm Nhung,\n\nBạn đã được phân công/gán cho Phiếu kế toán Hóa đơn Nháp (* 3"
+    }
+  ]
+}

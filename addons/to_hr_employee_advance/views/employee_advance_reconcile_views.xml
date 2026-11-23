@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_advance_reconcile_tree" model="ir.ui.view">
+        <field name="name">employee.advance.reconcile.tree</field>
+        <field name="model">employee.advance.reconcile</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="state=='cancel'" decoration-bf="state=='confirm'" decoration-success="state=='draft'">
+<field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="date" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;done&quot;, &quot;cancel&quot;]]], &quot;required&quot;: true}"/>
+<field name="employee_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;done&quot;, &quot;cancel&quot;]]], &quot;required&quot;: true}"/>
+<field name="job_id" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="department_id" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="job_ids" widget="many2many_tags" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;done&quot;, &quot;cancel&quot;]]]}"/>
+<field name="balance" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="state"/>
+</tree>
+        </field>
+    </record>
+
+    <record id="view_employee_advance_reconcile_form" model="ir.ui.view">
+        <field name="name">employee.advance.reconcile.form</field>
+        <field name="model">employee.advance.reconcile</field>
+        <field name="arch" type="xml">
+            <form string="Employee Advance Reconcile" duplicate="0">
+<header>
+<button name="action_confirm" type="object" string="Confirm" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+<button name="action_compute_data_line" type="object" string="Compute" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+<button name="702" type="action" string="Pay Employee" class="oe_highlight" context="{'default_employee_advance_reconcile_id': active_id}" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;|&quot;, [&quot;difference_amount&quot;, &quot;&gt;&quot;, 0], [&quot;state&quot;, &quot;!=&quot;, &quot;confirm&quot;], [&quot;balance&quot;, &quot;=&quot;, 0]]}"/>
+<button name="702" type="action" string="Employee Refund" class="oe_highlight" context="{'default_employee_advance_reconcile_id': active_id}" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;|&quot;, [&quot;difference_amount&quot;, &quot;&lt;&quot;, 0], [&quot;state&quot;, &quot;!=&quot;, &quot;confirm&quot;], [&quot;balance&quot;, &quot;=&quot;, 0]]}"/>
+<button name="action_cancel" type="object" string="Cancel" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;confirm&quot;, &quot;done&quot;]]]}"/>
+<button name="action_draft" type="object" string="Set to Draft" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;cancel&quot;]]]}"/>
+<field name="state" statusbar_visible="draft,confirm,done" widget="statusbar" modifiers="{&quot;readonly&quot;: true}"/>
+</header>
+<div class="alert alert-info" role="alert" style="margin-bottom:0px;" modifiers="{&quot;invisible&quot;: [[&quot;has_outstanding_payment&quot;, &quot;=&quot;, false]]}">
+                    You have <b>draft or cancelled payment</b> for this employee advance reconcile. You should <b>delete</b> or <b>post</b> them.
+                </div>
+                <field name="has_outstanding_payment" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+<sheet>
+<group>
+<group>
+<field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="employee_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;done&quot;, &quot;cancel&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+<field name="job_id" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="department_id" modifiers="{&quot;readonly&quot;: true}"/>
+</group>
+<group>
+<field name="date" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;done&quot;, &quot;cancel&quot;]]], &quot;required&quot;: true}"/>
+<field name="journal_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;done&quot;, &quot;cancel&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="job_ids" widget="many2many_tags" options="{'no_create': True}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;done&quot;, &quot;cancel&quot;]]]}" can_create="true" can_write="true"/>
+<field name="company_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+<field name="account_ids" widget="many2many_tags" options="{'no_create': True}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;done&quot;, &quot;cancel&quot;]]]}" can_create="true" can_write="true"/>
+<field name="difference_amount" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+<field name="balance" modifiers="{&quot;readonly&quot;: true}"/>
+</group>
+</group>
+<notebook>
+<page string="Reconcile Information">
+<group>
+<group>
+<label for="line_db_ids" string="Debits"/>
+</group>
+</group>
+<field name="line_db_ids" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;done&quot;, &quot;cancel&quot;]]]}">
+<tree string="Reconciled Debits" create="0" editable="bottom">
+<field name="move_line_id" force_save="1" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="name" force_save="1" optional="hide" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="account_id" force_save="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="date" force_save="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="amount" sum="Total Amount" force_save="1" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="type" force_save="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+</tree>
+</field>
+<group>
+<group>
+<label for="line_cr_ids"/>
+</group>
+</group>
+<field name="line_cr_ids" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;confirm&quot;, &quot;done&quot;, &quot;cancel&quot;]]]}">
+<tree string="Reconciled Credits" create="0" editable="bottom">
+<field name="move_line_id" force_save="1" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="name" force_save="1" optional="hide" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="account_id" force_save="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                <field name="cds_number" force_save="1" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="date" force_save="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="amount" sum="Total Amount" force_save="1" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="type" force_save="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+</tree>
+</field>
+</page>
+<page string="Payments / Refunds">
+<field name="payment_ids" nolabel="1" edit="0" create="0" on_change="1" modifiers="{&quot;readonly&quot;: true}">
+<tree>
+<field name="date" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;posted&quot;, &quot;cancel&quot;]]], &quot;required&quot;: true}"/>
+<field name="name" on_change="1"/>
+<field name="partner_id" on_change="1"/>
+<field name="journal_id" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+<field name="amount" on_change="1"/>
+<field name="state" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+</tree>
+</field>
+</page>
+</notebook>
+</sheet>
+<div class="oe_chatter">
+<field name="message_follower_ids"/>
+<field name="message_ids"/>
+<field name="activity_ids"/>
+</div>
+</form>
+        </field>
+    </record>
+
+    <record id="view_employee_advance_reconcile_search" model="ir.ui.view">
+        <field name="name">employee.advance.reconcile.search</field>
+        <field name="model">employee.advance.reconcile</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee Advance Reconcile">
+<field name="name" string="Reference"/>
+<field name="employee_id"/>
+<separator/>
+<filter name="draft_reconcile" string="Draft" domain="[('state','in', ('draft', 'cancel'))]"/>
+<filter name="confirm_reconcile" string="Confirmed" domain="[('state','=', 'confirm')]"/>
+<separator/>
+<filter name="done_reconcile" string="Done" domain="[('state','=', 'done')]"/>
+<separator/>
+<group expand="0" string="Group By">
+<filter string="Employee" domain="[]" name="grp_employee" context="{'group_by':'employee_id'}"/>
+<filter string="Advance Month" domain="[]" name="grp_date" context="{'group_by':'date'}"/>
+</group>
+</search>
+        </field>
+    </record>
+
+    <record id="action_employee_advance_reconcile" model="ir.actions.act_window">
+        <field name="name">EMPLOYEE ADVANCE RECONCILE</field>
+        <field name="res_model">employee.advance.reconcile</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

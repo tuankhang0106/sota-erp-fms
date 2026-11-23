@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_sh_activity_tags" model="ir.actions.act_window">
+        <field name="name">Thẻ hoạt động (Activity Tags)</field>
+        <field name="res_model">sh.activity.tags</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

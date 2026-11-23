@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mailing_filter_tree" model="ir.ui.view">
+        <field name="name">mailing.filter.tree</field>
+        <field name="model">mailing.filter</field>
+        <field name="arch" type="xml">
+            <tree string="Mailing filters" sample="1">
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                <field name="create_uid" string="Saved by" widget="many2one_avatar_user" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="mailing_model_id" string="Recipients" modifiers="{&quot;required&quot;: true}"/>
+                <field name="mailing_domain" string="Domain" optional="hide" modifiers="{&quot;required&quot;: true}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_mailing_filter_form" model="ir.ui.view">
+        <field name="name">mailing.filter.form</field>
+        <field name="model">mailing.filter</field>
+        <field name="arch" type="xml">
+            <form string="Mailing filters">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="mailing_model_id" options="{'no_create': True, 'no_open': True}" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                        </group>
+                        <group>
+                            <field name="create_uid" widget="many2one_avatar_user" modifiers="{&quot;readonly&quot;: true}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="mailing_model_name" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="mailing_domain" string="Domain" widget="domain" options="{'model': 'mailing_model_name'}" modifiers="{&quot;invisible&quot;: [[&quot;mailing_model_id&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mailing_filter_search" model="ir.ui.view">
+        <field name="name">mailing.filter.search</field>
+        <field name="model">mailing.filter</field>
+        <field name="arch" type="xml">
+            <search string="Mailing Filters">
+                <field name="name"/>
+                <field name="mailing_model_id"/>
+                <filter string="My Filters" name="filter_saved_by_me" domain="[('create_uid', '=', uid)]" help="Filters saved by me"/>
+                <group string="Group By">
+                    <filter name="groupby_recepient_model" context="{'group_by' : 'mailing_model_id'}" string="Recipients"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mailing_filter" model="ir.actions.act_window">
+        <field name="name">MAILING FILTER</field>
+        <field name="res_model">mailing.filter</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

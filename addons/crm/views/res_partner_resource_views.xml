@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_resource_tree" model="ir.ui.view">
+        <field name="name">res.partner.resource.tree</field>
+        <field name="model">res.partner.resource</field>
+        <field name="arch" type="xml">
+            <tree string="Customer Sources" editable="bottom">
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                <field name="code" optional="show" placeholder="Auto-generated if empty"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_res_partner_resource_form" model="ir.ui.view">
+        <field name="name">res.partner.resource.form</field>
+        <field name="model">res.partner.resource</field>
+        <field name="arch" type="xml">
+            <form><sheet string="Partner Resource"><group><group><field name="name" modifiers="{&quot;required&quot;: true}"/></group><group><field name="code"/></group></group><group><separator/></group></sheet></form>
+        </field>
+    </record>
+
+    <record id="view_res_partner_resource_search" model="ir.ui.view">
+        <field name="name">res.partner.resource.search</field>
+        <field name="model">res.partner.resource</field>
+        <field name="arch" type="xml">
+            <search string="Partner Resource"><field name="name"/></search>
+        </field>
+    </record>
+
+    <record id="action_res_partner_resource" model="ir.actions.act_window">
+        <field name="name">RES PARTNER RESOURCE</field>
+        <field name="res_model">res.partner.resource</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

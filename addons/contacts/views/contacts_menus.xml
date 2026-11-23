@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_contacts_root"
+              name="Liên hệ (Contacts)"
+              sequence="6"/>
+
+    <menuitem id="menu_res_partner_title"
+              name="RES PARTNER TITLE"
+              parent="menu_contacts_root"
+              action="action_res_partner_title"
+              sequence="10"/>
+
+    <menuitem id="menu_res_partner_category"
+              name="RES PARTNER CATEGORY"
+              parent="menu_contacts_root"
+              action="action_res_partner_category"
+              sequence="10"/>
+
+    <menuitem id="menu_res_partner_industry"
+              name="RES PARTNER INDUSTRY"
+              parent="menu_contacts_root"
+              action="action_res_partner_industry"
+              sequence="10"/>
+
+    <menuitem id="menu_res_bank"
+              name="RES BANK"
+              parent="menu_contacts_root"
+              action="action_res_bank"
+              sequence="10"/>
+
+    <menuitem id="menu_res_partner_bank"
+              name="RES PARTNER BANK"
+              parent="menu_contacts_root"
+              action="action_res_partner_bank"
+              sequence="10"/>
+
+    <menuitem id="menu_res_country"
+              name="RES COUNTRY"
+              parent="menu_contacts_root"
+              action="action_res_country"
+              sequence="10"/>
+
+    <menuitem id="menu_res_country_group"
+              name="RES COUNTRY GROUP"
+              parent="menu_contacts_root"
+              action="action_res_country_group"
+              sequence="10"/>
+
+    <menuitem id="menu_res_country_state"
+              name="RES COUNTRY STATE"
+              parent="menu_contacts_root"
+              action="action_res_country_state"
+              sequence="10"/>
+
+    <menuitem id="menu_res_partner"
+              name="RES PARTNER"
+              parent="menu_contacts_root"
+              action="action_res_partner"
+              sequence="10"/>
+
+    <menuitem id="menu_res_country_wards"
+              name="RES COUNTRY WARDS"
+              parent="menu_contacts_root"
+              action="action_res_country_wards"
+              sequence="10"/>
+
+</odoo>

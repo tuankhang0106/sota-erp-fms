@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_crm_recurring_plan_tree" model="ir.ui.view">
+        <field name="name">crm.recurring.plan.tree</field>
+        <field name="model">crm.recurring.plan</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                <field name="number_of_months" modifiers="{&quot;required&quot;: true}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_crm_recurring_plan_form" model="ir.ui.view">
+        <field name="name">crm.recurring.plan.form</field>
+        <field name="model">crm.recurring.plan</field>
+        <field name="arch" type="xml">
+            <form><sheet string="CRM Recurring revenue plans"><group><group><field name="name" modifiers="{&quot;required&quot;: true}"/><field name="active"/></group><group><field name="number_of_months" modifiers="{&quot;required&quot;: true}"/><field name="sequence"/></group></group><group><separator/></group></sheet></form>
+        </field>
+    </record>
+
+    <record id="view_crm_recurring_plan_search" model="ir.ui.view">
+        <field name="name">crm.recurring.plan.search</field>
+        <field name="model">crm.recurring.plan</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="active" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_crm_recurring_plan" model="ir.actions.act_window">
+        <field name="name">CRM RECURRING PLAN</field>
+        <field name="res_model">crm.recurring.plan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

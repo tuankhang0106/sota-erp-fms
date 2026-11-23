@@ -1,0 +1,85 @@
+{
+  "fields": {
+    "res_model": {
+      "readonly": false,
+      "required": true,
+      "string": "Related Document Model Name",
+      "type": "char"
+    },
+    "res_id": {
+      "help": "Id of the followed resource",
+      "readonly": false,
+      "required": false,
+      "string": "Related Document ID",
+      "type": "many2one_reference"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Related Partner",
+      "type": "many2one"
+    },
+    "subtype_ids": {
+      "help": "Message subtypes followed, meaning subtypes that will be pushed onto the user's Wall.",
+      "readonly": false,
+      "relation": "mail.message.subtype",
+      "required": false,
+      "string": "Subtype",
+      "type": "many2many"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "email": {
+      "readonly": true,
+      "required": false,
+      "string": "Email",
+      "type": "char"
+    },
+    "is_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Active",
+      "type": "boolean"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree string=\"Followers\">\n                    <field name=\"res_model\" modifiers=\"{&quot;required&quot;: true}\"/>\n                    <field name=\"res_id\"/>\n                    <field name=\"partner_id\" modifiers=\"{&quot;required&quot;: true}\"/>\n                </tree>",
+      "id": 253,
+      "model": "mail.followers"
+    },
+    "form": {
+      "arch": "<form string=\"Followers Form\">\n                    <sheet>\n                        <group>\n                            <group>\n                                <field name=\"res_model\" modifiers=\"{&quot;required&quot;: true}\"/>\n                                <field name=\"partner_id\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                            </group>\n                            <group>\n                                <field name=\"res_id\"/>\n                                <field name=\"subtype_ids\" widget=\"many2many_tags\" can_create=\"true\" can_write=\"true\"/>\n                            </group>\n                        </group>\n                    </sheet>\n                </form>",
+      "id": 254,
+      "model": "mail.followers"
+    },
+    "search": {
+      "arch": "<search string=\"Document Followers\"><field name=\"partner_id\"/></search>",
+      "id": false,
+      "model": "mail.followers"
+    }
+  }
+}

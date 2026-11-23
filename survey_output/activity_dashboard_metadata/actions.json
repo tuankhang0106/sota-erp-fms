@@ -1,0 +1,322 @@
+{
+  "233": {
+    "id": 233,
+    "name": "Settings",
+    "type": "ir.actions.act_window",
+    "xml_id": "sh_activity_base.activity_config_settings_action",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Settings",
+    "view_id": false,
+    "domain": false,
+    "context": "{'module' : 'sh_activity_base', 'bin_size': False}",
+    "res_id": 0,
+    "res_model": "res.config.settings",
+    "target": "inline",
+    "view_mode": "form",
+    "views": [
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Test config settings\"><field name=\"id\"/></search>', 'id': False, 'model': 'res.config.settings', 'models': {'res.config.settings': ('id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'group_private_addresses', 'company_id', 'user_default_rights', 'external_email_server_default', 'module_base_import', 'module_google_calendar', 'module_microsoft_calendar', 'module_mail_plugin', 'module_auth_oauth', 'module_auth_ldap', 'module_base_gengo', 'module_account_inter_company_rules', 'module_voip', 'module_web_unsplash', 'module_partner_autocomplete', 'module_base_geolocalize', 'module_google_recaptcha', 'report_footer', 'group_multi_currency', 'external_report_layout_id', 'show_effect', 'company_count', 'active_user_count', 'language_count', 'company_name', 'company_informations', 'profiling_enabled_until', 'module_product_images', 'geoloc_provider_id', 'geoloc_provider_techname', 'geoloc_provider_googlemap_key', 'recaptcha_public_key', 'recaptcha_private_key', 'recaptcha_min_score', 'fail_counter', 'alias_domain', 'module_google_gmail', 'module_microsoft_outlook', 'restrict_template_rendering', 'use_twilio_rtc_servers', 'twilio_account_sid', 'twilio_account_token', 'primary_color', 'secondary_color', 'group_analytic_accounting', 'auth_signup_reset_password', 'auth_signup_uninvited', 'auth_signup_template_user_id', 'resource_calendar_id', 'module_hr_presence', 'module_hr_skills', 'module_hr_homeworking', 'hr_presence_control_login', 'hr_presence_control_email', 'hr_presence_control_ip', 'module_hr_attendance', 'hr_presence_control_email_amount', 'hr_presence_control_ip_list', 'hr_employee_self_edit', 'dn_api_key', 'url', 'ks_email_id', 'microsoft_outlook_client_identifier', 'microsoft_outlook_client_secret', 'group_discount_per_so_line', 'group_uom', 'group_product_variant', 'module_sale_product_matrix', 'module_loyalty', 'group_stock_packaging', 'group_product_pricelist', 'group_sale_pricelist', 'product_pricelist_setting', 'product_weight_in_lbs', 'product_volume_volume_in_cubic_feet', 'activity_due_notification', 'ondue_date_notify', 'after_first_notify', 'after_second_notify', 'before_first_notify', 'before_second_notify', 'enter_after_first_notify', 'enter_after_second_notify', 'enter_before_first_notify', 'enter_before_second_notify', 'notify_create_user_due', 'notify_create_user_after_first', 'notify_create_user_after_second', 'notify_create_user_before_first', 'notify_create_user_before_second', 'is_mobile_notification_internal', 'sota_fcm_project_id', 'sota_fcm_service_account_json', 'unsplash_access_key', 'unsplash_app_id', 'partner_autocomplete_insufficient_credit', 'portal_allow_api_keys', 'sh_planned_table', 'sh_all_table', 'sh_completed_table', 'sh_due_table', 'sh_cancel_table', 'sh_display_multi_user', 'sh_display_all_activities_counter', 'sh_display_planned_activities_counter', 'sh_display_completed_activities_counter', 'sh_display_overdue_activities_counter', 'sh_display_cancelled_activities_counter', 'sh_display_all_activities_table', 'sh_display_planned_activities_table', 'sh_display_completed_activities_table', 'sh_display_overdue_activities_table', 'sh_display_cancelled_activities_table', 'sh_display_activity_reminder', 'sh_document_model', 'sh_document_model_ids', 'snailmail_color', 'snailmail_cover', 'snailmail_duplex', 'digest_emails', 'digest_id', 'has_accounting_entries', 'currency_id', 'currency_exchange_journal_id', 'income_currency_exchange_account_id', 'expense_currency_exchange_account_id', 'has_chart_of_accounts', 'chart_template_id', 'sale_tax_id', 'purchase_tax_id', 'tax_calculation_rounding_method', 'account_journal_suspense_account_id', 'account_journal_payment_debit_account_id', 'account_journal_payment_credit_account_id', 'transfer_account_id', 'module_account_accountant', 'group_warning_account', 'group_cash_rounding', 'group_show_line_subtotals_tax_excluded', 'group_show_line_subtotals_tax_included', 'group_show_sale_receipts', 'group_show_purchase_receipts', 'show_line_subtotals_tax_selection', 'module_account_budget', 'module_account_payment', 'module_account_reports', 'module_account_check_printing', 'module_account_batch_payment', 'module_account_sepa', 'module_account_sepa_direct_debit', 'module_account_bank_statement_import_qif', 'module_account_bank_statement_import_ofx', 'module_account_bank_statement_import_csv', 'module_account_bank_statement_import_camt', 'module_currency_rate_live', 'module_account_intrastat', 'module_product_margin', 'module_l10n_eu_oss', 'module_account_taxcloud', 'module_account_invoice_extract', 'module_snailmail_account', 'tax_exigibility', 'tax_cash_basis_journal_id', 'account_cash_basis_base_account_id', 'account_fiscal_country_id', 'qr_code', 'invoice_is_print', 'invoice_is_email', 'incoterm_id', 'invoice_terms', 'invoice_terms_html', 'terms_type', 'preview_ready', 'use_invoice_terms', 'account_use_credit_limit', 'account_default_credit_limit', 'country_code', 'account_storno', 'group_sale_delivery_address', 'quick_edit_mode', 'early_pay_discount_computation', 'account_journal_early_pay_discount_loss_account_id', 'account_journal_early_pay_discount_gain_account_id', 'group_use_lead', 'group_use_recurring_revenues', 'is_membership_multi', 'crm_use_auto_assignment', 'crm_auto_assignment_action', 'crm_auto_assignment_interval_type', 'crm_auto_assignment_interval_number', 'crm_auto_assignment_run_datetime', 'module_crm_iap_mine', 'module_crm_iap_enrich', 'module_website_crm_iap_reveal', 'lead_enrich_auto', 'lead_mining_in_pipeline', 'predictive_lead_scoring_start_date', 'predictive_lead_scoring_start_date_str', 'predictive_lead_scoring_fields', 'predictive_lead_scoring_fields_str', 'predictive_lead_scoring_field_labels', 'group_mass_mailing_campaign', 'mass_mailing_outgoing_mail_server', 'mass_mailing_mail_server_id', 'show_blacklist_buttons', 'mass_mailing_reports', 'expense_alias_prefix', 'use_mailgateway', 'module_hr_payroll_expense', 'module_hr_expense_extract', 'expense_journal_id', 'company_expense_journal_id', 'fiscalyear_last_day', 'fiscalyear_last_month', 'period_lock_date', 'fiscalyear_lock_date', 'group_fiscal_year', 'invoice_is_snailmail', 'balance_carry_forward_journal_id', 'currency_interval_unit', 'currency_provider', 'currency_next_execution_date', 'currency_rate_fetch_time', 'use_buy_rate', 'vat_ctp_account_id', 'property_account_income_refund_categ_id', 'property_account_expense_refund_categ_id', 'property_account_other_receivable_id', 'property_account_other_payable_id', 'general_employee_payable_account_id', 'advance_account_id', 'currency_conversion_diff_income_account_id', 'currency_conversion_diff_expense_account_id', 'import_vat_ctp_account_id', 'export_vat_ctp_account_id', 'pay_invoices_online', 'reconcile_aggregate', 'department_analytic_plan_id', 'gdt_einvoice_username', 'gdt_einvoice_password', 'amount_double_validation', 'quotation_rate_table', 'customer_limit', 'quotation_expiry_reminder_days', 'freight_quotation_company_address', 'freight_quotation_company_name', 'freight_do_address', 'remark_quotation', 'sota_api_key', 'sota_ocr_remaining', 'crm_sr_src_quotation', 'crm_sr_src_activity', 'crm_sr_inactive_months', 'crm_sr_golive_date', 'crm_sr_mobile_daily', 'crm_sr_has_fms', 'short_name', 'freight_default_bl_type', 'freight_default_transport_mode_ids', 'disable_expense_approve', 'split_expense_entries_no_invoice', 'create_invoice_group_tax', 'create_invoice_in_vnd_only', 'create_dc_invoice_in_vnd_only', 'create_credit_invoice_in_vnd_only', 'soa_bl_note_single_line', 'einvoice_zero_vat_as_special_goods', 'split_pob_debit_note', 'round_unit_price_before_qty', 'edo_signature', 'image_stamp', 'freight_container_deposit_account_id', 'freight_deposit_penalty_account_id', 'freight_debt_offset_journal_id', 'freight_debt_offset_writeoff_account_id', 'freight_foreign_receivable_account_id', 'freight_foreign_payable_account_id', 'remark_bk', 'job_code_prefix', 'job_code_by_customer', 'hbl_template', 'freight_cost_source_account_id', 'freight_cost_dest_account_id', 'freight_transfer_journal_id', 'freight_expense_pob_payable_account_id', 'job_profit_default_noinv_group', 'is_group_logistic_debit_note', 'merge_job_selling_to_house_note', 'invoice_sync_legal_number', 'partner_display_full_name', 'credit_note_single_currency_columns', 'dp_margin_threshold', 'dp_unbilled_days', 'ar_inv_account_ids', 'ar_inv_pob_account_ids', 'ar_inv_desc_source', 'quotation_print_currency_conversion', 'rate_visibility_by_department', 'crm_sr_use_fms', 'crm_sr_src_quotation_job', 'crm_sr_src_job')}}",
+    "groups_id": []
+  },
+  "245": {
+    "id": 245,
+    "name": "Activity Alarm",
+    "type": "ir.actions.act_window",
+    "xml_id": "sh_activities_management.sh_activity_alarm_action",
+    "help": "<p class=\"o_view_nocontent_smiling_face\">Create a new Activity Alarm</p>\n        ",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Activity Alarm",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "sh.activity.alarm",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Alarm Reminder\"><field name=\"name\"/></search>', 'id': False, 'model': 'sh.activity.alarm', 'models': {'sh.activity.alarm': ('name', 'type', 'sh_remind_before', 'sh_reminder_unit', 'company_id', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "250": {
+    "id": 250,
+    "name": "Mass Activities Dynamic Action",
+    "type": "ir.actions.act_window",
+    "xml_id": "sh_activities_management.sh_activity_management_dynamic_action_action",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Mass Activities Dynamic Action",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "sh.activity.dynamic.action",
+    "target": "current",
+    "view_mode": "list,form",
+    "views": [
+      [
+        false,
+        "list"
+      ],
+      [
+        false,
+        "form"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Sh Activity Create Action\"><field name=\"name\"/></search>', 'id': False, 'model': 'sh.activity.dynamic.action', 'models': {'sh.activity.dynamic.action': ('name', 'model_id', 'sh_group_ids', 'action_id', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "251": {
+    "id": 251,
+    "name": "All Activities",
+    "type": "ir.actions.act_window",
+    "xml_id": "sh_activities_management.sh_all_activity_action",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "All Activities",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "mail.activity",
+    "target": "current",
+    "view_mode": "list,kanban,form,pivot,calendar,graph",
+    "views": [
+      [
+        664,
+        "list"
+      ],
+      [
+        273,
+        "form"
+      ],
+      [
+        666,
+        "kanban"
+      ],
+      [
+        668,
+        "pivot"
+      ],
+      [
+        667,
+        "calendar"
+      ],
+      [
+        669,
+        "graph"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Hoạt động\">\\n            <field name=\"res_name\" string=\"Activity\" filter_domain=\"[\\'|\\',\\'|\\',\\'|\\',\\'|\\',\\'|\\',\\'|\\',\\'|\\',(\\'res_name\\', \\'ilike\\', self),(\\'activity_type_id\\',\\'ilike\\',self),(\\'user_id\\',\\'ilike\\',self),(\\'res_model\\',\\'ilike\\',self),(\\'res_model_id\\',\\'ilike\\',self),(\\'supervisor_ids\\',\\'ilike\\',self),(\\'sh_activity_tags\\',\\'ilike\\',self),(\\'sh_user_ids\\',\\'ilike\\',self)]\"/>\\n                <field name=\"supervisor_ids\"/>\\n                <field name=\"sh_activity_tags\"/>\\n                <filter string=\"Completed Activities\" name=\"activities_completed\" domain=\"[(\\'state\\', \\'=\\', \\'done\\'),(\\'active\\',\\'=\\',False)]\"/>\\n            <filter string=\"Cancelled Activities\" name=\"activities_cancelled\" domain=\"[(\\'state\\', \\'=\\', \\'cancel\\'),(\\'active\\',\\'=\\',False)]\"/>\\n                <filter string=\"Archived Activities\" name=\"archived_activities\" domain=\"[(\\'active\\',\\'=\\',False)]\"/>\\n                <filter string=\"Activity Tags\" name=\"activity_tags\" domain=\"[(\\'sh_activity_tags\\',\\'!=\\',False)]\"/>\\n                <field name=\"res_model\"/>\\n                <field name=\"summary\"/>\\n                <field name=\"activity_type_id\"/>\\n                <filter string=\"Hoạt động trễ\" name=\"activities_overdue\" domain=\"[(\\'date_deadline\\', \\'&lt;\\', context_today().strftime(\\'%Y-%m-%d\\'))]\" help=\"Hiển thị tất cả dữ liệu có ngày xử lý tiếp theo trước ngày hôm nay\" modifiers=\"{&quot;invisible&quot;: true}\"/>\\n                <filter string=\"Các oạt động hôm nay\" name=\"activities_today\" domain=\"[(\\'date_deadline\\', \\'=\\', context_today().strftime(\\'%Y-%m-%d\\'))]\" modifiers=\"{&quot;invisible&quot;: true}\"/>\\n                <filter string=\"Hoạt động tương lai\" name=\"activities_upcoming_all\" domain=\"[(\\'date_deadline\\', \\'&gt;\\', context_today().strftime(\\'%Y-%m-%d\\'))                         ]\" modifiers=\"{&quot;invisible&quot;: true}\"/>\\n                <group expand=\"0\" string=\"Nhóm theo\">\\n                    <filter string=\"Thời hạn\" name=\"date_deadline\" context=\"{\\'group_by\\': \\'date_deadline\\'}\"/>\\n                    <filter string=\"Tạo bởi\" name=\"createdby\" context=\"{\\'group_by\\': \\'create_uid\\'}\"/>\\n                    <filter string=\"Kiểu hoạt động\" name=\"activittype\" context=\"{\\'group_by\\': \\'activity_type_id\\'}\"/>\\n                <filter string=\"Assign To\" name=\"assign_to\" context=\"{\\'group_by\\':\\'user_id\\'}\"/>\\n                <filter string=\"Supervisors\" name=\"supervisors\" context=\"{\\'group_by\\':\\'supervisor_ids\\'}\"/>\\n                <filter string=\"Document Model\" name=\"document_model\" context=\"{\\'group_by\\':\\'res_model_id\\'}\"/>\\n                <filter string=\"Tags\" name=\"tags\" context=\"{\\'group_by\\':\\'sh_activity_tags\\'}\"/>\\n                <filter string=\"Assigned Multi Users\" name=\"users\" context=\"{\\'group_by\\':\\'sh_user_ids\\'}\"/>\\n                </group>\\n            <searchpanel>\\n            <field name=\"company_id\" icon=\"fa-building\" enable_counters=\"1\"/>\\n            <field name=\"activity_type_id\" icon=\"fa-tasks\" enable_counters=\"1\"/>\\n            <field name=\"user_id\" limit=\"20\" hierarchize=\"0\" select=\"one\" icon=\"fa-users\" enable_counters=\"1\"/>\\n            <field name=\"res_model_id\" enable_counters=\"1\"/>\\n            <field name=\"sh_state\" enable_counters=\"1\" string=\"State\"/>\\n            </searchpanel>\\n            </search>', 'id': 274, 'model': 'mail.activity', 'models': {'mail.activity': ('res_model_id', 'res_model', 'res_id', 'res_name', 'activity_type_id', 'activity_category', 'activity_decoration', 'icon', 'summary', 'note', 'date_deadline', 'automated', 'user_id', 'request_partner_id', 'state', 'recommended_activity_type_id', 'previous_activity_type_id', 'has_recommended_activities', 'mail_template_ids', 'chaining_type', 'can_write', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'calendar_event_id', 'mobile_push_sent', 'mobile_push_sent_at', 'mobile_push_reminder_sent_keys', 'mobile_push_error', 'domain_sale_team_ids', 'sale_team_id', 'crm_department_id', 'active', 'supervisor_ids', 'department_ids', 'sh_activity_tags', 'sh_state', 'date_done', 'feedback', 'text_note', 'sh_user_ids', 'sh_display_multi_user', 'company_id', 'color', 'sh_create_individual_activity', 'sh_activity_alarm_ids', 'sh_date_deadline', 'due_in_text', 'activity_cancel', 'activity_done', 'sh_activity_id', 'reference', 'crm_sr_revenue', 'crm_sr_profit', 'crm_sr_currency_id', 'crm_sr_show_amount')}}",
+    "groups_id": []
+  },
+  "252": {
+    "id": 252,
+    "name": "All Activities",
+    "type": "ir.actions.act_window",
+    "xml_id": "sh_activities_management.sh_reporting_action",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "All Activities",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "mail.activity",
+    "target": "current",
+    "view_mode": "pivot,graph",
+    "views": [
+      [
+        false,
+        "pivot"
+      ],
+      [
+        false,
+        "graph"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Hoạt động\">\\n            <field name=\"res_name\" string=\"Activity\" filter_domain=\"[\\'|\\',\\'|\\',\\'|\\',\\'|\\',\\'|\\',\\'|\\',\\'|\\',(\\'res_name\\', \\'ilike\\', self),(\\'activity_type_id\\',\\'ilike\\',self),(\\'user_id\\',\\'ilike\\',self),(\\'res_model\\',\\'ilike\\',self),(\\'res_model_id\\',\\'ilike\\',self),(\\'supervisor_ids\\',\\'ilike\\',self),(\\'sh_activity_tags\\',\\'ilike\\',self),(\\'sh_user_ids\\',\\'ilike\\',self)]\"/>\\n                <field name=\"supervisor_ids\"/>\\n                <field name=\"sh_activity_tags\"/>\\n                <filter string=\"Completed Activities\" name=\"activities_completed\" domain=\"[(\\'state\\', \\'=\\', \\'done\\'),(\\'active\\',\\'=\\',False)]\"/>\\n            <filter string=\"Cancelled Activities\" name=\"activities_cancelled\" domain=\"[(\\'state\\', \\'=\\', \\'cancel\\'),(\\'active\\',\\'=\\',False)]\"/>\\n                <filter string=\"Archived Activities\" name=\"archived_activities\" domain=\"[(\\'active\\',\\'=\\',False)]\"/>\\n                <filter string=\"Activity Tags\" name=\"activity_tags\" domain=\"[(\\'sh_activity_tags\\',\\'!=\\',False)]\"/>\\n                <field name=\"res_model\"/>\\n                <field name=\"summary\"/>\\n                <field name=\"activity_type_id\"/>\\n                <filter string=\"Hoạt động trễ\" name=\"activities_overdue\" domain=\"[(\\'date_deadline\\', \\'&lt;\\', context_today().strftime(\\'%Y-%m-%d\\'))]\" help=\"Hiển thị tất cả dữ liệu có ngày xử lý tiếp theo trước ngày hôm nay\" modifiers=\"{&quot;invisible&quot;: true}\"/>\\n                <filter string=\"Các oạt động hôm nay\" name=\"activities_today\" domain=\"[(\\'date_deadline\\', \\'=\\', context_today().strftime(\\'%Y-%m-%d\\'))]\" modifiers=\"{&quot;invisible&quot;: true}\"/>\\n                <filter string=\"Hoạt động tương lai\" name=\"activities_upcoming_all\" domain=\"[(\\'date_deadline\\', \\'&gt;\\', context_today().strftime(\\'%Y-%m-%d\\'))                         ]\" modifiers=\"{&quot;invisible&quot;: true}\"/>\\n                <group expand=\"0\" string=\"Nhóm theo\">\\n                    <filter string=\"Thời hạn\" name=\"date_deadline\" context=\"{\\'group_by\\': \\'date_deadline\\'}\"/>\\n                    <filter string=\"Tạo bởi\" name=\"createdby\" context=\"{\\'group_by\\': \\'create_uid\\'}\"/>\\n                    <filter string=\"Kiểu hoạt động\" name=\"activittype\" context=\"{\\'group_by\\': \\'activity_type_id\\'}\"/>\\n                <filter string=\"Assign To\" name=\"assign_to\" context=\"{\\'group_by\\':\\'user_id\\'}\"/>\\n                <filter string=\"Supervisors\" name=\"supervisors\" context=\"{\\'group_by\\':\\'supervisor_ids\\'}\"/>\\n                <filter string=\"Document Model\" name=\"document_model\" context=\"{\\'group_by\\':\\'res_model_id\\'}\"/>\\n                <filter string=\"Tags\" name=\"tags\" context=\"{\\'group_by\\':\\'sh_activity_tags\\'}\"/>\\n                <filter string=\"Assigned Multi Users\" name=\"users\" context=\"{\\'group_by\\':\\'sh_user_ids\\'}\"/>\\n                </group>\\n            <searchpanel>\\n            <field name=\"company_id\" icon=\"fa-building\" enable_counters=\"1\"/>\\n            <field name=\"activity_type_id\" icon=\"fa-tasks\" enable_counters=\"1\"/>\\n            <field name=\"user_id\" limit=\"20\" hierarchize=\"0\" select=\"one\" icon=\"fa-users\" enable_counters=\"1\"/>\\n            <field name=\"res_model_id\" enable_counters=\"1\"/>\\n            <field name=\"sh_state\" enable_counters=\"1\" string=\"State\"/>\\n            </searchpanel>\\n            </search>', 'id': 274, 'model': 'mail.activity', 'models': {'mail.activity': ('res_model_id', 'res_model', 'res_id', 'res_name', 'activity_type_id', 'activity_category', 'activity_decoration', 'icon', 'summary', 'note', 'date_deadline', 'automated', 'user_id', 'request_partner_id', 'state', 'recommended_activity_type_id', 'previous_activity_type_id', 'has_recommended_activities', 'mail_template_ids', 'chaining_type', 'can_write', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'calendar_event_id', 'mobile_push_sent', 'mobile_push_sent_at', 'mobile_push_reminder_sent_keys', 'mobile_push_error', 'domain_sale_team_ids', 'sale_team_id', 'crm_department_id', 'active', 'supervisor_ids', 'department_ids', 'sh_activity_tags', 'sh_state', 'date_done', 'feedback', 'text_note', 'sh_user_ids', 'sh_display_multi_user', 'company_id', 'color', 'sh_create_individual_activity', 'sh_activity_alarm_ids', 'sh_date_deadline', 'due_in_text', 'activity_cancel', 'activity_done', 'sh_activity_id', 'reference', 'crm_sr_revenue', 'crm_sr_profit', 'crm_sr_currency_id', 'crm_sr_show_amount')}}",
+    "groups_id": []
+  },
+  "253": {
+    "id": 253,
+    "name": "My Activities",
+    "type": "ir.actions.act_window",
+    "xml_id": "sh_activities_management.sh_action_my_activities",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "My Activities",
+    "view_id": false,
+    "domain": "['|',('user_id', '=', uid),('sh_user_ids', 'in', [uid])]",
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "mail.activity",
+    "target": "current",
+    "view_mode": "list,kanban,form,pivot,calendar,graph",
+    "views": [
+      [
+        664,
+        "list"
+      ],
+      [
+        273,
+        "form"
+      ],
+      [
+        666,
+        "kanban"
+      ],
+      [
+        668,
+        "pivot"
+      ],
+      [
+        667,
+        "calendar"
+      ],
+      [
+        669,
+        "graph"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Hoạt động\">\\n            <field name=\"res_name\" string=\"Activity\" filter_domain=\"[\\'|\\',\\'|\\',\\'|\\',\\'|\\',\\'|\\',\\'|\\',\\'|\\',(\\'res_name\\', \\'ilike\\', self),(\\'activity_type_id\\',\\'ilike\\',self),(\\'user_id\\',\\'ilike\\',self),(\\'res_model\\',\\'ilike\\',self),(\\'res_model_id\\',\\'ilike\\',self),(\\'supervisor_ids\\',\\'ilike\\',self),(\\'sh_activity_tags\\',\\'ilike\\',self),(\\'sh_user_ids\\',\\'ilike\\',self)]\"/>\\n                <field name=\"supervisor_ids\"/>\\n                <field name=\"sh_activity_tags\"/>\\n                <filter string=\"Completed Activities\" name=\"activities_completed\" domain=\"[(\\'state\\', \\'=\\', \\'done\\'),(\\'active\\',\\'=\\',False)]\"/>\\n            <filter string=\"Cancelled Activities\" name=\"activities_cancelled\" domain=\"[(\\'state\\', \\'=\\', \\'cancel\\'),(\\'active\\',\\'=\\',False)]\"/>\\n                <filter string=\"Archived Activities\" name=\"archived_activities\" domain=\"[(\\'active\\',\\'=\\',False)]\"/>\\n                <filter string=\"Activity Tags\" name=\"activity_tags\" domain=\"[(\\'sh_activity_tags\\',\\'!=\\',False)]\"/>\\n                <field name=\"res_model\"/>\\n                <field name=\"summary\"/>\\n                <field name=\"activity_type_id\"/>\\n                <filter string=\"Hoạt động trễ\" name=\"activities_overdue\" domain=\"[(\\'date_deadline\\', \\'&lt;\\', context_today().strftime(\\'%Y-%m-%d\\'))]\" help=\"Hiển thị tất cả dữ liệu có ngày xử lý tiếp theo trước ngày hôm nay\" modifiers=\"{&quot;invisible&quot;: true}\"/>\\n                <filter string=\"Các oạt động hôm nay\" name=\"activities_today\" domain=\"[(\\'date_deadline\\', \\'=\\', context_today().strftime(\\'%Y-%m-%d\\'))]\" modifiers=\"{&quot;invisible&quot;: true}\"/>\\n                <filter string=\"Hoạt động tương lai\" name=\"activities_upcoming_all\" domain=\"[(\\'date_deadline\\', \\'&gt;\\', context_today().strftime(\\'%Y-%m-%d\\'))                         ]\" modifiers=\"{&quot;invisible&quot;: true}\"/>\\n                <group expand=\"0\" string=\"Nhóm theo\">\\n                    <filter string=\"Thời hạn\" name=\"date_deadline\" context=\"{\\'group_by\\': \\'date_deadline\\'}\"/>\\n                    <filter string=\"Tạo bởi\" name=\"createdby\" context=\"{\\'group_by\\': \\'create_uid\\'}\"/>\\n                    <filter string=\"Kiểu hoạt động\" name=\"activittype\" context=\"{\\'group_by\\': \\'activity_type_id\\'}\"/>\\n                <filter string=\"Assign To\" name=\"assign_to\" context=\"{\\'group_by\\':\\'user_id\\'}\"/>\\n                <filter string=\"Supervisors\" name=\"supervisors\" context=\"{\\'group_by\\':\\'supervisor_ids\\'}\"/>\\n                <filter string=\"Document Model\" name=\"document_model\" context=\"{\\'group_by\\':\\'res_model_id\\'}\"/>\\n                <filter string=\"Tags\" name=\"tags\" context=\"{\\'group_by\\':\\'sh_activity_tags\\'}\"/>\\n                <filter string=\"Assigned Multi Users\" name=\"users\" context=\"{\\'group_by\\':\\'sh_user_ids\\'}\"/>\\n                </group>\\n            <searchpanel>\\n            <field name=\"company_id\" icon=\"fa-building\" enable_counters=\"1\"/>\\n            <field name=\"activity_type_id\" icon=\"fa-tasks\" enable_counters=\"1\"/>\\n            <field name=\"user_id\" limit=\"20\" hierarchize=\"0\" select=\"one\" icon=\"fa-users\" enable_counters=\"1\"/>\\n            <field name=\"res_model_id\" enable_counters=\"1\"/>\\n            <field name=\"sh_state\" enable_counters=\"1\" string=\"State\"/>\\n            </searchpanel>\\n            </search>', 'id': 274, 'model': 'mail.activity', 'models': {'mail.activity': ('res_model_id', 'res_model', 'res_id', 'res_name', 'activity_type_id', 'activity_category', 'activity_decoration', 'icon', 'summary', 'note', 'date_deadline', 'automated', 'user_id', 'request_partner_id', 'state', 'recommended_activity_type_id', 'previous_activity_type_id', 'has_recommended_activities', 'mail_template_ids', 'chaining_type', 'can_write', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'calendar_event_id', 'mobile_push_sent', 'mobile_push_sent_at', 'mobile_push_reminder_sent_keys', 'mobile_push_error', 'domain_sale_team_ids', 'sale_team_id', 'crm_department_id', 'active', 'supervisor_ids', 'department_ids', 'sh_activity_tags', 'sh_state', 'date_done', 'feedback', 'text_note', 'sh_user_ids', 'sh_display_multi_user', 'company_id', 'color', 'sh_create_individual_activity', 'sh_activity_alarm_ids', 'sh_date_deadline', 'due_in_text', 'activity_cancel', 'activity_done', 'sh_activity_id', 'reference', 'crm_sr_revenue', 'crm_sr_profit', 'crm_sr_currency_id', 'crm_sr_show_amount')}}",
+    "groups_id": []
+  },
+  "254": {
+    "id": 254,
+    "name": "Supervisor Activities",
+    "type": "ir.actions.act_window",
+    "xml_id": "sh_activities_management.sh_supervisor_activity_action",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Supervisor Activities",
+    "view_id": false,
+    "domain": "[('supervisor_ids', '!=', False),('supervisor_ids','in',uid)]",
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "mail.activity",
+    "target": "current",
+    "view_mode": "list,kanban,form,pivot,calendar,graph",
+    "views": [
+      [
+        664,
+        "list"
+      ],
+      [
+        273,
+        "form"
+      ],
+      [
+        666,
+        "kanban"
+      ],
+      [
+        668,
+        "pivot"
+      ],
+      [
+        667,
+        "calendar"
+      ],
+      [
+        669,
+        "graph"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Hoạt động\">\\n            <field name=\"res_name\" string=\"Activity\" filter_domain=\"[\\'|\\',\\'|\\',\\'|\\',\\'|\\',\\'|\\',\\'|\\',\\'|\\',(\\'res_name\\', \\'ilike\\', self),(\\'activity_type_id\\',\\'ilike\\',self),(\\'user_id\\',\\'ilike\\',self),(\\'res_model\\',\\'ilike\\',self),(\\'res_model_id\\',\\'ilike\\',self),(\\'supervisor_ids\\',\\'ilike\\',self),(\\'sh_activity_tags\\',\\'ilike\\',self),(\\'sh_user_ids\\',\\'ilike\\',self)]\"/>\\n                <field name=\"supervisor_ids\"/>\\n                <field name=\"sh_activity_tags\"/>\\n                <filter string=\"Completed Activities\" name=\"activities_completed\" domain=\"[(\\'state\\', \\'=\\', \\'done\\'),(\\'active\\',\\'=\\',False)]\"/>\\n            <filter string=\"Cancelled Activities\" name=\"activities_cancelled\" domain=\"[(\\'state\\', \\'=\\', \\'cancel\\'),(\\'active\\',\\'=\\',False)]\"/>\\n                <filter string=\"Archived Activities\" name=\"archived_activities\" domain=\"[(\\'active\\',\\'=\\',False)]\"/>\\n                <filter string=\"Activity Tags\" name=\"activity_tags\" domain=\"[(\\'sh_activity_tags\\',\\'!=\\',False)]\"/>\\n                <field name=\"res_model\"/>\\n                <field name=\"summary\"/>\\n                <field name=\"activity_type_id\"/>\\n                <filter string=\"Hoạt động trễ\" name=\"activities_overdue\" domain=\"[(\\'date_deadline\\', \\'&lt;\\', context_today().strftime(\\'%Y-%m-%d\\'))]\" help=\"Hiển thị tất cả dữ liệu có ngày xử lý tiếp theo trước ngày hôm nay\" modifiers=\"{&quot;invisible&quot;: true}\"/>\\n                <filter string=\"Các oạt động hôm nay\" name=\"activities_today\" domain=\"[(\\'date_deadline\\', \\'=\\', context_today().strftime(\\'%Y-%m-%d\\'))]\" modifiers=\"{&quot;invisible&quot;: true}\"/>\\n                <filter string=\"Hoạt động tương lai\" name=\"activities_upcoming_all\" domain=\"[(\\'date_deadline\\', \\'&gt;\\', context_today().strftime(\\'%Y-%m-%d\\'))                         ]\" modifiers=\"{&quot;invisible&quot;: true}\"/>\\n                <group expand=\"0\" string=\"Nhóm theo\">\\n                    <filter string=\"Thời hạn\" name=\"date_deadline\" context=\"{\\'group_by\\': \\'date_deadline\\'}\"/>\\n                    <filter string=\"Tạo bởi\" name=\"createdby\" context=\"{\\'group_by\\': \\'create_uid\\'}\"/>\\n                    <filter string=\"Kiểu hoạt động\" name=\"activittype\" context=\"{\\'group_by\\': \\'activity_type_id\\'}\"/>\\n                <filter string=\"Assign To\" name=\"assign_to\" context=\"{\\'group_by\\':\\'user_id\\'}\"/>\\n                <filter string=\"Supervisors\" name=\"supervisors\" context=\"{\\'group_by\\':\\'supervisor_ids\\'}\"/>\\n                <filter string=\"Document Model\" name=\"document_model\" context=\"{\\'group_by\\':\\'res_model_id\\'}\"/>\\n                <filter string=\"Tags\" name=\"tags\" context=\"{\\'group_by\\':\\'sh_activity_tags\\'}\"/>\\n                <filter string=\"Assigned Multi Users\" name=\"users\" context=\"{\\'group_by\\':\\'sh_user_ids\\'}\"/>\\n                </group>\\n            <searchpanel>\\n            <field name=\"company_id\" icon=\"fa-building\" enable_counters=\"1\"/>\\n            <field name=\"activity_type_id\" icon=\"fa-tasks\" enable_counters=\"1\"/>\\n            <field name=\"user_id\" limit=\"20\" hierarchize=\"0\" select=\"one\" icon=\"fa-users\" enable_counters=\"1\"/>\\n            <field name=\"res_model_id\" enable_counters=\"1\"/>\\n            <field name=\"sh_state\" enable_counters=\"1\" string=\"State\"/>\\n            </searchpanel>\\n            </search>', 'id': 274, 'model': 'mail.activity', 'models': {'mail.activity': ('res_model_id', 'res_model', 'res_id', 'res_name', 'activity_type_id', 'activity_category', 'activity_decoration', 'icon', 'summary', 'note', 'date_deadline', 'automated', 'user_id', 'request_partner_id', 'state', 'recommended_activity_type_id', 'previous_activity_type_id', 'has_recommended_activities', 'mail_template_ids', 'chaining_type', 'can_write', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date', 'calendar_event_id', 'mobile_push_sent', 'mobile_push_sent_at', 'mobile_push_reminder_sent_keys', 'mobile_push_error', 'domain_sale_team_ids', 'sale_team_id', 'crm_department_id', 'active', 'supervisor_ids', 'department_ids', 'sh_activity_tags', 'sh_state', 'date_done', 'feedback', 'text_note', 'sh_user_ids', 'sh_display_multi_user', 'company_id', 'color', 'sh_create_individual_activity', 'sh_activity_alarm_ids', 'sh_date_deadline', 'due_in_text', 'activity_cancel', 'activity_done', 'sh_activity_id', 'reference', 'crm_sr_revenue', 'crm_sr_profit', 'crm_sr_currency_id', 'crm_sr_show_amount')}}",
+    "groups_id": []
+  },
+  "255": {
+    "id": 255,
+    "name": "Activity Tag",
+    "type": "ir.actions.act_window",
+    "xml_id": "sh_activities_management.sh_activity_tags_action",
+    "help": "<p class=\"o_view_nocontent_smiling_face\">Create a new Tag</p>\n        ",
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Activity Tag",
+    "view_id": false,
+    "domain": false,
+    "context": "{}",
+    "res_id": 0,
+    "res_model": "sh.activity.tags",
+    "target": "current",
+    "view_mode": "list",
+    "views": [
+      [
+        false,
+        "list"
+      ]
+    ],
+    "limit": 80,
+    "search_view_id": false,
+    "filter": false,
+    "search_view": "{'arch': '<search string=\"Activity Tags\"><field name=\"name\"/></search>', 'id': False, 'model': 'sh.activity.tags', 'models': {'sh.activity.tags': ('name', 'color', 'id', '__last_update', 'display_name', 'create_uid', 'create_date', 'write_uid', 'write_date')}}",
+    "groups_id": []
+  },
+  "257": {
+    "id": 257,
+    "name": "Activity Dashboard",
+    "type": "ir.actions.client",
+    "xml_id": "sh_activities_management.sh_action_activity_dashboard",
+    "help": false,
+    "binding_model_id": false,
+    "binding_type": "action",
+    "binding_view_types": "list,form",
+    "display_name": "Activity Dashboard",
+    "tag": "activity_dashboard.dashboard",
+    "target": "current",
+    "res_model": false,
+    "context": "{}",
+    "params": false
+  }
+}

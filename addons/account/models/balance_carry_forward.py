@@ -1,0 +1,46 @@
+# -*- coding: utf-8 -*-
+from odoo import models, fields, api
+
+class BalanceCarryForward(models.Model):
+    _name = 'balance.carry.forward'
+    _description = 'BALANCE CARRY FORWARD'
+    _order = 'id desc'
+
+    activity_ids = fields.One2many(comodel_name="mail.activity", inverse_name='parent_id', string="Activities")
+    activity_state = fields.Selection(selection=[["overdue","Overdue"],["today","Today"],["planned","Planned"]], string="Activity State", readonly=True, help="Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.")
+    activity_user_id = fields.Many2one(comodel_name="res.users", string="Responsible User")
+    activity_type_id = fields.Many2one(comodel_name="mail.activity.type", string="Next Activity Type")
+    activity_type_icon = fields.Char(string="Activity Type Icon", readonly=True, help="Font awesome icon e.g. fa-tasks")
+    activity_date_deadline = fields.Date(string="Next Activity Deadline", readonly=True)
+    my_activity_date_deadline = fields.Date(string="My Activity Deadline", readonly=True)
+    activity_summary = fields.Char(string="Next Activity Summary")
+    activity_exception_decoration = fields.Selection(selection=[["warning","Alert"],["danger","Error"]], string="Activity Exception Decoration", readonly=True, help="Type of the exception activity on record.")
+    activity_exception_icon = fields.Char(string="Icon", readonly=True, help="Icon to indicate an exception activity.")
+    activity_calendar_event_id = fields.Many2one(comodel_name="calendar.event", string="Next Activity Calendar Event", readonly=True)
+    message_is_follower = fields.Boolean(string="Is Follower", readonly=True)
+    message_follower_ids = fields.One2many(comodel_name="mail.followers", inverse_name='parent_id', string="Followers")
+    message_partner_ids = fields.Many2many(comodel_name="res.partner", string="Followers (Partners)")
+    message_ids = fields.One2many(comodel_name="mail.message", inverse_name='parent_id', string="Messages")
+    has_message = fields.Boolean(string="Has Message", readonly=True)
+    message_needaction = fields.Boolean(string="Action Needed", readonly=True, help="If checked, new messages require your attention.")
+    message_needaction_counter = fields.Integer(string="Number of Actions", readonly=True, help="Number of messages requiring action")
+    message_has_error = fields.Boolean(string="Message Delivery error", readonly=True, help="If checked, some messages have a delivery error.")
+    message_has_error_counter = fields.Integer(string="Number of errors", readonly=True, help="Number of messages with delivery error")
+    message_attachment_count = fields.Integer(string="Attachment Count", readonly=True)
+    message_main_attachment_id = fields.Many2one(comodel_name="ir.attachment", string="Main Attachment")
+    website_message_ids = fields.One2many(comodel_name="mail.message", inverse_name='parent_id', string="Website Messages", help="Website communication history")
+    message_has_sms_error = fields.Boolean(string="SMS Delivery error", readonly=True, help="If checked, some messages have a delivery error.")
+    name = fields.Char(string="Name", readonly=True)
+    state = fields.Selection(selection=[["draft","Draft"],["confirmed","Confirmed"],["posted","Posted"],["cancelled","Cancelled"]], string="Status", readonly=True)
+    company_id = fields.Many2one(comodel_name="res.company", string="Company", required=True, help="Leave this empty so that the rule is applicable to all the available companies.")
+    journal_id = fields.Many2one(comodel_name="account.journal", string="Journal", required=True)
+    date = fields.Date(string="Date", required=True, help="Accounting Date for this operation")
+    forward_date = fields.Date(string="Forward Date", required=True, help="Date for the generated journal entries")
+    forward_rule_ids = fields.Many2many(comodel_name="balance.carry.forward.rule", string="Forward Rules")
+    forward_rule_line_ids = fields.One2many(comodel_name="balance.carry.forward.rule.line", inverse_name='parent_id', string="Forward Rules Lines", readonly=True)
+    aml_ids = fields.One2many(comodel_name="account.move.line", inverse_name='parent_id', string="Journal Items", readonly=True)
+    aml_count = fields.Integer(string="Journal Items Count", readonly=True)
+    account_move_ids = fields.Many2many(comodel_name="account.move", string="Journal Entries", readonly=True)
+    account_moves_count = fields.Integer(string="Journal Entries Count", readonly=True)
+    rule_type = fields.Selection(selection=[["general","General"]], string="Rule Type", required=True, help="This is the technical field used to classify carry forward rule by context. We can have multiple types for different purposes. Each type maybe have different menus to avoid confusing users. General type used for default feature. Other types are extended and handled in extension modules")
+    report_flag_filter = fields.Selection(selection=[["report_on","Legal Reports Only (Excluded = No)"],["report_off","Excluded from Legal Reports Only (Excluded = Yes)"]], string="Report Flag Filter", help="Filter source journal items by their 'Excluded in Legal Reports' flag before carrying forward.\n\n• Legal Reports Only: only carry forward journal items that appear in legal reports (Excluded in Legal Reports = No).\n• Excluded from Legal Reports Only: only carry forward journal items that are excluded from legal reports (Excluded in Legal Reports = Yes). The generated carry-forward entry will also be marked as 'Excluded in Legal Reports'.\n\nLeave empty to carry forward all journal items regardless of flag (default behaviour).")

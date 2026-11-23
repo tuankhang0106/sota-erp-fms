@@ -1,0 +1,6570 @@
+[
+  {
+    "id": 8,
+    "model": "ir.model",
+    "name": "access_ids",
+    "relation": "ir.model.access",
+    "relation_field": "model_id",
+    "related": false
+  },
+  {
+    "id": 29984,
+    "model": "account.move",
+    "name": "account_asset_ids",
+    "relation": "account.asset.asset",
+    "relation_field": "invoice_id",
+    "related": false
+  },
+  {
+    "id": 30274,
+    "model": "account.bank.statement.line",
+    "name": "account_asset_ids",
+    "relation": "account.asset.asset",
+    "relation_field": false,
+    "related": "move_id.account_asset_ids"
+  },
+  {
+    "id": 30269,
+    "model": "account.payment",
+    "name": "account_asset_ids",
+    "relation": "account.asset.asset",
+    "relation_field": false,
+    "related": "move_id.account_asset_ids"
+  },
+  {
+    "id": 30104,
+    "model": "account.asset.category",
+    "name": "account_asset_ids",
+    "relation": "account.asset.asset",
+    "relation_field": "category_id",
+    "related": false
+  },
+  {
+    "id": 6098,
+    "model": "account.fiscal.position.template",
+    "name": "account_ids",
+    "relation": "account.fiscal.position.account.template",
+    "relation_field": "position_id",
+    "related": false
+  },
+  {
+    "id": 4920,
+    "model": "account.fiscal.position",
+    "name": "account_ids",
+    "relation": "account.fiscal.position.account",
+    "relation_field": "position_id",
+    "related": false
+  },
+  {
+    "id": 3097,
+    "model": "account.analytic.plan",
+    "name": "account_ids",
+    "relation": "account.analytic.account",
+    "relation_field": "plan_id",
+    "related": false
+  },
+  {
+    "id": 6017,
+    "model": "account.chart.template",
+    "name": "account_ids",
+    "relation": "account.account.template",
+    "relation_field": "chart_template_id",
+    "related": false
+  },
+  {
+    "id": 28169,
+    "model": "account.payment",
+    "name": "account_payment_line_ids",
+    "relation": "account.payment.line",
+    "relation_field": "payment_id",
+    "related": false
+  },
+  {
+    "id": 7102,
+    "model": "ir.mail_server",
+    "name": "active_mailing_ids",
+    "relation": "mailing.mailing",
+    "relation_field": "mail_server_id",
+    "related": false
+  },
+  {
+    "id": 7898,
+    "model": "hr.expense",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3276,
+    "model": "calendar.event",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "calendar_event_id",
+    "related": false
+  },
+  {
+    "id": 2302,
+    "model": "res.users",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": false,
+    "related": "partner_id.activity_ids"
+  },
+  {
+    "id": 1674,
+    "model": "mail.activity.mixin",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26237,
+    "model": "freight.soa",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20584,
+    "model": "freight.shipment.house",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20388,
+    "model": "freight.shipment",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22978,
+    "model": "freight.job",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 21840,
+    "model": "freight.document.line.buying",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7971,
+    "model": "hr.expense.sheet",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 21989,
+    "model": "freight.purchase.pricing",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 24501,
+    "model": "freight.sales.inquiry",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 9037,
+    "model": "freight.airline",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": false,
+    "related": "partner_id.activity_ids"
+  },
+  {
+    "id": 22554,
+    "model": "freight.credit.note",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22714,
+    "model": "freight.credit.note.line",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": false,
+    "related": "buying_line_id.activity_ids"
+  },
+  {
+    "id": 9301,
+    "model": "freight.shipping.line",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": false,
+    "related": "partner_id.activity_ids"
+  },
+  {
+    "id": 22259,
+    "model": "freight.sales.pricing",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": false,
+    "related": "purchase_pricing_id.activity_ids"
+  },
+  {
+    "id": 29989,
+    "model": "account.asset.asset",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20056,
+    "model": "freight.booking.line",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 2269,
+    "model": "res.partner",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 8248,
+    "model": "freight.quotation",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20980,
+    "model": "freight.shipment.master",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 19883,
+    "model": "freight.booking",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3907,
+    "model": "product.product",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 33449,
+    "model": "balance.carry.forward",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7202,
+    "model": "mailing.mailing",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3415,
+    "model": "hr.employee",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 31936,
+    "model": "einvoice.serial",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 31902,
+    "model": "einvoice.template",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 31853,
+    "model": "einvoice.provider",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 39966,
+    "model": "freight.booking.external",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 30059,
+    "model": "account.asset.category",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26720,
+    "model": "freight.document.line.pay.on.behalf",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22774,
+    "model": "freight.dc.note",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 6618,
+    "model": "account.setup.bank.manual.config",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": false,
+    "related": "res_partner_bank_id.activity_ids"
+  },
+  {
+    "id": 22354,
+    "model": "freight.debit.note",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5111,
+    "model": "account.journal",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26094,
+    "model": "employee.advance.reconcile",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4364,
+    "model": "hr.contract",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 6820,
+    "model": "crm.lead",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26046,
+    "model": "employee.advance",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5853,
+    "model": "account.bank.statement.line",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": false,
+    "related": "move_id.activity_ids"
+  },
+  {
+    "id": 3836,
+    "model": "product.template",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 8568,
+    "model": "freight.quotation.template",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5618,
+    "model": "account.payment",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5381,
+    "model": "account.move",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4992,
+    "model": "res.partner.bank",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 39942,
+    "model": "freight.local.charge",
+    "name": "activity_ids",
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 23187,
+    "model": "freight.job",
+    "name": "air_attachment_ids",
+    "relation": "job.air.attachment",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 27817,
+    "model": "freight.job",
+    "name": "air_booking_confirmation_ids",
+    "relation": "freight.job.booking.confirmation",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 28662,
+    "model": "house.air.buying.rate",
+    "name": "air_buying_cost_line_ids",
+    "relation": "house.air.buying.rate.cost",
+    "relation_field": "master_air_buying_rate_id",
+    "related": false
+  },
+  {
+    "id": 28667,
+    "model": "freight.shipment.master",
+    "name": "air_buying_cost_line_ids",
+    "relation": "house.air.buying.rate.cost",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 28678,
+    "model": "freight.shipment.house",
+    "name": "air_buying_cost_line_ids",
+    "relation": "house.air.buying.rate.cost",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 24558,
+    "model": "hr.expense",
+    "name": "air_buying_line_ids",
+    "relation": "house.air.buying.rate",
+    "relation_field": "expense_id",
+    "related": false
+  },
+  {
+    "id": 20567,
+    "model": "freight.shipment",
+    "name": "air_buying_line_ids",
+    "relation": "house.air.buying.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 20763,
+    "model": "freight.shipment.house",
+    "name": "air_buying_line_ids",
+    "relation": "house.air.buying.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 21159,
+    "model": "freight.shipment.master",
+    "name": "air_buying_line_ids",
+    "relation": "house.air.buying.rate",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 24341,
+    "model": "freight.booking.external",
+    "name": "air_cargo_information_ids",
+    "relation": "freight.booking.external.cargo.information",
+    "relation_field": "booking_external_id",
+    "related": false
+  },
+  {
+    "id": 23582,
+    "model": "freight.job.air.cargo.information",
+    "name": "air_danger_cargo_ids",
+    "relation": "danger.air.cargo.information",
+    "relation_field": "air_cargo_information_id",
+    "related": false
+  },
+  {
+    "id": 21248,
+    "model": "freight.shipment.master",
+    "name": "air_house_quotation_ids",
+    "relation": "house.air.quotation.information",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 20852,
+    "model": "freight.shipment.house",
+    "name": "air_house_quotation_ids",
+    "relation": "house.air.quotation.information",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 23189,
+    "model": "freight.job",
+    "name": "air_job_cargo_ids",
+    "relation": "freight.job.air.cargo.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 22348,
+    "model": "freight.sales.pricing",
+    "name": "air_line_ids",
+    "relation": "freight.purchase.pricing.air.line",
+    "relation_field": false,
+    "related": "purchase_pricing_id.air_line_ids"
+  },
+  {
+    "id": 22078,
+    "model": "freight.purchase.pricing",
+    "name": "air_line_ids",
+    "relation": "freight.purchase.pricing.air.line",
+    "relation_field": "purchase_pricing_id",
+    "related": false
+  },
+  {
+    "id": 22349,
+    "model": "freight.sales.pricing",
+    "name": "air_other_line_ids",
+    "relation": "freight.purchase.pricing.air.other.line",
+    "relation_field": false,
+    "related": "purchase_pricing_id.air_other_line_ids"
+  },
+  {
+    "id": 22079,
+    "model": "freight.purchase.pricing",
+    "name": "air_other_line_ids",
+    "relation": "freight.purchase.pricing.air.other.line",
+    "relation_field": "purchase_pricing_id",
+    "related": false
+  },
+  {
+    "id": 25589,
+    "model": "hr.expense",
+    "name": "air_pay_on_behalf_line_ids",
+    "relation": "house.air.pay.on.behalf.rate",
+    "relation_field": "expense_id",
+    "related": false
+  },
+  {
+    "id": 25416,
+    "model": "freight.shipment.house",
+    "name": "air_pay_on_behalf_line_ids",
+    "relation": "house.air.pay.on.behalf.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 25418,
+    "model": "freight.shipment.master",
+    "name": "air_pay_on_behalf_line_ids",
+    "relation": "house.air.pay.on.behalf.rate",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 25414,
+    "model": "freight.shipment",
+    "name": "air_pay_on_behalf_line_ids",
+    "relation": "house.air.pay.on.behalf.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 21280,
+    "model": "freight.shipment.master",
+    "name": "air_schedule_ids",
+    "relation": "house.air.schedule.information",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 23188,
+    "model": "freight.job",
+    "name": "air_schedule_ids",
+    "relation": "air.schedule.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 20884,
+    "model": "freight.shipment.house",
+    "name": "air_schedule_ids",
+    "relation": "house.air.schedule.information",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 20762,
+    "model": "freight.shipment.house",
+    "name": "air_selling_line_ids",
+    "relation": "house.air.selling.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 21158,
+    "model": "freight.shipment.master",
+    "name": "air_selling_line_ids",
+    "relation": "house.air.selling.rate",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 20566,
+    "model": "freight.shipment",
+    "name": "air_selling_line_ids",
+    "relation": "house.air.selling.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 21330,
+    "model": "freight.shipment.master",
+    "name": "air_weight_ids",
+    "relation": "air.house.weight.information",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 20934,
+    "model": "freight.shipment.house",
+    "name": "air_weight_ids",
+    "relation": "air.house.weight.information",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 33481,
+    "model": "balance.carry.forward",
+    "name": "aml_ids",
+    "relation": "account.move.line",
+    "relation_field": "balance_carry_forward_id",
+    "related": false
+  },
+  {
+    "id": 5574,
+    "model": "account.move.line",
+    "name": "analytic_line_ids",
+    "relation": "account.analytic.line",
+    "relation_field": "move_line_id",
+    "related": false
+  },
+  {
+    "id": 1154,
+    "model": "res.users",
+    "name": "api_key_ids",
+    "relation": "res.users.apikeys",
+    "relation_field": "user_id",
+    "related": false
+  },
+  {
+    "id": 3102,
+    "model": "account.analytic.plan",
+    "name": "applicability_ids",
+    "relation": "account.analytic.applicability",
+    "relation_field": "analytic_plan_id",
+    "related": false
+  },
+  {
+    "id": 26845,
+    "model": "freight.job",
+    "name": "apply_custom_quotation_ids",
+    "relation": "job.quotation.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 26843,
+    "model": "freight.job",
+    "name": "apply_other_quotation_ids",
+    "relation": "job.quotation.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 26844,
+    "model": "freight.job",
+    "name": "apply_truck_quotation_ids",
+    "relation": "job.quotation.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 30276,
+    "model": "account.bank.statement.line",
+    "name": "asset_depreciation_ids",
+    "relation": "account.asset.depreciation.line",
+    "relation_field": false,
+    "related": "move_id.asset_depreciation_ids"
+  },
+  {
+    "id": 30271,
+    "model": "account.payment",
+    "name": "asset_depreciation_ids",
+    "relation": "account.asset.depreciation.line",
+    "relation_field": false,
+    "related": "move_id.asset_depreciation_ids"
+  },
+  {
+    "id": 29986,
+    "model": "account.move",
+    "name": "asset_depreciation_ids",
+    "relation": "account.asset.depreciation.line",
+    "relation_field": "move_id",
+    "related": false
+  },
+  {
+    "id": 7948,
+    "model": "hr.expense",
+    "name": "attachment_ids",
+    "relation": "ir.attachment",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5906,
+    "model": "account.bank.statement.line",
+    "name": "attachment_ids",
+    "relation": "ir.attachment",
+    "relation_field": false,
+    "related": "move_id.attachment_ids"
+  },
+  {
+    "id": 5714,
+    "model": "account.payment",
+    "name": "attachment_ids",
+    "relation": "ir.attachment",
+    "relation_field": false,
+    "related": "move_id.attachment_ids"
+  },
+  {
+    "id": 5435,
+    "model": "account.move",
+    "name": "attachment_ids",
+    "relation": "ir.attachment",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20136,
+    "model": "freight.booking.line",
+    "name": "attachment_ids",
+    "relation": "booking.line.attachment",
+    "relation_field": "freight_booking_line_id",
+    "related": false
+  },
+  {
+    "id": 23143,
+    "model": "freight.job",
+    "name": "attachment_ids",
+    "relation": "job.sea.attachment",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 8013,
+    "model": "hr.expense.sheet",
+    "name": "attachment_ids",
+    "relation": "ir.attachment",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 2964,
+    "model": "resource.calendar",
+    "name": "attendance_ids",
+    "relation": "resource.calendar.attendance",
+    "relation_field": "calendar_id",
+    "related": false
+  },
+  {
+    "id": 3277,
+    "model": "calendar.event",
+    "name": "attendee_ids",
+    "relation": "calendar.attendee",
+    "relation_field": "event_id",
+    "related": false
+  },
+  {
+    "id": 3887,
+    "model": "product.template",
+    "name": "attribute_line_ids",
+    "relation": "product.template.attribute.line",
+    "relation_field": "product_tmpl_id",
+    "related": false
+  },
+  {
+    "id": 4002,
+    "model": "product.attribute",
+    "name": "attribute_line_ids",
+    "relation": "product.template.attribute.line",
+    "relation_field": "attribute_id",
+    "related": false
+  },
+  {
+    "id": 3990,
+    "model": "product.product",
+    "name": "attribute_line_ids",
+    "relation": "product.template.attribute.line",
+    "relation_field": false,
+    "related": "product_tmpl_id.attribute_line_ids"
+  },
+  {
+    "id": 10032,
+    "model": "crm.iap.lead.mining.request",
+    "name": "available_state_ids",
+    "relation": "res.country.state",
+    "relation_field": false,
+    "related": false
+  },
+  {
+    "id": 9073,
+    "model": "freight.airline",
+    "name": "bank_ids",
+    "relation": "res.partner.bank",
+    "relation_field": false,
+    "related": "partner_id.bank_ids"
+  },
+  {
+    "id": 1180,
+    "model": "res.users",
+    "name": "bank_ids",
+    "relation": "res.partner.bank",
+    "relation_field": false,
+    "related": "partner_id.bank_ids"
+  },
+  {
+    "id": 910,
+    "model": "res.partner",
+    "name": "bank_ids",
+    "relation": "res.partner.bank",
+    "relation_field": "partner_id",
+    "related": false
+  },
+  {
+    "id": 1074,
+    "model": "res.company",
+    "name": "bank_ids",
+    "relation": "res.partner.bank",
+    "relation_field": false,
+    "related": "partner_id.bank_ids"
+  },
+  {
+    "id": 9337,
+    "model": "freight.shipping.line",
+    "name": "bank_ids",
+    "relation": "res.partner.bank",
+    "relation_field": false,
+    "related": "partner_id.bank_ids"
+  },
+  {
+    "id": 6259,
+    "model": "res.company",
+    "name": "bank_journal_ids",
+    "relation": "account.journal",
+    "relation_field": "company_id",
+    "related": false
+  },
+  {
+    "id": 28370,
+    "model": "account.move",
+    "name": "base_invoice_ids",
+    "relation": "account.move",
+    "relation_field": "vat_entry_id",
+    "related": false
+  },
+  {
+    "id": 28369,
+    "model": "account.payment",
+    "name": "base_invoice_ids",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "move_id.base_invoice_ids"
+  },
+  {
+    "id": 28393,
+    "model": "account.bank.statement.line",
+    "name": "base_invoice_ids",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "move_id.base_invoice_ids"
+  },
+  {
+    "id": 19969,
+    "model": "freight.booking",
+    "name": "booking_line_air_ids",
+    "relation": "freight.booking.line",
+    "relation_field": "freight_booking_id",
+    "related": false
+  },
+  {
+    "id": 20102,
+    "model": "freight.booking.line",
+    "name": "booking_line_cargo_ids",
+    "relation": "freight.booking.cargo.information",
+    "relation_field": "freight_booking_line_id",
+    "related": false
+  },
+  {
+    "id": 19972,
+    "model": "freight.booking",
+    "name": "booking_line_custom_ids",
+    "relation": "freight.booking.line",
+    "relation_field": "freight_booking_id",
+    "related": false
+  },
+  {
+    "id": 19967,
+    "model": "freight.booking",
+    "name": "booking_line_ids",
+    "relation": "freight.booking.line",
+    "relation_field": "freight_booking_id",
+    "related": false
+  },
+  {
+    "id": 19971,
+    "model": "freight.booking",
+    "name": "booking_line_other_ids",
+    "relation": "freight.booking.line",
+    "relation_field": "freight_booking_id",
+    "related": false
+  },
+  {
+    "id": 19968,
+    "model": "freight.booking",
+    "name": "booking_line_sea_ids",
+    "relation": "freight.booking.line",
+    "relation_field": "freight_booking_id",
+    "related": false
+  },
+  {
+    "id": 19970,
+    "model": "freight.booking",
+    "name": "booking_line_truck_ids",
+    "relation": "freight.booking.line",
+    "relation_field": "freight_booking_id",
+    "related": false
+  },
+  {
+    "id": 8893,
+    "model": "res.partner",
+    "name": "brench_ids",
+    "relation": "res.partner.brench",
+    "relation_field": "partner_id",
+    "related": false
+  },
+  {
+    "id": 9517,
+    "model": "freight.shipping.line",
+    "name": "brench_ids",
+    "relation": "res.partner.brench",
+    "relation_field": false,
+    "related": "partner_id.brench_ids"
+  },
+  {
+    "id": 9253,
+    "model": "freight.airline",
+    "name": "brench_ids",
+    "relation": "res.partner.brench",
+    "relation_field": false,
+    "related": "partner_id.brench_ids"
+  },
+  {
+    "id": 9816,
+    "model": "res.users",
+    "name": "brench_ids",
+    "relation": "res.partner.brench",
+    "relation_field": false,
+    "related": "partner_id.brench_ids"
+  },
+  {
+    "id": 20759,
+    "model": "freight.shipment.house",
+    "name": "buying_line_ids",
+    "relation": "freight.document.line.buying",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 22654,
+    "model": "freight.credit.note",
+    "name": "buying_line_ids",
+    "relation": "freight.document.line.buying",
+    "relation_field": "credit_note_id",
+    "related": false
+  },
+  {
+    "id": 21155,
+    "model": "freight.shipment.master",
+    "name": "buying_line_ids",
+    "relation": "freight.document.line.buying",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 20563,
+    "model": "freight.shipment",
+    "name": "buying_line_ids",
+    "relation": "freight.document.line",
+    "relation_field": "",
+    "related": false
+  },
+  {
+    "id": 6908,
+    "model": "crm.lead",
+    "name": "calendar_event_ids",
+    "relation": "calendar.event",
+    "relation_field": "opportunity_id",
+    "related": false
+  },
+  {
+    "id": 3212,
+    "model": "calendar.recurrence",
+    "name": "calendar_event_ids",
+    "relation": "calendar.event",
+    "relation_field": "recurrence_id",
+    "related": false
+  },
+  {
+    "id": 2021,
+    "model": "mail.mail",
+    "name": "canned_response_ids",
+    "relation": "mail.shortcode",
+    "relation_field": false,
+    "related": "mail_message_id.canned_response_ids"
+  },
+  {
+    "id": 1950,
+    "model": "mail.message",
+    "name": "canned_response_ids",
+    "relation": "mail.shortcode",
+    "relation_field": "message_ids",
+    "related": false
+  },
+  {
+    "id": 2138,
+    "model": "mail.channel",
+    "name": "channel_member_ids",
+    "relation": "mail.channel.member",
+    "relation_field": "channel_id",
+    "related": false
+  },
+  {
+    "id": 4088,
+    "model": "product.category",
+    "name": "child_id",
+    "relation": "product.category",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 168,
+    "model": "ir.ui.menu",
+    "name": "child_id",
+    "relation": "ir.ui.menu",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 3591,
+    "model": "hr.department",
+    "name": "child_ids",
+    "relation": "hr.department",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 3556,
+    "model": "hr.employee.public",
+    "name": "child_ids",
+    "relation": "hr.employee.public",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 3498,
+    "model": "hr.employee",
+    "name": "child_ids",
+    "relation": "hr.employee",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 627,
+    "model": "ir.module.category",
+    "name": "child_ids",
+    "relation": "ir.module.category",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 9003,
+    "model": "freight.airline",
+    "name": "child_ids",
+    "relation": "res.partner",
+    "relation_field": false,
+    "related": "partner_id.child_ids"
+  },
+  {
+    "id": 9269,
+    "model": "freight.shipping.line",
+    "name": "child_ids",
+    "relation": "res.partner",
+    "relation_field": false,
+    "related": "partner_id.child_ids"
+  },
+  {
+    "id": 862,
+    "model": "res.partner.category",
+    "name": "child_ids",
+    "relation": "res.partner.category",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 899,
+    "model": "res.partner",
+    "name": "child_ids",
+    "relation": "res.partner",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 1059,
+    "model": "res.company",
+    "name": "child_ids",
+    "relation": "res.company",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 1170,
+    "model": "res.users",
+    "name": "child_ids",
+    "relation": "res.partner",
+    "relation_field": false,
+    "related": "partner_id.child_ids"
+  },
+  {
+    "id": 1992,
+    "model": "mail.mail",
+    "name": "child_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "mail_message_id.child_ids"
+  },
+  {
+    "id": 1921,
+    "model": "mail.message",
+    "name": "child_ids",
+    "relation": "mail.message",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 4831,
+    "model": "payment.transaction",
+    "name": "child_transaction_ids",
+    "relation": "payment.transaction",
+    "relation_field": "source_transaction_id",
+    "related": false
+  },
+  {
+    "id": 3093,
+    "model": "account.analytic.plan",
+    "name": "children_ids",
+    "relation": "account.analytic.plan",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 6450,
+    "model": "account.report.line",
+    "name": "children_ids",
+    "relation": "account.report.line",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 6415,
+    "model": "account.report",
+    "name": "column_ids",
+    "relation": "account.report.column",
+    "relation_field": "report_id",
+    "related": false
+  },
+  {
+    "id": 21335,
+    "model": "freight.shipment.master",
+    "name": "container_ids",
+    "relation": "freight.shipment.container",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 20939,
+    "model": "freight.shipment.house",
+    "name": "container_ids",
+    "relation": "freight.shipment.container",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 9146,
+    "model": "freight.airline",
+    "name": "contract_ids",
+    "relation": "account.analytic.account",
+    "relation_field": false,
+    "related": "partner_id.contract_ids"
+  },
+  {
+    "id": 4357,
+    "model": "hr.employee",
+    "name": "contract_ids",
+    "relation": "hr.contract",
+    "relation_field": "employee_id",
+    "related": false
+  },
+  {
+    "id": 9410,
+    "model": "freight.shipping.line",
+    "name": "contract_ids",
+    "relation": "account.analytic.account",
+    "relation_field": false,
+    "related": "partner_id.contract_ids"
+  },
+  {
+    "id": 4454,
+    "model": "hr.contract.history",
+    "name": "contract_ids",
+    "relation": "hr.contract",
+    "relation_field": false,
+    "related": false
+  },
+  {
+    "id": 6403,
+    "model": "res.users",
+    "name": "contract_ids",
+    "relation": "account.analytic.account",
+    "relation_field": false,
+    "related": "partner_id.contract_ids"
+  },
+  {
+    "id": 4983,
+    "model": "res.partner",
+    "name": "contract_ids",
+    "relation": "account.analytic.account",
+    "relation_field": "partner_id",
+    "related": false
+  },
+  {
+    "id": 10063,
+    "model": "account.move.line",
+    "name": "cr_ctp_ids",
+    "relation": "account.move.line.ctp",
+    "relation_field": "dr_aml_id",
+    "related": false
+  },
+  {
+    "id": 28805,
+    "model": "house.air.buying.rate.cost",
+    "name": "credit_line_ids",
+    "relation": "freight.credit.note.line",
+    "relation_field": "freight_sea_buying_line_id",
+    "related": false
+  },
+  {
+    "id": 26479,
+    "model": "house.sea.buying.rate",
+    "name": "credit_line_ids",
+    "relation": "freight.credit.note.line",
+    "relation_field": "freight_sea_buying_line_id",
+    "related": false
+  },
+  {
+    "id": 26487,
+    "model": "house.air.buying.rate",
+    "name": "credit_line_ids",
+    "relation": "freight.credit.note.line",
+    "relation_field": "freight_air_buying_line_id",
+    "related": false
+  },
+  {
+    "id": 28738,
+    "model": "house.sea.buying.rate.cost",
+    "name": "credit_line_ids",
+    "relation": "freight.credit.note.line",
+    "relation_field": "freight_sea_buying_line_id",
+    "related": false
+  },
+  {
+    "id": 26967,
+    "model": "job.buying.rate",
+    "name": "credit_line_ids",
+    "relation": "freight.credit.note.line",
+    "relation_field": "job_buying_rate_id",
+    "related": false
+  },
+  {
+    "id": 29037,
+    "model": "house.multi.buying.rate",
+    "name": "credit_line_ids",
+    "relation": "freight.credit.note.line",
+    "relation_field": "freight_multi_buying_line_id",
+    "related": false
+  },
+  {
+    "id": 29165,
+    "model": "house.multi.buying.rate.cost",
+    "name": "credit_line_ids",
+    "relation": "freight.credit.note.line",
+    "relation_field": "freight_sea_buying_line_id",
+    "related": false
+  },
+  {
+    "id": 20768,
+    "model": "freight.shipment.house",
+    "name": "credit_note_ids",
+    "relation": "freight.credit.note",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 21164,
+    "model": "freight.shipment.master",
+    "name": "credit_note_ids",
+    "relation": "freight.credit.note",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 20572,
+    "model": "freight.shipment",
+    "name": "credit_note_ids",
+    "relation": "freight.credit.note",
+    "relation_field": "",
+    "related": false
+  },
+  {
+    "id": 23261,
+    "model": "freight.job",
+    "name": "credit_note_ids",
+    "relation": "freight.credit.note",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 22769,
+    "model": "freight.credit.note.line",
+    "name": "credit_note_line_ids",
+    "relation": "freight.credit.note.line",
+    "relation_field": false,
+    "related": "buying_line_id.credit_note_line_ids"
+  },
+  {
+    "id": 21905,
+    "model": "freight.document.line.buying",
+    "name": "credit_note_line_ids",
+    "relation": "freight.credit.note.line",
+    "relation_field": "buying_line_id",
+    "related": false
+  },
+  {
+    "id": 4275,
+    "model": "crm.team",
+    "name": "crm_team_member_all_ids",
+    "relation": "crm.team.member",
+    "relation_field": "crm_team_id",
+    "related": false
+  },
+  {
+    "id": 4274,
+    "model": "crm.team",
+    "name": "crm_team_member_ids",
+    "relation": "crm.team.member",
+    "relation_field": "crm_team_id",
+    "related": false
+  },
+  {
+    "id": 4299,
+    "model": "res.users",
+    "name": "crm_team_member_ids",
+    "relation": "crm.team.member",
+    "relation_field": "user_id",
+    "related": false
+  },
+  {
+    "id": 10089,
+    "model": "account.payment",
+    "name": "ctp_ids",
+    "relation": "account.move.line.ctp",
+    "relation_field": false,
+    "related": "move_id.ctp_ids"
+  },
+  {
+    "id": 10091,
+    "model": "account.bank.statement.line",
+    "name": "ctp_ids",
+    "relation": "account.move.line.ctp",
+    "relation_field": false,
+    "related": "move_id.ctp_ids"
+  },
+  {
+    "id": 10072,
+    "model": "account.move",
+    "name": "ctp_ids",
+    "relation": "account.move.line.ctp",
+    "relation_field": "move_id",
+    "related": false
+  },
+  {
+    "id": 28860,
+    "model": "freight.customs.job",
+    "name": "custom_attachment_ids",
+    "relation": "job.custom.attachment",
+    "relation_field": "job_customs_id",
+    "related": false
+  },
+  {
+    "id": 23209,
+    "model": "freight.job",
+    "name": "custom_attachment_ids",
+    "relation": "job.custom.attachment",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 28865,
+    "model": "freight.customs.job",
+    "name": "custom_buying_ids",
+    "relation": "job.buying.rate",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 23216,
+    "model": "freight.job",
+    "name": "custom_buying_ids",
+    "relation": "job.buying.rate",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 24344,
+    "model": "freight.booking.external",
+    "name": "custom_cargo_information_ids",
+    "relation": "freight.booking.external.cargo.information",
+    "relation_field": "booking_external_id",
+    "related": false
+  },
+  {
+    "id": 28862,
+    "model": "freight.customs.job",
+    "name": "custom_operation_ids",
+    "relation": "custom.operation.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 23211,
+    "model": "freight.job",
+    "name": "custom_operation_ids",
+    "relation": "custom.operation.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 27411,
+    "model": "freight.job",
+    "name": "custom_pay_on_behalf_ids",
+    "relation": "job.pay.on.behalf.rate",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 28866,
+    "model": "freight.customs.job",
+    "name": "custom_pay_on_behalf_ids",
+    "relation": "job.pay.on.behalf.rate",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 28861,
+    "model": "freight.customs.job",
+    "name": "custom_schedule_ids",
+    "relation": "custom.schedule.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 23210,
+    "model": "freight.job",
+    "name": "custom_schedule_ids",
+    "relation": "custom.schedule.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 23215,
+    "model": "freight.job",
+    "name": "custom_selling_ids",
+    "relation": "job.selling.rate",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 28864,
+    "model": "freight.customs.job",
+    "name": "custom_selling_ids",
+    "relation": "job.selling.rate",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 21333,
+    "model": "freight.shipment.master",
+    "name": "customs_department_ids",
+    "relation": "freight.customs.department",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 20937,
+    "model": "freight.shipment.house",
+    "name": "customs_department_ids",
+    "relation": "freight.customs.department",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 28605,
+    "model": "freight.job",
+    "name": "customs_job_ids",
+    "relation": "freight.customs.job",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 24360,
+    "model": "freight.booking.external.cargo.information",
+    "name": "danger_cargo_ids",
+    "relation": "external.danger.cargo.information",
+    "relation_field": "external_cargo_information_id",
+    "related": false
+  },
+  {
+    "id": 20168,
+    "model": "freight.booking.cargo.information",
+    "name": "danger_cargo_ids",
+    "relation": "danger.cargo.information",
+    "relation_field": "cargo_information_id",
+    "related": false
+  },
+  {
+    "id": 4333,
+    "model": "spreadsheet.dashboard.group",
+    "name": "dashboard_ids",
+    "relation": "spreadsheet.dashboard",
+    "relation_field": "dashboard_group_id",
+    "related": false
+  },
+  {
+    "id": 145,
+    "model": "ir.sequence",
+    "name": "date_range_ids",
+    "relation": "ir.sequence.date_range",
+    "relation_field": "sequence_id",
+    "related": false
+  },
+  {
+    "id": 29105,
+    "model": "house.multi.pay.on.behalf.rate",
+    "name": "dc_line_ids",
+    "relation": "freight.dc.note.line",
+    "relation_field": "freight_multi_pay_on_behalf_line_id",
+    "related": false
+  },
+  {
+    "id": 26482,
+    "model": "house.air.selling.rate",
+    "name": "dc_line_ids",
+    "relation": "freight.dc.note.line",
+    "relation_field": "freight_air_selling_line_id",
+    "related": false
+  },
+  {
+    "id": 27464,
+    "model": "job.pay.on.behalf.rate",
+    "name": "dc_line_ids",
+    "relation": "freight.dc.note.line",
+    "relation_field": "job_pay_on_behalf_rate_id",
+    "related": false
+  },
+  {
+    "id": 26485,
+    "model": "house.air.pay.on.behalf.rate",
+    "name": "dc_line_ids",
+    "relation": "freight.dc.note.line",
+    "relation_field": "freight_air_pay_on_behalf_line_id",
+    "related": false
+  },
+  {
+    "id": 26477,
+    "model": "house.sea.pay.on.behalf.rate",
+    "name": "dc_line_ids",
+    "relation": "freight.dc.note.line",
+    "relation_field": "freight_sea_pay_on_behalf_line_id",
+    "related": false
+  },
+  {
+    "id": 26912,
+    "model": "job.selling.rate",
+    "name": "dc_line_ids",
+    "relation": "freight.dc.note.line",
+    "relation_field": "job_selling_rate_id",
+    "related": false
+  },
+  {
+    "id": 28977,
+    "model": "house.multi.selling.rate",
+    "name": "dc_line_ids",
+    "relation": "freight.dc.note.line",
+    "relation_field": "freight_multi_selling_line_id",
+    "related": false
+  },
+  {
+    "id": 26474,
+    "model": "house.sea.selling.rate",
+    "name": "dc_line_ids",
+    "relation": "freight.dc.note.line",
+    "relation_field": "freight_sea_selling_line_id",
+    "related": false
+  },
+  {
+    "id": 26957,
+    "model": "job.buying.rate",
+    "name": "dc_line_ids",
+    "relation": "freight.dc.note.line",
+    "relation_field": "job_selling_rate_id",
+    "related": false
+  },
+  {
+    "id": 21903,
+    "model": "freight.document.line.buying",
+    "name": "dc_note_ids",
+    "relation": "freight.dc.note",
+    "relation_field": "buying_line_id",
+    "related": false
+  },
+  {
+    "id": 26466,
+    "model": "freight.shipment.house",
+    "name": "dc_note_ids",
+    "relation": "freight.dc.note",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 23263,
+    "model": "freight.job",
+    "name": "dc_note_ids",
+    "relation": "freight.dc.note",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 21839,
+    "model": "freight.document.line",
+    "name": "dc_note_ids",
+    "relation": "freight.dc.note",
+    "relation_field": "buying_line_id",
+    "related": false
+  },
+  {
+    "id": 21963,
+    "model": "freight.document.line.selling",
+    "name": "dc_note_ids",
+    "relation": "freight.dc.note",
+    "relation_field": "buying_line_id",
+    "related": false
+  },
+  {
+    "id": 26783,
+    "model": "freight.document.line.pay.on.behalf",
+    "name": "dc_note_ids",
+    "relation": "freight.dc.note",
+    "relation_field": "buying_line_id",
+    "related": false
+  },
+  {
+    "id": 26469,
+    "model": "freight.shipment.master",
+    "name": "dc_note_ids",
+    "relation": "freight.dc.note",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 22768,
+    "model": "freight.credit.note.line",
+    "name": "dc_note_ids",
+    "relation": "freight.dc.note",
+    "relation_field": false,
+    "related": "buying_line_id.dc_note_ids"
+  },
+  {
+    "id": 22967,
+    "model": "freight.dc.note.line",
+    "name": "dc_note_ids",
+    "relation": "freight.dc.note",
+    "relation_field": false,
+    "related": "selling_line_id.dc_note_ids"
+  },
+  {
+    "id": 22543,
+    "model": "freight.debit.note.line",
+    "name": "dc_note_ids",
+    "relation": "freight.dc.note",
+    "relation_field": false,
+    "related": "selling_line_id.dc_note_ids"
+  },
+  {
+    "id": 26484,
+    "model": "house.air.pay.on.behalf.rate",
+    "name": "debit_line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": "freight_air_pay_on_behalf_line_id",
+    "related": false
+  },
+  {
+    "id": 26476,
+    "model": "house.sea.pay.on.behalf.rate",
+    "name": "debit_line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": "freight_sea_pay_on_behalf_line_id",
+    "related": false
+  },
+  {
+    "id": 26481,
+    "model": "house.air.selling.rate",
+    "name": "debit_line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": "freight_air_selling_line_id",
+    "related": false
+  },
+  {
+    "id": 26911,
+    "model": "job.selling.rate",
+    "name": "debit_line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": "job_selling_rate_id",
+    "related": false
+  },
+  {
+    "id": 27463,
+    "model": "job.pay.on.behalf.rate",
+    "name": "debit_line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": "job_pay_on_behalf_rate_id",
+    "related": false
+  },
+  {
+    "id": 26473,
+    "model": "house.sea.selling.rate",
+    "name": "debit_line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": "freight_sea_selling_line_id",
+    "related": false
+  },
+  {
+    "id": 26956,
+    "model": "job.buying.rate",
+    "name": "debit_line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": "job_selling_rate_id",
+    "related": false
+  },
+  {
+    "id": 29104,
+    "model": "house.multi.pay.on.behalf.rate",
+    "name": "debit_line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": "freight_multi_pay_on_behalf_line_id",
+    "related": false
+  },
+  {
+    "id": 28976,
+    "model": "house.multi.selling.rate",
+    "name": "debit_line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": "freight_multi_selling_line_id",
+    "related": false
+  },
+  {
+    "id": 23259,
+    "model": "freight.job",
+    "name": "debit_note_ids",
+    "relation": "freight.debit.note",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 21162,
+    "model": "freight.shipment.master",
+    "name": "debit_note_ids",
+    "relation": "freight.debit.note",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 20570,
+    "model": "freight.shipment",
+    "name": "debit_note_ids",
+    "relation": "freight.debit.note",
+    "relation_field": "",
+    "related": false
+  },
+  {
+    "id": 34938,
+    "model": "account.bank.statement.line",
+    "name": "debit_note_ids",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "move_id.debit_note_ids"
+  },
+  {
+    "id": 34920,
+    "model": "account.move",
+    "name": "debit_note_ids",
+    "relation": "account.move",
+    "relation_field": "debit_origin_id",
+    "related": false
+  },
+  {
+    "id": 34941,
+    "model": "account.payment",
+    "name": "debit_note_ids",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "move_id.debit_note_ids"
+  },
+  {
+    "id": 20766,
+    "model": "freight.shipment.house",
+    "name": "debit_note_ids",
+    "relation": "freight.debit.note",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 22544,
+    "model": "freight.debit.note.line",
+    "name": "debit_note_line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": false,
+    "related": "selling_line_id.debit_note_line_ids"
+  },
+  {
+    "id": 22968,
+    "model": "freight.dc.note.line",
+    "name": "debit_note_line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": false,
+    "related": "selling_line_id.debit_note_line_ids"
+  },
+  {
+    "id": 21965,
+    "model": "freight.document.line.selling",
+    "name": "debit_note_line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": "selling_line_id",
+    "related": false
+  },
+  {
+    "id": 10094,
+    "model": "account.analytic.account",
+    "name": "department_ids",
+    "relation": "hr.department",
+    "relation_field": "analytic_account_id",
+    "related": false
+  },
+  {
+    "id": 657,
+    "model": "ir.module.module",
+    "name": "dependencies_id",
+    "relation": "ir.module.module.dependency",
+    "relation_field": "module_id",
+    "related": false
+  },
+  {
+    "id": 30039,
+    "model": "account.asset.asset",
+    "name": "depreciation_line_ids",
+    "relation": "account.asset.depreciation.line",
+    "relation_field": "asset_id",
+    "related": false
+  },
+  {
+    "id": 21907,
+    "model": "freight.document.line.buying",
+    "name": "distribute_line_ids",
+    "relation": "freight.document.line.buying",
+    "relation_field": "parent_line_id",
+    "related": false
+  },
+  {
+    "id": 22771,
+    "model": "freight.credit.note.line",
+    "name": "distribute_line_ids",
+    "relation": "freight.document.line.buying",
+    "relation_field": false,
+    "related": "buying_line_id.distribute_line_ids"
+  },
+  {
+    "id": 20940,
+    "model": "freight.shipment.house",
+    "name": "distributed_buying_line_ids",
+    "relation": "freight.document.line.buying",
+    "relation_field": "distributed_house_id",
+    "related": false
+  },
+  {
+    "id": 21336,
+    "model": "freight.shipment.master",
+    "name": "distributed_buying_line_ids",
+    "relation": "freight.document.line.buying",
+    "relation_field": "distributed_house_id",
+    "related": false
+  },
+  {
+    "id": 24286,
+    "model": "freight.booking.external",
+    "name": "document_cargo_ids",
+    "relation": "external.document.cargo",
+    "relation_field": "freight_booking_external_id",
+    "related": false
+  },
+  {
+    "id": 20091,
+    "model": "freight.booking.line",
+    "name": "document_cargo_ids",
+    "relation": "document.cargo",
+    "relation_field": "cargo_information_id",
+    "related": false
+  },
+  {
+    "id": 22949,
+    "model": "freight.dc.note.line",
+    "name": "domain_job_house_ids",
+    "relation": "freight.shipment.house",
+    "relation_field": false,
+    "related": "selling_line_id.domain_job_house_ids"
+  },
+  {
+    "id": 21938,
+    "model": "freight.document.line.selling",
+    "name": "domain_job_house_ids",
+    "relation": "freight.shipment.house",
+    "relation_field": false,
+    "related": "job_id.house_ids"
+  },
+  {
+    "id": 21814,
+    "model": "freight.document.line",
+    "name": "domain_job_house_ids",
+    "relation": "freight.shipment.house",
+    "relation_field": false,
+    "related": "job_id.house_ids"
+  },
+  {
+    "id": 22750,
+    "model": "freight.credit.note.line",
+    "name": "domain_job_house_ids",
+    "relation": "freight.shipment.house",
+    "relation_field": false,
+    "related": "buying_line_id.domain_job_house_ids"
+  },
+  {
+    "id": 26758,
+    "model": "freight.document.line.pay.on.behalf",
+    "name": "domain_job_house_ids",
+    "relation": "freight.shipment.house",
+    "relation_field": false,
+    "related": "job_id.house_ids"
+  },
+  {
+    "id": 22525,
+    "model": "freight.debit.note.line",
+    "name": "domain_job_house_ids",
+    "relation": "freight.shipment.house",
+    "relation_field": false,
+    "related": "selling_line_id.domain_job_house_ids"
+  },
+  {
+    "id": 21878,
+    "model": "freight.document.line.buying",
+    "name": "domain_job_house_ids",
+    "relation": "freight.shipment.house",
+    "relation_field": false,
+    "related": "job_id.house_ids"
+  },
+  {
+    "id": 10064,
+    "model": "account.move.line",
+    "name": "dr_ctp_ids",
+    "relation": "account.move.line.ctp",
+    "relation_field": "cr_aml_id",
+    "related": false
+  },
+  {
+    "id": 7830,
+    "model": "account.payment",
+    "name": "edi_document_ids",
+    "relation": "account.edi.document",
+    "relation_field": false,
+    "related": "move_id.edi_document_ids"
+  },
+  {
+    "id": 7795,
+    "model": "account.move",
+    "name": "edi_document_ids",
+    "relation": "account.edi.document",
+    "relation_field": "move_id",
+    "related": false
+  },
+  {
+    "id": 7838,
+    "model": "account.bank.statement.line",
+    "name": "edi_document_ids",
+    "relation": "account.edi.document",
+    "relation_field": false,
+    "related": "move_id.edi_document_ids"
+  },
+  {
+    "id": 3764,
+    "model": "resource.resource",
+    "name": "employee_id",
+    "relation": "hr.employee",
+    "relation_field": "resource_id",
+    "related": false
+  },
+  {
+    "id": 3637,
+    "model": "hr.job",
+    "name": "employee_ids",
+    "relation": "hr.employee",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 3701,
+    "model": "res.partner",
+    "name": "employee_ids",
+    "relation": "hr.employee",
+    "relation_field": "address_home_id",
+    "related": false
+  },
+  {
+    "id": 9121,
+    "model": "freight.airline",
+    "name": "employee_ids",
+    "relation": "hr.employee",
+    "relation_field": false,
+    "related": "partner_id.employee_ids"
+  },
+  {
+    "id": 9385,
+    "model": "freight.shipping.line",
+    "name": "employee_ids",
+    "relation": "hr.employee",
+    "relation_field": false,
+    "related": "partner_id.employee_ids"
+  },
+  {
+    "id": 3703,
+    "model": "res.users",
+    "name": "employee_ids",
+    "relation": "hr.employee",
+    "relation_field": "user_id",
+    "related": false
+  },
+  {
+    "id": 4049,
+    "model": "product.template.attribute.value",
+    "name": "exclude_for",
+    "relation": "product.template.attribute.exclusion",
+    "relation_field": "product_template_attribute_value_id",
+    "related": false
+  },
+  {
+    "id": 658,
+    "model": "ir.module.module",
+    "name": "exclusion_ids",
+    "relation": "ir.module.module.exclusion",
+    "relation_field": "module_id",
+    "related": false
+  },
+  {
+    "id": 37461,
+    "model": "freight.job",
+    "name": "expense_ids",
+    "relation": "hr.expense",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 7996,
+    "model": "hr.expense.sheet",
+    "name": "expense_line_ids",
+    "relation": "hr.expense",
+    "relation_field": "sheet_id",
+    "related": false
+  },
+  {
+    "id": 7891,
+    "model": "account.move",
+    "name": "expense_sheet_id",
+    "relation": "hr.expense.sheet",
+    "relation_field": "account_move_id",
+    "related": false
+  },
+  {
+    "id": 7893,
+    "model": "account.payment",
+    "name": "expense_sheet_id",
+    "relation": "hr.expense.sheet",
+    "relation_field": false,
+    "related": "move_id.expense_sheet_id"
+  },
+  {
+    "id": 8097,
+    "model": "account.bank.statement.line",
+    "name": "expense_sheet_id",
+    "relation": "hr.expense.sheet",
+    "relation_field": false,
+    "related": "move_id.expense_sheet_id"
+  },
+  {
+    "id": 8062,
+    "model": "hr.expense.split.wizard",
+    "name": "expense_split_line_ids",
+    "relation": "hr.expense.split",
+    "relation_field": "wizard_id",
+    "related": false
+  },
+  {
+    "id": 528,
+    "model": "ir.exports",
+    "name": "export_fields",
+    "relation": "ir.exports.line",
+    "relation_field": "export_id",
+    "related": false
+  },
+  {
+    "id": 6446,
+    "model": "account.report.line",
+    "name": "expression_ids",
+    "relation": "account.report.expression",
+    "relation_field": "report_line_id",
+    "related": false
+  },
+  {
+    "id": 714,
+    "model": "ir.demo_failure.wizard",
+    "name": "failure_ids",
+    "relation": "ir.demo_failure",
+    "relation_field": "wizard_id",
+    "related": false
+  },
+  {
+    "id": 22344,
+    "model": "freight.sales.pricing",
+    "name": "fcl_line_ids",
+    "relation": "freight.purchase.pricing.fcl.line",
+    "relation_field": false,
+    "related": "purchase_pricing_id.fcl_line_ids"
+  },
+  {
+    "id": 22074,
+    "model": "freight.purchase.pricing",
+    "name": "fcl_line_ids",
+    "relation": "freight.purchase.pricing.fcl.line",
+    "relation_field": "purchase_pricing_id",
+    "related": false
+  },
+  {
+    "id": 22075,
+    "model": "freight.purchase.pricing",
+    "name": "fcl_other_line_ids",
+    "relation": "freight.purchase.pricing.fcl.other.line",
+    "relation_field": "purchase_pricing_id",
+    "related": false
+  },
+  {
+    "id": 22345,
+    "model": "freight.sales.pricing",
+    "name": "fcl_other_line_ids",
+    "relation": "freight.purchase.pricing.fcl.other.line",
+    "relation_field": false,
+    "related": "purchase_pricing_id.fcl_other_line_ids"
+  },
+  {
+    "id": 5,
+    "model": "ir.model",
+    "name": "field_id",
+    "relation": "ir.model.fields",
+    "relation_field": "model_id",
+    "related": false
+  },
+  {
+    "id": 27305,
+    "model": "base.limit.records_number",
+    "name": "fields_lines",
+    "relation": "ir.server.object.lines",
+    "relation_field": false,
+    "related": "action_rule_id.fields_lines"
+  },
+  {
+    "id": 27249,
+    "model": "base.automation",
+    "name": "fields_lines",
+    "relation": "ir.server.object.lines",
+    "relation_field": false,
+    "related": "action_server_id.fields_lines"
+  },
+  {
+    "id": 487,
+    "model": "ir.cron",
+    "name": "fields_lines",
+    "relation": "ir.server.object.lines",
+    "relation_field": false,
+    "related": "ir_actions_server_id.fields_lines"
+  },
+  {
+    "id": 356,
+    "model": "ir.actions.server",
+    "name": "fields_lines",
+    "relation": "ir.server.object.lines",
+    "relation_field": "server_id",
+    "related": false
+  },
+  {
+    "id": 28427,
+    "model": "treeview.settings.filter",
+    "name": "filter_line_ids",
+    "relation": "treeview.settings.filter.line",
+    "relation_field": "filter_id",
+    "related": false
+  },
+  {
+    "id": 6293,
+    "model": "res.company",
+    "name": "fiscal_position_ids",
+    "relation": "account.fiscal.position",
+    "relation_field": "company_id",
+    "related": false
+  },
+  {
+    "id": 33480,
+    "model": "balance.carry.forward",
+    "name": "forward_rule_line_ids",
+    "relation": "balance.carry.forward.rule.line",
+    "relation_field": "forward_id",
+    "related": false
+  },
+  {
+    "id": 33425,
+    "model": "account.move.line",
+    "name": "forwarded_from_aml_ids",
+    "relation": "account.move.line",
+    "relation_field": "forward_aml_id",
+    "related": false
+  },
+  {
+    "id": 30413,
+    "model": "product.template",
+    "name": "freight_qty_rule_ids",
+    "relation": "freight.product.qty.rule",
+    "relation_field": "product_id",
+    "related": false
+  },
+  {
+    "id": 30447,
+    "model": "product.product",
+    "name": "freight_qty_rule_ids",
+    "relation": "freight.product.qty.rule",
+    "relation_field": false,
+    "related": "product_tmpl_id.freight_qty_rule_ids"
+  },
+  {
+    "id": 2966,
+    "model": "resource.calendar",
+    "name": "global_leave_ids",
+    "relation": "resource.calendar.leaves",
+    "relation_field": "calendar_id",
+    "related": false
+  },
+  {
+    "id": 23092,
+    "model": "freight.job",
+    "name": "house_id",
+    "relation": "freight.shipment.house",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 21690,
+    "model": "ams.address",
+    "name": "house_ids",
+    "relation": "freight.shipment.house",
+    "relation_field": "ams_address_id",
+    "related": false
+  },
+  {
+    "id": 24159,
+    "model": "freight.bl.number",
+    "name": "house_ids",
+    "relation": "freight.shipment.house",
+    "relation_field": "bl_number_id",
+    "related": false
+  },
+  {
+    "id": 23066,
+    "model": "freight.job",
+    "name": "house_ids",
+    "relation": "freight.shipment.house",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 5153,
+    "model": "account.journal",
+    "name": "inbound_payment_method_line_ids",
+    "relation": "account.payment.method.line",
+    "relation_field": "journal_id",
+    "related": false
+  },
+  {
+    "id": 205,
+    "model": "ir.ui.view",
+    "name": "inherit_children_ids",
+    "relation": "ir.ui.view",
+    "relation_field": "inherit_id",
+    "related": false
+  },
+  {
+    "id": 4982,
+    "model": "res.partner",
+    "name": "invoice_ids",
+    "relation": "account.move",
+    "relation_field": "partner_id",
+    "related": false
+  },
+  {
+    "id": 6402,
+    "model": "res.users",
+    "name": "invoice_ids",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "partner_id.invoice_ids"
+  },
+  {
+    "id": 9145,
+    "model": "freight.airline",
+    "name": "invoice_ids",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "partner_id.invoice_ids"
+  },
+  {
+    "id": 9409,
+    "model": "freight.shipping.line",
+    "name": "invoice_ids",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "partner_id.invoice_ids"
+  },
+  {
+    "id": 28010,
+    "model": "freight.soa",
+    "name": "invoice_ids",
+    "relation": "account.move",
+    "relation_field": "soa_id",
+    "related": false
+  },
+  {
+    "id": 23755,
+    "model": "freight.truck.job",
+    "name": "invoice_issuance_ids",
+    "relation": "freight.job.truck.invoice.issuance",
+    "relation_field": "truck_job_id",
+    "related": false
+  },
+  {
+    "id": 20095,
+    "model": "freight.booking.line",
+    "name": "invoice_issuance_ids",
+    "relation": "freight.invoice.issuance",
+    "relation_field": "freight_booking_line_id",
+    "related": false
+  },
+  {
+    "id": 5440,
+    "model": "account.move",
+    "name": "invoice_line_ids",
+    "relation": "account.move.line",
+    "relation_field": "move_id",
+    "related": false
+  },
+  {
+    "id": 5719,
+    "model": "account.payment",
+    "name": "invoice_line_ids",
+    "relation": "account.move.line",
+    "relation_field": false,
+    "related": "move_id.invoice_line_ids"
+  },
+  {
+    "id": 5911,
+    "model": "account.bank.statement.line",
+    "name": "invoice_line_ids",
+    "relation": "account.move.line",
+    "relation_field": false,
+    "related": "move_id.invoice_line_ids"
+  },
+  {
+    "id": 5223,
+    "model": "account.tax",
+    "name": "invoice_repartition_line_ids",
+    "relation": "account.tax.repartition.line",
+    "relation_field": "invoice_tax_id",
+    "related": false
+  },
+  {
+    "id": 6067,
+    "model": "account.tax.template",
+    "name": "invoice_repartition_line_ids",
+    "relation": "account.tax.repartition.line.template",
+    "relation_field": "invoice_tax_id",
+    "related": false
+  },
+  {
+    "id": 4118,
+    "model": "product.pricelist",
+    "name": "item_ids",
+    "relation": "product.pricelist.item",
+    "relation_field": "pricelist_id",
+    "related": false
+  },
+  {
+    "id": 27489,
+    "model": "hr.expense",
+    "name": "job_buying_line_ids",
+    "relation": "job.buying.rate",
+    "relation_field": "expense_id",
+    "related": false
+  },
+  {
+    "id": 27490,
+    "model": "hr.expense",
+    "name": "job_pay_on_behalf_line_ids",
+    "relation": "job.pay.on.behalf.rate",
+    "relation_field": "expense_id",
+    "related": false
+  },
+  {
+    "id": 3595,
+    "model": "hr.department",
+    "name": "jobs_ids",
+    "relation": "hr.job",
+    "relation_field": "department_id",
+    "related": false
+  },
+  {
+    "id": 5023,
+    "model": "res.partner.bank",
+    "name": "journal_id",
+    "relation": "account.journal",
+    "relation_field": "bank_account_id",
+    "related": false
+  },
+  {
+    "id": 6654,
+    "model": "account.setup.bank.manual.config",
+    "name": "journal_id",
+    "relation": "account.journal",
+    "relation_field": false,
+    "related": "res_partner_bank_id.journal_id"
+  },
+  {
+    "id": 9664,
+    "model": "crm.kpi.period",
+    "name": "kpi_entries",
+    "relation": "crm.kpi.entry",
+    "relation_field": "period_id",
+    "related": false
+  },
+  {
+    "id": 38508,
+    "model": "ks_dashboard_ninja.item",
+    "name": "ks_action_lines",
+    "relation": "ks_dashboard_ninja.item_action",
+    "relation_field": "ks_dashboard_item_id",
+    "related": false
+  },
+  {
+    "id": 38414,
+    "model": "ks_dashboard_ninja.board",
+    "name": "ks_child_dashboard_ids",
+    "relation": "ks_dashboard_ninja.child_board",
+    "relation_field": "ks_dashboard_ninja_id",
+    "related": false
+  },
+  {
+    "id": 38557,
+    "model": "ks_dashboard_ninja.item",
+    "name": "ks_csv_group_by_lines",
+    "relation": "ks.dashboard.csv.group.by",
+    "relation_field": "ks_dashboard_csv_group_by_id",
+    "related": false
+  },
+  {
+    "id": 38416,
+    "model": "ks_dashboard_ninja.board",
+    "name": "ks_dashboard_custom_filters_ids",
+    "relation": "ks_dashboard_ninja.board_custom_filters",
+    "relation_field": "ks_dashboard_board_id",
+    "related": false
+  },
+  {
+    "id": 38415,
+    "model": "ks_dashboard_ninja.board",
+    "name": "ks_dashboard_defined_filters_ids",
+    "relation": "ks_dashboard_ninja.board_defined_filters",
+    "relation_field": "ks_dashboard_board_id",
+    "related": false
+  },
+  {
+    "id": 38714,
+    "model": "ks_dashboard_ninja.board_template",
+    "name": "ks_dashboard_item_ids",
+    "relation": "ks_dashboard_ninja.item",
+    "relation_field": "ks_dashboard_board_template_id",
+    "related": false
+  },
+  {
+    "id": 38398,
+    "model": "ks_dashboard_ninja.board",
+    "name": "ks_dashboard_items_ids",
+    "relation": "ks_dashboard_ninja.item",
+    "relation_field": "ks_dashboard_ninja_board_id",
+    "related": false
+  },
+  {
+    "id": 38578,
+    "model": "ks_dashboard_ninja.item",
+    "name": "ks_dn_header_lines",
+    "relation": "ks_to.do.headers",
+    "relation_field": "ks_dn_item_id",
+    "related": false
+  },
+  {
+    "id": 38504,
+    "model": "ks_dashboard_ninja.item",
+    "name": "ks_goal_lines",
+    "relation": "ks_dashboard_ninja.item_goal",
+    "relation_field": "ks_dashboard_item",
+    "related": false
+  },
+  {
+    "id": 38556,
+    "model": "ks_dashboard_ninja.item",
+    "name": "ks_group_by_lines",
+    "relation": "ks.dashboard.group.by",
+    "relation_field": "ks_dashboard_group_by_id",
+    "related": false
+  },
+  {
+    "id": 38532,
+    "model": "ks_dashboard_ninja.item",
+    "name": "ks_multiplier_lines",
+    "relation": "ks_dashboard_item.multiplier",
+    "relation_field": "ks_dashboard_item_id",
+    "related": false
+  },
+  {
+    "id": 38725,
+    "model": "ks_to.do.headers",
+    "name": "ks_to_do_description_lines",
+    "relation": "ks_to.do.description",
+    "relation_field": "ks_to_do_header_id",
+    "related": false
+  },
+  {
+    "id": 22076,
+    "model": "freight.purchase.pricing",
+    "name": "lcl_line_ids",
+    "relation": "freight.purchase.pricing.lcl.line",
+    "relation_field": "purchase_pricing_id",
+    "related": false
+  },
+  {
+    "id": 22346,
+    "model": "freight.sales.pricing",
+    "name": "lcl_line_ids",
+    "relation": "freight.purchase.pricing.lcl.line",
+    "relation_field": false,
+    "related": "purchase_pricing_id.lcl_line_ids"
+  },
+  {
+    "id": 22077,
+    "model": "freight.purchase.pricing",
+    "name": "lcl_other_line_ids",
+    "relation": "freight.purchase.pricing.lcl.other.line",
+    "relation_field": "purchase_pricing_id",
+    "related": false
+  },
+  {
+    "id": 22347,
+    "model": "freight.sales.pricing",
+    "name": "lcl_other_line_ids",
+    "relation": "freight.purchase.pricing.lcl.other.line",
+    "relation_field": false,
+    "related": "purchase_pricing_id.lcl_other_line_ids"
+  },
+  {
+    "id": 10025,
+    "model": "crm.iap.lead.mining.request",
+    "name": "lead_ids",
+    "relation": "crm.lead",
+    "relation_field": "lead_mining_request_id",
+    "related": false
+  },
+  {
+    "id": 2965,
+    "model": "resource.calendar",
+    "name": "leave_ids",
+    "relation": "resource.calendar.leaves",
+    "relation_field": "calendar_id",
+    "related": false
+  },
+  {
+    "id": 2835,
+    "model": "mail.mail",
+    "name": "letter_ids",
+    "relation": "snailmail.letter",
+    "relation_field": false,
+    "related": "mail_message_id.letter_ids"
+  },
+  {
+    "id": 2770,
+    "model": "mail.message",
+    "name": "letter_ids",
+    "relation": "snailmail.letter",
+    "relation_field": "message_id",
+    "related": false
+  },
+  {
+    "id": 26126,
+    "model": "employee.advance.reconcile",
+    "name": "line_cr_ids",
+    "relation": "employee.advance.reconcile.line",
+    "relation_field": "reconcile_id",
+    "related": false
+  },
+  {
+    "id": 26125,
+    "model": "employee.advance.reconcile",
+    "name": "line_db_ids",
+    "relation": "employee.advance.reconcile.line",
+    "relation_field": "reconcile_id",
+    "related": false
+  },
+  {
+    "id": 5348,
+    "model": "account.payment.term",
+    "name": "line_ids",
+    "relation": "account.payment.term.line",
+    "relation_field": "payment_id",
+    "related": false
+  },
+  {
+    "id": 37620,
+    "model": "freight.pl.snapshot",
+    "name": "line_ids",
+    "relation": "freight.pl.snapshot.line",
+    "relation_field": "snapshot_id",
+    "related": false
+  },
+  {
+    "id": 5812,
+    "model": "account.bank.statement",
+    "name": "line_ids",
+    "relation": "account.bank.statement.line",
+    "relation_field": "statement_id",
+    "related": false
+  },
+  {
+    "id": 3138,
+    "model": "account.analytic.account",
+    "name": "line_ids",
+    "relation": "account.analytic.line",
+    "relation_field": "account_id",
+    "related": false
+  },
+  {
+    "id": 2586,
+    "model": "privacy.lookup.wizard",
+    "name": "line_ids",
+    "relation": "privacy.lookup.wizard.line",
+    "relation_field": "wizard_id",
+    "related": false
+  },
+  {
+    "id": 2837,
+    "model": "res.users.role",
+    "name": "line_ids",
+    "relation": "res.users.role.line",
+    "relation_field": "role_id",
+    "related": false
+  },
+  {
+    "id": 5416,
+    "model": "account.move",
+    "name": "line_ids",
+    "relation": "account.move.line",
+    "relation_field": "move_id",
+    "related": false
+  },
+  {
+    "id": 5888,
+    "model": "account.bank.statement.line",
+    "name": "line_ids",
+    "relation": "account.move.line",
+    "relation_field": false,
+    "related": "move_id.line_ids"
+  },
+  {
+    "id": 39075,
+    "model": "freight.ocr.vendor.bill.wizard",
+    "name": "line_ids",
+    "relation": "freight.ocr.vendor.bill.wizard.line",
+    "relation_field": "wizard_id",
+    "related": false
+  },
+  {
+    "id": 37655,
+    "model": "freight.pl.snapshot.compare",
+    "name": "line_ids",
+    "relation": "freight.pl.snapshot.compare.line",
+    "relation_field": "compare_id",
+    "related": false
+  },
+  {
+    "id": 1367,
+    "model": "base.partner.merge.automatic.wizard",
+    "name": "line_ids",
+    "relation": "base.partner.merge.line",
+    "relation_field": "wizard_id",
+    "related": false
+  },
+  {
+    "id": 45926,
+    "model": "vnaccs.job.import.wizard",
+    "name": "line_ids",
+    "relation": "vnaccs.job.import.line",
+    "relation_field": "wizard_id",
+    "related": false
+  },
+  {
+    "id": 22443,
+    "model": "freight.debit.note",
+    "name": "line_ids",
+    "relation": "freight.debit.note.line",
+    "relation_field": "debit_note_id",
+    "related": false
+  },
+  {
+    "id": 26269,
+    "model": "freight.soa",
+    "name": "line_ids",
+    "relation": "freight.soa.line",
+    "relation_field": "soa_id",
+    "related": false
+  },
+  {
+    "id": 22649,
+    "model": "freight.credit.note",
+    "name": "line_ids",
+    "relation": "freight.credit.note.line",
+    "relation_field": "credit_note_id",
+    "related": false
+  },
+  {
+    "id": 38855,
+    "model": "freight.sync.selling.buying.wizard",
+    "name": "line_ids",
+    "relation": "freight.sync.selling.buying.wizard.line",
+    "relation_field": "wizard_id",
+    "related": false
+  },
+  {
+    "id": 6163,
+    "model": "account.reconcile.model.template",
+    "name": "line_ids",
+    "relation": "account.reconcile.model.line.template",
+    "relation_field": "model_id",
+    "related": false
+  },
+  {
+    "id": 42100,
+    "model": "customs.declaration.batch.import.wizard",
+    "name": "line_ids",
+    "relation": "customs.declaration.batch.import.line",
+    "relation_field": "wizard_id",
+    "related": false
+  },
+  {
+    "id": 24223,
+    "model": "freight.local.charge",
+    "name": "line_ids",
+    "relation": "freight.local.charge.line",
+    "relation_field": "local_charge_id",
+    "related": false
+  },
+  {
+    "id": 5696,
+    "model": "account.payment",
+    "name": "line_ids",
+    "relation": "account.move.line",
+    "relation_field": false,
+    "related": "move_id.line_ids"
+  },
+  {
+    "id": 8679,
+    "model": "freight.quotation.template",
+    "name": "line_ids",
+    "relation": "freight.quotation.line.template",
+    "relation_field": "quotation_id",
+    "related": false
+  },
+  {
+    "id": 5332,
+    "model": "account.reconcile.model",
+    "name": "line_ids",
+    "relation": "account.reconcile.model.line",
+    "relation_field": "model_id",
+    "related": false
+  },
+  {
+    "id": 22863,
+    "model": "freight.dc.note",
+    "name": "line_ids",
+    "relation": "freight.dc.note.line",
+    "relation_field": "dc_note_id",
+    "related": false
+  },
+  {
+    "id": 8359,
+    "model": "freight.quotation",
+    "name": "line_ids",
+    "relation": "freight.quotation.line",
+    "relation_field": "quotation_id",
+    "related": false
+  },
+  {
+    "id": 6414,
+    "model": "account.report",
+    "name": "line_ids",
+    "relation": "account.report.line",
+    "relation_field": "report_id",
+    "related": false
+  },
+  {
+    "id": 26077,
+    "model": "employee.advance",
+    "name": "lines",
+    "relation": "employee.advance.line",
+    "relation_field": "advance_id",
+    "related": false
+  },
+  {
+    "id": 3801,
+    "model": "link.tracker",
+    "name": "link_click_ids",
+    "relation": "link.tracker.click",
+    "relation_field": "link_id",
+    "related": false
+  },
+  {
+    "id": 3799,
+    "model": "link.tracker",
+    "name": "link_code_ids",
+    "relation": "link.tracker.code",
+    "relation_field": "link_id",
+    "related": false
+  },
+  {
+    "id": 1996,
+    "model": "mail.mail",
+    "name": "link_preview_ids",
+    "relation": "mail.link.preview",
+    "relation_field": false,
+    "related": "mail_message_id.link_preview_ids"
+  },
+  {
+    "id": 1925,
+    "model": "mail.message",
+    "name": "link_preview_ids",
+    "relation": "mail.link.preview",
+    "relation_field": "message_id",
+    "related": false
+  },
+  {
+    "id": 7190,
+    "model": "mailing.trace",
+    "name": "links_click_ids",
+    "relation": "link.tracker.click",
+    "relation_field": "mailing_trace_id",
+    "related": false
+  },
+  {
+    "id": 1134,
+    "model": "res.users",
+    "name": "log_ids",
+    "relation": "res.users.log",
+    "relation_field": "create_uid",
+    "related": false
+  },
+  {
+    "id": 8862,
+    "model": "res.partner",
+    "name": "login_ids",
+    "relation": "res.partner.login",
+    "relation_field": "partner_id",
+    "related": false
+  },
+  {
+    "id": 9785,
+    "model": "res.users",
+    "name": "login_ids",
+    "relation": "res.partner.login",
+    "relation_field": false,
+    "related": "partner_id.login_ids"
+  },
+  {
+    "id": 9222,
+    "model": "freight.airline",
+    "name": "login_ids",
+    "relation": "res.partner.login",
+    "relation_field": false,
+    "related": "partner_id.login_ids"
+  },
+  {
+    "id": 9486,
+    "model": "freight.shipping.line",
+    "name": "login_ids",
+    "relation": "res.partner.login",
+    "relation_field": false,
+    "related": "partner_id.login_ids"
+  },
+  {
+    "id": 2020,
+    "model": "mail.mail",
+    "name": "mail_ids",
+    "relation": "mail.mail",
+    "relation_field": false,
+    "related": "mail_message_id.mail_ids"
+  },
+  {
+    "id": 1949,
+    "model": "mail.message",
+    "name": "mail_ids",
+    "relation": "mail.mail",
+    "relation_field": "mail_message_id",
+    "related": false
+  },
+  {
+    "id": 2237,
+    "model": "ir.mail_server",
+    "name": "mail_template_ids",
+    "relation": "mail.template",
+    "relation_field": "mail_server_id",
+    "related": false
+  },
+  {
+    "id": 7312,
+    "model": "utm.campaign",
+    "name": "mailing_mail_ids",
+    "relation": "mailing.mailing",
+    "relation_field": "campaign_id",
+    "related": false
+  },
+  {
+    "id": 7306,
+    "model": "mail.mail",
+    "name": "mailing_trace_ids",
+    "relation": "mailing.trace",
+    "relation_field": "mail_mail_id",
+    "related": false
+  },
+  {
+    "id": 7268,
+    "model": "mailing.mailing",
+    "name": "mailing_trace_ids",
+    "relation": "mailing.trace",
+    "relation_field": "mass_mailing_id",
+    "related": false
+  },
+  {
+    "id": 23062,
+    "model": "freight.job",
+    "name": "master_ids",
+    "relation": "freight.shipment.master",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 21691,
+    "model": "ams.address",
+    "name": "master_ids",
+    "relation": "freight.shipment.master",
+    "relation_field": "ams_address_id",
+    "related": false
+  },
+  {
+    "id": 5551,
+    "model": "account.move.line",
+    "name": "matched_credit_ids",
+    "relation": "account.partial.reconcile",
+    "relation_field": "debit_move_id",
+    "related": false
+  },
+  {
+    "id": 5550,
+    "model": "account.move.line",
+    "name": "matched_debit_ids",
+    "relation": "account.partial.reconcile",
+    "relation_field": "credit_move_id",
+    "related": false
+  },
+  {
+    "id": 3593,
+    "model": "hr.department",
+    "name": "member_ids",
+    "relation": "hr.employee",
+    "relation_field": "department_id",
+    "related": false
+  },
+  {
+    "id": 5038,
+    "model": "account.account",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 2526,
+    "model": "phone.blacklist",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 2546,
+    "model": "mail.thread.phone",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20068,
+    "model": "freight.booking.line",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3240,
+    "model": "calendar.event",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22990,
+    "model": "freight.job",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3575,
+    "model": "hr.department",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7910,
+    "model": "hr.expense",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3427,
+    "model": "hr.employee",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7983,
+    "model": "hr.expense.sheet",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22726,
+    "model": "freight.credit.note.line",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": false,
+    "related": "buying_line_id.message_follower_ids"
+  },
+  {
+    "id": 22566,
+    "model": "freight.credit.note",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3619,
+    "model": "hr.job",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26732,
+    "model": "freight.document.line.pay.on.behalf",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 39954,
+    "model": "freight.local.charge",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 39978,
+    "model": "freight.booking.external",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 19895,
+    "model": "freight.booking",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 6832,
+    "model": "crm.lead",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20596,
+    "model": "freight.shipment.house",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 30071,
+    "model": "account.asset.category",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 30001,
+    "model": "account.asset.asset",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4220,
+    "model": "crm.team.member",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 1695,
+    "model": "mail.thread",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4253,
+    "model": "crm.team",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 2289,
+    "model": "res.users",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": false,
+    "related": "partner_id.message_follower_ids"
+  },
+  {
+    "id": 1720,
+    "model": "mail.thread.cc",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 1706,
+    "model": "mail.thread.blacklist",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 2119,
+    "model": "mail.channel",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 1827,
+    "model": "mail.blacklist",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 43616,
+    "model": "freight.dp.access.profile",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 8260,
+    "model": "freight.quotation",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5393,
+    "model": "account.move",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 24513,
+    "model": "freight.sales.inquiry",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 33461,
+    "model": "balance.carry.forward",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4376,
+    "model": "hr.contract",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3919,
+    "model": "product.product",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 31865,
+    "model": "einvoice.provider",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7121,
+    "model": "mailing.contact",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 31914,
+    "model": "einvoice.template",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 31948,
+    "model": "einvoice.serial",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7214,
+    "model": "mailing.mailing",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3848,
+    "model": "product.template",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5123,
+    "model": "account.journal",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5630,
+    "model": "account.payment",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 21852,
+    "model": "freight.document.line.buying",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 6630,
+    "model": "account.setup.bank.manual.config",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": false,
+    "related": "res_partner_bank_id.message_follower_ids"
+  },
+  {
+    "id": 9286,
+    "model": "freight.shipping.line",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": false,
+    "related": "partner_id.message_follower_ids"
+  },
+  {
+    "id": 2256,
+    "model": "res.partner",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26249,
+    "model": "freight.soa",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20400,
+    "model": "freight.shipment",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22271,
+    "model": "freight.sales.pricing",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": false,
+    "related": "purchase_pricing_id.message_follower_ids"
+  },
+  {
+    "id": 8580,
+    "model": "freight.quotation.template",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 9022,
+    "model": "freight.airline",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": false,
+    "related": "partner_id.message_follower_ids"
+  },
+  {
+    "id": 5865,
+    "model": "account.bank.statement.line",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": false,
+    "related": "move_id.message_follower_ids"
+  },
+  {
+    "id": 22001,
+    "model": "freight.purchase.pricing",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26106,
+    "model": "employee.advance.reconcile",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22366,
+    "model": "freight.debit.note",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22786,
+    "model": "freight.dc.note",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5291,
+    "model": "account.reconcile.model",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5981,
+    "model": "account.account.template",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 6215,
+    "model": "res.company",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3121,
+    "model": "account.analytic.account",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5004,
+    "model": "res.partner.bank",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26058,
+    "model": "employee.advance",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20992,
+    "model": "freight.shipment.master",
+    "name": "message_follower_ids",
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7985,
+    "model": "hr.expense.sheet",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22568,
+    "model": "freight.credit.note",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 8582,
+    "model": "freight.quotation.template",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5983,
+    "model": "account.account.template",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 2291,
+    "model": "res.users",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "partner_id.message_ids"
+  },
+  {
+    "id": 5040,
+    "model": "account.account",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 2258,
+    "model": "res.partner",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22992,
+    "model": "freight.job",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 2548,
+    "model": "mail.thread.phone",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 39980,
+    "model": "freight.booking.external",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3242,
+    "model": "calendar.event",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4222,
+    "model": "crm.team.member",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4378,
+    "model": "hr.contract",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3850,
+    "model": "product.template",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3921,
+    "model": "product.product",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 21854,
+    "model": "freight.document.line.buying",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 39956,
+    "model": "freight.local.charge",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3621,
+    "model": "hr.job",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3123,
+    "model": "account.analytic.account",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3429,
+    "model": "hr.employee",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 31867,
+    "model": "einvoice.provider",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22003,
+    "model": "freight.purchase.pricing",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 3577,
+    "model": "hr.department",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20994,
+    "model": "freight.shipment.master",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 31916,
+    "model": "einvoice.template",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20598,
+    "model": "freight.shipment.house",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 31950,
+    "model": "einvoice.serial",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22728,
+    "model": "freight.credit.note.line",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "buying_line_id.message_ids"
+  },
+  {
+    "id": 24515,
+    "model": "freight.sales.inquiry",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20070,
+    "model": "freight.booking.line",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 9288,
+    "model": "freight.shipping.line",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "partner_id.message_ids"
+  },
+  {
+    "id": 7123,
+    "model": "mailing.contact",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7216,
+    "model": "mailing.mailing",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22788,
+    "model": "freight.dc.note",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20402,
+    "model": "freight.shipment",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 33463,
+    "model": "balance.carry.forward",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7912,
+    "model": "hr.expense",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4255,
+    "model": "crm.team",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 6834,
+    "model": "crm.lead",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 1747,
+    "model": "fetchmail.server",
+    "name": "message_ids",
+    "relation": "mail.mail",
+    "relation_field": "fetchmail_server_id",
+    "related": false
+  },
+  {
+    "id": 43618,
+    "model": "freight.dp.access.profile",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 9024,
+    "model": "freight.airline",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "partner_id.message_ids"
+  },
+  {
+    "id": 1829,
+    "model": "mail.blacklist",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 2121,
+    "model": "mail.channel",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 1697,
+    "model": "mail.thread",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 30003,
+    "model": "account.asset.asset",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22273,
+    "model": "freight.sales.pricing",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "purchase_pricing_id.message_ids"
+  },
+  {
+    "id": 26251,
+    "model": "freight.soa",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 1708,
+    "model": "mail.thread.blacklist",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 1722,
+    "model": "mail.thread.cc",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5006,
+    "model": "res.partner.bank",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 6217,
+    "model": "res.company",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 6632,
+    "model": "account.setup.bank.manual.config",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "res_partner_bank_id.message_ids"
+  },
+  {
+    "id": 5293,
+    "model": "account.reconcile.model",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5632,
+    "model": "account.payment",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 30073,
+    "model": "account.asset.category",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26108,
+    "model": "employee.advance.reconcile",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26734,
+    "model": "freight.document.line.pay.on.behalf",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 2528,
+    "model": "phone.blacklist",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22368,
+    "model": "freight.debit.note",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5395,
+    "model": "account.move",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5125,
+    "model": "account.journal",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 19897,
+    "model": "freight.booking",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5867,
+    "model": "account.bank.statement.line",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "move_id.message_ids"
+  },
+  {
+    "id": 26060,
+    "model": "employee.advance",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 8262,
+    "model": "freight.quotation",
+    "name": "message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 2853,
+    "model": "res.users.role",
+    "name": "model_access",
+    "relation": "ir.model.access",
+    "relation_field": false,
+    "related": "group_id.model_access"
+  },
+  {
+    "id": 1100,
+    "model": "res.groups",
+    "name": "model_access",
+    "relation": "ir.model.access",
+    "relation_field": "group_id",
+    "related": false
+  },
+  {
+    "id": 629,
+    "model": "ir.module.category",
+    "name": "module_ids",
+    "relation": "ir.module.module",
+    "relation_field": "category_id",
+    "related": false
+  },
+  {
+    "id": 25409,
+    "model": "hr.expense.sheet",
+    "name": "move_ids",
+    "relation": "account.move",
+    "relation_field": "hr_expense_sheet_id",
+    "related": false
+  },
+  {
+    "id": 30046,
+    "model": "account.asset.asset",
+    "name": "move_ids",
+    "relation": "account.move",
+    "relation_field": "account_asset_id",
+    "related": false
+  },
+  {
+    "id": 28597,
+    "model": "freight.job",
+    "name": "multi_booking_confirmation_ids",
+    "relation": "freight.job.booking.confirmation",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 28684,
+    "model": "freight.shipment.house",
+    "name": "multi_buying_cost_line_ids",
+    "relation": "house.multi.buying.rate.cost",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 28673,
+    "model": "freight.shipment.master",
+    "name": "multi_buying_cost_line_ids",
+    "relation": "house.multi.buying.rate.cost",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 29050,
+    "model": "house.multi.buying.rate",
+    "name": "multi_buying_cost_line_ids",
+    "relation": "house.multi.buying.rate.cost",
+    "relation_field": "master_multi_buying_rate_id",
+    "related": false
+  },
+  {
+    "id": 28682,
+    "model": "freight.shipment.house",
+    "name": "multi_buying_line_ids",
+    "relation": "house.multi.buying.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 28671,
+    "model": "freight.shipment.master",
+    "name": "multi_buying_line_ids",
+    "relation": "house.multi.buying.rate",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 28683,
+    "model": "freight.shipment.house",
+    "name": "multi_pob_line_ids",
+    "relation": "house.multi.pay.on.behalf.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 28672,
+    "model": "freight.shipment.master",
+    "name": "multi_pob_line_ids",
+    "relation": "house.multi.pay.on.behalf.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 28681,
+    "model": "freight.shipment.house",
+    "name": "multi_selling_line_ids",
+    "relation": "house.multi.selling.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 28670,
+    "model": "freight.shipment.master",
+    "name": "multi_selling_line_ids",
+    "relation": "house.multi.selling.rate",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 2010,
+    "model": "mail.mail",
+    "name": "notification_ids",
+    "relation": "mail.notification",
+    "relation_field": false,
+    "related": "mail_message_id.notification_ids"
+  },
+  {
+    "id": 2796,
+    "model": "snailmail.letter",
+    "name": "notification_ids",
+    "relation": "mail.notification",
+    "relation_field": "letter_id",
+    "related": false
+  },
+  {
+    "id": 1939,
+    "model": "mail.message",
+    "name": "notification_ids",
+    "relation": "mail.notification",
+    "relation_field": "mail_message_id",
+    "related": false
+  },
+  {
+    "id": 6980,
+    "model": "res.partner",
+    "name": "opportunity_ids",
+    "relation": "crm.lead",
+    "relation_field": "partner_id",
+    "related": false
+  },
+  {
+    "id": 9155,
+    "model": "freight.airline",
+    "name": "opportunity_ids",
+    "relation": "crm.lead",
+    "relation_field": false,
+    "related": "partner_id.opportunity_ids"
+  },
+  {
+    "id": 9419,
+    "model": "freight.shipping.line",
+    "name": "opportunity_ids",
+    "relation": "crm.lead",
+    "relation_field": false,
+    "related": "partner_id.opportunity_ids"
+  },
+  {
+    "id": 6800,
+    "model": "res.users",
+    "name": "opportunity_ids",
+    "relation": "crm.lead",
+    "relation_field": false,
+    "related": "partner_id.opportunity_ids"
+  },
+  {
+    "id": 23241,
+    "model": "freight.job",
+    "name": "other_attachment_ids",
+    "relation": "job.other.attachment",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 23245,
+    "model": "freight.job",
+    "name": "other_buying_ids",
+    "relation": "job.buying.rate",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 23243,
+    "model": "freight.job",
+    "name": "other_cargo_information",
+    "relation": "other.cargo.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 24343,
+    "model": "freight.booking.external",
+    "name": "other_cargo_information_ids",
+    "relation": "freight.booking.external.cargo.information",
+    "relation_field": "booking_external_id",
+    "related": false
+  },
+  {
+    "id": 23240,
+    "model": "freight.job",
+    "name": "other_document_ids",
+    "relation": "job.document.cargo",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 24224,
+    "model": "freight.local.charge",
+    "name": "other_line_ids",
+    "relation": "freight.local.other.charge.line",
+    "relation_field": "local_charge_id",
+    "related": false
+  },
+  {
+    "id": 8360,
+    "model": "freight.quotation",
+    "name": "other_line_ids",
+    "relation": "freight.quotation.other.line",
+    "relation_field": "quotation_id",
+    "related": false
+  },
+  {
+    "id": 8680,
+    "model": "freight.quotation.template",
+    "name": "other_line_ids",
+    "relation": "freight.quotation.other.line",
+    "relation_field": "quotation_id",
+    "related": false
+  },
+  {
+    "id": 27413,
+    "model": "freight.job",
+    "name": "other_pay_on_behalf_ids",
+    "relation": "job.pay.on.behalf.rate",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 23242,
+    "model": "freight.job",
+    "name": "other_schedule_ids",
+    "relation": "other.schedule.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 23244,
+    "model": "freight.job",
+    "name": "other_selling_ids",
+    "relation": "job.selling.rate",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 5154,
+    "model": "account.journal",
+    "name": "outbound_payment_method_line_ids",
+    "relation": "account.payment.method.line",
+    "relation_field": "journal_id",
+    "related": false
+  },
+  {
+    "id": 21334,
+    "model": "freight.shipment.master",
+    "name": "package_ids",
+    "relation": "freight.shipment.package",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 20938,
+    "model": "freight.shipment.house",
+    "name": "package_ids",
+    "relation": "freight.shipment.package",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 3946,
+    "model": "product.product",
+    "name": "packaging_ids",
+    "relation": "product.packaging",
+    "relation_field": "product_id",
+    "related": false
+  },
+  {
+    "id": 3881,
+    "model": "product.template",
+    "name": "packaging_ids",
+    "relation": "product.packaging",
+    "relation_field": false,
+    "related": false
+  },
+  {
+    "id": 5608,
+    "model": "account.full.reconcile",
+    "name": "partial_reconcile_ids",
+    "relation": "account.partial.reconcile",
+    "relation_field": "full_reconcile_id",
+    "related": false
+  },
+  {
+    "id": 2361,
+    "model": "mail.resend.message",
+    "name": "partner_ids",
+    "relation": "mail.resend.partner",
+    "relation_field": "resend_wizard_id",
+    "related": false
+  },
+  {
+    "id": 5333,
+    "model": "account.reconcile.model",
+    "name": "partner_mapping_line_ids",
+    "relation": "account.reconcile.model.partner.mapping",
+    "relation_field": "model_id",
+    "related": false
+  },
+  {
+    "id": 8361,
+    "model": "freight.quotation",
+    "name": "pay_on_behalf_line_ids",
+    "relation": "freight.quotation.pay.on.behalf.line",
+    "relation_field": "quotation_id",
+    "related": false
+  },
+  {
+    "id": 8681,
+    "model": "freight.quotation.template",
+    "name": "pay_on_behalf_line_ids",
+    "relation": "freight.quotation.pay.on.behalf.line",
+    "relation_field": "quotation_id",
+    "related": false
+  },
+  {
+    "id": 22451,
+    "model": "freight.debit.note",
+    "name": "payment_ids",
+    "relation": "account.payment",
+    "relation_field": "debit_note_id",
+    "related": false
+  },
+  {
+    "id": 5774,
+    "model": "account.payment",
+    "name": "payment_ids",
+    "relation": "account.payment",
+    "relation_field": false,
+    "related": "move_id.payment_ids"
+  },
+  {
+    "id": 28572,
+    "model": "freight.soa",
+    "name": "payment_ids",
+    "relation": "account.payment",
+    "relation_field": "soa_id",
+    "related": false
+  },
+  {
+    "id": 5506,
+    "model": "account.move",
+    "name": "payment_ids",
+    "relation": "account.payment",
+    "relation_field": "move_id",
+    "related": false
+  },
+  {
+    "id": 22871,
+    "model": "freight.dc.note",
+    "name": "payment_ids",
+    "relation": "account.payment",
+    "relation_field": "dc_note_id",
+    "related": false
+  },
+  {
+    "id": 26127,
+    "model": "employee.advance.reconcile",
+    "name": "payment_ids",
+    "relation": "account.payment",
+    "relation_field": "employee_advance_reconcile_id",
+    "related": false
+  },
+  {
+    "id": 26080,
+    "model": "employee.advance",
+    "name": "payment_ids",
+    "relation": "account.payment",
+    "relation_field": "employee_advance_id",
+    "related": false
+  },
+  {
+    "id": 22658,
+    "model": "freight.credit.note",
+    "name": "payment_ids",
+    "relation": "account.payment",
+    "relation_field": "credit_note_id",
+    "related": false
+  },
+  {
+    "id": 9125,
+    "model": "freight.airline",
+    "name": "payment_token_ids",
+    "relation": "payment.token",
+    "relation_field": false,
+    "related": "partner_id.payment_token_ids"
+  },
+  {
+    "id": 4899,
+    "model": "res.users",
+    "name": "payment_token_ids",
+    "relation": "payment.token",
+    "relation_field": false,
+    "related": "partner_id.payment_token_ids"
+  },
+  {
+    "id": 4860,
+    "model": "res.partner",
+    "name": "payment_token_ids",
+    "relation": "payment.token",
+    "relation_field": "partner_id",
+    "related": false
+  },
+  {
+    "id": 9389,
+    "model": "freight.shipping.line",
+    "name": "payment_token_ids",
+    "relation": "payment.token",
+    "relation_field": false,
+    "related": "partner_id.payment_token_ids"
+  },
+  {
+    "id": 37654,
+    "model": "freight.pl.snapshot.compare",
+    "name": "period_option_ids",
+    "relation": "freight.pl.snapshot.compare.period",
+    "relation_field": "compare_id",
+    "related": false
+  },
+  {
+    "id": 22293,
+    "model": "freight.sales.pricing",
+    "name": "pic_domain_ids",
+    "relation": "res.partner",
+    "relation_field": false,
+    "related": "purchase_pricing_id.pic_domain_ids"
+  },
+  {
+    "id": 22023,
+    "model": "freight.purchase.pricing",
+    "name": "pic_domain_ids",
+    "relation": "res.partner",
+    "relation_field": false,
+    "related": "partner_id.child_ids"
+  },
+  {
+    "id": 3653,
+    "model": "hr.plan",
+    "name": "plan_activity_type_ids",
+    "relation": "hr.plan.activity.type",
+    "relation_field": "plan_id",
+    "related": false
+  },
+  {
+    "id": 3596,
+    "model": "hr.department",
+    "name": "plan_ids",
+    "relation": "hr.plan",
+    "relation_field": "department_id",
+    "related": false
+  },
+  {
+    "id": 33437,
+    "model": "balance.carry.forward.rule",
+    "name": "preceding_rule_ids",
+    "relation": "balance.carry.forward.rule",
+    "relation_field": "succeeding_rule_id",
+    "related": false
+  },
+  {
+    "id": 35081,
+    "model": "freight.transfer.service.cost.wizard",
+    "name": "preview_line_ids",
+    "relation": "freight.transfer.service.cost.wizard.line",
+    "relation_field": "wizard_id",
+    "related": false
+  },
+  {
+    "id": 21331,
+    "model": "freight.shipment.master",
+    "name": "print_air_selling_line_ids",
+    "relation": "house.print.air.selling.rate",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 20935,
+    "model": "freight.shipment.house",
+    "name": "print_air_selling_line_ids",
+    "relation": "house.print.air.selling.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 21249,
+    "model": "freight.shipment.master",
+    "name": "print_sea_selling_line_ids",
+    "relation": "house.print.sea.selling.rate",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 20853,
+    "model": "freight.shipment.house",
+    "name": "print_sea_selling_line_ids",
+    "relation": "house.print.sea.selling.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 4035,
+    "model": "product.template.attribute.line",
+    "name": "product_template_value_ids",
+    "relation": "product.template.attribute.value",
+    "relation_field": "attribute_line_id",
+    "related": false
+  },
+  {
+    "id": 3889,
+    "model": "product.template",
+    "name": "product_variant_ids",
+    "relation": "product.product",
+    "relation_field": "product_tmpl_id",
+    "related": false
+  },
+  {
+    "id": 3992,
+    "model": "product.product",
+    "name": "product_variant_ids",
+    "relation": "product.product",
+    "relation_field": false,
+    "related": "product_tmpl_id.product_variant_ids"
+  },
+  {
+    "id": 22064,
+    "model": "freight.purchase.pricing",
+    "name": "quotation_ids",
+    "relation": "freight.quotation",
+    "relation_field": "purchase_pricing_id",
+    "related": false
+  },
+  {
+    "id": 28302,
+    "model": "freight.sales.inquiry",
+    "name": "quotation_ids",
+    "relation": "freight.quotation",
+    "relation_field": "sales_inquiry_id",
+    "related": false
+  },
+  {
+    "id": 31023,
+    "model": "freight.airline",
+    "name": "quotation_ids",
+    "relation": "freight.quotation",
+    "relation_field": false,
+    "related": "partner_id.quotation_ids"
+  },
+  {
+    "id": 22334,
+    "model": "freight.sales.pricing",
+    "name": "quotation_ids",
+    "relation": "freight.quotation",
+    "relation_field": false,
+    "related": "purchase_pricing_id.quotation_ids"
+  },
+  {
+    "id": 21339,
+    "model": "freight.shipment.master",
+    "name": "quotation_ids",
+    "relation": "freight.quotation",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 20943,
+    "model": "freight.shipment.house",
+    "name": "quotation_ids",
+    "relation": "freight.quotation",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 31021,
+    "model": "res.partner",
+    "name": "quotation_ids",
+    "relation": "freight.quotation",
+    "relation_field": "partner_id",
+    "related": false
+  },
+  {
+    "id": 31025,
+    "model": "freight.shipping.line",
+    "name": "quotation_ids",
+    "relation": "freight.quotation",
+    "relation_field": false,
+    "related": "partner_id.quotation_ids"
+  },
+  {
+    "id": 23064,
+    "model": "freight.job",
+    "name": "quotation_ids",
+    "relation": "freight.quotation",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 31041,
+    "model": "res.users",
+    "name": "quotation_ids",
+    "relation": "freight.quotation",
+    "relation_field": false,
+    "related": "partner_id.quotation_ids"
+  },
+  {
+    "id": 1026,
+    "model": "res.currency",
+    "name": "rate_ids",
+    "relation": "res.currency.rate",
+    "relation_field": "currency_id",
+    "related": false
+  },
+  {
+    "id": 43505,
+    "model": "freight.quotation.template",
+    "name": "rate_line_ids",
+    "relation": "freight.quotation.currency.rate",
+    "relation_field": "quotation_template_id",
+    "related": false
+  },
+  {
+    "id": 43491,
+    "model": "freight.quotation",
+    "name": "rate_line_ids",
+    "relation": "freight.quotation.currency.rate",
+    "relation_field": "quotation_id",
+    "related": false
+  },
+  {
+    "id": 2022,
+    "model": "mail.mail",
+    "name": "reaction_ids",
+    "relation": "mail.message.reaction",
+    "relation_field": false,
+    "related": "mail_message_id.reaction_ids"
+  },
+  {
+    "id": 1951,
+    "model": "mail.message",
+    "name": "reaction_ids",
+    "relation": "mail.message.reaction",
+    "relation_field": "message_id",
+    "related": false
+  },
+  {
+    "id": 2722,
+    "model": "sms.resend",
+    "name": "recipient_ids",
+    "relation": "sms.resend.recipient",
+    "relation_field": "sms_resend_id",
+    "related": false
+  },
+  {
+    "id": 5609,
+    "model": "account.full.reconcile",
+    "name": "reconciled_line_ids",
+    "relation": "account.move.line",
+    "relation_field": "full_reconcile_id",
+    "related": false
+  },
+  {
+    "id": 4978,
+    "model": "res.partner",
+    "name": "ref_company_ids",
+    "relation": "res.company",
+    "relation_field": "partner_id",
+    "related": false
+  },
+  {
+    "id": 6398,
+    "model": "res.users",
+    "name": "ref_company_ids",
+    "relation": "res.company",
+    "relation_field": false,
+    "related": "partner_id.ref_company_ids"
+  },
+  {
+    "id": 9405,
+    "model": "freight.shipping.line",
+    "name": "ref_company_ids",
+    "relation": "res.company",
+    "relation_field": false,
+    "related": "partner_id.ref_company_ids"
+  },
+  {
+    "id": 9141,
+    "model": "freight.airline",
+    "name": "ref_company_ids",
+    "relation": "res.company",
+    "relation_field": false,
+    "related": "partner_id.ref_company_ids"
+  },
+  {
+    "id": 6068,
+    "model": "account.tax.template",
+    "name": "refund_repartition_line_ids",
+    "relation": "account.tax.repartition.line.template",
+    "relation_field": "refund_tax_id",
+    "related": false
+  },
+  {
+    "id": 5224,
+    "model": "account.tax",
+    "name": "refund_repartition_line_ids",
+    "relation": "account.tax.repartition.line",
+    "relation_field": "refund_tax_id",
+    "related": false
+  },
+  {
+    "id": 749,
+    "model": "report.paperformat",
+    "name": "report_ids",
+    "relation": "ir.actions.report",
+    "relation_field": "paperformat_id",
+    "related": false
+  },
+  {
+    "id": 2286,
+    "model": "res.users",
+    "name": "res_users_settings_ids",
+    "relation": "res.users.settings",
+    "relation_field": "user_id",
+    "related": false
+  },
+  {
+    "id": 3028,
+    "model": "res.company",
+    "name": "resource_calendar_ids",
+    "relation": "resource.calendar",
+    "relation_field": "company_id",
+    "related": false
+  },
+  {
+    "id": 3030,
+    "model": "res.users",
+    "name": "resource_ids",
+    "relation": "resource.resource",
+    "relation_field": "user_id",
+    "related": false
+  },
+  {
+    "id": 29871,
+    "model": "freight.quotation.purchase.pricing.wizard",
+    "name": "result_line_ids",
+    "relation": "freight.quotation.purchase.pricing.wizard.line",
+    "relation_field": "wizard_id",
+    "related": false
+  },
+  {
+    "id": 29987,
+    "model": "account.move",
+    "name": "revaluation_line_ids",
+    "relation": "account.asset.revaluation.line",
+    "relation_field": "move_id",
+    "related": false
+  },
+  {
+    "id": 30040,
+    "model": "account.asset.asset",
+    "name": "revaluation_line_ids",
+    "relation": "account.asset.revaluation.line",
+    "relation_field": "asset_id",
+    "related": false
+  },
+  {
+    "id": 30272,
+    "model": "account.payment",
+    "name": "revaluation_line_ids",
+    "relation": "account.asset.revaluation.line",
+    "relation_field": false,
+    "related": "move_id.revaluation_line_ids"
+  },
+  {
+    "id": 30277,
+    "model": "account.bank.statement.line",
+    "name": "revaluation_line_ids",
+    "relation": "account.asset.revaluation.line",
+    "relation_field": false,
+    "related": "move_id.revaluation_line_ids"
+  },
+  {
+    "id": 5747,
+    "model": "account.payment",
+    "name": "reversal_move_id",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "move_id.reversal_move_id"
+  },
+  {
+    "id": 5472,
+    "model": "account.move",
+    "name": "reversal_move_id",
+    "relation": "account.move",
+    "relation_field": "reversed_entry_id",
+    "related": false
+  },
+  {
+    "id": 5940,
+    "model": "account.bank.statement.line",
+    "name": "reversal_move_id",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "move_id.reversal_move_id"
+  },
+  {
+    "id": 9939,
+    "model": "account.bank.statement.line",
+    "name": "reversed_entry_ids",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "move_id.reversed_entry_ids"
+  },
+  {
+    "id": 9912,
+    "model": "account.move",
+    "name": "reversed_entry_ids",
+    "relation": "account.move",
+    "relation_field": "reversed_entry_id",
+    "related": false
+  },
+  {
+    "id": 9922,
+    "model": "account.payment",
+    "name": "reversed_entry_ids",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "move_id.reversed_entry_ids"
+  },
+  {
+    "id": 9899,
+    "model": "account.move.line",
+    "name": "reversed_move_line_ids",
+    "relation": "account.move.line",
+    "relation_field": false,
+    "related": "move_id.reversed_entry_id.line_ids"
+  },
+  {
+    "id": 2884,
+    "model": "res.groups",
+    "name": "role_id",
+    "relation": "res.users.role",
+    "relation_field": "group_id",
+    "related": false
+  },
+  {
+    "id": 2864,
+    "model": "res.users.role",
+    "name": "role_id",
+    "relation": "res.users.role",
+    "relation_field": false,
+    "related": "group_id.role_id"
+  },
+  {
+    "id": 2883,
+    "model": "res.users",
+    "name": "role_ids",
+    "relation": "res.users.role",
+    "relation_field": false,
+    "related": false
+  },
+  {
+    "id": 2882,
+    "model": "res.users",
+    "name": "role_line_ids",
+    "relation": "res.users.role.line",
+    "relation_field": "user_id",
+    "related": false
+  },
+  {
+    "id": 9191,
+    "model": "freight.airline",
+    "name": "routing_ids",
+    "relation": "res.partner.routing",
+    "relation_field": false,
+    "related": "partner_id.routing_ids"
+  },
+  {
+    "id": 9754,
+    "model": "res.users",
+    "name": "routing_ids",
+    "relation": "res.partner.routing",
+    "relation_field": false,
+    "related": "partner_id.routing_ids"
+  },
+  {
+    "id": 8831,
+    "model": "res.partner",
+    "name": "routing_ids",
+    "relation": "res.partner.routing",
+    "relation_field": "partner_id",
+    "related": false
+  },
+  {
+    "id": 9455,
+    "model": "freight.shipping.line",
+    "name": "routing_ids",
+    "relation": "res.partner.routing",
+    "relation_field": false,
+    "related": "partner_id.routing_ids"
+  },
+  {
+    "id": 2139,
+    "model": "mail.channel",
+    "name": "rtc_session_ids",
+    "relation": "mail.channel.rtc.session",
+    "relation_field": "channel_id",
+    "related": false
+  },
+  {
+    "id": 2094,
+    "model": "mail.channel.member",
+    "name": "rtc_session_ids",
+    "relation": "mail.channel.rtc.session",
+    "relation_field": "channel_member_id",
+    "related": false
+  },
+  {
+    "id": 9,
+    "model": "ir.model",
+    "name": "rule_ids",
+    "relation": "ir.rule",
+    "relation_field": "model_id",
+    "related": false
+  },
+  {
+    "id": 22290,
+    "model": "freight.sales.pricing",
+    "name": "sales_pricing_id",
+    "relation": "freight.sales.pricing",
+    "relation_field": false,
+    "related": "purchase_pricing_id.sales_pricing_id"
+  },
+  {
+    "id": 22020,
+    "model": "freight.purchase.pricing",
+    "name": "sales_pricing_id",
+    "relation": "freight.sales.pricing",
+    "relation_field": "purchase_pricing_id",
+    "related": false
+  },
+  {
+    "id": 23145,
+    "model": "freight.job",
+    "name": "schedule_ids",
+    "relation": "sea.schedule.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 27816,
+    "model": "freight.job",
+    "name": "sea_booking_confirmation_ids",
+    "relation": "freight.job.booking.confirmation",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 29047,
+    "model": "house.multi.buying.rate",
+    "name": "sea_buying_cost_line_ids",
+    "relation": "house.sea.buying.rate.cost",
+    "relation_field": "master_sea_buying_rate_id",
+    "related": false
+  },
+  {
+    "id": 28815,
+    "model": "house.air.buying.rate.cost",
+    "name": "sea_buying_cost_line_ids",
+    "relation": "house.sea.buying.rate.cost",
+    "relation_field": "master_sea_buying_rate_id",
+    "related": false
+  },
+  {
+    "id": 29175,
+    "model": "house.multi.buying.rate.cost",
+    "name": "sea_buying_cost_line_ids",
+    "relation": "house.sea.buying.rate.cost",
+    "relation_field": "master_sea_buying_rate_id",
+    "related": false
+  },
+  {
+    "id": 28748,
+    "model": "house.sea.buying.rate.cost",
+    "name": "sea_buying_cost_line_ids",
+    "relation": "house.sea.buying.rate.cost",
+    "relation_field": "master_sea_buying_rate_id",
+    "related": false
+  },
+  {
+    "id": 28659,
+    "model": "house.sea.buying.rate",
+    "name": "sea_buying_cost_line_ids",
+    "relation": "house.sea.buying.rate.cost",
+    "relation_field": "master_sea_buying_rate_id",
+    "related": false
+  },
+  {
+    "id": 28677,
+    "model": "freight.shipment.house",
+    "name": "sea_buying_cost_line_ids",
+    "relation": "house.sea.buying.rate.cost",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 28666,
+    "model": "freight.shipment.master",
+    "name": "sea_buying_cost_line_ids",
+    "relation": "house.sea.buying.rate.cost",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 21157,
+    "model": "freight.shipment.master",
+    "name": "sea_buying_line_ids",
+    "relation": "house.sea.buying.rate",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 20761,
+    "model": "freight.shipment.house",
+    "name": "sea_buying_line_ids",
+    "relation": "house.sea.buying.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 20565,
+    "model": "freight.shipment",
+    "name": "sea_buying_line_ids",
+    "relation": "house.sea.buying.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 24557,
+    "model": "hr.expense",
+    "name": "sea_buying_line_ids",
+    "relation": "house.sea.buying.rate",
+    "relation_field": "expense_id",
+    "related": false
+  },
+  {
+    "id": 24340,
+    "model": "freight.booking.external",
+    "name": "sea_cargo_information_ids",
+    "relation": "freight.booking.external.cargo.information",
+    "relation_field": "booking_external_id",
+    "related": false
+  },
+  {
+    "id": 21219,
+    "model": "freight.shipment.master",
+    "name": "sea_container_information_ids",
+    "relation": "house.sea.container.information",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 20823,
+    "model": "freight.shipment.house",
+    "name": "sea_container_information_ids",
+    "relation": "house.sea.container.information",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 23513,
+    "model": "freight.job.sea.cargo.information",
+    "name": "sea_danger_cargo_ids",
+    "relation": "danger.sea.cargo.information",
+    "relation_field": "sea_cargo_information_id",
+    "related": false
+  },
+  {
+    "id": 21376,
+    "model": "freight.shipment.master",
+    "name": "sea_house_container_information_ids",
+    "relation": "freight.shipment.container",
+    "relation_field": false,
+    "related": false
+  },
+  {
+    "id": 21247,
+    "model": "freight.shipment.master",
+    "name": "sea_house_quotation_ids",
+    "relation": "house.sea.quotation.information",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 20851,
+    "model": "freight.shipment.house",
+    "name": "sea_house_quotation_ids",
+    "relation": "house.sea.quotation.information",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 23146,
+    "model": "freight.job",
+    "name": "sea_job_cargo_ids",
+    "relation": "freight.job.sea.cargo.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 25413,
+    "model": "freight.shipment",
+    "name": "sea_pay_on_behalf_line_ids",
+    "relation": "house.sea.pay.on.behalf.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 25588,
+    "model": "hr.expense",
+    "name": "sea_pay_on_behalf_line_ids",
+    "relation": "house.sea.pay.on.behalf.rate",
+    "relation_field": "expense_id",
+    "related": false
+  },
+  {
+    "id": 25417,
+    "model": "freight.shipment.master",
+    "name": "sea_pay_on_behalf_line_ids",
+    "relation": "house.sea.pay.on.behalf.rate",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 25415,
+    "model": "freight.shipment.house",
+    "name": "sea_pay_on_behalf_line_ids",
+    "relation": "house.sea.pay.on.behalf.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 21218,
+    "model": "freight.shipment.master",
+    "name": "sea_schedule_ids",
+    "relation": "house.sea.schedule.information",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 20822,
+    "model": "freight.shipment.house",
+    "name": "sea_schedule_ids",
+    "relation": "house.sea.schedule.information",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 20760,
+    "model": "freight.shipment.house",
+    "name": "sea_selling_line_ids",
+    "relation": "house.sea.selling.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 21156,
+    "model": "freight.shipment.master",
+    "name": "sea_selling_line_ids",
+    "relation": "house.sea.selling.rate",
+    "relation_field": "master_id",
+    "related": false
+  },
+  {
+    "id": 20564,
+    "model": "freight.shipment",
+    "name": "sea_selling_line_ids",
+    "relation": "house.sea.selling.rate",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 32,
+    "model": "ir.model.fields",
+    "name": "selection_ids",
+    "relation": "ir.model.fields.selection",
+    "relation_field": "field_id",
+    "related": false
+  },
+  {
+    "id": 3987,
+    "model": "product.product",
+    "name": "seller_ids",
+    "relation": "product.supplierinfo",
+    "relation_field": false,
+    "related": "product_tmpl_id.seller_ids"
+  },
+  {
+    "id": 3882,
+    "model": "product.template",
+    "name": "seller_ids",
+    "relation": "product.supplierinfo",
+    "relation_field": "product_tmpl_id",
+    "related": false
+  },
+  {
+    "id": 22859,
+    "model": "freight.dc.note",
+    "name": "selling_line_ids",
+    "relation": "freight.document.line.selling",
+    "relation_field": "debit_note_id",
+    "related": false
+  },
+  {
+    "id": 21154,
+    "model": "freight.shipment.master",
+    "name": "selling_line_ids",
+    "relation": "freight.document.line.selling",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 22439,
+    "model": "freight.debit.note",
+    "name": "selling_line_ids",
+    "relation": "freight.document.line.selling",
+    "relation_field": "debit_note_id",
+    "related": false
+  },
+  {
+    "id": 20758,
+    "model": "freight.shipment.house",
+    "name": "selling_line_ids",
+    "relation": "freight.document.line.selling",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 20562,
+    "model": "freight.shipment",
+    "name": "selling_line_ids",
+    "relation": "freight.document.line",
+    "relation_field": "",
+    "related": false
+  },
+  {
+    "id": 22019,
+    "model": "freight.purchase.pricing",
+    "name": "service_line_ids",
+    "relation": "freight.service.line",
+    "relation_field": "purchase_pricing_id",
+    "related": false
+  },
+  {
+    "id": 8349,
+    "model": "freight.quotation",
+    "name": "service_line_ids",
+    "relation": "freight.service.line",
+    "relation_field": "quotation_id",
+    "related": false
+  },
+  {
+    "id": 22289,
+    "model": "freight.sales.pricing",
+    "name": "service_line_ids",
+    "relation": "freight.service.line",
+    "relation_field": false,
+    "related": "purchase_pricing_id.service_line_ids"
+  },
+  {
+    "id": 8669,
+    "model": "freight.quotation.template",
+    "name": "service_line_ids",
+    "relation": "freight.service.line",
+    "relation_field": "quotation_id",
+    "related": false
+  },
+  {
+    "id": 24134,
+    "model": "freight.shipment.container",
+    "name": "shipment_package_ids",
+    "relation": "freight.shipment.package",
+    "relation_field": "container_id",
+    "related": false
+  },
+  {
+    "id": 35092,
+    "model": "res.users",
+    "name": "shipping_line_ids",
+    "relation": "freight.shipping.line",
+    "relation_field": false,
+    "related": "partner_id.shipping_line_ids"
+  },
+  {
+    "id": 35044,
+    "model": "freight.shipping.line",
+    "name": "shipping_line_ids",
+    "relation": "freight.shipping.line",
+    "relation_field": false,
+    "related": "partner_id.shipping_line_ids"
+  },
+  {
+    "id": 35038,
+    "model": "res.partner",
+    "name": "shipping_line_ids",
+    "relation": "freight.shipping.line",
+    "relation_field": "partner_id",
+    "related": false
+  },
+  {
+    "id": 35093,
+    "model": "freight.airline",
+    "name": "shipping_line_ids",
+    "relation": "freight.shipping.line",
+    "relation_field": false,
+    "related": "partner_id.shipping_line_ids"
+  },
+  {
+    "id": 28412,
+    "model": "freight.credit.note",
+    "name": "soa_line_ids",
+    "relation": "freight.soa.line",
+    "relation_field": "credit_note_id",
+    "related": false
+  },
+  {
+    "id": 26225,
+    "model": "freight.dc.note",
+    "name": "soa_line_ids",
+    "relation": "freight.soa.line",
+    "relation_field": "dc_note_id",
+    "related": false
+  },
+  {
+    "id": 26209,
+    "model": "freight.debit.note",
+    "name": "soa_line_ids",
+    "relation": "freight.soa.line",
+    "relation_field": "debit_note_id",
+    "related": false
+  },
+  {
+    "id": 807,
+    "model": "res.country",
+    "name": "state_ids",
+    "relation": "res.country.state",
+    "relation_field": "country_id",
+    "related": false
+  },
+  {
+    "id": 5507,
+    "model": "account.move",
+    "name": "statement_line_ids",
+    "relation": "account.bank.statement.line",
+    "relation_field": "move_id",
+    "related": false
+  },
+  {
+    "id": 5967,
+    "model": "account.bank.statement.line",
+    "name": "statement_line_ids",
+    "relation": "account.bank.statement.line",
+    "relation_field": false,
+    "related": "move_id.statement_line_ids"
+  },
+  {
+    "id": 5775,
+    "model": "account.payment",
+    "name": "statement_line_ids",
+    "relation": "account.bank.statement.line",
+    "relation_field": false,
+    "related": "move_id.statement_line_ids"
+  },
+  {
+    "id": 4463,
+    "model": "hr.employee",
+    "name": "subordinate_ids",
+    "relation": "hr.employee",
+    "relation_field": false,
+    "related": false
+  },
+  {
+    "id": 4465,
+    "model": "hr.employee.public",
+    "name": "subordinate_ids",
+    "relation": "hr.employee.public",
+    "relation_field": false,
+    "related": false
+  },
+  {
+    "id": 7164,
+    "model": "mailing.list",
+    "name": "subscription_ids",
+    "relation": "mailing.contact.subscription",
+    "relation_field": "list_id",
+    "related": false
+  },
+  {
+    "id": 7141,
+    "model": "mailing.contact",
+    "name": "subscription_list_ids",
+    "relation": "mailing.contact.subscription",
+    "relation_field": "contact_id",
+    "related": false
+  },
+  {
+    "id": 5701,
+    "model": "account.payment",
+    "name": "tax_cash_basis_created_move_ids",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "move_id.tax_cash_basis_created_move_ids"
+  },
+  {
+    "id": 5893,
+    "model": "account.bank.statement.line",
+    "name": "tax_cash_basis_created_move_ids",
+    "relation": "account.move",
+    "relation_field": false,
+    "related": "move_id.tax_cash_basis_created_move_ids"
+  },
+  {
+    "id": 5421,
+    "model": "account.move",
+    "name": "tax_cash_basis_created_move_ids",
+    "relation": "account.move",
+    "relation_field": "tax_cash_basis_origin_move_id",
+    "related": false
+  },
+  {
+    "id": 6099,
+    "model": "account.fiscal.position.template",
+    "name": "tax_ids",
+    "relation": "account.fiscal.position.tax.template",
+    "relation_field": "position_id",
+    "related": false
+  },
+  {
+    "id": 4921,
+    "model": "account.fiscal.position",
+    "name": "tax_ids",
+    "relation": "account.fiscal.position.tax",
+    "relation_field": "position_id",
+    "related": false
+  },
+  {
+    "id": 6018,
+    "model": "account.chart.template",
+    "name": "tax_template_ids",
+    "relation": "account.tax.template",
+    "relation_field": "chart_template_id",
+    "related": false
+  },
+  {
+    "id": 8937,
+    "model": "crm.department",
+    "name": "team_ids",
+    "relation": "crm.team",
+    "relation_field": "crm_department_id",
+    "related": false
+  },
+  {
+    "id": 23213,
+    "model": "freight.job",
+    "name": "total_cargo_custom_information_ids",
+    "relation": "total.container.volume.custom.cargo.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 28863,
+    "model": "freight.customs.job",
+    "name": "total_cargo_custom_information_ids",
+    "relation": "total.container.volume.custom.cargo.information",
+    "relation_field": "customs_job_id",
+    "related": false
+  },
+  {
+    "id": 20116,
+    "model": "freight.booking.line",
+    "name": "total_cargo_custom_information_ids",
+    "relation": "total.container.custom.volume.cargo.information",
+    "relation_field": "freight_booking_line_id",
+    "related": false
+  },
+  {
+    "id": 20115,
+    "model": "freight.booking.line",
+    "name": "total_cargo_information_ids",
+    "relation": "total.container.volume.cargo.information",
+    "relation_field": "freight_booking_line_id",
+    "related": false
+  },
+  {
+    "id": 23144,
+    "model": "freight.job",
+    "name": "total_cargo_sea_information_ids",
+    "relation": "total.container.volume.sea.cargo.information",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 23807,
+    "model": "freight.truck.job",
+    "name": "total_cargo_truck_information_ids",
+    "relation": "total.container.volume.truck.cargo.information",
+    "relation_field": "truck_job_id",
+    "related": false
+  },
+  {
+    "id": 24339,
+    "model": "freight.booking.external",
+    "name": "total_container_volume_ids",
+    "relation": "total.external.container.volume.cargo.information",
+    "relation_field": "booking_external_id",
+    "related": false
+  },
+  {
+    "id": 1432,
+    "model": "res.users",
+    "name": "totp_trusted_device_ids",
+    "relation": "auth_totp.device",
+    "relation_field": "user_id",
+    "related": false
+  },
+  {
+    "id": 20936,
+    "model": "freight.shipment.house",
+    "name": "tracking_ids",
+    "relation": "freight.shipment.tracking",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 21332,
+    "model": "freight.shipment.master",
+    "name": "tracking_ids",
+    "relation": "freight.shipment.tracking",
+    "relation_field": "house_id",
+    "related": false
+  },
+  {
+    "id": 2013,
+    "model": "mail.mail",
+    "name": "tracking_value_ids",
+    "relation": "mail.tracking.value",
+    "relation_field": false,
+    "related": "mail_message_id.tracking_value_ids"
+  },
+  {
+    "id": 1942,
+    "model": "mail.message",
+    "name": "tracking_value_ids",
+    "relation": "mail.tracking.value",
+    "relation_field": "mail_message_id",
+    "related": false
+  },
+  {
+    "id": 4807,
+    "model": "payment.token",
+    "name": "transaction_ids",
+    "relation": "payment.transaction",
+    "relation_field": "token_id",
+    "related": false
+  },
+  {
+    "id": 9910,
+    "model": "account.move.line",
+    "name": "transfer_from_allocation_ids",
+    "relation": "account.transfer.allocation",
+    "relation_field": "dest_aml_id",
+    "related": false
+  },
+  {
+    "id": 9902,
+    "model": "account.move.line",
+    "name": "transfer_to_allocation_ids",
+    "relation": "account.transfer.allocation",
+    "relation_field": "src_aml_id",
+    "related": false
+  },
+  {
+    "id": 23804,
+    "model": "freight.truck.job",
+    "name": "truck_attachment_ids",
+    "relation": "job.truck.attachment",
+    "relation_field": "truck_job_id",
+    "related": false
+  },
+  {
+    "id": 23105,
+    "model": "freight.job",
+    "name": "truck_buying_ids",
+    "relation": "job.buying.rate",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 24342,
+    "model": "freight.booking.external",
+    "name": "truck_cargo_information_ids",
+    "relation": "freight.booking.external.cargo.information",
+    "relation_field": "booking_external_id",
+    "related": false
+  },
+  {
+    "id": 23684,
+    "model": "freight.job.truck.cargo.information",
+    "name": "truck_danger_cargo_ids",
+    "relation": "danger.truck.cargo.information",
+    "relation_field": "truck_cargo_information_id",
+    "related": false
+  },
+  {
+    "id": 23806,
+    "model": "freight.truck.job",
+    "name": "truck_job_cargo_ids",
+    "relation": "freight.job.truck.cargo.information",
+    "relation_field": "truck_job_id",
+    "related": false
+  },
+  {
+    "id": 23100,
+    "model": "freight.job",
+    "name": "truck_job_ids",
+    "relation": "freight.truck.job",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 22350,
+    "model": "freight.sales.pricing",
+    "name": "truck_line_ids",
+    "relation": "freight.purchase.pricing.truck.line",
+    "relation_field": false,
+    "related": "purchase_pricing_id.truck_line_ids"
+  },
+  {
+    "id": 22080,
+    "model": "freight.purchase.pricing",
+    "name": "truck_line_ids",
+    "relation": "freight.purchase.pricing.truck.line",
+    "relation_field": "purchase_pricing_id",
+    "related": false
+  },
+  {
+    "id": 22081,
+    "model": "freight.purchase.pricing",
+    "name": "truck_other_line_ids",
+    "relation": "freight.purchase.pricing.truck.other.line",
+    "relation_field": "purchase_pricing_id",
+    "related": false
+  },
+  {
+    "id": 22351,
+    "model": "freight.sales.pricing",
+    "name": "truck_other_line_ids",
+    "relation": "freight.purchase.pricing.truck.other.line",
+    "relation_field": false,
+    "related": "purchase_pricing_id.truck_other_line_ids"
+  },
+  {
+    "id": 27410,
+    "model": "freight.job",
+    "name": "truck_pay_on_behalf_ids",
+    "relation": "job.pay.on.behalf.rate",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 23805,
+    "model": "freight.truck.job",
+    "name": "truck_schedule_ids",
+    "relation": "truck.schedule.information",
+    "relation_field": "truck_job_id",
+    "related": false
+  },
+  {
+    "id": 23104,
+    "model": "freight.job",
+    "name": "truck_selling_ids",
+    "relation": "job.selling.rate",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 23101,
+    "model": "freight.job",
+    "name": "truck_summary_ids",
+    "relation": "freight.truck.summary.job",
+    "relation_field": "job_id",
+    "related": false
+  },
+  {
+    "id": 2905,
+    "model": "uom.category",
+    "name": "uom_ids",
+    "relation": "uom.uom",
+    "relation_field": "category_id",
+    "related": false
+  },
+  {
+    "id": 937,
+    "model": "res.partner",
+    "name": "user_ids",
+    "relation": "res.users",
+    "relation_field": "partner_id",
+    "related": false
+  },
+  {
+    "id": 2838,
+    "model": "res.users.role",
+    "name": "user_ids",
+    "relation": "res.users",
+    "relation_field": false,
+    "related": false
+  },
+  {
+    "id": 1221,
+    "model": "change.password.wizard",
+    "name": "user_ids",
+    "relation": "change.password.user",
+    "relation_field": "wizard_id",
+    "related": false
+  },
+  {
+    "id": 4488,
+    "model": "portal.wizard",
+    "name": "user_ids",
+    "relation": "portal.wizard.user",
+    "relation_field": "wizard_id",
+    "related": false
+  },
+  {
+    "id": 9096,
+    "model": "freight.airline",
+    "name": "user_ids",
+    "relation": "res.users",
+    "relation_field": false,
+    "related": "partner_id.user_ids"
+  },
+  {
+    "id": 1204,
+    "model": "res.users",
+    "name": "user_ids",
+    "relation": "res.users",
+    "relation_field": false,
+    "related": "partner_id.user_ids"
+  },
+  {
+    "id": 9360,
+    "model": "freight.shipping.line",
+    "name": "user_ids",
+    "relation": "res.users",
+    "relation_field": false,
+    "related": "partner_id.user_ids"
+  },
+  {
+    "id": 1547,
+    "model": "base_import.tests.models.o2m",
+    "name": "value",
+    "relation": "base_import.tests.models.o2m.child",
+    "relation_field": "parent_id",
+    "related": false
+  },
+  {
+    "id": 4000,
+    "model": "product.attribute",
+    "name": "value_ids",
+    "relation": "product.attribute.value",
+    "relation_field": "attribute_id",
+    "related": false
+  },
+  {
+    "id": 6417,
+    "model": "account.report",
+    "name": "variant_report_ids",
+    "relation": "account.report",
+    "relation_field": "root_report_id",
+    "related": false
+  },
+  {
+    "id": 3988,
+    "model": "product.product",
+    "name": "variant_seller_ids",
+    "relation": "product.supplierinfo",
+    "relation_field": false,
+    "related": "product_tmpl_id.variant_seller_ids"
+  },
+  {
+    "id": 3883,
+    "model": "product.template",
+    "name": "variant_seller_ids",
+    "relation": "product.supplierinfo",
+    "relation_field": "product_tmpl_id",
+    "related": false
+  },
+  {
+    "id": 12,
+    "model": "ir.model",
+    "name": "view_ids",
+    "relation": "ir.ui.view",
+    "relation_field": false,
+    "related": false
+  },
+  {
+    "id": 283,
+    "model": "ir.actions.act_window",
+    "name": "view_ids",
+    "relation": "ir.actions.act_window.view",
+    "relation_field": "act_window_id",
+    "related": false
+  },
+  {
+    "id": 2205,
+    "model": "res.users.settings",
+    "name": "volume_settings_ids",
+    "relation": "res.users.settings.volumes",
+    "relation_field": "user_setting_id",
+    "related": false
+  },
+  {
+    "id": 10146,
+    "model": "res.country.state",
+    "name": "wards_ids",
+    "relation": "res.country.wards",
+    "relation_field": "state_id",
+    "related": false
+  },
+  {
+    "id": 26991,
+    "model": "freight.port",
+    "name": "warehouse_mapping_ids",
+    "relation": "freight.port.warehouse.mapping",
+    "relation_field": "port_id",
+    "related": false
+  },
+  {
+    "id": 9297,
+    "model": "freight.shipping.line",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "partner_id.website_message_ids"
+  },
+  {
+    "id": 22281,
+    "model": "freight.sales.pricing",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "purchase_pricing_id.website_message_ids"
+  },
+  {
+    "id": 24523,
+    "model": "freight.sales.inquiry",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 8591,
+    "model": "freight.quotation.template",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 8271,
+    "model": "freight.quotation",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22011,
+    "model": "freight.purchase.pricing",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 9033,
+    "model": "freight.airline",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "partner_id.website_message_ids"
+  },
+  {
+    "id": 4518,
+    "model": "account.analytic.account",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20410,
+    "model": "freight.shipment",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20606,
+    "model": "freight.shipment.house",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26259,
+    "model": "freight.soa",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4519,
+    "model": "calendar.event",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4526,
+    "model": "crm.team",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 39988,
+    "model": "freight.booking.external",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4525,
+    "model": "crm.team.member",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 39964,
+    "model": "freight.local.charge",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26742,
+    "model": "freight.document.line.pay.on.behalf",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 19905,
+    "model": "freight.booking",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 20078,
+    "model": "freight.booking.line",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22576,
+    "model": "freight.credit.note",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22736,
+    "model": "freight.credit.note.line",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "buying_line_id.website_message_ids"
+  },
+  {
+    "id": 22796,
+    "model": "freight.dc.note",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 22376,
+    "model": "freight.debit.note",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 23000,
+    "model": "freight.job",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 21862,
+    "model": "freight.document.line.buying",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 30081,
+    "model": "account.asset.category",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5049,
+    "model": "account.account",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5992,
+    "model": "account.account.template",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5876,
+    "model": "account.bank.statement.line",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "move_id.website_message_ids"
+  },
+  {
+    "id": 5134,
+    "model": "account.journal",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5404,
+    "model": "account.move",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5641,
+    "model": "account.payment",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 6641,
+    "model": "account.setup.bank.manual.config",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "res_partner_bank_id.website_message_ids"
+  },
+  {
+    "id": 6226,
+    "model": "res.company",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5015,
+    "model": "res.partner.bank",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 30011,
+    "model": "account.asset.asset",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 21002,
+    "model": "freight.shipment.master",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 31875,
+    "model": "einvoice.provider",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 31924,
+    "model": "einvoice.template",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 31958,
+    "model": "einvoice.serial",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 43626,
+    "model": "freight.dp.access.profile",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 6843,
+    "model": "crm.lead",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4472,
+    "model": "res.partner",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 33471,
+    "model": "balance.carry.forward",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26068,
+    "model": "employee.advance",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 5302,
+    "model": "account.reconcile.model",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 26116,
+    "model": "employee.advance.reconcile",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7994,
+    "model": "hr.expense.sheet",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4528,
+    "model": "res.users",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": false,
+    "related": "partner_id.website_message_ids"
+  },
+  {
+    "id": 4520,
+    "model": "hr.employee",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7132,
+    "model": "mailing.contact",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7225,
+    "model": "mailing.mailing",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4523,
+    "model": "product.template",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4524,
+    "model": "product.product",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4516,
+    "model": "phone.blacklist",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4517,
+    "model": "mail.thread.phone",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 7921,
+    "model": "hr.expense",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4513,
+    "model": "mail.thread.cc",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4512,
+    "model": "mail.thread.blacklist",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4467,
+    "model": "mail.thread",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4515,
+    "model": "mail.channel",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4514,
+    "model": "mail.blacklist",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4522,
+    "model": "hr.job",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4521,
+    "model": "hr.department",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  },
+  {
+    "id": 4527,
+    "model": "hr.contract",
+    "name": "website_message_ids",
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "related": false
+  }
+]

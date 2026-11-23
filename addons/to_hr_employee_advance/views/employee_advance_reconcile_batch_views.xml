@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_advance_reconcile_batch_tree" model="ir.ui.view">
+        <field name="name">employee.advance.reconcile.batch.tree</field>
+        <field name="model">employee.advance.reconcile.batch</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Advance Reconcile Batch"><field name="id" modifiers="{&quot;readonly&quot;: true}"/></tree>
+        </field>
+    </record>
+
+    <record id="view_employee_advance_reconcile_batch_form" model="ir.ui.view">
+        <field name="name">employee.advance.reconcile.batch.form</field>
+        <field name="model">employee.advance.reconcile.batch</field>
+        <field name="arch" type="xml">
+            <form string="Employee Advance Reconcile Batches">
+<group>
+<group>
+<field name="journal_id" widget="selection" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+</group>
+<group>
+<field name="date" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+</group>
+</group>
+<separator string="Employees"/>
+<field name="employee_domain_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+<field name="employee_ids" domain="[('id', 'in', employee_domain_ids)]" can_create="true" can_write="true"><tree string="Employees" expand="context.get('expand', False)" multi_edit="1" sample="1" js_class="hr_employee_list">
+                    <header>
+                        <button name="183" type="action" string="Launch Plan" context="{'action_plan': True}"/>
+                    </header>
+                    <field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="work_phone" class="o_force_ltr" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="work_email"/>
+                <field name="first_contract_date" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="activity_ids" widget="list_activity" on_change="1"/>
+                    <field name="activity_user_id" optional="hide" string="Activity by" widget="many2one_avatar_user" can_create="true" can_write="true"/>
+                    <field name="activity_date_deadline" widget="remaining_days" options="{'allow_order': '1'}" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="company_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="department_id" on_change="1" can_create="true" can_write="true"/>
+                    <field name="job_id" can_create="true" can_write="true"/>
+                    <field name="parent_id" on_change="1" can_create="true" can_write="true"/>
+                    <field name="address_id" on_change="1" modifiers="{&quot;column_invisible&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="company_id" on_change="1" modifiers="{&quot;required&quot;: true, &quot;column_invisible&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="work_location_id" optional="hide" can_create="true" can_write="true"/>
+                    <field name="expense_manager_id" optional="hide" string="Expense Approver" can_create="true" can_write="true"/>
+                    <field name="coach_id" modifiers="{&quot;column_invisible&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <field name="category_ids" widget="many2many_tags" options="{'color_field': 'color'}" optional="hide" can_create="true" can_write="true"/>
+                    <field name="country_id" optional="hide" can_create="true" can_write="true"/>
+                </tree></field>
+<footer>
+<button name="action_create" string="Generate" type="object" class="oe_highlight"/>
+or
+<button string="Cancel" class="oe_link" special="cancel"/>
+</footer>
+</form>
+        </field>
+    </record>
+
+    <record id="view_employee_advance_reconcile_batch_search" model="ir.ui.view">
+        <field name="name">employee.advance.reconcile.batch.search</field>
+        <field name="model">employee.advance.reconcile.batch</field>
+        <field name="arch" type="xml">
+            <search string="Employee Advance Reconcile Batch"><field name="id"/></search>
+        </field>
+    </record>
+
+    <record id="action_employee_advance_reconcile_batch" model="ir.actions.act_window">
+        <field name="name">EMPLOYEE ADVANCE RECONCILE BATCH</field>
+        <field name="res_model">employee.advance.reconcile.batch</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

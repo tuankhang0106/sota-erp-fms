@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_gdt_einvoice_bill_tree" model="ir.ui.view">
+        <field name="name">gdt.einvoice.bill.tree</field>
+        <field name="model">gdt.einvoice.bill</field>
+        <field name="arch" type="xml">
+            <tree string="Hóa đơn đầu vào (GDT)" create="false" editable="bottom" delete="false" decoration-danger="is_risk == True or invoice_status in ('4','5','6')" decoration-muted="invoice_status == '6'" js_class="gdt_einvoice_bill_tree">
+                <button name="action_open_form_view" type="object" string="Chi tiết" class="btn btn-secondary btn-sm" icon="fa-external-link"/>
+                <button name="action_create_vendor_bill" type="object" string="Tạo Bill" class="btn btn-primary btn-sm" icon="fa-plus" context="{'gdt_no_open_vendor_bill': 1}" modifiers="{&quot;invisible&quot;: [[&quot;vendor_bill_id&quot;, &quot;!=&quot;, false]]}"/>
+                <field name="invoice_date" string="Ngày lập" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="invoice_symbol" string="Ký hiệu" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="invoice_number" string="Số HĐ" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="tax_authority_code" string="MCCQT" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="vendor_bill_id" string="Tham chiếu hóa đơn" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="seller_tax_code" string="MST NB" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="seller_name" string="Người bán" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="invoice_type_name" string="Loại HĐ" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="tax_rate_info" string="Thuế suất" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="total_before_tax" string="Trước thuế" sum="Tổng" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="tax_amount" string="Thuế" sum="Tổng" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="total_amount" string="Tổng tiền" sum="Tổng" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="currency_code" string="Tiền tệ" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="payment_method" string="TT toán" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="bill_check" widget="badge" decoration-success="bill_check == 'same'" decoration-danger="bill_check == 'warning'" decoration-muted="bill_check == 'no_data'" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="invoice_status" string="TT HĐ" optional="show" widget="badge" decoration-success="invoice_status == '1'" decoration-info="invoice_status in ('2','3')" decoration-danger="invoice_status in ('4','5','6')" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="processing_status" string="TT xử lý" optional="show" widget="badge" decoration-success="processing_status == '5'" decoration-warning="processing_status == '1'" decoration-danger="processing_status == '0'" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="check_result" string="Kết quả kiểm tra" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="is_risk" string="Rủi ro" widget="boolean_toggle" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="company_id" optional="hide" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                <field name="currency_id" modifiers="{&quot;column_invisible&quot;: true}" can_create="true" can_write="true"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_gdt_einvoice_bill_form" model="ir.ui.view">
+        <field name="name">gdt.einvoice.bill.form</field>
+        <field name="model">gdt.einvoice.bill</field>
+        <field name="arch" type="xml">
+            <form string="Chi tiết hóa đơn đầu vào (GDT)" create="false" edit="false" delete="false">
+                <header>
+                    <button name="action_create_vendor_bill" type="object" string="Tạo Bill" class="btn-primary" modifiers="{&quot;invisible&quot;: [[&quot;vendor_bill_id&quot;, &quot;!=&quot;, false]]}"/>
+                    <field name="invoice_status" widget="statusbar" statusbar_visible="1,2,3"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_vendor_bill" type="object" class="oe_stat_button" icon="fa-file-text-o" modifiers="{&quot;invisible&quot;: [[&quot;vendor_bill_id&quot;, &quot;=&quot;, false]]}">
+                            <field name="vendor_bill_count" widget="statinfo" string="Vendor Bill" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="invoice_symbol" class="oe_inline" modifiers="{&quot;readonly&quot;: true}"/>
+                            <span> - </span>
+                            <field name="invoice_number" class="oe_inline" modifiers="{&quot;readonly&quot;: true}"/>
+                        </h1>
+                        <h3>
+                            <field name="invoice_type_name" modifiers="{&quot;readonly&quot;: true}"/>
+                        </h3>
+                    </div>
+                    <group>
+                        <group string="Người bán">
+                            <field name="seller_tax_code" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="seller_name" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="seller_address" modifiers="{&quot;readonly&quot;: true}"/>
+                        </group>
+                        <group string="Người mua">
+                            <field name="buyer_tax_code" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="buyer_name" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="buyer_address" modifiers="{&quot;readonly&quot;: true}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Thông tin hóa đơn">
+                            <field name="invoice_template" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="invoice_symbol" string="Ký hiệu" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="invoice_number" string="Số hóa đơn" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="vendor_bill_id" string="Tham chiếu hóa đơn" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="invoice_date" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="signing_date" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="payment_method" modifiers="{&quot;readonly&quot;: true}"/>
+                        </group>
+                        <group string="Số tiền">
+                            <field name="currency_code" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="exchange_rate" modifiers="{&quot;invisible&quot;: [[&quot;currency_code&quot;, &quot;=&quot;, &quot;VND&quot;]], &quot;readonly&quot;: true}"/>
+                            <field name="total_before_tax" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="tax_rate_info" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="tax_amount" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="total_amount" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="total_amount_text" modifiers="{&quot;readonly&quot;: true}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Trạng thái">
+                            <field name="bill_check" widget="badge" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="invoice_status" widget="badge" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="processing_status" widget="badge" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="check_result" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="is_risk" widget="boolean_toggle" modifiers="{&quot;readonly&quot;: true}"/>
+                        </group>
+                        <group string="Khác">
+                            <field name="gdt_invoice_id" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="company_id" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                            <field name="note" modifiers="{&quot;readonly&quot;: true}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Dữ liệu gốc (JSON)" name="raw_data">
+                            <field name="raw_data" widget="text" modifiers="{&quot;readonly&quot;: true}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_gdt_einvoice_bill_search" model="ir.ui.view">
+        <field name="name">gdt.einvoice.bill.search</field>
+        <field name="model">gdt.einvoice.bill</field>
+        <field name="arch" type="xml">
+            <search string="Tìm hóa đơn đầu vào">
+                <field name="invoice_number" string="Số HĐ"/>
+                <field name="vendor_bill_id" string="Tham chiếu HĐ"/>
+                <field name="invoice_symbol" string="Ký hiệu"/>
+                <field name="seller_tax_code" string="MST NB"/>
+                <field name="seller_name" string="Người bán"/>
+                <field name="buyer_name" string="Người mua"/>
+                <field name="check_result" string="Kết quả kiểm tra"/>
+                <separator/>
+                <filter name="filter_status_new" string="HĐ mới" domain="[('invoice_status', '=', '1')]"/>
+                <filter name="filter_status_replaced" string="HĐ thay thế" domain="[('invoice_status', '=', '2')]"/>
+                <filter name="filter_status_adjusted" string="HĐ điều chỉnh" domain="[('invoice_status', '=', '3')]"/>
+                <filter name="filter_status_cancelled" string="HĐ đã hủy" domain="[('invoice_status', '=', '6')]"/>
+                <separator/>
+                <filter name="filter_risk" string="Rủi ro (Hóa đơn bất hợp pháp)" domain="[('is_risk', '=', True)]"/>
+                <filter name="filter_processing_done" string="Đã xử lý" domain="[('processing_status', 'in', ('5', '8'))]"/>
+                <filter name="filter_processing_pending" string="Chưa xử lý" domain="[('processing_status', '=', '0')]"/>
+                <separator/>
+                <filter name="filter_this_month" string="Tháng này" domain="[('invoice_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),                                  ('invoice_date', '&lt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter name="filter_last_month" string="Tháng trước" domain="[('invoice_date', '&gt;=', (context_today() - relativedelta(months=1, day=1)).strftime('%Y-%m-%d')),                                  ('invoice_date', '&lt;=', (context_today() - relativedelta(day=1) - relativedelta(days=1)).strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <group expand="0" string="Nhóm theo">
+                    <filter name="group_by_seller" string="Người bán" context="{'group_by': 'seller_name'}"/>
+                    <filter name="group_by_date" string="Ngày lập" context="{'group_by': 'invoice_date:month'}"/>
+                    <filter name="group_by_status" string="Trạng thái HĐ" context="{'group_by': 'invoice_status'}"/>
+                    <filter name="group_by_processing" string="Trạng thái xử lý" context="{'group_by': 'processing_status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_gdt_einvoice_bill" model="ir.actions.act_window">
+        <field name="name">GDT EINVOICE BILL</field>
+        <field name="res_model">gdt.einvoice.bill</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

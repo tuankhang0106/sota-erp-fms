@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_ks_dashboard_ninja_root"
+              name="My Dashboard (Dashboard Ninja)"
+              sequence="5"/>
+
+    <menuitem id="menu_ks_dashboard_ninja_board"
+              name="KS_DASHBOARD_NINJA BOARD"
+              parent="menu_ks_dashboard_ninja_root"
+              action="action_ks_dashboard_ninja_board"
+              sequence="10"/>
+
+    <menuitem id="menu_ks_dashboard_ninja_child_board"
+              name="KS_DASHBOARD_NINJA CHILD_BOARD"
+              parent="menu_ks_dashboard_ninja_root"
+              action="action_ks_dashboard_ninja_child_board"
+              sequence="10"/>
+
+    <menuitem id="menu_ks_dashboard_ninja_import"
+              name="KS_DASHBOARD_NINJA IMPORT"
+              parent="menu_ks_dashboard_ninja_root"
+              action="action_ks_dashboard_ninja_import"
+              sequence="10"/>
+
+</odoo>

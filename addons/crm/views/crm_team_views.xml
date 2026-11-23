@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_crm_team_tree" model="ir.ui.view">
+        <field name="name">crm.team.tree</field>
+        <field name="model">crm.team</field>
+        <field name="arch" type="xml">
+            <tree string="Sales Team" sample="1" multi_edit="1">
+                <field name="sequence" widget="handle"/>
+                <field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                    <field string="Alias" name="alias_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="active" modifiers="{&quot;column_invisible&quot;: true}"/>
+                <field name="user_id" domain="[('share', '=', False)]" widget="many2one_avatar_user" can_create="true" can_write="true"/>
+                <field name="crm_department_id" can_create="true" can_write="true"/>
+                <field name="company_id" can_create="true" can_write="true"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_crm_team_form" model="ir.ui.view">
+        <field name="name">crm.team.form</field>
+        <field name="model">crm.team</field>
+        <field name="arch" type="xml">
+            <form string="Sales Team">
+                <div class="alert alert-info text-center" role="alert" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;is_membership_multi&quot;, &quot;=&quot;, true], [&quot;member_warning&quot;, &quot;=&quot;, false]]}">
+                    <field name="member_warning" modifiers="{&quot;readonly&quot;: true}"/>
+                </div>
+                    <field name="use_leads" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                    <header>
+                        <button name="action_assign_leads" type="object" string="Assign Leads" class="oe_highlight" confirm="This will assign leads to all members. Do you want to proceed?" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, &quot;&amp;&quot;, [&quot;use_leads&quot;, &quot;=&quot;, false], [&quot;use_opportunities&quot;, &quot;=&quot;, false], [&quot;assignment_enabled&quot;, &quot;=&quot;, false]]}"/>
+                    </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}"/>
+                    <div class="oe_title">
+                        <label for="name" string="Sales Team"/>
+                        <h1>
+                            <field class="text-break" name="name" placeholder="e.g. North America" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                        </h1>
+                        <div name="options_active">
+                    <div class="o_row">
+                        <span name="opportunities">
+                            <field name="use_opportunities" on_change="1"/>
+                            <label for="use_opportunities"/>
+                        </span>
+                        <span class="o_row">
+                            <field name="use_leads" on_change="1"/>
+                            <label for="use_leads" string="Leads"/>
+                        </span>
+                    </div></div>
+                    </div>
+                <group>
+                    <field name="crm_department_id" can_create="true" can_write="true"/>
+                </group>
+                    <group>
+                        <group name="left" string="Team Details">
+                            <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                            <field name="sequence" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                            <field name="is_membership_multi" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="user_id" widget="many2one_avatar_user" domain="[('share', '=', False)]" can_create="true" can_write="true"/>
+                    <label for="alias_name" string="Email Alias" modifiers="{&quot;invisible&quot;: [[&quot;use_leads&quot;, &quot;=&quot;, false], [&quot;use_opportunities&quot;, &quot;=&quot;, false]]}"/>
+                    <div class="oe_inline" name="alias_def" modifiers="{&quot;invisible&quot;: [[&quot;use_leads&quot;, &quot;=&quot;, false], [&quot;use_opportunities&quot;, &quot;=&quot;, false]]}">
+                        <field name="alias_id" class="oe_read_only oe_inline" string="Email Alias" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;alias_domain&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                        <div class="oe_inline" name="edit_alias" style="display: inline;">
+                            <div class="oe_edit_only" dir="ltr" modifiers="{&quot;invisible&quot;: [[&quot;alias_domain&quot;, &quot;=&quot;, false]]}">
+                                <field name="alias_name" class="oe_inline" on_change="1"/>@<field name="alias_domain" class="oe_inline" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                            </div>
+                            <button icon="fa-arrow-right" type="action" name="85" string="Configure a custom domain" class="p-0 btn-link" modifiers="{&quot;invisible&quot;: [[&quot;alias_domain&quot;, &quot;!=&quot;, false]]}"/>
+                        </div>
+                    </div>
+                    <field name="alias_contact" string="Accept Emails From" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;use_leads&quot;, &quot;=&quot;, false], [&quot;use_opportunities&quot;, &quot;=&quot;, false]], &quot;required&quot;: true}"/>
+                            <field name="company_id" options="{'no_create': True}" on_change="1" can_create="true" can_write="true"/>
+                            <field name="currency_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="member_company_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        </group>
+                        <group name="right" string="Assignment Rules" modifiers="{&quot;invisible&quot;: [[&quot;assignment_enabled&quot;, &quot;=&quot;, false]]}">
+                    <field name="assignment_enabled" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="assignment_auto_enabled" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="assignment_domain" widget="domain" string="Domain" options="{'model': 'crm.lead', 'in_dialog': True}" modifiers="{&quot;invisible&quot;: [[&quot;assignment_enabled&quot;, &quot;=&quot;, false]]}"/>
+                    <label for="lead_all_assigned_month_count" string="Assigned Leads Count" modifiers="{&quot;invisible&quot;: [[&quot;assignment_enabled&quot;, &quot;=&quot;, false]]}"/>
+                    <div modifiers="{&quot;invisible&quot;: [[&quot;assignment_enabled&quot;, &quot;=&quot;, false]]}">
+                        <field name="lead_all_assigned_month_count" class="oe_inline" modifiers="{&quot;readonly&quot;: true}"/> /
+                        <field name="assignment_max" class="oe_inline" modifiers="{&quot;readonly&quot;: true}"/>
+                    </div>
+                    <field name="assignment_optout" modifiers="{&quot;invisible&quot;: [[&quot;assignment_auto_enabled&quot;, &quot;=&quot;, false]]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Members" name="members_users">
+                            <field name="member_ids" mode="kanban" class="w-100" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;assignment_enabled&quot;, &quot;=&quot;, true]]}" can_create="true" can_write="true">
+                                <kanban>
+                                    <field name="id" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="name" on_change="1"/>
+                                    <field name="email" on_change="1"/>
+                                    <field name="avatar_128" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_card oe_kanban_global_click">
+                                                <div class="o_kanban_card_content d-flex">
+                                                    <div>
+                                                        <img t-att-src="kanban_image('res.users', 'avatar_128', record.id.raw_value)" class="o_kanban_image o_image_64_cover" alt="Avatar"/>
+                                                    </div>
+                                                    <div class="oe_kanban_details d-flex flex-column ms-3">
+                                                        <strong class="o_kanban_record_title oe_partner_heading"><field name="name" on_change="1"/></strong>
+                                                        <div class="d-flex align-items-baseline text-break">
+                                                            <i class="fa fa-envelope me-1" role="img" aria-label="Email" title="Email"/><field name="email" on_change="1"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                            <field name="crm_team_member_ids" mode="kanban" class="w-100" context="{                                     'kanban_view_ref': 'sales_team.crm_team_member_view_kanban_from_team',                                     'form_view_ref': 'sales_team.crm_team_member_view_form_from_team',                                     'tree_view_ref': 'sales_team.crm_team_member_view_tree_from_team',                                     'default_crm_team_id': active_id,                                 }" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;assignment_enabled&quot;, &quot;=&quot;, false]]}"><kanban quick_create="false" group_create="0" records_draggable="0" sample="1" default_group_by="crm_team_id" class="o_crm_team_member_kanban">
+                <field name="user_id" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                <field name="active"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <div class="ribbon ribbon-top-right" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}">
+                                <span class="bg-odoo">Archived</span>
+                            </div>
+                            <div class="o_kanban_card_content d-flex">
+                                <div>
+                                    <img t-att-src="kanban_image('res.users', 'avatar_128', record.user_id.raw_value)" class="o_kanban_image o_image_64_cover" alt="Avatar"/>
+                                </div>
+                                <div class="oe_kanban_details d-flex flex-column ms-3">
+                                    <strong class="o_kanban_record_title oe_partner_heading"><field name="user_id" on_change="1" modifiers="{&quot;required&quot;: true}"/></strong>
+                                    <a type="open" class="nav-link p-0"/>
+                                    <div class="d-flex align-items-baseline text-break">
+                                        <i class="fa fa-envelope me-1" role="img" aria-label="Email" title="Email"/><field name="email" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </div>
+                                </div>
+                <field name="assignment_enabled" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <field name="assignment_optout" modifiers="{&quot;invisible&quot;: true}"/>
+                <div class="o_member_assignment" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;assignment_enabled&quot;, &quot;=&quot;, false], [&quot;assignment_optout&quot;, &quot;=&quot;, true]]}">
+                    <field name="assignment_max" modifiers="{&quot;invisible&quot;: true}"/>
+                    <field name="lead_month_count" widget="gauge" options="{'max_field': 'assignment_max'}" modifiers="{&quot;invisible&quot;: [[&quot;assignment_max&quot;, &quot;=&quot;, 0]], &quot;readonly&quot;: true}"/>
+                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban></field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" help="Follow this salesteam to automatically track the events associated to users of this team."/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_crm_team_search" model="ir.ui.view">
+        <field name="name">crm.team.search</field>
+        <field name="model">crm.team</field>
+        <field name="arch" type="xml">
+            <search string="Salesteams Search">
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="member_ids"/>
+                <group expand="0" string="Group By...">
+                    <filter string="Team Leader" name="team_leader" domain="[]" context="{'group_by': 'user_id'}"/>
+                <filter name="crm_department_id" string="Sales Department" context="{'group_by':'crm_department_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_crm_team" model="ir.actions.act_window">
+        <field name="name">CRM TEAM</field>
+        <field name="res_model">crm.team</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

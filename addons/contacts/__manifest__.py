@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'Liên hệ (Contacts)',
+    'version': '1.0',
+    'category': 'Sales/CRM',
+    'summary': 'Cloned Module for Liên hệ (Contacts)',
+    'description': """Liên hệ (Contacts) cloned from SotaERP Portalink""",
+    'author': 'Cloned by Antigravity',
+    'website': 'https://portalink.erp.sota-solutions.com/',
+    'depends': ["base","mail"],
+    'data': [
+        'security/ir.model.access.csv',
+        'data/contacts_data.xml',
+        'views/res_partner_title_views.xml',
+        'views/res_partner_category_views.xml',
+        'views/res_partner_industry_views.xml',
+        'views/res_bank_views.xml',
+        'views/res_partner_bank_views.xml',
+        'views/res_country_views.xml',
+        'views/res_country_group_views.xml',
+        'views/res_country_state_views.xml',
+        'views/res_partner_views.xml',
+        'views/res_country_wards_views.xml',
+        'views/contacts_menus.xml'
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+    'license': 'LGPL-3',
+}

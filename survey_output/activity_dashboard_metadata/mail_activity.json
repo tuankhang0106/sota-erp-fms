@@ -1,0 +1,3234 @@
+{
+  "fields": {
+    "res_model_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": true,
+      "string": "Document Model",
+      "type": "many2one"
+    },
+    "res_model": {
+      "readonly": true,
+      "required": false,
+      "string": "Related Document Model",
+      "type": "char"
+    },
+    "res_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Related Document ID",
+      "type": "many2one_reference"
+    },
+    "res_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Document Name",
+      "type": "char"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Activity Type",
+      "type": "many2one"
+    },
+    "activity_category": {
+      "help": "Actions may trigger specific behavior like opening calendar view or automatically mark as done when a document is uploaded",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "default",
+          "None"
+        ],
+        [
+          "upload_file",
+          "Upload Document"
+        ],
+        [
+          "phonecall",
+          "Phonecall"
+        ],
+        [
+          "meeting",
+          "Meeting"
+        ]
+      ],
+      "string": "Action",
+      "type": "selection"
+    },
+    "activity_decoration": {
+      "help": "Change the background color of the related activities of this type.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Decoration Type",
+      "type": "selection"
+    },
+    "icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Summary",
+      "type": "char"
+    },
+    "note": {
+      "readonly": false,
+      "required": false,
+      "string": "Note",
+      "type": "html"
+    },
+    "date_deadline": {
+      "readonly": false,
+      "required": true,
+      "string": "Due Date",
+      "type": "date"
+    },
+    "automated": {
+      "help": "Indicates this activity has been created automatically and not by any user.",
+      "readonly": true,
+      "required": false,
+      "string": "Automated activity",
+      "type": "boolean"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "Assigned to",
+      "type": "many2one"
+    },
+    "request_partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Requesting Partner",
+      "type": "many2one"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ],
+        [
+          "done",
+          "Done"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "recommended_activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Recommended Activity Type",
+      "type": "many2one"
+    },
+    "previous_activity_type_id": {
+      "readonly": true,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Previous Activity Type",
+      "type": "many2one"
+    },
+    "has_recommended_activities": {
+      "readonly": true,
+      "required": false,
+      "string": "Next activities available",
+      "type": "boolean"
+    },
+    "mail_template_ids": {
+      "readonly": true,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Email templates",
+      "type": "many2many"
+    },
+    "chaining_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "suggest",
+          "Suggest Next Activity"
+        ],
+        [
+          "trigger",
+          "Trigger Next Activity"
+        ]
+      ],
+      "string": "Chaining Type",
+      "type": "selection"
+    },
+    "can_write": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Write",
+      "type": "boolean"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "calendar_event_id": {
+      "readonly": false,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Calendar Meeting",
+      "type": "many2one"
+    },
+    "mobile_push_sent": {
+      "readonly": false,
+      "required": false,
+      "string": "Mobile Push Sent",
+      "type": "boolean"
+    },
+    "mobile_push_sent_at": {
+      "readonly": false,
+      "required": false,
+      "string": "Mobile Push Sent At",
+      "type": "datetime"
+    },
+    "mobile_push_reminder_sent_keys": {
+      "readonly": false,
+      "required": false,
+      "string": "Mobile Push Reminder Sent Keys",
+      "type": "text"
+    },
+    "mobile_push_error": {
+      "readonly": false,
+      "required": false,
+      "string": "Mobile Push Error",
+      "type": "text"
+    },
+    "domain_sale_team_ids": {
+      "readonly": true,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sales Teams",
+      "type": "many2many"
+    },
+    "sale_team_id": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sale Team",
+      "type": "many2one"
+    },
+    "crm_department_id": {
+      "readonly": false,
+      "relation": "crm.department",
+      "required": false,
+      "string": "Crm Department",
+      "type": "many2one"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "supervisor_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Supervisors",
+      "type": "many2many"
+    },
+    "department_ids": {
+      "readonly": false,
+      "relation": "hr.department",
+      "required": false,
+      "string": "Department",
+      "type": "many2many"
+    },
+    "sh_activity_tags": {
+      "readonly": false,
+      "relation": "sh.activity.tags",
+      "required": false,
+      "string": "Activity Tags",
+      "type": "many2many"
+    },
+    "sh_state": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ],
+        [
+          "done",
+          "Done"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "Sh State",
+      "type": "selection"
+    },
+    "date_done": {
+      "readonly": true,
+      "required": false,
+      "string": "Completed Date",
+      "type": "date"
+    },
+    "feedback": {
+      "readonly": false,
+      "required": false,
+      "string": "Feedback",
+      "type": "text"
+    },
+    "text_note": {
+      "readonly": true,
+      "required": false,
+      "string": "Notes In Char format ",
+      "type": "char"
+    },
+    "sh_user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Assign Multi Users",
+      "type": "many2many"
+    },
+    "sh_display_multi_user": {
+      "readonly": true,
+      "required": false,
+      "string": "Sh Display Multi User",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color Index",
+      "type": "integer"
+    },
+    "sh_create_individual_activity": {
+      "readonly": false,
+      "required": false,
+      "string": "Individual activities for multi users ?",
+      "type": "boolean"
+    },
+    "sh_activity_alarm_ids": {
+      "readonly": false,
+      "relation": "sh.activity.alarm",
+      "required": false,
+      "string": "Reminders",
+      "type": "many2many"
+    },
+    "sh_date_deadline": {
+      "readonly": false,
+      "required": true,
+      "string": "Reminder Due Date",
+      "type": "datetime"
+    },
+    "due_in_text": {
+      "readonly": true,
+      "required": false,
+      "string": "Due In",
+      "type": "char"
+    },
+    "activity_cancel": {
+      "readonly": false,
+      "required": false,
+      "string": "Activity Cancel",
+      "type": "boolean"
+    },
+    "activity_done": {
+      "readonly": false,
+      "required": false,
+      "string": "Activity Done",
+      "type": "boolean"
+    },
+    "sh_activity_id": {
+      "readonly": false,
+      "relation": "sh.recurring.activities",
+      "required": false,
+      "string": "Sh Activity",
+      "type": "many2one"
+    },
+    "reference": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "account.account",
+          "Account"
+        ],
+        [
+          "account.analytic.account",
+          "Analytic Account"
+        ],
+        [
+          "account.asset.category",
+          "Asset Category"
+        ],
+        [
+          "account.asset.asset",
+          "Asset/Revenue Recognition"
+        ],
+        [
+          "balance.carry.forward",
+          "Balance Carry Forward"
+        ],
+        [
+          "res.partner.bank",
+          "Bank Accounts"
+        ],
+        [
+          "calendar.event",
+          "Calendar Event"
+        ],
+        [
+          "res.company",
+          "Companies"
+        ],
+        [
+          "res.partner",
+          "Contact"
+        ],
+        [
+          "hr.contract",
+          "Contract"
+        ],
+        [
+          "hr.department",
+          "Department"
+        ],
+        [
+          "mail.channel",
+          "Discussion Channel"
+        ],
+        [
+          "einvoice.provider",
+          "Einvoice Provider"
+        ],
+        [
+          "einvoice.serial",
+          "Einvoice Serial"
+        ],
+        [
+          "einvoice.template",
+          "Einvoice Template"
+        ],
+        [
+          "mail.thread.cc",
+          "Email CC management"
+        ],
+        [
+          "mail.thread",
+          "Email Thread"
+        ],
+        [
+          "hr.employee",
+          "Employee"
+        ],
+        [
+          "hr.expense",
+          "Expense"
+        ],
+        [
+          "hr.expense.sheet",
+          "Expense Report"
+        ],
+        [
+          "freight.booking.line",
+          "Freight Booking Line"
+        ],
+        [
+          "freight.credit.note",
+          "Freight Credit Note"
+        ],
+        [
+          "freight.dc.note",
+          "Freight DC Note"
+        ],
+        [
+          "freight.debit.note",
+          "Freight Debit Note"
+        ],
+        [
+          "freight.document.line.buying",
+          "Freight Document Line Buying"
+        ],
+        [
+          "freight.document.line.pay.on.behalf",
+          "Freight Document Pay On Behalf Line"
+        ],
+        [
+          "freight.job",
+          "Freight Job"
+        ],
+        [
+          "freight.local.charge",
+          "Freight Local Charge"
+        ],
+        [
+          "freight.booking",
+          "Freight Order"
+        ],
+        [
+          "freight.booking.external",
+          "Freight Order External"
+        ],
+        [
+          "freight.purchase.pricing",
+          "Freight Purchase Pricing"
+        ],
+        [
+          "freight.quotation",
+          "Freight Quotation"
+        ],
+        [
+          "freight.quotation.template",
+          "Freight Quotation Template"
+        ],
+        [
+          "freight.sales.inquiry",
+          "Freight Sales Inquiry"
+        ],
+        [
+          "freight.shipment",
+          "Freight Shipment"
+        ],
+        [
+          "freight.shipment.house",
+          "Freight Shipment House"
+        ],
+        [
+          "freight.shipment.master",
+          "Freight Shipment Master"
+        ],
+        [
+          "freight.soa",
+          "Freight Statement of Account"
+        ],
+        [
+          "employee.advance",
+          "HR Employee Advance"
+        ],
+        [
+          "employee.advance.reconcile",
+          "HR Employee Advance Reconcile"
+        ],
+        [
+          "hr.job",
+          "Job Position"
+        ],
+        [
+          "account.journal",
+          "Journal"
+        ],
+        [
+          "account.move",
+          "Journal Entry"
+        ],
+        [
+          "crm.lead",
+          "Lead/Opportunity"
+        ],
+        [
+          "mail.blacklist",
+          "Mail Blacklist"
+        ],
+        [
+          "mail.thread.blacklist",
+          "Mail Blacklist mixin"
+        ],
+        [
+          "mailing.contact",
+          "Mailing Contact"
+        ],
+        [
+          "freight.dp.access.profile",
+          "Management Report Access Profile"
+        ],
+        [
+          "mailing.mailing",
+          "Mass Mailing"
+        ],
+        [
+          "account.payment",
+          "Payments"
+        ],
+        [
+          "phone.blacklist",
+          "Phone Blacklist"
+        ],
+        [
+          "mail.thread.phone",
+          "Phone Blacklist Mixin"
+        ],
+        [
+          "account.reconcile.model",
+          "Preset to create journal entries during a invoices and payments matching"
+        ],
+        [
+          "product.template",
+          "Product"
+        ],
+        [
+          "product.product",
+          "Product Variant"
+        ],
+        [
+          "crm.team",
+          "Sales Team"
+        ],
+        [
+          "crm.team.member",
+          "Sales Team Member"
+        ],
+        [
+          "account.account.template",
+          "Templates for Accounts"
+        ],
+        [
+          "auth_totp.wizard",
+          "2-Factor Setup Wizard"
+        ],
+        [
+          "account.edi.xml.ubl_a_nz",
+          "A-NZ BIS Billing 3.0"
+        ],
+        [
+          "ks_dashboard_ninja.ai_dashboard",
+          "AI Dashboard"
+        ],
+        [
+          "ks_dashboard_ninja.arti_int",
+          "AI Dashboard"
+        ],
+        [
+          "ams.address",
+          "AMS Address"
+        ],
+        [
+          "res.users.apikeys.description",
+          "API Key Description"
+        ],
+        [
+          "freight.ar.invoice.line",
+          "AR Invoice Analysis"
+        ],
+        [
+          "freight.ar.invoice.report",
+          "AR Invoice Detail Report"
+        ],
+        [
+          "report.report_xlsx.abstract",
+          "Abstract XLSX Report"
+        ],
+        [
+          "res.groups",
+          "Access Groups"
+        ],
+        [
+          "account.account.reconcile",
+          "Account Account Reconcile"
+        ],
+        [
+          "account.cash.rounding",
+          "Account Cash Rounding"
+        ],
+        [
+          "account.chart.template",
+          "Account Chart Template"
+        ],
+        [
+          "account.common.report",
+          "Account Common Report"
+        ],
+        [
+          "wizard.account.counterpart.generator",
+          "Account Counterpart Generating Wizard"
+        ],
+        [
+          "account.advance.payment.register",
+          "Account Employee Advance Payment Register"
+        ],
+        [
+          "account.group",
+          "Account Group"
+        ],
+        [
+          "account.invoice.send",
+          "Account Invoice Send"
+        ],
+        [
+          "account.journal.group",
+          "Account Journal Group"
+        ],
+        [
+          "report.sota_freight_advanced.report_account_move_xlsx",
+          "Account Move List XLSX Report"
+        ],
+        [
+          "account.move.reversal",
+          "Account Move Reversal"
+        ],
+        [
+          "report.l10n_vn_viin.report_account_payment",
+          "Account Payment Report"
+        ],
+        [
+          "account.reconcile.abstract",
+          "Account Reconcile Abstract"
+        ],
+        [
+          "account.account.tag",
+          "Account Tag"
+        ],
+        [
+          "account.transfer.allocation",
+          "Account Transfer / Allocation"
+        ],
+        [
+          "account.unreconcile",
+          "Account Unreconcile"
+        ],
+        [
+          "account.root",
+          "Account codes first 2 digits"
+        ],
+        [
+          "report.account.report_invoice_with_payments",
+          "Account report with payment lines"
+        ],
+        [
+          "report.account.report_invoice",
+          "Account report without payment lines"
+        ],
+        [
+          "account.tour.upload.bill",
+          "Account tour upload bill"
+        ],
+        [
+          "account.tour.upload.bill.email.confirm",
+          "Account tour upload bill email confirm"
+        ],
+        [
+          "print.form.docx",
+          "Accounting Form Word Builder"
+        ],
+        [
+          "account.report",
+          "Accounting Report"
+        ],
+        [
+          "account.report.column",
+          "Accounting Report Column"
+        ],
+        [
+          "account.report.expression",
+          "Accounting Report Expression"
+        ],
+        [
+          "account.report.external.value",
+          "Accounting Report External Value"
+        ],
+        [
+          "account.report.line",
+          "Accounting Report Line"
+        ],
+        [
+          "account.fiscal.position.account.template",
+          "Accounts Mapping Template of Fiscal Position"
+        ],
+        [
+          "account.fiscal.position.account",
+          "Accounts Mapping of Fiscal Position"
+        ],
+        [
+          "account.accrued.orders.wizard",
+          "Accrued Orders Wizard"
+        ],
+        [
+          "mail.activity",
+          "Activity"
+        ],
+        [
+          "activity.dashboard",
+          "Activity Dashboard"
+        ],
+        [
+          "activity.feedback",
+          "Activity Feedback"
+        ],
+        [
+          "mail.activity.mixin",
+          "Activity Mixin"
+        ],
+        [
+          "sh.activity.tags",
+          "Activity Tags"
+        ],
+        [
+          "mail.activity.type",
+          "Activity Type"
+        ],
+        [
+          "mailing.contact.to.list",
+          "Add Contacts to Mailing List"
+        ],
+        [
+          "account.debit.note",
+          "Add Debit Note wizard"
+        ],
+        [
+          "add.multiple.charges.wizard",
+          "Add Multiple Charges"
+        ],
+        [
+          "freight.quotation.purchase.pricing.wizard",
+          "Add quotation lines from purchase pricing search"
+        ],
+        [
+          "format.address.mixin",
+          "Address Format"
+        ],
+        [
+          "report.to_hr_employee_advance.report_employee_advance_request",
+          "Advance Request Form (03-TT)"
+        ],
+        [
+          "house.air.buying.rate",
+          "Air House Buying Rate"
+        ],
+        [
+          "house.air.buying.rate.cost",
+          "Air House Buying Rate Cost"
+        ],
+        [
+          "house.air.pay.on.behalf.rate",
+          "Air House Pay On Behalf Rate"
+        ],
+        [
+          "house.print.air.selling.rate",
+          "Air House Print Selling Rate"
+        ],
+        [
+          "house.air.quotation.information",
+          "Air House Quotation Information"
+        ],
+        [
+          "house.air.schedule.information",
+          "Air House Schedule Information"
+        ],
+        [
+          "house.air.selling.rate",
+          "Air House Selling Rate"
+        ],
+        [
+          "air.house.weight.information",
+          "Air House Weight Information"
+        ],
+        [
+          "job.air.attachment",
+          "Air Job Attachment"
+        ],
+        [
+          "danger.air.cargo.information",
+          "Air Job Dangerous Cargo Information"
+        ],
+        [
+          "air.schedule.information",
+          "Air Job Schedule Information"
+        ],
+        [
+          "sh.activity.alarm",
+          "Alarm Reminder"
+        ],
+        [
+          "account.analytic.distribution.model",
+          "Analytic Distribution Model"
+        ],
+        [
+          "account.analytic.line",
+          "Analytic Line"
+        ],
+        [
+          "analytic.mixin",
+          "Analytic Mixin"
+        ],
+        [
+          "account.analytic.applicability",
+          "Analytic Plan's Applicabilities"
+        ],
+        [
+          "account.analytic.plan",
+          "Analytic Plans"
+        ],
+        [
+          "account.analytic.tag",
+          "Analytic Tags"
+        ],
+        [
+          "account.asset.depreciation.line",
+          "Asset Depreciation Line"
+        ],
+        [
+          "asset.dispose.wizard",
+          "Asset Dispose Wizard"
+        ],
+        [
+          "asset.sell.wizard",
+          "Asset Sell Wizard"
+        ],
+        [
+          "asset.asset.report",
+          "Assets Analysis"
+        ],
+        [
+          "web_editor.assets",
+          "Assets Utils"
+        ],
+        [
+          "product.attribute.value",
+          "Attribute Value"
+        ],
+        [
+          "auth_totp.device",
+          "Authentication Device"
+        ],
+        [
+          "report.sota_freight_advanced.report_auth_letter_invoice_xlsx",
+          "Authorize Letter Invoice XLSX"
+        ],
+        [
+          "report.sota_freight_advanced.report_authorize_letter_xlsx",
+          "Authorize Letter XLSX"
+        ],
+        [
+          "base.automation",
+          "Automated Action"
+        ],
+        [
+          "sequence.mixin",
+          "Automatic sequence"
+        ],
+        [
+          "avatar.mixin",
+          "Avatar Mixin"
+        ],
+        [
+          "account.edi.xml.ubl_de",
+          "BIS3 DE (XRechnung)"
+        ],
+        [
+          "db.backup",
+          "Backup configuration record"
+        ],
+        [
+          "balance.carry.forward.rule",
+          "Balance Carry Forward Rule"
+        ],
+        [
+          "balance.carry.forward.rule.line",
+          "Balance carry Forward Rule Line"
+        ],
+        [
+          "res.bank",
+          "Bank"
+        ],
+        [
+          "account.bank.statement",
+          "Bank Statement"
+        ],
+        [
+          "account.bank.statement.line",
+          "Bank Statement Line"
+        ],
+        [
+          "account.setup.bank.manual.config",
+          "Bank setup manual config"
+        ],
+        [
+          "base",
+          "Base"
+        ],
+        [
+          "base_import.import",
+          "Base Import"
+        ],
+        [
+          "base_import.mapping",
+          "Base Import Mapping"
+        ],
+        [
+          "hr.employee.base",
+          "Basic Employee"
+        ],
+        [
+          "customs.declaration.batch.import.line",
+          "Batch Customs Declaration Line"
+        ],
+        [
+          "customs.declaration.batch.import.wizard",
+          "Batch Customs Declaration Upload Wizard"
+        ],
+        [
+          "binary.field.preview",
+          "Binary Field Preview"
+        ],
+        [
+          "custom.booking.schedule.information",
+          "Booking Customs Schedule Information"
+        ],
+        [
+          "danger.cargo.information",
+          "Booking Dangerous Cargo Information"
+        ],
+        [
+          "booking.line.attachment",
+          "Booking Line Attachment"
+        ],
+        [
+          "hr.expense.sheet.bulk.payment",
+          "Bulk Payment Registration for Expense Sheets"
+        ],
+        [
+          "crm.activity.report",
+          "CRM Activity Analysis"
+        ],
+        [
+          "crm.activity.log.type",
+          "CRM Activity Log Type"
+        ],
+        [
+          "crm.iap.lead.industry",
+          "CRM IAP Lead Industry"
+        ],
+        [
+          "crm.kpi.entry",
+          "CRM KPI Entry"
+        ],
+        [
+          "crm.kpi.period",
+          "CRM KPI Period"
+        ],
+        [
+          "crm.iap.lead.mining.request",
+          "CRM Lead Mining Request"
+        ],
+        [
+          "crm.recurring.plan",
+          "CRM Recurring revenue plans"
+        ],
+        [
+          "crm.sales.report",
+          "CRM Sales Report"
+        ],
+        [
+          "crm.sales.order.event",
+          "CRM Sales Report - Order Event"
+        ],
+        [
+          "crm.stage",
+          "CRM Stages"
+        ],
+        [
+          "crm.tag",
+          "CRM Tag"
+        ],
+        [
+          "calendar.attendee",
+          "Calendar Attendee Information"
+        ],
+        [
+          "calendar.filters",
+          "Calendar Filters"
+        ],
+        [
+          "calendar.provider.config",
+          "Calendar Provider Configuration Wizard"
+        ],
+        [
+          "utm.stage",
+          "Campaign Stage"
+        ],
+        [
+          "mail.shortcode",
+          "Canned Response / Shortcode"
+        ],
+        [
+          "account.balance.carry.forward.wizard",
+          "Carry Balance Forward"
+        ],
+        [
+          "change.lock.date",
+          "Change Lock Date"
+        ],
+        [
+          "change.password.wizard",
+          "Change Password Wizard"
+        ],
+        [
+          "product.label.layout",
+          "Choose the sheet layout to print the labels"
+        ],
+        [
+          "account.edi.common",
+          "Common functions for EDI documents: generate the data, the constraints, etc"
+        ],
+        [
+          "bus.bus",
+          "Communication Bus"
+        ],
+        [
+          "base.document.layout",
+          "Company Document Layout"
+        ],
+        [
+          "res.config",
+          "Config"
+        ],
+        [
+          "res.config.installer",
+          "Config Installer"
+        ],
+        [
+          "hr.contract.type",
+          "Contract Type"
+        ],
+        [
+          "hr.contract.history",
+          "Contract history"
+        ],
+        [
+          "crm.lead2opportunity.partner.mass",
+          "Convert Lead to Opportunity (in mass)"
+        ],
+        [
+          "crm.lead2opportunity.partner",
+          "Convert Lead to Opportunity (not in mass)"
+        ],
+        [
+          "copy.house.bl.wizard",
+          "Copy House B/L Wizard"
+        ],
+        [
+          "copy.master.bl.wizard",
+          "Copy Master B/L Wizard"
+        ],
+        [
+          "res.country",
+          "Country"
+        ],
+        [
+          "res.country.group",
+          "Country Group"
+        ],
+        [
+          "res.country.state",
+          "Country state"
+        ],
+        [
+          "account.automatic.entry.wizard",
+          "Create Automatic Entries"
+        ],
+        [
+          "wizard.ir.model.menu.create",
+          "Create Menu Wizard"
+        ],
+        [
+          "wizard.create.role.from.user",
+          "Create role from user wizard"
+        ],
+        [
+          "crm.kpi.report",
+          "Crm Kpi Report"
+        ],
+        [
+          "res.currency",
+          "Currency"
+        ],
+        [
+          "res.currency.rate",
+          "Currency Rate"
+        ],
+        [
+          "customs.declaration.import.wizard",
+          "Customs Declaration Import Wizard"
+        ],
+        [
+          "freight.customs.job",
+          "Customs Job"
+        ],
+        [
+          "job.custom.attachment",
+          "Customs Job Attachment"
+        ],
+        [
+          "custom.schedule.information",
+          "Customs Job Schedule Information"
+        ],
+        [
+          "custom.operation.information",
+          "Customs Operation Information"
+        ],
+        [
+          "freight.debt.offset.wizard",
+          "Cấn trừ công nợ phải thu / phải trả"
+        ],
+        [
+          "freight.do.address",
+          "DO Address"
+        ],
+        [
+          "ks.dashboard.wizard",
+          "Dashboard Creation Wizard"
+        ],
+        [
+          "ks.dashboard.delete.wizard",
+          "Dashboard Delete Wizard"
+        ],
+        [
+          "ks.dashboard.duplicate.wizard",
+          "Dashboard Duplicate Wizard"
+        ],
+        [
+          "ks_dashboard_ninja.board",
+          "Dashboard Ninja"
+        ],
+        [
+          "ks_dashboard_ninja.child_board",
+          "Dashboard Ninja Child Board"
+        ],
+        [
+          "ks_dashboard_ninja.board_custom_filters",
+          "Dashboard Ninja Custom Filters"
+        ],
+        [
+          "ks_dashboard_ninja.board_defined_filters",
+          "Dashboard Ninja Defined Filters"
+        ],
+        [
+          "ks.dashboard.group.by",
+          "Dashboard Ninja Group By"
+        ],
+        [
+          "ks.dashboard.csv.group.by",
+          "Dashboard Ninja Group By"
+        ],
+        [
+          "ks_ninja_dashboard.item_action",
+          "Dashboard Ninja Item Actions"
+        ],
+        [
+          "ks_dashboard_ninja.item_action",
+          "Dashboard Ninja Items Action Lines"
+        ],
+        [
+          "ks_dashboard_ninja.item_goal",
+          "Dashboard Ninja Items Goal Lines"
+        ],
+        [
+          "ks_dashboard_item.multiplier",
+          "Dashboard Ninja Items Multiplier Lines"
+        ],
+        [
+          "ks_dashboard_ninja.kpi_mail",
+          "Dashboard Ninja Kpi mail"
+        ],
+        [
+          "ks.dashboard.csv.new",
+          "Dashboard Ninja New"
+        ],
+        [
+          "ks.dashboard.new",
+          "Dashboard Ninja New"
+        ],
+        [
+          "ks_dashboard_ninja.board_template",
+          "Dashboard Ninja Template"
+        ],
+        [
+          "ks_dashboard_ninja.item",
+          "Dashboard Ninja items"
+        ],
+        [
+          "freight.day.of.week",
+          "Day of Week"
+        ],
+        [
+          "decimal.precision",
+          "Decimal Precision"
+        ],
+        [
+          "hr.departure.reason",
+          "Departure Reason"
+        ],
+        [
+          "hr.departure.wizard",
+          "Departure Wizard"
+        ],
+        [
+          "digest.digest",
+          "Digest"
+        ],
+        [
+          "digest.tip",
+          "Digest Tips"
+        ],
+        [
+          "document.cargo",
+          "Document Cargo"
+        ],
+        [
+          "mail.followers",
+          "Document Followers"
+        ],
+        [
+          "account.edi.xml.ubl_efff",
+          "E-FFF (BE)"
+        ],
+        [
+          "einvoice.adjust.wizard",
+          "E-invoice Adjust Wizard"
+        ],
+        [
+          "einvoice.cancel.wizard",
+          "E-invoice Cancel Wizard"
+        ],
+        [
+          "einvoice.reason.wizard",
+          "E-invoice Reason Wizard"
+        ],
+        [
+          "einvoice.replace.wizard",
+          "E-invoice Replace Wizard"
+        ],
+        [
+          "account.edi.format",
+          "EDI format"
+        ],
+        [
+          "einvoice.type",
+          "Einvoice Type"
+        ],
+        [
+          "account.edi.document",
+          "Electronic Document for an account.move"
+        ],
+        [
+          "mail.alias",
+          "Email Aliases"
+        ],
+        [
+          "mail.alias.mixin",
+          "Email Aliases Mixin"
+        ],
+        [
+          "mail.template.preview",
+          "Email Template Preview"
+        ],
+        [
+          "mail.template",
+          "Email Templates"
+        ],
+        [
+          "mail.compose.message",
+          "Email composition wizard"
+        ],
+        [
+          "mail.resend.message",
+          "Email resend wizard"
+        ],
+        [
+          "employee.advance.payment",
+          "Employee Advance Payment"
+        ],
+        [
+          "employee.advance.reconcile.batch",
+          "Employee Advance Reconcile Batch"
+        ],
+        [
+          "hr.employee.category",
+          "Employee Category"
+        ],
+        [
+          "base.enable.profiling.wizard",
+          "Enable profiling for some time"
+        ],
+        [
+          "calendar.alarm",
+          "Event Alarm"
+        ],
+        [
+          "calendar.alarm_manager",
+          "Event Alarm Manager"
+        ],
+        [
+          "calendar.event.type",
+          "Event Meeting Type"
+        ],
+        [
+          "calendar.recurrence",
+          "Event Recurrence Rule"
+        ],
+        [
+          "hr.expense.approve.duplicate",
+          "Expense Approve Duplicate"
+        ],
+        [
+          "hr.expense.refuse.wizard",
+          "Expense Refuse Reason Wizard"
+        ],
+        [
+          "hr.expense.split",
+          "Expense Split"
+        ],
+        [
+          "hr.expense.split.wizard",
+          "Expense Split Wizard"
+        ],
+        [
+          "external.danger.cargo.information",
+          "External Booking Dangerous Cargo Information"
+        ],
+        [
+          "external.document.cargo",
+          "External Document Cargo"
+        ],
+        [
+          "freight.fcl.unit",
+          "FCL Unit"
+        ],
+        [
+          "account.edi.xml.cii",
+          "Factur-x/XRechnung CII 2.2.0"
+        ],
+        [
+          "ks_dashboard_ninja.fetch_key",
+          "Fetch API key"
+        ],
+        [
+          "crm.lead.scoring.frequency.field",
+          "Fields that can be used for predictive lead scoring computation"
+        ],
+        [
+          "asset.fill.missing.values.wizard",
+          "Fill missing values to Asset"
+        ],
+        [
+          "account.fiscal.position",
+          "Fiscal Position"
+        ],
+        [
+          "account.fiscal.year",
+          "Fiscal Year"
+        ],
+        [
+          "report.sota_account_asset.report_fixed_asset_book",
+          "Fixed Asset Book XLSX Report"
+        ],
+        [
+          "report.sota_account_asset.report_fixed_asset_depreciation",
+          "Fixed Asset Depreciation XLSX Report"
+        ],
+        [
+          "fixed.asset.report",
+          "Fixed Asset Report"
+        ],
+        [
+          "snailmail.letter.format.error",
+          "Format Error Sending a Snailmail Letter"
+        ],
+        [
+          "freight.airline",
+          "Freight Airline"
+        ],
+        [
+          "freight.bl.number",
+          "Freight BL Number"
+        ],
+        [
+          "freight.bank.information",
+          "Freight Bank Information"
+        ],
+        [
+          "freight.booking.external.cargo.information",
+          "Freight Booking Cargo Information"
+        ],
+        [
+          "freight.booking.cargo.information",
+          "Freight Booking Cargo Information"
+        ],
+        [
+          "freight.commodity",
+          "Freight Commodity"
+        ],
+        [
+          "freight.credit.note.line",
+          "Freight Credit Note Line"
+        ],
+        [
+          "freight.customs.department",
+          "Freight Customs Department"
+        ],
+        [
+          "freight.dc.note.line",
+          "Freight Debit Note Line"
+        ],
+        [
+          "freight.debit.note.line",
+          "Freight Debit Note Line"
+        ],
+        [
+          "freight.goods.description.suggest",
+          "Freight Description Suggest"
+        ],
+        [
+          "freight.document.general",
+          "Freight Document General"
+        ],
+        [
+          "freight.document.line.selling",
+          "Freight Document Line Selling"
+        ],
+        [
+          "freight.document.line",
+          "Freight Document Lines"
+        ],
+        [
+          "freight.hs.code",
+          "Freight Hs Code"
+        ],
+        [
+          "freight.incoterms",
+          "Freight Incoterms"
+        ],
+        [
+          "freight.truck.job",
+          "Freight Job"
+        ],
+        [
+          "freight.job.air.cargo.information",
+          "Freight Job Air Cargo Information"
+        ],
+        [
+          "freight.job.booking.confirmation",
+          "Freight Job Booking Confirmation"
+        ],
+        [
+          "freight.job.sea.cargo.information",
+          "Freight Job Sea Cargo Information"
+        ],
+        [
+          "freight.job.truck.cargo.information",
+          "Freight Job Truck Cargo Information"
+        ],
+        [
+          "freight.local.charge.line",
+          "Freight Local Charge Line"
+        ],
+        [
+          "freight.local.other.charge.line",
+          "Freight Local Other Charge Line"
+        ],
+        [
+          "freight.package",
+          "Freight Package"
+        ],
+        [
+          "freight.party.role",
+          "Freight Party Role"
+        ],
+        [
+          "freight.performance.report",
+          "Freight Performance Report"
+        ],
+        [
+          "freight.port",
+          "Freight Port"
+        ],
+        [
+          "freight.procedure.code",
+          "Freight Procedure Information"
+        ],
+        [
+          "freight.product.qty.rule",
+          "Freight Product Quantity Fill Rule"
+        ],
+        [
+          "freight.quotation.line",
+          "Freight Quotation Lines"
+        ],
+        [
+          "freight.quotation.other.line",
+          "Freight Quotation Other Lines"
+        ],
+        [
+          "freight.quotation.pay.on.behalf.line",
+          "Freight Quotation Pay On Behalf Lines"
+        ],
+        [
+          "freight.quotation.line.template",
+          "Freight Quotation Template Line"
+        ],
+        [
+          "freight.rate.visibility",
+          "Freight Rate Visibility by Department"
+        ],
+        [
+          "freight.rate.visibility.mixin",
+          "Freight Rate Visibility per Document"
+        ],
+        [
+          "report.sota_freight_advanced.report_isf5_plus_2_xlsx",
+          "Freight Report ISF5 + 2"
+        ],
+        [
+          "report.sota_freight_crm.report_quotation_xlsx",
+          "Freight Report Quotation XLSX"
+        ],
+        [
+          "report.sota_freight_advanced.report_quotation_xlsx",
+          "Freight Report Quotation XLSX"
+        ],
+        [
+          "freight.soa.line",
+          "Freight SOA Line"
+        ],
+        [
+          "report.sota_freight_advanced.report_freight_soa_xlsx",
+          "Freight SOA XLSX Report"
+        ],
+        [
+          "freight.selling.profit.by.line",
+          "Freight Selling Profit By Line"
+        ],
+        [
+          "freight.selling.profit.detail",
+          "Freight Selling Profit Detail Report"
+        ],
+        [
+          "freight.service.line",
+          "Freight Service Line"
+        ],
+        [
+          "freight.service.tags",
+          "Freight Service Tags"
+        ],
+        [
+          "freight.service.terms",
+          "Freight Service Terms"
+        ],
+        [
+          "freight.shipment.tracking",
+          "Freight Shipment Tracking"
+        ],
+        [
+          "freight.shipping.line",
+          "Freight Shipping Line"
+        ],
+        [
+          "freight.trade.name",
+          "Freight Trade Name"
+        ],
+        [
+          "freight.transit.type",
+          "Freight Transit Type"
+        ],
+        [
+          "freight.transport.mode",
+          "Freight Transport Mode"
+        ],
+        [
+          "freight.truck.plate",
+          "Freight Truck Plate"
+        ],
+        [
+          "freight.truck.summary.job",
+          "Freight Truck Summary"
+        ],
+        [
+          "freight.trucker",
+          "Freight Trucker"
+        ],
+        [
+          "freight.unit",
+          "Freight Unit"
+        ],
+        [
+          "freight.update.currency.rate.abstract",
+          "Freight Update Currency Rate"
+        ],
+        [
+          "freight.vessel",
+          "Freight Vessel"
+        ],
+        [
+          "account.full.reconcile",
+          "Full Reconcile"
+        ],
+        [
+          "gdt.einvoice.bill",
+          "GDT E-Invoice (Hóa đơn đầu vào)"
+        ],
+        [
+          "payment.link.wizard",
+          "Generate Payment Link"
+        ],
+        [
+          "base.geocoder",
+          "Geo Coder"
+        ],
+        [
+          "base.geo_provider",
+          "Geo Provider"
+        ],
+        [
+          "crm.lead.lost",
+          "Get Lost Reason"
+        ],
+        [
+          "report.account.report_hash_integrity",
+          "Get hash integrity result as PDF."
+        ],
+        [
+          "report.sota_freight_advanced.report_goods_delivery_xlsx",
+          "Goods Delivery XLSX"
+        ],
+        [
+          "report.sota_freight_advanced.report_goods_delivery_job_xlsx",
+          "Goods Delivery XLSX"
+        ],
+        [
+          "portal.wizard",
+          "Grant Portal Access"
+        ],
+        [
+          "spreadsheet.dashboard.group",
+          "Group of dashboards"
+        ],
+        [
+          "mail.guest",
+          "Guest"
+        ],
+        [
+          "employee.advance.line",
+          "HR Employee Advance Line"
+        ],
+        [
+          "employee.advance.reconcile.line",
+          "HR Employee Advance Reconcile Line"
+        ],
+        [
+          "crm.iap.lead.helpers",
+          "Helper methods for crm_iap_mine modules"
+        ],
+        [
+          "sh.recurring.activities",
+          "Helps to keep manage the recurrent Events"
+        ],
+        [
+          "house.multi.buying.rate",
+          "House Multi Buying Rate"
+        ],
+        [
+          "house.multi.buying.rate.cost",
+          "House Multi Buying Rate Cost"
+        ],
+        [
+          "house.multi.pay.on.behalf.rate",
+          "House Multi Pay On Behalf Rate"
+        ],
+        [
+          "house.multi.selling.rate",
+          "House Multi Selling Rate"
+        ],
+        [
+          "house.print.sea.selling.rate",
+          "House Print Sea Selling Rate"
+        ],
+        [
+          "line.rate.abstract",
+          "House Rate Line (Abstract)"
+        ],
+        [
+          "house.sea.selling.rate",
+          "House Sea Selling Rate"
+        ],
+        [
+          "iap.account",
+          "IAP Account"
+        ],
+        [
+          "iap.enrich.api",
+          "IAP Lead Enrichment API"
+        ],
+        [
+          "iap.autocomplete.api",
+          "IAP Partner Autocomplete API"
+        ],
+        [
+          "mail.ice.server",
+          "ICE server"
+        ],
+        [
+          "image.mixin",
+          "Image Mixin"
+        ],
+        [
+          "ks_dashboard_ninja.import",
+          "Import Dashboard"
+        ],
+        [
+          "vnaccs.job.import.wizard",
+          "Import Jobs from VNACCS Declaration Report"
+        ],
+        [
+          "wizard.import.purchase.pricing",
+          "Import Purchase Pricing from Excel"
+        ],
+        [
+          "fetchmail.server",
+          "Incoming Mail Server"
+        ],
+        [
+          "account.incoterms",
+          "Incoterms"
+        ],
+        [
+          "res.partner.industry",
+          "Industry"
+        ],
+        [
+          "base.language.install",
+          "Install Language"
+        ],
+        [
+          "mail.wizard.invite",
+          "Invite wizard"
+        ],
+        [
+          "abstract.l10n_vn.c119.gtgt",
+          "Invoice Declaration Abstract"
+        ],
+        [
+          "freight.invoice.issuance",
+          "Invoice Issuance"
+        ],
+        [
+          "report.sota_freight_advanced.report_invoice_xlsx",
+          "Invoice XLSX Report"
+        ],
+        [
+          "account.invoice.report",
+          "Invoices Statistics"
+        ],
+        [
+          "job.buying.rate",
+          "Job Buying Rate"
+        ],
+        [
+          "job.pay.on.behalf.rate",
+          "Job Pay On Behalf Rate"
+        ],
+        [
+          "job.quotation.information",
+          "Job Quotation Information"
+        ],
+        [
+          "job.selling.rate",
+          "Job Selling Rate"
+        ],
+        [
+          "report.l10n_vn_viin.report_account_move_journal_entry",
+          "Journal Entry Report"
+        ],
+        [
+          "account.move.line",
+          "Journal Item"
+        ],
+        [
+          "account.move.line.ctp",
+          "Journal Item Counterpart"
+        ],
+        [
+          "kpi.provider",
+          "KPI Provider"
+        ],
+        [
+          "freight.tax.company.mixin",
+          "Keep Freight Line Tax In Line Company"
+        ],
+        [
+          "base.language.export",
+          "Language Export"
+        ],
+        [
+          "base.language.import",
+          "Language Import"
+        ],
+        [
+          "res.lang",
+          "Languages"
+        ],
+        [
+          "crm.lead.scoring.frequency",
+          "Lead Scoring Frequency"
+        ],
+        [
+          "link.tracker",
+          "Link Tracker"
+        ],
+        [
+          "link.tracker.click",
+          "Link Tracker Click"
+        ],
+        [
+          "link.tracker.code",
+          "Link Tracker Code"
+        ],
+        [
+          "mail.channel.member",
+          "Listeners of a Channel"
+        ],
+        [
+          "freight.service.lock.mixin",
+          "Lock rate lines of completed services"
+        ],
+        [
+          "login.detail",
+          "Login Details"
+        ],
+        [
+          "mail.bot",
+          "Mail Bot"
+        ],
+        [
+          "mail.composer.mixin",
+          "Mail Composer Mixin"
+        ],
+        [
+          "mail.gateway.allowed",
+          "Mail Gateway Allowed"
+        ],
+        [
+          "mail.channel.rtc.session",
+          "Mail RTC session"
+        ],
+        [
+          "mail.render.mixin",
+          "Mail Render Mixin"
+        ],
+        [
+          "mail.template.reset",
+          "Mail Template Reset"
+        ],
+        [
+          "mail.tracking.value",
+          "Mail Tracking Value"
+        ],
+        [
+          "mailing.contact.import",
+          "Mailing Contact Import"
+        ],
+        [
+          "mailing.filter",
+          "Mailing Favorite Filters"
+        ],
+        [
+          "mailing.list",
+          "Mailing List"
+        ],
+        [
+          "mailing.trace",
+          "Mailing Statistics"
+        ],
+        [
+          "freight.dp.account.code",
+          "Management Report Revenue/Cost Code"
+        ],
+        [
+          "freight.daily.performance",
+          "Management Report by Shipment"
+        ],
+        [
+          "sh.mark.as.done",
+          "Mark As Done"
+        ],
+        [
+          "mailing.trace.report",
+          "Mass Mailing Statistics"
+        ],
+        [
+          "mailing.contact.subscription",
+          "Mass Mailing Subscription Information"
+        ],
+        [
+          "access_limit_max_users.protection.mixin",
+          "Max Users Limit Protection Mixin"
+        ],
+        [
+          "mailing.list.merge",
+          "Merge Mass Mailing List"
+        ],
+        [
+          "crm.merge.opportunity",
+          "Merge Opportunities"
+        ],
+        [
+          "base.partner.merge.line",
+          "Merge Partner Line"
+        ],
+        [
+          "base.partner.merge.automatic.wizard",
+          "Merge Partner Wizard"
+        ],
+        [
+          "wizard.merge.salesman",
+          "Merge Salesman Wizard"
+        ],
+        [
+          "mail.message",
+          "Message"
+        ],
+        [
+          "mail.notification",
+          "Message Notifications"
+        ],
+        [
+          "mail.message.reaction",
+          "Message Reaction"
+        ],
+        [
+          "mail.message.subtype",
+          "Message subtypes"
+        ],
+        [
+          "microsoft.outlook.mixin",
+          "Microsoft Outlook Mixin"
+        ],
+        [
+          "asset.modify",
+          "Modify Asset"
+        ],
+        [
+          "base.module.install.request",
+          "Module Activation Request"
+        ],
+        [
+          "base.module.install.review",
+          "Module Activation Review"
+        ],
+        [
+          "report.base.report_irmodulereference",
+          "Module Reference Report (base)"
+        ],
+        [
+          "base.module.uninstall",
+          "Module Uninstall"
+        ],
+        [
+          "freight.ocr.log",
+          "OCR Usage Log"
+        ],
+        [
+          "freight.ocr.vendor.bill.wizard",
+          "OCR Vendor Bill"
+        ],
+        [
+          "freight.ocr.vendor.bill.wizard.line",
+          "OCR Vendor Bill Line"
+        ],
+        [
+          "one2many",
+          "One2many Copy Onchange Patch"
+        ],
+        [
+          "sota.storage.usage.open",
+          "Open Sota Storage Usage"
+        ],
+        [
+          "account.financial.year.op",
+          "Opening Balance of Financial Year"
+        ],
+        [
+          "treeview.operator.filter",
+          "Operator Filter"
+        ],
+        [
+          "crm.lost.reason",
+          "Opp. Lost Reason"
+        ],
+        [
+          "job.document.cargo",
+          "Other Document Cargo"
+        ],
+        [
+          "job.other.attachment",
+          "Other Job Attachment"
+        ],
+        [
+          "other.cargo.information",
+          "Other Job Cargo Information"
+        ],
+        [
+          "other.schedule.information",
+          "Other Job Schedule Information"
+        ],
+        [
+          "mail.mail",
+          "Outgoing Mails"
+        ],
+        [
+          "sms.sms",
+          "Outgoing SMS"
+        ],
+        [
+          "freight.pl.snapshot.compare",
+          "P/L Snapshot Comparison (vs Current)"
+        ],
+        [
+          "freight.pl.snapshot.compare.line",
+          "P/L Snapshot Comparison Line"
+        ],
+        [
+          "freight.pl.snapshot.compare.period",
+          "P/L Snapshot Comparison Period Option"
+        ],
+        [
+          "freight.pl.snapshot.line",
+          "P/L Snapshot Line (per Job)"
+        ],
+        [
+          "freight.pl.snapshot",
+          "P/L by Department Snapshot"
+        ],
+        [
+          "report.paperformat",
+          "Paper Format Config"
+        ],
+        [
+          "account.partial.reconcile",
+          "Partial Reconcile"
+        ],
+        [
+          "res.partner.autocomplete.sync",
+          "Partner Autocomplete Sync"
+        ],
+        [
+          "res.partner.brench",
+          "Partner Branch"
+        ],
+        [
+          "res.partner.class",
+          "Partner Class"
+        ],
+        [
+          "res.partner.login",
+          "Partner Login"
+        ],
+        [
+          "res.partner.resource",
+          "Partner Resource"
+        ],
+        [
+          "res.partner.routing",
+          "Partner Routing"
+        ],
+        [
+          "res.partner.category",
+          "Partner Tags"
+        ],
+        [
+          "res.partner.title",
+          "Partner Title"
+        ],
+        [
+          "report.report_xlsx.partner_xlsx",
+          "Partner XLSX Report"
+        ],
+        [
+          "account.reconcile.model.partner.mapping",
+          "Partner mapping for reconciliation models"
+        ],
+        [
+          "mail.resend.partner",
+          "Partner with additional information for mail resend"
+        ],
+        [
+          "res.users.identitycheck",
+          "Password Check Wizard"
+        ],
+        [
+          "payment.icon",
+          "Payment Icon"
+        ],
+        [
+          "account.payment.line",
+          "Payment Line"
+        ],
+        [
+          "account.payment.method.line",
+          "Payment Methods"
+        ],
+        [
+          "account.payment.method",
+          "Payment Methods"
+        ],
+        [
+          "payment.provider",
+          "Payment Provider"
+        ],
+        [
+          "report.l10n_vn_viin.report_account_move_payment_receipt",
+          "Payment Receipt Report"
+        ],
+        [
+          "payment.refund.wizard",
+          "Payment Refund Wizard"
+        ],
+        [
+          "report.sota_freight_advanced.report_payment_request_credit_note",
+          "Payment Request Report (Payment Note)"
+        ],
+        [
+          "report.sota_freight_advanced.report_payment_request_soa",
+          "Payment Request Report (SOA)"
+        ],
+        [
+          "account.payment.term",
+          "Payment Terms"
+        ],
+        [
+          "account.payment.term.line",
+          "Payment Terms Line"
+        ],
+        [
+          "payment.token",
+          "Payment Token"
+        ],
+        [
+          "payment.transaction",
+          "Payment Transaction"
+        ],
+        [
+          "payment.provider.onboarding.wizard",
+          "Payment provider onboarding wizard"
+        ],
+        [
+          "crm.iap.lead.role",
+          "People Role"
+        ],
+        [
+          "crm.iap.lead.seniority",
+          "People Seniority"
+        ],
+        [
+          "freight.job.customer.seq",
+          "Per-customer job sequence"
+        ],
+        [
+          "hr.plan.wizard",
+          "Plan Wizard"
+        ],
+        [
+          "hr.plan.activity.type",
+          "Plan activity type"
+        ],
+        [
+          "freight.port.warehouse.mapping",
+          "Port Warehouse Mapping"
+        ],
+        [
+          "portal.mixin",
+          "Portal Mixin"
+        ],
+        [
+          "portal.share",
+          "Portal Sharing"
+        ],
+        [
+          "portal.wizard.user",
+          "Portal User Config"
+        ],
+        [
+          "report.sota_freight_advanced.report_pre_alert_xlsx",
+          "Pre Alert XLSX"
+        ],
+        [
+          "product.pricelist",
+          "Pricelist"
+        ],
+        [
+          "report.product.report_pricelist",
+          "Pricelist Report"
+        ],
+        [
+          "product.pricelist.item",
+          "Pricelist Rule"
+        ],
+        [
+          "print.form.wizard",
+          "Print Accounting Form"
+        ],
+        [
+          "privacy.log",
+          "Privacy Log"
+        ],
+        [
+          "privacy.lookup.wizard",
+          "Privacy Lookup Wizard"
+        ],
+        [
+          "privacy.lookup.wizard.line",
+          "Privacy Lookup Wizard Line"
+        ],
+        [
+          "product.attribute",
+          "Product Attribute"
+        ],
+        [
+          "product.attribute.custom.value",
+          "Product Attribute Custom Value"
+        ],
+        [
+          "product.category",
+          "Product Category"
+        ],
+        [
+          "report.product.report_producttemplatelabel",
+          "Product Label Report"
+        ],
+        [
+          "report.product.report_producttemplatelabel_dymo",
+          "Product Label Report"
+        ],
+        [
+          "product.packaging",
+          "Product Packaging"
+        ],
+        [
+          "product.tag",
+          "Product Tag"
+        ],
+        [
+          "product.template.attribute.exclusion",
+          "Product Template Attribute Exclusion"
+        ],
+        [
+          "product.template.attribute.line",
+          "Product Template Attribute Line"
+        ],
+        [
+          "product.template.attribute.value",
+          "Product Template Attribute Value"
+        ],
+        [
+          "uom.uom",
+          "Product Unit of Measure"
+        ],
+        [
+          "uom.category",
+          "Product UoM Categories"
+        ],
+        [
+          "hr.employee.public",
+          "Public Employee"
+        ],
+        [
+          "publisher_warranty.contract",
+          "Publisher Warranty Contract"
+        ],
+        [
+          "freight.purchase.pricing.air.line",
+          "Purchase Pricing Air Line"
+        ],
+        [
+          "freight.purchase.pricing.air.other.line",
+          "Purchase Pricing Air Other Line"
+        ],
+        [
+          "freight.purchase.pricing.fcl.line",
+          "Purchase Pricing FCL Line"
+        ],
+        [
+          "freight.purchase.pricing.fcl.other.line",
+          "Purchase Pricing FCL Other Line"
+        ],
+        [
+          "freight.purchase.pricing.lcl.line",
+          "Purchase Pricing LCL Line"
+        ],
+        [
+          "freight.purchase.pricing.lcl.other.line",
+          "Purchase Pricing LCL Other Line"
+        ],
+        [
+          "freight.purchase.pricing.truck.line",
+          "Purchase Pricing Truck Line"
+        ],
+        [
+          "freight.purchase.pricing.truck.other.line",
+          "Purchase Pricing Truck Other Line"
+        ],
+        [
+          "py3o.template",
+          "Py3o template"
+        ],
+        [
+          "freight.quotation.currency.rate",
+          "Quotation Exchange Rate"
+        ],
+        [
+          "freight.quotation.rate.mixin",
+          "Quotation Exchange Rate Table"
+        ],
+        [
+          "report.sota_freight_crm.report_quotation_xlsx_vi",
+          "Quotation XLSX Report (Vietnamese)"
+        ],
+        [
+          "readonly.by.state.mixins",
+          "Readonly by State"
+        ],
+        [
+          "account.reconcile.model.line.template",
+          "Reconcile Model Line Template"
+        ],
+        [
+          "account.reconcile.model.template",
+          "Reconcile Model Template"
+        ],
+        [
+          "account.account.reconcile.data",
+          "Reconcile data model to store user info"
+        ],
+        [
+          "account.payment.register",
+          "Register Payment"
+        ],
+        [
+          "account.resequence.wizard",
+          "Remake the sequence of Journal Entries."
+        ],
+        [
+          "mail.blacklist.remove",
+          "Remove email from blacklist wizard"
+        ],
+        [
+          "phone.blacklist.remove",
+          "Remove phone from blacklist"
+        ],
+        [
+          "report.sota_freight_advanced.report_isf10_plus_2_xlsx",
+          "Report ISF10+2 XLSX"
+        ],
+        [
+          "report.layout",
+          "Report Layout"
+        ],
+        [
+          "py3o.report",
+          "Report Py30"
+        ],
+        [
+          "sms.resend.recipient",
+          "Resend Notification"
+        ],
+        [
+          "reset.view.arch.wizard",
+          "Reset View Architecture Wizard"
+        ],
+        [
+          "resource.mixin",
+          "Resource Mixin"
+        ],
+        [
+          "resource.calendar.leaves",
+          "Resource Time Off Detail"
+        ],
+        [
+          "resource.calendar",
+          "Resource Working Time"
+        ],
+        [
+          "resource.resource",
+          "Resources"
+        ],
+        [
+          "base.limit.records_number",
+          "Restrictions for number of records"
+        ],
+        [
+          "asset.revaluation.wizard",
+          "Revaluation Wizard of Asset"
+        ],
+        [
+          "account.asset.revaluation.line",
+          "Revalution Line of Asset"
+        ],
+        [
+          "account.reconcile.model.line",
+          "Rules for the reconciliation model"
+        ],
+        [
+          "account.edi.xml.ubl_sg",
+          "SG BIS Billing 3.0"
+        ],
+        [
+          "sh.mail.activity",
+          "SH Mail Activity"
+        ],
+        [
+          "account.edi.xml.ubl_nl",
+          "SI-UBL 2.0 (NLCIUS)"
+        ],
+        [
+          "sms.api",
+          "SMS API"
+        ],
+        [
+          "sms.resend",
+          "SMS Resend"
+        ],
+        [
+          "sms.template.preview",
+          "SMS Template Preview"
+        ],
+        [
+          "sms.template.reset",
+          "SMS Template Reset"
+        ],
+        [
+          "sms.template",
+          "SMS Templates"
+        ],
+        [
+          "hr.payroll.structure.type",
+          "Salary Structure Type"
+        ],
+        [
+          "crm.department",
+          "Sales Department"
+        ],
+        [
+          "freight.sales.pricing",
+          "Sales Pricing"
+        ],
+        [
+          "mailing.mailing.test",
+          "Sample Mail Wizard"
+        ],
+        [
+          "mail.message.schedule",
+          "Scheduled Messages"
+        ],
+        [
+          "house.sea.buying.rate",
+          "Sea House Buying Rate"
+        ],
+        [
+          "house.sea.buying.rate.cost",
+          "Sea House Buying Rate Cost"
+        ],
+        [
+          "house.sea.container.information",
+          "Sea House Container Information"
+        ],
+        [
+          "house.sea.pay.on.behalf.rate",
+          "Sea House Pay On Behalf Rate"
+        ],
+        [
+          "house.sea.quotation.information",
+          "Sea House Quotation Information"
+        ],
+        [
+          "house.sea.schedule.information",
+          "Sea House Schedule Information"
+        ],
+        [
+          "job.sea.attachment",
+          "Sea Job Attachment"
+        ],
+        [
+          "danger.sea.cargo.information",
+          "Sea Job Dangerous Cargo Information"
+        ],
+        [
+          "sea.schedule.information",
+          "Sea Job Schedule Information"
+        ],
+        [
+          "sms.composer",
+          "Send SMS Wizard"
+        ],
+        [
+          "freight.quotation.purchase.pricing.wizard.line",
+          "Service lines selected from purchase pricing"
+        ],
+        [
+          "sh.activity.dynamic.action",
+          "Sh Activity Create Action"
+        ],
+        [
+          "freight.shipment.container",
+          "Shipment Container"
+        ],
+        [
+          "freight.shipment.package",
+          "Shipment Package"
+        ],
+        [
+          "shipping.instruction.wizard",
+          "Shipping Instruction Format Selection Wizard"
+        ],
+        [
+          "res.users.apikeys.show",
+          "Show API Key"
+        ],
+        [
+          "snailmail.confirm",
+          "Snailmail Confirm"
+        ],
+        [
+          "snailmail.confirm.invoice",
+          "Snailmail Confirm Invoice"
+        ],
+        [
+          "snailmail.letter",
+          "Snailmail Letter"
+        ],
+        [
+          "sota.mobile.device",
+          "Sota Mobile Device"
+        ],
+        [
+          "sota.storage.usage",
+          "Sota Storage Usage"
+        ],
+        [
+          "sparse_fields.test",
+          "Sparse fields Test"
+        ],
+        [
+          "spreadsheet.dashboard",
+          "Spreadsheet Dashboard"
+        ],
+        [
+          "mail.link.preview",
+          "Store link preview data"
+        ],
+        [
+          "product.supplierinfo",
+          "Supplier Pricelist"
+        ],
+        [
+          "sync.einvoice.bill.wizard",
+          "Sync E-Invoice Bill from GDT"
+        ],
+        [
+          "freight.sync.selling.buying.wizard",
+          "Sync Selling Lines To Buying"
+        ],
+        [
+          "freight.sync.selling.buying.wizard.line",
+          "Sync Selling To Buying Line"
+        ],
+        [
+          "to.base",
+          "TVTMA Base Model"
+        ],
+        [
+          "account.tax",
+          "Tax"
+        ],
+        [
+          "account.tax.group",
+          "Tax Group"
+        ],
+        [
+          "account.fiscal.position.tax.template",
+          "Tax Mapping Template of Fiscal Position"
+        ],
+        [
+          "account.fiscal.position.tax",
+          "Tax Mapping of Fiscal Position"
+        ],
+        [
+          "account.tax.repartition.line",
+          "Tax Repartition Line"
+        ],
+        [
+          "account.tax.repartition.line.template",
+          "Tax Repartition Line Template"
+        ],
+        [
+          "template.reset.mixin",
+          "Template Reset Mixin"
+        ],
+        [
+          "account.group.template",
+          "Template for Account Groups"
+        ],
+        [
+          "account.fiscal.position.template",
+          "Template for Fiscal Position"
+        ],
+        [
+          "account.tax.template",
+          "Templates for Taxes"
+        ],
+        [
+          "report.report_xlsx_helper.test_partner_xlsx",
+          "Test Partner XLSX Report"
+        ],
+        [
+          "res.config.settings",
+          "Test config settings"
+        ],
+        [
+          "base.limit.records_number.test",
+          "Test model to test access"
+        ],
+        [
+          "base_import.tests.models.preview",
+          "Tests : Base Import Model Preview"
+        ],
+        [
+          "base_import.tests.models.char",
+          "Tests : Base Import Model, Character"
+        ],
+        [
+          "base_import.tests.models.char.noreadonly",
+          "Tests : Base Import Model, Character No readonly"
+        ],
+        [
+          "base_import.tests.models.char.readonly",
+          "Tests : Base Import Model, Character readonly"
+        ],
+        [
+          "base_import.tests.models.char.required",
+          "Tests : Base Import Model, Character required"
+        ],
+        [
+          "base_import.tests.models.char.states",
+          "Tests : Base Import Model, Character states"
+        ],
+        [
+          "base_import.tests.models.char.stillreadonly",
+          "Tests : Base Import Model, Character still readonly"
+        ],
+        [
+          "base_import.tests.models.m2o",
+          "Tests : Base Import Model, Many to One"
+        ],
+        [
+          "base_import.tests.models.m2o.related",
+          "Tests : Base Import Model, Many to One related"
+        ],
+        [
+          "base_import.tests.models.m2o.required",
+          "Tests : Base Import Model, Many to One required"
+        ],
+        [
+          "base_import.tests.models.m2o.required.related",
+          "Tests : Base Import Model, Many to One required related"
+        ],
+        [
+          "base_import.tests.models.o2m",
+          "Tests : Base Import Model, One to Many"
+        ],
+        [
+          "base_import.tests.models.o2m.child",
+          "Tests : Base Import Model, One to Many child"
+        ],
+        [
+          "base_import.tests.models.complex",
+          "Tests: Base Import Model Complex"
+        ],
+        [
+          "base_import.tests.models.float",
+          "Tests: Base Import Model Float"
+        ],
+        [
+          "report.sota_account_asset.report_tool_book",
+          "Tool Book XLSX Report"
+        ],
+        [
+          "report.sota_account_asset.report_tool_depreciation",
+          "Tool Depreciation XLSX Report"
+        ],
+        [
+          "total.container.custom.volume.cargo.information",
+          "Total Container Custom Volume Cargo Information"
+        ],
+        [
+          "total.external.container.volume.cargo.information",
+          "Total Container Volume Cargo Information"
+        ],
+        [
+          "total.container.volume.cargo.information",
+          "Total Container Volume Cargo Information"
+        ],
+        [
+          "total.container.volume.custom.cargo.information",
+          "Total Container Volume Custom Cargo Information"
+        ],
+        [
+          "total.container.volume.sea.cargo.information",
+          "Total Container Volume Sea Cargo Information"
+        ],
+        [
+          "total.container.volume.truck.cargo.information",
+          "Total Container Volume Truck Cargo Information"
+        ],
+        [
+          "web_tour.tour",
+          "Tours"
+        ],
+        [
+          "freight.transfer.cost.config",
+          "Transfer Cost Account Configuration"
+        ],
+        [
+          "freight.transfer.service.cost.wizard",
+          "Transfer Service Cost Wizard"
+        ],
+        [
+          "freight.transfer.service.cost.wizard.line",
+          "Transfer Service Cost Wizard Preview Line"
+        ],
+        [
+          "treeview.settings.filter",
+          "Treeview Filter Settings"
+        ],
+        [
+          "treeview.settings.filter.line",
+          "Treeview Filter Settings Line"
+        ],
+        [
+          "job.truck.attachment",
+          "Truck Job Attachment"
+        ],
+        [
+          "danger.truck.cargo.information",
+          "Truck Job Dangerous Cargo Information"
+        ],
+        [
+          "freight.job.truck.invoice.issuance",
+          "Truck Job Invoice Issuance"
+        ],
+        [
+          "truck.schedule.information",
+          "Truck Job Schedule Information"
+        ],
+        [
+          "account.edi.xml.ubl_20",
+          "UBL 2.0"
+        ],
+        [
+          "account.edi.xml.ubl_21",
+          "UBL 2.1"
+        ],
+        [
+          "account.edi.xml.ubl_bis3",
+          "UBL BIS Billing 3.0.12"
+        ],
+        [
+          "utm.campaign",
+          "UTM Campaign"
+        ],
+        [
+          "utm.medium",
+          "UTM Medium"
+        ],
+        [
+          "utm.mixin",
+          "UTM Mixin"
+        ],
+        [
+          "utm.source",
+          "UTM Source"
+        ],
+        [
+          "utm.source.mixin",
+          "UTM Source Mixin"
+        ],
+        [
+          "utm.tag",
+          "UTM Tag"
+        ],
+        [
+          "_unknown",
+          "Unknown"
+        ],
+        [
+          "freight.job.unlock.service.wizard",
+          "Unlock Job and Reopen Services"
+        ],
+        [
+          "unposted.entries.warning",
+          "Unposted Entries Warning"
+        ],
+        [
+          "wizard.soa.update.exchange.rate",
+          "Update Exchange Rate for SOA Notes"
+        ],
+        [
+          "base.module.update",
+          "Update Module"
+        ],
+        [
+          "snailmail.letter.missing.required.fields",
+          "Update address of partner"
+        ],
+        [
+          "crm.lead.pls.update",
+          "Update the probabilities"
+        ],
+        [
+          "base.module.upgrade",
+          "Upgrade Module"
+        ],
+        [
+          "wizard.bol.ocr.house",
+          "Upload Bill of Lading OCR - House BL"
+        ],
+        [
+          "wizard.bol.ocr.master",
+          "Upload Bill of Lading OCR - Master BL"
+        ],
+        [
+          "res.users",
+          "User"
+        ],
+        [
+          "bus.presence",
+          "User Presence"
+        ],
+        [
+          "res.users.settings",
+          "User Settings"
+        ],
+        [
+          "res.users.settings.volumes",
+          "User Settings Volumes"
+        ],
+        [
+          "res.users.role",
+          "User role"
+        ],
+        [
+          "change.password.user",
+          "User, Change Password Wizard"
+        ],
+        [
+          "change.password.own",
+          "User, change own password wizard"
+        ],
+        [
+          "res.users.apikeys",
+          "Users API Keys"
+        ],
+        [
+          "res.users.deletion",
+          "Users Deletion Request"
+        ],
+        [
+          "res.users.log",
+          "Users Log"
+        ],
+        [
+          "res.users.role.line",
+          "Users associated to a role"
+        ],
+        [
+          "vnaccs.job.import.line",
+          "VNACCS Job Import Line"
+        ],
+        [
+          "validate.account.move",
+          "Validate Account Move"
+        ],
+        [
+          "vendor.account",
+          "Vendor Account"
+        ],
+        [
+          "freight.vendor.contract",
+          "Vendor Contract"
+        ],
+        [
+          "l10n_vn.b09dnn",
+          "VietNam B09-DNN Report Wizard"
+        ],
+        [
+          "l10n_vn.s03adn",
+          "VietNam S03a-DN Report Wizard"
+        ],
+        [
+          "l10n_vn.s03bdn",
+          "VietNam S03b-DN Report Wizard"
+        ],
+        [
+          "report.l10n_vn_viin_account_reports.report_s07dn",
+          "VietNam S07dn Report"
+        ],
+        [
+          "l10n_vn.s07dn",
+          "VietNam S07dn Report Wizard"
+        ],
+        [
+          "report.l10n_vn_viin_account_reports.report_s08dn",
+          "VietNam S08dn Report"
+        ],
+        [
+          "l10n_vn.s08dn",
+          "VietNam S08dn Report Wizard"
+        ],
+        [
+          "l10n_vn.s38dn",
+          "VietNam S38-DN Report Wizard"
+        ],
+        [
+          "report.l10n_vn.common",
+          "Vietnam Common Report"
+        ],
+        [
+          "l10n_vn.c119.02gtgt",
+          "Vietnam Invoice Declaration purchase 01 -2/GTGT"
+        ],
+        [
+          "l10n_vn.c119.01gtgt",
+          "Vietnam Invoice Declaration sale 01 -1/GTGT"
+        ],
+        [
+          "report.l10n_vn_viin_account_reports.report_s03adn",
+          "Vietnam S03a-DN Report"
+        ],
+        [
+          "report.l10n_vn_viin_account_reports.report_s03bdn",
+          "Vietnam S03b-DN Report"
+        ],
+        [
+          "report.l10n_vn_viin_account_reports.report_s38dn",
+          "Vietnam S38-DN Report"
+        ],
+        [
+          "to.vietnamese.number2words",
+          "Vietnamese Number to Words"
+        ],
+        [
+          "res.country.wards",
+          "Wards"
+        ],
+        [
+          "web_editor.converter.test.sub",
+          "Web Editor Converter Subtest"
+        ],
+        [
+          "web_editor.converter.test",
+          "Web Editor Converter Test"
+        ],
+        [
+          "wizard.booking.convert.job",
+          "Wizard Convert Job"
+        ],
+        [
+          "wizard.create.am.service",
+          "Wizard Create Account Move Service"
+        ],
+        [
+          "wizard.create.bill.service",
+          "Wizard Create Bill Service"
+        ],
+        [
+          "wizard.create.invoice.service",
+          "Wizard Create Invoice Service"
+        ],
+        [
+          "wizard.refund.container.deposit",
+          "Wizard Hoàn Cược Container"
+        ],
+        [
+          "wizard.notify",
+          "Wizard Notify"
+        ],
+        [
+          "resource.calendar.attendance",
+          "Work Detail"
+        ],
+        [
+          "hr.work.location",
+          "Work Location"
+        ],
+        [
+          "hr.plan",
+          "plan"
+        ],
+        [
+          "mailing.mailing.schedule.date",
+          "schedule a mailing"
+        ],
+        [
+          "ks_to.do.description",
+          "to do description"
+        ],
+        [
+          "ks_to.do.headers",
+          "to do headers"
+        ]
+      ],
+      "string": "Related Document",
+      "type": "reference"
+    },
+    "crm_sr_revenue": {
+      "readonly": false,
+      "required": false,
+      "string": "Order Revenue",
+      "type": "monetary"
+    },
+    "crm_sr_profit": {
+      "readonly": false,
+      "required": false,
+      "string": "Order Gross Profit",
+      "type": "monetary"
+    },
+    "crm_sr_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Crm Sr Currency",
+      "type": "many2one"
+    },
+    "crm_sr_show_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Crm Sr Show Amount",
+      "type": "boolean"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree string=\"Next Activities\" decoration-danger=\"sh_date_deadline &lt; current_date and state != 'done'\" decoration-success=\"sh_date_deadline == current_date and state != 'done'\" default_order=\"date_deadline\" create=\"1\" decoration-muted=\"state == 'done'\" multi_edit=\"1\">\n                <field name=\"res_name\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"activity_type_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n            <field name=\"user_id\" widget=\"many2one_avatar_user\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"summary\" on_change=\"1\"/>\n                <field name=\"date_deadline\" widget=\"remaining_days\" options=\"{'allow_order': '1'}\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                <field name=\"sh_date_deadline\" options=\"{'allow_order': '1'}\" string=\"Due Date\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"due_in_text\" string=\"Due In\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"domain_sale_team_ids\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                <field name=\"sale_team_id\" string=\"Sale Team\" optional=\"show\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"crm_department_id\" string=\"Department\" optional=\"show\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"state\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}\"/>\n                <field name=\"sh_state\" decoration-success=\"sh_state == 'done'\" decoration-warning=\"state == 'today' or state == 'planned'\" decoration-danger=\"state == 'cancelled' or state == 'overdue'\" widget=\"badge\" string=\"State\"/>\n                <field name=\"date_done\" widget=\"remaining_days\" options=\"{'allow_order': '1'}\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"sh_activity_tags\" widget=\"many2many_tags\" options=\"{'color_field': 'color', 'no_create_edit': True}\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"feedback\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;done&quot;]]}\"/>\n                <field name=\"company_id\" optional=\"hide\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"create_date\" optional=\"hide\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"write_date\" optional=\"hide\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"date_done\" optional=\"hide\" widget=\"remaining_days\" options=\"{'allow_order': '1'}\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"display_name\" optional=\"hide\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"previous_activity_type_id\" optional=\"hide\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"res_id\" optional=\"hide\" on_change=\"1\"/>\n                <field name=\"res_model\" optional=\"hide\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"res_model_id\" optional=\"hide\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"supervisor_ids\" optional=\"hide\" widget=\"many2many_avatar_user\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"sh_user_ids\" optional=\"hide\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"active\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                <field name=\"activity_cancel\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n               <field name=\"activity_done\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n            <button type=\"object\" string=\"Edit\" name=\"action_edit_activity\" class=\"btn btn-primary\" icon=\"fa-pencil\" modifiers=\"{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, false]]}\"/>\n            <button type=\"object\" string=\"Origin\" name=\"action_view_activity\" class=\"btn btn-primary\" icon=\"fa-history\"/>\n            </tree>",
+      "id": 275,
+      "model": "mail.activity"
+    },
+    "form": {
+      "arch": "<form string=\"Log an Activity\" create=\"True\">\n                <header>\n                    <button string=\"Mark as Done\" name=\"action_done\" type=\"object\" class=\"btn-secondary\" context=\"{'mail_activity_quick_update': True}\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}\"/>\n                    <button string=\"Done &amp; Schedule Next\" name=\"action_done_schedule_next\" type=\"object\" class=\"btn-secondary\" context=\"{'mail_activity_quick_update': True}\" modifiers=\"{&quot;invisible&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;done&quot;]]}\"/>\n                    <button name=\"action_cancel\" string=\"Cancel\" type=\"object\" class=\"oe_highlight\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;state&quot;, &quot;=&quot;, &quot;done&quot;], [&quot;state&quot;, &quot;=&quot;, &quot;cancel&quot;]]}\"/>\n                    <field name=\"state\" widget=\"statusbar\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                </header>\n                <sheet string=\"Activity\">\n                    <div class=\"oe_button_box\" name=\"button_box\" modifiers=\"{&quot;invisible&quot;: true}\">\n                        <button name=\"action_open_document\" string=\"Open Document\" type=\"object\" class=\"oe_link\" icon=\"fa-file-text-o\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;res_model&quot;, &quot;=&quot;, false], [&quot;res_id&quot;, &quot;=&quot;, 0]]}\"/>\n                    </div>\n                <field name=\"active\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                <widget name=\"web_ribbon\" title=\"Archived\" bg_color=\"bg-danger\" modifiers=\"{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}\"/>\n                <group>\n                    <field name=\"reference\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                </group>\n                    <group modifiers=\"{&quot;invisible&quot;: true}\">\n                        <field name=\"activity_category\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                        <field name=\"res_model\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                        <field name=\"res_model_id\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: true, &quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                        <field name=\"res_id\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                        <field name=\"chaining_type\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                        <field name=\"previous_activity_type_id\" on_change=\"1\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        <field name=\"has_recommended_activities\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                    </group>\n                    <group modifiers=\"{&quot;invisible&quot;: [[&quot;has_recommended_activities&quot;, &quot;=&quot;, false]]}\">\n                        <field name=\"recommended_activity_type_id\" widget=\"selection_badge\" domain=\"[('previous_type_ids', '=', previous_activity_type_id)]\" string=\"Recommended Activities\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                    </group>\n                    <group>\n                        <group>\n                            <field name=\"activity_type_id\" options=\"{'no_create': True, 'no_open': True}\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"date_done\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                            <field name=\"summary\" placeholder=\"e.g. Discuss proposal\"/>\n                <field name=\"crm_sr_show_amount\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                <field name=\"crm_sr_currency_id\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                <field name=\"crm_sr_revenue\" modifiers=\"{&quot;invisible&quot;: [[&quot;crm_sr_show_amount&quot;, &quot;=&quot;, false]]}\"/>\n                <field name=\"crm_sr_profit\" modifiers=\"{&quot;invisible&quot;: [[&quot;crm_sr_show_amount&quot;, &quot;=&quot;, false]]}\"/>\n            <field name=\"sh_activity_alarm_ids\" widget=\"many2many_tags\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"sh_create_individual_activity\" modifiers=\"{&quot;invisible&quot;: [[&quot;sh_user_ids&quot;, &quot;=&quot;, []]]}\"/>\n                        </group>\n                        <group>\n                            <field name=\"date_deadline\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: true, &quot;required&quot;: true}\"/>\n            <field name=\"sh_date_deadline\" string=\"Due Date\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\"/>\n            <field name=\"domain_sale_team_ids\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n            <field name=\"sale_team_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n            <field name=\"crm_department_id\" can_create=\"true\" can_write=\"true\"/>\n                            <field name=\"user_id\" on_change=\"1\" modifiers=\"{&quot;invisible&quot;: [[&quot;activity_category&quot;, &quot;=&quot;, &quot;meeting&quot;]], &quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"company_id\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"sh_display_multi_user\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                <field name=\"sh_user_ids\" widget=\"many2many_tags\" modifiers=\"{&quot;invisible&quot;: [[&quot;sh_display_multi_user&quot;, &quot;=&quot;, false]]}\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"supervisor_ids\" widget=\"many2many_tags\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"department_ids\" widget=\"many2many_tags\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"sh_activity_tags\" widget=\"many2many_tags\" options=\"{'color_field': 'color', 'no_create_edit': True}\" can_create=\"true\" can_write=\"true\"/>\n                <field name=\"feedback\"/>\n                        </group>\n                    </group>\n                    <field name=\"note\" class=\"oe-bordered-editor\" placeholder=\"Log a note...\" modifiers=\"{&quot;invisible&quot;: [[&quot;activity_category&quot;, &quot;=&quot;, &quot;meeting&quot;]]}\"/>\n                    <footer>\n                        <field name=\"id\" modifiers=\"{&quot;invisible&quot;: true, &quot;readonly&quot;: true}\"/>\n                  <field name=\"calendar_event_id\" modifiers=\"{&quot;invisible&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                  <button string=\"Open Calendar\" name=\"action_create_calendar_event\" type=\"object\" class=\"btn-primary\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;activity_category&quot;, &quot;not in&quot;, [&quot;meeting&quot;, &quot;phonecall&quot;]], [&quot;calendar_event_id&quot;, &quot;!=&quot;, false]]}\"/>\n                        <button id=\"mail_activity_schedule\" string=\"Schedule\" name=\"action_close_dialog\" type=\"object\" class=\"btn-primary\" data-hotkey=\"q\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;activity_category&quot;, &quot;in&quot;, [&quot;meeting&quot;, &quot;phonecall&quot;]], [&quot;id&quot;, &quot;!=&quot;, false]]}\"/>\n                        <button id=\"mail_activity_save\" string=\"Save\" name=\"action_close_dialog\" type=\"object\" class=\"btn-primary\" data-hotkey=\"q\" modifiers=\"{&quot;invisible&quot;: [[&quot;activity_category&quot;, &quot;!=&quot;, &quot;phonecall&quot;], [&quot;id&quot;, &quot;=&quot;, false]]}\"/>\n                        <button string=\"Mark as Done\" name=\"action_done\" type=\"object\" class=\"btn-secondary\" data-hotkey=\"w\" context=\"{'mail_activity_quick_update': True}\" modifiers=\"{&quot;invisible&quot;: [&quot;|&quot;, [&quot;activity_category&quot;, &quot;=&quot;, &quot;meeting&quot;], [&quot;chaining_type&quot;, &quot;=&quot;, &quot;trigger&quot;]]}\"/>\n                        <button string=\"Done &amp; Schedule Next\" name=\"action_done_schedule_next\" type=\"object\" class=\"btn-secondary\" data-hotkey=\"x\" context=\"{'mail_activity_quick_update': True}\" modifiers=\"{&quot;invisible&quot;: [[&quot;chaining_type&quot;, &quot;=&quot;, &quot;trigger&quot;]]}\"/>\n                        <button string=\"Done &amp; Launch Next\" name=\"action_done_schedule_next\" type=\"object\" class=\"btn-secondary\" data-hotkey=\"x\" context=\"{'mail_activity_quick_update': True}\" modifiers=\"{&quot;invisible&quot;: [[&quot;chaining_type&quot;, &quot;=&quot;, &quot;suggest&quot;]]}\"/>\n                        <button string=\"Discard\" class=\"btn-secondary\" special=\"cancel\" data-hotkey=\"z\"/>\n                    </footer>\n                </sheet>\n            </form>",
+      "id": 272,
+      "model": "mail.activity"
+    },
+    "search": {
+      "arch": "<search string=\"Activity\">\n            <field name=\"res_name\" string=\"Activity\" filter_domain=\"['|','|','|','|','|','|','|',('res_name', 'ilike', self),('activity_type_id','ilike',self),('user_id','ilike',self),('res_model','ilike',self),('res_model_id','ilike',self),('supervisor_ids','ilike',self),('sh_activity_tags','ilike',self),('sh_user_ids','ilike',self)]\"/>\n                <field name=\"supervisor_ids\"/>\n                <field name=\"sh_activity_tags\"/>\n                <filter string=\"Completed Activities\" name=\"activities_completed\" domain=\"[('state', '=', 'done'),('active','=',False)]\"/>\n            <filter string=\"Cancelled Activities\" name=\"activities_cancelled\" domain=\"[('state', '=', 'cancel'),('active','=',False)]\"/>\n                <filter string=\"Archived Activities\" name=\"archived_activities\" domain=\"[('active','=',False)]\"/>\n                <filter string=\"Activity Tags\" name=\"activity_tags\" domain=\"[('sh_activity_tags','!=',False)]\"/>\n                <field name=\"res_model\"/>\n                <field name=\"summary\"/>\n                <field name=\"activity_type_id\"/>\n                <filter string=\"Late Activities\" name=\"activities_overdue\" domain=\"[('date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]\" help=\"Show all records which has next action date is before today\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                <filter string=\"Today Activities\" name=\"activities_today\" domain=\"[('date_deadline', '=', context_today().strftime('%Y-%m-%d'))]\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                <filter string=\"Future Activities\" name=\"activities_upcoming_all\" domain=\"[('date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))                         ]\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                <group expand=\"0\" string=\"Group By\">\n                    <filter string=\"Deadline\" name=\"date_deadline\" context=\"{'group_by': 'date_deadline'}\"/>\n                    <filter string=\"Created By\" name=\"createdby\" context=\"{'group_by': 'create_uid'}\"/>\n                    <filter string=\"Activity Type\" name=\"activittype\" context=\"{'group_by': 'activity_type_id'}\"/>\n                <filter string=\"Assign To\" name=\"assign_to\" context=\"{'group_by':'user_id'}\"/>\n                <filter string=\"Supervisors\" name=\"supervisors\" context=\"{'group_by':'supervisor_ids'}\"/>\n                <filter string=\"Document Model\" name=\"document_model\" context=\"{'group_by':'res_model_id'}\"/>\n                <filter string=\"Tags\" name=\"tags\" context=\"{'group_by':'sh_activity_tags'}\"/>\n                <filter string=\"Assigned Multi Users\" name=\"users\" context=\"{'group_by':'sh_user_ids'}\"/>\n                </group>\n            <searchpanel>\n            <field name=\"company_id\" icon=\"fa-building\" enable_counters=\"1\"/>\n            <field name=\"activity_type_id\" icon=\"fa-tasks\" enable_counters=\"1\"/>\n            <field name=\"user_id\" limit=\"20\" hierarchize=\"0\" select=\"one\" icon=\"fa-users\" enable_counters=\"1\"/>\n            <field name=\"res_model_id\" enable_counters=\"1\"/>\n            <field name=\"sh_state\" enable_counters=\"1\" string=\"State\"/>\n            </searchpanel>\n            </search>",
+      "id": 274,
+      "model": "mail.activity"
+    },
+    "kanban": {
+      "arch": "<kanban default_group_by=\"sh_state\" class=\"o_kanban_small_column o_opportunity_kanban\" archivable=\"false\" sample=\"1\" create=\"false\">\n                <field name=\"sh_state\"/>\n                <field name=\"color\"/>\n                <field name=\"res_name\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                <field name=\"activity_type_id\" on_change=\"1\"/>\n                <field name=\"summary\"/>\n                <field name=\"date_deadline\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <field name=\"supervisor_ids\"/>\n                <field name=\"user_id\" modifiers=\"{&quot;required&quot;: true}\"/>\n                <templates>\n                    <t t-name=\"kanban-box\">\n                        <div t-attf-class=\"#{!selection_mode ? kanban_color(record.color.raw_value) : ''} oe_kanban_global_click\">\n                            <div class=\"o_dropdown_kanban dropdown\">\n\n                                <a class=\"dropdown-toggle o-no-caret btn\" role=\"button\" data-bs-toggle=\"dropdown\" data-display=\"static\" href=\"#\" aria-label=\"Dropdown menu\" title=\"Dropdown menu\">\n                                    <span class=\"fa fa-ellipsis-v\"/>\n                                </a>\n                                <div class=\"dropdown-menu\" role=\"menu\">\n                                    <t t-if=\"widget.editable\">\n                                        <a role=\"menuitem\" type=\"edit\" class=\"dropdown-item\">Edit</a>\n                                    </t>\n                                    <t t-if=\"widget.deletable\">\n                                        <a role=\"menuitem\" type=\"delete\" class=\"dropdown-item\">Delete</a>\n                                    </t>\n                                    <ul class=\"oe_kanban_colorpicker\" data-field=\"color\"/>\n                                </div>\n                            </div>\n                            <div class=\"oe_kanban_content\">\n                                <div class=\"o_kanban_record_title\">\n                                    <strong>\n                                        <field name=\"res_name\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                                    </strong>\n                                </div>\n                                <div>\n                                    <field name=\"activity_type_id\" options=\"{'color_field': 'color'}\" on_change=\"1\"/>\n                                </div>\n                                <div class=\"o_kanban_record_bottom mt-2\">\n                                    <div class=\"oe_kanban_bottom_left\">\n                                        <field name=\"supervisor_ids\" widget=\"many2many_avatar_user\"/>\n                                    </div>\n                                    <div class=\"oe_kanban_bottom_right\">\n                                        <field name=\"user_id\" widget=\"many2one_avatar\" modifiers=\"{&quot;required&quot;: true}\"/>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"oe_clear\"/>\n                        </div>\n                    </t>\n                </templates>\n            </kanban>",
+      "id": 666,
+      "model": "mail.activity"
+    },
+    "calendar": {
+      "arch": "<calendar string=\"Activity\" date_start=\"date_deadline\" color=\"activity_type_id\">\n                <field name=\"user_id\" avatar_field=\"avatar_128\"/>\n                <field name=\"res_name\"/>\n                <field name=\"date_deadline\"/>\n                <field name=\"summary\"/>\n                <field name=\"activity_type_id\" filters=\"1\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n            </calendar>",
+      "id": 276,
+      "model": "mail.activity"
+    },
+    "pivot": {
+      "arch": "<pivot string=\"Schedule Activity\" disable_linking=\"True\">\n                <field name=\"date_deadline\" interval=\"month\" type=\"row\"/>\n                <field name=\"activity_type_id\" type=\"row\"/>\n                <field name=\"supervisor_ids\" type=\"col\"/>\n                <field name=\"user_id\" type=\"col\"/>\n            </pivot>",
+      "id": 668,
+      "model": "mail.activity"
+    },
+    "graph": {
+      "arch": "<graph string=\"Schedule Activity\">\n                <field name=\"activity_type_id\" type=\"col\"/>\n                <field name=\"sh_state\" type=\"col\"/>\n                <field name=\"user_id\" type=\"row\"/>\n            </graph>",
+      "id": 669,
+      "model": "mail.activity"
+    }
+  }
+}

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_asset_asset_tree" model="ir.ui.view">
+        <field name="name">account.asset.asset.tree</field>
+        <field name="model">account.asset.asset</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="(state == 'draft')" decoration-muted="(state == 'close')">
+<field name="name" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+<field name="category_id" string="Asset Category" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+<field name="date" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+<field name="partner_id" string="Vendor" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+<field name="value" sum="Total" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+<field name="value_residual" widget="monetary" sum="Total" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="depreciation_progress" widget="progressbar" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="currency_id" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+<field name="company_id" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+<field name="state" modifiers="{&quot;required&quot;: true}"/>
+</tree>
+        </field>
+    </record>
+
+    <record id="view_account_asset_asset_form" model="ir.ui.view">
+        <field name="name">account.asset.asset.form</field>
+        <field name="model">account.asset.asset</field>
+        <field name="arch" type="xml">
+            <form string="Asset" js_class="account_asset_form">
+<header>
+<button name="validate" string="Confirm" type="object" class="oe_highlight" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+<button type="object" name="action_compute_depreciation_board" string="Compute Depreciation" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+<button name="778" string="Sell" type="action" class="oe_highlight" context="{'sell': True, 'default_asset_id': id}" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;open&quot;], [&quot;state&quot;, &quot;not in&quot;, [&quot;open&quot;, &quot;close&quot;]]]}"/>
+<button name="779" string="Dispose" type="action" class="oe_highlight" context="{'dispose': True, 'default_asset_id': id}" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;open&quot;], [&quot;state&quot;, &quot;not in&quot;, [&quot;open&quot;, &quot;close&quot;]]]}"/>
+<button name="set_to_draft" string="Set to Draft" type="object" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;posted_entry_count&quot;, &quot;!=&quot;, 0], [&quot;state&quot;, &quot;=&quot;, &quot;draft&quot;]]}"/>
+<button name="775" string="Modify Depreciation" type="action" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;open&quot;]]]}"/>
+<button name="776" string="Revalution of Asset" type="action" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;open&quot;]]]}"/>
+<button name="action_view_sales_invoice" type="object" string="View a Sales Invoice" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;sold&quot;]]}">
+</button>
+<field name="state" widget="statusbar" statusbar_visible="draft,open" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+</header>
+<sheet>
+<div class="oe_button_box" name="button_box">
+<button class="oe_stat_button" name="open_entries" type="object" icon="fa-pencil">
+<field string="Entries" name="entry_count" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+</button>
+</div>
+<widget name="web_ribbon" title="Archived" bg_color="bg-danger" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}"/>
+<div class="oe_title">
+<label for="name" class="oe_edit_only"/>
+<h1>
+<field name="name" placeholder="e.g. Laptop iBook" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+</h1>
+</div>
+<group>
+<group>
+<field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+<field name="posted_entry_count" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+<field name="product_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}" can_create="true" can_write="true"/>
+<field name="category_id" string="Asset Category" domain="[('type', '=', 'purchase')]" context="{'default_type': 'purchase'}" help="Category of asset" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+<field name="code" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+<field name="date" help="Date of asset" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+<field name="date_first_depreciation" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+<field name="first_depreciation_date" modifiers="{&quot;invisible&quot;: [[&quot;date_first_depreciation&quot;, &quot;!=&quot;, &quot;manual&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: [[&quot;date_first_depreciation&quot;, &quot;=&quot;, &quot;manual&quot;]]}"/>
+<field name="type" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
+</group>
+<group>
+<span colspan="2" class="oe_edit_only text-muted" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;original_move_line_ids&quot;, &quot;!=&quot;, []], [&quot;value&quot;, &quot;!=&quot;, 0]]}">
+Set the original value manually or
+<button class="btn btn-link oe_inline align-baseline p-0 add_original_move_lines" string="select related purchase journal items"/>
+</span>
+<field name="currency_id" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+<field name="company_id" options="{'no_create': True}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}" can_create="true" can_write="true"/>
+<field name="value" widget="monetary" options="{'currency_field': 'currency_id'}" help="Gross value of asset" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+<field name="salvage_value" widget="monetary" options="{'currency_field': 'currency_id'}" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;sale&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+<field name="revaluation_value" widget="monetary" options="{'currency_field': 'currency_id'}" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="value_residual" widget="monetary" options="{'currency_field': 'currency_id'}" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="depreciation_progress" widget="progressbar" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="partner_user_id" string="Asset User" can_create="true" can_write="true"/>
+<field name="partner_id" string="Vendor" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}" can_create="true" can_write="true"/>
+<!--<field name="invoice_line_id" options="{'no_create': True}"-->
+<!--groups="account.group_account_user" />-->
+<!--<field name="invoice_id" string="Invoice"-->
+<!--options="{'no_create': True}" />-->
+<!--<field name="analytic_account_id"-->
+<!--groups="analytic.group_analytic_accounting" />-->
+<!--<field name="analytic_tag_ids"-->
+<!--groups="analytic.group_analytic_tags"-->
+<!--widget="many2many_tags" />-->
+</group>
+</group>
+<notebook colspan="4">
+<page string="Depreciation Board">
+<field name="depreciation_line_ids" mode="tree" options="{'reload_whole_on_button': true}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;open&quot;]]]}">
+<tree decoration-info="(move_check == False)" create="false">
+<field name="depreciation_date"/>
+<field name="amount" widget="monetary" string="Depreciation" sum="Depreciation Total" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+<field name="depreciated_value" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="remaining_value" widget="monetary" string="Residual" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="move_id" on_change="1"/>
+<field name="move_check" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="move_posted_check" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="parent_state" modifiers="{&quot;column_invisible&quot;: true}"/>
+<field name="disposal" modifiers="{&quot;invisible&quot;: [[&quot;disposal&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+</tree>
+<form string="Depreciation Lines" create="false">
+<group>
+<group>
+<field name="parent_state" modifiers="{&quot;invisible&quot;: true}"/>
+<field name="name" modifiers="{&quot;required&quot;: true}"/>
+<field name="sequence" modifiers="{&quot;required&quot;: true}"/>
+<field name="move_id" on_change="1" can_create="true" can_write="true"/>
+<field name="move_posted_check" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="move_check" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+<field name="parent_state" modifiers="{&quot;invisible&quot;: true}"/>
+</group>
+<group>
+<field name="amount" widget="monetary" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+<field name="depreciation_date"/>
+<field name="depreciated_value" modifiers="{&quot;required&quot;: true}"/>
+<field name="remaining_value" modifiers="{&quot;required&quot;: true}"/>
+<field name="disposal" modifiers="{&quot;invisible&quot;: [[&quot;disposal&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+</group>
+</group>
+</form>
+</field>
+</page>
+<page string="Depreciation Information">
+<group>
+<group name="depreciation_method">
+<field name="method" widget="radio" options="{'vertical': true}" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;=&quot;, &quot;sale&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+<field name="method_progress_factor" modifiers="{&quot;invisible&quot;: [[&quot;method&quot;, &quot;=&quot;, &quot;linear&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: [[&quot;method&quot;, &quot;=&quot;, &quot;degressive&quot;]]}"/>
+<field name="method_time" string="Time Method Based On" widget="radio" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;type&quot;, &quot;!=&quot;, &quot;purchase&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+<field name="prorata" modifiers="{&quot;invisible&quot;: [[&quot;method_time&quot;, &quot;=&quot;, &quot;end&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
+<field name="method_number" modifiers="{&quot;invisible&quot;: [[&quot;method_time&quot;, &quot;=&quot;, &quot;end&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: [[&quot;method_time&quot;, &quot;=&quot;, &quot;number&quot;]]}"/>
+<field name="method_period" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: true}"/>
+<field name="method_end" modifiers="{&quot;invisible&quot;: [[&quot;method_time&quot;, &quot;=&quot;, &quot;number&quot;]], &quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]], &quot;required&quot;: [[&quot;method_time&quot;, &quot;=&quot;, &quot;end&quot;]]}"/>
+</group>
+<group name="accounting">
+<field name="depreciation_expense_account_id" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;open&quot;]]]}" can_create="true" can_write="true"/>
+<field name="revaluation_decrease_account_id" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;open&quot;]]]}" can_create="true" can_write="true"/>
+<field name="revaluation_increase_account_id" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;open&quot;]]]}" can_create="true" can_write="true"/>
+</group>
+</group>
+</page>
+<page string="Revaluation Board">
+<field name="revaluation_line_ids" mode="tree" options="{'reload_whole_on_button': true}" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;, &quot;open&quot;]]]}">
+<tree decoration-info="(move_check == False)" create="false">
+<field name="revaluation_date"/>
+<field name="method" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="value" widget="monetary" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+<field name="move_id" on_change="1"/>
+<field name="move_check" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+<field name="move_posted_check" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="parent_state" modifiers="{&quot;column_invisible&quot;: true}"/>
+</tree>
+<form string="Revaluation Lines" create="false">
+<group>
+<group>
+<field name="parent_state" modifiers="{&quot;invisible&quot;: true}"/>
+<field name="name" modifiers="{&quot;required&quot;: true}"/>
+<field name="sequence" modifiers="{&quot;required&quot;: true}"/>
+<field name="move_id" on_change="1" can_create="true" can_write="true"/>
+<field name="move_check" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+<field name="move_posted_check" modifiers="{&quot;readonly&quot;: true}"/>
+<field name="parent_state" modifiers="{&quot;invisible&quot;: true}"/>
+</group>
+<group>
+<field name="method" modifiers="{&quot;required&quot;: true}"/>
+<field name="value" widget="monetary" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+<field name="revaluation_date"/>
+</group>
+</group>
+</form>
+</field>
+</page>
+<page string="Related Purchase" name="related_items" modifiers="{&quot;invisible&quot;: [[&quot;original_move_line_ids&quot;, &quot;=&quot;, []]]}">
+<field name="original_move_line_ids" widget="many2many" domain="[('credit', '=', '0'), ('move_id.state', '=', 'posted')]" class="original_move_line_ids_field" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;=&quot;, &quot;posted&quot;]]}" can_create="true" can_write="true">
+<tree>
+<field name="date" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="move_name" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="partner_id" on_change="1"/>
+<field name="account_id" on_change="1"/>
+                                    <field name="name"/>
+<field name="debit" widget="monetary" on_change="1"/>
+<field name="credit" widget="monetary" on_change="1"/>
+</tree>
+</field>
+</page>
+</notebook>
+</sheet>
+<div class="oe_chatter">
+<field name="message_follower_ids"/>
+<field name="activity_ids"/>
+<field name="message_ids"/>
+</div>
+</form>
+        </field>
+    </record>
+
+    <record id="view_account_asset_asset_search" model="ir.ui.view">
+        <field name="name">account.asset.asset.search</field>
+        <field name="model">account.asset.asset</field>
+        <field name="arch" type="xml">
+            <search string="Asset Account">
+<field name="name" string="Asset"/>
+<field name="date"/>
+<separator/>
+<field name="invoice_id"/>
+<separator/>
+<filter string="Archived" name="ftr_inactive" domain="[('active', '=', False)]"/>
+<separator/>
+<field name="product_id"/>
+<filter string="Current" name="current" domain="[('state','in', ('draft','open'))]" help="Assets in draft and open states"/>
+<filter string="Closed" name="closed" domain="[('state','not in', ('draft','open'))]" help="Assets in closed state"/>
+<filter string="With Invoice" name="ftr_has_invoice" domain="[('invoice_id','!=',False)]"/>
+<filter string="Without Invoice" name="ftr_has_no_invoice" domain="[('invoice_id','=',False)]"/>
+<group expand="0" string="Group By...">
+<filter string="Date" name="month" domain="[]" context="{'group_by':'date'}"/>
+<filter string="Asset Category" name="category" domain="[]" context="{'group_by':'category_id'}"/>
+<filter string="Asset Product" name="grp_product" domain="[]" context="{'group_by':'product_id'}"/>
+<filter string="Invoice" name="grp_invoice" domain="[]" context="{'group_by':'invoice_id'}"/>
+</group>
+<searchpanel>
+<field name="company_id" icon="fa-building"/>
+<field name="category_id" icon="fa-users"/>
+</searchpanel>
+</search>
+        </field>
+    </record>
+
+    <record id="action_account_asset_asset" model="ir.actions.act_window">
+        <field name="name">ACCOUNT ASSET ASSET</field>
+        <field name="res_model">account.asset.asset</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

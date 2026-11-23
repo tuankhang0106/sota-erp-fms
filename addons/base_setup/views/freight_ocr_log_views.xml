@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_freight_ocr_log_tree" model="ir.ui.view">
+        <field name="name">freight.ocr.log.tree</field>
+        <field name="model">freight.ocr.log</field>
+        <field name="arch" type="xml">
+            <tree string="OCR Usage Log" js_class="ocr_log_list" create="false" edit="false" delete="false" default_order="create_date desc">
+                    <field name="create_date" string="Date/Time" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="user_id" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="ocr_type" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="filename" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="state" widget="badge" decoration-success="state == 'success'" decoration-danger="state == 'error'" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="company_id" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_ocr_log_form" model="ir.ui.view">
+        <field name="name">freight.ocr.log.form</field>
+        <field name="model">freight.ocr.log</field>
+        <field name="arch" type="xml">
+            <form string="OCR Usage Log" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="user_id" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="ocr_type" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="create_date" string="Date/Time" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="state" modifiers="{&quot;readonly&quot;: true}"/>
+                            </group>
+                            <group>
+                                <field name="filename" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="endpoint_url" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="company_id" modifiers="{&quot;readonly&quot;: true}"/>
+                            </group>
+                        </group>
+                        <group string="Response">
+                            <field name="response_text" nolabel="1" modifiers="{&quot;readonly&quot;: true}"/>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_freight_ocr_log_search" model="ir.ui.view">
+        <field name="name">freight.ocr.log.search</field>
+        <field name="model">freight.ocr.log</field>
+        <field name="arch" type="xml">
+            <search string="OCR Usage Log" edit="false">
+                    <field name="filename"/>
+                    <field name="user_id"/>
+                    <filter name="filter_success" string="Success" domain="[('state', '=', 'success')]"/>
+                    <filter name="filter_error" string="Error" domain="[('state', '=', 'error')]"/>
+                    <separator/>
+                    <filter name="filter_sea_booking" string="SEA Booking Confirmation" domain="[('ocr_type', '=', 'sea_booking')]"/>
+                    <filter name="filter_air_booking" string="AIR Booking Confirmation" domain="[('ocr_type', '=', 'air_booking')]"/>
+                    <filter name="filter_bill_of_lading" string="Bill of Lading" domain="[('ocr_type', '=', 'bill_of_lading')]"/>
+                    <filter name="filter_air_waybill" string="AIR Waybill" domain="[('ocr_type', '=', 'air_waybill')]"/>
+                    <filter name="filter_vendor_bill" string="Vendor Bill" domain="[('ocr_type', '=', 'vendor_bill')]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_user" string="User" context="{'group_by': 'user_id'}"/>
+                        <filter name="group_ocr_type" string="OCR API" context="{'group_by': 'ocr_type'}"/>
+                        <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                    </group>
+                </search>
+        </field>
+    </record>
+
+    <record id="action_freight_ocr_log" model="ir.actions.act_window">
+        <field name="name">FREIGHT OCR LOG</field>
+        <field name="res_model">freight.ocr.log</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

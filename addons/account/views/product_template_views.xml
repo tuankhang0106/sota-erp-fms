@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_template_tree" model="ir.ui.view">
+        <field name="name">product.template.tree</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <tree duplicate="0">
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                <field name="freight_service_type"/>
+                <field name="transport_mode_ids" widget="many2many_tags"/>
+                <field name="freight_port_pod_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_product_template_form" model="ir.ui.view">
+        <field name="name">product.template.form</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <form string="Product" duplicate="0">
+                <sheet name="product_form">
+                    <field name="product_variant_count" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="detailed_type" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="is_product_variant" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="attribute_line_ids" modifiers="{&quot;invisible&quot;: true}"/>
+                    <field name="type" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                    <field name="company_id" modifiers="{&quot;invisible&quot;: true}" can_create="true" can_write="true"/>
+                    <div class="oe_button_box" name="button_box">
+                        <!--                        For inherit-->
+                    </div>
+                    <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}"/>
+                    <field name="id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                    <div class="oe_title">
+                        <label for="name" string="Fare Name"/>
+                        <h1>
+                            <div class="d-flex">
+                                <field name="priority" widget="priority" class="me-3"/>
+                                <field class="text-break" name="name" placeholder="e.g. Ocean Freight" modifiers="{&quot;required&quot;: true}"/>
+                            </div>
+                        </h1>
+                        <div class="o_row">
+                            <label for="default_code"/>
+                            <field name="default_code"/>
+                            <label for="local_name"/>
+                            <field name="local_name"/>
+                        </div>
+                    </div>
+                    <notebook>
+                        <page string="Freight Information">
+                            <group>
+                                <group>
+                                    <field name="freight_type" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="transport_mode_ids" widget="many2many_tags" modifiers="{&quot;required&quot;: true}" can_create="false" can_write="false"/>
+                                    <field name="can_be_expensed" modifiers="{&quot;invisible&quot;: true}"/>
+                                </group>
+                                <group>
+                                    <field name="freight_service_type"/>
+                                    <field name="charge_scope"/>
+                                    <field name="is_com_fee" string="Is Com Vendor Fee"/>
+                    <field name="job_profit_group"/>
+                <field name="is_com_customer_fee"/>
+                    <field name="show_plate_number"/>
+                    <!-- Fare hải quan: số tờ khai (thay hard code 'CUS' / 'CUSTOMS FEE') -->
+                    <field name="show_customs_declaration_no"/>
+                                    <field name="categ_id" string="Fare Category" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                    <field name="default_tax_id" options="{'no_create': True}" can_create="true" can_write="true"/>
+                                </group>
+                            </group>
+                        </page>
+                    <page string="Quantity Rules" name="freight_qty_rules">
+                        <field name="freight_qty_rule_ids">
+                            <tree editable="bottom">
+                                <field name="fcl_unit" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                <field name="qty_rule" modifiers="{&quot;required&quot;: true}"/>
+                            </tree>
+                        </field>
+                    </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_product_template_search" model="ir.ui.view">
+        <field name="name">product.template.search</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <search string="Product">
+                <field name="name" string="Product" filter_domain="['|', '|', '|', '|', ('local_name', 'ilike', self), ('default_code', 'ilike', self), ('product_variant_ids.default_code', 'ilike', self),('name', 'ilike', self), ('barcode', 'ilike', self)]"/>
+                <field name="transport_mode_ids"/>
+                <filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+                <filter string="Services" name="ftr_freight_service" domain="[('freight_type', '=', 'service')]"/>
+                <separator/>
+                <group string="Group By">
+                    <filter string="Transport Modes" name="group_by_transport_mode_ids" context="{'group_by': 'transport_mode_ids'}"/>
+                    <filter string="Freight Type" name="group_by_freight_type" context="{'group_by': 'freight_type'}"/>
+                    <filter string="POL" name="group_by_pol" context="{'group_by': 'freight_port_pol_id'}"/>
+                    <filter string="POD" name="group_by_pod" context="{'group_by': 'freight_port_pod_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_product_template" model="ir.actions.act_window">
+        <field name="name">PRODUCT TEMPLATE</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

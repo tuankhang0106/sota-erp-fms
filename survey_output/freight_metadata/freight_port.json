@@ -1,0 +1,195 @@
+{
+  "fields": {
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "code": {
+      "readonly": false,
+      "required": true,
+      "string": "Code",
+      "type": "char"
+    },
+    "type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "airport",
+          "Airport"
+        ],
+        [
+          "seaport",
+          "Seaport"
+        ],
+        [
+          "border_gate",
+          "Border Gate"
+        ],
+        [
+          "warehouse",
+          "Warehouse"
+        ],
+        [
+          "trucking",
+          "Trucking"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "street": {
+      "readonly": false,
+      "required": false,
+      "string": "Street",
+      "type": "char"
+    },
+    "street2": {
+      "readonly": false,
+      "required": false,
+      "string": "Street2",
+      "type": "char"
+    },
+    "zip": {
+      "readonly": false,
+      "required": false,
+      "string": "Zip",
+      "type": "char"
+    },
+    "city": {
+      "readonly": false,
+      "required": false,
+      "string": "City",
+      "type": "char"
+    },
+    "state_id": {
+      "readonly": false,
+      "relation": "res.country.state",
+      "required": false,
+      "string": "State",
+      "type": "many2one"
+    },
+    "country_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "note": {
+      "readonly": false,
+      "required": false,
+      "string": "Note",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "schedule_k_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Schedule K Code",
+      "type": "char"
+    },
+    "vat_name": {
+      "readonly": false,
+      "required": false,
+      "string": "VAT Name",
+      "type": "char"
+    },
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "__last_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Modified on",
+      "type": "datetime"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "warehouse_mapping_ids": {
+      "readonly": false,
+      "relation": "freight.port.warehouse.mapping",
+      "required": false,
+      "string": "Warehouse Mapping",
+      "type": "one2many"
+    },
+    "do_dear": {
+      "readonly": false,
+      "required": false,
+      "string": "D/O Dear (Kính gửi)",
+      "type": "char"
+    }
+  },
+  "views": {
+    "list": {
+      "arch": "<tree>\n                    <field name=\"name\" modifiers=\"{&quot;required&quot;: true}\"/>\n                    <field name=\"code\" modifiers=\"{&quot;required&quot;: true}\"/>\n                    <field name=\"type\" modifiers=\"{&quot;required&quot;: true}\"/>\n                    <field name=\"country_id\" on_change=\"1\"/>\n                    <field name=\"note\"/>\n                    <field name=\"active\" modifiers=\"{&quot;column_invisible&quot;: true}\"/>\n                </tree>",
+      "id": 1465,
+      "model": "freight.port"
+    },
+    "form": {
+      "arch": "<form>\n                    <sheet>\n                        <group>\n                            <field name=\"name\" modifiers=\"{&quot;required&quot;: true}\"/>\n                            <field name=\"code\" modifiers=\"{&quot;required&quot;: true}\"/>\n                            <field name=\"vat_name\"/>\n                            <field name=\"type\" modifiers=\"{&quot;required&quot;: true}\"/>\n                            <label for=\"street\" string=\"Address\"/>\n                            <div class=\"o_address_format\">\n                                <field name=\"street\" placeholder=\"Street...\" class=\"o_address_street\"/>\n                                <field name=\"street2\" placeholder=\"Street 2...\" class=\"o_address_street\"/>\n                                <field name=\"city\" placeholder=\"City\" class=\"o_address_city\"/>\n                                <field name=\"state_id\" class=\"o_address_state\" placeholder=\"State\" options=\"{'no_open': True, 'no_quick_create': True}\" context=\"{'default_country_id': country_id}\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                                <field name=\"zip\" placeholder=\"ZIP\" class=\"o_address_zip\" on_change=\"1\"/>\n                                <field name=\"country_id\" placeholder=\"Country\" class=\"o_address_country\" options=\"{&quot;no_open&quot;: True, &quot;no_create&quot;: True}\" on_change=\"1\" can_create=\"true\" can_write=\"true\"/>\n                            </div>\n                            <field name=\"note\"/>\n                <field name=\"do_dear\" modifiers=\"{&quot;invisible&quot;: [[&quot;type&quot;, &quot;!=&quot;, &quot;warehouse&quot;]]}\"/>\n                            <field name=\"active\" modifiers=\"{&quot;invisible&quot;: true}\"/>\n                        </group>\n                <field name=\"warehouse_mapping_ids\" widget=\"one2many_list\" nolabel=\"1\">\n                    <tree editable=\"top\">\n                        <field name=\"airline_code\" modifiers=\"{&quot;readonly&quot;: true}\"/>\n                        <field name=\"airline_id\" on_change=\"1\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                        <field name=\"warehouse_type\"/>\n                        <field name=\"warehouse_id\" modifiers=\"{&quot;required&quot;: true}\" can_create=\"true\" can_write=\"true\"/>\n                    </tree>\n                </field>\n                    </sheet>\n                </form>",
+      "id": 1464,
+      "model": "freight.port"
+    },
+    "search": {
+      "arch": "<search>\n                    <field name=\"name\"/>\n                    <field name=\"code\"/>\n                    <field name=\"country_id\"/>\n                    <field name=\"note\"/>\n                    <filter name=\"ftr_archived\" string=\"Archived\" domain=\"[('active', '=', False)]\"/>\n                    <separator/>\n                    <filter name=\"ftr_airport\" string=\"Airport\" domain=\"[('type', '=', 'airport')]\"/>\n                    <filter name=\"ftr_seaport\" string=\"Seaport\" domain=\"[('type', '=', 'seaport')]\"/>\n                    <filter name=\"ftr_border_gate\" string=\"Border Gate\" domain=\"[('type', '=', 'border_gate')]\"/>\n                    <filter name=\"ftr_warehouse\" string=\"Warehouse\" domain=\"[('type', '=', 'warehouse')]\"/>\n                </search>",
+      "id": 1466,
+      "model": "freight.port"
+    },
+    "kanban": {
+      "arch": "<kanban string=\"Freight Port\"><templates><t t-name=\"kanban-box\"><div t-attf-class=\"oe_kanban_card oe_kanban_global_click\"><div class=\"o_kanban_card_content\"><field name=\"code\" modifiers=\"{&quot;required&quot;: true}\"/></div></div></t></templates></kanban>",
+      "id": false,
+      "model": "freight.port"
+    },
+    "pivot": {
+      "arch": "<pivot string=\"Freight Port\"/>",
+      "id": false,
+      "model": "freight.port"
+    },
+    "graph": {
+      "arch": "<graph string=\"Freight Port\"><field name=\"code\"/></graph>",
+      "id": false,
+      "model": "freight.port"
+    }
+  }
+}

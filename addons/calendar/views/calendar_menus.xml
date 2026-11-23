@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu Lịch (ID: 117, Action: 181) -->
+    <menuitem id="mail_menu_calendar"
+              name="Lịch"
+              action="action_calendar_event"
+              web_icon="calendar,static/description/icon.png"
+              sequence="2"/>
+
+    <!-- Configuration submenus -->
+    <menuitem id="menu_calendar_configuration"
+              name="Cấu hình"
+              parent="mail_menu_calendar"
+              sequence="100"
+              groups="base.group_system"/>
+
+    <menuitem id="menu_calendar_event_type"
+              name="Loại sự kiện / Cuộc họp"
+              parent="menu_calendar_configuration"
+              action="action_calendar_event_type"
+              sequence="10"/>
+
+    <menuitem id="menu_calendar_alarm"
+              name="Cảnh báo / Nhắc nhở"
+              parent="menu_calendar_configuration"
+              action="action_calendar_alarm"
+              sequence="20"/>
+</odoo>

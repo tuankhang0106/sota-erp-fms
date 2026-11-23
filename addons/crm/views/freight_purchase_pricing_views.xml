@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_freight_purchase_pricing_tree" model="ir.ui.view">
+        <field name="name">freight.purchase.pricing.tree</field>
+        <field name="model">freight.purchase.pricing</field>
+        <field name="arch" type="xml">
+            <tree string="Purchase Pricing">
+                    <field name="bound" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="trade_name_id" options="{'no_open': True}"/>
+                    <field name="freight_port_pol_id" options="{'no_open': True}"/>
+                    <field name="freight_port_pod_id" options="{'no_open': True}"/>
+                    <field name="partner_id" string="Carrier Name" options="{'no_open': True}"/>
+                    <field name="fcl_currency_ids" string="Curr" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="freetime_pol"/>
+                    <field name="freetime_pod"/>
+                    <field name="fcl_ctnr_types" string="Type Cont" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="fcl_fare_names" string="Fare Name" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="fcl_guideline_20" string="20'" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="fcl_guideline_40" string="40'" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="fcl_guideline_4h" string="40HC" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="fcl_guideline_45" string="45'" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="fcl_sort_20" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="fcl_sort_40" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="fcl_sort_4h" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="fcl_sort_45" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="pic_id" options="{'no_open': True}"/>
+                    <field name="com_carrier_number" string="Commission"/>
+                    <field name="date_start" string="From" options="{'filter_operator': '&gt;='}"/>
+                    <field name="date_end" string="To" options="{'filter_operator': '&lt;='}"/>
+                    <field name="remark"/>
+                    <field name="user_id" string="Operator" options="{'no_open': True}" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="routing_service"/>
+                    <field name="transit_time"/>
+                    <field name="create_date" modifiers="{&quot;readonly&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_freight_purchase_pricing_form" model="ir.ui.view">
+        <field name="name">freight.purchase.pricing.form</field>
+        <field name="model">freight.purchase.pricing</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_create_quotation" type="object" string="Tạo báo giá" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_quotations" type="object" class="oe_stat_button" icon="fa-file-text-o">
+                            <field name="quotation_count" widget="statinfo" string="Báo giá" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group style="width:70%">
+                            <group style="width:40%;min-width:300px;">
+                                <!--                            <group>-->
+                                <field name="code" string="Code" modifiers="{&quot;readonly&quot;: true}"/>
+                                <field name="freight_port_domain_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="partner_id" string="Carrier" on_change="1" can_create="true" can_write="true"/>
+                                <field name="pic_id" string="PIC" can_create="true" can_write="true"/>
+                                <field name="pic_domain_ids" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <label for="date_start" string="Validity"/>
+                                <div class="o_row w-100">
+                                    <field name="date_start" string="Start Date"/>
+                                    <i title="Validity" class="fa fa-long-arrow-right fa-lg text-muted"/>
+                                    <field name="date_end" string="End Date"/>
+                                </div>
+                                <field name="is_pin" widget="boolean_toggle"/>
+                <field name="is_dry"/>
+                <field name="routing_service"/>
+                <field name="remark"/>
+
+                            </group>
+                            <group style="width:60%;min-width:400px;">
+                                <field name="load_type" modifiers="{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;]]}"/>
+                                <field name="freight_port_pol_id" can_create="true" can_write="true"/>
+                                <field name="freight_port_pod_id" can_create="true" can_write="true"/>
+                                <field name="transit_port" widget="many2many_tags" can_create="true" can_write="true"/>
+                                <field name="place_of_received"/>
+                                <field name="place_of_delivery"/>
+                                <field name="com_carrier"/>
+                                <field name="com_carrier_number" modifiers="{&quot;invisible&quot;: [[&quot;com_carrier&quot;, &quot;=&quot;, &quot;no&quot;]]}"/>
+                            </group>
+                        </group>
+                        <group style="width:30%;min-width:300px;">
+                                <field name="transport_mode_id" string="Service" on_change="1" modifiers="{&quot;required&quot;: true}" can_create="false" can_write="false"/>
+                                <field name="bound" string="Bound" modifiers="{&quot;required&quot;: true}"/>
+                                <field name="transport_mode" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="service_terms_id" string="Services Term" can_create="true" can_write="true"/>
+                                <field name="trade_name_id" can_create="true" can_write="true"/>
+                                <field name="incoterm" can_create="true" can_write="true"/>
+                                <field name="transit_time"/>
+                                <field name="date_of_week_ids" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True}" can_create="true" can_write="true"/>
+                                <field name="freetime_pol"/>
+                                <field name="freetime_pod"/>
+                                <field name="user_id" string="Operator" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                <field name="company_id" can_create="true" can_write="true"/>
+                        </group>
+
+                    </group>
+
+                    <div class="row mt16 mb16" modifiers="{&quot;invisible&quot;: [[&quot;load_type&quot;, &quot;=&quot;, false]]}">
+                        <div class="col-12">
+                            <div class="alert alert-info" role="alert" style="margin-bottom: 8px;">
+                                <i class="fa fa-info-circle"/>
+                                Import pricing data from Excel files
+                            </div>
+                            <button name="745" string="Import Lines from Excel" type="action" class="btn btn-primary btn-lg" style="width: 250px;" icon="fa-file-excel-o"/>
+                        </div>
+                    </div>
+
+                    <group string="FCL Freight Charge" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;], [&quot;load_type&quot;, &quot;!=&quot;, &quot;fcl&quot;]]}">
+
+                        <field name="fcl_line_ids" string="">
+                            <tree editable="bottom">
+                                <field name="service_id" string="Fare Code" on_change="1" can_create="true" can_write="true"/>
+                                <field name="carrier_id" modifiers="{&quot;column_invisible&quot;: true}" can_create="true" can_write="true"/>
+                                <field name="freight_service_type" string="Fare Type" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="currency_id" string="Curr" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                <field name="ctnr_type" string="Cont Type" can_create="true" can_write="true"/>
+                <field name="tax_id" can_create="true" can_write="true"/>
+                                <field name="net_20" sum="Total" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="net_40" sum="Total" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="net_4h" sum="Total" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="net_45" sum="Total" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="guideline_20" sum="Total" string="20"/>
+                                <field name="guideline_40" sum="Total" string="40"/>
+                <field name="guideline_4h" string="40HC" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.is_dry&quot;, &quot;=&quot;, false]]}"/>
+                                <field name="guideline_4h" sum="Total" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="guideline_45" sum="Total" string="45"/>
+                                <field name="fcl_unit" can_create="true" can_write="true"/>
+                                <field name="remark"/>
+                            </tree>
+                        </field>
+                    </group>
+
+                    <group string="LCL Freight Charge" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;], [&quot;load_type&quot;, &quot;!=&quot;, &quot;lcl&quot;]]}">
+                        <field name="lcl_line_ids" string="">
+                            <tree editable="bottom">
+                                <field name="service_id" string="Fare Code" on_change="1" can_create="true" can_write="true"/>
+                                <field name="carrier_id" can_create="true" can_write="true"/>
+                                <field name="freight_service_type" string="Fare Type" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="currency_id" string="Curr" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                <field name="net_min_rate" sum="Total"/>
+                                <field name="net_lcl_volume_min" sum="Total"/>
+                                <field name="net_lcl_rate" sum="Total"/>
+                                <field name="net_lcl_volume" sum="Total"/>
+                                <field name="guideline_min_rate" sum="Total"/>
+                                <field name="guideline_lcl_volume_min" string="LCL Volume Min (CBM)" sum="Total"/>
+                                <field name="guideline_lcl_rate" string="LCL Rate" sum="Total"/>
+                                <field name="guideline_lcl_volume" sum="Total"/>
+                                <field name="lcl_unit" can_create="true" can_write="true"/>
+                                <field name="remark"/>
+                            </tree>
+                        </field>
+                    </group>
+
+                    <group string="Freight Charge" modifiers="{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;not in&quot;, [&quot;air&quot;]]]}">
+                        <field name="air_line_ids" string="">
+                            <tree editable="bottom">
+                                <field name="service_id" string="Fare Code" on_change="1" can_create="true" can_write="true"/>
+                                <field name="carrier_id" can_create="true" can_write="true"/>
+                                <field name="freight_service_type" string="Fare Type" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="currency_id" string="Curr" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                <field name="net_min" sum="Total"/>
+                                <field name="minus_45_net" sum="Total"/>
+                                <field name="minus_45_guideline" sum="Total"/>
+                                <field name="plus_45_net" sum="Total"/>
+                                <field name="plus_45_guideline" sum="Total"/>
+                                <field name="plus_100_net" sum="Total"/>
+                                <field name="plus_100_guideline" sum="Total"/>
+                                <field name="plus_300_net" sum="Total"/>
+                                <field name="plus_300_guideline" sum="Total"/>
+                                <field name="plus_500_net" sum="Total"/>
+                                <field name="plus_500_guideline" sum="Total"/>
+                                <field name="plus_1000_net" sum="Total"/>
+                                <field name="plus_1000_guideline" sum="Total"/>
+                                <field name="remark"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Freight Charge" modifiers="{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;in&quot;, [&quot;air&quot;, &quot;sea&quot;]]]}">
+                        <field name="truck_line_ids" string="">
+                            <tree editable="bottom">
+                                <field name="service_id" string="Fare Code" on_change="1" can_create="true" can_write="true"/>
+                                <field name="carrier_id" can_create="true" can_write="true"/>
+                                <field name="freight_service_type" string="Fare Type"/>
+                                <field name="currency_id" string="Curr" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                <field name="unit_price_net" sum="Total"/>
+                                <field name="unit_price_guideline" sum="Total"/>
+                                <field name="fcl_unit" can_create="true" can_write="true"/>
+                                <field name="remark"/>
+                            </tree>
+                        </field>
+                    </group>
+
+                    <!-- Attachments Section with Preview -->
+                    <div class="row mt32">
+                        <div class="col-12">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header bg-white border-bottom">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-paperclip text-primary"/>
+                                        Attachments
+                                        <span class="badge badge-primary badge-pill ml-2">
+                                            <field name="attachment_count" modifiers="{&quot;readonly&quot;: true}"/>
+                                        </span>
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <field name="attachment_ids" widget="many2many_attachment_preview" string="Files" on_change="1" can_create="true" can_write="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <group string="Other Charge" name="Other Charge FCL" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;], [&quot;load_type&quot;, &quot;!=&quot;, &quot;fcl&quot;]]}">
+                        <group>
+                            <button name="action_get_carrier_local_charge_pp" type="object" string="Get Carrier Local Charge" class="btn-secondary w-200" icon="fa-search"/>
+                        </group>
+                        <field name="fcl_other_line_ids" string="">
+                            <tree editable="bottom">
+                                <field name="service_id" string="Fare Code" on_change="1" can_create="true" can_write="true"/>
+                                <field name="carrier_id" can_create="true" can_write="true"/>
+                                <field name="freight_service_type" string="Fare Type"/>
+                                <field name="currency_id" string="Curr" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                <field name="ctnr_type" string="Cont Type" can_create="true" can_write="true"/>
+                <field name="tax_id" can_create="true" can_write="true"/>
+                                <field name="type_20" sum="Total" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="type_40" sum="Total" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="type_4h" sum="Total" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="type_45" sum="Total" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="guideline_20" sum="Total" string="20"/>
+                                <field name="guideline_40" sum="Total" string="40"/>
+                <field name="guideline_4h" string="40HC" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.is_dry&quot;, &quot;=&quot;, false]]}"/>
+                                <field name="guideline_4h" sum="Total" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                <field name="guideline_45" sum="Total" string="45"/>
+                                <field name="fcl_unit" can_create="true" can_write="true"/>
+                                <field name="remark"/>
+                            </tree>
+                        </field>
+                    </group>
+
+                    <group string="Other Charge" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;transport_mode&quot;, &quot;!=&quot;, &quot;sea&quot;], [&quot;load_type&quot;, &quot;!=&quot;, &quot;lcl&quot;]]}">
+                        <group>
+                            <button name="action_get_carrier_local_charge_pp" type="object" string="Get Carrier Local Charge" class="btn-secondary w-200" icon="fa-search"/>
+                        </group>
+                        <field name="lcl_other_line_ids" string="">
+                            <tree editable="bottom">
+                                <field name="service_id" string="Fare Code" on_change="1" can_create="true" can_write="true"/>
+                                <field name="carrier_id" can_create="true" can_write="true"/>
+                                <field name="freight_service_type" string="Fare Type"/>
+                                <field name="currency_id" string="Curr" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                <field name="lcl_rate" string="LCL Rate (Net)" sum="Total"/>
+                                <field name="guideline_lcl_rate" string="LCL Rate" sum="Total"/>
+                                <field name="lcl_unit" can_create="true" can_write="true"/>
+                                <field name="remark"/>
+                            </tree>
+                        </field>
+                    </group>
+
+                    <group string="Other Charge" modifiers="{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;not in&quot;, [&quot;air&quot;]]]}">
+                        <field name="air_other_line_ids" string="">
+                            <tree editable="bottom">
+                                <field name="service_id" string="Fare" can_create="true" can_write="true"/>
+                                <field name="carrier_id" can_create="true" can_write="true"/>
+                                <field name="currency_id" string="Curr" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                <field name="unit_price" sum="Total"/>
+                                <field name="unit_price_guideline" sum="Total"/>
+                                <field name="unit_id" can_create="true" can_write="true"/>
+                                <field name="remark"/>
+                            </tree>
+                        </field>
+                    </group>
+
+                    <group string="Other Charge" modifiers="{&quot;invisible&quot;: [[&quot;transport_mode&quot;, &quot;in&quot;, [&quot;air&quot;, &quot;sea&quot;]]]}">
+                        <field name="truck_other_line_ids" string="">
+                            <tree editable="bottom">
+                                <field name="service_id" string="Fare" on_change="1" can_create="true" can_write="true"/>
+                                <field name="carrier_id" can_create="true" can_write="true"/>
+                                <field name="freight_service_type" string="Fare Type"/>
+                                <field name="currency_id" string="Curr" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                <field name="unit_price" sum="Total"/>
+                                <field name="unit_price_guideline" sum="Total"/>
+                                <!-- Đơn vị tính (freight.fcl.unit) - builder Tạo báo giá / wizard
+                                     đọc fcl_unit; unit_id ở model này là loại cont (freight.unit). -->
+                                <field name="fcl_unit" string="Unit" can_create="true" can_write="true"/>
+                                <field name="remark"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+                <!--                <div class="oe_chatter">-->
+                <!--                    <field name="message_follower_ids"/>-->
+                <!--                    <field name="activity_ids"/>-->
+                <!--                    <field name="message_ids"/>-->
+                <!--                </div>-->
+            </form>
+        </field>
+    </record>
+
+    <record id="view_freight_purchase_pricing_search" model="ir.ui.view">
+        <field name="name">freight.purchase.pricing.search</field>
+        <field name="model">freight.purchase.pricing</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="code"/>
+                <field name="partner_id"/>
+                <field name="product_tmpl_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="freight_port_of_receipt_id"/>
+                <field name="freight_port_of_delivery_id"/>
+                <filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+                <filter name="is_pin" string="Pinned" domain="[('is_pin', '=', True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_freight_purchase_pricing" model="ir.actions.act_window">
+        <field name="name">FREIGHT PURCHASE PRICING</field>
+        <field name="res_model">freight.purchase.pricing</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

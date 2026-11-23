@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View for mail.activity.type -->
+    <record id="view_mail_activity_type_tree" model="ir.ui.view">
+        <field name="name">mail.activity.type.tree</field>
+        <field name="model">mail.activity.type</field>
+        <field name="arch" type="xml">
+            <tree string="Activities" sample="1">
+                <field name="sequence" widget="handle"/>
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                <field name="summary"/>
+                <field name="delay_label" string="Planned in" class="text-end" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="delay_from" string="Type" modifiers="{&quot;required&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <!-- Form View for mail.activity.type -->
+    <record id="view_mail_activity_type_form" model="ir.ui.view">
+        <field name="name">mail.activity.type.form</field>
+        <field name="model">mail.activity.type</field>
+        <field name="arch" type="xml">
+            <form string="Activities">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}"/>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" placeholder="e.g. Schedule a meeting" modifiers="{&quot;required&quot;: true}"/></h1>
+                    </div>
+                    <group>
+                        <group name="activity_details" string="Activity Settings">
+                            <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                            <field name="category"/>
+                            <field name="default_user_id" options="{'no_create': True}" domain="[('share', '=', False)]" can_create="true" can_write="true"/>
+                            <field name="res_model" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                            <field name="res_model_change" modifiers="{&quot;invisible&quot;: true}"/>
+                            <field name="initial_res_model" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="summary" placeholder="e.g. &quot;Discuss proposal&quot;"/>
+                            </group>
+                        <group name="activity_planning" string="Next Activity">
+                            <field name="chaining_type" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;category&quot;, &quot;=&quot;, &quot;upload_file&quot;]], &quot;required&quot;: true}"/>
+                            <field name="triggered_next_type_id" options="{'no_open': True}" context="{'default_res_model': res_model}" modifiers="{&quot;invisible&quot;: [&quot;&amp;&quot;, [&quot;chaining_type&quot;, &quot;=&quot;, &quot;suggest&quot;], [&quot;category&quot;, &quot;!=&quot;, &quot;upload_file&quot;]], &quot;required&quot;: [&quot;&amp;&quot;, [&quot;chaining_type&quot;, &quot;=&quot;, &quot;trigger&quot;], [&quot;category&quot;, &quot;!=&quot;, &quot;upload_file&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="suggested_next_type_ids" widget="many2many_tags" context="{'default_res_model': res_model}" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;chaining_type&quot;, &quot;=&quot;, &quot;trigger&quot;], [&quot;category&quot;, &quot;=&quot;, &quot;upload_file&quot;]]}" can_create="true" can_write="true"/>
+                            <field name="mail_template_ids" widget="many2many_tags" domain="[('model_id.model', '=', res_model)]" context="{'default_model': res_model}" modifiers="{&quot;invisible&quot;: [[&quot;res_model&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                            <label for="delay_count"/>
+                            <div>
+                                <field class="oe_inline pe-1 o_input_3ch" name="delay_count"/>
+                                <field class="oe_inline ps-1 pe-2" name="delay_unit" modifiers="{&quot;required&quot;: true}"/>
+                                <field class="oe_inline" name="delay_from" modifiers="{&quot;required&quot;: true}"/>
+                            </div>
+                        </group>
+                    </group>
+                    <label for="default_note" class="fw-bold"/>
+                    <field nolabel="1" name="default_note" placeholder="e.g. &quot;Go over the offer and discuss details&quot;" class="oe-bordered-editor"/>
+                    <p class="alert alert-info" role="alert" modifiers="{&quot;invisible&quot;: [[&quot;res_model_change&quot;, &quot;=&quot;, false]]}">Modifying the model can have an impact on existing activities using this activity type, be careful.</p>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View for mail.activity.type -->
+    <record id="view_mail_activity_type_search" model="ir.ui.view">
+        <field name="name">mail.activity.type.search</field>
+        <field name="model">mail.activity.type</field>
+        <field name="arch" type="xml">
+            <search string="Activities">
+                <field name="name"/>
+                <filter string="Archived" domain="[('active', '=', False)]" name="archived"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Window Action for mail.activity.type -->
+    <record id="action_mail_activity_type" model="ir.actions.act_window">
+        <field name="name">Loại hoạt động (Activity Types)</field>
+        <field name="res_model">mail.activity.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_mail_activity_type_search"/>
+    </record>
+
+</odoo>

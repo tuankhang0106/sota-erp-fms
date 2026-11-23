@@ -1,0 +1,48 @@
+# -*- coding: utf-8 -*-
+from odoo import models, fields, api
+
+class EmployeeAdvanceReconcile(models.Model):
+    _name = 'employee.advance.reconcile'
+    _description = 'EMPLOYEE ADVANCE RECONCILE'
+    _order = 'id desc'
+
+    activity_ids = fields.One2many(comodel_name="mail.activity", inverse_name='parent_id', string="Activities")
+    activity_state = fields.Selection(selection=[["overdue","Overdue"],["today","Today"],["planned","Planned"]], string="Activity State", readonly=True, help="Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.")
+    activity_user_id = fields.Many2one(comodel_name="res.users", string="Responsible User")
+    activity_type_id = fields.Many2one(comodel_name="mail.activity.type", string="Next Activity Type")
+    activity_type_icon = fields.Char(string="Activity Type Icon", readonly=True, help="Font awesome icon e.g. fa-tasks")
+    activity_date_deadline = fields.Date(string="Next Activity Deadline", readonly=True)
+    my_activity_date_deadline = fields.Date(string="My Activity Deadline", readonly=True)
+    activity_summary = fields.Char(string="Next Activity Summary")
+    activity_exception_decoration = fields.Selection(selection=[["warning","Alert"],["danger","Error"]], string="Activity Exception Decoration", readonly=True, help="Type of the exception activity on record.")
+    activity_exception_icon = fields.Char(string="Icon", readonly=True, help="Icon to indicate an exception activity.")
+    activity_calendar_event_id = fields.Many2one(comodel_name="calendar.event", string="Next Activity Calendar Event", readonly=True)
+    message_is_follower = fields.Boolean(string="Is Follower", readonly=True)
+    message_follower_ids = fields.One2many(comodel_name="mail.followers", inverse_name='parent_id', string="Followers")
+    message_partner_ids = fields.Many2many(comodel_name="res.partner", string="Followers (Partners)")
+    message_ids = fields.One2many(comodel_name="mail.message", inverse_name='parent_id', string="Messages")
+    has_message = fields.Boolean(string="Has Message", readonly=True)
+    message_needaction = fields.Boolean(string="Action Needed", readonly=True, help="If checked, new messages require your attention.")
+    message_needaction_counter = fields.Integer(string="Number of Actions", readonly=True, help="Number of messages requiring action")
+    message_has_error = fields.Boolean(string="Message Delivery error", readonly=True, help="If checked, some messages have a delivery error.")
+    message_has_error_counter = fields.Integer(string="Number of errors", readonly=True, help="Number of messages with delivery error")
+    message_attachment_count = fields.Integer(string="Attachment Count", readonly=True)
+    message_main_attachment_id = fields.Many2one(comodel_name="ir.attachment", string="Main Attachment")
+    website_message_ids = fields.One2many(comodel_name="mail.message", inverse_name='parent_id', string="Website Messages", help="Website communication history")
+    message_has_sms_error = fields.Boolean(string="SMS Delivery error", readonly=True, help="If checked, some messages have a delivery error.")
+    name = fields.Char(string="Reference", required=True, readonly=True)
+    date = fields.Date(string="Reconciled Date", required=True)
+    employee_id = fields.Many2one(comodel_name="hr.employee", string="Employee", required=True)
+    job_id = fields.Many2one(comodel_name="hr.job", string="Job Position", readonly=True)
+    department_id = fields.Many2one(comodel_name="hr.department", string="Department", readonly=True)
+    journal_id = fields.Many2one(comodel_name="account.journal", string="Employee Advance Journal", required=True)
+    account_ids = fields.Many2many(comodel_name="account.account", string="Credit Accounts", help="If set, only move lines on these accounts are taken into the credit side. Leave empty to take all accounts.")
+    state = fields.Selection(selection=[["draft","Draft"],["confirm","Confirmed"],["done","Done"],["cancel","Cancelled"]], string="Status")
+    line_db_ids = fields.One2many(comodel_name="employee.advance.reconcile.line", inverse_name='parent_id', string="Debits")
+    line_cr_ids = fields.One2many(comodel_name="employee.advance.reconcile.line", inverse_name='parent_id', string="Credits")
+    payment_ids = fields.One2many(comodel_name="account.payment", inverse_name='parent_id', string="Payment", readonly=True)
+    difference_amount = fields.Float(string="Difference Amount", readonly=True)
+    balance = fields.Float(string="Balance", readonly=True)
+    has_outstanding_payment = fields.Boolean(string="Has Outstanding Payments", readonly=True, help="Technical field to indicate this employee advance reconcile has draft or cancel payment. If exists, user need to resolved them.")
+    company_id = fields.Many2one(comodel_name="res.company", string="Company", readonly=True, help="Company related to this journal")
+    job_ids = fields.Many2many(comodel_name="freight.job", string="Job", help="Nếu chọn, chỉ những bút toán Nợ/Có liên quan các job này mới đưa vào danh sách reconcile. Để trống = lấy mọi bút toán như cũ.")

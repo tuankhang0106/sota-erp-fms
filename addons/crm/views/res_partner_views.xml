@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_tree" model="ir.ui.view">
+        <field name="name">res.partner.tree</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Contacts" sample="1" multi_edit="1">
+                    <field name="display_name" string="Name" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="crm_convert_date" optional="hide"/>
+                <field name="full_address_vi" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="translated_display_name" string="Name" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="short_name" on_change="1"/>
+                <field name="address"/>
+                    <field name="function" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <field name="phone" class="o_force_ltr" optional="show" on_change="1"/>
+                    <field name="email" optional="show" on_change="1"/>
+                    <field name="user_id" optional="show" widget="many2one_avatar_user" domain="[('share', '=', False)]" can_create="true" can_write="true"/>
+                    <field name="activity_ids" optional="show" widget="list_activity"/>
+                    <field name="city" optional="show" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <field name="state_id" optional="hide" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="country_id" optional="show" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="is_risk" optional="show" widget="boolean_toggle" string="Rủi ro HĐ"/>
+                    <field name="vat" optional="hide" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="category_id" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}" can_create="true" can_write="true"/>
+                    <field name="company_id" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="is_company" on_change="1" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <field name="parent_id" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                    <field name="active" on_change="1" modifiers="{&quot;column_invisible&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_res_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_quotations" type="object" class="oe_stat_button" icon="fa-file-text-o">
+                            <field name="quotation_count" widget="statinfo" string="Quotations" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                    <button type="object" class="oe_stat_button" icon="fa-ship" name="action_view_jobs">
+                        <field name="job_count" widget="statinfo" string="Jobs" modifiers="{&quot;readonly&quot;: true}"/>
+                    </button>
+                    <button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="action_view_partner_invoices" context="{'default_partner_id': active_id}">
+                        <div class="o_form_field o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="currency_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="total_invoiced" widget="monetary" options="{'currency_field': 'currency_id'}" modifiers="{&quot;readonly&quot;: true}"/>
+                            </span>
+                            <span class="o_stat_text">Invoiced</span>
+                        </div>
+                    </button>
+                    <button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="open_partner_ledger" title="Partner Ledger" context="{'default_partner_id': active_id}">
+                        <div class="o_stat_info">
+                            <span class="o_stat_text">Partner Ledger</span>
+                        </div>
+                    </button>
+
+                    <button class="oe_stat_button" type="object" name="schedule_meeting" icon="fa-calendar" context="{'partner_id': active_id, 'partner_name': name}">
+                        <field string="Meetings" name="meeting_count" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                    </button>
+                    </div>
+                    <field name="avatar_128" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                    <field name="image_1920" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;avatar_128&quot;}" on_change="1"/>
+                    <group>
+                        <group>
+                <field name="is_account_user" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="name" string="Local Name" on_change="1"/>
+                            <field name="foreign_name" string="English Name"/>
+                            <field name="short_name"/>
+                            <field name="invoice_currency_id" can_create="true" can_write="true"/>
+                            <field name="country_id" on_change="1" can_create="true" can_write="true"/>
+                            <field name="lang"/>
+                            <field name="branch"/>
+                            <field name="address"/>
+                            <field name="office_address"/>
+                            <field name="bl_address"/>
+                            <field name="establish"/>
+                            <field name="dept_ic_id" can_create="true" can_write="true"/>
+                <field name="can_edit_salesperson" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="user_id" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_company&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                            <field name="team_id" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_company&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                            <field name="crm_department_id" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="parent_id" on_change="1" modifiers="{&quot;invisible&quot;: true}" can_create="true" can_write="true"/>
+                            <field name="is_company" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                        </group>
+                        <group>
+                            <group class="w-100">
+                                <field name="partner_code" modifiers="{&quot;readonly&quot;: true}"/>
+                                <label for="vat"/>
+                                <div class="o_row">
+                                    <field name="vat" strung="Tax Code" placeholder="e.g. BE0477472701"/>
+                                    <widget name="get_tax_info_btn"/>
+
+                                </div>
+                                <field name="party_role" widget="many2many_tags" on_change="1" can_create="true" can_write="true"/>
+                <field name="capacity"/>
+                                <field name="is_contract"/>
+                                <field name="network"/>
+                                <field name="services"/>
+                                <field name="competitive_on_market"/>
+                                <field name="commodity_id" can_create="true" can_write="true"/>
+                                <field name="log_in"/>
+<!--                                <field name="payment_term_id"/>-->
+<!--                                <field name="payment_due_days"/>-->
+                                <field name="is_agent" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="is_coloader_sea" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="is_coloader_air" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="is_custom" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="is_carrier" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="is_vendor" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="is_carrier" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="is_broker_chartering" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="is_association" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="is_nvocc" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                <field name="load_type" modifiers="{&quot;invisible&quot;: [[&quot;is_agent&quot;, &quot;=&quot;, false], [&quot;is_coloader_sea&quot;, &quot;=&quot;, false]]}"/>
+                                <field name="service_route" modifiers="{&quot;invisible&quot;: [[&quot;is_carrier&quot;, &quot;=&quot;, false], [&quot;is_nvocc&quot;, &quot;=&quot;, false], [&quot;is_agent&quot;, &quot;=&quot;, false], [&quot;is_coloader_sea&quot;, &quot;=&quot;, false], [&quot;is_coloader_air&quot;, &quot;=&quot;, false], [&quot;is_broker_chartering&quot;, &quot;=&quot;, false], [&quot;is_vendor&quot;, &quot;=&quot;, false], [&quot;is_association&quot;, &quot;=&quot;, false]]}"/>
+                                <field name="remark_working"/>
+                                <field name="phone" on_change="1"/>
+                                <field name="email" string="Email(Debit/EDO/AN)" on_change="1"/>
+                                <field name="email_einvoice"/>
+                                <field name="email_cc" string="Email Other"/>
+                                <field name="area" modifiers="{&quot;invisible&quot;: [[&quot;is_custom&quot;, &quot;=&quot;, false]]}"/>
+                                <field name="service_area" modifiers="{&quot;invisible&quot;: [[&quot;is_carrier&quot;, &quot;=&quot;, false]]}"/>
+                                <field name="category_id" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="e.g. &quot;B2B&quot;, &quot;VIP&quot;, &quot;Consulting&quot;, ..." can_create="true" can_write="true"/>
+                                <field name="is_public_customer"/>
+                            </group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="PICS" name="pic" modifiers="{&quot;invisible&quot;: [[&quot;is_company&quot;, &quot;=&quot;, false]]}">
+                            <field widget="many2many" name="child_ids" context="{'default_is_company': False, 'default_is_pic': True, 'form_view_ref': 'sota_freight_crm.fms_pic_view_quick_create_form'}" domain="[('is_company', '=', False), ('is_pic', '=', True)]" on_change="1">&gt;
+                                <tree>
+                                    <field name="name" on_change="1"/>
+                                    <field name="function"/>
+                                    <field name="mobile" on_change="1"/>
+                                    <field name="email" on_change="1"/>
+                                    <field name="fax"/>
+                                    <field name="task_in_charge"/>
+                                </tree>
+                            </field>
+                        </page>
+                <page string="Brench Address">
+                    <field name="brench_ids">
+                        <tree editable="bottom">
+                            <field name="brench"/>
+                            <field name="address"/>
+                        </tree>
+                    </field>
+                </page>
+
+                        <page string="Login" name="login">
+                            <field name="login_ids">
+                                <tree editable="bottom">
+                                    <field name="website"/>
+                                    <field name="account"/>
+                                    <field name="id" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <field name="password"/>
+                                </tree>
+                            </field>
+                        </page>
+                <page name="credit_info" string="Credit Info">
+                    <group>
+                        <group>
+                            <label for="payment_term_id"/>
+                            <div class="o_row">
+                                <field name="payment_term_id" can_create="true" can_write="true"/>
+                                or
+                                <field name="payment_due_days"/> days
+                            </div>
+                            <field name="credit_term" string="Warning Before Due Date"/>
+                            <field name="credit_amount"/>
+                        </group>
+                    </group>
+                </page>
+
+                        <page name="pic_information" string="Work Information" modifiers="{&quot;invisible&quot;: [[&quot;is_company&quot;, &quot;=&quot;, true]]}">
+                            <group>
+                                <group string="Job Information">
+                                    <field name="function"/>
+                                </group>
+                                <group string="Contact">
+                                    <field name="phone" on_change="1"/>
+                                    <field name="email" on_change="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="sales_purchases" string="Sales &amp; Purchase" modifiers="{&quot;invisible&quot;: true}">
+                            <group name="container_row_2">
+                                <group string="Sales" name="sale" priority="1">
+                                    <field name="user_id" widget="many2one_avatar_user" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_company&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                                    <field name="team_id" on_change="1" modifiers="{&quot;invisible&quot;: [[&quot;is_company&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                                </group>
+                                <group name="misc" string="Misc">
+                                    <field name="company_registry" modifiers="{&quot;invisible&quot;: [[&quot;parent_id&quot;, &quot;!=&quot;, false]]}"/>
+                                    <field name="industry_id" options="{'no_create': True}" modifiers="{&quot;invisible&quot;: [[&quot;is_company&quot;, &quot;=&quot;, false]]}" can_create="true" can_write="true"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Invoicing" name="accounting" modifiers="{&quot;invisible&quot;: [[&quot;is_company&quot;, &quot;=&quot;, false], [&quot;parent_id&quot;, &quot;!=&quot;, false]]}">
+                            <field name="duplicated_bank_account_partners_count" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <field name="show_credit_limit" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            <group>
+                                <group string="Bank Accounts" name="banks">
+                                    <field name="bank_ids" nolabel="1" colspan="2" context="{'default_allow_out_payment': True}" on_change="1">
+                                        <tree editable="bottom">
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="bank_id" can_create="true" can_write="true"/>
+                                            <field name="acc_number" modifiers="{&quot;required&quot;: true}"/>
+                                            <field name="allow_out_payment" widget="boolean_toggle" options="{'autosave': False}"/>
+                                            <field name="acc_holder_name" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                        </tree>
+                                    </field>
+                                    <button type="action" class="btn-link" name="62" context="{'search_default_partner_id': active_id, 'default_partner_id': active_id}" string="View accounts detail" colspan="2"/>
+                                </group>
+                                <group string="Accounting Entries" name="accounting_entries">
+                                    <field name="currency_id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                                    <field name="property_account_receivable_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                    <field name="property_account_payable_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                </group>
+                                <group string="Credit Limits" name="credit_limits" modifiers="{&quot;invisible&quot;: [[&quot;show_credit_limit&quot;, &quot;=&quot;, false]]}">
+                                    <field name="credit" modifiers="{&quot;readonly&quot;: true}"/>
+                                    <label for="use_partner_credit_limit"/>
+                                    <div class="o_row">
+                                        <field name="use_partner_credit_limit"/>
+                                        <field name="credit_limit" class="oe_inline" modifiers="{&quot;invisible&quot;: [[&quot;use_partner_credit_limit&quot;, &quot;=&quot;, false]]}"/>
+                                    </div>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="internal_notes" string="Internal Notes">
+                            <field name="comment" placeholder="Internal notes..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_res_partner_search" model="ir.ui.view">
+        <field name="name">res.partner.search</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search string="Search Partner">
+                    <field name="name" filter_domain="['|', '|', '|', '|', '|','|', ('partner_code', 'ilike', self), ('name', 'ilike', self), ('foreign_name', 'ilike', self), ('ref', '=',&amp;#10;                    self), ('email', 'ilike', self), ('vat', 'ilike', self), ('company_registry', 'ilike', self)]&amp;#10;                "/>
+                    <field name="parent_id" domain="[('is_company', '=', True)]" operator="child_of"/>
+                    <field name="email" filter_domain="[('email', 'ilike', self)]"/>
+                    <field name="phone_mobile_search"/>
+            <field name="category_id" string="Tag" operator="child_of"/>
+                    <field name="user_id"/>
+                <field name="state_id"/>
+                    <separator/>
+                <filter name="My Responsible" domain="[('user_id', '=', user_id)]"/>
+                <separator/>
+                    <filter string="Individuals" name="type_person" domain="[('is_company', '=', False)]"/>
+                    <filter string="Companies" name="type_company" domain="[('is_company', '=', True)]"/>
+<separator/>
+<filter string="Is Employee" name="ftr_employee" domain="[('employee_ids', '!=', False)]"/>
+                    <separator/>
+                   <filter string="Customer" name="customer" domain="[('is_customer', '=', True)]"/>
+                   <filter string="Vendor" name="supplier" domain="[('is_vendor', '=', True)]"/>
+                   <separator/>
+                    <filter string="Is Vendor" name="is_vendor" domain="[('party_role', 'like', 'Vendor')]"/>
+                    <filter string="Is Carrier" name="is_carrier" domain="[('party_role', 'like', 'Carrier')]"/>
+                    <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                        <filter string="Late Activities" name="activities_overdue" domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]" help="Show all records which has next action date is before today" modifiers="{&quot;invisible&quot;: true}"/>
+                        <filter string="Today Activities" name="activities_today" domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                        <filter string="Future Activities" name="activities_upcoming_all" domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]" modifiers="{&quot;invisible&quot;: true}"/>
+                        <separator/>
+                    <separator/>
+                    <group expand="0" name="group_by" string="Group By">
+                        <filter name="salesperson" string="Salesperson" domain="[]" context="{'group_by' : 'user_id'}"/>
+                <filter name="state_id" string="State" domain="[]" context="{'group_by' : 'state_id'}"/>
+                        <filter name="group_company" string="Company" context="{'group_by': 'parent_id'}"/>
+                        <filter name="group_country" string="Country" context="{'group_by': 'country_id'}"/>
+                <separator/>
+                <filter name="group_party_role" string="Party Role" context="{'group_by': 'party_role'}"/>
+                    </group>
+                <separator/>
+                <filter string="Is Shipper" name="is_shipper" domain="[('is_shipper', '=', True)]"/>
+                <filter string="Is Consignee" name="is_consignee" domain="[('is_consignee', '=', True)]"/>
+                <filter string="Is Agent" name="is_agent" domain="[('is_agent', '=', True)]"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="action_res_partner" model="ir.actions.act_window">
+        <field name="name">RES PARTNER</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mailing_list_tree" model="ir.ui.view">
+        <field name="name">mailing.list.tree</field>
+        <field name="model">mailing.list</field>
+        <field name="arch" type="xml">
+            <tree string="Mailing Lists" sample="1">
+                <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                <field name="is_public"/>
+                <field name="mailing_count" string="Mailings" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="contact_pct_bounce" string="Bounce (%)" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="contact_pct_opt_out" string="Opt-out (%)" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="contact_pct_blacklisted" string="Blacklist (%s)" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="contact_count" string="Recipients" modifiers="{&quot;readonly&quot;: true}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_mailing_list_form" model="ir.ui.view">
+        <field name="name">mailing.list.form</field>
+        <field name="model">mailing.list</field>
+        <field name="arch" type="xml">
+            <form string="Contact List">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_contacts" type="object" icon="fa-user" class="oe_stat_button">
+                            <field name="contact_count" string="Recipients" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                        <button name="action_view_mailings" type="object" icon="fa-envelope-o" class="oe_stat_button">
+                            <field name="mailing_count" string="Mailings" widget="statinfo" modifiers="{&quot;readonly&quot;: true}"/>
+                        </button>
+                        <button name="action_view_contacts_bouncing" type="object" icon="fa-exchange" class="oe_stat_button">
+                            <div class="o_field_widget o_stat_info">
+                                <div class="oe_inline">
+                                    <span class="o_stat_value">
+                                        <field name="contact_pct_bounce" widget="statinfo" nolabel="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </span>
+                                    <span class="o_stat_value">%</span>
+                                </div>
+                                <span class="o_stat_text">Bounce</span>
+                            </div>
+                        </button>
+                        <button name="action_view_contacts_opt_out" type="object" icon="fa-bell-slash-o" class="oe_stat_button">
+                            <div class="o_field_widget o_stat_info">
+                                <div class="oe_inline">
+                                    <span class="o_stat_value">
+                                        <field name="contact_pct_opt_out" widget="statinfo" nolabel="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </span>
+                                    <span class="o_stat_value">%</span>
+                                </div>
+                                <span class="o_stat_text">Opt-out</span>
+                            </div>
+                        </button>
+                        <button name="action_view_contacts_blacklisted" type="object" icon="fa-ban" class="oe_stat_button">
+                            <div class="o_field_widget o_stat_info">
+                                <div class="oe_inline">
+                                    <span class="o_stat_value">
+                                        <field name="contact_pct_blacklisted" widget="statinfo" nolabel="1" modifiers="{&quot;readonly&quot;: true}"/>
+                                    </span>
+                                    <span class="o_stat_value">%</span>
+                                </div>
+                                <span class="o_stat_text">Blacklist</span>
+                            </div>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" modifiers="{&quot;invisible&quot;: [[&quot;active&quot;, &quot;=&quot;, true]]}"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" class="text-break" placeholder="e.g. Consumer Newsletter" modifiers="{&quot;required&quot;: true}"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="active" modifiers="{&quot;invisible&quot;: true}"/>
+                        <field name="is_public"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mailing_list_search" model="ir.ui.view">
+        <field name="name">mailing.list.search</field>
+        <field name="model">mailing.list</field>
+        <field name="arch" type="xml">
+            <search string="Mailing Lists">
+                <field name="name"/>
+                <field name="create_date"/>
+                <filter name="inactive" string="Archived" domain="[('active','=',False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Creation Period" name="group_create_date" context="{'group_by': 'create_date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mailing_list" model="ir.actions.act_window">
+        <field name="name">MAILING LIST</field>
+        <field name="res_model">mailing.list</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

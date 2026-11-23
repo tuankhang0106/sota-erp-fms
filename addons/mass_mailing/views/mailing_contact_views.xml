@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mailing_contact_tree" model="ir.ui.view">
+        <field name="name">mailing.contact.tree</field>
+        <field name="model">mailing.contact</field>
+        <field name="arch" type="xml">
+            <tree string="Mailing List Contacts" sample="1" multi_edit="1" js_class="mailing_contact_list">
+                <header>
+                    <button name="action_add_to_mailing_list" string="Add to List" type="object"/>
+                </header>
+                <field name="create_date" optional="show" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="title_id" optional="hide" can_create="true" can_write="true"/>
+                <field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="company_name"/>
+                <field name="email" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="is_blacklisted" string="Email Blacklisted" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="country_id" optional="hide" can_create="true" can_write="true"/>
+                <field name="message_bounce" sum="Total Bounces" modifiers="{&quot;readonly&quot;: true}"/>
+                <field name="opt_out" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="list_ids" widget="many2many_tags" optional="hide" can_create="true" can_write="true"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_mailing_contact_form" model="ir.ui.view">
+        <field name="name">mailing.contact.form</field>
+        <field name="model">mailing.contact</field>
+        <field name="arch" type="xml">
+            <form string="Mailing List Contacts">
+                <field name="id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Contact Name"/>
+                        <h1>
+                            <field class="text-break" name="name" placeholder="e.g. John Smith"/>
+                        </h1>
+                        <div>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" placeholder="Tags" style="width: 100%" can_create="true" can_write="true"/>
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <label for="email" class="oe_inline"/>
+                            <div class="o_row o_row_readonly" name="email_details">
+                                 <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger" title="This email is blacklisted for mass mailings. Click to unblacklist." type="object" context="{'default_email': email}" modifiers="{&quot;invisible&quot;: [[&quot;is_blacklisted&quot;, &quot;=&quot;, false]]}"/>
+                                <field name="email" widget="email" on_change="1"/>
+                                <field name="is_blacklisted" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                            </div>
+                            <field name="title_id" can_create="true" can_write="true"/>
+                            <field name="company_name"/>
+                            <field name="country_id" options="{'no_open': True, 'no_create': True}" can_create="true" can_write="true"/>
+                        </group>
+                        <group>
+                            <field name="create_date" modifiers="{&quot;invisible&quot;: [[&quot;id&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                            <field name="message_bounce" modifiers="{&quot;invisible&quot;: [[&quot;id&quot;, &quot;=&quot;, false]], &quot;readonly&quot;: true}"/>
+                        </group>
+                    </group>
+                    <field name="subscription_list_ids">
+                        <tree editable="bottom">
+                           <field name="list_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                           <field name="unsubscription_date"/>
+                           <field name="opt_out"/>
+                        </tree>
+                    </field>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mailing_contact_search" model="ir.ui.view">
+        <field name="name">mailing.contact.search</field>
+        <field name="model">mailing.contact</field>
+        <field name="arch" type="xml">
+            <search string="Mailing List Contacts">
+                <field name="name" filter_domain="['|', '|', ('name','ilike',self), ('company_name','ilike',self), ('email_normalized','ilike',self)]" string="Name / Email"/>
+                <field name="tag_ids"/>
+                <field name="list_ids"/>
+                <separator/>
+                <filter string="Valid Email Recipients" name="filter_valid_email_recipient" domain="[('opt_out', '=', False), ('is_blacklisted', '=', False), ('email_normalized', '!=', False)]" modifiers="{&quot;invisible&quot;: true}"/>
+                <separator/>
+                <filter name="filter_bounce" string="Bounced" domain="[('message_bounce', '&gt;', 0)]"/>
+                <filter name="filter_blacklisted" string="Blacklisted" domain="[('is_blacklisted','=',True)]" modifiers="{&quot;invisible&quot;: true}"/>
+                <filter name="filter_opt_out" string="Opted-out" domain="[('opt_out', '=', True)]" modifiers="{&quot;invisible&quot;: true}"/>
+                <separator/>
+                <filter string="Exclude Blacklisted Emails" name="filter_not_email_bl" domain="[('is_blacklisted', '=', False)]"/>
+                <separator/>
+                <filter string="Exclude Opt Out" name="filter_not_optout" domain="[('opt_out', '=', False)]" modifiers="{&quot;invisible&quot;: true}"/>
+                <group expand="0" string="Group By">
+                    <filter string="Creation Date" name="group_create_date" context="{'group_by': 'create_date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mailing_contact" model="ir.actions.act_window">
+        <field name="name">MAILING CONTACT</field>
+        <field name="res_model">mailing.contact</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

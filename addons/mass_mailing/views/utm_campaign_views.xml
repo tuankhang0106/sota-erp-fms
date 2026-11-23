@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_utm_campaign_tree" model="ir.ui.view">
+        <field name="name">utm.campaign.tree</field>
+        <field name="model">utm.campaign</field>
+        <field name="arch" type="xml">
+            <tree string="UTM Campaigns" multi_edit="1" sample="1">
+                <field name="title" on_change="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                <field name="name" modifiers="{&quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                <field name="user_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="stage_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" can_create="true" can_write="true"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_utm_campaign_form" model="ir.ui.view">
+        <field name="name">utm.campaign.form</field>
+        <field name="model">utm.campaign</field>
+        <field name="arch" type="xml">
+            <form string="UTM Campaign">
+                <header>
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '1'}" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                <field name="is_mailing_campaign_activated" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <button name="387" type="action" class="oe_highlight" string="Send Mailing" modifiers="{&quot;invisible&quot;: [[&quot;is_mailing_campaign_activated&quot;, &quot;=&quot;, false]]}"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box d-flex justify-content-end" name="button_box">
+                <button name="207" type="action" class="oe_stat_button order-12" icon="fa-mouse-pointer">
+                    <field name="click_count" widget="statinfo" string="Clicks" modifiers="{&quot;readonly&quot;: true}"/>
+                </button>
+                <button name="action_redirect_to_leads_opportunities" type="object" class="oe_stat_button order-3" icon="fa-star">
+                    <div class="o_field_widget o_stat_info">
+                        <field name="use_leads" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <span class="o_stat_value"><field nolabel="1" name="crm_lead_count" modifiers="{&quot;readonly&quot;: true}"/></span>
+                        <span class="o_stat_text" modifiers="{&quot;invisible&quot;: [[&quot;use_leads&quot;, &quot;=&quot;, false]]}">Leads</span>
+                        <span class="o_stat_text" modifiers="{&quot;invisible&quot;: [[&quot;use_leads&quot;, &quot;=&quot;, true]]}">Opportunities</span>
+                    </div>
+                </button>
+                <button name="386" type="action" class="oe_stat_button order-9" icon="fa-envelope-o" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;mailing_mail_count&quot;, &quot;=&quot;, 0], [&quot;is_mailing_campaign_activated&quot;, &quot;=&quot;, false]]}">
+                    <field name="mailing_mail_count" widget="statinfo" string="Mailings" modifiers="{&quot;readonly&quot;: true}"/>
+                </button>
+                    </div>
+                    <group id="top-group">
+                        <field class="text-break" name="title" string="Campaign Name" placeholder="e.g. Black Friday" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                        <field name="name" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
+                        <field name="user_id" domain="[('share', '=', False)]" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                        <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" can_create="true" can_write="true"/>
+                    </group>
+                    <notebook>
+                <page string="Mailings" name="mailings" modifiers="{&quot;invisible&quot;: [&quot;|&quot;, [&quot;mailing_mail_count&quot;, &quot;=&quot;, 0], [&quot;is_mailing_campaign_activated&quot;, &quot;=&quot;, false]]}">
+                    <field name="mailing_mail_ids" nolabel="1" on_change="1">
+                        <tree>
+                            <field name="calendar_date" string="Date" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="subject" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;sending&quot;, &quot;done&quot;]]], &quot;required&quot;: true}"/>
+                            <field name="mailing_model_id" string="Recipients" optional="hide" modifiers="{&quot;required&quot;: true}"/>
+                            <field name="user_id" widget="many2one_avatar_user"/>
+                            <field name="ab_testing_enabled" string="A/B Test" modifiers="{&quot;column_invisible&quot;: [[&quot;parent.ab_testing_mailings_count&quot;, &quot;=&quot;, 0]]}"/>
+                            <field name="campaign_id" string="Campaign" optional="hide" on_change="1"/>
+                            <field name="received_ratio" string="Delivered (%)" avg="Average of Delivered" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="opened_ratio" string="Opened (%)" avg="Average of Opened" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="bounced_ratio" string="Bounced (%)" optional="hide" avg="Average of Bounced" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="clicks_ratio" string="Clicked (%)" avg="Average of Clicked" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="replied_ratio" string="Replied (%)" avg="Average of Replied" modifiers="{&quot;readonly&quot;: true}"/>
+                            <field name="state" decoration-info="state in ('draft', 'in_queue')" decoration-success="state in ('sending', 'done')" widget="badge" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                            <button name="action_duplicate" type="object" string="Duplicate"/>
+                        </tree>
+                    </field>
+                </page>
+                    </notebook>
+                <field name="ab_testing_mailings_count" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <group name="ab_test_group" modifiers="{&quot;invisible&quot;: [[&quot;ab_testing_mailings_count&quot;, &quot;=&quot;, 0]]}">
+                    <group string="A/B Test">
+                        <field name="ab_testing_completed" modifiers="{&quot;invisible&quot;: true}"/>
+                        <field name="ab_testing_winner_selection" modifiers="{&quot;readonly&quot;: [[&quot;ab_testing_completed&quot;, &quot;=&quot;, true]]}"/>
+                        <field name="ab_testing_schedule_datetime" modifiers="{&quot;invisible&quot;: [[&quot;ab_testing_winner_selection&quot;, &quot;=&quot;, &quot;manual&quot;]], &quot;readonly&quot;: [[&quot;ab_testing_completed&quot;, &quot;=&quot;, true]]}"/>
+                    </group>
+                </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_utm_campaign_search" model="ir.ui.view">
+        <field name="name">utm.campaign.search</field>
+        <field name="model">utm.campaign</field>
+        <field name="arch" type="xml">
+            <search string="UTM Campaigns">
+                <field name="title" string="Campaigns"/>
+                <field name="tag_ids"/>
+                <field name="user_id"/>
+                <field name="is_auto_campaign"/>
+                <group expand="0" string="Group By">
+                    <filter string="Stage" name="group_stage_id" context="{'group_by': 'stage_id'}"/>
+                    <filter string="Responsible" name="group_user_id" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_utm_campaign" model="ir.actions.act_window">
+        <field name="name">UTM CAMPAIGN</field>
+        <field name="res_model">utm.campaign</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

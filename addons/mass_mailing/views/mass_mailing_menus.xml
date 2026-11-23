@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_mass_mailing_root"
+              name="Email Marketing"
+              sequence="10"/>
+
+    <menuitem id="menu_mail_blacklist"
+              name="MAIL BLACKLIST"
+              parent="menu_mass_mailing_root"
+              action="action_mail_blacklist"
+              sequence="10"/>
+
+    <menuitem id="menu_utm_stage"
+              name="UTM STAGE"
+              parent="menu_mass_mailing_root"
+              action="action_utm_stage"
+              sequence="10"/>
+
+    <menuitem id="menu_utm_tag"
+              name="UTM TAG"
+              parent="menu_mass_mailing_root"
+              action="action_utm_tag"
+              sequence="10"/>
+
+    <menuitem id="menu_link_tracker"
+              name="LINK TRACKER"
+              parent="menu_mass_mailing_root"
+              action="action_link_tracker"
+              sequence="10"/>
+
+    <menuitem id="menu_mailing_trace_report"
+              name="MAILING TRACE REPORT"
+              parent="menu_mass_mailing_root"
+              action="action_mailing_trace_report"
+              sequence="10"/>
+
+    <menuitem id="menu_mailing_filter"
+              name="MAILING FILTER"
+              parent="menu_mass_mailing_root"
+              action="action_mailing_filter"
+              sequence="10"/>
+
+    <menuitem id="menu_mailing_contact"
+              name="MAILING CONTACT"
+              parent="menu_mass_mailing_root"
+              action="action_mailing_contact"
+              sequence="10"/>
+
+    <menuitem id="menu_mailing_list"
+              name="MAILING LIST"
+              parent="menu_mass_mailing_root"
+              action="action_mailing_list"
+              sequence="10"/>
+
+    <menuitem id="menu_mailing_mailing"
+              name="MAILING MAILING"
+              parent="menu_mass_mailing_root"
+              action="action_mailing_mailing"
+              sequence="10"/>
+
+    <menuitem id="menu_res_config_settings"
+              name="RES CONFIG SETTINGS"
+              parent="menu_mass_mailing_root"
+              action="action_res_config_settings"
+              sequence="10"/>
+
+    <menuitem id="menu_utm_campaign"
+              name="UTM CAMPAIGN"
+              parent="menu_mass_mailing_root"
+              action="action_utm_campaign"
+              sequence="10"/>
+
+</odoo>

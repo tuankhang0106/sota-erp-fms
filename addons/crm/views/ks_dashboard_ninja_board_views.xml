@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ks_dashboard_ninja_board_tree" model="ir.ui.view">
+        <field name="name">ks_dashboard_ninja.board.tree</field>
+        <field name="model">ks_dashboard_ninja.board</field>
+        <field name="arch" type="xml">
+            <tree import="0" string="My Dashboard">
+                    <field name="ks_dashboard_state" modifiers="{&quot;column_invisible&quot;: true}"/>
+                    <field name="id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+
+                    <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="ks_dashboard_menu_name" modifiers="{&quot;required&quot;: [[&quot;ks_dashboard_state&quot;, &quot;!=&quot;, &quot;Locked&quot;]]}"/>
+                    <field name="ks_dashboard_menu_sequence"/>
+                    <field name="ks_dashboard_top_menu_id" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}" modifiers="{&quot;readonly&quot;: [[&quot;ks_dashboard_state&quot;, &quot;=&quot;, &quot;Locked&quot;]], &quot;required&quot;: [[&quot;ks_dashboard_state&quot;, &quot;!=&quot;, &quot;Locked&quot;]]}"/>
+                    <field name="ks_dashboard_active" modifiers="{&quot;readonly&quot;: [[&quot;ks_dashboard_state&quot;, &quot;=&quot;, &quot;Locked&quot;]]}"/>
+                    <field name="ks_dashboard_default_template" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}" modifiers="{&quot;readonly&quot;: [[&quot;id&quot;, &quot;&gt;&quot;, 0]], &quot;required&quot;: [[&quot;id&quot;, &quot;&lt;&quot;, 1]]}"/>
+                    <field name="ks_set_interval"/>
+                    <field name="ks_date_filter_selection" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="ks_dashboard_start_date" modifiers="{&quot;readonly&quot;: [[&quot;ks_date_filter_selection&quot;, &quot;!=&quot;, &quot;l_custom&quot;]], &quot;required&quot;: [[&quot;ks_date_filter_selection&quot;, &quot;=&quot;, &quot;l_custom&quot;]]}"/>
+                    <field name="ks_dashboard_end_date" modifiers="{&quot;readonly&quot;: [[&quot;ks_date_filter_selection&quot;, &quot;!=&quot;, &quot;l_custom&quot;]], &quot;required&quot;: [[&quot;ks_date_filter_selection&quot;, &quot;=&quot;, &quot;l_custom&quot;]]}"/>
+                    <field name="ks_dashboard_group_access" widget="many2many_tags"/>
+                    <button name="ks_view_items_view" string="View Items" type="object" class="btn-primary"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_ks_dashboard_ninja_board_form" model="ir.ui.view">
+        <field name="name">ks_dashboard_ninja.board.form</field>
+        <field name="model">ks_dashboard_ninja.board</field>
+        <field name="arch" type="xml">
+            <form string="Dashboards" duplicate="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="ks_dashboard_state" modifiers="{&quot;invisible&quot;: true}"/>
+                                <field name="name" modifiers="{&quot;readonly&quot;: [[&quot;ks_dashboard_state&quot;, &quot;=&quot;, &quot;Locked&quot;]], &quot;required&quot;: true}"/>
+                                <field name="ks_dashboard_menu_name" modifiers="{&quot;readonly&quot;: [[&quot;ks_dashboard_state&quot;, &quot;=&quot;, &quot;Locked&quot;]], &quot;required&quot;: [[&quot;ks_dashboard_state&quot;, &quot;!=&quot;, &quot;Locked&quot;]]}"/>
+
+                            </group>
+                            <group>
+                                <field name="ks_dashboard_default_template" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}" modifiers="{&quot;readonly&quot;: [[&quot;id&quot;, &quot;&gt;&quot;, 0]], &quot;required&quot;: [[&quot;id&quot;, &quot;&lt;&quot;, 1]]}" can_create="true" can_write="true"/>
+                                <!--                                <field name="ks_set_interval"/>-->
+                                <field name="ks_dashboard_top_menu_id" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}" modifiers="{&quot;readonly&quot;: [[&quot;ks_dashboard_state&quot;, &quot;=&quot;, &quot;Locked&quot;]], &quot;required&quot;: [[&quot;ks_dashboard_state&quot;, &quot;!=&quot;, &quot;Locked&quot;]]}" can_create="true" can_write="true"/>
+                                <field name="ks_dashboard_menu_sequence"/>
+                                <field name="ks_dashboard_active" modifiers="{&quot;readonly&quot;: [[&quot;ks_dashboard_state&quot;, &quot;=&quot;, &quot;Locked&quot;]]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="pre_defined_filters" string="Pre Defined Filters">
+                                <field name="ks_dashboard_defined_filters_ids" widget="section_and_note_one2many">
+                                    <tree>
+                                        <control>
+                                            <create name="add_filter_control" string="Add a filter"/>
+                                            <create name="add_section_control" string="Add a separator" context="{'default_display_type': 'line_section'}"/>
+                                        </control>
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="display_type" modifiers="{&quot;column_invisible&quot;: true}"/>
+                                        <field name="id" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                        <field name="ks_model_name" modifiers="{&quot;readonly&quot;: true, &quot;column_invisible&quot;: true}"/>
+                                        <field name="name"/>
+                                        <field name="ks_model_id" on_change="1"/>
+                                        <field name="ks_domain" on_change="1"/>
+                                        <field name="ks_is_active"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="custom_defined_filters" string="Custom Filters">
+                                <field name="ks_dashboard_custom_filters_ids">
+                                    <tree editable="bottom">
+                                        <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                                        <field name="ks_model_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                        <field name="ks_domain_field_id" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="advance_setting" string="Advance Settings">
+                                <group>
+                                    <group>
+                                        <field name="multi_layouts"/>
+                                        <field name="ks_dashboard_group_access" widget="many2many_tags" can_create="true" can_write="true"/>
+                                    </group>
+                                    <group>
+                                        <field name="ks_date_filter_selection" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                                        <field name="ks_dashboard_start_date" modifiers="{&quot;readonly&quot;: [[&quot;ks_date_filter_selection&quot;, &quot;!=&quot;, &quot;l_custom&quot;]], &quot;required&quot;: [[&quot;ks_date_filter_selection&quot;, &quot;=&quot;, &quot;l_custom&quot;]]}"/>
+                                        <field name="ks_dashboard_end_date" modifiers="{&quot;readonly&quot;: [[&quot;ks_date_filter_selection&quot;, &quot;!=&quot;, &quot;l_custom&quot;]], &quot;required&quot;: [[&quot;ks_date_filter_selection&quot;, &quot;=&quot;, &quot;l_custom&quot;]]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Auto Update" name="update_settings">
+                                <group>
+                                    <field name="ks_set_interval"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_ks_dashboard_ninja_board_search" model="ir.ui.view">
+        <field name="name">ks_dashboard_ninja.board.search</field>
+        <field name="model">ks_dashboard_ninja.board</field>
+        <field name="arch" type="xml">
+            <search string="Dashboard Ninja"><field name="name"/></search>
+        </field>
+    </record>
+
+    <record id="action_ks_dashboard_ninja_board" model="ir.actions.act_window">
+        <field name="name">KS_DASHBOARD_NINJA BOARD</field>
+        <field name="res_model">ks_dashboard_ninja.board</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_users_tree" model="ir.ui.view">
+        <field name="name">res.users.tree</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <tree string="Users">
+                    <field name="name" on_change="1"/>
+                    <field name="login" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="lang" on_change="1"/>
+                    <field name="login_date"/>
+                    <field name="company_id" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="state" widget="badge" decoration-info="state == 'new'" decoration-success="state == 'active'" modifiers="{&quot;readonly&quot;: true}"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="view_res_users_form" model="ir.ui.view">
+        <field name="name">res.users.form</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <form string="Users">
+                    <sheet>
+                        <field name="id" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <div class="alert alert-info text-center mb-3" role="alert" modifiers="{&quot;invisible&quot;: [[&quot;id&quot;, &quot;&gt;&quot;, 0]]}">
+                            You are inviting a new user.
+                        </div>
+                        <field name="avatar_128" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                        <field name="image_1920" widget="image" class="oe_avatar" options="{&quot;zoom&quot;: true, &quot;preview_image&quot;: &quot;avatar_128&quot;}" on_change="1"/>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1><field name="name" placeholder="e.g. John Doe" on_change="1" modifiers="{&quot;required&quot;: true}"/></h1>
+                            <field name="email" on_change="1" modifiers="{&quot;invisible&quot;: true}"/>
+                            <label for="login" string="Email Address"/>
+                            <h2>
+                                <field name="login" placeholder="e.g. email@yourcompany.com" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                            </h2>
+                            <label for="company_id"/>
+                            <field name="company_id" context="{'user_preference': 0}" modifiers="{&quot;required&quot;: true}" can_create="true" can_write="true"/>
+                        </div>
+                        <group name="phone_numbers">
+                            <field name="phone" widget="phone" on_change="1"/>
+                            <field name="mobile" widget="phone" on_change="1"/>
+                    <field name="create_employee_id" force_save="1" modifiers="{&quot;invisible&quot;: true}" can_create="true" can_write="true"/>
+                    <field name="create_employee" force_save="1" string="Create Employee" modifiers="{&quot;invisible&quot;: [[&quot;create_employee_id&quot;, &quot;&gt;&quot;, 0]]}"/>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+    <record id="view_res_users_search" model="ir.ui.view">
+        <field name="name">res.users.search</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <search string="Users">
+                    <field name="name" filter_domain="['|', '|', ('name','ilike',self), ('login','ilike',self), ('email','ilike',self)]" string="User"/>
+                <field name="department_id"/>
+                    <field name="company_ids" string="Company"/>
+                <field name="role_ids" filter_domain="[('role_line_ids.role_id.name','ilike',self)]"/>
+                    <field name="share"/>
+                    <filter name="filter_no_share" string="Internal Users" domain="[('share', '=', False)]"/>
+                    <filter name="filter_share" string="Portal Users" domain="[('share', '=', True)]"/>
+                    <separator/>
+                    <filter name="Inactive" string="Inactive Users" domain="[('active','=',False)]"/>
+                <separator/>
+                <filter name="totp_enabled" string="Two-factor authentication Enabled" domain="[('totp_enabled','!=',False)]"/>
+                <filter name="totp_disabled" string="Two-factor authentication Disabled" domain="[('totp_enabled','=',False)]"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="action_res_users" model="ir.actions.act_window">
+        <field name="name">RES USERS</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

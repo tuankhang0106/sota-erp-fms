@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_hr_expense_root"
+              name="Chi phí (Expenses)"
+              sequence="13"/>
+
+    <menuitem id="menu_hr_expense"
+              name="HR EXPENSE"
+              parent="menu_hr_expense_root"
+              action="action_hr_expense"
+              sequence="10"/>
+
+    <menuitem id="menu_product_product"
+              name="PRODUCT PRODUCT"
+              parent="menu_hr_expense_root"
+              action="action_product_product"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_expense_sheet"
+              name="HR EXPENSE SHEET"
+              parent="menu_hr_expense_root"
+              action="action_hr_expense_sheet"
+              sequence="10"/>
+
+    <menuitem id="menu_res_config_settings"
+              name="RES CONFIG SETTINGS"
+              parent="menu_hr_expense_root"
+              action="action_res_config_settings"
+              sequence="10"/>
+
+</odoo>
